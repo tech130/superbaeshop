@@ -65,7 +65,12 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-7"></div>
+                        <div className="col-md-7">
+                            <img
+                                src="https://letsgoal2020.com/static/media/open--4.6ffa231c.png"
+                                alt=""
+                            />
+                        </div>
                         <div className="col-md-5">
                             <p className="font-weight-bold f-18">
                                 Lorem ipsum dolor sit amet consectetur,
@@ -91,6 +96,75 @@ const Home: React.FC = () => {
                             <button className="buy-btn">Buy Now</button>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section className="pt-5 pb-5">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 mb-5">
+                            <div className="h1 font-weight-bold text-center">
+                                Comes in two different color options for cover
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <img
+                                src="https://letsgoal2020.com/static/media/front.e7158c6a.png"
+                                alt=""
+                            />
+                        </div>
+                        <div className="col-md-6">
+                            <img
+                                src="https://letsgoal2020.com/static/media/front.e7158c6a.png"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-1"></div>
+                        <div className="col-md-10 h4 font-weight-bold">
+                            <div>Dimensions</div>
+                            <div>~Width - 18.5 cm ~Height - 23.5 cm</div>
+                            <div>Hardcover with rose gold foil accents.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="pt-5 pb-5">
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-md-7">
+                            <div className="true-to-life-txt">
+                                Bringing true-to-life
+                                <br />
+                                colored pages
+                                <br />
+                                to make your day exciting
+                            </div>
+                        </div>
+                        <div className="col-md-5">
+                            <h2 className="price-text">
+                                <span className="text-light-black">
+                                    Priced just right at
+                                </span>{" "}
+                                ₹854
+                            </h2>
+                            <button className="buy-btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="pt-5 pb-5">
+            <div className="container-fluid">
+                    <img src="https://letsgoal2020.com/static/media/bottom.8ea3651d.png" alt="" />
                 </div>
             </section>
 
@@ -124,6 +198,10 @@ const Home: React.FC = () => {
                 .desgin-by-engineer-txt {
                     font-size: 2.5em;
                     font-weight: 500;
+                }
+                .true-to-life-txt {
+                    font-size: 3rem;
+                    font-weight: 700;
                 }
             `}</style>
         </Layout>
