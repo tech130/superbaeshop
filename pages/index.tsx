@@ -58,10 +58,10 @@ const Home: React.FC = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 mb-5">
-                            <h2>
+                            <div className="h2 font-weight-bold">
                                 A magical piece of design to fit every aspects
                                 of your life
-                            </h2>
+                            </div>
                         </div>
                     </div>
                     <div className="row">
@@ -192,11 +192,11 @@ const Home: React.FC = () => {
                     color: #777777;
                 }
                 .desgin-by-artist-txt {
-                    font-size: 4.5rem;
+                    font-size: 4rem;
                     font-weight: 700;
                 }
                 .desgin-by-engineer-txt {
-                    font-size: 2.5em;
+                    font-size: 2.2rem;
                     font-weight: 500;
                 }
                 .true-to-life-txt {
