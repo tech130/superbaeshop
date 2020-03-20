@@ -59,7 +59,7 @@ const Home: React.FC = () => {
                     <div className="row">
                         <div className="col-12 mb-5">
                             <h2>
-                                A magical peice of design to fit every aspects
+                                A magical piece of design to fit every aspects
                                 of your life
                             </h2>
                         </div>
