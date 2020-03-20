@@ -163,8 +163,11 @@ const Home: React.FC = () => {
             </section>
 
             <section className="pt-5 pb-5">
-            <div className="container-fluid">
-                    <img src="https://letsgoal2020.com/static/media/bottom.8ea3651d.png" alt="" />
+                <div className="container-fluid">
+                    <img
+                        src="https://letsgoal2020.com/static/media/bottom.8ea3651d.png"
+                        alt=""
+                    />
                 </div>
             </section>
 
@@ -177,6 +180,9 @@ const Home: React.FC = () => {
                     font-weight: 700;
                     line-height: 68px;
                     margin-bottom: 30px;
+                    background: linear-gradient(#aeaeae, #333);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
                 }
                 .hero-section h3 {
                     font-weight: 700;
