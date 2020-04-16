@@ -83,6 +83,7 @@ const Home = () => {
                 }
                 .meanwhile-img {
                     max-width: 420px;
+                    width: 100%;
                 }
                 .meanwhile-text {
                     font-size: 30px;
