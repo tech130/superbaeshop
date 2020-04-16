@@ -23,6 +23,7 @@ const Home = () => {
             <section className="instagram-section">
                 <div className="container">
                     <div className="d-flex flex-column align-items-center">
+                        <img src="/images/meanwhile.jpeg" className="meanwhile-img" alt="" />
                         <h2 className="meanwhile-text text-center">
                             Meanwhile...
                         </h2>
@@ -69,17 +70,24 @@ const Home = () => {
                     width: 260px;
                 }
                 .working-on-section {
-                    padding: 40px 25px;
+                    padding: 20px 25px;
                     text-align: center;
                     background: #f5f5f5;
+                }
+                .working-on-section h1 {
+                    font-size: 20px;
+                    font-weight: 600;
                 }
                 .instagram-section {
                     padding: 75px 0px;
                 }
+                .meanwhile-img {
+                    max-width: 420px;
+                }
                 .meanwhile-text {
-                    font-size: 46px;
+                    font-size: 30px;
+                    font-weight: 200;
                     margin-bottom: 5px;
-                    font-weight: 400;
                 }
                 .instagram-btn {
                     color: #f09433 !important;
