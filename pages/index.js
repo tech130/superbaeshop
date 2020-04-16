@@ -26,7 +26,11 @@ const Home = () => {
                         <h2 className="meanwhile-text text-center">
                             Meanwhile...
                         </h2>
-                        <a className="d-flex align-items-center instagram-btn">
+                        <a
+                            href="https://www.instagram.com/spaceandbeautyofficial/"
+                            target="_blank"
+                            className="d-flex align-items-center instagram-btn"
+                        >
                             <svg
                                 width={18}
                                 height={18}
