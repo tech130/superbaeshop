@@ -1,3 +1,4 @@
+import "../css/fonts.css";
 import "../css/bootstrap-reboot.css";
 import "../css/bootstrap-grid.css";
 import "../css/theme.css";
