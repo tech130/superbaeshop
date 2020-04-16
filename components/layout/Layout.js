@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import ProductNav from "./ProductNav";
 
-const Layout: React.FC = ({ children }) => {
+const Layout = ({ children }) => {
     return (
         <>
             <div className="top-bar">

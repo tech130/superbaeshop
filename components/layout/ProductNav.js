@@ -28,11 +28,7 @@ const ProductNav = () => {
     );
 };
 
-interface ProductNavItemProps {
-    title: string;
-}
-
-const ProductNavItem = ({ title }: ProductNavItemProps) => (
+const ProductNavItem = ({ title = "" }) => (
     <li className="product-nav-item text-center">
         <a href="#">{title}</a>
         <style jsx>{`

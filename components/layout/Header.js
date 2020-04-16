@@ -2,7 +2,7 @@ import React from "react";
 import CartIcon from "../icons/CartIcon";
 import Link from "next/link";
 
-const Header: React.FC = () => {
+const Header = () => {
     return (
         <>
             <header className="header">

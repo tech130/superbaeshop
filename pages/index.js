@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
 
-const Home: React.FC = () => {
+const Home = () => {
     return (
         <Layout>
             <section className="hero-section">
