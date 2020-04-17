@@ -4,12 +4,10 @@ const ProductNav = () => {
     return (
         <nav className="product-nav flex-center">
             <ul className="product-nav-list">
-                <ProductNavItem title="Professional Planner" />
-                <ProductNavItem title="Let's Goal Planner" />
-                <ProductNavItem title="Product 3" />
-                <ProductNavItem title="Product 4" />
-                <ProductNavItem title="Product 5" />
-                <ProductNavItem title="Product 6" />
+                <ProductNavItem title="Bundle" />
+                <ProductNavItem title="Let’s Goal 2021 Planner" />
+                <ProductNavItem title="The Ultimate Sticker Book" />
+                <ProductNavItem title="The Professional Planner" />
             </ul>
             <style jsx>{`
                 .product-nav {

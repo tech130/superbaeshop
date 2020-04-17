@@ -1,6 +1,8 @@
 import React from "react";
 import CartIcon from "../icons/CartIcon";
 import Link from "next/link";
+import DotsMenu from "../icons/DotsMenu";
+import LoginModal from "./LoginModal";
 
 const Header = () => {
     return (
@@ -9,27 +11,58 @@ const Header = () => {
                 <div className="container">
                     <nav className="d-flex justify-content-between align-items-center header-height">
                         <Link href="/">
-                            <a className="logo">
-                                <img src="/images/logo.png" />
+                            <a>
+                                <img
+                                    className="logo"
+                                    src="/images/logo.png"
+                                    alt="space and beauty logo"
+                                />
                             </a>
                         </Link>
-                        {/* <ul className="nav-list">
+                        <ul className="header-right d-flex align-items-center">
                             <li>
-                                <a href="#">Home</a>
+                                <button className="btn icon-btn">
+                                    <CartIcon size={20} />
+                                </button>
                             </li>
                             <li>
-                                <a href="#">Products</a>
+                                <LoginModal />
                             </li>
-                            <li>
-                                <a href="#">Privacy</a>
+                            <li className="dot-menu">
+                                <button className="btn icon-btn ">
+                                    <DotsMenu size={20} />
+                                </button>
+                                <ul className="header-dropdown">
+                                    <li>
+                                        <Link href="/">
+                                            <a>Privacy policy</a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/">
+                                            <a>Terms and conditions</a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/">
+                                            <a>
+                                                Cancellations and return policy
+                                            </a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/">
+                                            <a>Data privacy</a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/">
+                                            <a>Contact us</a>
+                                        </Link>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="#">Terms & Conditions</a>
-                            </li>
-                        </ul> */}
-                        <a href="#">
-                            <CartIcon size={22} />
-                        </a>
+                        </ul>
                     </nav>
                 </div>
             </header>
@@ -42,29 +75,52 @@ const Header = () => {
                     min-height: 60px;
                 }
                 .logo {
-                    flex: 0 0 220px;
+                    width: 220px;
+                    height: auto;
                 }
                 .logo img {
                     width: 100%;
                 }
-                .nav-list {
-                    flex: 1;
+                .header-right {
                     list-style: none;
+                }
+                .header-right li {
+                    margin-left: 10px;
+                    position: relative;
+                }
+                .icon-btn {
                     display: flex;
+                    justify-content: center;
                     align-items: center;
-                    margin: 0;
-                    padding: 0;
-                    justify-content: space-evenly;
+                    padding: 6px;
+                    border-radius: 50%;
                 }
-                .nav-list li a {
-                    color: #000;
-                    padding: 0px 20px;
-                    font-size: 16px;
-                    font-weight: 600;
+                .icon-btn:hover,
+                .icon-btn:focus {
+                    background: #f7f7f7;
                 }
-                .nav-list li a:hover {
-                    color: #000;
-                    text-decoration: none;
+                .header-dropdown {
+                    display: none;
+                    position: absolute;
+                    top: 36px;
+                    right: 0;
+                    background: #fff;
+                    width: 230px;
+                    box-shadow: 0px 11px 12px 8px rgba(0, 0, 0, 0.03);
+                    z-index: 10;
+                    list-style: none;
+                    padding: 10px 5px 5px 5px;
+                }
+                .dot-menu:hover .header-dropdown {
+                    display: block;
+                }
+                .header-dropdown li {
+                    margin-bottom: 5px;
+                    font-size: 14px;
+                }
+                .header-dropdown li a {
+                    color: #000 !important;
+                    text-decoration: none !important;
                 }
             `}</style>
         </>
