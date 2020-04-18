@@ -55,11 +55,8 @@ const Checkout = () => {
                                 </div>
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <label className="d-flex align-items-center m-0">
-                                            <input
-                                                type="checkbox"
-                                                className="simple-checkbox"
-                                            />
+                                        <input type="checkbox" id="sameAs" />
+                                        <label htmlFor="sameAs">
                                             Same as registered number
                                         </label>
                                     </div>
@@ -145,11 +142,11 @@ const Checkout = () => {
                                 </div>
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <label className="d-flex align-items-center m-0">
-                                            <input
-                                                type="checkbox"
-                                                className="simple-checkbox"
-                                            />
+                                        <input
+                                            type="checkbox"
+                                            id="redeemWallet"
+                                        />
+                                        <label htmlFor="redeemWallet">
                                             Redeem wallet points
                                         </label>
                                     </div>
