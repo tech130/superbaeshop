@@ -137,6 +137,19 @@ h6 {
 }
 
 /* forms */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.form-row > .col,
+.form-row > [class*="col-"] {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 .form-group {
     margin-bottom: 1rem;
 }
@@ -149,7 +162,7 @@ h6 {
 .form-control {
     display: block;
     width: 100%;
-    height: 45px;
+    height: 40px;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -164,7 +177,26 @@ h6 {
 
 .form-control:focus {
     outline: none;
-    border-bottom: 1px solid #000;
+    border: 1px solid #000;
+}
+
+.simple-checkbox {
+    height: 14px;
+    width: 14px;
+    margin-right: 5px;
+    border: 1px solid #ced4da;
+    background: #fff;
+}
+
+.btn-submit {
+    background: #000;
+    color: #fff;
+    width: 100%;
+    padding: 0px 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+    min-height: 40px;
+    width: 100%;
 }
 
 /*modal css*/

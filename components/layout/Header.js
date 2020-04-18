@@ -109,6 +109,7 @@ const Header = () => {
                     box-shadow: 0px 11px 12px 8px rgba(0, 0, 0, 0.03);
                     z-index: 10;
                     list-style: none;
+                    border: 1px solid var(--theme-border);
                     padding: 10px 5px 5px 5px;
                 }
                 .dot-menu:hover .header-dropdown {

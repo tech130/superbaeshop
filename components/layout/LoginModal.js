@@ -39,7 +39,7 @@ const LoginModal = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <button className="btn btn-black">
+                            <button className="btn btn-submit">
                                 Request Otp
                             </button>
                         </div>
@@ -73,15 +73,6 @@ const LoginModal = () => {
                 }
                 .login-body {
                     padding: 25px 15px 30px;
-                }
-                .btn-black {
-                    background: #000;
-                    color: #fff;
-                    width: 100%;
-                    padding: 8px 15px;
-                    text-transform: uppercase;
-                    font-size: 14px;
-                    min-height: 45px;
                 }
             `}</style>
         </>
