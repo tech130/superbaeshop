@@ -21,9 +21,11 @@ const Header = () => {
                         </Link>
                         <ul className="header-right d-flex align-items-center">
                             <li>
-                                <button className="btn icon-btn">
-                                    <CartIcon size={20} />
-                                </button>
+                                <Link href="/checkout">
+                                    <a className="btn icon-btn">
+                                        <CartIcon size={20} />
+                                    </a>
+                                </Link>
                             </li>
                             <li>
                                 <LoginModal />
