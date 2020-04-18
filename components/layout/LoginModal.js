@@ -21,7 +21,7 @@ const LoginModal = () => {
                             className="btn btn-login-close"
                             onClick={() => setOpen(false)}
                         >
-                            <CloseIcon size={18} />
+                            <CloseIcon size={20} />
                         </button>
                         <h2 className="font-weight-bold">Login</h2>
                         <div className="login-header-desc">
@@ -55,16 +55,17 @@ const LoginModal = () => {
                     font-size: 14px;
                 }
                 .login-header {
-                    padding: 35px 15px;
-                    background: #000;
-                    color: #fff;
+                    padding: 25px 15px;
+                    background: #fff;
+                    color: #000;
                     position: relative;
+                    border-bottom: solid 4px #f5f5f5;
                 }
                 .btn-login-close {
                     position: absolute;
                     top: 10px;
                     right: 10px;
-                    color: #fff;
+                    color: #000;
                 }
                 .login-header-desc {
                     font-size: 14px;
