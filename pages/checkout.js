@@ -172,21 +172,11 @@ const CheckoutSummary = () => {
         <>
             <div className="checkout-summary mb-3">
                 <div className="d-flex align-items-center justify-content-between mb-2">
-                    <h6 className="font-weight-bold m-0">
-                        Cart Total
-                        <span className="ml-1 font-weight-light">
-                            (<span>1</span> X <span>₹1536</span>)
-                        </span>
-                    </h6>
+                    <h6 className="font-weight-bold m-0">Cart Total</h6>
                     <div>₹1536</div>
                 </div>
                 <div className="d-flex align-items-center justify-content-between mb-2">
-                    <h6 className="font-weight-bold m-0">
-                        Delivery Charge
-                        <span className="ml-1 font-weight-light">
-                            (<span>1</span> X <span>₹0</span>)
-                        </span>
-                    </h6>
+                    <h6 className="font-weight-bold m-0">Delivery Charge</h6>
                     <div>+ ₹0</div>
                 </div>
                 <hr className="checkout-summary-divider mb-1 mt-2" />
@@ -203,6 +193,7 @@ const CheckoutSummary = () => {
                 }
                 .checkout-summary-divider {
                     border-top: 1px solid #f5f5f5;
+                    height: 0px;
                 }
             `}</style>
         </>
