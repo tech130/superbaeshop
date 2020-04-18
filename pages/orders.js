@@ -116,8 +116,8 @@ const OrderItem = () => {
                 <hr className="mt-0 mb-3 order-divider" />
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex align-items-center">
-                        <button className="btn btn-track mr-2">Track Order</button>
-                        <div>Delivery by 26th April 2020</div>
+                        <button className="btn btn-track mr-2">Order Placed</button>
+                        <div>Estd Delivery Date: 14 Jan 2020</div>
                     </div>
                     <button className="btn btn-track">Need help</button>
                 </div>
