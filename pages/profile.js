@@ -99,45 +99,39 @@ const Profile = () => {
                         <div className="col-md-6">
                             <div className="wallet-header mb-3">
                                 <h5>My Wallet</h5>
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <span>
-                                        Available Points - <b>50</b>
+                                <div>
+                                    <span className="mr-3">
+                                        Available Points:{" "}
+                                        <b className="green-points">50</b>
+                                    </span>
+                                    <span className="mr-3">
+                                        Used Points <b className="red-points"> 100</b>
                                     </span>
                                     <span>
-                                        Total Points - <b>150</b>
+                                        Total Points <b> 150</b>
                                     </span>
                                 </div>
                             </div>
                             <h6>Wallet History</h6>
                             <div className="wallet-history d-flex justify-content-between align-items-center mb-3">
-                                <div>Order ID - #123456789</div>
-                                <div>
-                                    Points Rewarded - <b>10</b>
-                                </div>
+                                <div>Order ID: #123456789</div>
+                                <b className="red-points">-10</b>
                             </div>
                             <div className="wallet-history d-flex justify-content-between align-items-center mb-3">
-                                <div>Order ID - #123456789</div>
-                                <div>
-                                    Points Rewarded - <b>10</b>
-                                </div>
+                                <div>Order ID: #123456789</div>
+                                <b className="green-points">+15</b>
                             </div>
                             <div className="wallet-history d-flex justify-content-between align-items-center mb-3">
-                                <div>Order ID - #123456789</div>
-                                <div>
-                                    Points Rewarded - <b>10</b>
-                                </div>
+                                <div>Order ID: #123456789</div>
+                                <b className="red-points">-10</b>
                             </div>
                             <div className="wallet-history d-flex justify-content-between align-items-center mb-3">
-                                <div>Order ID - #123456789</div>
-                                <div>
-                                    Points Rewarded - <b>10</b>
-                                </div>
+                                <div>Order ID: #123456789</div>
+                                <b className="red-points">-10</b>
                             </div>
                             <div className="wallet-history d-flex justify-content-between align-items-center mb-3">
-                                <div>Order ID - #123456789</div>
-                                <div>
-                                    Points Rewarded - <b>10</b>
-                                </div>
+                                <div>Order ID: #123456789</div>
+                                <b className="green-points">+10</b>
                             </div>
                         </div>
                     </div>
@@ -175,6 +169,12 @@ const Profile = () => {
                     border: solid 2px #f5f5f5;
                     border-radius: 10px;
                     font-size: 14px;
+                }
+                .green-points {
+                    color: green;
+                }
+                .red-points {
+                    color: red;
                 }
             `}</style>
         </Layout>

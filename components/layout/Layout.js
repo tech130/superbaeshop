@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import ProductNav from "./ProductNav";
+import Footer from "./Footer";
 
 const Layout = ({ children }) => {
     return (
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
                     <ProductNav />
                     {children}
                 </div>
+                <Footer />
             </div>
             <style jsx>{`
                 .top-bar {

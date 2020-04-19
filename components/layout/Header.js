@@ -3,22 +3,15 @@ import CartIcon from "../icons/CartIcon";
 import Link from "next/link";
 import DotsMenu from "../icons/DotsMenu";
 import LoginModal from "./LoginModal";
+import Logo from "./Logo";
 
-const Header = () => {
+const Header = ({ isLoggedIn = false }) => {
     return (
         <>
             <header className="header">
                 <div className="container">
                     <nav className="d-flex justify-content-between align-items-center header-height">
-                        <Link href="/">
-                            <a>
-                                <img
-                                    className="logo"
-                                    src="/images/logo.png"
-                                    alt="space and beauty logo"
-                                />
-                            </a>
-                        </Link>
+                        <Logo />
                         <ul className="header-right d-flex align-items-center">
                             <li>
                                 <Link href="/checkout">
@@ -30,39 +23,109 @@ const Header = () => {
                             <li>
                                 <LoginModal />
                             </li>
-                            <li className="dot-menu">
+                            <li className="dropdown">
+                                <button className="btn">
+                                    <img
+                                        width={18}
+                                        height={13}
+                                        className="mr-1"
+                                        src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
+                                        alt=""
+                                    />
+                                    <span>INR</span>
+                                    <span className="ml-1">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={14}
+                                            height={14}
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <polyline points="6 9 12 15 18 9" />
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div className="header-dropdown">
+                                    <ul className="header-dropdown-list">
+                                        <li>
+                                            <button>
+                                                <img
+                                                    width={18}
+                                                    height={13}
+                                                    className="mr-1"
+                                                    src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
+                                                    alt=""
+                                                />
+                                                <span>INR</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button>
+                                                <img
+                                                    width={18}
+                                                    height={13}
+                                                    className="mr-1"
+                                                    src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
+                                                    alt=""
+                                                />
+                                                <span>USD</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button>
+                                                <img
+                                                    width={18}
+                                                    height={13}
+                                                    className="mr-1"
+                                                    src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
+                                                    alt=""
+                                                />
+                                                <span>JPY</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li className="dropdown">
                                 <button className="btn icon-btn ">
                                     <DotsMenu size={20} />
                                 </button>
-                                <ul className="header-dropdown">
-                                    <li>
-                                        <Link href="/">
-                                            <a>Privacy policy</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/">
-                                            <a>Terms and conditions</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/">
-                                            <a>
-                                                Cancellations and return policy
-                                            </a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/">
-                                            <a>Data privacy</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/">
-                                            <a>Contact us</a>
-                                        </Link>
-                                    </li>
-                                </ul>
+                                <div className="header-dropdown">
+                                    <ul className="header-dropdown-list">
+                                        <li>
+                                            <Link href="/">
+                                                <a>Privacy policy</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/">
+                                                <a>Terms and conditions</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/">
+                                                <a>
+                                                    Cancellations and return
+                                                    policy
+                                                </a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/">
+                                                <a>Data privacy</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/">
+                                                <a>Contact us</a>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </nav>
@@ -70,18 +133,16 @@ const Header = () => {
             </header>
             <style jsx>{`
                 .header {
-                    background: #fff;
+                    background: rgba(255, 255, 255, 0.21);
                     border-bottom: 1px solid var(--theme-border);
+                    backdrop-filter: blur(20px);
+                    position: sticky;
+                    top: 0;
+                    z-index: 99;
+                    font-size: 14px;
                 }
                 .header-height {
                     min-height: 60px;
-                }
-                .logo {
-                    width: 220px;
-                    height: auto;
-                }
-                .logo img {
-                    width: 100%;
                 }
                 .header-right {
                     list-style: none;
@@ -94,7 +155,7 @@ const Header = () => {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 6px;
+                    padding: 4px;
                     border-radius: 50%;
                 }
                 .icon-btn:hover,
@@ -105,20 +166,28 @@ const Header = () => {
                     display: none;
                     position: absolute;
                     top: 36px;
-                    right: 0;
-                    background: #fff;
-                    width: 230px;
-                    box-shadow: 0px 11px 12px 8px rgba(0, 0, 0, 0.03);
+                    right: 0px;
                     z-index: 10;
+                    box-shadow: 0px 11px 12px 8px rgba(0, 0, 0, 0.03);
+                    width: max-content;
+                    max-width: 230px;
+                }
+                .header-dropdown-list {
+                    background: #fff;
                     list-style: none;
                     border: 1px solid var(--theme-border);
-                    padding: 10px 5px 5px 5px;
+                    padding: 8px 0px;
+                    border-radius: 3px;
+                    position: realtive;
                 }
-                .dot-menu:hover .header-dropdown {
+                .dropdown {
+                    position: relative;
+                }
+                .dropdown:hover .header-dropdown {
                     display: block;
                 }
                 .header-dropdown li {
-                    margin-bottom: 5px;
+                    padding: 8px 20px;
                     font-size: 14px;
                 }
                 .header-dropdown li a {
