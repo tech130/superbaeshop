@@ -133,7 +133,7 @@ const Header = ({ isLoggedIn = false }) => {
             </header>
             <style jsx>{`
                 .header {
-                    background: rgba(255, 255, 255, 0.21);
+                    background: rgba(255, 255, 255, 0.67);
                     border-bottom: 1px solid var(--theme-border);
                     backdrop-filter: blur(20px);
                     position: sticky;

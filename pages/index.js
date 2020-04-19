@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <Layout>
             <section className="hero-section">
-                <div className="container-fluid">
+                <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-7">
                             <img
@@ -28,7 +28,7 @@ const Home = () => {
                                 </span>{" "}
                                 ₹854
                             </h2>
-                            <button className="buy-btn">Buy Now</button>
+                            <button className="buy-btn">Add to cart</button>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,13 @@ const Home = () => {
                         </span>{" "}
                         ₹854
                     </h2>
-                    <button className="buy-btn">Buy Now</button>
+                    <button className="buy-btn">Add to cart</button>
+                </div>
+            </section>
+
+            <section>
+                <div className="container-fluid">
+                    <img className="w-100" src="/images/professional-planner/2.png" alt="" />
                 </div>
             </section>
 
@@ -69,10 +75,10 @@ const Home = () => {
                     </div>
                     <div className="row">
                         <div className="col-md-7">
-                            <img
+                            {/* <img
                                 src="/images/professional-planner/2.png"
                                 alt=""
-                            />
+                            /> */}
                         </div>
                         <div className="col-md-5">
                             <p className="font-weight-bold f-18">
@@ -96,13 +102,13 @@ const Home = () => {
                                 </span>{" "}
                                 ₹854
                             </h2>
-                            <button className="buy-btn">Buy Now</button>
+                            <button className="buy-btn">Add to cart</button>
                         </div>
                     </div>
                 </div>
             </section>
             <section className="pt-5 pb-5">
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12 mb-3">
                             <picture>
@@ -111,6 +117,7 @@ const Home = () => {
                                     srcSet="/images/professional-planner/3-mobile.png"
                                 />
                                 <img
+                                    className="w-100"
                                     src="/images/professional-planner/3.png"
                                     alt=""
                                 />
@@ -118,13 +125,15 @@ const Home = () => {
                         </div>
                         <div className="col-md-6 mb-3">
                             <img
-                                src="/images/professional-planner/4.png"
+                                className="w-100"
+                                src="/images/professional-planner/4.jpg"
                                 alt=""
                             />
                         </div>
                         <div className="col-md-6 mb-3">
                             <img
-                                src="/images/professional-planner/5.png"
+                                className="w-100"
+                                src="/images/professional-planner/5.jpg"
                                 alt=""
                             />
                         </div>
