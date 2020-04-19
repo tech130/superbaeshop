@@ -108,7 +108,7 @@ const Home = () => {
                             <picture>
                                 <source
                                     media="(max-width: 475px)"
-                                    srcset="/images/professional-planner/3-mobile.png"
+                                    srcSet="/images/professional-planner/3-mobile.png"
                                 />
                                 <img
                                     src="/images/professional-planner/3.png"
