@@ -10,7 +10,7 @@ const Home = () => {
                         <div className="col-lg-7">
                             <img
                                 className="w-100"
-                                src="https://letsgoal2020.com/static/media/open--5.9a0cf123.png"
+                                src="/images/professional-planner/1.png"
                                 alt=""
                             />
                         </div>
@@ -44,6 +44,9 @@ const Home = () => {
                             Engineered by experts
                         </span>
                     </div>
+                    <div className="desgin-by-artist-txt mb-5">
+                        With highest quality print
+                    </div>
                     <h2 className="price-text">
                         <span className="text-light-black">
                             Priced just right at
@@ -58,7 +61,7 @@ const Home = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 mb-5">
-                            <div className="h2 font-weight-bold">
+                            <div className="magical-piece-txt font-weight-bold">
                                 A magical piece of design to fit every aspects
                                 of your life
                             </div>
@@ -67,7 +70,7 @@ const Home = () => {
                     <div className="row">
                         <div className="col-md-7">
                             <img
-                                src="https://letsgoal2020.com/static/media/open--4.6ffa231c.png"
+                                src="/images/professional-planner/2.png"
                                 alt=""
                             />
                         </div>
@@ -98,79 +101,36 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="pt-5 pb-5">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 mb-5">
-                            <div className="h1 font-weight-bold text-center">
-                                Comes in two different color options for cover
-                            </div>
+                        <div className="col-md-12 mb-3">
+                            <picture>
+                                <source
+                                    media="(max-width: 475px)"
+                                    srcset="/images/professional-planner/3-mobile.png"
+                                />
+                                <img
+                                    src="/images/professional-planner/3.png"
+                                    alt=""
+                                />
+                            </picture>
                         </div>
-                    </div>
-                </div>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-3">
                             <img
-                                src="https://letsgoal2020.com/static/media/front.e7158c6a.png"
+                                src="/images/professional-planner/4.png"
                                 alt=""
                             />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-3">
                             <img
-                                src="https://letsgoal2020.com/static/media/front.e7158c6a.png"
+                                src="/images/professional-planner/5.png"
                                 alt=""
                             />
                         </div>
                     </div>
                 </div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-1"></div>
-                        <div className="col-md-10 h4 font-weight-bold">
-                            <div>Dimensions</div>
-                            <div>~Width - 18.5 cm ~Height - 23.5 cm</div>
-                            <div>Hardcover with rose gold foil accents.</div>
-                        </div>
-                    </div>
-                </div>
             </section>
-
-            <section className="pt-5 pb-5">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-md-7">
-                            <div className="true-to-life-txt">
-                                Bringing true-to-life
-                                <br />
-                                colored pages
-                                <br />
-                                to make your day exciting
-                            </div>
-                        </div>
-                        <div className="col-md-5">
-                            <h2 className="price-text">
-                                <span className="text-light-black">
-                                    Priced just right at
-                                </span>{" "}
-                                ₹854
-                            </h2>
-                            <button className="buy-btn">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="pt-5 pb-5">
-                <div className="container-fluid">
-                    <img
-                        src="https://letsgoal2020.com/static/media/bottom.8ea3651d.png"
-                        alt=""
-                    />
-                </div>
-            </section>
-
             <style jsx>{`
                 .hero-section {
                     padding: 35px 0px;
@@ -180,7 +140,7 @@ const Home = () => {
                     font-weight: 700;
                     line-height: 68px;
                     margin-bottom: 30px;
-                    background: linear-gradient(#aeaeae, #333);
+                    background: linear-gradient(#616161, #333);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
@@ -200,6 +160,7 @@ const Home = () => {
                 .desgin-by-artist-txt {
                     font-size: 4rem;
                     font-weight: 700;
+                    line-height: 1;
                 }
                 .desgin-by-engineer-txt {
                     font-size: 2.2rem;
@@ -208,6 +169,11 @@ const Home = () => {
                 .true-to-life-txt {
                     font-size: 3rem;
                     font-weight: 700;
+                }
+                .magical-piece-txt {
+                    text-align: center;
+                    font-size: 5rem;
+                    line-height: 1.2;
                 }
             `}</style>
         </Layout>
