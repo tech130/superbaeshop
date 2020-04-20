@@ -113,6 +113,10 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            <ProfPlannerSlider />
+            
+
             <section className="pt-5 pb-5">
                 <div className="container-fluid">
                     <div className="row">
@@ -147,7 +151,6 @@ const Home = () => {
                 </div>
             </section>
 
-            <ProfPlannerSlider />
 
             <style jsx>{`
                 .hero-section {
@@ -203,7 +206,7 @@ const ProfPlannerSlider = () => {
 
     return (
         <>
-            <section className="pb-5">
+            <section>
                 <div className="container-fluid planner-carousel-con">
                     <Carousel
                         withoutControls
