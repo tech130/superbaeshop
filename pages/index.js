@@ -126,14 +126,14 @@ const Home = () => {
                         <div className="col-md-6 mb-3">
                             <img
                                 className="w-100"
-                                src="/images/professional-planner/4.jpg"
+                                src="/images/professional-planner/4.png"
                                 alt=""
                             />
                         </div>
                         <div className="col-md-6 mb-3">
                             <img
                                 className="w-100"
-                                src="/images/professional-planner/5.jpg"
+                                src="/images/professional-planner/5.png"
                                 alt=""
                             />
                         </div>
