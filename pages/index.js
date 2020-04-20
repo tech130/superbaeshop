@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
+import Carousel from "nuka-carousel";
 
 const Home = () => {
     return (
@@ -59,7 +60,11 @@ const Home = () => {
 
             <section>
                 <div className="container-fluid">
-                    <img className="w-100" src="/images/professional-planner/2.png" alt="" />
+                    <img
+                        className="w-100"
+                        src="/images/professional-planner/2.png"
+                        alt=""
+                    />
                 </div>
             </section>
 
@@ -140,6 +145,9 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            <ProfPlannerSlider />
+
             <style jsx>{`
                 .hero-section {
                     padding: 35px 0px;
@@ -186,6 +194,57 @@ const Home = () => {
                 }
             `}</style>
         </Layout>
+    );
+};
+
+const ProfPlannerSlider = () => {
+    return (
+        <>
+            <section className="pb-5">
+                <div className="container-fluid planner-carousel-con">
+                    <Carousel
+                        withoutControls
+                        wrapAround
+                        autoplay
+                        cellSpacing={15}
+                        slidesToShow={4}
+                    >
+                        <img
+                            src="/images/professional-planner/slides/slide-1.jpg"
+                            alt=""
+                        />
+                        <img
+                            src="/images/professional-planner/slides/slide-2.jpg"
+                            alt=""
+                        />
+                        <img
+                            src="/images/professional-planner/slides/slide-3.jpg"
+                            alt=""
+                        />
+                        <img
+                            src="/images/professional-planner/slides/slide-4.jpg"
+                            alt=""
+                        />
+                        <img
+                            src="/images/professional-planner/slides/slide-5.jpg"
+                            alt=""
+                        />
+                        <img
+                            src="/images/professional-planner/slides/slide-6.jpg"
+                            alt=""
+                        />
+                        <img
+                            src="/images/professional-planner/slides/slide-7.jpg"
+                            alt=""
+                        />
+                        <img
+                            src="/images/professional-planner/slides/slide-8.jpg"
+                            alt=""
+                        />
+                    </Carousel>
+                </div>
+            </section>
+        </>
     );
 };
 
