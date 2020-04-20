@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
 import Carousel from "nuka-carousel";
-import useMedia from 'use-media';
+import useMedia from "use-media";
 
 const Home = () => {
     return (
@@ -199,7 +199,6 @@ const Home = () => {
 };
 
 const ProfPlannerSlider = () => {
-
     const isMobile = useMedia({ maxWidth: 576 });
 
     return (
@@ -211,7 +210,7 @@ const ProfPlannerSlider = () => {
                         wrapAround
                         autoplay
                         cellSpacing={15}
-                        slidesToShow={isMobile ? 1 : 4}
+                        slidesToShow={isMobile ? 2 : 8}
                     >
                         <img
                             src="/images/professional-planner/slides/slide-1.jpg"
@@ -248,6 +247,11 @@ const ProfPlannerSlider = () => {
                     </Carousel>
                 </div>
             </section>
+            <style jsx>{`
+                .planner-carousel-con img {
+                    border: 1px solid #f5f5f5;
+                }
+            `}</style>
         </>
     );
 };
