@@ -1,7 +1,16 @@
+import Head from "next/head";
+import Router from "next/router";
+import NProgress from "nprogress";
 import "../css/bootstrap-reboot.css";
 import "../css/bootstrap-grid.css";
 import "../css/theme.css";
-import Head from "next/head";
+import "../css/nprogress.css";
+
+Router.events.on("routeChangeStart", (url) => {
+    NProgress.start();
+});
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
@@ -9,8 +18,11 @@ export default function MyApp({ Component, pageProps }) {
         <>
             <Head>
                 <title>Space and Beauty</title>
-                <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+                <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
             </Head>
             <Component {...pageProps} />
         </>

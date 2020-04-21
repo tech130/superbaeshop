@@ -3971,6 +3971,11 @@ normalize-url@1.9.1:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
+
 nuka-carousel@^4.6.6:
   version "4.6.6"
   resolved "https://registry.yarnpkg.com/nuka-carousel/-/nuka-carousel-4.6.6.tgz#7db8c550154ecf19bfe0426e186a17cb57943a73"
