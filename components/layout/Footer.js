@@ -107,7 +107,6 @@ const Footer = () => {
                     border-top: 4px solid #f5f5f5;
                     padding: 30px 0px;
                     font-size: 16px;
-                    margin-top: 15px;
                 }
                 .social-icons a {
                     margin-right: 10px;
