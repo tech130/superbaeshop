@@ -5,6 +5,7 @@ import "../css/bootstrap-reboot.css";
 import "../css/bootstrap-grid.css";
 import "../css/theme.css";
 import "../css/nprogress.css";
+import { BaseCSS } from 'styled-bootstrap-grid';
 
 Router.events.on("routeChangeStart", (url) => {
     NProgress.start();
@@ -24,6 +25,7 @@ export default function MyApp({ Component, pageProps }) {
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
             </Head>
+            <BaseCSS />
             <Component {...pageProps} />
         </>
     );

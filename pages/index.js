@@ -2,21 +2,23 @@ import React from "react";
 import Layout from "../components/layout/Layout";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
+import { Container, Row, Col } from "styled-bootstrap-grid";
+import { CartButton } from "../components/styled/Button";
 
 const Home = () => {
     return (
         <Layout>
             <section className="hero-section">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-7">
+                <Container>
+                    <Row alignItems="center">
+                        <Col lg={7}>
                             <img
                                 className="w-100"
                                 src="/images/professional-planner/1.png"
                                 alt=""
                             />
-                        </div>
-                        <div className="col-lg-5">
+                        </Col>
+                        <Col lg={5}>
                             <h1>
                                 Meet the <br />
                                 Perfect <br />
@@ -30,14 +32,14 @@ const Home = () => {
                                 </span>{" "}
                                 ₹854
                             </h2>
-                            <button className="buy-btn">Add to cart</button>
-                        </div>
-                    </div>
-                </div>
+                            <CartButton>Add to cart</CartButton>
+                        </Col>
+                    </Row>
+                </Container>
             </section>
 
             <section className="pt-4 pb-4">
-                <div className="container">
+                <Container>
                     <div className="d-flex align-items-center flex-wrap mb-3">
                         <span className="desgin-by-artist-txt mr-4">
                             Designed by artist
@@ -55,31 +57,31 @@ const Home = () => {
                         </span>{" "}
                         ₹854
                     </h2>
-                    <button className="buy-btn">Add to cart</button>
-                </div>
+                    <CartButton>Add to cart</CartButton>
+                </Container>
             </section>
 
             <section>
-                <div className="container-fluid">
+                <Container fluid>
                     <img
                         className="w-100"
                         src="/images/professional-planner/2.png"
                         alt=""
                     />
-                </div>
+                </Container>
             </section>
 
             <section className="pt-5 pb-5">
-                <div className="container">
-                    <div className="row">
+                <Container>
+                    <Row>
                         <div className="col-12 mb-5">
                             <div className="magical-piece-txt font-weight-bold">
                                 A magical piece of design to fit every aspects
                                 of your life
                             </div>
                         </div>
-                    </div>
-                    <div className="row">
+                    </Row>
+                    <Row>
                         <div className="col-md-7">
                             {/* <img
                                 src="/images/professional-planner/2.png"
@@ -108,18 +110,17 @@ const Home = () => {
                                 </span>{" "}
                                 ₹854
                             </h2>
-                            <button className="buy-btn">Add to cart</button>
+                            <CartButton>Add to cart</CartButton>
                         </div>
-                    </div>
-                </div>
+                    </Row>
+                </Container>
             </section>
 
             <ProfPlannerSlider />
-            
 
             <section className="pt-5 pb-5">
-                <div className="container-fluid">
-                    <div className="row">
+                <Container fluid>
+                    <Row>
                         <div className="col-md-12 mb-3">
                             <picture>
                                 <source
@@ -147,10 +148,9 @@ const Home = () => {
                                 alt=""
                             />
                         </div>
-                    </div>
-                </div>
+                    </Row>
+                </Container>
             </section>
-
 
             <style jsx>{`
                 .hero-section {

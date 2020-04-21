@@ -4,13 +4,31 @@ import Link from "next/link";
 import DotsMenu from "../icons/DotsMenu";
 import LoginModal from "./LoginModal";
 import Logo from "./Logo";
+import Flex from "../styled/Flex";
+import styled from "styled-components";
+import { Container } from "styled-bootstrap-grid";
+
+const Hdr = styled.header`
+    background: rgba(255, 255, 255, 0.67);
+    border-bottom: 1px solid var(--theme-border);
+    backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    font-size: 14px;
+`;
 
 const Header = ({ isLoggedIn = false }) => {
     return (
         <>
-            <header className="header">
-                <div className="container">
-                    <nav className="d-flex justify-content-between align-items-center header-height">
+            <Hdr>
+                <Container>
+                    <Flex
+                        as="nav"
+                        justifyContent="space-between"
+                        alignItems="center"
+                        minHeight="50px"
+                    >
                         <Logo />
                         <ul className="header-right d-flex align-items-center">
                             <li>
@@ -128,22 +146,10 @@ const Header = ({ isLoggedIn = false }) => {
                                 </div>
                             </li>
                         </ul>
-                    </nav>
-                </div>
-            </header>
+                    </Flex>
+                </Container>
+            </Hdr>
             <style jsx>{`
-                .header {
-                    background: rgba(255, 255, 255, 0.67);
-                    border-bottom: 1px solid var(--theme-border);
-                    backdrop-filter: blur(20px);
-                    position: sticky;
-                    top: 0;
-                    z-index: 99;
-                    font-size: 14px;
-                }
-                .header-height {
-                    min-height: 60px;
-                }
                 .header-right {
                     list-style: none;
                 }
