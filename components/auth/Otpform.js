@@ -2,8 +2,9 @@ import React from "react";
 import FormCon from "../form/FormCon";
 import FieldArray from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
-import Button from "../styled/Button";
+import { LinkButton } from "../styled/Button";
 import P from "../styled/P";
+import useSubmit from "../../hooks/http/useSubmit";
 // import Txt from "../styled/Txt";
 
 const otpForm = {
@@ -25,6 +26,17 @@ const otpForm = {
 const Otpform = ({ changeNumber, username = "" }) => {
     return (
         <>
+            <P textAlign="left" fontSize="14px">
+                An Otp has been set to your mobile number {username}. Wrong
+                mobile number ?{" "}
+                <LinkButton
+                    textDecor="underline"
+                    weight={500}
+                    onClick={() => changeNumber("")}
+                >
+                    Change mobile number
+                </LinkButton>
+            </P>
             <FormCon
                 config={{
                     url: "auth/verify-otp/",
@@ -45,13 +57,34 @@ const Otpform = ({ changeNumber, username = "" }) => {
                     </>
                 )}
             />
-            <P fontSize="14px">
-                Wrong Number? {" "}
-                <Button onClick={() => changeNumber("")}>
-                    Change mobile number
-                </Button>
+            <P textAlign="center" fontSize="14px" margin="0px 0px 5px">
+                Didn't recieve OTP ? <ResendOtp username={username} />
             </P>
         </>
+    );
+};
+
+const ResendOtp = ({ username = "" }) => {
+    const [fetching, submit] = useSubmit();
+
+    const onClick = () => {
+        if (username) {
+            submit({
+                url: "auth/resend-otp/",
+                method: "POST",
+            });
+        }
+    };
+
+    return (
+        <LinkButton
+            onClick={onClick}
+            disabled={fetching}
+            textDecor="underline"
+            weight={500}
+        >
+            {fetching ? "Resending..." : "Resend Otp"}
+        </LinkButton>
     );
 };
 

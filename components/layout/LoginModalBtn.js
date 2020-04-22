@@ -73,7 +73,7 @@ const LoginModal = ({ isOpen, close }) => {
                     </div>
                 </LoginHeader>
                 <Block padding="25px 15px 30px">
-                    {!phone ? (
+                    {phone ? (
                         <Otpform username={phone} changeNumber={changeNumber} />
                     ) : (
                         <Login changeNumber={changeNumber} />

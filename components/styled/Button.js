@@ -25,6 +25,27 @@ const Button = styled.button`
     }
 `;
 
+export const LinkButton = styled.button`
+    display: inline;
+    margin: ${(props) => props.margin || "0px"};
+    color: ${(props) => props.color || "inherit"};
+    border: none !important;
+    background: transparent;
+    padding: 0;
+    box-shadow: none !important;
+    font-size: ${(props) => props.fontSize || 'inherit'};
+    font-weight: ${(props) => props.weight || 'inherit'};
+    color: ${(props) => props.color || 'inherit'};
+    line-height: ${(props) => props.lineHeight || 'inherit'};
+    text-decoration: ${(props) => props.textDecor || 'none'};
+    padding: ${(props) => props.padding || "0px"};
+    margin: ${(props) => props.margin || "0px"};
+
+    &:focus {
+        outline: none !important;
+    }
+`;
+
 export const SubmitBtn = styled(Button)`
     background: #000;
     color: #fff;
