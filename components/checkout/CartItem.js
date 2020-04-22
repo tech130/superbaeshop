@@ -12,7 +12,7 @@ const CartStyl = styled(Flex)`
     padding: 10px;
     border: solid 2px #f5f5f5;
     border-radius: 10px;
-    amrgin-bottom: 15px;
+    margin-bottom: 15px;
 `;
 
 const QtyBtn = styled(Button)`
@@ -45,10 +45,10 @@ const CartItem = () => {
                 alt=""
             />
             <FlexItem flexGrow={1} flexShrink={0}>
-                <P weight={500} fontSize="16px" margin="0px 0px 5px 0px">
+                <P margin="0px" weight={500} fontSize="16px">
                     Let's Goal 2021
                 </P>
-                <Block margin="0px 0px 10px 0px">
+                <Block margin="0px 0px 5px 0px">
                     <Txt
                         weight={300}
                         textDecor="line-through"
