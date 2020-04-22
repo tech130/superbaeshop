@@ -3,6 +3,7 @@ import FormCon from "../form/FormCon";
 import FieldArray from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
 import Button from "../styled/Button";
+import P from "../styled/P";
 // import Txt from "../styled/Txt";
 
 const otpForm = {
@@ -33,8 +34,8 @@ const Otpform = ({ changeNumber, username = "" }) => {
                     return {
                         ...data,
                         username,
-                        client: Math.random() * 100000
-                    }
+                        client: Math.random() * 100000,
+                    };
                 }}
                 form={otpForm}
                 renderForm={({ fetching }) => (
@@ -44,9 +45,12 @@ const Otpform = ({ changeNumber, username = "" }) => {
                     </>
                 )}
             />
-            <Button block onClick={() => changeNumber("")}>
-                Change mobile number
-            </Button>
+            <P fontSize="14px">
+                Wrong Number? {" "}
+                <Button onClick={() => changeNumber("")}>
+                    Change mobile number
+                </Button>
+            </P>
         </>
     );
 };
