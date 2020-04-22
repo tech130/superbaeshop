@@ -17,7 +17,7 @@ const Button = styled.button`
     font-family: inherit;
     line-height: inherit;
 
-    &:focus: {
+    &:focus {
         outline: none !important;
     }
 `;
@@ -30,6 +30,16 @@ export const CartButton = styled(Button)`
     font-weight: 700;
     font-size: 16px;
     box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
+`;
+
+export const IconButton = styled(Button)`
+    padding: 4px;
+    border-radius: 50%;
+
+    &:hover,
+    &:focus {
+        background: #f7f7f7;
+    }
 `;
 
 export default Button;

@@ -4,6 +4,9 @@ import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import { CartButton } from "../components/styled/Button";
+import Picture from "../components/common/Picture";
+import styled from "styled-components";
+import Img from "../components/styled/Img";
 
 const Home = () => {
     return (
@@ -12,10 +15,9 @@ const Home = () => {
                 <Container>
                     <Row alignItems="center">
                         <Col lg={7}>
-                            <img
-                                className="w-100"
+                            <Picture
+                                fluid
                                 src="/images/professional-planner/1.png"
-                                alt=""
                             />
                         </Col>
                         <Col lg={5}>
@@ -63,8 +65,8 @@ const Home = () => {
 
             <section>
                 <Container fluid>
-                    <img
-                        className="w-100"
+                    <Picture
+                        fluid
                         src="/images/professional-planner/2.png"
                         alt=""
                     />
@@ -122,28 +124,27 @@ const Home = () => {
                 <Container fluid>
                     <Row>
                         <div className="col-md-12 mb-3">
-                            <picture>
-                                <source
-                                    media="(max-width: 475px)"
-                                    srcSet="/images/professional-planner/3-mobile.png"
-                                />
-                                <img
-                                    className="w-100"
-                                    src="/images/professional-planner/3.png"
-                                    alt=""
-                                />
-                            </picture>
+                            <Picture
+                                fluid
+                                source={[
+                                    {
+                                        media: "(max-width: 475px)",
+                                        srcSet:
+                                            "/images/professional-planner/3-mobile.png",
+                                    },
+                                ]}
+                                src="/images/professional-planner/3.png"
+                            />
                         </div>
                         <div className="col-md-6 mb-3">
-                            <img
-                                className="w-100"
+                            <Picture
+                                fluid
                                 src="/images/professional-planner/4.png"
                                 alt=""
                             />
                         </div>
                         <div className="col-md-6 mb-3">
-                            <img
-                                className="w-100"
+                            <Picture
                                 src="/images/professional-planner/5.png"
                                 alt=""
                             />
@@ -201,6 +202,10 @@ const Home = () => {
     );
 };
 
+const ProfPlannerPic = styled(Img)`
+    border: 1px solid #f5f5f5;
+`;
+
 const ProfPlannerSlider = () => {
     const isMobile = useMedia({ maxWidth: 576 });
 
@@ -215,35 +220,35 @@ const ProfPlannerSlider = () => {
                         cellSpacing={15}
                         slidesToShow={isMobile ? 2 : 8}
                     >
-                        <img
+                        <ProfPlannerPic
                             src="/images/professional-planner/slides/slide-1.jpg"
                             alt=""
                         />
-                        <img
+                        <ProfPlannerPic
                             src="/images/professional-planner/slides/slide-2.jpg"
                             alt=""
                         />
-                        <img
+                        <ProfPlannerPic
                             src="/images/professional-planner/slides/slide-3.jpg"
                             alt=""
                         />
-                        <img
+                        <ProfPlannerPic
                             src="/images/professional-planner/slides/slide-4.jpg"
                             alt=""
                         />
-                        <img
+                        <ProfPlannerPic
                             src="/images/professional-planner/slides/slide-5.jpg"
                             alt=""
                         />
-                        <img
+                        <ProfPlannerPic
                             src="/images/professional-planner/slides/slide-6.jpg"
                             alt=""
                         />
-                        <img
+                        <ProfPlannerPic
                             src="/images/professional-planner/slides/slide-7.jpg"
                             alt=""
                         />
-                        <img
+                        <ProfPlannerPic
                             src="/images/professional-planner/slides/slide-8.jpg"
                             alt=""
                         />

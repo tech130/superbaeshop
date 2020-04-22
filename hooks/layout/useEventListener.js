@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
+import canUseDom from "../../utils/canUseDom";
 
 // https://usehooks.com/useEventListener/
 // Hook
-export default function useEventListener(eventName, handler, element = window) {
+export default function useEventListener(eventName, handler, element = null) {
     // Create a ref that stores handler
     const savedHandler = useRef();
 
@@ -18,11 +19,12 @@ export default function useEventListener(eventName, handler, element = window) {
         () => {
             // Make sure element supports addEventListener
             // On
-            const isSupported = element && element.addEventListener;
+            const isSupported =
+                canUseDom && element && element.addEventListener;
             if (!isSupported) return;
 
             // Create event listener that calls handler function stored in ref
-            const eventListener = event => savedHandler.current(event);
+            const eventListener = (event) => savedHandler.current(event);
 
             // Add event listener
             element.addEventListener(eventName, eventListener);

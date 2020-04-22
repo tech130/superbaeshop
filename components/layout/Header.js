@@ -7,15 +7,24 @@ import Logo from "./Logo";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
 import { Container } from "styled-bootstrap-grid";
+import Ul from "../styled/Ul";
+import HeaderDropdown from "./HeaderDropdown";
+import { IconButton } from "../styled/Button";
 
 const Hdr = styled.header`
     background: rgba(255, 255, 255, 0.67);
-    border-bottom: 1px solid var(--theme-border);
+    border-bottom: 1px solid #eaeaea;
     backdrop-filter: blur(20px);
     position: sticky;
     top: 0;
     z-index: 99;
     font-size: 14px;
+`;
+
+const HdrRight = styled(Ul)`
+    li {
+        margin-left: 10px;
+    }
 `;
 
 const Header = ({ isLoggedIn = false }) => {
@@ -30,12 +39,12 @@ const Header = ({ isLoggedIn = false }) => {
                         minHeight="50px"
                     >
                         <Logo />
-                        <ul className="header-right d-flex align-items-center">
+                        <HdrRight alignItems="center">
                             <li>
                                 <Link href="/checkout">
-                                    <a className="btn icon-btn">
+                                    <IconButton as="a">
                                         <CartIcon size={20} />
-                                    </a>
+                                    </IconButton>
                                 </Link>
                             </li>
                             <li>
@@ -108,12 +117,15 @@ const Header = ({ isLoggedIn = false }) => {
                                     </ul>
                                 </div>
                             </li>
-                            <li className="dropdown">
-                                <button className="btn icon-btn ">
-                                    <DotsMenu size={20} />
-                                </button>
-                                <div className="header-dropdown">
-                                    <ul className="header-dropdown-list">
+                            <li>
+                                <HeaderDropdown
+                                    Btn={({ onClick }) => (
+                                        <IconButton onClick={onClick}>
+                                            <DotsMenu size={20} />
+                                        </IconButton>
+                                    )}
+                                >
+                                    <ul>
                                         <li>
                                             <Link href="/">
                                                 <a>Privacy policy</a>
@@ -143,31 +155,13 @@ const Header = ({ isLoggedIn = false }) => {
                                             </Link>
                                         </li>
                                     </ul>
-                                </div>
+                                </HeaderDropdown>
                             </li>
-                        </ul>
+                        </HdrRight>
                     </Flex>
                 </Container>
             </Hdr>
             <style jsx>{`
-                .header-right {
-                    list-style: none;
-                }
-                .header-right li {
-                    margin-left: 10px;
-                    position: relative;
-                }
-                .icon-btn {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 4px;
-                    border-radius: 50%;
-                }
-                .icon-btn:hover,
-                .icon-btn:focus {
-                    background: #f7f7f7;
-                }
                 .header-dropdown {
                     display: none;
                     position: absolute;

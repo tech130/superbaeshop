@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import Block from "./Block";
 
-const Flex = styled(Block)`
+const Ul = styled.ul`
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
+    flex-direction: ${(props) => props.vertical ? "column" : "row"};
     justify-content: ${(props) => props.justifyContent || "start"};
     align-items: ${(props) => props.alignItems || "start"};
-    flex-direction: ${(props) => props.vertical ? "column" : "row"};
 `;
 
-export default Flex;
+export default Ul
