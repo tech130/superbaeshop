@@ -1,5 +1,9 @@
 import React from "react";
 import Logo from "./Logo";
+import styled from "styled-components";
+import { Container, Col, Row } from "styled-bootstrap-grid";
+import Block from "../styled/Block";
+import Flex from "../styled/Flex";
 
 const FooterCon = styled.footer`
     border-top: 4px solid #f5f5f5;
@@ -32,24 +36,26 @@ const FooterCon = styled.footer`
         padding: 2px;
     }
     .footer-bottom {
+        padding-top: 15px;
         font-size: 14px;
+        text-align: center;
     }
 `;
 
 const Footer = () => {
     return (
         <FooterCon>
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-3  mb-3">
-                        <div className="mb-2">
+            <Container>
+                <Row>
+                    <Col lg={3}>
+                        <Block margin="0px 0px 8px">
                             <Logo />
-                        </div>
+                        </Block>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit
                         </p>
-                        <div className="social-icons d-flex flex-wrap">
+                        <Flex className="social-icons" alignItems="center" wrap>
                             <a href="https://facebook.com">
                                 <img
                                     src="/images/icons/social-icons/facebook.svg"
@@ -74,9 +80,9 @@ const Footer = () => {
                                     alt="linkedin logo"
                                 />
                             </a>
-                        </div>
-                    </div>
-                    <div className="col-lg-3  mb-3">
+                        </Flex>
+                    </Col>
+                    <Col lg={3}>
                         <div className="footer-title">Products</div>
                         <ul className="footer-list">
                             <li>
@@ -92,8 +98,8 @@ const Footer = () => {
                                 <a>The Professional Planner</a>
                             </li>
                         </ul>
-                    </div>
-                    <div className="col-lg-2 mb-3">
+                    </Col>
+                    <Col lg={2}>
                         <div className="footer-title">Also shop on</div>
                         <ul className="footer-list">
                             <li>
@@ -106,10 +112,10 @@ const Footer = () => {
                                 <a>Wish</a>
                             </li>
                         </ul>
-                    </div>
-                    <div className="col-lg-4">
+                    </Col>
+                    <Col lg={4}>
                         <div className="footer-title">Payment partner</div>
-                        <div className="d-flex align-items-center payment-icons flex-wrap">
+                        <Flex className="payment-icons" wrap>
                             <img
                                 src="/images/icons/payment/paypal.svg"
                                 alt="paypal payment logo"
@@ -130,11 +136,11 @@ const Footer = () => {
                                 src="/images/icons/payment/paytm.jpg"
                                 alt="paytm logo"
                             />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="footer-bottom text-center pt-2">
+                        </Flex>
+                    </Col>
+                </Row>
+            </Container>
+            <div className="footer-bottom">
                 © 2020 Space and Beauty All Rights Reserved.
             </div>
         </FooterCon>
