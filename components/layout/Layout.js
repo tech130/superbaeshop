@@ -2,36 +2,26 @@ import React from "react";
 import Header from "./Header";
 import ProductNav from "./ProductNav";
 import Footer from "./Footer";
+import styled from "styled-components";
+
+const TopBar = styled.div`
+    background: #000;
+    padding: 8px 20px;
+    font-size: 13px;
+    text-align: center;
+    color: #fff;
+`;
 
 const Layout = ({ children }) => {
     return (
         <>
-            <div className="top-bar">
+            <TopBar>
                 <div className="container">Organize your Life on the Go!</div>
-            </div>
-            <div className="app-con">
-                <Header />
-                <div className="page-con">
-                    <ProductNav />
-                    {children}
-                </div>
-                <Footer />
-            </div>
-            <style jsx>{`
-                .top-bar {
-                    background: #000;
-                    padding: 8px 20px;
-                    font-size: 13px;
-                    text-align: center;
-                    color: #fff;
-                }
-                .app-con {
-                    position: relative;
-                }
-                .page-con {
-                    overflow-x: auto;
-                }
-            `}</style>
+            </TopBar>
+            <Header />
+            <ProductNav />
+            {children}
+            <Footer />
         </>
     );
 };

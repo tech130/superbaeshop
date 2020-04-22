@@ -1,9 +1,44 @@
 import React from "react";
 import Logo from "./Logo";
 
+const FooterCon = styled.footer`
+    border-top: 4px solid #f5f5f5;
+    padding: 30px 0px;
+    font-size: 16px;
+
+    .social-icons a {
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
+    .social-icons img {
+        width: 25px;
+    }
+    .footer-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .footer-list {
+        list-style: none;
+    }
+    .footer-list li {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .payment-icons img {
+        height: 26px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 2px;
+    }
+    .footer-bottom {
+        font-size: 14px;
+    }
+`;
+
 const Footer = () => {
     return (
-        <footer className="footer">
+        <FooterCon>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3  mb-3">
@@ -102,42 +137,7 @@ const Footer = () => {
             <div className="footer-bottom text-center pt-2">
                 © 2020 Space and Beauty All Rights Reserved.
             </div>
-            <style jsx>{`
-                .footer {
-                    border-top: 4px solid #f5f5f5;
-                    padding: 30px 0px;
-                    font-size: 16px;
-                }
-                .social-icons a {
-                    margin-right: 10px;
-                    margin-bottom: 5px;
-                }
-                .social-icons img {
-                    width: 25px;
-                }
-                .footer-title {
-                    font-size: 18px;
-                    font-weight: 600;
-                    margin-bottom: 8px;
-                }
-                .footer-list {
-                    list-style: none;
-                }
-                .footer-list li {
-                    font-size: 16px;
-                    margin-bottom: 5px;
-                }
-                .payment-icons img {
-                    height: 26px;
-                    margin-right: 10px;
-                    margin-bottom: 10px;
-                    padding: 2px;
-                }
-                .footer-bottom {
-                    font-size: 14px;
-                }
-            `}</style>
-        </footer>
+        </FooterCon>
     );
 };
 
