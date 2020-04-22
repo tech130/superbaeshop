@@ -4,6 +4,7 @@ import Block from "../styled/Block";
 import Picture from "../common/Picture";
 import HeaderDropdown from "./HeaderDropdown";
 import Img from "../styled/Img";
+import Txt from "../styled/Txt";
 
 const CountryList = () => {
     return (
@@ -16,7 +17,9 @@ const CountryList = () => {
                         src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
                         alt=""
                     />
-                    <Block margin="0px 5px">INR</Block>
+                    <Block margin="0px 5px">
+                        <Txt weight={600}>INR</Txt>
+                    </Block>
                     <span>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
