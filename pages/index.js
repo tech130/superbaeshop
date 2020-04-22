@@ -7,11 +7,27 @@ import { CartButton } from "../components/styled/Button";
 import Picture from "../components/common/Picture";
 import styled from "styled-components";
 import Img from "../components/styled/Img";
+import { H3, H2 } from "../components/styled/Headings";
+import Txt from "../components/styled/Txt";
+import ProPlannerPrice from "../components/professional-planner/ProPlannerPrice";
+import Block from "../components/styled/Block";
+import Flex from "../components/styled/Flex";
+import { P } from "../components/styled/P";
+
+const MeetTxt = styled.h1`
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 68px;
+    margin-bottom: 30px;
+    background: linear-gradient(#616161, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+`;
 
 const Home = () => {
     return (
         <Layout>
-            <section className="hero-section">
+            <Block padding="35px 0px">
                 <Container>
                     <Row alignItems="center">
                         <Col lg={7}>
@@ -21,49 +37,46 @@ const Home = () => {
                             />
                         </Col>
                         <Col lg={5}>
-                            <h1>
+                            <MeetTxt>
                                 Meet the <br />
                                 Perfect <br />
                                 Professional <br />
                                 planner
-                            </h1>
-                            <h3>Crafted just for you!</h3>
-                            <h2 className="price-text">
-                                <span className="text-light-black">
-                                    Priced just right at
-                                </span>{" "}
-                                ₹854
-                            </h2>
-                            <CartButton>Add to cart</CartButton>
+                            </MeetTxt>
+                            <H3 mb="35px" weight={700}>
+                                Crafted just for you!
+                            </H3>
+                            <ProPlannerPrice />
                         </Col>
                     </Row>
                 </Container>
-            </section>
+            </Block>
 
-            <section className="pt-4 pb-4">
+            <Block padding="35px 0px">
                 <Container>
-                    <div className="d-flex align-items-center flex-wrap mb-3">
-                        <span className="desgin-by-artist-txt mr-4">
+                    <Flex alignItems="center">
+                        <Txt
+                            fontSize="4rem"
+                            weight={700}
+                            margin="0px 25px 0px 0px"
+                            lineHeight={1}
+                        >
                             Designed by artist
-                        </span>
-                        <span className="desgin-by-engineer-txt">
+                        </Txt>
+                        <Txt lineHeight={1} fontSize="2.2rem" weight={500}>
                             Engineered by experts
-                        </span>
-                    </div>
-                    <div className="desgin-by-artist-txt mb-5">
-                        With highest quality print
-                    </div>
-                    <h2 className="price-text">
-                        <span className="text-light-black">
-                            Priced just right at
-                        </span>{" "}
-                        ₹854
-                    </h2>
-                    <CartButton>Add to cart</CartButton>
+                        </Txt>
+                    </Flex>
+                    <Block margin="0px 0px 25px">
+                        <Txt fontSize="4rem" weight={700}>
+                            With highest quality print
+                        </Txt>
+                    </Block>
+                    <ProPlannerPrice />
                 </Container>
-            </section>
+            </Block>
 
-            <section>
+            <Block>
                 <Container fluid>
                     <Picture
                         fluid
@@ -71,61 +84,63 @@ const Home = () => {
                         alt=""
                     />
                 </Container>
-            </section>
+            </Block>
 
-            <section className="pt-5 pb-5">
+            <Block padding="35px 0px">
                 <Container>
                     <Row>
-                        <div className="col-12 mb-5">
-                            <div className="magical-piece-txt font-weight-bold">
-                                A magical piece of design to fit every aspects
-                                of your life
-                            </div>
-                        </div>
+                        <Col>
+                            <Block textAlign="center" margin="0px 0px 48px 0px">
+                                <Txt
+                                    fontSize="4rem"
+                                    weight={700}
+                                    align="center"
+                                >
+                                    A magical piece of design to fit every
+                                    aspects of your life
+                                </Txt>
+                            </Block>
+                        </Col>
                     </Row>
                     <Row>
-                        <div className="col-md-7">
+                        <Col lg={7}>
                             {/* <img
                                 src="/images/professional-planner/2.png"
                                 alt=""
                             /> */}
-                        </div>
-                        <div className="col-md-5">
-                            <p className="font-weight-bold f-18">
+                        </Col>
+                        <Col lg={5}>
+                            <P fontSize="18px" weight={500}>
                                 Lorem ipsum dolor sit amet consectetur,
                                 adipisicing elit. Ullam harum voluptatem
                                 repudiandae est obcaecati tenetur tempore,
                                 numquam labore deserunt, officiis possimus,
                                 magnam accusantium totam deleniti et! Odit
                                 minima consequuntur enim!
-                            </p>
-                            <p className="font-weight-bold f-18 mb-5">
+                            </P>
+
+                            <P fontSize="18px" weight={500}>
                                 Lorem, ipsum dolor sit amet consectetur
                                 adipisicing elit. Aut porro inventore unde. Ad
                                 eum similique accusantium dolor veniam nesciunt,
                                 magnam, maiores doloribus nihil, ipsa
                                 repudiandae possimus. Iusto fuga illum aliquid!
-                            </p>
-                            <h2 className="price-text">
-                                <span className="text-light-black">
-                                    Priced just right at
-                                </span>{" "}
-                                ₹854
-                            </h2>
-                            <CartButton>Add to cart</CartButton>
-                        </div>
+                            </P>
+                            <ProPlannerPrice />
+                        </Col>
                     </Row>
                 </Container>
-            </section>
+            </Block>
 
             <ProfPlannerSlider />
 
-            <section className="pt-5 pb-5">
+            <Block padding="35px 0px">
                 <Container fluid>
                     <Row>
-                        <div className="col-md-12 mb-3">
+                        <Col lg={12}>
                             <Picture
                                 fluid
+                                margin="0px 0px 15px"
                                 source={[
                                     {
                                         media: "(max-width: 475px)",
@@ -135,69 +150,26 @@ const Home = () => {
                                 ]}
                                 src="/images/professional-planner/3.png"
                             />
-                        </div>
-                        <div className="col-md-6 mb-3">
+                        </Col>
+                        <Col lg={6}>
                             <Picture
                                 fluid
+                                margin="0px 0px 15px"
                                 src="/images/professional-planner/4.png"
                                 alt=""
                             />
-                        </div>
-                        <div className="col-md-6 mb-3">
+                        </Col>
+                        <Col lg={6}>
                             <Picture
+                                margin="0px 0px 15px"
+                                fluid
                                 src="/images/professional-planner/5.png"
                                 alt=""
                             />
-                        </div>
+                        </Col>
                     </Row>
                 </Container>
-            </section>
-
-            <style jsx>{`
-                .hero-section {
-                    padding: 35px 0px;
-                }
-                .hero-section h1 {
-                    font-size: 4rem;
-                    font-weight: 700;
-                    line-height: 68px;
-                    margin-bottom: 30px;
-                    background: linear-gradient(#616161, #333);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-                .hero-section h3 {
-                    font-weight: 700;
-                    font-size: 1.8rem;
-                    margin-bottom: 35px;
-                }
-                .price-text {
-                    font-weight: 700;
-                    font-size: 2rem;
-                    margin-bottom: 15px;
-                }
-                .text-light-black {
-                    color: #777777;
-                }
-                .desgin-by-artist-txt {
-                    font-size: 4rem;
-                    font-weight: 700;
-                    line-height: 1;
-                }
-                .desgin-by-engineer-txt {
-                    font-size: 2.2rem;
-                    font-weight: 500;
-                }
-                .true-to-life-txt {
-                    font-size: 3rem;
-                    font-weight: 700;
-                }
-                .magical-piece-txt {
-                    text-align: center;
-                    font-size: 5rem;
-                    line-height: 1.2;
-                }
-            `}</style>
+            </Block>
         </Layout>
     );
 };
@@ -210,57 +182,50 @@ const ProfPlannerSlider = () => {
     const isMobile = useMedia({ maxWidth: 576 });
 
     return (
-        <>
-            <section>
-                <div className="container-fluid planner-carousel-con">
-                    <Carousel
-                        withoutControls
-                        wrapAround
-                        autoplay
-                        cellSpacing={15}
-                        slidesToShow={isMobile ? 2 : 8}
-                    >
-                        <ProfPlannerPic
-                            src="/images/professional-planner/slides/slide-1.jpg"
-                            alt=""
-                        />
-                        <ProfPlannerPic
-                            src="/images/professional-planner/slides/slide-2.jpg"
-                            alt=""
-                        />
-                        <ProfPlannerPic
-                            src="/images/professional-planner/slides/slide-3.jpg"
-                            alt=""
-                        />
-                        <ProfPlannerPic
-                            src="/images/professional-planner/slides/slide-4.jpg"
-                            alt=""
-                        />
-                        <ProfPlannerPic
-                            src="/images/professional-planner/slides/slide-5.jpg"
-                            alt=""
-                        />
-                        <ProfPlannerPic
-                            src="/images/professional-planner/slides/slide-6.jpg"
-                            alt=""
-                        />
-                        <ProfPlannerPic
-                            src="/images/professional-planner/slides/slide-7.jpg"
-                            alt=""
-                        />
-                        <ProfPlannerPic
-                            src="/images/professional-planner/slides/slide-8.jpg"
-                            alt=""
-                        />
-                    </Carousel>
-                </div>
-            </section>
-            <style jsx>{`
-                .planner-carousel-con img {
-                    border: 1px solid #f5f5f5;
-                }
-            `}</style>
-        </>
+        <Block>
+            <Container>
+                <Carousel
+                    withoutControls
+                    wrapAround
+                    autoplay
+                    cellSpacing={15}
+                    slidesToShow={isMobile ? 2 : 8}
+                >
+                    <ProfPlannerPic
+                        src="/images/professional-planner/slides/slide-1.jpg"
+                        alt=""
+                    />
+                    <ProfPlannerPic
+                        src="/images/professional-planner/slides/slide-2.jpg"
+                        alt=""
+                    />
+                    <ProfPlannerPic
+                        src="/images/professional-planner/slides/slide-3.jpg"
+                        alt=""
+                    />
+                    <ProfPlannerPic
+                        src="/images/professional-planner/slides/slide-4.jpg"
+                        alt=""
+                    />
+                    <ProfPlannerPic
+                        src="/images/professional-planner/slides/slide-5.jpg"
+                        alt=""
+                    />
+                    <ProfPlannerPic
+                        src="/images/professional-planner/slides/slide-6.jpg"
+                        alt=""
+                    />
+                    <ProfPlannerPic
+                        src="/images/professional-planner/slides/slide-7.jpg"
+                        alt=""
+                    />
+                    <ProfPlannerPic
+                        src="/images/professional-planner/slides/slide-8.jpg"
+                        alt=""
+                    />
+                </Carousel>
+            </Container>
+        </Block>
     );
 };
 

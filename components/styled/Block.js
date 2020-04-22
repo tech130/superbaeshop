@@ -6,6 +6,7 @@ const Block = styled.div`
     width: ${(props) => props.width || "100%"};
     padding: ${(props) => props.padding || "0px"};
     margin: ${(props) => props.margin || "0px"};
+    text-align: ${(props) => props.textAlign || "left"};
 `;
 
 export default Block;
