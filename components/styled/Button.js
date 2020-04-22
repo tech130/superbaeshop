@@ -13,7 +13,8 @@ const Button = styled.button`
     user-select: none;
     background-color: transparent;
     border: 1px solid transparent;
-    margin: 0;
+    padding: ${(props) => props.padding || "0px"};
+    margin: ${(props) => props.margin || "0px"};
     font-family: inherit;
     line-height: inherit;
 

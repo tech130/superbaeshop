@@ -23,13 +23,16 @@ const HeaderDrop = styled.div`
     }
 
     li {
-        padding: 8px 20px;
+        padding: 8px 15px;
         font-size: 14px;
+        margin: 0px !important;
     }
 
     li a {
         color: #000 !important;
         text-decoration: none !important;
+        display: flex;
+        align-items: center;
     }
 `;
 

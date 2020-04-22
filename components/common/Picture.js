@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Img from "../styled/Img";
 
 const Picture = ({
@@ -14,9 +13,8 @@ const Picture = ({
 }) => {
     return (
         <picture>
-            {source.map((x, idx) => (
-                <source {...x} key={idx} />
-            ))}
+            {source.length > 0 &&
+                source.map((x, idx) => <source {...x} key={idx} />)}
             <Img
                 className={className}
                 width={fluid ? "100%" : width}
