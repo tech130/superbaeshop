@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Txt = styled.span`
+const Txt = styled.span`
     font-size: ${(props) => props.fontSize || 'inherit'};
     font-weight: ${(props) => props.weight || 'inherit'};
     color: ${(props) => props.color || 'inherit'};

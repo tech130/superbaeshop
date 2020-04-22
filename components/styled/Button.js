@@ -15,12 +15,25 @@ const Button = styled.button`
     border: 1px solid transparent;
     padding: ${(props) => props.padding || "0px"};
     margin: ${(props) => props.margin || "0px"};
+    width: ${(props) => (props.block ? "100%" : "auto")};
     font-family: inherit;
     line-height: inherit;
+    cursor: pointer;
 
     &:focus {
         outline: none !important;
     }
+`;
+
+export const SubmitBtn = styled(Button)`
+    background: #000;
+    color: #fff;
+    padding: 0 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+    min-height: 40px;
+    width: 100%;
+    margin-bottom: 16px;
 `;
 
 export const CartButton = styled(Button)`

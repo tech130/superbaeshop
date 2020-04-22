@@ -7,25 +7,20 @@ const Modal = ({
     id = "portal-modal",
     isOpen = false,
     children,
-    contentStyle = {},
-    overlayStyle = {},
-    overlayClass = "modal-wrapper",
-    contentClass = "modal-container",
+    maxWidth,
+    bg,
     overlayClick = null,
-    anim = "fadeIn",
+    overlayClass = "",
+    contentClass = "",
 }) => {
     if (isOpen) {
         return (
             <Portal id={id}>
-                <ModalOverlay
-                    onClick={overlayClick}
-                    className={overlayClass}
-                    style={overlayStyle}
-                >
+                <ModalOverlay onClick={overlayClick} className={overlayClass}>
                     <ModalContent
+                        maxWidth={maxWidth}
+                        bg={bg}
                         className={contentClass}
-                        style={contentStyle}
-                        anim={anim}
                     >
                         {children}
                     </ModalContent>

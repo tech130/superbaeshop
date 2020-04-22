@@ -5,8 +5,8 @@ const { CancelToken, create, isCancel } = axios;
 const apiInstance = create({
     baseURL:
         process.env.NODE_ENV === "production"
-            ? "https://api.letsgoal2020.com/"
-            : "https://api.letsgoal2020.com/"
+            ? "http://spaceandbeauty.billioncart.in/"
+            : "http://spaceandbeauty.billioncart.in/"
 });
 
 export { CancelToken, isCancel };

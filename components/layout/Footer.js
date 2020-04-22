@@ -55,7 +55,7 @@ const Footer = () => {
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit
                         </p>
-                        <Flex className="social-icons" alignItems="center" wrap>
+                        <Flex className="social-icons" alignItems="center" flexWrap>
                             <a href="https://facebook.com">
                                 <img
                                     src="/images/icons/social-icons/facebook.svg"
@@ -115,7 +115,7 @@ const Footer = () => {
                     </Col>
                     <Col lg={4}>
                         <div className="footer-title">Payment partner</div>
-                        <Flex className="payment-icons" wrap>
+                        <Flex className="payment-icons" flexWrap>
                             <img
                                 src="/images/icons/payment/paypal.svg"
                                 alt="paypal payment logo"

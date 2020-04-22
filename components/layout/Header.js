@@ -2,7 +2,7 @@ import React from "react";
 import CartIcon from "../icons/CartIcon";
 import Link from "next/link";
 import DotsMenu from "../icons/DotsMenu";
-import LoginModal from "./LoginModal";
+import LoginModalBtn from "./LoginModalBtn";
 import Logo from "./Logo";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
@@ -47,7 +47,7 @@ const Header = ({ isLoggedIn = false }) => {
                                 </Link>
                             </Hdrli>
                             <Hdrli>
-                                <LoginModal />
+                                <LoginModalBtn />
                             </Hdrli>
                             <Hdrli>
                                 <CountryList />

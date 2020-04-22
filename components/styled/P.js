@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const P = styled.p`
+const P = styled.p`
     font-size: ${(props) => props.fontSize || "inherit"};
     font-weight: ${(props) => props.weight || "inherit"};
     color: ${(props) => props.color || "inherit"};
@@ -8,6 +8,7 @@ export const P = styled.p`
     text-decoration: ${(props) => props.textDecor || "none"};
     padding: ${(props) => props.padding || "0px"};
     margin: ${(props) => props.margin || "0px 0px 15px 0px"};
+    text-align: ${(props) => props.textAlign || "left"};
 `;
 
 export default P;

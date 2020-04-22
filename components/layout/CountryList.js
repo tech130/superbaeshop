@@ -17,7 +17,7 @@ const CountryList = () => {
                         alt=""
                     />
                     <Block margin="0px 5px">INR</Block>
-                    <Button>
+                    <span>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width={14}
@@ -31,7 +31,7 @@ const CountryList = () => {
                         >
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
-                    </Button>
+                    </span>
                 </Button>
             )}
         >

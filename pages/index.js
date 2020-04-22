@@ -3,16 +3,15 @@ import Layout from "../components/layout/Layout";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import { CartButton } from "../components/styled/Button";
 import Picture from "../components/common/Picture";
 import styled from "styled-components";
 import Img from "../components/styled/Img";
-import { H3, H2 } from "../components/styled/Headings";
+import { H3 } from "../components/styled/Headings";
 import Txt from "../components/styled/Txt";
 import ProPlannerPrice from "../components/professional-planner/ProPlannerPrice";
 import Block from "../components/styled/Block";
 import Flex from "../components/styled/Flex";
-import { P } from "../components/styled/P";
+import P from "../components/styled/P";
 
 const MeetTxt = styled.h1`
     font-size: 4rem;
@@ -54,18 +53,23 @@ const Home = () => {
 
             <Block padding="35px 0px">
                 <Container>
-                    <Flex alignItems="center">
-                        <Txt
+                    <Flex alignItems="center" flexWrap>
+                        <P
                             fontSize="4rem"
                             weight={700}
-                            margin="0px 25px 0px 0px"
+                            margin="10px 25px 10px 0px"
                             lineHeight={1}
                         >
                             Designed by artist
-                        </Txt>
-                        <Txt lineHeight={1} fontSize="2.2rem" weight={500}>
+                        </P>
+                        <P
+                            lineHeight={1}
+                            fontSize="2.2rem"
+                            margin="10px 0px"
+                            weight={500}
+                        >
                             Engineered by experts
-                        </Txt>
+                        </P>
                     </Flex>
                     <Block margin="0px 0px 25px">
                         <Txt fontSize="4rem" weight={700}>
@@ -95,6 +99,7 @@ const Home = () => {
                                     fontSize="4rem"
                                     weight={700}
                                     align="center"
+                                    lineHeight={1.2}
                                 >
                                     A magical piece of design to fit every
                                     aspects of your life
@@ -183,7 +188,7 @@ const ProfPlannerSlider = () => {
 
     return (
         <Block>
-            <Container>
+            <Container fluid>
                 <Carousel
                     withoutControls
                     wrapAround
