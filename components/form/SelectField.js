@@ -1,6 +1,7 @@
 import React from "react";
 import Input, { NumberInput } from "./Input";
 import TextArea from "./TextArea";
+import Checkbox from "./Checkbox";
 // import Select from "./Select";
 
 const SelectField = props => {
@@ -22,6 +23,8 @@ const selectField = (type = "text") => {
             return NumberInput;
         case "textarea":
             return TextArea;
+        case "checkbox":
+            return Checkbox;
         // case "select":
         //     return Select;
         default:

@@ -48,95 +48,107 @@ const Footer = () => {
             <Container>
                 <Row>
                     <Col lg={3}>
-                        <Block margin="0px 0px 8px">
-                            <Logo />
+                        <Block margin="0px 0px 15px">
+                            <Block margin="0px 0px 8px">
+                                <Logo />
+                            </Block>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit
+                            </p>
+                            <Flex
+                                className="social-icons"
+                                alignItems="center"
+                                flexWrap
+                            >
+                                <a href="https://facebook.com">
+                                    <img
+                                        src="/images/icons/social-icons/facebook.svg"
+                                        alt="Facebook logo"
+                                    />
+                                </a>
+                                <a href="https://twitter.com">
+                                    <img
+                                        src="/images/icons/social-icons/twitter.svg"
+                                        alt="twitter logo"
+                                    />
+                                </a>
+                                <a href="https://instagram.com">
+                                    <img
+                                        src="/images/icons/social-icons/instagram.svg"
+                                        alt="instagram logo"
+                                    />
+                                </a>
+                                <a href="https://linkedin.com">
+                                    <img
+                                        src="/images/icons/social-icons/linkedin.svg"
+                                        alt="linkedin logo"
+                                    />
+                                </a>
+                            </Flex>
                         </Block>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit
-                        </p>
-                        <Flex className="social-icons" alignItems="center" flexWrap>
-                            <a href="https://facebook.com">
-                                <img
-                                    src="/images/icons/social-icons/facebook.svg"
-                                    alt="Facebook logo"
-                                />
-                            </a>
-                            <a href="https://twitter.com">
-                                <img
-                                    src="/images/icons/social-icons/twitter.svg"
-                                    alt="twitter logo"
-                                />
-                            </a>
-                            <a href="https://instagram.com">
-                                <img
-                                    src="/images/icons/social-icons/instagram.svg"
-                                    alt="instagram logo"
-                                />
-                            </a>
-                            <a href="https://linkedin.com">
-                                <img
-                                    src="/images/icons/social-icons/linkedin.svg"
-                                    alt="linkedin logo"
-                                />
-                            </a>
-                        </Flex>
                     </Col>
                     <Col lg={3}>
-                        <div className="footer-title">Products</div>
-                        <ul className="footer-list">
-                            <li>
-                                <a>Bundle</a>
-                            </li>
-                            <li>
-                                <a>Let’s Goal 2021 Planner</a>
-                            </li>
-                            <li>
-                                <a>The Ultimate Sticker Book</a>
-                            </li>
-                            <li>
-                                <a>The Professional Planner</a>
-                            </li>
-                        </ul>
+                        <Block margin="0px 0px 15px">
+                            <div className="footer-title">Products</div>
+                            <ul className="footer-list">
+                                <li>
+                                    <a>Bundle</a>
+                                </li>
+                                <li>
+                                    <a>Let’s Goal 2021 Planner</a>
+                                </li>
+                                <li>
+                                    <a>The Ultimate Sticker Book</a>
+                                </li>
+                                <li>
+                                    <a>The Professional Planner</a>
+                                </li>
+                            </ul>
+                        </Block>
                     </Col>
                     <Col lg={2}>
-                        <div className="footer-title">Also shop on</div>
-                        <ul className="footer-list">
-                            <li>
-                                <a>Amazon</a>
-                            </li>
-                            <li>
-                                <a>Etsy</a>
-                            </li>
-                            <li>
-                                <a>Wish</a>
-                            </li>
-                        </ul>
+                        <Block margin="0px 0px 15px">
+                            <div className="footer-title">Also shop on</div>
+                            <ul className="footer-list">
+                                <li>
+                                    <a>Amazon</a>
+                                </li>
+                                <li>
+                                    <a>Etsy</a>
+                                </li>
+                                <li>
+                                    <a>Wish</a>
+                                </li>
+                            </ul>
+                        </Block>
                     </Col>
                     <Col lg={4}>
-                        <div className="footer-title">Payment partner</div>
-                        <Flex className="payment-icons" flexWrap>
-                            <img
-                                src="/images/icons/payment/paypal.svg"
-                                alt="paypal payment logo"
-                            />
-                            <img
-                                src="/images/icons/payment/amazon.svg"
-                                alt="amazon pay logo"
-                            />
-                            <img
-                                src="/images/icons/payment/razorpay.svg"
-                                alt="razorpay logo"
-                            />
-                            <img
-                                src="/images/icons/payment/googlepay.svg"
-                                alt="googlepay logo"
-                            />
-                            <img
-                                src="/images/icons/payment/paytm.jpg"
-                                alt="paytm logo"
-                            />
-                        </Flex>
+                        <Block margin="0px 0px 15px">
+                            <div className="footer-title">Payment partner</div>
+                            <Flex className="payment-icons" flexWrap>
+                                <img
+                                    src="/images/icons/payment/paypal.svg"
+                                    alt="paypal payment logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/amazon.svg"
+                                    alt="amazon pay logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/razorpay.svg"
+                                    alt="razorpay logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/googlepay.svg"
+                                    alt="googlepay logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/paytm.jpg"
+                                    alt="paytm logo"
+                                />
+                            </Flex>
+                        </Block>
                     </Col>
                 </Row>
             </Container>

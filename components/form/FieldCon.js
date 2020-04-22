@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Col } from "styled-bootstrap-grid";
 
 export const FormGroup = styled(Col)`
+    padding-right: 5px;
+    padding-left: 5px;
     margin-bottom: 16px;
 
     .input-messages {

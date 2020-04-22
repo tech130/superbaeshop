@@ -3,14 +3,20 @@ import useForm from "../../hooks/form/useForm";
 import Field from "./Field";
 import { setValue } from "../../hooks/form/formReducer";
 import { Row } from "styled-bootstrap-grid";
+import styled from "styled-components";
 
-const FieldArray = props => {
+const FormRow = styled(Row)`
+    margin-left: -5px;
+    margin-right: -5px;
+`;
+
+const FieldArray = (props) => {
     const { formState, formDispatch } = useForm();
 
     return (
-        <Row {...props}>
+        <FormRow {...props}>
             <FieldArrayList formState={formState} formDispatch={formDispatch} />
-        </Row>
+        </FormRow>
     );
 };
 
