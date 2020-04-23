@@ -5,6 +5,7 @@ import P from "../styled/P";
 import HeaderDropdown from "./HeaderDropdown";
 import Button from "../styled/Button";
 import useUser from "../../hooks/redux/user/useUser";
+import LogoutBtn from "../auth/LogoutBtn";
 
 const SignInDrop = () => {
     const user = useUser();
@@ -44,7 +45,7 @@ const SignInDrop = () => {
                             <a>Your Orders</a>
                         </li>
                         <li>
-                            <Button inline>Logout</Button>
+                            <LogoutBtn inline>Logout</LogoutBtn>
                         </li>
                     </>
                 ) : (
