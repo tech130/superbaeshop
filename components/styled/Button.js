@@ -1,9 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Button = styled.button`
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    ${(props) =>
+        props.inline
+            ? css`
+                  display: inline;
+              `
+            : css`
+                  display: inline-flex;
+                  justify-content: center;
+                  align-items: center;
+              `}
+
     font-weight: 400;
     text-align: center;
     vertical-align: middle;
@@ -12,7 +20,7 @@ const Button = styled.button`
     -ms-user-select: none;
     user-select: none;
     background-color: transparent;
-    border: 1px solid transparent;
+    border: ${(props) => props.border || "1px solid transparent"};
     padding: ${(props) => props.padding || "0px"};
     margin: ${(props) => props.margin || "0px"};
     width: ${(props) => (props.block ? "100%" : "auto")};
@@ -33,11 +41,11 @@ export const LinkButton = styled.button`
     background: transparent;
     padding: 0;
     box-shadow: none !important;
-    font-size: ${(props) => props.fontSize || 'inherit'};
-    font-weight: ${(props) => props.weight || 'inherit'};
-    color: ${(props) => props.color || 'inherit'};
-    line-height: ${(props) => props.lineHeight || 'inherit'};
-    text-decoration: ${(props) => props.textDecor || 'none'};
+    font-size: ${(props) => props.fontSize || "inherit"};
+    font-weight: ${(props) => props.weight || "inherit"};
+    color: ${(props) => props.color || "inherit"};
+    line-height: ${(props) => props.lineHeight || "inherit"};
+    text-decoration: ${(props) => props.textDecor || "none"};
     padding: ${(props) => props.padding || "0px"};
     margin: ${(props) => props.margin || "0px"};
 

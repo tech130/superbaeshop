@@ -21,22 +21,26 @@ const loginForm = {
 
 const Login = ({ changeNumber }) => {
     return (
-        <FormCon
-            config={{
-                url: "auth/login/",
-                method: "POST",
-            }}
-            form={loginForm}
-            succFunc={(data, formState) => {
-                changeNumber(formState.values.username)
-            }}
-            renderForm={({ fetching }) => (
-                <>
-                    <FieldArray />
-                    <SubmitButton fetching={fetching}>Request OTP</SubmitButton>
-                </>
-            )}
-        />
+        <>
+            <FormCon
+                config={{
+                    url: "auth/login/",
+                    method: "POST",
+                }}
+                form={loginForm}
+                succFunc={(data, formState) => {
+                    changeNumber(formState.values.username);
+                }}
+                renderForm={({ fetching }) => (
+                    <>
+                        <FieldArray />
+                        <SubmitButton fetching={fetching}>
+                            Request OTP
+                        </SubmitButton>
+                    </>
+                )}
+            />
+        </>
     );
 };
 

@@ -5,7 +5,8 @@ import SubmitButton from "../form/SubmitButton";
 import { LinkButton } from "../styled/Button";
 import P from "../styled/P";
 import useSubmit from "../../hooks/http/useSubmit";
-// import Txt from "../styled/Txt";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../redux/user/user";
 
 const otpForm = {
     inputs: {
@@ -23,7 +24,9 @@ const otpForm = {
     allIds: ["otp"],
 };
 
-const Otpform = ({ changeNumber, username = "" }) => {
+const Otpform = ({ changeNumber, username = "", close }) => {
+    const dispatch = useDispatch();
+
     return (
         <>
             <P textAlign="left" fontSize="14px">
@@ -42,6 +45,12 @@ const Otpform = ({ changeNumber, username = "" }) => {
                     url: "auth/verify-otp/",
                     method: "POST",
                 }}
+                succFunc={(data) => {
+                    dispatch(updateUser(data));
+                    if (typeof close === "function") {
+                        close();
+                    }
+                }}
                 formatData={(data) => {
                     return {
                         ...data,
@@ -53,7 +62,7 @@ const Otpform = ({ changeNumber, username = "" }) => {
                 renderForm={({ fetching }) => (
                     <>
                         <FieldArray />
-                        <SubmitButton fetching={fetching}>Login</SubmitButton>
+                        <SubmitButton fetching={fetching}>Submit</SubmitButton>
                     </>
                 )}
             />

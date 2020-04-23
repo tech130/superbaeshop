@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import Head from "next/head";
 import Router from "next/router";
@@ -9,6 +9,9 @@ import "../css/bootstrap-reboot.css";
 import "../css/theme.css";
 import { BaseCSS } from "styled-bootstrap-grid";
 import withReduxStore from "../helpers/with-redux-store";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../redux/user/user";
+import { getLocalUser } from "../utils/getUser";
 
 Router.events.on("routeChangeStart", (url) => {
     NProgress.start();
@@ -18,6 +21,11 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
+    
+    useEffect(() => {
+        store.dispatch(updateUser(getLocalUser() || {}));
+    }, []);
+
     return (
         <Provider store={store}>
             <Head>

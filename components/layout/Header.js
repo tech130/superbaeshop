@@ -2,7 +2,6 @@ import React from "react";
 import CartIcon from "../icons/CartIcon";
 import Link from "next/link";
 import DotsMenu from "../icons/DotsMenu";
-import LoginModalBtn from "./LoginModalBtn";
 import Logo from "./Logo";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
@@ -11,8 +10,8 @@ import Ul from "../styled/Ul";
 import HeaderDropdown from "./HeaderDropdown";
 import Button from "../styled/Button";
 import CountryList from "./CountryList";
-import Txt from "../styled/Txt";
-import P from "../styled/P";
+import SignInDrop from "./SignInDrop";
+
 
 const Hdr = styled.header`
     background: rgba(255, 255, 255, 0.67);
@@ -30,7 +29,7 @@ const Hdrli = styled.li`
     align-items: center;
 `;
 
-const Header = ({ isLoggedIn = false }) => {
+const Header = () => {
     return (
         <>
             <Hdr>
@@ -51,35 +50,7 @@ const Header = ({ isLoggedIn = false }) => {
                                 </Link>
                             </Hdrli>
                             <Hdrli>
-                                <HeaderDropdown
-                                    Btn={({ onClick }) => (
-                                        <Button onClick={onClick}>
-                                            <div>
-                                                <P
-                                                    lineHeight={1}
-                                                    fontSize="12px"
-                                                    weight={400}
-                                                    margin="0px"
-                                                >
-                                                    Hello, Sign In
-                                                </P>
-                                                <Txt
-                                                    lineHeight={1}
-                                                    fontSize="14px"
-                                                    weight={600}
-                                                >
-                                                    Your Account
-                                                </Txt>
-                                            </div>
-                                        </Button>
-                                    )}
-                                >
-                                    <ul>
-                                        <li>
-                                            <LoginModalBtn />
-                                        </li>
-                                    </ul>
-                                </HeaderDropdown>
+                                <SignInDrop />
                             </Hdrli>
                             <Hdrli>
                                 <CountryList />

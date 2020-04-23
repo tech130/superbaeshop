@@ -21,14 +21,6 @@ const LoginHeader = styled.div`
     }
 `;
 
-const LoginButton = styled(Button)`
-    border: 1px solid #000;
-    padding: 5px 20px;
-    border: 1px solid;
-    color: #000;
-    font-size: 14px;
-`;
-
 const ClsBtn = styled(Button)`
     position: absolute;
     top: 10px;
@@ -36,7 +28,7 @@ const ClsBtn = styled(Button)`
     color: #000;
 `;
 
-const LoginModalBtn = ({ className }) => {
+const LoginModalBtn = ({ className, isSignUp, children, ...rest }) => {
     const [open, setOpen] = useState(false);
 
     const closeModal = useCallback(() => {
@@ -45,15 +37,19 @@ const LoginModalBtn = ({ className }) => {
 
     return (
         <>
-            <LoginButton onClick={() => setOpen(true)} className={className}>
-                Login/Sign up
-            </LoginButton>
-            <LoginModal isOpen={open} close={closeModal} />
+            <Button
+                {...rest}
+                onClick={() => setOpen(true)}
+                className={className}
+            >
+                {children}
+            </Button>
+            <LoginModal isSignUp={isSignUp} isOpen={open} close={closeModal} />
         </>
     );
 };
 
-const LoginModal = ({ isOpen, close }) => {
+const LoginModal = ({ isOpen, close, isSignUp = false }) => {
     return (
         <Modal isOpen={isOpen} overlayClick={close} maxWidth="375px">
             <div>
@@ -61,7 +57,7 @@ const LoginModal = ({ isOpen, close }) => {
                     <ClsBtn onClick={close}>
                         <CloseIcon size={20} />
                     </ClsBtn>
-                    <H2>Login</H2>
+                    <H2>{isSignUp ? "Sign Up" : "Sign In"}</H2>
                     <div className="login-header-desc">
                         Get access to your Orders, Wishlist and Recommendations
                     </div>
@@ -84,7 +80,7 @@ const LoginModalBody = ({ close }) => {
             {phone ? (
                 <Otpform
                     username={phone}
-                    close={close}
+                    close={() => close()}
                     changeNumber={changeNumber}
                 />
             ) : (

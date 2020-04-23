@@ -23,7 +23,7 @@ const HeaderDrop = styled.div`
     }
 
     li {
-        padding: 8px 15px;
+        padding: 6px 15px;
         font-size: 14px;
         margin: 0px !important;
     }
