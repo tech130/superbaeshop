@@ -12,6 +12,7 @@ import ProPlannerPrice from "../components/professional-planner/ProPlannerPrice"
 import Block from "../components/styled/Block";
 import Flex from "../components/styled/Flex";
 import P from "../components/styled/P";
+import { fetchMaster } from "../redux/master";
 
 const MeetTxt = styled.h1`
     font-size: 4rem;
@@ -234,5 +235,11 @@ const ProfPlannerSlider = () => {
     );
 };
 
+Home.getInitialProps = async ({ store }) => {
+    await store.dispatch(fetchMaster());
+    return {
+        props: {},
+    };
+};
 
 export default Home;
