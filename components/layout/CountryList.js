@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../styled/Button";
 import Block from "../styled/Block";
-import Picture from "../common/Picture";
 import HeaderDropdown from "./HeaderDropdown";
 import Img from "../styled/Img";
 import Txt from "../styled/Txt";
+import { useSelector } from "react-redux";
 
 const CountryList = () => {
+    const data = useSelector((state) => state.master);
+    const countries = Array.isArray(data.countries) ? data.countries : [];
+
+    if (countries.length > 0) {
+        return <CountrySelect countries={countries} />;
+    }
+
+    return null;
+};
+
+const CountrySelect = ({ countries = [] }) => {
     return (
         <HeaderDropdown
             Btn={({ onClick }) => (
@@ -39,32 +50,28 @@ const CountryList = () => {
             )}
         >
             <ul>
-                <li>
-                    <a>
-                        <Img
-                            width={16}
-                            height={13}
-                            margin="0px 5px 0px 0px"
-                            src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
-                            alt=""
-                        />
-                        <span>INR</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <Img
-                            width={16}
-                            height={13}
-                            margin="0px 5px 0px 0px"
-                            src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
-                            alt=""
-                        />
-                        <span>INR</span>
-                    </a>
-                </li>
+                {countries.map((country) => (
+                    <CountryItem {...country} key={country.id} />
+                ))}
             </ul>
         </HeaderDropdown>
+    );
+};
+
+const CountryItem = ({ title = "" }) => {
+    return (
+        <li>
+            <a>
+                <Img
+                    width={16}
+                    height={13}
+                    margin="0px 5px 0px 0px"
+                    src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
+                    alt=""
+                />
+                <span>{title}</span>
+            </a>
+        </li>
     );
 };
 
