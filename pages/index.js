@@ -23,7 +23,7 @@ const MeetTxt = styled.h1`
     -webkit-text-fill-color: transparent;
 `;
 
-const Home = () => {
+const Home = (props) => {
     return (
         <Layout>
             <Block padding="35px 0px">
@@ -233,5 +233,6 @@ const ProfPlannerSlider = () => {
         </Block>
     );
 };
+
 
 export default Home;
