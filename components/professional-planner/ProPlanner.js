@@ -1,19 +1,17 @@
 import React from "react";
-import Layout from "../components/layout/Layout";
+import Layout from "../layout/Layout";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import Picture from "../components/common/Picture";
+import Picture from "../common/Picture";
 import styled from "styled-components";
-import Img from "../components/styled/Img";
-import { H3 } from "../components/styled/Headings";
-import Txt from "../components/styled/Txt";
-import ProPlannerPrice from "../components/professional-planner/ProPlannerPrice";
-import Block from "../components/styled/Block";
-import Flex from "../components/styled/Flex";
-import P from "../components/styled/P";
-import { fetchMaster } from "../redux/master";
-import { fetchProduct } from "../redux/product/product";
+import Img from "../styled/Img";
+import { H3 } from "../styled/Headings";
+import Txt from "../styled/Txt";
+import ProPlannerPrice from "./ProPlannerPrice";
+import Block from "../styled/Block";
+import Flex from "../styled/Flex";
+import P from "../styled/P";
 
 const MeetTxt = styled.h1`
     font-size: 4rem;
@@ -25,9 +23,9 @@ const MeetTxt = styled.h1`
     -webkit-text-fill-color: transparent;
 `;
 
-const Home = (props) => {
+const ProPlanner = (props) => {
     return (
-        <Layout>
+        <>
             <Block padding="35px 0px">
                 <Container>
                     <Row alignItems="center">
@@ -177,7 +175,7 @@ const Home = (props) => {
                     </Row>
                 </Container>
             </Block>
-        </Layout>
+        </>
     );
 };
 
@@ -236,14 +234,4 @@ const ProfPlannerSlider = () => {
     );
 };
 
-Home.getInitialProps = async ({ store }) => {
-    await Promise.all([
-        store.dispatch(fetchProduct(1)),
-        store.dispatch(fetchMaster()),
-    ]);
-    return {
-        props: {},
-    };
-};
-
-export default Home;
+export default ProPlanner;

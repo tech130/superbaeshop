@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "../components/layout/Layout";
-import OrderIcon from "../components/icons/OrderIcon";
-import CalenderIcon from "../components/icons/CalenderIcon";
+import Layout from "../../components/layout/Layout";
+import OrderIcon from "../../components/icons/OrderIcon";
+import CalenderIcon from "../../components/icons/CalenderIcon";
 
 const Orders = () => {
     return (

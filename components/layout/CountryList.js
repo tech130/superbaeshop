@@ -1,23 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../styled/Button";
 import Block from "../styled/Block";
 import HeaderDropdown from "./HeaderDropdown";
 import Img from "../styled/Img";
 import Txt from "../styled/Txt";
 import { useSelector } from "react-redux";
+import Link from "next/link";
+import { useCountryParam } from "../common/CountryLink";
 
 const CountryList = () => {
+    const country = useCountryParam();
     const data = useSelector((state) => state.master);
     const countries = Array.isArray(data.countries) ? data.countries : [];
 
-    if (countries.length > 0) {
-        return <CountrySelect countries={countries} />;
+    const activeCon = countries.filter(
+        (con) => con.code.toLowerCase() === country
+    );
+
+    if (countries.length > 0 && activeCon.length > 0) {
+        return <CountrySelect activeCon={activeCon[0]} countries={countries} />;
     }
 
     return null;
 };
 
-const CountrySelect = ({ countries = [] }) => {
+const CountrySelect = ({ activeCon = {}, countries = [] }) => {
     return (
         <HeaderDropdown
             Btn={({ onClick }) => (
@@ -25,11 +32,11 @@ const CountrySelect = ({ countries = [] }) => {
                     <Img
                         width={18}
                         height={13}
-                        src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
-                        alt=""
+                        src={activeCon.image}
+                        alt={`${activeCon.title} flag`}
                     />
                     <Block margin="0px 5px">
-                        <Txt weight={600}>INR</Txt>
+                        <Txt weight={600}>{activeCon.title}</Txt>
                     </Block>
                     <span>
                         <svg
@@ -58,19 +65,23 @@ const CountrySelect = ({ countries = [] }) => {
     );
 };
 
-const CountryItem = ({ title = "" }) => {
+const CountryItem = ({ title = "", image, code, currency_type }) => {
     return (
         <li>
-            <a>
-                <Img
-                    width={16}
-                    height={13}
-                    margin="0px 5px 0px 0px"
-                    src="https://api.letsgoal2020.com/media/country_image/india_IPsNQvi.png"
-                    alt=""
-                />
-                <span>{title}</span>
-            </a>
+            <Link href={`/[country]`} as={`/${code.toLowerCase()}`}>
+                <a>
+                    <Img
+                        width={16}
+                        height={13}
+                        margin="0px 5px 0px 0px"
+                        src={image}
+                        alt={`${title} flag`}
+                    />
+                    <span>
+                        {title} - {currency_type}
+                    </span>
+                </a>
+            </Link>
         </li>
     );
 };

@@ -1,17 +1,15 @@
 import React from "react";
-import Link from "next/link";
+import CountryLink from "../common/CountryLink";
 
-const Logo = ({ width="220px" }) => {
+const Logo = ({ width = "220px" }) => {
     return (
-        <Link href="/">
-            <a>
-                <img
-                    width="220px"
-                    src="/images/logo.png"
-                    alt="space and beauty logo"
-                />
-            </a>
-        </Link>
+        <CountryLink>
+            <img
+                width="220px"
+                src="/images/logo.png"
+                alt="space and beauty logo"
+            />
+        </CountryLink>
     );
 };
 

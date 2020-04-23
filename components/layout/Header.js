@@ -11,7 +11,7 @@ import HeaderDropdown from "./HeaderDropdown";
 import Button from "../styled/Button";
 import CountryList from "./CountryList";
 import SignInDrop from "./SignInDrop";
-
+import CountryLink from "../common/CountryLink";
 
 const Hdr = styled.header`
     background: rgba(255, 255, 255, 0.67);
@@ -43,11 +43,11 @@ const Header = () => {
                         <Logo />
                         <Ul alignItems="stretch">
                             <Hdrli>
-                                <Link href="/checkout">
+                                <CountryLink href="/checkout">
                                     <Button as="a">
                                         <CartIcon size={20} />
                                     </Button>
-                                </Link>
+                                </CountryLink>
                             </Hdrli>
                             <Hdrli>
                                 <SignInDrop />
@@ -65,32 +65,32 @@ const Header = () => {
                                 >
                                     <ul>
                                         <li>
-                                            <Link href="/">
-                                                <a>Privacy policy</a>
-                                            </Link>
+                                            <CountryLink href="/privacy-policy">
+                                                Privacy policy
+                                            </CountryLink>
                                         </li>
                                         <li>
-                                            <Link href="/">
-                                                <a>Terms and conditions</a>
-                                            </Link>
+                                            <CountryLink href="/terms-and-conditions">
+                                                Terms and conditions
+                                            </CountryLink>
                                         </li>
                                         <li>
-                                            <Link href="/">
-                                                <a>
-                                                    Cancellations and return
-                                                    policy
-                                                </a>
-                                            </Link>
+                                            <CountryLink
+                                                href="/cancellations-and-return
+                                                    policy"
+                                            >
+                                                Cancellations and return policy
+                                            </CountryLink>
                                         </li>
                                         <li>
-                                            <Link href="/">
-                                                <a>Data privacy</a>
-                                            </Link>
+                                            <CountryLink href="/data-privacy">
+                                                Data privacy
+                                            </CountryLink>
                                         </li>
                                         <li>
-                                            <Link href="/">
-                                                <a>Contact us</a>
-                                            </Link>
+                                            <CountryLink href="/contact-us">
+                                                Contact us
+                                            </CountryLink>
                                         </li>
                                     </ul>
                                 </HeaderDropdown>
