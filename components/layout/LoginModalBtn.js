@@ -54,12 +54,6 @@ const LoginModalBtn = ({ className }) => {
 };
 
 const LoginModal = ({ isOpen, close }) => {
-    const [phone, setPhone] = useState("");
-
-    const changeNumber = useCallback((val) => {
-        setPhone(val);
-    }, []);
-
     return (
         <Modal isOpen={isOpen} overlayClick={close} maxWidth="375px">
             <div>
@@ -72,15 +66,31 @@ const LoginModal = ({ isOpen, close }) => {
                         Get access to your Orders, Wishlist and Recommendations
                     </div>
                 </LoginHeader>
-                <Block padding="25px 15px 30px">
-                    {phone ? (
-                        <Otpform username={phone} close={close} changeNumber={changeNumber} />
-                    ) : (
-                        <Login changeNumber={changeNumber} />
-                    )}
-                </Block>
+                <LoginModalBody />
             </div>
         </Modal>
+    );
+};
+
+const LoginModalBody = ({ close }) => {
+    const [phone, setPhone] = useState("");
+
+    const changeNumber = useCallback((val) => {
+        setPhone(val);
+    }, []);
+
+    return (
+        <Block padding="25px 15px 30px">
+            {phone ? (
+                <Otpform
+                    username={phone}
+                    close={close}
+                    changeNumber={changeNumber}
+                />
+            ) : (
+                <Login changeNumber={changeNumber} />
+            )}
+        </Block>
     );
 };
 
