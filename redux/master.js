@@ -16,9 +16,8 @@ export const clearMaster = () => ({
 });
 
 export const fetchMaster = () => {
-    console.log("called master")
     return (dispatch, getState) => {
-        if (!getState().master.category) {
+        if (!getState().master.countries) {
             return dispatch(fetchApi("master-values/", "master", updateMaster));
         }
         return Promise.resolve();

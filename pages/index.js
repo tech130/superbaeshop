@@ -13,6 +13,7 @@ import Block from "../components/styled/Block";
 import Flex from "../components/styled/Flex";
 import P from "../components/styled/P";
 import { fetchMaster } from "../redux/master";
+import { fetchProduct } from "../redux/product/product";
 
 const MeetTxt = styled.h1`
     font-size: 4rem;
@@ -236,7 +237,10 @@ const ProfPlannerSlider = () => {
 };
 
 Home.getInitialProps = async ({ store }) => {
-    await store.dispatch(fetchMaster());
+    await Promise.all([
+        store.dispatch(fetchProduct(1)),
+        store.dispatch(fetchMaster()),
+    ]);
     return {
         props: {},
     };
