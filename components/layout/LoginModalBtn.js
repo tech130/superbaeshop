@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Modal from "../modal/Modal";
 import CloseIcon from "../icons/CloseIcon";
 import styled from "styled-components";
@@ -74,7 +74,7 @@ const LoginModal = ({ isOpen, close }) => {
                 </LoginHeader>
                 <Block padding="25px 15px 30px">
                     {phone ? (
-                        <Otpform username={phone} changeNumber={changeNumber} />
+                        <Otpform username={phone} close={close} changeNumber={changeNumber} />
                     ) : (
                         <Login changeNumber={changeNumber} />
                     )}

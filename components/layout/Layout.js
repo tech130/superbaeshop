@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "./Header";
-import ProductNav from "./ProductNav";
 import Footer from "./Footer";
 import styled from "styled-components";
+import ProductList from "./ProductList";
 
 const TopBar = styled.div`
     background: #000;
@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
                 <div className="container">Organize your Life on the Go!</div>
             </TopBar>
             <Header />
-            <ProductNav />
+            <ProductList />
             {children}
             <Footer />
         </>

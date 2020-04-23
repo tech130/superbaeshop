@@ -18,7 +18,7 @@ const Checkout = () => {
                             <CartItem />
                             <CartItem />
                         </Col>
-                        <Col col={5}>
+                        <Col lg={5}>
                             <H4>
                                 Checkout Details
                             </H4>
