@@ -1,9 +1,21 @@
 import React from "react";
 
-const HamIcon = ({ size = 24, ...props }) => {
+const HamIcon = ({size = 24, ...props }) => {
     return (
-        <svg viewBox="0 0 512 512" height={size} width={size} {...props}>
-            <path d="M501.333 96H10.667C4.779 96 0 100.779 0 106.667s4.779 10.667 10.667 10.667h490.667c5.888 0 10.667-4.779 10.667-10.667S507.221 96 501.333 96zM501.333 245.333H10.667C4.779 245.333 0 250.112 0 256s4.779 10.667 10.667 10.667h490.667c5.888 0 10.667-4.779 10.667-10.667s-4.78-10.667-10.668-10.667zM501.333 394.667H10.667C4.779 394.667 0 399.445 0 405.333 0 411.221 4.779 416 10.667 416h490.667c5.888 0 10.667-4.779 10.667-10.667-.001-5.888-4.78-10.666-10.668-10.666z" />
+        <svg
+            viewBox="0 0 24 24"
+            width={size}
+            height={size}
+            stroke="currentColor"
+            strokeWidth={2}
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            {...props}
+        >
+            <line x1={3} y1={12} x2={21} y2={12} />
+            <line x1={3} y1={6} x2={21} y2={6} />
+            <line x1={3} y1={18} x2={21} y2={18} />
         </svg>
     );
 };
