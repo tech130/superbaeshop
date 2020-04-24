@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../layout/Layout";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";

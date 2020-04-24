@@ -1,6 +1,5 @@
 import React from "react";
 import CartIcon from "../icons/CartIcon";
-import Link from "next/link";
 import DotsMenu from "../icons/DotsMenu";
 import Logo from "./Logo";
 import Flex from "../styled/Flex";
@@ -12,6 +11,10 @@ import Button from "../styled/Button";
 import CountryList from "./CountryList";
 import SignInDrop from "./SignInDrop";
 import CountryLink from "../common/CountryLink";
+import useMedia from "use-media";
+import LoginModalBtn from "./LoginModalBtn";
+import Txt from "../styled/Txt";
+import HamIcon from "../icons/HamIcon";
 
 const Hdr = styled.header`
     background: rgba(255, 255, 255, 0.67);
@@ -23,10 +26,6 @@ const Hdr = styled.header`
     font-size: 14px;
 `;
 
-// const HdrMobile = styled(Hdr)`
-    
-// `;
-
 const Hdrli = styled.li`
     margin-left: 20px;
     display: flex;
@@ -34,8 +33,10 @@ const Hdrli = styled.li`
 `;
 
 const Header = () => {
-    return (
-        <>
+    const isWide = useMedia({ minWidth: 576 });
+
+    if (isWide) {
+        return (
             <Hdr>
                 <Container>
                     <Flex
@@ -48,9 +49,7 @@ const Header = () => {
                         <Ul alignItems="stretch">
                             <Hdrli>
                                 <CountryLink href="/checkout">
-                                    <Button as="a">
-                                        <CartIcon size={20} />
-                                    </Button>
+                                    <CartIcon size={20} />
                                 </CountryLink>
                             </Hdrli>
                             <Hdrli>
@@ -103,7 +102,42 @@ const Header = () => {
                     </Flex>
                 </Container>
             </Hdr>
-        </>
+        );
+    }
+
+    return (
+        <Hdr>
+            <Container fluid>
+                <Flex
+                    as="nav"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    minHeight="50px"
+                >
+                    <Flex alignItems="center">
+                        <Button margin="0px 10px 0px 0px">
+                            <HamIcon size={24} />
+                        </Button>
+                        <Logo small width="45px" />
+                    </Flex>
+                    <Ul alignItems="stretch">
+                        <Hdrli>
+                            <LoginModalBtn>
+                                <Txt fontSize={14} weight={500}>Sign In</Txt>
+                            </LoginModalBtn>
+                        </Hdrli>
+                        <Hdrli>
+                            <CountryList />
+                        </Hdrli>
+                        <Hdrli>
+                            <CountryLink href="/checkout">
+                                <CartIcon size={20} />
+                            </CountryLink>
+                        </Hdrli>
+                    </Ul>
+                </Flex>
+            </Container>
+        </Hdr>
     );
 };
 
