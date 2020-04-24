@@ -10,8 +10,6 @@ import LogoutBtn from "../auth/LogoutBtn";
 const SignInDrop = () => {
     const user = useUser();
 
-    console.log(user);
-
     return (
         <HeaderDropdown
             Btn={({ onClick }) => (

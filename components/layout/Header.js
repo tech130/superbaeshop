@@ -23,6 +23,10 @@ const Hdr = styled.header`
     font-size: 14px;
 `;
 
+// const HdrMobile = styled(Hdr)`
+    
+// `;
+
 const Hdrli = styled.li`
     margin-left: 20px;
     display: flex;
@@ -40,7 +44,7 @@ const Header = () => {
                         alignItems="center"
                         minHeight="50px"
                     >
-                        <Logo />
+                        <Logo width="220px" />
                         <Ul alignItems="stretch">
                             <Hdrli>
                                 <CountryLink href="/checkout">

@@ -50,7 +50,7 @@ const Footer = () => {
                     <Col lg={3}>
                         <Block margin="0px 0px 15px">
                             <Block margin="0px 0px 8px">
-                                <Logo />
+                                <Logo width="220px" />
                             </Block>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur

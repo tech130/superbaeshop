@@ -1,12 +1,13 @@
 import React from "react";
 import CountryLink from "../common/CountryLink";
+import Img from "../styled/Img";
 
-const Logo = ({ width = "220px" }) => {
+const Logo = ({ small = false, ...rest }) => {
     return (
         <CountryLink>
-            <img
-                width="220px"
-                src="/images/logo.png"
+            <Img
+                {...rest}
+                src={`/images/logo${small ? "-small" : ""}.png`}
                 alt="space and beauty logo"
             />
         </CountryLink>
