@@ -4,10 +4,8 @@ import Block from "../../components/styled/Block";
 import { Container, Col, Row } from "styled-bootstrap-grid";
 import { H4 } from "../../components/styled/Headings";
 import CheckoutForm from "../../components/checkout/CheckoutForm";
-import CartSummary from "../../components/checkout/CartSummary";
 import { fetchMaster } from "../../redux/master";
 import Cartlist from "../../components/checkout/Cartlist";
-
 
 const Checkout = () => {
     return (
@@ -16,7 +14,6 @@ const Checkout = () => {
                 <Container>
                     <Row>
                         <Col lg={7}>
-                            <CartSummary />
                             <Cartlist />
                         </Col>
                         <Col lg={5}>

@@ -2,14 +2,15 @@ import { userTyps } from "./user";
 
 export const cartTyps = {
     toggle: "cart/toggle",
+    add: "cart/add",
     incQty: "cart/increase/quantity",
-    decQty: "cart/increase/quantity",
+    decQty: "cart/decrease/quantity",
     remove: "cart/remove",
     clear: "cart/clear",
 };
 
-export const toggleCart = (productId, title, product_country) => ({
-    type: cartTyps.toggle,
+export const addToCart = (productId, title, product_country) => ({
+    type: cartTyps.add,
     payload: {
         productId,
         title,
@@ -49,8 +50,18 @@ const toggle = (state, payload) => {
     return state.concat(state, payload);
 };
 
+const add = (state, payload) => {
+    const incart = state.filter((item) => item.productId === payload.productId);
+    if (incart.length > 0) {
+        return state;
+    }
+    return state.concat(state, payload);
+};
+
 export default (state = init, action) => {
     switch (action.type) {
+        case cartTyps.add:
+            return add(state, action.payload);
         case cartTyps.toggle:
             return toggle(state, action.payload);
         case cartTyps.remove:
@@ -70,11 +81,11 @@ export default (state = init, action) => {
             });
         case cartTyps.decQty:
             return state.map((item) => {
-                if (item.id === action.productId) {
+                if (item.productId === action.productId) {
                     return {
                         ...item,
                         quantity:
-                            item.quantity > 2
+                            item.quantity > 1
                                 ? item.quantity - 1
                                 : item.quantity,
                     };

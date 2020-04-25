@@ -24,7 +24,7 @@ const ProPlannerPrice = () => {
                 </H2>
                 <AddToCartBtn
                    id={id}
-                   product_country={productCountry}
+                   product_country={product_country}
                    title={title}
                 />
             </>

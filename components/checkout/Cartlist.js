@@ -5,7 +5,9 @@ import CartItem from "./CartItem";
 const Cartlist = () => {
     const cart = useSelector((state) => state.cart);
 
-    return cart.map((item, idx) => <CartItem {...item} key={`${item.productId}---${idx}`} />);
+    return cart.map((item, idx) => (
+        <CartItem {...item} key={`${item.productId}---${idx}`} />
+    ));
 };
 
 export default Cartlist;

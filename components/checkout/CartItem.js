@@ -9,6 +9,7 @@ import ThrashIcon from "../icons/ThrashIcon";
 import Txt from "../styled/Txt";
 import { useDispatch } from "react-redux";
 import { cartMinus, cartRemove, cartPlus } from "../../redux/user/cart";
+import { useProdCountry } from "../common/CountryLink";
 
 const CartStyl = styled(Flex)`
     padding: 10px;
@@ -90,7 +91,9 @@ const CartRemoveBtn = ({ productId }) => {
     );
 };
 
-const CartPrice = () => {
+const CartPrice = ({ product_country = [] }) => {
+    const productCountry = useProdCountry(product_country);
+
     return (
         <Block margin="0px 0px 5px 0px">
             <Txt
@@ -99,10 +102,12 @@ const CartPrice = () => {
                 fontSize="14px"
                 margin="0px 5px 0px 0px"
             >
-                ₹500
+                {productCountry.country.currency_type}
+                {productCountry.original_price}
             </Txt>
             <Txt weight={600} fontSize="16px">
-                ₹600
+                {productCountry.country.currency_type}
+                {productCountry.selling_price}
             </Txt>
             <span> (40% off)</span>
         </Block>
