@@ -2,9 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 
-const Cartlist = () => {
-    const cart = useSelector((state) => state.cart);
-
+const Cartlist = ({cart = []}) => {
     return cart.map((item, idx) => (
         <CartItem {...item} key={`${item.productId}---${idx}`} />
     ));

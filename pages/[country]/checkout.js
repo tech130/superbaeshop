@@ -6,15 +6,20 @@ import { H4 } from "../../components/styled/Headings";
 import CheckoutForm from "../../components/checkout/CheckoutForm";
 import { fetchMaster } from "../../redux/master";
 import Cartlist from "../../components/checkout/Cartlist";
+import { useSelector } from "react-redux";
+import CartSummary from "../../components/checkout/CartSummary";
 
 const Checkout = () => {
+    const cart = useSelector((state) => state.cart);
+
     return (
         <Layout>
             <Block padding="35px 0px">
                 <Container>
                     <Row>
                         <Col lg={7}>
-                            <Cartlist />
+                            <CartSummary cart={cart} />
+                            <Cartlist cart={cart} />
                         </Col>
                         <Col lg={5}>
                             <H4>Checkout Details</H4>
@@ -28,9 +33,7 @@ const Checkout = () => {
 };
 
 Checkout.getInitialProps = async ({ store }) => {
-    await Promise.all([
-        store.dispatch(fetchMaster()),
-    ]);
+    await Promise.all([store.dispatch(fetchMaster())]);
     return {
         props: {},
     };
