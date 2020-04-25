@@ -31,7 +31,7 @@ const CartItem = ({ title, product_country, productId, quantity }) => {
                 <P margin="0px" weight={500} fontSize="16px">
                     {title}
                 </P>
-                <CartPrice product_country={product_country} />
+                <CartPrice product_country={product_country} quantity={quantity} />
                 <CartQuantity quantity={quantity} productId={productId} />
             </FlexItem>
             <CartRemoveBtn productId={productId} />
@@ -91,7 +91,7 @@ const CartRemoveBtn = ({ productId }) => {
     );
 };
 
-const CartPrice = ({ product_country = [] }) => {
+const CartPrice = ({ product_country = [], quantity = 0 }) => {
     const productCountry = useProdCountry(product_country);
 
     return (
@@ -103,11 +103,11 @@ const CartPrice = ({ product_country = [] }) => {
                 margin="0px 5px 0px 0px"
             >
                 {productCountry.country.currency_type}
-                {productCountry.original_price}
+                {productCountry.original_price * quantity}
             </Txt>
             <Txt weight={600} fontSize="16px">
                 {productCountry.country.currency_type}
-                {productCountry.selling_price}
+                {productCountry.selling_price * quantity}
             </Txt>
             <span> (40% off)</span>
         </Block>

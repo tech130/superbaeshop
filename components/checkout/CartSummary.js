@@ -17,20 +17,23 @@ const calculateTotal = (code, cart = []) => {
     const init = { shipping_fee: 0, cartTotal: 0 };
     if (cart.length > 0 && code) {
         return cart
-            .map(
-                (item) =>
+            .map((item) => ({
+                quantity: item.quantity,
+                activeCon:
                     item.product_country.filter(
                         (x) => x.country.code === code
-                    )[0] || {}
-            )
+                    )[0] || {},
+            }))
             .reduce((acc, cur) => {
-                // console.log(cur.country ? cur.country.shipping_free : 0)
+                console.log(cur)
                 return {
                     shipping_fee: 0,
                     // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
                     cartTotal:
                         acc.cartTotal +
-                        (cur.selling_price ? cur.selling_price : 0),
+                        (cur.activeCon && cur.activeCon.selling_price
+                            ? cur.activeCon.selling_price * cur.quantity
+                            : 0),
                 };
             }, init);
     }
