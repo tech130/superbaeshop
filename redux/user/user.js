@@ -3,11 +3,6 @@ export const userTyps = {
     clear: 'user/clear',
 };
 
-export const appStateTyps = {
-    loaded: 'appState/loaded',
-    fetching: 'appState/fetching',
-};
-
 //user actions
 export const updateUser = payload => ({
     type: userTyps.update,

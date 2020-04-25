@@ -4,21 +4,16 @@ import Block from "../styled/Block";
 import HeaderDropdown from "./HeaderDropdown";
 import Img from "../styled/Img";
 import Txt from "../styled/Txt";
-import { useSelector } from "react-redux";
 import Link from "next/link";
-import { useCountryParam } from "../common/CountryLink";
+import { useActiveCountry } from "../common/CountryLink";
 
 const CountryList = () => {
-    const country = useCountryParam();
-    const data = useSelector((state) => state.master);
-    const countries = Array.isArray(data.countries) ? data.countries : [];
+    const { countries, activeCountry } = useActiveCountry();
 
-    const activeCon = countries.filter(
-        (con) => con.code.toLowerCase() === country
-    );
-
-    if (countries.length > 0 && activeCon.length > 0) {
-        return <CountrySelect activeCon={activeCon[0]} countries={countries} />;
+    if (countries.length > 0 && activeCountry.id) {
+        return (
+            <CountrySelect activeCon={activeCountry} countries={countries} />
+        );
     }
 
     return null;
