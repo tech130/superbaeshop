@@ -5,6 +5,7 @@ import Txt from "../styled/Txt";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCart } from "../../redux/user/cart";
 import { useProdCountry } from "../common/CountryLink";
+import AddToCartBtn from "../checkout/AddToCartBtn";
 
 const ProPlannerPrice = () => {
     const dispatch = useDispatch();
@@ -21,13 +22,11 @@ const ProPlannerPrice = () => {
                     {productCountry.country.currency_type}
                     {productCountry.selling_price}
                 </H2>
-                <CartButton
-                    onClick={() =>
-                        dispatch(toggleCart(id, title, product_country))
-                    }
-                >
-                    Add to cart
-                </CartButton>
+                <AddToCartBtn
+                   id={id}
+                   product_country={productCountry}
+                   title={title}
+                />
             </>
         );
     }
