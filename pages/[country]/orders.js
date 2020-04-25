@@ -2,21 +2,26 @@ import React from "react";
 import Layout from "../../components/layout/Layout";
 import OrderIcon from "../../components/icons/OrderIcon";
 import CalenderIcon from "../../components/icons/CalenderIcon";
+import Block from "../../components/styled/Block";
+import { Container, Row, Col } from "styled-bootstrap-grid";
+import Flex from "../../components/styled/Flex";
+import Txt from "../../components/styled/Txt";
+import { H6 } from "../../components/styled/Headings";
 
 const Orders = () => {
     return (
         <Layout>
-            <section className="pt-3 pb-3">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12">
+            <Block padding="35px 0px">
+                <Container>
+                    <Row>
+                        <Col lg={12}>
                             <OrderItem />
                             <OrderItem />
                             <OrderItem />
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        </Col>
+                    </Row>
+                </Container>
+            </Block>
         </Layout>
     );
 };
@@ -24,22 +29,36 @@ const Orders = () => {
 const OrderItem = () => {
     return (
         <>
-            <div className="order-item mb-3">
-                <div className="row">
-                    <div className="col-md-12 order-id-con d-flex justify-content-between align-items-center mb-3">
-                        <div className="d-flex align-items-center">
-                            <OrderIcon size={14} strokeWidth={1} />
-                            <span className="ml-1">Order ID: #1265868686</span>
-                        </div>
-                        <div className="d-flex align-items-center justify-content-end">
-                            <CalenderIcon size={14} strokeWidth={1} />
-                            <span className="ml-1">12 Feb 2020, 1:00 PM</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-4 mb-3">
-                        <div className="d-flex align-items-center mb-2">
+            <Block
+                padding="10px"
+                border="solid 2px #f5f5f5"
+                borderRadius="10px"
+            >
+                <Row>
+                    <Col md={12}>
+                        <Flex
+                            alignItems="center"
+                            justifyContent="space-between"
+                            margin="0px 0px 15px"
+                        >
+                            <Flex alignItems="center">
+                                <OrderIcon size={14} strokeWidth={1} />
+                                <Txt fontSize={14} margin="0px 5px">
+                                    Order ID: #1265868686
+                                </Txt>
+                            </Flex>
+                            <Flex alignItems="center">
+                                <CalenderIcon size={14} strokeWidth={1} />
+                                <Txt fontSize={14} margin="0px 5px">
+                                    12 Feb 2020, 1:00 PM
+                                </Txt>
+                            </Flex>
+                        </Flex>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="col-md-4">
+                        <Flex alignItems="center" margin="0px 0px 15px 0px">
                             <img
                                 className="order-img"
                                 src="https://letsgoal2020.com/static/media/front.e7158c6a.png"
@@ -55,8 +74,8 @@ const OrderItem = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div className="d-flex align-items-center mb-2">
+                        </Flex>
+                        <Flex alignItems="center" margin="0px 0px 15px 0px">
                             <img
                                 className="order-img"
                                 src="https://letsgoal2020.com/static/media/front.e7158c6a.png"
@@ -72,19 +91,19 @@ const OrderItem = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4 mb-3">
-                        <h6>Delivery Details</h6>
+                        </Flex>
+                    </Col>
+                    <Col md={4}>
+                        <H6>Delivery Details</H6>
                         <p className="mb-1">Dilip Ashokkumar</p>
                         <p className="mb-1">dilip@billiontags.com</p>
                         <p className="mb-1">8610074983, 9715868154</p>
                         <p className="mb-1">
                             123, test street, test city, test country, 123456
                         </p>
-                    </div>
-                    <div className="col-md-4 mb-3">
-                        <h6>Order Summary</h6>
+                    </Col>
+                    <Col md={4}>
+                        <H6>Order Summary</H6>
                         <div className="d-flex justify-content-between align-items-center mb-1">
                             <span>Sub Total: </span>
                             <span className="ml-2">₹1,010</span>
@@ -111,17 +130,17 @@ const OrderItem = () => {
                                 ₹10,000
                             </span>
                         </div>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
                 <hr className="mt-0 mb-3 order-divider" />
-                <div className="d-flex justify-content-between align-items-center">
-                    <div className="d-flex align-items-center">
-                        <button className="btn btn-track mr-2">Order Placed</button>
+                <Flex alignItems="center" justifyContent="space-between">
+                    <Flex alignItems="center">
+                        <Button border="1px solid #000" padding="5px 20px">Order Placed</Button>
                         <div>Estd Delivery Date: 14 Jan 2020</div>
-                    </div>
-                    <button className="btn btn-track">Need help</button>
-                </div>
-            </div>
+                    </Flex>
+                    <Button border="1px solid #000" padding="5px 20px">Need help</Button>
+                </Flex>
+            </Block>
             <style jsx>{`
                 .order-item {
                     padding: 10px;

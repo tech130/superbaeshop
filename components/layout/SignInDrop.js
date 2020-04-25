@@ -6,6 +6,7 @@ import HeaderDropdown from "./HeaderDropdown";
 import Button from "../styled/Button";
 import useUser from "../../hooks/redux/user/useUser";
 import LogoutBtn from "../auth/LogoutBtn";
+import CountryLink from "../common/CountryLink";
 
 const SignInDrop = () => {
     const user = useUser();
@@ -37,7 +38,7 @@ const SignInDrop = () => {
                 {user.user && user.user.id ? (
                     <>
                         <li>
-                            <a>Your Profile</a>
+                            <CountryLink href="/profile">Your Profile</CountryLink>
                         </li>
                         <li>
                             <a>Your Orders</a>

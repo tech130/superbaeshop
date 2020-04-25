@@ -7,6 +7,9 @@ const Block = styled.div`
     padding: ${(props) => props.padding || "0px"};
     margin: ${(props) => props.margin || "0px"};
     text-align: ${(props) => props.textAlign || "left"};
+    border: ${(props) => props.border || "0px"};
+    border-radius: ${(props) => props.borderRadius || "0px"};
+    font-size: ${(props) => props.fontSize || "inherit"};
 `;
 
 export default Block;

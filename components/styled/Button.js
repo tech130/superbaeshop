@@ -19,8 +19,9 @@ const Button = styled.button`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: transparent;
+    background-color: ${(props) => props.bg || "transparent"};
     border: ${(props) => props.border || "1px solid transparent"};
+    border-radius: ${(props) => props.borderRadius || "0px"};
     padding: ${(props) => props.padding || "0px"};
     margin: ${(props) => props.margin || "0px"};
     width: ${(props) => (props.block ? "100%" : "auto")};

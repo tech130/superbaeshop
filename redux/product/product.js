@@ -18,7 +18,7 @@ export const clearProduct = () => ({
 
 export const fetchProduct = (id) => {
     return (dispatch, getState) => {
-        if (!getState().product.id) {
+        if (!getState().product[id]) {
             return dispatch(
                 fetchApi(`products/${id}/`, `product__${id}`, (res) =>
                     updateProduct(id, res)
