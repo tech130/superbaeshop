@@ -6,8 +6,9 @@ export const productTyps = {
 };
 
 //user actions
-export const updateProduct = (payload) => ({
+export const updateProduct = (id, payload) => ({
     type: productTyps.update,
+    id,
     payload,
 });
 
@@ -15,20 +16,30 @@ export const clearProduct = () => ({
     type: productTyps.clear,
 });
 
-export const fetchProduct = id => {
+export const fetchProduct = (id) => {
     return (dispatch, getState) => {
         if (!getState().product.id) {
-            return dispatch(fetchApi(`products/${id}/`, `product__${id}`, updateProduct));
+            return dispatch(
+                fetchApi(`products/${id}/`, `product__${id}`, (res) =>
+                    updateProduct(id, res)
+                )
+            );
         }
         return Promise.resolve();
     };
 };
 
-//user reducer
+//product reducer
 export default (state = {}, action) => {
     switch (action.type) {
         case productTyps.update:
-            return { ...state, ...action.payload };
+            return {
+                ...state,
+                [action.payload.id]: {
+                    ...(state[action.payload.id] || {}),
+                    ...action.payload,
+                },
+            };
         case productTyps.clear:
             return {};
         default:
