@@ -8,6 +8,7 @@ import styled from "styled-components";
 import Txt from "../styled/Txt";
 import { Row, Col } from "styled-bootstrap-grid";
 import P from "../styled/P";
+// import { useSelector } from "react-redux";
 
 const ProfileTop = styled(Flex)`
     padding-bottom: 15px;
@@ -27,7 +28,7 @@ const ProfileDetails = () => {
                     alt=""
                 />
                 <Block margin="0px 0px 0px 15px">
-                    <H5>Dilip Ashokkumar</H5>
+                    <H5>Welcome, Dilip Ashokkumar</H5>
                     <Button
                         border="1px solid #000"
                         padding="3px 20px"

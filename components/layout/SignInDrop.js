@@ -38,7 +38,9 @@ const SignInDrop = () => {
                 {user.user && user.user.id ? (
                     <>
                         <li>
-                            <CountryLink href="/profile">Your Profile</CountryLink>
+                            <CountryLink href="/profile">
+                                Your Profile
+                            </CountryLink>
                         </li>
                         <li>
                             <a>Your Orders</a>

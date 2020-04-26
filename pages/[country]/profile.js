@@ -6,6 +6,7 @@ import ProfileDetails from "../../components/profile/ProfileDetails";
 import Wallet from "../../components/profile/Wallet";
 import { H6 } from "../../components/styled/Headings";
 import WalletItem from "../../components/profile/WalletItem";
+import { fetchMaster } from "../../redux/master";
 
 const Profile = () => {
     return (
@@ -30,6 +31,13 @@ const Profile = () => {
             </Block>
         </Layout>
     );
+};
+
+Profile.getInitialProps = async ({ store }) => {
+    await Promise.all([store.dispatch(fetchMaster())]);
+    return {
+        props: {},
+    };
 };
 
 export default Profile;

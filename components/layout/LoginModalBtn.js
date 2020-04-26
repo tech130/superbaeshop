@@ -35,6 +35,7 @@ const LoginModalBtn = ({ className, isSignUp, children, ...rest }) => {
         setOpen(false);
     }, []);
 
+
     return (
         <>
             <Button
@@ -44,17 +45,18 @@ const LoginModalBtn = ({ className, isSignUp, children, ...rest }) => {
             >
                 {children}
             </Button>
-            <LoginModal isSignUp={isSignUp} isOpen={open} close={closeModal} />
+            <LoginModal isSignUp={isSignUp} isOpen={open} closeModal={closeModal} />
         </>
     );
 };
 
-const LoginModal = ({ isOpen, close, isSignUp = false }) => {
+const LoginModal = ({ isOpen, closeModal, isSignUp = false }) => {
+
     return (
-        <Modal isOpen={isOpen} overlayClick={close} maxWidth="375px">
+        <Modal isOpen={isOpen} overlayClick={closeModal} maxWidth="375px">
             <div>
                 <LoginHeader>
-                    <ClsBtn onClick={close}>
+                    <ClsBtn onClick={closeModal}>
                         <CloseIcon size={20} />
                     </ClsBtn>
                     <H2>{isSignUp ? "Sign Up" : "Sign In"}</H2>
@@ -62,13 +64,13 @@ const LoginModal = ({ isOpen, close, isSignUp = false }) => {
                         Get access to your Orders, Wishlist and Recommendations
                     </div>
                 </LoginHeader>
-                <LoginModalBody />
+                <LoginModalBody closeModal={closeModal} />
             </div>
         </Modal>
     );
 };
 
-const LoginModalBody = ({ close }) => {
+const LoginModalBody = ({ closeModal }) => {
     const [phone, setPhone] = useState("");
 
     const changeNumber = useCallback((val) => {
@@ -80,7 +82,7 @@ const LoginModalBody = ({ close }) => {
             {phone ? (
                 <Otpform
                     username={phone}
-                    close={() => close()}
+                    closeModal={closeModal}
                     changeNumber={changeNumber}
                 />
             ) : (

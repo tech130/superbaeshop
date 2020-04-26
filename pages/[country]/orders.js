@@ -7,6 +7,7 @@ import { Container, Row, Col } from "styled-bootstrap-grid";
 import Flex from "../../components/styled/Flex";
 import Txt from "../../components/styled/Txt";
 import { H6 } from "../../components/styled/Headings";
+import Button from "../../components/styled/Button";
 
 const Orders = () => {
     return (
@@ -33,6 +34,7 @@ const OrderItem = () => {
                 padding="10px"
                 border="solid 2px #f5f5f5"
                 borderRadius="10px"
+                margin="0px 0px 15px 0px"
             >
                 <Row>
                     <Col md={12}>
@@ -135,10 +137,18 @@ const OrderItem = () => {
                 <hr className="mt-0 mb-3 order-divider" />
                 <Flex alignItems="center" justifyContent="space-between">
                     <Flex alignItems="center">
-                        <Button border="1px solid #000" padding="5px 20px">Order Placed</Button>
+                        <Button
+                            margin="0px 10px 0px 0px"
+                            border="1px solid #000"
+                            padding="5px 20px"
+                        >
+                            Order Placed
+                        </Button>
                         <div>Estd Delivery Date: 14 Jan 2020</div>
                     </Flex>
-                    <Button border="1px solid #000" padding="5px 20px">Need help</Button>
+                    <Button border="1px solid #000" padding="5px 20px">
+                        Need help
+                    </Button>
                 </Flex>
             </Block>
             <style jsx>{`

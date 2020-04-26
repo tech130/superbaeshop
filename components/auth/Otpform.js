@@ -24,8 +24,10 @@ const otpForm = {
     allIds: ["otp"],
 };
 
-const Otpform = ({ changeNumber, username = "", close }) => {
+const Otpform = ({ changeNumber, username = "", closeModal }) => {
     const dispatch = useDispatch();
+
+    console.log(typeof closeModal);
 
     return (
         <>
@@ -46,10 +48,10 @@ const Otpform = ({ changeNumber, username = "", close }) => {
                     method: "POST",
                 }}
                 succFunc={(data) => {
-                    dispatch(updateUser(data));
-                    if (typeof close === "function") {
-                        close();
+                    if (typeof closeModal === "function") {
+                        closeModal();
                     }
+                    dispatch(updateUser(data));
                 }}
                 formatData={(data) => {
                     return {
