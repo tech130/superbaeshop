@@ -16,7 +16,11 @@ const ProfileTop = styled(Flex)`
     border-bottom: 1px solid #eaeaea;
 `;
 
-const ProfileDetails = () => {
+const ProfileDetails = ({ user, profile_pic }) => {
+    const fullName = `${user.first_name || ""}${
+        user.last_name ? ` ${user.last_name}` : ""
+    }`;
+
     return (
         <>
             <ProfileTop alignItems="center">
@@ -24,11 +28,14 @@ const ProfileDetails = () => {
                     width="80px"
                     height="80px"
                     round
-                    src="/images/dilip.jpg"
+                    src={profile_pic || "/images/account.svg"}
                     alt=""
                 />
                 <Block margin="0px 0px 0px 15px">
-                    <H5>Welcome, Dilip Ashokkumar</H5>
+                    <H5>
+                        Welcome,{" "}
+                        {fullName || "User"}
+                    </H5>
                     <Button
                         border="1px solid #000"
                         padding="3px 20px"
@@ -39,46 +46,19 @@ const ProfileDetails = () => {
                 </Block>
             </ProfileTop>
             <Row>
-                <ProfileItem 
-                    heading="Name"
-                    desc="Dilip Ashokkumar"
-                />
-                <ProfileItem 
-                    heading="Email"
-                    desc="dilip@billiontags.com"
-                />
-                <ProfileItem 
-                    heading="Phone Number"
-                    desc="918610074983"
-                />
-                <ProfileItem 
+                <ProfileItem heading="Name" desc={fullName} />
+                <ProfileItem heading="Email" desc="" />
+                <ProfileItem heading="Phone Number" desc={user.username} />
+                <ProfileItem
                     heading="Alternate Phone Number"
-                    desc="918610074983"
+                    desc=""
                 />
-                <ProfileItem 
-                    heading="Street Address"
-                    desc="Test Address"
-                />
-                <ProfileItem 
-                    heading="Locality"
-                    desc="Test Locality"
-                />
-                <ProfileItem 
-                    heading="City"
-                    desc="Cheannai"
-                />
-                <ProfileItem 
-                    heading="State"
-                    desc="Chennai"
-                />
-                <ProfileItem 
-                    heading="Country"
-                    desc="India"
-                />
-                <ProfileItem 
-                    heading="Pincode"
-                    desc="625001"
-                />
+                <ProfileItem heading="Street Address" desc="" />
+                <ProfileItem heading="Locality" desc="" />
+                <ProfileItem heading="City" desc="" />
+                <ProfileItem heading="State" desc="" />
+                <ProfileItem heading="Country" desc="" />
+                <ProfileItem heading="Pincode" desc="" />
             </Row>
         </>
     );
@@ -88,7 +68,7 @@ const ProfileItem = ({ heading = "", desc = "" }) => {
     return (
         <Col md={6}>
             <Txt fontSize="14px">{heading}</Txt>
-            <P weight={600}>{desc}</P>
+            <P weight={600}>{desc || "-"}</P>
         </Col>
     );
 };
