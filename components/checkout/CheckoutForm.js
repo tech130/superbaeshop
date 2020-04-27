@@ -46,7 +46,7 @@ const checkoutForm = {
         },
         street: {
             name: "street",
-            type: "countrySelect",
+            type: "text",
             placeholder: "Street Address",
         },
         locality: {
