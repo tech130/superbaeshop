@@ -45,7 +45,7 @@ const CheckStyle = styled.input`
     }
 `;
 
-const Checkbox = ({ name = "", setValue = null, value = false }) => {
+const Checkbox = ({ name = "", setValue = null, value = false, placeholder }) => {
     return (
         <div>
             <CheckStyle
@@ -58,7 +58,7 @@ const Checkbox = ({ name = "", setValue = null, value = false }) => {
                 checked={!!value}
                 id={name}
             />
-            <label htmlFor={name}>Same as registered number</label>
+            <label htmlFor={name}>{placeholder}</label>
         </div>
     );
 };
