@@ -36,6 +36,7 @@ function MyApp({ Component, pageProps, store }) {
                     name="viewport"
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
             </Head>
             <UserandCart />
             <BaseCSS />

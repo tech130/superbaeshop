@@ -71,6 +71,7 @@ const FormCon = ({
             <Form onSubmit={onSubmit} {...rest}>
                 {renderForm({
                     fetching,
+                    onSubmit,
                     submit,
                     formState,
                     formDispatch,
