@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import dialCodes from "../../utils/dialCodes";
 import useDropDown from "../../hooks/layout/useDropDown";
@@ -20,7 +20,7 @@ const ConList = styled.ul`
     left: 0;
     right: 0;
     z-index: 1000;
-    width: 100%;
+    min-width: 100%;
     background: #fff;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.03);
     padding: 3px 0;
@@ -35,6 +35,12 @@ const ConList = styled.ul`
     }
 `;
 
+const TxtElipsis = styled.div`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
 const CountrySelect = ({
     value = "",
     setValue = null,
@@ -42,13 +48,6 @@ const CountrySelect = ({
     placeholder,
 }) => {
     const [el, open, toggle] = useDropDown();
-    const [country, setCountry] = useState(value);
-
-    // useEffect(() => {
-    //     if (setValue && val) {
-    //         setValue(isDialCode ? val.dialCode : val.name);
-    //     }
-    // }, [val]);
 
     return (
         <Con ref={el}>
@@ -60,24 +59,27 @@ const CountrySelect = ({
                 alignItems="center"
                 justifyContent="space-between"
             >
-                <div>
-                    {country ? (
+                <TxtElipsis>
+                    {value ? (
                         <>
-                            <FlagIcon countryCode={country} />
-                            <Txt color="#000" margin="0px 10px 0px">
-                                {dialCodes[country][valKey] || ""}
-                            </Txt>
+                            <FlagIcon
+                                margin="0px 10px 0px 0px"
+                                countryCode={value}
+                            />
+                            {dialCodes[value]
+                                ? dialCodes[value][valKey] || ""
+                                : ""}
                         </>
                     ) : (
                         <Txt color="#8e8e8e">{placeholder}</Txt>
                     )}
-                </div>
+                </TxtElipsis>
                 <CaretDown size={16} />
             </Flex>
             {open && (
                 <CountryList
-                    onClick={(value) => {
-                        setCountry(value);
+                    onClick={(val) => {
+                        setValue(val);
                         toggle();
                     }}
                 />
@@ -91,11 +93,13 @@ const CountryList = ({ onClick }) => {
         <ConList>
             {countryList.map((con) => (
                 <li onClick={() => onClick(con.countryCode)}>
-                    <FlagIcon
-                        margin="0px 10px 0px 0px"
-                        countryCode={con.countryCode}
-                    />
-                    <span>{con.name}</span>
+                    <TxtElipsis>
+                        <FlagIcon
+                            margin="0px 10px 0px 0px"
+                            countryCode={con.countryCode}
+                        />
+                        <span>{con.name}</span>
+                    </TxtElipsis>
                 </li>
             ))}
         </ConList>
@@ -103,7 +107,7 @@ const CountryList = ({ onClick }) => {
 };
 
 const Flag = styled(Txt)`
-    border: 1px solid #eee;
+    display: inline-block;
 `;
 
 const FlagIcon = ({ countryCode = "", ...rest }) => {

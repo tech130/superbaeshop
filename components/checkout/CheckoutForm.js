@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormCon from "../form/FormCon";
 import FieldArray from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
+import { useActiveCountry } from "../common/CountryLink";
+import { setValue } from "../../hooks/form/formReducer";
 
 const checkoutForm = {
     inputs: {
@@ -17,13 +19,9 @@ const checkoutForm = {
         },
         phone_country: {
             name: "phone_country",
-            type: "text",
+            type: "countrySelect",
             placeholder: "+91",
-        },
-        phone: {
-            name: "name",
-            type: "text",
-            placeholder: "Phone Number",
+            valKey: "dialCode",
         },
         phone: {
             name: "name",
@@ -37,8 +35,9 @@ const checkoutForm = {
         },
         alt_phone_country: {
             name: "phone_country",
-            type: "text",
+            type: "countrySelect",
             placeholder: "+91",
+            valKey: "dialCode",
         },
         alt_phone: {
             name: "name",
@@ -47,7 +46,7 @@ const checkoutForm = {
         },
         street: {
             name: "street",
-            type: "text",
+            type: "countrySelect",
             placeholder: "Street Address",
         },
         locality: {
@@ -94,20 +93,16 @@ const checkoutForm = {
             xs: 12,
         },
         phone_country: {
-            xs: 3,
-            md: 3,
+            md: 4,
         },
         phone: {
-            md: 9,
-            xs: 9,
+            md: 8,
         },
         alt_phone_country: {
-            md: 3,
-            xs: 3,
+            md: 4,
         },
         alt_phone: {
-            xs: 9,
-            md: 9,
+            md: 8,
         },
     },
     allIds: [
@@ -129,16 +124,25 @@ const checkoutForm = {
 };
 
 const CheckoutForm = () => {
+    return <FormCon form={checkoutForm} renderForm={CheckoutRenderForm} />;
+};
+
+const CheckoutRenderForm = ({ fetching, formDispatch }) => {
+    const { activeCountry } = useActiveCountry();
+
+    useEffect(() => {
+        if (activeCountry.code) {
+            formDispatch(setValue("phone_country", activeCountry.code));
+            formDispatch(setValue("alt_phone_country", activeCountry.code));
+            formDispatch(setValue("country", activeCountry.code));
+        }
+    }, [activeCountry]);
+
     return (
-        <FormCon
-            form={checkoutForm}
-            renderForm={({ fetching }) => (
-                <>
-                    <FieldArray />
-                    <SubmitButton fetching={fetching}>PAY NOW</SubmitButton>
-                </>
-            )}
-        />
+        <>
+            <FieldArray />
+            <SubmitButton fetching={fetching}>PAY NOW</SubmitButton>
+        </>
     );
 };
 
