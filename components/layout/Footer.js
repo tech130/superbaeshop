@@ -47,7 +47,7 @@ const Footer = () => {
         <FooterCon>
             <Container>
                 <Row>
-                    <Col lg={3}>
+                    <Col md={3}>
                         <Block margin="0px 0px 15px">
                             <Block margin="0px 0px 8px">
                                 <Logo width="220px" />
@@ -61,25 +61,25 @@ const Footer = () => {
                                 alignItems="center"
                                 flexWrap
                             >
-                                <a href="https://facebook.com">
+                                <a target="_blank" href="https://facebook.com">
                                     <img
                                         src="/images/icons/social-icons/facebook.svg"
                                         alt="Facebook logo"
                                     />
                                 </a>
-                                <a href="https://twitter.com">
+                                <a target="_blank" href="https://twitter.com">
                                     <img
                                         src="/images/icons/social-icons/twitter.svg"
                                         alt="twitter logo"
                                     />
                                 </a>
-                                <a href="https://instagram.com">
+                                <a target="_blank" href="https://instagram.com">
                                     <img
                                         src="/images/icons/social-icons/instagram.svg"
                                         alt="instagram logo"
                                     />
                                 </a>
-                                <a href="https://linkedin.com">
+                                <a target="_blank" href="https://linkedin.com">
                                     <img
                                         src="/images/icons/social-icons/linkedin.svg"
                                         alt="linkedin logo"
@@ -88,7 +88,7 @@ const Footer = () => {
                             </Flex>
                         </Block>
                     </Col>
-                    <Col lg={3}>
+                    <Col md={3}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Products</div>
                             <ul className="footer-list">
@@ -107,7 +107,7 @@ const Footer = () => {
                             </ul>
                         </Block>
                     </Col>
-                    <Col lg={2}>
+                    <Col md={2}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Also shop on</div>
                             <ul className="footer-list">
@@ -123,7 +123,7 @@ const Footer = () => {
                             </ul>
                         </Block>
                     </Col>
-                    <Col lg={4}>
+                    <Col md={4}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Payment partner</div>
                             <Flex className="payment-icons" flexWrap>
