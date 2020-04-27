@@ -2,6 +2,7 @@ import React from "react";
 import Input, { NumberInput } from "./Input";
 import TextArea from "./TextArea";
 import Checkbox from "./Checkbox";
+import CountrySelect from "./CountrySelect";
 // import Select from "./Select";
 
 const SelectField = props => {
@@ -25,8 +26,8 @@ const selectField = (type = "text") => {
             return TextArea;
         case "checkbox":
             return Checkbox;
-        // case "select":
-        //     return Select;
+        case "countrySelect":
+            return CountrySelect;
         default:
             return () => null;
     }

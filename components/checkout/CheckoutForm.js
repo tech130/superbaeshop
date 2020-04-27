@@ -67,7 +67,7 @@ const checkoutForm = {
         },
         country: {
             name: "country",
-            type: "text",
+            type: "countrySelect",
             placeholder: "Country",
         },
         pincode: {

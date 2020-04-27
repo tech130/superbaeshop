@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const InputStyle = styled.input`
+export const InputStyle = styled.input`
     display: block;
     width: 100%;
     height: 40px;
