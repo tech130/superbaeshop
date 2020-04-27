@@ -1,6 +1,7 @@
 import { userTyps } from "./user";
 
 export const cartTyps = {
+    load: "cart/toggle",
     toggle: "cart/toggle",
     add: "cart/add",
     incQty: "cart/increase/quantity",
@@ -34,6 +35,11 @@ export const cartRemove = (productId) => ({
     productId,
 });
 
+export const loadCart = (payload) => ({
+    type: cartTyps.load,
+    payload,
+});
+
 export const clearCart = () => ({
     type: cartTyps.clearCart,
 });
@@ -60,6 +66,8 @@ const add = (state, payload) => {
 
 export default (state = init, action) => {
     switch (action.type) {
+        case cartTyps.load:
+            return action.payload;
         case cartTyps.add:
             return add(state, action.payload);
         case cartTyps.toggle:

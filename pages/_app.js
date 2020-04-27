@@ -13,6 +13,7 @@ import withRedux from "next-redux-wrapper";
 import { updateUser } from "../redux/user/user";
 import { getLocalUser } from "../utils/getUser";
 import makeStore from "../redux/store";
+import UserandCart from "../components/common/UserandCart";
 
 Router.events.on("routeChangeStart", (url) => {
     NProgress.start();
@@ -36,6 +37,7 @@ function MyApp({ Component, pageProps, store }) {
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
             </Head>
+            <UserandCart />
             <BaseCSS />
             <Component {...pageProps} />
         </Provider>
