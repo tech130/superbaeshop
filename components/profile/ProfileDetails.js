@@ -24,10 +24,10 @@ const ProfileDetails = ({ user, profile_pic }) => {
     return (
         <>
             <ProfileTop alignItems="center">
-                <EditProfilePic />
+                <EditProfilePic profile_pic={profile_pic} />
                 <Block margin="0px 0px 0px 20px">
                     <H5>Welcome, {fullName || "User"}</H5>
-                    <EditProfile profile_pic={profile_pic} />
+                    <EditProfile />
                 </Block>
             </ProfileTop>
             <Row>

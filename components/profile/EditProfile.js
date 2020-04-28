@@ -127,10 +127,11 @@ const EditForm = ({ fetching, formDispatch }) => {
     const { user } = useSelector((state) => state.user);
 
     useEffect(() => {
-        formDispatch(setValues({
+        const values = {
             first_name: user.first_name || "",
             last_name: user.last_name || "",
-        }))
+        };
+        formDispatch(setValues(values))
     }, [])
 
     return (

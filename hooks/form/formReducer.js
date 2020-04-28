@@ -40,7 +40,7 @@ export default function formReducer(state, action) {
         case "set_form":
             return { ...state, ...action.form };
         case "set_values":
-            return { ...state, ...action.values };
+            return { ...state, values: { ...state.values, ...action.values } };
         default:
             return state;
     }

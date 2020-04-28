@@ -33,6 +33,7 @@ const EditProfilePic = ({ profile_pic }) => {
             formData.append("profile_pic", ref.current.files[0]);
             submit({
                 url: "users/",
+                data: formData,
                 method: "POST",
                 processData: false,
                 mimeType: "multipart/form-data",
