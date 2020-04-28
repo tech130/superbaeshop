@@ -1,14 +1,13 @@
 import React from "react";
-import Img from "../styled/Img";
 import Block from "../styled/Block";
 import { H5 } from "../styled/Headings";
 import Flex from "../styled/Flex";
-import Button from "../styled/Button";
 import styled from "styled-components";
 import Txt from "../styled/Txt";
 import { Row, Col } from "styled-bootstrap-grid";
 import P from "../styled/P";
 import EditProfile from "./EditProfile";
+import EditProfilePic from "./EditProfilePic";
 // import { useSelector } from "react-redux";
 
 const ProfileTop = styled(Flex)`
@@ -25,29 +24,17 @@ const ProfileDetails = ({ user, profile_pic }) => {
     return (
         <>
             <ProfileTop alignItems="center">
-                <Img
-                    width="80px"
-                    height="80px"
-                    round
-                    src={profile_pic || "/images/account.svg"}
-                    alt=""
-                />
-                <Block margin="0px 0px 0px 15px">
-                    <H5>
-                        Welcome,{" "}
-                        {fullName || "User"}
-                    </H5>
-                    <EditProfile />
+                <EditProfilePic />
+                <Block margin="0px 0px 0px 20px">
+                    <H5>Welcome, {fullName || "User"}</H5>
+                    <EditProfile profile_pic={profile_pic} />
                 </Block>
             </ProfileTop>
             <Row>
                 <ProfileItem heading="Name" desc={fullName} />
                 <ProfileItem heading="Email" desc="" />
                 <ProfileItem heading="Phone Number" desc={user.username} />
-                <ProfileItem
-                    heading="Alternate Phone Number"
-                    desc=""
-                />
+                <ProfileItem heading="Alternate Phone Number" desc="" />
                 <ProfileItem heading="Street Address" desc="" />
                 <ProfileItem heading="Locality" desc="" />
                 <ProfileItem heading="City" desc="" />

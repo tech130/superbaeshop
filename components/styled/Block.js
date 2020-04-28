@@ -12,4 +12,8 @@ const Block = styled.div`
     font-size: ${(props) => props.fontSize || "inherit"};
 `;
 
+export const RelativeBlock = styled(Block)`
+    position: relative;
+`;
+
 export default Block;
