@@ -8,6 +8,7 @@ import styled from "styled-components";
 import Txt from "../styled/Txt";
 import { Row, Col } from "styled-bootstrap-grid";
 import P from "../styled/P";
+import EditProfile from "./EditProfile";
 // import { useSelector } from "react-redux";
 
 const ProfileTop = styled(Flex)`
@@ -36,13 +37,7 @@ const ProfileDetails = ({ user, profile_pic }) => {
                         Welcome,{" "}
                         {fullName || "User"}
                     </H5>
-                    <Button
-                        border="1px solid #000"
-                        padding="3px 20px"
-                        borderRadius="20px"
-                    >
-                        <Txt fontSize="13px">Edit Profile</Txt>
-                    </Button>
+                    <EditProfile />
                 </Block>
             </ProfileTop>
             <Row>
