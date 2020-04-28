@@ -22,7 +22,6 @@ const ModalOverlay = ({ children, className, style = {}, onClick }) => {
         <Overlay
             className={className}
             style={style}
-            role="dialog"
             onClick={onClick}
         >
             {children}

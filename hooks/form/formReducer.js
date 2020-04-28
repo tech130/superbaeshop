@@ -5,7 +5,7 @@ export const init = {
     isOptional: [],
     allIds: [],
     uiProps: {},
-    defaultUiProps: {}
+    defaultUiProps: {},
 };
 
 export default function formReducer(state, action) {
@@ -16,29 +16,31 @@ export default function formReducer(state, action) {
                 ...state,
                 values: {
                     ...state.values,
-                    [action.name]: action.value
+                    [action.name]: action.value,
                 },
                 errors: {
                     ...state.errors,
-                    [action.name]: ""
-                }
+                    [action.name]: "",
+                },
             };
         case "set_err":
             return {
                 ...state,
                 errors: {
                     ...state.errors,
-                    [action.name]: action.error
-                }
+                    [action.name]: action.error,
+                },
             };
         case "reset_form":
             return {
                 ...state,
                 errors: {},
-                values: {}
+                values: {},
             };
         case "set_form":
             return { ...state, ...action.form };
+        case "set_values":
+            return { ...state, ...action.values };
         default:
             return state;
     }
@@ -48,7 +50,14 @@ export const setValue = (name, value) => {
     return {
         type: "on_change",
         name,
-        value
+        value,
+    };
+};
+
+export const setValues = (values = {}) => {
+    return {
+        type: "set_values",
+        values,
     };
 };
 
@@ -56,19 +65,19 @@ export const setErr = (name, error) => {
     return {
         type: "set_err",
         name,
-        error
+        error,
     };
 };
 
 export const setForm = (form = {}) => {
     return {
         type: "set_form",
-        form
+        form,
     };
 };
 
 export const resetForm = () => {
     return {
-        type: "reset_form"
+        type: "reset_form",
     };
 };

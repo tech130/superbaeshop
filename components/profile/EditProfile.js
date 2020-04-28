@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Button from "../styled/Button";
 import Block from "../styled/Block";
 import Modal from "../modal/Modal";
@@ -7,6 +7,9 @@ import ModalHeader from "../modal/ModalHeader";
 import FormCon from "../form/FormCon";
 import FieldArray from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../redux/user/user";
+import { setValues } from "../../hooks/form/formReducer";
 
 const EditProfile = () => {
     const [open, setOpen] = useState(false);
@@ -77,6 +80,8 @@ const editForm = {
 };
 
 const EditProfileModal = ({ closeModal, isOpen }) => {
+    const dispatch = useDispatch();
+
     return (
         <Modal isOpen={isOpen} maxWidth="575px" overlayClick={closeModal}>
             <ModalHeader
@@ -87,17 +92,52 @@ const EditProfileModal = ({ closeModal, isOpen }) => {
             <Block padding="25px 15px 30px">
                 <FormCon
                     form={editForm}
-                    renderForm={({ fetching }) => (
-                        <>
-                            <FieldArray />
-                            <SubmitButton fetching={fetching}>
-                                Submit
-                            </SubmitButton>
-                        </>
-                    )}
+                    config={{
+                        url: "users/",
+                        method: "POST",
+                        processData: false,
+                        mimeType: "multipart/form-data",
+                        contentType: false,
+                    }}
+                    succFunc={(data) => {
+                        closeModal();
+                        dispatch(updateUser(data));
+                    }}
+                    formatData={(data) => {
+                        let formData = new FormData();
+                        if (data.first_name) {
+                            formData.append("first_name", data.first_name);
+                        }
+                        if (data.last_name) {
+                            formData.append("last_name", data.last_name);
+                        }
+                        if (data.email) {
+                            formData.append("email", data.email);
+                        }
+                        return formData;
+                    }}
+                    renderForm={EditForm}
                 />
             </Block>
         </Modal>
+    );
+};
+
+const EditForm = ({ fetching, formDispatch }) => {
+    const { user } = useSelector((state) => state.user);
+
+    useEffect(() => {
+        formDispatch(setValues({
+            first_name: user.first_name || "",
+            last_name: user.last_name || "",
+        }))
+    }, [])
+
+    return (
+        <>
+            <FieldArray />
+            <SubmitButton fetching={fetching}>Submit</SubmitButton>
+        </>
     );
 };
 
