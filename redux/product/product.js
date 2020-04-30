@@ -1,27 +1,20 @@
 import { fetchApi } from "../apiData";
+import { normalize } from "normalizr";
+import { productSchema } from "./schema";
+import { addEntity, ADD_ENTITIES } from "../addEntity";
+import merge from "lodash.merge";
 
-export const productTyps = {
-    update: "product/update",
-    clear: "product/clear",
+export const updateProduct = (payload) => {
+    const { entities } = normalize(payload, productSchema);
+    return (dispatch) => dispatch(addEntity(entities));
 };
-
-//user actions
-export const updateProduct = (id, payload) => ({
-    type: productTyps.update,
-    id,
-    payload,
-});
-
-export const clearProduct = () => ({
-    type: productTyps.clear,
-});
 
 export const fetchProduct = (id) => {
     return (dispatch, getState) => {
         if (!getState().product[id]) {
             return dispatch(
                 fetchApi(`products/${id}/`, `product__${id}`, (res) =>
-                    updateProduct(id, res)
+                    updateProduct(res)
                 )
             );
         }
@@ -32,16 +25,8 @@ export const fetchProduct = (id) => {
 //product reducer
 export default (state = {}, action) => {
     switch (action.type) {
-        case productTyps.update:
-            return {
-                ...state,
-                [action.payload.id]: {
-                    ...(state[action.payload.id] || {}),
-                    ...action.payload,
-                },
-            };
-        case productTyps.clear:
-            return {};
+        case ADD_ENTITIES:
+            return merge({}, action.payload.product);
         default:
             return state;
     }

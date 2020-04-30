@@ -3,17 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/user/user";
 import { loadCart } from "../../redux/user/local_cart";
 import { getLocalUser } from "../../utils/getUser";
+import { fetchCart } from "../../redux/user/cart";
 
 const UserandCart = () => {
     const dispatch = useDispatch();
-    const { local_cart } = useSelector((state) => ({
+    const { local_cart, token, userLoaded } = useSelector((state) => ({
         local_cart: state.local_cart || [],
+        token: state.user.token,
+        userLoaded: state.user.isloaded,
     }));
 
     useEffect(() => {
         dispatch(updateUser(getLocalUser() || {}));
-        dispatch(loadCart(getCart()));
     }, []);
+
+    //fetch cart
+    useEffect(() => {
+        if (token) {
+            //fetch cart from api
+            dispatch(fetchCart());
+        } else if (userLoaded && !token) {
+            //load cart from loacal storage
+            dispatch(loadCart(getCart()));
+        }
+    }, [token]);
 
     useEffect(() => {
         saveCart(local_cart);
