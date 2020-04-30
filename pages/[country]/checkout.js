@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import CartSummary from "../../components/checkout/CartSummary";
 
 const Checkout = () => {
-    const cart = useSelector((state) => state.cart);
+    const cart = useSelector((state) => state.local_cart);
 
     return (
         <Layout>

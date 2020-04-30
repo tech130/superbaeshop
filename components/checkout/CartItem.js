@@ -8,7 +8,7 @@ import Button, { IconButton } from "../styled/Button";
 import ThrashIcon from "../icons/ThrashIcon";
 import Txt from "../styled/Txt";
 import { useDispatch } from "react-redux";
-import { cartMinus, cartRemove, cartPlus } from "../../redux/user/cart";
+import { cartMinus, cartRemove, cartPlus } from "../../redux/user/local_cart";
 import { useProdCountry } from "../common/CountryLink";
 
 const CartStyl = styled(Flex)`

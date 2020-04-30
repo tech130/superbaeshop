@@ -1,13 +1,13 @@
 import { userTyps } from "./user";
 
 export const cartTyps = {
-    load: "cart/toggle",
-    toggle: "cart/toggle",
-    add: "cart/add",
-    incQty: "cart/increase/quantity",
-    decQty: "cart/decrease/quantity",
-    remove: "cart/remove",
-    clear: "cart/clear",
+    load: "local_cart/toggle",
+    toggle: "local_cart/toggle",
+    add: "local_cart/add",
+    incQty: "local_cart/increase/quantity",
+    decQty: "local_cart/decrease/quantity",
+    remove: "local_cart/remove",
+    clear: "local_cart/clear",
 };
 
 export const addToCart = (productId, title, product_country) => ({

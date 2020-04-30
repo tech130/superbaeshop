@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/user/user";
-import { loadCart } from "../../redux/user/cart";
+import { loadCart } from "../../redux/user/local_cart";
 import { getLocalUser } from "../../utils/getUser";
 
 const UserandCart = () => {
     const dispatch = useDispatch();
-    const { cart } = useSelector((state) => ({
-        cart: state.cart || [],
+    const { local_cart } = useSelector((state) => ({
+        local_cart: state.local_cart || [],
     }));
 
     useEffect(() => {
@@ -16,13 +16,13 @@ const UserandCart = () => {
     }, []);
 
     useEffect(() => {
-        saveCart(cart);
-    }, [cart]);
+        saveCart(local_cart);
+    }, [local_cart]);
 
     return null;
 };
 
-const CART_KEY = "space_and_beauty_cart";
+const CART_KEY = "space_and_beauty_local_cart";
 
 const saveCart = (value) => {
     try {

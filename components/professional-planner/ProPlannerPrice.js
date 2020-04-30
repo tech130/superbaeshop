@@ -3,7 +3,7 @@ import { CartButton } from "../styled/Button";
 import { H2 } from "../styled/Headings";
 import Txt from "../styled/Txt";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleCart } from "../../redux/user/cart";
+import { toggleCart } from "../../redux/user/local_cart";
 import { useProdCountry } from "../common/CountryLink";
 import AddToCartBtn from "../checkout/AddToCartBtn";
 
