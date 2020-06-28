@@ -2,13 +2,12 @@ import axios from "axios";
 
 const { CancelToken, create, isCancel } = axios;
 
+const baseURL = "https://spaceandbeauty.billioncart.in/";
+
 const apiInstance = create({
-    baseURL:
-        process.env.NODE_ENV === "production"
-            ? "https://spaceandbeauty.billioncart.in/"
-            : "https://spaceandbeauty.billioncart.in/"
+    baseURL,
 });
 
-export { CancelToken, isCancel };
+export { CancelToken, isCancel, baseURL };
 
 export default apiInstance;

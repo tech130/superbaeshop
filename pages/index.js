@@ -1,10 +1,11 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
 import { fetchMaster } from "../redux/master";
-import { fetchProduct } from "../redux/product/product";
 import ProPlanner from "../components/professional-planner/ProPlanner";
+import getToken from "../utils/getToken";
+import { updateProduct, fetchProduct } from "../redux/product/product";
 
-const Home = (props) => {
+const Home = () => {
     return (
         <Layout>
             <ProPlanner />
@@ -12,14 +13,21 @@ const Home = (props) => {
     );
 };
 
-Home.getInitialProps = async ({ store }) => {
-    await Promise.all([
-        store.dispatch(fetchProduct(1)),
-        store.dispatch(fetchMaster()),
-    ]);
-    return {
-        props: {},
-    };
+Home.getInitialProps = async (ctx) => {
+    await ctx.store.dispatch(fetchMaster());
+    const { token, Api } = await getToken(ctx);
+    if (token) {
+        try {
+            const res = await Api({
+                url: `products/1/`,
+            });
+            ctx.store.dispatch(updateProduct(res.data));
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        await ctx.store.dispatch(fetchProduct(1))
+    }
 };
 
 export default Home;

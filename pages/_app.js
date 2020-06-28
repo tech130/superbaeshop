@@ -10,8 +10,6 @@ import "../css/theme.css";
 import { BaseCSS } from "styled-bootstrap-grid";
 // import withReduxStore from "../helpers/with-redux-store";
 import withRedux from "next-redux-wrapper";
-import { updateUser } from "../redux/user/user";
-import { getLocalUser } from "../utils/getUser";
 import makeStore from "../redux/store";
 import UserandCart from "../components/common/UserandCart";
 
@@ -23,10 +21,6 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
-    useEffect(() => {
-        store.dispatch(updateUser(getLocalUser() || {}));
-    }, []);
-
     return (
         <Provider store={store}>
             <Head>

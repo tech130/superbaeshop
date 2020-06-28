@@ -1,7 +1,6 @@
 import { compose, applyMiddleware, createStore } from "redux";
 import reducer from "./reducers";
 import ReduxThunk from "redux-thunk";
-import userMiddleWare from "./user/userMiddleWare";
 
 // CREATING INITIAL STORE
 export default (initialState) => {
@@ -15,7 +14,7 @@ export default (initialState) => {
             : compose;
 
     const enhancer = composeEnhancers(
-        applyMiddleware(ReduxThunk, userMiddleWare)
+        applyMiddleware(ReduxThunk)
         // other store enhancers if any
     );
 

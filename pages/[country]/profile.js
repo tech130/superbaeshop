@@ -6,17 +6,22 @@ import ProfileDetails from "../../components/profile/ProfileDetails";
 import Wallet from "../../components/profile/Wallet";
 import { H6 } from "../../components/styled/Headings";
 import WalletItem from "../../components/profile/WalletItem";
-import { fetchMaster } from "../../redux/master";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProfile } from "../../redux/user/user";
+import { fetchMaster } from "../../redux/master";
+import getToken from "../../utils/getToken";
+import { useRouter } from "next/router";
 
 const Profile = () => {
+    const router = useRouter();
     const dispatch = useDispatch();
     const { token, isLoaded, ...restUser } = useSelector((state) => state.user);
 
     useEffect(() => {
         if (token) {
             dispatch(fetchProfile());
+        } else {
+            router.replace("/");
         }
     }, [token]);
 
@@ -46,11 +51,13 @@ const Profile = () => {
     );
 };
 
-Profile.getInitialProps = async ({ store }) => {
-    await Promise.all([store.dispatch(fetchMaster())]);
-    return {
-        props: {},
-    };
+Profile.getInitialProps = async (ctx) => {
+    await ctx.store.dispatch(fetchMaster());
+    const { token } = await getToken(ctx);
+    if (!token && ctx.res) {
+        ctx.res.writeHead(302, { Location: "/" });
+        ctx.res.end();
+    }
 };
 
 export default Profile;
