@@ -12,6 +12,7 @@ const HeroStyl = styled.section`
     padding: 40px 0px;
     background-image: url("/images/lets-goal-2021/herobg.jpg");
     background-size: cover;
+    background-attachment: fixed;
 `;
 
 const ContStyl = styled(P)`
