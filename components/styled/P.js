@@ -1,14 +1,46 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const P = styled.p`
-    font-size: ${(props) => props.fontSize || "inherit"};
-    font-weight: ${(props) => props.weight || "inherit"};
-    color: ${(props) => props.color || "inherit"};
-    line-height: ${(props) => props.lineHeight || "inherit"};
-    text-decoration: ${(props) => props.textDecor || "none"};
-    padding: ${(props) => props.padding || "0px"};
-    margin: ${(props) => props.margin || "0px 0px 15px 0px"};
-    text-align: ${(props) => props.textAlign || "left"};
+    ${(props) =>
+        props.fontSize &&
+        css`
+            font-size: ${props.fontSize};
+        `};
+    ${(props) =>
+        props.weight &&
+        css`
+            font-weight: ${props.weight};
+        `};
+    ${(props) =>
+        props.color &&
+        css`
+            color: ${props.color};
+        `};
+    ${(props) =>
+        props.lineHeight &&
+        css`
+            line-height: ${props.lineHeight};
+        `};
+    ${(props) =>
+        props.textDecor &&
+        css`
+            text-decoration: ${props.textDecor};
+        `};
+    ${(props) =>
+        props.padding &&
+        css`
+            padding: ${props.padding};
+        `};
+    ${(props) =>
+        props.margin &&
+        css`
+            margin: ${props.margin};
+        `};
+    ${(props) =>
+        props.textAlign &&
+        css`
+            text-align: ${props.textAlign};
+        `};
 `;
 
 export default P;

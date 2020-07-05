@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Txt = styled.span`
-    font-size: ${(props) => props.fontSize || 'inherit'};
-    font-weight: ${(props) => props.weight || 'inherit'};
-    color: ${(props) => props.color || 'inherit'};
-    line-height: ${(props) => props.lineHeight || 'inherit'};
-    text-decoration: ${(props) => props.textDecor || 'none'};
-    padding: ${(props) => props.padding || "0px"};
-    margin: ${(props) => props.margin || "0px"};
+    ${(props) => props.fontSize && css`font-size: ${props.fontSize}`};
+    ${(props) => props.weight && css`font-weight: ${props.weight}`};
+    ${(props) => props.color && css`color: ${props.color}`};
+    ${(props) => props.lineHeight && css`line-height: ${props.lineHeight}`};
+    ${(props) => props.textDecor && css`text-decoration: ${props.textDecor}`};
+    ${(props) => props.padding && css`padding: ${props.padding}`};
+    ${(props) => props.margin && css`margin: ${props.margin}`};
 `;
 
-export default Txt
+export default Txt;
