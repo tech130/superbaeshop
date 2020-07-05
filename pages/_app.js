@@ -1,19 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Provider } from "react-redux";
 import Head from "next/head";
 import Router from "next/router";
 import NProgress from "nprogress";
-import "../css/nprogress.css";
-import "../css/font.css";
-import "../css/bootstrap-reboot.css";
-import "../css/theme.css";
 import { BaseCSS } from "styled-bootstrap-grid";
-// import withReduxStore from "../helpers/with-redux-store";
 import withRedux from "next-redux-wrapper";
 import makeStore from "../redux/store";
 import UserandCart from "../components/common/UserandCart";
+import GlobalStyle from "../components/styled/GlobalStyle";
 
-Router.events.on("routeChangeStart", (url) => {
+Router.events.on("routeChangeStart", () => {
     NProgress.start();
 });
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -30,8 +26,12 @@ function MyApp({ Component, pageProps, store }) {
                     name="viewport"
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+                <link
+                    href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css"
+                    rel="stylesheet"
+                />
             </Head>
+            <GlobalStyle />
             <UserandCart />
             <BaseCSS />
             <Component {...pageProps} />
