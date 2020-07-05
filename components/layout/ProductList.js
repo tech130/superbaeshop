@@ -1,6 +1,7 @@
 import React from "react";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
+import CountryLink from "../common/CountryLink";
 
 const ProdList = styled(Flex)`
     border-bottom: 1px solid #eaeaea;
@@ -27,19 +28,27 @@ const ProductList = () => {
     return (
         <ProdList justifyContent="center" alignItems="stretch">
             <ul>
-                <ProdItem title="Bundle" />
-                <ProdItem title="Let’s Goal 2021 Planner" />
-                <ProdItem title="The Ultimate Sticker Book" />
+                <ProdItem href="/bundle" title="Bundle" />
+                <ProdItem
+                    href="/lets-goal-2021"
+                    title="Let’s Goal 2021 Planner"
+                />
+                <ProdItem
+                    href="/the-ultimate-sticker-book"
+                    title="The Ultimate Sticker Book"
+                />
                 <ProdItem title="The Professional Planner" />
             </ul>
         </ProdList>
     );
 };
 
-const ProdItem = ({ title = "" }) => {
+const ProdItem = ({ title = "", href = "" }) => {
     return (
         <li>
-            <ProdLink>{title}</ProdLink>
+            <CountryLink href={href}>
+                <ProdLink>{title}</ProdLink>
+            </CountryLink>
         </li>
     );
 };

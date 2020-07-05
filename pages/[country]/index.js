@@ -5,7 +5,7 @@ import getToken from "../../utils/getToken";
 import { updateProduct, fetchProduct } from "../../redux/product/product";
 import ProPlanner from "../../components/professional-planner/ProPlanner";
 
-const Home = (props) => {
+const Home = () => {
     return (
         <Layout>
             <ProPlanner />

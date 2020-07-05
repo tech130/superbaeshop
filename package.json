@@ -25,5 +25,9 @@
     "universal-cookie": "^4.0.3",
     "use-media": "^1.4.0",
     "uuidv4": "^6.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-plugin-react": "^7.20.3"
   }
 }

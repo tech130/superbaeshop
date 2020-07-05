@@ -22,7 +22,7 @@ const MeetTxt = styled.h1`
     -webkit-text-fill-color: transparent;
 `;
 
-const ProPlanner = (props) => {
+const ProPlanner = () => {
     return (
         <>
             <Block padding="35px 0px">
