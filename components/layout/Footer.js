@@ -52,37 +52,36 @@ const Footer = () => {
                             <Block margin="0px 0px 8px">
                                 <Logo width="220px" />
                             </Block>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit
-                            </p>
+                            <Block margin="0px 0px 8px">
+                                <ul className="footer-list">
+                                    <li>
+                                        <a>Terms & Conditions</a>
+                                    </li>
+                                </ul>
+                            </Block>
                             <Flex
                                 className="social-icons"
                                 alignItems="center"
                                 flexWrap
                             >
-                                <a target="_blank" href="https://facebook.com">
+                                <a
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://facebook.com"
+                                >
                                     <img
                                         src="/images/icons/social-icons/facebook.svg"
                                         alt="Facebook logo"
                                     />
                                 </a>
-                                <a target="_blank" href="https://twitter.com">
-                                    <img
-                                        src="/images/icons/social-icons/twitter.svg"
-                                        alt="twitter logo"
-                                    />
-                                </a>
-                                <a target="_blank" href="https://instagram.com">
+                                <a
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://instagram.com"
+                                >
                                     <img
                                         src="/images/icons/social-icons/instagram.svg"
                                         alt="instagram logo"
-                                    />
-                                </a>
-                                <a target="_blank" href="https://linkedin.com">
-                                    <img
-                                        src="/images/icons/social-icons/linkedin.svg"
-                                        alt="linkedin logo"
                                     />
                                 </a>
                             </Flex>

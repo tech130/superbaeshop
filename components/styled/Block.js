@@ -1,15 +1,51 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Block = styled.div`
-    height: ${(props) => props.height || "auto"};
-    min-height: ${(props) => props.minHeight || "1px"};
-    width: ${(props) => props.width || "auto"};
-    padding: ${(props) => props.padding || "0px"};
-    margin: ${(props) => props.margin || "0px"};
-    text-align: ${(props) => props.textAlign || "left"};
-    border: ${(props) => props.border || "0px"};
-    border-radius: ${(props) => props.borderRadius || "0px"};
-    font-size: ${(props) => props.fontSize || "inherit"};
+    ${(props) =>
+        props.height &&
+        css`
+            height: ${props.height};
+        `};
+    ${(props) =>
+        props.width &&
+        css`
+            width: ${props.width};
+        `};
+    ${(props) =>
+        props.minHeight &&
+        css`
+            min-height: ${props.minHeight};
+        `};
+    ${(props) =>
+        props.padding &&
+        css`
+            padding: ${props.padding};
+        `};
+    ${(props) =>
+        props.margin &&
+        css`
+            margin: ${props.margin};
+        `};
+    ${(props) =>
+        props.textAlign &&
+        css`
+            text-align: ${props.textAlign};
+        `};
+    ${(props) =>
+        props.border &&
+        css`
+            border: ${props.border};
+        `};
+    ${(props) =>
+        props.borderRadius &&
+        css`
+            border-radius: ${props.borderRadius};
+        `};
+    ${(props) =>
+        props.fontSize &&
+        css`
+            font-size: ${props.fontSize};
+        `};
 `;
 
 export const RelativeBlock = styled(Block)`

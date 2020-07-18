@@ -9,30 +9,38 @@ const loginForm = {
     inputs: {
         username: {
             name: "username",
-            type: "text",
-            placeholder: "Enter your email / phone number",
+            type: "tel",
+            placeholder: "Enter your phone number",
+        },
+        email: {
+            name: "email",
+            type: "email",
+            placeholder: "Enter your email",
         },
     },
     uiProps: {
         username: {
-            label: "Your Registered Phone Number or Email ID",
+            label: "Your Phone Number",
+        },
+        email: {
+            label: "Email",
         },
     },
-    allIds: ["username"],
+    allIds: ["username", "email"],
 };
 
-const Login = ({ changeNumber, closeModal }) => {
+const SignUp = ({ changeNumber, closeModal }) => {
     return (
         <>
             <ModalHeader
-                title={"Sign In"}
-                desc="Get access to your Orders, Wishlist and Recommendations"
+                title={"Sign Up"}
+                desc="Create your account with us. We will make sure you and your data is safe."
                 closeModal={closeModal}
             />
             <Block padding="25px 15px 30px">
                 <FormCon
                     config={{
-                        url: "auth/login/",
+                        url: "auth/signup/",
                         method: "POST",
                     }}
                     form={loginForm}
@@ -53,4 +61,4 @@ const Login = ({ changeNumber, closeModal }) => {
     );
 };
 
-export default Login;
+export default SignUp;

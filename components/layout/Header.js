@@ -1,19 +1,15 @@
 import React from "react";
 import CartIcon from "../icons/CartIcon";
-import DotsMenu from "../icons/DotsMenu";
 import Logo from "./Logo";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
 import { Container } from "styled-bootstrap-grid";
 import Ul from "../styled/Ul";
-import HeaderDropdown from "./HeaderDropdown";
-import Button from "../styled/Button";
 import CountryList from "./CountryList";
 import SignInDrop from "./SignInDrop";
 import CountryLink from "../common/CountryLink";
 import LoginModalBtn from "./LoginModalBtn";
 import Txt from "../styled/Txt";
-import HamIcon from "../icons/HamIcon";
 
 const Hdr = styled.header`
     background: rgba(255, 255, 255, 0.67);
@@ -41,7 +37,23 @@ const Hdrli = styled.li`
     margin-left: 20px;
     display: flex;
     align-items: center;
+    position: relative;
 `;
+
+const CartCountStl = styled.span`
+    display: inline-block;
+    text-align: center;
+    border-radius: 16px;
+    line-height: 16px;
+    height: 16px;
+    min-width: 16px;
+    background: #000;
+    color: #fff;
+    font-size: 10px;
+    position: absolute;
+    top: 2px;
+    left: 12px;
+`
 
 const Header = () => {
     return (
@@ -57,6 +69,7 @@ const Header = () => {
                         <Logo width="220px" />
                         <Ul alignItems="stretch">
                             <Hdrli>
+                                <CartCountStl>3</CartCountStl>
                                 <CountryLink href="/checkout">
                                     <CartIcon size={20} />
                                 </CountryLink>
@@ -67,51 +80,10 @@ const Header = () => {
                             <Hdrli>
                                 <CountryList />
                             </Hdrli>
-                            <Hdrli>
-                                <HeaderDropdown
-                                    Btn={({ onClick }) => (
-                                        <Button onClick={onClick}>
-                                            <DotsMenu size={20} />
-                                        </Button>
-                                    )}
-                                >
-                                    <ul>
-                                        <li>
-                                            <CountryLink href="/privacy-policy">
-                                                Privacy policy
-                                            </CountryLink>
-                                        </li>
-                                        <li>
-                                            <CountryLink href="/terms-and-conditions">
-                                                Terms and conditions
-                                            </CountryLink>
-                                        </li>
-                                        <li>
-                                            <CountryLink
-                                                href="/cancellations-and-return
-                                                    policy"
-                                            >
-                                                Cancellations and return policy
-                                            </CountryLink>
-                                        </li>
-                                        <li>
-                                            <CountryLink href="/data-privacy">
-                                                Data privacy
-                                            </CountryLink>
-                                        </li>
-                                        <li>
-                                            <CountryLink href="/contact-us">
-                                                Contact us
-                                            </CountryLink>
-                                        </li>
-                                    </ul>
-                                </HeaderDropdown>
-                            </Hdrli>
                         </Ul>
                     </Flex>
                 </Container>
             </Hdr>
-
             <HdrMobile>
                 <Container fluid>
                     <Flex
@@ -120,12 +92,7 @@ const Header = () => {
                         alignItems="center"
                         minHeight="50px"
                     >
-                        <Flex alignItems="center">
-                            <Button margin="0px 10px 0px 0px">
-                                <HamIcon size={24} />
-                            </Button>
-                            <Logo small width="45px" />
-                        </Flex>
+                        <Logo small width="45px" />
                         <Ul alignItems="stretch">
                             <Hdrli>
                                 <LoginModalBtn>

@@ -7,6 +7,8 @@ import P from "../styled/P";
 import useSubmit from "../../hooks/http/useSubmit";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../redux/user/user";
+import ModalHeader from "../modal/ModalHeader";
+import Block from "../styled/Block";
 
 const otpForm = {
     inputs: {
@@ -24,53 +26,59 @@ const otpForm = {
     allIds: ["otp"],
 };
 
-const Otpform = ({ changeNumber, username = "", closeModal }) => {
+const Otpform = ({ changeNumber, userData, closeModal }) => {
     const dispatch = useDispatch();
-
-    console.log(typeof closeModal);
 
     return (
         <>
-            <P textAlign="left" fontSize="14px">
-                An Otp has been set to your mobile number {username}. Wrong
-                mobile number ?{" "}
-                <LinkButton
-                    textDecor="underline"
-                    weight={500}
-                    onClick={() => changeNumber("")}
-                >
-                    Change mobile number
-                </LinkButton>
-            </P>
-            <FormCon
-                config={{
-                    url: "auth/verify-otp/",
-                    method: "POST",
-                }}
-                succFunc={(data) => {
-                    if (typeof closeModal === "function") {
-                        closeModal();
-                    }
-                    dispatch(updateUser(data));
-                }}
-                formatData={(data) => {
-                    return {
-                        ...data,
-                        username,
-                        client: Math.random() * 100000,
-                    };
-                }}
-                form={otpForm}
-                renderForm={({ fetching }) => (
+            <ModalHeader
+                title={"OTP"}
+                desc={
                     <>
-                        <FieldArray />
-                        <SubmitButton fetching={fetching}>Submit</SubmitButton>
+                        An Otp has been set to your Mobile number {userData && userData.username} & Email ID {userData && userData.email}.
+                        <LinkButton
+                            textDecor="underline"
+                            weight={500}
+                            onClick={() => changeNumber("")}
+                        >
+                            Change Login details
+                        </LinkButton>
                     </>
-                )}
+                }
             />
-            <P textAlign="center" fontSize="14px" margin="0px 0px 5px">
-                Didn't recieve OTP ? <ResendOtp username={username} />
-            </P>
+            <Block padding="25px 15px 30px">
+                <FormCon
+                    config={{
+                        url: "auth/verify-otp/",
+                        method: "POST",
+                    }}
+                    succFunc={(data) => {
+                        if (typeof closeModal === "function") {
+                            closeModal();
+                        }
+                        dispatch(updateUser(data));
+                    }}
+                    formatData={(data) => {
+                        return {
+                            ...data,
+                            username,
+                            client: Math.random() * 100000,
+                        };
+                    }}
+                    form={otpForm}
+                    renderForm={({ fetching }) => (
+                        <>
+                            <FieldArray />
+                            <SubmitButton fetching={fetching}>
+                                Submit
+                            </SubmitButton>
+                        </>
+                    )}
+                />
+                <P textAlign="center" fontSize="14px" margin="0px 0px 5px">
+                    Didn&apos;t recieve OTP ? <ResendOtp username={username} />
+                </P>
+            </Block>
         </>
     );
 };

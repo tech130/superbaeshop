@@ -4,7 +4,7 @@ import Block from "../styled/Block";
 import Button from "../styled/Button";
 import Login from "../auth/Login";
 import Otpform from "../auth/Otpform";
-import ModalHeader from "../modal/ModalHeader";
+import SignUp from "../auth/SignUp";
 
 const LoginModalBtn = ({ className, isSignUp, children, ...rest }) => {
     const [open, setOpen] = useState(false);
@@ -31,38 +31,33 @@ const LoginModalBtn = ({ className, isSignUp, children, ...rest }) => {
     );
 };
 
-const LoginModal = ({ isOpen, closeModal, isSignUp = false }) => {
+const LoginModal = ({ isOpen, closeModal, isSignUp }) => {
     return (
         <Modal isOpen={isOpen} overlayClick={closeModal} maxWidth="375px">
-            <div>
-                <ModalHeader
-                    closeModal={closeModal}
-                    title={isSignUp ? "Sign Up" : "Sign In"}
-                    desc="Get access to your Orders, Wishlist and Recommendations"
-                />
-                <LoginModalBody closeModal={closeModal} />
-            </div>
+            <LoginModalBody isSignUp={isSignUp} closeModal={closeModal} />
         </Modal>
     );
 };
 
-const LoginModalBody = ({ closeModal }) => {
-    const [phone, setPhone] = useState("");
+const LoginModalBody = ({ closeModal, isSignUp = false }) => {
+    const [userData, setUserData] = useState(null);
 
     const changeNumber = useCallback((val) => {
-        setPhone(val);
+        setUserData(val);
     }, []);
 
     return (
-        <Block padding="25px 15px 30px">
-            {phone ? (
+        <Block>
+            {userData ? (
                 <Otpform
-                    username={phone}
+                    userData={userData}
                     closeModal={closeModal}
                     changeNumber={changeNumber}
                 />
+            ) : isSignUp ? (
+                <SignUp closeModal={closeModal} changeNumber={changeNumber} />
             ) : (
-                <Login changeNumber={changeNumber} />
+                <Login closeModal={closeModal} changeNumber={changeNumber} />
             )}
         </Block>
     );
