@@ -31,7 +31,7 @@ const CountrySelect = ({ activeCon = {}, countries = [] }) => {
                         alt={`${activeCon.title} flag`}
                     />
                     <Block margin="0px 5px">
-                        <Txt weight={600}>{activeCon.code2}</Txt>
+                        <Txt weight={600}>{activeCon.code}</Txt>
                     </Block>
                     <span>
                         <svg
@@ -60,7 +60,7 @@ const CountrySelect = ({ activeCon = {}, countries = [] }) => {
     );
 };
 
-const CountryItem = ({ title = "", image, code2, currency_type }) => {
+const CountryItem = ({ title = "", image, code2, code, currency_type }) => {
     return (
         <li>
             <Link href={`/[country]`} as={`/${code2.toLowerCase()}`}>
@@ -73,7 +73,7 @@ const CountryItem = ({ title = "", image, code2, currency_type }) => {
                         alt={`${title} flag`}
                     />
                     <span>
-                        {code2} - {currency_type}
+                        {code} - {currency_type}
                     </span>
                 </a>
             </Link>
