@@ -11,7 +11,7 @@ const loginForm = {
         username: {
             name: "username",
             type: "text",
-            placeholder: "Enter your email / phone number",
+            placeholder: "Phone number or email",
         },
     },
     uiProps: {
@@ -27,7 +27,7 @@ const Login = ({ changeNumber, closeModal }) => {
         <>
             <ModalHeader
                 title={"Sign In"}
-                desc="Get access to your Orders, Wishlist and Recommendations"
+                desc="Get access to your Account, Orders, and Profile."
                 closeModal={closeModal}
             />
             <Block padding="25px 15px 30px">

@@ -91,8 +91,8 @@ const CountrySelect = ({
 const CountryList = ({ onClick }) => {
     return (
         <ConList>
-            {countryList.map((con) => (
-                <li onClick={() => onClick(con.countryCode)}>
+            {countryList.map((con, idx) => (
+                <li onClick={() => onClick(con.countryCode)} key={idx}>
                     <TxtElipsis>
                         <FlagIcon
                             margin="0px 10px 0px 0px"

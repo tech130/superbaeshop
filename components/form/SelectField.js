@@ -3,15 +3,16 @@ import Input, { NumberInput } from "./Input";
 import TextArea from "./TextArea";
 import Checkbox from "./Checkbox";
 import CountrySelect from "./CountrySelect";
+import SelectIp from "./SelectIp";
 // import Select from "./Select";
 
-const SelectField = props => {
+const SelectField = (props) => {
     const Comp = selectField(props.type);
 
     return Comp ? <Comp {...props} /> : null;
 };
 
-const selectField = (type = "text") => {
+const selectField = (type) => {
     switch (type) {
         case "text":
         case "email":
@@ -28,6 +29,8 @@ const selectField = (type = "text") => {
             return Checkbox;
         case "countrySelect":
             return CountrySelect;
+        case "select":
+            return SelectIp;
         default:
             return () => null;
     }

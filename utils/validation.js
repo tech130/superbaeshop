@@ -43,8 +43,14 @@ const typeValid = (type, value) => {
     }
 };
 
-export const getValue = (type, value) => {
-    switch (type) {
+export const getValue = (ip, value) => {
+    switch (ip.type) {
+        case "select":
+            return value
+                ? ip.isMulti
+                    ? value.map((value) => value.value)
+                    : value.value
+                : null;
         default:
             return value;
     }
@@ -74,7 +80,7 @@ export const validateForm = (state, dispatch) => {
             isErr = true;
             dispatch(id, err);
         } else if (!isOptional || (isOptional && value)) {
-            data[id] = getValue(ip.type, value);
+            data[id] = getValue(ip, value);
         }
     });
     return { isErr, data };

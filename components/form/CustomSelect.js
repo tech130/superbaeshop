@@ -4,7 +4,6 @@ import useDropDown from "../../hooks/layout/useDropDown";
 import Flex from "../styled/Flex";
 import Txt from "../styled/Txt";
 import CaretDown from "../icons/CaretDown";
-import Button from "../styled/Button";
 
 export const SelectCon = styled.div`
     position: relative;
@@ -25,6 +24,12 @@ export const OptionsCon = styled.div`
     border: 1px solid #ced4da;
     max-height: 175px;
     overflow-y: scroll;
+
+    li {
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+    }
 `;
 
 export const TxtElipsis = styled.div`
@@ -32,19 +37,6 @@ export const TxtElipsis = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
 `;
-
-export const OptionButton = styled(Button)`
-    justify-content: start;
-    padding: 5px 10px;
-`;
-
-const Option = ({ name = "", onClick = null }) => {
-    return (
-        <OptionButton onClick={onClick}>
-            <TxtElipsis>{name}</TxtElipsis>
-        </OptionButton>
-    );
-};
 
 const ValueCon = ({ name = "" }) => {
     return <Txt>{name}</Txt>;
@@ -55,9 +47,8 @@ const CustomSelect = ({
     setValue = null,
     options = [],
     valueKey = "id",
-    nameKey = "name",
+    nameKey = "dial_code",
     placeholder,
-    RenderOption = Option,
     RenderValue = ValueCon,
 }) => {
     const [el, open, toggle] = useDropDown();
@@ -88,17 +79,17 @@ const CustomSelect = ({
             {open && (
                 <OptionsCon>
                     {options.map((option, idx) => (
-                        <RenderOption
+                        <li
+                            key={idx}
                             onClick={() => {
-                                setValue(option[valueKey]);
+                                setValue(option);
                                 toggle();
                             }}
-                            options={options}
-                            option={option}
-                            value={value}
-                            idx={idx}
-                            key={idx}
-                        />
+                        >
+                            <TxtElipsis>
+                                <span>{option[nameKey]}</span>
+                            </TxtElipsis>
+                        </li>
                     ))}
                 </OptionsCon>
             )}

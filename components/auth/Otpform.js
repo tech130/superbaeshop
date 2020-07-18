@@ -3,7 +3,6 @@ import FormCon from "../form/FormCon";
 import FieldArray from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
 import { LinkButton } from "../styled/Button";
-import P from "../styled/P";
 import useSubmit from "../../hooks/http/useSubmit";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../redux/user/user";
@@ -37,6 +36,7 @@ const Otpform = ({ userData = {}, closeModal }) => {
                 desc={`Otp has been sent to ${username || ""} ${
                     username && email ? `&` : ""
                 } ${email || ""}`}
+                closeModal={closeModal}
             />
             <Block padding="25px 15px 30px">
                 <FormCon
