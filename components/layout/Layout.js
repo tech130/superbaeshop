@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import styled, { keyframes } from "styled-components";
 import ProductList from "./ProductList";
 import Subscribe from "./Subscribe";
+import TopRollText from "./TopRollText";
 
 const marquee = keyframes`
   from {
@@ -38,12 +39,10 @@ const TopBar = styled.div`
     }
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, productId }) => {
     return (
         <>
-            <TopBar>
-                <div>Organize your Life on the Go!</div>
-            </TopBar>
+            <TopRollText productId={productId} />
             <Header />
             <ProductList />
             {children}

@@ -4,9 +4,11 @@ import ProPlanner from "../../components/professional-planner/ProPlanner";
 import { common } from "../../redux/handlePages";
 import { fetchProduct } from "../../redux/product/product";
 
+const productId = 1;
+
 const Home = () => {
     return (
-        <Layout>
+        <Layout productId={productId}>
             <ProPlanner />
         </Layout>
     );
@@ -14,7 +16,7 @@ const Home = () => {
 
 Home.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct("the-professional-planner"));
+    await ctx.store.dispatch(fetchProduct(productId));
 };
 
 export default Home;

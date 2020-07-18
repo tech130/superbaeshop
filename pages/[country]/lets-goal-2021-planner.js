@@ -9,9 +9,11 @@ import WalkThrough from "../../components/lets-goal-2021/WalkThrough";
 import { common } from "../../redux/handlePages";
 import { fetchProduct } from "../../redux/product/product";
 
+const productId = 2;
+
 const LetsGoal2021 = () => {
     return (
-        <Layout>
+        <Layout productId={productId}>
             <HeroSection />
             <WhatsInside />
             <Img
@@ -28,7 +30,7 @@ const LetsGoal2021 = () => {
 
 LetsGoal2021.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct("lets-goal-2021-planner"));
+    await ctx.store.dispatch(fetchProduct(productId));
 };
 
 export default LetsGoal2021;

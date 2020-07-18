@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useSelector } from "react-redux";
@@ -38,18 +38,18 @@ export const useActiveCountry = () => {
 export const useProdCountry = (product_country) => {
     const { activeCountry } = useActiveCountry();
 
-    let productCountry = null;
-
-    if (product_country && activeCountry.code) {
-        const country_price = product_country.filter(
-            (item) => item.country.code === activeCountry.code
-        );
-        if (country_price.length > 0) {
-            productCountry = country_price[0];
+    return useMemo(() => {
+        let productCountry = null;
+        if (product_country && activeCountry.code2) {
+            const country_price = product_country.filter(
+                (item) => item.country.code2 === activeCountry.code2
+            );
+            if (country_price.length > 0) {
+                productCountry = country_price[0];
+            }
         }
-    }
-
-    return productCountry;
+        return productCountry;
+    }, [product_country, activeCountry]);
 };
 
 export default CountryLink;

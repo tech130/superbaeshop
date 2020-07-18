@@ -54,7 +54,8 @@ export const updateProduct = (payload) => {
 
 export const fetchProduct = (id) => {
     return (dispatch, getState) => {
-        if (!getState().product[id]) {
+        const product = getState().product[id] || {};
+        if (!product.id && !product.country) {
             return dispatch(
                 fetchApi(
                     { url: urls.productDetail(id) },

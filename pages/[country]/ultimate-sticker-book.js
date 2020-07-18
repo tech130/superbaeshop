@@ -3,13 +3,15 @@ import Layout from "../../components/layout/Layout";
 import { common } from "../../redux/handlePages";
 import { fetchProduct } from "../../redux/product/product";
 
+const productId = 4;
+
 const UltimateSticker = () => {
-    return <Layout></Layout>;
+    return <Layout productId={productId}></Layout>;
 };
 
 UltimateSticker.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct("ultimate-sticker-book"));
+    await ctx.store.dispatch(fetchProduct(productId));
 };
 
 export default UltimateSticker;
