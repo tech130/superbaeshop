@@ -1,6 +1,7 @@
-import {useEffect, useState, useRef} from 'react';
-import apiInstance, {CancelToken, isCancel} from '../../apiInstance';
-import ajaxerrmsg from '../../utils/ajaxerrmsg';
+import { useEffect, useState, useRef } from "react";
+import apiInstance, { CancelToken, isCancel } from "../../apiInstance";
+import ajaxerrmsg from "../../utils/ajaxerrmsg";
+import { toast } from "react-toastify";
 
 const useSubmit = (succFunc = null, errFunc = null) => {
     const succHandler = useRef(null);
@@ -24,13 +25,13 @@ const useSubmit = (succFunc = null, errFunc = null) => {
 
         const fetchData = async () => {
             if (cancel) {
-                cancel('cancelled by user');
+                cancel("cancelled by user");
             }
             setfetching(true);
             try {
                 const res = await apiInstance({
                     ...config.http,
-                    cancelToken: new CancelToken(c => (cancel = c)),
+                    cancelToken: new CancelToken((c) => (cancel = c)),
                 });
                 if (!didCancel) {
                     setfetching(false);
@@ -42,10 +43,19 @@ const useSubmit = (succFunc = null, errFunc = null) => {
                 if (!isCancel(err)) {
                     if (!didCancel) {
                         setfetching(false);
+                        const errMsg = err.response
+                            ? ajaxerrmsg(err.response)
+                            : "Something went wrong";
+                        toast.error(errMsg || "Something went wrong", {
+                            position: "bottom-center",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
                         if (errHandler.current) {
-                            const errMsg = err.response
-                                ? ajaxerrmsg(err.response)
-                                : 'Something went wrong';
                             errHandler.current(errMsg);
                         }
                     }
@@ -60,14 +70,14 @@ const useSubmit = (succFunc = null, errFunc = null) => {
         return () => {
             didCancel = true;
             if (cancel) {
-                cancel('cancelled by user');
+                cancel("cancelled by user");
             }
         };
     }, [config]);
 
     return [
         fetching,
-        http => {
+        (http) => {
             setConf({
                 http,
                 timeStamp: Date.now(),

@@ -11,7 +11,7 @@ const Overlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 99;
     background: rgba(0, 0, 0, 0.8);
     overflow-y: auto;
 `;

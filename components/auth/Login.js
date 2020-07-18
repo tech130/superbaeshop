@@ -4,6 +4,7 @@ import FieldArray from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
 import ModalHeader from "../modal/ModalHeader";
 import Block from "../styled/Block";
+import { phoneValid, emailValid } from "../../utils/validation";
 
 const loginForm = {
     inputs: {
@@ -38,6 +39,18 @@ const Login = ({ changeNumber, closeModal }) => {
                     form={loginForm}
                     succFunc={(data, formState) => {
                         changeNumber(formState.values);
+                    }}
+                    customValid={({data, dispatchErr}) => {
+                        const phneErr = phoneValid(data.username);
+                        const emailErr = emailValid(data.username);
+                        if (phneErr && emailErr) {
+                            dispatchErr(
+                                "username",
+                                "Must be valid email or phone number"
+                            );
+                            return true;
+                        }
+                        return false;
                     }}
                     renderForm={({ fetching }) => (
                         <>

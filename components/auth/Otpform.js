@@ -26,25 +26,17 @@ const otpForm = {
     allIds: ["otp"],
 };
 
-const Otpform = ({ changeNumber, userData, closeModal }) => {
+const Otpform = ({ userData = {}, closeModal }) => {
     const dispatch = useDispatch();
+    const { username, email } = userData || {};
 
     return (
         <>
             <ModalHeader
                 title={"OTP"}
-                desc={
-                    <>
-                        An Otp has been set to your Mobile number {userData && userData.username} & Email ID {userData && userData.email}.
-                        <LinkButton
-                            textDecor="underline"
-                            weight={500}
-                            onClick={() => changeNumber("")}
-                        >
-                            Change Login details
-                        </LinkButton>
-                    </>
-                }
+                desc={`Otp has been sent to ${username || ""} ${
+                    username && email ? `&` : ""
+                } ${email || ""}`}
             />
             <Block padding="25px 15px 30px">
                 <FormCon
@@ -75,9 +67,6 @@ const Otpform = ({ changeNumber, userData, closeModal }) => {
                         </>
                     )}
                 />
-                <P textAlign="center" fontSize="14px" margin="0px 0px 5px">
-                    Didn&apos;t recieve OTP ? <ResendOtp username={username} />
-                </P>
             </Block>
         </>
     );

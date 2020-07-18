@@ -62,12 +62,14 @@ export const NumberInput = ({
     return (
         <InputStyle
             type="tel"
+            name={name}
             className={className}
             onKeyPress={onKeyPress}
             value={value}
             onChange={e => {
                 if (setValue) {
-                    setValue(e.target.value);
+                    setValue(e.target.value.replace(new RegExp("[^0-9]", "g"), ""));
+                    
                 }
             }}
             {...rest}

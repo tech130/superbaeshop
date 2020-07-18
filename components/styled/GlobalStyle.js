@@ -29,6 +29,16 @@ body {
   background-color: #fff;
 }
 
+a {
+  color: #212529;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #212529;
+}
+
 #nprogress {
     pointer-events: none;
 }

@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import styled from "styled-components";
 import ProductList from "./ProductList";
+import Subscribe from "./Subscribe";
 
 const TopBar = styled.div`
     background: #000;
@@ -21,6 +22,7 @@ const Layout = ({ children }) => {
             <Header />
             <ProductList />
             {children}
+            <Subscribe />
             <Footer />
         </>
     );

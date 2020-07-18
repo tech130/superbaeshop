@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Container, Col, Row } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
+import CountryLink from "../common/CountryLink";
 
 const FooterCon = styled.footer`
     border-top: 4px solid #f5f5f5;
@@ -52,10 +53,17 @@ const Footer = () => {
                             <Block margin="0px 0px 8px">
                                 <Logo width="220px" />
                             </Block>
-                            <Block margin="0px 0px 8px">
+                            <Block margin="0px 0px 15px">
                                 <ul className="footer-list">
                                     <li>
-                                        <a>Terms & Conditions</a>
+                                        <a href="hey@spaceandbeauty.com">
+                                            hey@spaceandbeauty.com
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <CountryLink href="/terms">
+                                            Terms & Conditions
+                                        </CountryLink>
                                     </li>
                                 </ul>
                             </Block>

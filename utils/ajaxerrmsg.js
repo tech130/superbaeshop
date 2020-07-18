@@ -2,9 +2,9 @@ function extractError(obj = {}) {
     const errors = [];
     Object.keys(obj).forEach((key) => {
         if (key === "non_field_errors") {
-            errors.concat(obj.non_field_errors);
+            errors.push(obj.non_field_errors.toString());
         } else if (Array.isArray(obj[key])) {
-            errors.concat(
+            errors.push(
                 obj[key].map((x) =>
                     typeof x === "string" ? x.replace("This", key) : ""
                 )
@@ -18,7 +18,7 @@ function extractError(obj = {}) {
 function ajaxerrmsg(res = {}) {
     switch (res.status) {
         case 400:
-            return extractError(res);
+            return extractError(res.data || {});
         case 405:
             return "Method not allowed";
         case 401:

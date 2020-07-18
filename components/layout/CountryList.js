@@ -31,7 +31,7 @@ const CountrySelect = ({ activeCon = {}, countries = [] }) => {
                         alt={`${activeCon.title} flag`}
                     />
                     <Block margin="0px 5px">
-                        <Txt weight={600}>{activeCon.title}</Txt>
+                        <Txt weight={600}>{activeCon.code}</Txt>
                     </Block>
                     <span>
                         <svg
@@ -73,7 +73,7 @@ const CountryItem = ({ title = "", image, code, currency_type }) => {
                         alt={`${title} flag`}
                     />
                     <span>
-                        {title} - {currency_type}
+                        {code} - {currency_type}
                     </span>
                 </a>
             </Link>

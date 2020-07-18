@@ -8,8 +8,10 @@ import withRedux from "next-redux-wrapper";
 import makeStore from "../redux/store";
 import UserandCart from "../components/common/UserandCart";
 import GlobalStyle from "../components/styled/GlobalStyle";
+import { ToastContainer } from "react-toastify";
 
 import "../css/font.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
@@ -37,6 +39,7 @@ function MyApp({ Component, pageProps, store }) {
             <UserandCart />
             <BaseCSS />
             <Component {...pageProps} />
+            <ToastContainer />
         </Provider>
     );
 }
