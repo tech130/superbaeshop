@@ -2,6 +2,7 @@ import React from "react";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
 import CountryLink from "../common/CountryLink";
+import { useSelector } from "react-redux";
 
 const ProdList = styled(Flex)`
     border-bottom: 1px solid #eaeaea;
@@ -25,30 +26,33 @@ const ProdList = styled(Flex)`
 `;
 
 const ProductList = () => {
+    const state = useSelector((state) => state.headerProducts);
+
     return (
         <ProdList justifyContent="center" alignItems="stretch">
             <ul>
-                <ProdItem href="/bundle" title="Bundle" />
-                <ProdItem
-                    href="/lets-goal-2021"
-                    title="Let’s Goal 2021 Planner"
-                />
-                <ProdItem
-                    href="/the-ultimate-sticker-book"
-                    title="The Ultimate Sticker Book"
-                />
-                <ProdItem title="The Professional Planner" />
+                {state.map((id) => (
+                    <ProdItem id={id} key={id} />
+                ))}
             </ul>
         </ProdList>
     );
 };
 
-const ProdItem = ({ title = "", href = "" }) => {
-    return (
-        <li>
-            <CountryLink href={href}>{title}</CountryLink>
-        </li>
-    );
+const ProdItem = ({ id }) => {
+    const product = useSelector((state) => state.product[id] || {});
+
+    if (product.slug) {
+        return (
+            <li>
+                <CountryLink href={`/${product.slug}`}>
+                    {product.title}
+                </CountryLink>
+            </li>
+        );
+    }
+
+    return null;
 };
 
 export default ProductList;

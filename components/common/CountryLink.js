@@ -26,7 +26,7 @@ export const useActiveCountry = () => {
     const countries = Array.isArray(data.countries) ? data.countries : [];
 
     const activeCountry = countries.filter(
-        (con) => con.code.toLowerCase() === country
+        (con) => con.code2.toLowerCase() === country
     );
 
     return {

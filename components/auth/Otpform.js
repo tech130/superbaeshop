@@ -2,12 +2,11 @@ import React from "react";
 import FormCon from "../form/FormCon";
 import FieldArray from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
-import { LinkButton } from "../styled/Button";
-import useSubmit from "../../hooks/http/useSubmit";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../redux/user/user";
 import ModalHeader from "../modal/ModalHeader";
 import Block from "../styled/Block";
+import { setTokenOnBrowser } from "../../utils/handleToken";
 
 const otpForm = {
     inputs: {
@@ -48,6 +47,7 @@ const Otpform = ({ userData = {}, closeModal }) => {
                         if (typeof closeModal === "function") {
                             closeModal();
                         }
+                        setTokenOnBrowser(data.token);
                         dispatch(updateUser(data));
                     }}
                     formatData={(data) => {
@@ -72,28 +72,28 @@ const Otpform = ({ userData = {}, closeModal }) => {
     );
 };
 
-const ResendOtp = ({ username = "" }) => {
-    const [fetching, submit] = useSubmit();
+// const ResendOtp = ({ username = "" }) => {
+//     const [fetching, submit] = useSubmit();
 
-    const onClick = () => {
-        if (username) {
-            submit({
-                url: "auth/resend-otp/",
-                method: "POST",
-            });
-        }
-    };
+//     const onClick = () => {
+//         if (username) {
+//             submit({
+//                 url: "auth/resend-otp/",
+//                 method: "POST",
+//             });
+//         }
+//     };
 
-    return (
-        <LinkButton
-            onClick={onClick}
-            disabled={fetching}
-            textDecor="underline"
-            weight={500}
-        >
-            {fetching ? "Resending..." : "Resend Otp"}
-        </LinkButton>
-    );
-};
+//     return (
+//         <LinkButton
+//             onClick={onClick}
+//             disabled={fetching}
+//             textDecor="underline"
+//             weight={500}
+//         >
+//             {fetching ? "Resending..." : "Resend Otp"}
+//         </LinkButton>
+//     );
+// };
 
 export default Otpform;

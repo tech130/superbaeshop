@@ -6,6 +6,8 @@ import Img from "../../components/styled/Img";
 import FreeInclusions from "../../components/lets-goal-2021/FreeInclusions";
 import PagesSlider from "../../components/lets-goal-2021/PagesSlider";
 import WalkThrough from "../../components/lets-goal-2021/WalkThrough";
+import { common } from "../../redux/handlePages";
+import { fetchProduct } from "../../redux/product/product";
 
 const LetsGoal2021 = () => {
     return (
@@ -22,6 +24,11 @@ const LetsGoal2021 = () => {
             <WalkThrough />
         </Layout>
     );
+};
+
+LetsGoal2021.getInitialProps = async (ctx) => {
+    await common(ctx);
+    await ctx.store.dispatch(fetchProduct("lets-goal-2021-planner"));
 };
 
 export default LetsGoal2021;

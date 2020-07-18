@@ -17,6 +17,8 @@ const HeaderDrop = styled.div`
     width: max-content;
     max-width: 230px;
     background: #fff;
+    max-height: 300px;
+    overflow-y: auto;
 
     ul {
         list-style: none;

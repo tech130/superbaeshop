@@ -1,9 +1,11 @@
-import { useEffect, useState, useRef } from "react";
-import apiInstance, { CancelToken, isCancel } from "../../apiInstance";
+import { useEffect, useState, useRef, useCallback } from "react";
 import ajaxerrmsg from "../../utils/ajaxerrmsg";
 import { toast } from "react-toastify";
+import clientApi, { CancelToken, isCancel } from "../../apiService/clientApi";
+import useUser from "../redux/user/useUser";
 
 const useSubmit = (succFunc = null, errFunc = null) => {
+    const { token } = useUser();
     const succHandler = useRef(null);
     const errHandler = useRef(null);
 
@@ -29,7 +31,7 @@ const useSubmit = (succFunc = null, errFunc = null) => {
             }
             setfetching(true);
             try {
-                const res = await apiInstance({
+                const res = await clientApi({
                     ...config.http,
                     cancelToken: new CancelToken((c) => (cancel = c)),
                 });
@@ -75,15 +77,26 @@ const useSubmit = (succFunc = null, errFunc = null) => {
         };
     }, [config]);
 
-    return [
-        fetching,
-        (http) => {
+    const submit = useCallback(
+        (config) => {
+            if (!config) {
+                return;
+            }
+            if (token) {
+                config.headers = {
+                    ...(config.headers || {}),
+                    Authorization: `Token ${token}`,
+                };
+            }
             setConf({
-                http,
+                http: config,
                 timeStamp: Date.now(),
             });
         },
-    ];
+        [token]
+    );
+
+    return [fetching, submit];
 };
 
 export default useSubmit;

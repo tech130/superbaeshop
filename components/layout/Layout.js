@@ -1,23 +1,48 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import ProductList from "./ProductList";
 import Subscribe from "./Subscribe";
 
+const marquee = keyframes`
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+`;
+
 const TopBar = styled.div`
     background: #000;
-    padding: 8px 20px;
-    font-size: 13px;
     text-align: center;
     color: #fff;
+    position: relative;
+    overflow: hidden;
+    height: 35px;
+
+    div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate3d(100%, 0, 0);
+        overflow: hidden;
+        animation: ${marquee} 30s linear infinite;
+        font-size: 14px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 `;
 
 const Layout = ({ children }) => {
     return (
         <>
             <TopBar>
-                <div className="container">Organize your Life on the Go!</div>
+                <div>Organize your Life on the Go!</div>
             </TopBar>
             <Header />
             <ProductList />

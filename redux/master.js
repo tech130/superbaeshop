@@ -1,4 +1,5 @@
 import { fetchApi } from "./apiData";
+import urls from "../apiService/urls";
 
 export const masterTyps = {
     update: "master/update",
@@ -18,7 +19,9 @@ export const clearMaster = () => ({
 export const fetchMaster = () => {
     return (dispatch, getState) => {
         if (!getState().master.countries) {
-            return dispatch(fetchApi("master-values/", "master", updateMaster));
+            return dispatch(
+                fetchApi({ url: urls.master }, "master", updateMaster)
+            );
         }
         return Promise.resolve();
     };

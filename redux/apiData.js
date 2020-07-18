@@ -1,4 +1,5 @@
 import apiInstance from "../apiInstance";
+import clientApi from "../apiService/clientApi";
 
 export const apiTyps = {
     fetching: "api/fetching",
@@ -57,12 +58,20 @@ const shouldFetch = (name, state) => {
 
 export const fetchApi = (config, name, handleRes) => {
     return (dispatch, getState) => {
+        const { token } = getState().user;
+        if (token) {
+            config.headers = {
+                ...(config.headers || {}),
+                Authorization: `Token ${token}`,
+            };
+        }
         if (shouldFetch(name, getState().apiData)) {
             dispatch({
                 type: apiTyps.fetching,
                 name,
             });
-            return apiInstance(config)
+
+            return clientApi(config)
                 .then((res) => {
                     if (typeof handleRes === "function") {
                         dispatch(handleRes(res.data));
@@ -73,6 +82,7 @@ export const fetchApi = (config, name, handleRes) => {
                     });
                 })
                 .catch((err) => {
+                    console.log(err);
                     // dispatch(handleHttpErr(err));
                     dispatch({
                         type: apiTyps.rejected,

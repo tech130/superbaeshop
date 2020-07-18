@@ -1,25 +1,18 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import Cookies from "universal-cookie";
-import apiInstance from "../../apiInstance";
-
-const cookies = new Cookies();
+import {
+    setTokenOnBrowser,
+    removeTokenOnBrowser,
+} from "../../utils/handleToken";
+import useUser from "../../hooks/redux/user/useUser";
 
 const UserandCart = () => {
-    const token = useSelector((state) => state.user.token);
+    const { token } = useUser();
 
     useEffect(() => {
         if (token) {
-            const date = new Date();
-            date.setTime(date.getTime() + 5184000000);
-            cookies.set("token", token, {
-                expires: date
-            });
-            apiInstance.defaults.headers.common.Authorization =
-                "Token " + token;
+            setTokenOnBrowser(token);
         } else {
-            cookies.remove("token");
-            delete apiInstance.defaults.headers.common.Authorization;
+            removeTokenOnBrowser();
         }
     }, [token]);
 

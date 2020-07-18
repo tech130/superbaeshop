@@ -5,6 +5,7 @@ import { Container, Col, Row } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
 import CountryLink from "../common/CountryLink";
+import { useSelector } from "react-redux";
 
 const FooterCon = styled.footer`
     border-top: 4px solid #f5f5f5;
@@ -99,18 +100,7 @@ const Footer = () => {
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Products</div>
                             <ul className="footer-list">
-                                <li>
-                                    <a>Bundle</a>
-                                </li>
-                                <li>
-                                    <a>Let’s Goal 2021 Planner</a>
-                                </li>
-                                <li>
-                                    <a>The Ultimate Sticker Book</a>
-                                </li>
-                                <li>
-                                    <a>The Professional Planner</a>
-                                </li>
+                                <FooterProducts />
                             </ul>
                         </Block>
                     </Col>
@@ -164,6 +154,27 @@ const Footer = () => {
             </div>
         </FooterCon>
     );
+};
+
+const FooterProducts = () => {
+    const state = useSelector((state) => state.headerProducts);
+    return state.map((id) => <FooterProductLink id={id} key={id} />);
+};
+
+const FooterProductLink = ({ id }) => {
+    const product = useSelector((state) => state.product[id] || {});
+
+    if (product.slug) {
+        return (
+            <li>
+                <CountryLink href={`/${product.slug}`}>
+                    {product.title}
+                </CountryLink>
+            </li>
+        );
+    }
+
+    return null;
 };
 
 export default Footer;
