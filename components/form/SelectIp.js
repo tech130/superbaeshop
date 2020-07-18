@@ -1,51 +1,56 @@
 import React from "react";
-import Select from "react-select";
+import Select, { components } from "react-select";
 
-const mapSelect = (data) =>
-    data.reduce((acc, cur) => {
-        return [
-            ...acc,
-            { value: cur.value || cur.id || "", label: cur.label || cur.title },
-        ];
-    }, []);
+const Option = (props) => {
+    return (
+        <components.Option {...props}>
+            {props.data.image ? (
+                <img
+                    width="18"
+                    height="13"
+                    style={{ marginRight: `10px` }}
+                    src={props.data.image}
+                />
+            ) : null}
+            {props.data.label}
+        </components.Option>
+    );
+};
 
-const mapGroup = (data, name) =>
-    data.reduce((acc, cur) => {
-        return [
-            ...acc,
-            {
-                label: cur.label || cur.title || "",
-                options: mapSelect(cur[name]),
-            },
-        ];
-    }, []);
-
-const mapData = (options, optgroup) => {
-    if (optgroup) {
-        return mapGroup(options, optgroup);
-    }
-    return mapSelect(options);
+const SingleValue = (props) => {
+    return (
+        <components.SingleValue {...props}>
+            {props.data.image ? (
+                <img
+                    width="18"
+                    height="13"
+                    style={{ marginRight: `10px` }}
+                    src={props.data.image}
+                />
+            ) : null}
+            {props.data.label}
+        </components.SingleValue>
+    );
 };
 
 const SelectIp = ({
     options = [],
-    optgroup = false,
     setValue = null,
-    defaultOptions = [],
     placeholder = "",
     ...ipProps
 }) => {
     return (
         <Select
+            {...ipProps}
+            components={{ Option, SingleValue }}
             placeholder={placeholder}
-            options={mapData([...options, ...defaultOptions], optgroup)}
+            options={options}
             classNamePrefix="react-select"
             onChange={(val) => {
                 if (typeof setValue === "function") {
                     setValue(val);
                 }
             }}
-            {...ipProps}
         />
     );
 };

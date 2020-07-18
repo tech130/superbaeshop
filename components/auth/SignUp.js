@@ -7,15 +7,16 @@ import Block from "../styled/Block";
 import { useActiveCountry } from "../common/CountryLink";
 import { setValue } from "../../hooks/form/formReducer";
 
-const signupForm = (countries = [], activeCountry) => ({
+const signupForm = (countries = []) => ({
     inputs: {
         country: {
             name: "country",
             type: "select",
             placeholder: "Select dial Code",
             options: countries.map((x) => ({
-                label: x.dial_code,
+                label: `+${x.dial_code} (${x.title})`,
                 value: x.id,
+                image: x.image,
             })),
         },
         username: {

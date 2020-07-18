@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import Flex from "../styled/Flex";
 import P from "../styled/P";
 import Input from "../form/Input";
-import Button from "../styled/Button";
 import SubmitButton from "../form/SubmitButton";
 
 const Subscribe = () => {
+    const [email, setEmail] = useState("");
+
     return (
         <Block padding="50px 0px 70px 0px">
             <Container>
@@ -30,14 +31,23 @@ const Subscribe = () => {
                         </P>
                     </Col>
                     <Col lg={4} md={6} lgOffset={4} mdOffset={3}>
-                        <Row>
-                            <Col noGutter col={9}>
-                                <Input placeholder="Enter your email" />
-                            </Col>
-                            <Col noGutter col={3}>
-                                <SubmitButton>Subscribe</SubmitButton>
-                            </Col>
-                        </Row>
+                        <form onSubmit={(e) => e.preventDefault()}>
+                            <Row>
+                                <Col noGutter col={9}>
+                                    <Input
+                                        type="email"
+                                        placeholder="Enter your email"
+                                        value={email}
+                                        setValue={(val) => setEmail(val)}
+                                    />
+                                </Col>
+                                <Col noGutter col={3}>
+                                    <SubmitButton disabled={!email}>
+                                        Subscribe
+                                    </SubmitButton>
+                                </Col>
+                            </Row>
+                        </form>
                     </Col>
                 </Row>
             </Container>
