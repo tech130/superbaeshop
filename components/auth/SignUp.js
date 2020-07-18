@@ -34,7 +34,7 @@ const SignUp = ({ changeNumber, closeModal }) => {
         <>
             <ModalHeader
                 title={"Sign Up"}
-                desc="Create your account with us. We will make sure you and your data is safe."
+                desc="Create your account with us. We will make sure you and your data is safe. "
                 closeModal={closeModal}
             />
             <Block padding="25px 15px 30px">
