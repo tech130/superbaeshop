@@ -12,6 +12,7 @@ export default function MyApp({ Component, pageProps }) {
                 <title>Space and Beauty</title>
                 <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+                <meta name="google-site-verification" content="pEYMGCIpxWCLypHxcXKh8xGrRQdVzWFRClgOUr9oR0w" />
             </Head>
             <Component {...pageProps} />
         </>
