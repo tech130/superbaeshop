@@ -7,13 +7,16 @@ import Block from "../styled/Block";
 import { useActiveCountry } from "../common/CountryLink";
 import { setValue } from "../../hooks/form/formReducer";
 
-const signupForm = (countries = []) => ({
+const signupForm = (countries = [], activeCountry) => ({
     inputs: {
         country: {
             name: "country",
             type: "select",
-            placeholder: "Select Country",
-            options: countries,
+            placeholder: "Select dial Code",
+            options: countries.map((x) => ({
+                label: x.dial_code,
+                value: x.id,
+            })),
         },
         username: {
             name: "username",
@@ -28,7 +31,7 @@ const signupForm = (countries = []) => ({
     },
     uiProps: {
         country: {
-            label: "Country",
+            label: "Dial Code",
         },
         username: {
             label: "Your Phone Number",
@@ -50,7 +53,6 @@ const SignUp = ({ changeNumber, closeModal }) => {
                 desc="Create your account with us. We will make sure you and your data is safe. "
                 closeModal={closeModal}
             />
-
             <Block padding="25px 15px 30px">
                 {countries.length > 1 && (
                     <FormCon
@@ -58,7 +60,7 @@ const SignUp = ({ changeNumber, closeModal }) => {
                             url: "auth/signup/",
                             method: "POST",
                         }}
-                        form={signupForm(countries)}
+                        form={signupForm(countries, activeCountry)}
                         succFunc={(data, formState) => {
                             changeNumber(formState.values);
                         }}
