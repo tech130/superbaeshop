@@ -9,6 +9,8 @@ import makeStore from "../redux/store";
 import UserandCart from "../components/common/UserandCart";
 import GlobalStyle from "../components/styled/GlobalStyle";
 
+import "../css/font.css";
+
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
 });

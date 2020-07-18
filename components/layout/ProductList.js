@@ -13,15 +13,15 @@ const ProdList = styled(Flex)`
         overflow-x: auto;
         white-space: nowrap;
     }
-`;
 
-const ProdLink = styled.a`
-    display: inline-block;
-    padding: 10px 25px;
-    color: #000;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
+    ul li a {
+        display: inline-block;
+        padding: 10px 25px;
+        color: #000;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+    }
 `;
 
 const ProductList = () => {
@@ -46,9 +46,7 @@ const ProductList = () => {
 const ProdItem = ({ title = "", href = "" }) => {
     return (
         <li>
-            <CountryLink href={href}>
-                <ProdLink>{title}</ProdLink>
-            </CountryLink>
+            <CountryLink href={href}>{title}</CountryLink>
         </li>
     );
 };
