@@ -8,7 +8,7 @@ const productId = 1;
 
 const Home = () => {
     return (
-        <Layout id={productId}>
+        <Layout productId={productId}>
             <ProPlanner />
         </Layout>
     );
