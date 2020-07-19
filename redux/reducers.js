@@ -5,8 +5,9 @@ import cart from "./user/cart";
 import product, { headerProducts } from "./product/product";
 import apiData from "./apiData";
 import master from "./master";
+import { LOG_OUT } from "../utils/constants";
 
-const reducer = combineReducers({
+const appReducer = combineReducers({
     user,
     apiData,
     master,
@@ -15,5 +16,13 @@ const reducer = combineReducers({
     cart,
     local_cart,
 });
+
+const reducer = (state, action) => {
+    if (action.type === LOG_OUT) {
+        state = undefined;
+    }
+
+    return appReducer(state, action);
+};
 
 export default reducer;

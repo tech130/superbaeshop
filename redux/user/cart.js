@@ -1,4 +1,9 @@
 import { userTyps } from "./user";
+import { fetchApi } from "../apiData";
+import urls from "../../apiService/urls";
+import { normalize } from "normalizr";
+import { addEntity } from "../addEntity";
+import { cartSchema } from "../product/schema";
 
 export const cartTyps = {
     load: "cart/load",
@@ -19,7 +24,14 @@ export default (state = [], action) => {
     }
 };
 
-export const loadCartList = (payload) => ({
-    type: cartTyps.load,
-    payload: Array.isArray(payload) ? payload : [],
-});
+// export const loadCartList = (payload) => {
+//     const { result, entities } = normalize(payload, cartSchema);
+//     const 
+//     return (dispatch) => {
+//         dispatch(addEntity())
+//     }
+// }
+
+export const fetchCart = () => {
+    return fetchApi({ urls: urls.cart })
+}

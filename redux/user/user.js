@@ -1,9 +1,14 @@
 import { fetchApi } from "../apiData";
+import { LOG_OUT } from "../../utils/constants";
 
 export const userTyps = {
     update: "user/update",
     clear: "user/clear",
 };
+
+export const logout = () => ({
+    type: LOG_OUT,
+});
 
 //user actions
 export const updateUser = (payload) => ({

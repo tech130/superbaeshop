@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 import Flex, { FlexItem } from "../styled/Flex";
 import Img from "../styled/Img";
@@ -18,9 +18,34 @@ const CartStyl = styled(Flex)`
     margin-bottom: 15px;
 `;
 
-export const LocalCartItem = ({
+export const LocalCartItem = ({ product = {}, quantity }) => {
+    const dispatch = useDispatch();
+    const onRemove = useCallback(() => dispatch(cartRemove(product.id)), [
+        product,
+    ]);
+
+    const onPlus = useCallback(() => dispatch(cartPlus(product.id)), [product]);
+    const onMinus = useCallback(() => dispatch(cartMinus(product.id)), [
+        product,
+    ]);
+
+    return (
+        <CartItem
+            product={product}
+            quantity={quantity}
+            onRemove={onRemove}
+            onPlus={onPlus}
+            onMinus={onMinus}
+        />
+    );
+};
+
+export const CartItem = ({
     product = {},
     quantity,
+    onRemove,
+    onMinus,
+    onPlus,
 }) => {
     return (
         <CartStyl alignItems="center">
@@ -38,9 +63,14 @@ export const LocalCartItem = ({
                     product_country={product.product_country}
                     quantity={quantity}
                 />
-                <CartQuantity quantity={quantity} productId={product.id} />
+                <CartQuantity
+                    quantity={quantity}
+                    productId={product.id}
+                    onPlus={onPlus}
+                    onMinus={onMinus}
+                />
             </FlexItem>
-            <CartRemoveBtn productId={product.id} />
+            <CartRemoveBtn productId={product.id} onClick={onRemove} />
         </CartStyl>
     );
 };
@@ -65,32 +95,23 @@ const CartQty = styled.div`
     font-size: 14px;
 `;
 
-const CartQuantity = ({ quantity, productId }) => {
-    const dispatch = useDispatch();
-
+const CartQuantity = ({ quantity, onMinus, onPlus }) => {
     return (
         <Flex alignItems="center">
-            <QtyBtn
-                className="btn cart-qty-btn"
-                onClick={() => dispatch(cartMinus(productId))}
-            >
+            <QtyBtn className="btn cart-qty-btn" onClick={onMinus}>
                 -
             </QtyBtn>
             <CartQty>{quantity}</CartQty>
-            <QtyBtn
-                className="btn cart-qty-btn"
-                onClick={() => dispatch(cartPlus(productId))}
-            >
+            <QtyBtn className="btn cart-qty-btn" onClick={onPlus}>
                 +
             </QtyBtn>
         </Flex>
     );
 };
 
-const CartRemoveBtn = ({ productId }) => {
-
+const CartRemoveBtn = ({ onClick }) => {
     return (
-        <IconButton onClick={() => dispatch(cartRemove(productId))}>
+        <IconButton onClick={onClick}>
             <ThrashIcon size={18} strokeWidth={1} />
         </IconButton>
     );
@@ -109,11 +130,11 @@ const CartPrice = ({ product_country, quantity = 0 }) => {
                     margin="0px 5px 0px 0px"
                 >
                     {productCountry.country.currency_type}
-                    {productCountry.original_price * quantity}
+                    {(productCountry.original_price || 0) * quantity}
                 </Txt>
                 <Txt weight={600} fontSize="16px">
                     {productCountry.country.currency_type}
-                    {productCountry.selling_price * quantity}
+                    {(productCountry.selling_price || 0) * quantity}
                 </Txt>
             </Block>
         );
