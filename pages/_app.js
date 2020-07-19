@@ -12,7 +12,7 @@ import { ToastContainer } from "react-toastify";
 
 import "../css/font.css";
 import "react-toastify/dist/ReactToastify.css";
-import UploadCartModal from "../components/auth/UploadcartModal";
+import UploadCartModal from "../components/auth/UploadCartModal";
 
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
