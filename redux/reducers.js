@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import user from "./user/user";
 import local_cart from "./user/local_cart";
-import cart from "./user/cart";
+import cart, { cartList } from "./user/cart";
 import product, { headerProducts } from "./product/product";
 import apiData from "./apiData";
 import master from "./master";
@@ -14,6 +14,7 @@ const appReducer = combineReducers({
     product,
     headerProducts,
     cart,
+    cartList,
     local_cart,
 });
 

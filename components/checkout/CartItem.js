@@ -10,13 +10,96 @@ import Txt from "../styled/Txt";
 import { useDispatch } from "react-redux";
 import { cartMinus, cartRemove, cartPlus } from "../../redux/user/local_cart";
 import { useProdCountry } from "../common/CountryLink";
+import useSubmit from "../../hooks/http/useSubmit";
+import urls from "../../apiService/urls";
+import Loader from "../form/Loader";
+import { loadCartList } from "../../redux/user/cart";
 
 const CartStyl = styled(Flex)`
     padding: 10px;
     border: solid 2px #f5f5f5;
     border-radius: 10px;
     margin-bottom: 15px;
+    position: relative;
 `;
+
+const CartLdr = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+    border-radius: 10px;
+`;
+
+const CartItem = ({
+    product = {},
+    quantity,
+    onRemove,
+    onPlus,
+    onMinus,
+    fetching = false,
+}) => {
+    const productCountry = useProdCountry(
+        product ? product.product_country : {}
+    );
+    const isAvailable =
+        productCountry &&
+        productCountry.country &&
+        productCountry.selling_price;
+
+    return (
+        <CartStyl alignItems="center">
+            {fetching && (
+                <CartLdr>
+                    <Loader size={30} />
+                </CartLdr>
+            )}
+            <Img
+                margin="0px 15px 0px 0px"
+                width="100px"
+                src={product.thumbnail_image}
+                alt=""
+            />
+            {isAvailable ? (
+                <>
+                    <FlexItem flexGrow={1} flexShrink={0}>
+                        <P margin="0px" weight={500} fontSize="16px">
+                            {product.title}
+                        </P>
+                        <CartPrice
+                            productCountry={productCountry}
+                            quantity={quantity}
+                        />
+                        <CartQuantity
+                            quantity={quantity}
+                            productId={product.id}
+                            onPlus={onPlus}
+                            onMinus={onMinus}
+                        />
+                    </FlexItem>
+                    <CartRemoveBtn productId={product.id} onClick={onRemove} />
+                </>
+            ) : (
+                <FlexItem flexGrow={1} flexShrink={0}>
+                    <P margin="0px" weight={500} fontSize="16px">
+                        {product.title}
+                    </P>
+                    <Block margin="0px 0px 10px 0px">
+                        <Txt weight={300} color="red" fontSize="14px">
+                            Product unavailable for this country
+                        </Txt>
+                    </Block>
+                </FlexItem>
+            )}
+        </CartStyl>
+    );
+};
 
 export const LocalCartItem = ({ product = {}, quantity }) => {
     const dispatch = useDispatch();
@@ -34,44 +117,59 @@ export const LocalCartItem = ({ product = {}, quantity }) => {
             product={product}
             quantity={quantity}
             onRemove={onRemove}
-            onPlus={onPlus}
             onMinus={onMinus}
+            onPlus={onPlus}
         />
     );
 };
 
-export const CartItem = ({
-    product = {},
-    quantity,
-    onRemove,
-    onMinus,
-    onPlus,
-}) => {
+export const MyCartItem = ({ product = {}, quantity }) => {
+    const dispatch = useDispatch();
+    const [fetching, submit] = useSubmit((data) => {
+        dispatch(loadCartList(data));
+    });
+
+    const handleChange = useCallback(
+        (qty) => {
+            submit({
+                url: urls.cart,
+                method: "POST",
+                data: [
+                    {
+                        product_id: product.id,
+                        quantity: qty,
+                    },
+                ],
+            });
+        },
+        [product]
+    );
+
+    const onRemove = useCallback(() => {
+        handleChange(0);
+    }, []);
+
+    const onPlus = useCallback(() => {
+        if (quantity < 10) {
+            handleChange(quantity + 1);
+        }
+    }, [quantity]);
+
+    const onMinus = useCallback(() => {
+        if (quantity > 1) {
+            handleChange(quantity - 1);
+        }
+    }, [quantity]);
+
     return (
-        <CartStyl alignItems="center">
-            <Img
-                margin="0px 15px 0px 0px"
-                width="100px"
-                src={product.thumbnail_image}
-                alt=""
-            />
-            <FlexItem flexGrow={1} flexShrink={0}>
-                <P margin="0px" weight={500} fontSize="16px">
-                    {product.title}
-                </P>
-                <CartPrice
-                    product_country={product.product_country}
-                    quantity={quantity}
-                />
-                <CartQuantity
-                    quantity={quantity}
-                    productId={product.id}
-                    onPlus={onPlus}
-                    onMinus={onMinus}
-                />
-            </FlexItem>
-            <CartRemoveBtn productId={product.id} onClick={onRemove} />
-        </CartStyl>
+        <CartItem
+            fetching={fetching}
+            product={product}
+            quantity={quantity}
+            onRemove={onRemove}
+            onMinus={onMinus}
+            onPlus={onPlus}
+        />
     );
 };
 
@@ -117,10 +215,12 @@ const CartRemoveBtn = ({ onClick }) => {
     );
 };
 
-const CartPrice = ({ product_country, quantity = 0 }) => {
-    const productCountry = useProdCountry(product_country);
-
-    if (productCountry) {
+const CartPrice = ({ quantity = 0, productCountry }) => {
+    if (
+        productCountry &&
+        productCountry.country &&
+        productCountry.selling_price
+    ) {
         return (
             <Block margin="0px 0px 5px 0px">
                 <Txt

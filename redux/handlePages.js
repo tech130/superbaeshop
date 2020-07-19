@@ -5,6 +5,7 @@ import { TOKEN_KEY } from "../utils/constants";
 import { updateUser, clearUser } from "./user/user";
 import { fetchMaster } from "./master";
 import { fetchHeaderProducts } from "./product/product";
+import { fetchCart } from "./user/cart";
 
 export const redirect = (ctx, location = "/") => {
     if (ctx.res) {
@@ -28,7 +29,6 @@ export const handleToken = async ({ req, store }) => {
             });
             try {
                 const profile = await Api({ url: urls.myProfile });
-                console.log(profile.data);
                 const user = {
                     token,
                     ...profile.data,
@@ -61,4 +61,7 @@ export const common = async (ctx, userRoute = false) => {
     }
     await ctx.store.dispatch(fetchMaster());
     await ctx.store.dispatch(fetchHeaderProducts());
+    if (user.token) {
+        await ctx.store.dispatch(fetchCart());
+    }
 };

@@ -8,6 +8,7 @@ import Ul from "../styled/Ul";
 import CountryList from "./CountryList";
 import SignInDrop from "./SignInDrop";
 import CountryLink from "../common/CountryLink";
+import { useCartCount } from "../../hooks/redux/checkout/useCart";
 
 const Hdr = styled.header`
     background: rgba(255, 255, 255, 0.67);
@@ -47,7 +48,7 @@ const HeaderLogo = styled.img`
     @media only screen and (min-width: 575px) {
         height: 30px;
     }
-`
+`;
 
 const Header = () => {
     return (
@@ -74,7 +75,7 @@ const Header = () => {
                         </CountryLink>
                         <Ul alignItems="stretch">
                             <Hdrli>
-                                <CartCountStl>3</CartCountStl>
+                                <CartCount />
                                 <CountryLink href="/checkout">
                                     <CartIcon size={20} />
                                 </CountryLink>
@@ -91,6 +92,14 @@ const Header = () => {
             </Hdr>
         </>
     );
+};
+
+const CartCount = () => {
+    const count = useCartCount();
+    if (!count) {
+        return null;
+    }
+    return <CartCountStl>{count || 0}</CartCountStl>;
 };
 
 export default Header;
