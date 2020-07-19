@@ -26,13 +26,14 @@ const TopBar = styled.div`
         top: 0;
         left: 0;
         transform: translate3d(100%, 0, 0);
-        overflow: hidden;
         animation: ${marquee} 30s linear infinite;
         font-size: 14px;
-        width: 100%;
+        min-width: 100%;
+        overflow: hidden;
         height: 100%;
         display: flex;
         align-items: center;
+        white-space: nowrap;
     }
 `;
 
@@ -50,8 +51,6 @@ const TopRollText = ({ productId }) => {
 const ProdRollText = ({ id }) => {
     const { product_country } = useProduct(id);
     const prod = useProdCountry(product_country);
-
-    console.log(id, prod);
 
     if (prod && prod.promotion_text) {
         return (

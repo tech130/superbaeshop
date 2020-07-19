@@ -8,8 +8,6 @@ import Ul from "../styled/Ul";
 import CountryList from "./CountryList";
 import SignInDrop from "./SignInDrop";
 import CountryLink from "../common/CountryLink";
-import LoginModalBtn from "./LoginModalBtn";
-import Txt from "../styled/Txt";
 
 const Hdr = styled.header`
     background: rgba(255, 255, 255, 0.67);
@@ -19,18 +17,6 @@ const Hdr = styled.header`
     top: 0;
     z-index: 99;
     font-size: 14px;
-
-    @media only screen and (max-width: 575px) {
-        display: none;
-    }
-`;
-
-const HdrMobile = styled(Hdr)`
-    display: none;
-
-    @media only screen and (max-width: 575px) {
-        display: block;
-    }
 `;
 
 const Hdrli = styled.li`
@@ -53,6 +39,14 @@ const CartCountStl = styled.span`
     position: absolute;
     top: 2px;
     left: 12px;
+`;
+
+const HeaderLogo = styled.img`
+    height: 25px;
+
+    @media only screen and (min-width: 575px) {
+        height: 30px;
+    }
 `
 
 const Header = () => {
@@ -66,7 +60,18 @@ const Header = () => {
                         alignItems="center"
                         minHeight="50px"
                     >
-                        <Logo width="220px" />
+                        <CountryLink>
+                            <picture>
+                                <source
+                                    media="(min-width:575px)"
+                                    srcSet="/images/logo.png"
+                                />
+                                <HeaderLogo
+                                    src={`/images/logo-small.png`}
+                                    alt="space and beauty logo"
+                                />
+                            </picture>
+                        </CountryLink>
                         <Ul alignItems="stretch">
                             <Hdrli>
                                 <CartCountStl>3</CartCountStl>
@@ -84,35 +89,6 @@ const Header = () => {
                     </Flex>
                 </Container>
             </Hdr>
-            <HdrMobile>
-                <Container fluid>
-                    <Flex
-                        as="nav"
-                        justifyContent="space-between"
-                        alignItems="center"
-                        minHeight="50px"
-                    >
-                        <Logo small width="45px" />
-                        <Ul alignItems="stretch">
-                            <Hdrli>
-                                <LoginModalBtn>
-                                    <Txt fontSize={14} weight={500}>
-                                        Sign In
-                                    </Txt>
-                                </LoginModalBtn>
-                            </Hdrli>
-                            <Hdrli>
-                                <CountryList />
-                            </Hdrli>
-                            <Hdrli>
-                                <CountryLink href="/checkout">
-                                    <CartIcon size={20} />
-                                </CountryLink>
-                            </Hdrli>
-                        </Ul>
-                    </Flex>
-                </Container>
-            </HdrMobile>
         </>
     );
 };
