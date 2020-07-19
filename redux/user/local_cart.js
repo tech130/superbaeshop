@@ -34,7 +34,7 @@ export const cartRemove = (product) => ({
     product,
 });
 
-export const clearCart = () => ({
+export const clearLocalCart = () => ({
     type: cartTyps.clearCart,
 });
 

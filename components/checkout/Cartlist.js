@@ -5,7 +5,8 @@ import useUser from "../../hooks/redux/user/useUser";
 import CartSummary from "./CartSummary";
 import { useDispatch } from "react-redux";
 import { fetchCartAlways } from "../../redux/user/cart";
-// import CartSummary from "./CartSummary";
+import { ApiContent } from "../common/DynamicContent";
+import CartItemLoader from "./CartItemLoader";
 
 const Cartlist = () => {
     const { token } = useUser();
@@ -36,12 +37,20 @@ const MyCartList = () => {
     }, []);
 
     return (
-        <>
+        <ApiContent
+            name="cartList"
+            loader={
+                <>
+                    <CartItemLoader />
+                    <CartItemLoader />
+                </>
+            }
+        >
             <CartSummary cart={list} />
             {list.map((item) => (
                 <MyCartItem {...item} key={item.id} />
             ))}
-        </>
+        </ApiContent>
     );
 };
 

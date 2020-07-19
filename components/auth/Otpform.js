@@ -7,6 +7,7 @@ import { updateUser } from "../../redux/user/user";
 import ModalHeader from "../modal/ModalHeader";
 import Block from "../styled/Block";
 import { setTokenOnBrowser } from "../../utils/handleToken";
+import urls from "../../apiService/urls";
 
 const otpForm = {
     inputs: {
@@ -40,7 +41,7 @@ const Otpform = ({ userData = {}, closeModal }) => {
             <Block padding="25px 15px 30px">
                 <FormCon
                     config={{
-                        url: "auth/verify-otp/",
+                        url: urls.verifyOtp,
                         method: "POST",
                     }}
                     succFunc={(data) => {

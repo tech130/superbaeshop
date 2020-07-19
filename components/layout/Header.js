@@ -1,6 +1,5 @@
 import React from "react";
 import CartIcon from "../icons/CartIcon";
-import Logo from "./Logo";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
 import { Container } from "styled-bootstrap-grid";

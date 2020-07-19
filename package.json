@@ -16,6 +16,7 @@
     "nprogress": "^0.2.0",
     "nuka-carousel": "^4.6.6",
     "react": "16.13.0",
+    "react-content-loader": "^5.1.0",
     "react-dom": "16.13.0",
     "react-redux": "^7.2.0",
     "react-select": "^3.1.0",
