@@ -9,6 +9,7 @@ export const setTokenOnBrowser = (token) => {
         date.setTime(date.getTime() + 5184000000);
         cookies.set(TOKEN_KEY, token, {
             expires: date,
+            sameSite: "strict",
         });
     }
 };

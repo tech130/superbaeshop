@@ -7,6 +7,8 @@ const urls = {
     //product
     products: "products/",
     productDetail: (id) => `products/${id}/`,
+    //cart
+    cart: "cart/",
 };
 
 export default urls;

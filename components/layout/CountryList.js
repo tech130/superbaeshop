@@ -6,6 +6,7 @@ import Img from "../styled/Img";
 import Txt from "../styled/Txt";
 import Link from "next/link";
 import { useActiveCountry } from "../common/CountryLink";
+import CaretDown from "../icons/CaretDown";
 
 const CountryList = () => {
     const { countries, activeCountry } = useActiveCountry();
@@ -34,19 +35,7 @@ const CountrySelect = ({ activeCon = {}, countries = [] }) => {
                         <Txt weight={600}>{activeCon.code}</Txt>
                     </Block>
                     <span>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={14}
-                            height={14}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
+                        <CaretDown size={14} />
                     </span>
                 </Button>
             )}

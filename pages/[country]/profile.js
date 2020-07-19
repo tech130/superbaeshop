@@ -11,6 +11,7 @@ import { fetchProfile } from "../../redux/user/user";
 import { fetchMaster } from "../../redux/master";
 import getToken from "../../utils/getToken";
 import { useRouter } from "next/router";
+import { common } from "../../redux/handlePages";
 
 const Profile = () => {
     const router = useRouter();
@@ -52,12 +53,7 @@ const Profile = () => {
 };
 
 Profile.getInitialProps = async (ctx) => {
-    await ctx.store.dispatch(fetchMaster());
-    const { token } = await getToken(ctx);
-    if (!token && ctx.res) {
-        ctx.res.writeHead(302, { Location: "/" });
-        ctx.res.end();
-    }
+    await common(ctx);
 };
 
 export default Profile;

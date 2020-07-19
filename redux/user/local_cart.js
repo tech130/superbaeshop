@@ -1,7 +1,7 @@
 import { userTyps } from "./user";
+import { uuid } from "uuidv4";
 
 export const cartTyps = {
-    load: "local_cart/toggle",
     toggle: "local_cart/toggle",
     add: "local_cart/add",
     incQty: "local_cart/increase/quantity",
@@ -10,34 +10,28 @@ export const cartTyps = {
     clear: "local_cart/clear",
 };
 
-export const addToCart = (productId, title, product_country) => ({
+export const addToLocalCart = (product, quantity = 1) => ({
     type: cartTyps.add,
     payload: {
-        productId,
-        title,
-        product_country,
-        quantity: 1,
+        id: uuid(),
+        product,
+        quantity,
     },
 });
 
-export const cartPlus = (productId) => ({
+export const cartPlus = (product) => ({
     type: cartTyps.incQty,
-    productId,
+    product,
 });
 
-export const cartMinus = (productId) => ({
+export const cartMinus = (product) => ({
     type: cartTyps.decQty,
-    productId,
+    product,
 });
 
-export const cartRemove = (productId) => ({
+export const cartRemove = (product) => ({
     type: cartTyps.remove,
-    productId,
-});
-
-export const loadCart = (payload) => ({
-    type: cartTyps.load,
-    payload,
+    product,
 });
 
 export const clearCart = () => ({
@@ -49,15 +43,15 @@ const init = [];
 const remove = (state, id) => state.filter((item) => item.id === id);
 
 const toggle = (state, payload) => {
-    const incart = state.filter((item) => item.productId === payload.productId);
+    const incart = state.filter((item) => item.product === payload.product);
     if (incart.length > 0) {
-        return remove(state, payload.productId);
+        return remove(state, payload.product);
     }
     return state.concat(state, payload);
 };
 
 const add = (state, payload) => {
-    const incart = state.filter((item) => item.productId === payload.productId);
+    const incart = state.filter((item) => item.product === payload.product);
     if (incart.length > 0) {
         return state;
     }
@@ -66,17 +60,15 @@ const add = (state, payload) => {
 
 export default (state = init, action) => {
     switch (action.type) {
-        case cartTyps.load:
-            return action.payload;
         case cartTyps.add:
             return add(state, action.payload);
         case cartTyps.toggle:
             return toggle(state, action.payload);
         case cartTyps.remove:
-            return remove(state, action.productId);
+            return remove(state, action.product);
         case cartTyps.incQty:
             return state.map((item) => {
-                if (item.productId === action.productId) {
+                if (item.product === action.product) {
                     return {
                         ...item,
                         quantity:
@@ -89,7 +81,7 @@ export default (state = init, action) => {
             });
         case cartTyps.decQty:
             return state.map((item) => {
-                if (item.productId === action.productId) {
+                if (item.product === action.product) {
                     return {
                         ...item,
                         quantity:

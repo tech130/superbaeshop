@@ -7,6 +7,7 @@ import Block from "../styled/Block";
 import P from "../styled/P";
 import { CartButton } from "../styled/Button";
 import Flex from "../styled/Flex";
+import ProductBuy from "../product/ProductBuy";
 
 const HeroStyl = styled.section`
     padding: 40px 0px;
@@ -86,7 +87,7 @@ const HeroSection = () => {
                                 <P fontSize="18px" textAlign="right">
                                     -DRITI
                                 </P>
-                                <CartButton>Buy Now</CartButton>
+                                <ProductBuy productId={2} />
                             </Col>
                         </Row>
                     </Col>

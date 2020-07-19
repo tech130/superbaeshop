@@ -18,23 +18,29 @@ const CartStyl = styled(Flex)`
     margin-bottom: 15px;
 `;
 
-const CartItem = ({ title, product_country, productId, quantity }) => {
+export const LocalCartItem = ({
+    product = {},
+    quantity,
+}) => {
     return (
         <CartStyl alignItems="center">
             <Img
                 margin="0px 15px 0px 0px"
                 width="100px"
-                src="https://letsgoal2020.com/static/media/front.e7158c6a.png"
+                src={product.thumbnail_image}
                 alt=""
             />
             <FlexItem flexGrow={1} flexShrink={0}>
                 <P margin="0px" weight={500} fontSize="16px">
-                    {title}
+                    {product.title}
                 </P>
-                <CartPrice product_country={product_country} quantity={quantity} />
-                <CartQuantity quantity={quantity} productId={productId} />
+                <CartPrice
+                    product_country={product.product_country}
+                    quantity={quantity}
+                />
+                <CartQuantity quantity={quantity} productId={product.id} />
             </FlexItem>
-            <CartRemoveBtn productId={productId} />
+            <CartRemoveBtn productId={product.id} />
         </CartStyl>
     );
 };
@@ -82,7 +88,6 @@ const CartQuantity = ({ quantity, productId }) => {
 };
 
 const CartRemoveBtn = ({ productId }) => {
-    const dispatch = useDispatch();
 
     return (
         <IconButton onClick={() => dispatch(cartRemove(productId))}>
@@ -91,27 +96,27 @@ const CartRemoveBtn = ({ productId }) => {
     );
 };
 
-const CartPrice = ({ product_country = [], quantity = 0 }) => {
+const CartPrice = ({ product_country, quantity = 0 }) => {
     const productCountry = useProdCountry(product_country);
 
-    return (
-        <Block margin="0px 0px 5px 0px">
-            <Txt
-                weight={300}
-                textDecor="line-through"
-                fontSize="14px"
-                margin="0px 5px 0px 0px"
-            >
-                {productCountry.country.currency_type}
-                {productCountry.original_price * quantity}
-            </Txt>
-            <Txt weight={600} fontSize="16px">
-                {productCountry.country.currency_type}
-                {productCountry.selling_price * quantity}
-            </Txt>
-            <span> (40% off)</span>
-        </Block>
-    );
+    if (productCountry) {
+        return (
+            <Block margin="0px 0px 5px 0px">
+                <Txt
+                    weight={300}
+                    textDecor="line-through"
+                    fontSize="14px"
+                    margin="0px 5px 0px 0px"
+                >
+                    {productCountry.country.currency_type}
+                    {productCountry.original_price * quantity}
+                </Txt>
+                <Txt weight={600} fontSize="16px">
+                    {productCountry.country.currency_type}
+                    {productCountry.selling_price * quantity}
+                </Txt>
+            </Block>
+        );
+    }
+    return null;
 };
-
-export default CartItem;

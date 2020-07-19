@@ -5,6 +5,7 @@ import Flex from "../styled/Flex";
 import P from "../styled/P";
 import Txt from "../styled/Txt";
 import { useActiveCountry } from "../common/CountryLink";
+import { useSelector } from "react-redux";
 
 const CartSum = styled.div`
     padding: 10px;
@@ -13,29 +14,24 @@ const CartSum = styled.div`
     margin-bottom: 15px;
 `;
 
-const calculateTotal = (code, cart = []) => {
+const calculateTotal = (activeCountry, cart = []) => {
     const init = { shipping_fee: 0, cartTotal: 0 };
-    if (cart.length > 0 && code) {
-        return cart
-            .map((item) => ({
-                quantity: item.quantity,
-                activeCon:
-                    item.product_country.filter(
-                        (x) => x.country.code === code
-                    )[0] || {},
-            }))
-            .reduce((acc, cur) => {
-                console.log(cur)
-                return {
-                    shipping_fee: 0,
-                    // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
-                    cartTotal:
-                        acc.cartTotal +
-                        (cur.activeCon && cur.activeCon.selling_price
-                            ? cur.activeCon.selling_price * cur.quantity
-                            : 0),
-                };
-            }, init);
+    if (cart.length > 0 && activeCountry) {
+        return cart.reduce((acc, cur) => {
+            const selling_price =
+                cur.product &&
+                cur.product.product_country &&
+                cur.product.product_country[activeCountry]
+                    ? cur.product.product_country[activeCountry].selling_price
+                    : 0;
+            return {
+                shipping_fee: 0,
+                // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
+                cartTotal:
+                    acc.cartTotal +
+                    (selling_price ? selling_price * cur.quantity : 0),
+            };
+        }, init);
     }
     return init;
 };
@@ -44,7 +40,7 @@ const CartSummary = ({ cart = [] }) => {
     const { activeCountry } = useActiveCountry();
 
     const { cartTotal, shipping_fee } = useMemo(
-        () => calculateTotal(activeCountry.code, cart),
+        () => calculateTotal(activeCountry.id, cart),
         [activeCountry, cart]
     );
 

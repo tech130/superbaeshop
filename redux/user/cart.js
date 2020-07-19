@@ -11,9 +11,9 @@ export default (state = [], action) => {
     switch (action.type) {
         case cartTyps.load:
             return action.payload;
-        case cartTyps.clear: 
+        case cartTyps.clear:
         case userTyps.clear:
-            return []
+            return [];
         default:
             return state;
     }
@@ -21,5 +21,5 @@ export default (state = [], action) => {
 
 export const loadCartList = (payload) => ({
     type: cartTyps.load,
-    payload: payload,
+    payload: Array.isArray(payload) ? payload : [],
 });
