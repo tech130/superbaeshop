@@ -50,6 +50,26 @@ export const fetchCartAlways = () => {
     };
 };
 
+export const UPLOAD_LOCAL_CART_APIDATA_KEY = "uploadLocalCart";
+
+export const uploadLocalCart = () => {
+    return (dispatch, getState) => {
+        const data = getState().local_cart.map((x) => {
+            return {
+                product_id: x.product,
+                quantity: x.quantity,
+            };
+        });
+        return dispatch(
+            fetchApi(
+                { url: urls.cart, method: "POST", data },
+                `uploadLocalCart`,
+                loadCartList
+            )
+        );
+    };
+};
+
 const update = (state, payload) => {
     return [...new Set(state.concat(payload).filter((x) => !!x))];
 };

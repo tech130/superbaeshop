@@ -11,7 +11,8 @@ import GlobalStyle from "../components/styled/GlobalStyle";
 import { ToastContainer } from "react-toastify";
 
 import "../css/font.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import UploadCartModal from "../components/auth/UploadcartModal";
 
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
@@ -39,6 +40,7 @@ function MyApp({ Component, pageProps, store }) {
             <UserandCart />
             <BaseCSS />
             <Component {...pageProps} />
+            <UploadCartModal />
             <ToastContainer />
         </Provider>
     );

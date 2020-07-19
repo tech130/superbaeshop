@@ -8,6 +8,8 @@ import ModalHeader from "../modal/ModalHeader";
 import Block from "../styled/Block";
 import { setTokenOnBrowser } from "../../utils/handleToken";
 import urls from "../../apiService/urls";
+import { uploadLocalCart } from "../../redux/user/cart";
+import { clearLocalCart } from "../../redux/user/local_cart";
 
 const otpForm = {
     inputs: {
@@ -45,11 +47,10 @@ const Otpform = ({ userData = {}, closeModal }) => {
                         method: "POST",
                     }}
                     succFunc={(data) => {
-                        if (typeof closeModal === "function") {
-                            closeModal();
-                        }
-                        setTokenOnBrowser(data.token);
                         dispatch(updateUser(data));
+                        setTokenOnBrowser(data.token);
+                        dispatch(uploadLocalCart());
+                        dispatch(clearLocalCart());
                     }}
                     formatData={(data) => {
                         return {
