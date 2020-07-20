@@ -28,7 +28,9 @@ const calculateTotal = (activeCountry, cart = []) => {
                 // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
                 cartTotal:
                     acc.cartTotal +
-                    (selling_price ? selling_price * cur.quantity : 0),
+                    (selling_price
+                        ? parseFloat(selling_price) * parseInt(cur.quantity, 10)
+                        : 0),
             };
         }, init);
     }
