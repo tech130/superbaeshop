@@ -66,12 +66,13 @@ const CartItem = ({
                 src={product.thumbnail_image}
                 alt=""
             />
-            {isAvailable ? (
-                <>
-                    <FlexItem flexGrow={1} flexShrink={0}>
-                        <P margin="0px" weight={500} fontSize="16px">
-                            {product.title}
-                        </P>
+
+            <FlexItem flexGrow={1} flexShrink={0}>
+                <P margin="0px" weight={500} fontSize="16px">
+                    {product.title}
+                </P>
+                {isAvailable ? (
+                    <>
                         <CartPrice
                             productCountry={productCountry}
                             quantity={quantity}
@@ -82,21 +83,14 @@ const CartItem = ({
                             onPlus={onPlus}
                             onMinus={onMinus}
                         />
-                    </FlexItem>
-                    <CartRemoveBtn productId={product.id} onClick={onRemove} />
-                </>
-            ) : (
-                <FlexItem flexGrow={1} flexShrink={0}>
-                    <P margin="0px" weight={500} fontSize="16px">
-                        {product.title}
-                    </P>
-                    <Block margin="0px 0px 10px 0px">
-                        <Txt weight={300} color="red" fontSize="14px">
-                            Product unavailable for this country
-                        </Txt>
-                    </Block>
-                </FlexItem>
-            )}
+                    </>
+                ) : (
+                    <Txt weight={300} color="red" fontSize="14px">
+                        Product unavailable for this country
+                    </Txt>
+                )}
+            </FlexItem>
+            <CartRemoveBtn productId={product.id} onClick={onRemove} />
         </CartStyl>
     );
 };

@@ -10,10 +10,11 @@ import CartItemLoader from "./CartItemLoader";
 import CouponIp from "./CouponIp";
 import { Row, Col } from "styled-bootstrap-grid";
 import CheckoutForm from "./CheckoutForm";
-import { H4, H5 } from "../styled/Headings";
+import { H4 } from "../styled/Headings";
 import { useActiveCountry } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import Block from "../styled/Block";
+import CartEmpty from "./CartEmpty";
 
 const Cartlist = () => {
     const { token } = useUser();
@@ -31,9 +32,13 @@ const LocalCartList = () => {
         <Row>
             <Col lg={7}>
                 <CartSummary {...cartSummary} />
-                {list.map((item) => (
-                    <LocalCartItem {...item} key={item.id} />
-                ))}
+                {list.length > 0 ? (
+                    list.map((item) => (
+                        <LocalCartItem {...item} key={item.id} />
+                    ))
+                ) : (
+                    <CartEmpty />
+                )}
             </Col>
         </Row>
     );
@@ -59,7 +64,7 @@ const MyCartList = () => {
                 </Row>
             }
         >
-            {list.length > 0 && <CartListWithForm list={list} />}
+            {list.length > 0 ? <CartListWithForm list={list} /> : <CartEmpty />}
         </ApiContent>
     );
 };
@@ -103,8 +108,8 @@ const CartListWithForm = ({ list = [] }) => {
                     >
                         <Txt color="red" fontSize="14px">
                             You have products unavaible for this country in your
-                            cart. Change country or remove these products from your
-                            cart to continue checkout.
+                            cart. Change country or remove these products from
+                            your cart to continue checkout.
                         </Txt>
                     </Block>
                 ) : (
