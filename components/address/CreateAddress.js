@@ -6,23 +6,26 @@ import ModalHeader from "../modal/ModalHeader";
 import Block from "../styled/Block";
 import Modal from "../modal/Modal";
 import urls from "../../apiService/urls";
+import { useActiveCountry } from "../common/CountryLink";
+import { useDispatch } from "react-redux";
+import { addAddress } from "../../redux/user/address";
 
-const form = {
+const form = (countries = []) => ({
     inputs: {
         name: {
             name: "name",
             type: "text",
             placeholder: "Name",
         },
-        phone_country: {
-            name: "phone_country",
+        dial_code: {
+            name: "dial_code",
             type: "countrySelect",
             placeholder: "+91",
-            valKey: "dialCode",
+            valType: "dialCode",
         },
         phone: {
             name: "phone",
-            type: "text",
+            type: "tel",
             placeholder: "Mobile Number",
         },
         door_no: {
@@ -45,15 +48,25 @@ const form = {
             type: "text",
             placeholder: "City",
         },
+        state: {
+            name: "state",
+            type: "text",
+            placeholder: "State",
+        },
         landmark: {
             name: "landmark",
             type: "text",
             placeholder: "landmark",
         },
-        country: {
-            name: "country",
-            type: "countrySelect",
+        country_id: {
+            name: "country_id",
+            type: "select",
             placeholder: "Country",
+            options: countries.map((x) => ({
+                label: x.title,
+                value: x.id,
+                image: x.image,
+            })),
         },
         postal_code: {
             name: "postal_code",
@@ -76,36 +89,30 @@ const form = {
             ],
         },
     },
-    uiProps: {
-        name: {
-            md: 12,
-        },
-        phone: {
-            md: 8,
-        },
-        phone_country: {
-            md: 4,
-        },
-    },
+    uiProps: {},
     defaultUiProps: {
         md: 6,
     },
     allIds: [
         "name",
-        "phone_country",
+        "address_type",
+        "dial_code",
         "phone",
         "door_no",
         "street_address",
         "locality",
         "city",
-        "landmark",
-        "country",
+        "state",
+        "country_id",
         "postal_code",
-        "address_type",
+        "landmark",
     ],
-};
+});
 
 const CreateAddress = ({ closeModal }) => {
+    const dispatch = useDispatch();
+    const { countries } = useActiveCountry();
+
     return (
         <>
             <ModalHeader
@@ -114,14 +121,21 @@ const CreateAddress = ({ closeModal }) => {
                 closeModal={closeModal}
             />
             <Block padding="25px 15px 30px">
-                <FormCon
-                    config={{
-                        url: urls.address,
-                        method: "POST",
-                    }}
-                    form={form}
-                    renderForm={RenderForm}
-                />
+                {countries.length > 1 && (
+                    <FormCon
+                        config={{
+                            url: urls.address,
+                            method: "POST",
+                        }}
+                        form={form(countries)}
+                        renderForm={RenderForm}
+                        resetOnSuccess
+                        succFunc={(data) => {
+                            dispatch(addAddress(data));
+                            closeModal();
+                        }}
+                    />
+                )}
             </Block>
         </>
     );

@@ -45,6 +45,7 @@ const typeValid = (type, value) => {
 
 export const getValue = (ip, value) => {
     switch (ip.type) {
+        case "countrySelect":
         case "select":
             return value
                 ? ip.isMulti

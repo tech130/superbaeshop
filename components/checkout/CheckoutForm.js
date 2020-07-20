@@ -1,13 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import FormCon from "../form/FormCon";
-import FieldArray from "../form/FieldArray";
+import FieldArray, { FormRow } from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
-import { useActiveCountry } from "../common/CountryLink";
 import { setValue } from "../../hooks/form/formReducer";
 import { AddressModalBtn } from "../address/CreateAddress";
 import { H6 } from "../styled/Headings";
 import Flex from "../styled/Flex";
 import Txt from "../styled/Txt";
+import { useDispatch, useSelector } from "react-redux";
+import { addrTyps, fetchAddress } from "../../redux/user/address";
+import { ApiContent } from "../common/DynamicContent";
+import { FormGroup } from "../form/FieldCon";
+import useUser from "../../hooks/redux/user/useUser";
+import P from "../styled/P";
+import SelectIp from "../form/SelectIp";
 
 const checkoutForm = {
     inputs: {
@@ -21,133 +27,211 @@ const checkoutForm = {
             type: "email",
             placeholder: "Email Id",
         },
-        phone_country: {
-            name: "phone_country",
+        dial_code: {
+            name: "dial_code",
             type: "countrySelect",
             placeholder: "+91",
-            valKey: "dialCode",
+            valType: "dialCode",
         },
         phone: {
             name: "name",
             type: "tel",
             placeholder: "Phone Number",
         },
-        alt_phone_country: {
-            name: "phone_country",
+        alt_dial_code: {
+            name: "alt_dial_code",
             type: "countrySelect",
             placeholder: "+91",
-            valKey: "dialCode",
+            valType: "dialCode",
         },
         alt_phone: {
             name: "name",
             type: "tel",
             placeholder: "Alternate Phone Number",
         },
-        // street: {
-        //     name: "street",
-        //     type: "text",
-        //     placeholder: "Street Address",
-        // },
-        // locality: {
-        //     name: "locality",
-        //     type: "text",
-        //     placeholder: "Locality",
-        // },
-        // city: {
-        //     name: "city",
-        //     type: "text",
-        //     placeholder: "City",
-        // },
-        // state: {
-        //     name: "state",
-        //     type: "text",
-        //     placeholder: "State",
-        // },
-        // country: {
-        //     name: "country",
-        //     type: "countrySelect",
-        //     placeholder: "Country",
-        // },
-        // pincode: {
-        //     name: "pincode",
-        //     type: "number",
-        //     placeholder: "Pincode",
-        // },
+        payment_type: {
+            name: "name",
+            type: "select",
+            options: [
+                {
+                    label: "Online",
+                    value: "Online",
+                },
+                {
+                    label: "COD",
+                    value: "COD",
+                },
+            ],
+            placeholder: "Payment Type",
+        },
+    },
+    uiProps: {
+        payment_type: {
+            md: 12,
+        },
     },
     defaultUiProps: {
         md: 6,
     },
-    uiProps: {
-        same_as: {
-            md: 12,
-            xs: 12,
-        },
-        redeem: {
-            md: 12,
-            xs: 12,
-        },
-        phone_country: {
-            md: 4,
-        },
-        phone: {
-            md: 8,
-        },
-        alt_phone_country: {
-            md: 4,
-        },
-        alt_phone: {
-            md: 8,
-        },
-    },
     allIds: [
         "name",
         "email",
-        "phone_country",
+        "dial_code",
         "phone",
-        "alt_phone_country",
+        "alt_dial_code",
         "alt_phone",
+        "payment_type",
     ],
 };
 
 const CheckoutForm = () => {
-    return <FormCon form={checkoutForm} renderForm={CheckoutRenderForm} />;
+    const [address_id, setAddress] = useState(null);
+    const [address_err, setAddressErr] = useState(null);
+
+    const chooseAddr = useCallback((id) => {
+        setAddress(id);
+        setAddressErr("");
+    }, []);
+
+    return (
+        <FormCon
+            form={checkoutForm}
+            renderForm={(props) => (
+                <CheckoutRenderForm
+                    {...props}
+                    address_id={address_id}
+                    address_err={address_err}
+                    chooseAddr={chooseAddr}
+                />
+            )}
+        />
+    );
 };
 
-const CheckoutRenderForm = ({ fetching, formDispatch }) => {
-    const { activeCountry } = useActiveCountry();
+const CheckoutRenderForm = ({
+    fetching,
+    formDispatch,
+    address_id,
+    address_err,
+    chooseAddr,
+}) => {
+    const { user } = useUser();
 
     useEffect(() => {
-        if (activeCountry.code) {
-            formDispatch(setValue("phone_country", activeCountry.code2));
-            formDispatch(setValue("alt_phone_country", activeCountry.code2));
+        if (user) {
+            formDispatch(setValue("name", user.first_name || ""));
+            formDispatch(setValue("phone", user.username || ""));
         }
-    }, [activeCountry]);
+    }, []);
 
     return (
         <>
             <FieldArray />
             <H6>Choose Address</H6>
-            <AddressModalBtn
-                Btn={({ onClick }) => (
-                    <Flex
-                        height="100px"
-                        border="1px dashed #cecece"
-                        alignItems="center"
-                        justifyContent="center"
-                        onClick={onClick}
-                        margin="0px 0px 15px 0px"
-                        vertical
-                        as="a"
-                    >
-                        <Txt fontSize="28px" color="hsl(0, 0%, 50%)">
-                            +
-                        </Txt>
-                        <Txt fontSize="14px" color="hsl(0, 0%, 50%)">ADD ADDRESS</Txt>
-                    </Flex>
-                )}
-            />
+            <AddressList chooseAddr={chooseAddr} address_id={address_id} />
+            <AddAddress />
+            {address_err && (
+                <P fontSize="14px" color="red">
+                    {address_err}
+                </P>
+            )}
             <SubmitButton fetching={fetching}>PAY NOW</SubmitButton>
         </>
+    );
+};
+
+const AddressList = ({ chooseAddr, address_id }) => {
+    const dispatch = useDispatch();
+    const list = useSelector((state) => state.addressList);
+
+    useEffect(() => {
+        dispatch(fetchAddress());
+    }, []);
+
+    return (
+        <ApiContent name={addrTyps.apiName}>
+            <FormRow>
+                {list.map((item) => (
+                    <AddressItem
+                        isActive={item.id === address_id}
+                        chooseAddr={chooseAddr}
+                        {...item}
+                        key={item.id}
+                    />
+                ))}
+            </FormRow>
+        </ApiContent>
+    );
+};
+
+const getAddress = ({
+    door_no = "",
+    street_address = "",
+    locality = "",
+    city = "",
+    state = "",
+    country = {},
+    postal_code = "",
+    landmark = "",
+}) =>
+    `${door_no}, ${street_address}, ${locality}, ${city}, ${state}, ${
+        country ? country.title || "" : ""
+    }, ${postal_code}, ${landmark}`;
+
+const AddressItem = ({
+    name = "",
+    address_type = "",
+    dial_code = "",
+    phone = "",
+    id,
+    chooseAddr,
+    isActive,
+    ...rest
+}) => {
+    return (
+        <FormGroup md={6}>
+            <Flex
+                onClick={() => chooseAddr(id)}
+                vertical
+                padding="10px"
+                border={`1px solid ${isActive ? "#000" : "#f5f5f5"}`}
+                as="a"
+            >
+                <Txt fontSize="14px" weight="500">
+                    {name} ({address_type})
+                </Txt>
+                <Txt fontSize="12px">
+                    +{dial_code} {phone}
+                </Txt>
+                <Txt fontSize="12px">{`${getAddress(rest)}`}</Txt>
+            </Flex>
+        </FormGroup>
+    );
+};
+
+const AddAddress = () => {
+    return (
+        <AddressModalBtn
+            Btn={({ onClick }) => (
+                <Flex
+                    height="100px"
+                    border="1px dashed #cecece"
+                    alignItems="center"
+                    justifyContent="center"
+                    onClick={onClick}
+                    margin="0px 0px 15px 0px"
+                    vertical
+                    as="a"
+                >
+                    <Txt fontSize="28px" color="hsl(0, 0%, 50%)">
+                        +
+                    </Txt>
+                    <Txt fontSize="14px" color="hsl(0, 0%, 50%)">
+                        ADD ADDRESS
+                    </Txt>
+                </Flex>
+            )}
+        />
     );
 };
 
