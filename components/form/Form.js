@@ -1,19 +1,24 @@
 import React from "react";
+import styled from "styled-components";
 
-const Form = ({ children, onSubmit = null, ...rest }) => {
+const FormStyl = styled.form`
+    display: block;
+`;
+
+const Form = ({ children, onSubmit = null, as = "form" }) => {
     return (
-        <form
+        <FormStyl
             noValidate
-            onSubmit={e => {
+            onSubmit={(e) => {
                 e.preventDefault();
                 if (typeof onSubmit === "function") {
                     onSubmit();
                 }
             }}
-            {...rest}
+            as={as}
         >
             {children}
-        </form>
+        </FormStyl>
     );
 };
 

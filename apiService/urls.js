@@ -13,6 +13,8 @@ const urls = {
     cart: "cart/",
     //address
     address: "users/address/",
+    //checkout
+    checkout: "orders/checkout/",
 };
 
 export default urls;

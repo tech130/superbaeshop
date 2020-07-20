@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Form from "./Form";
 import { setErr, resetForm } from "../../hooks/form/formReducer";
-import { init, setForm } from "../../hooks/form/formReducer";
+import { init } from "../../hooks/form/formReducer";
 import { formcontext } from "../../hooks/form/useForm";
 import useFormReducer from "../../hooks/form/useFormReducer";
 import useDataSubmit from "../../hooks/http/useSubmit";
@@ -17,7 +17,7 @@ const FormCon = ({
     customValid = null,
     formatData = null,
     resetOnSuccess = false,
-    ...rest
+    asDiv = false,
 }) => {
     const [formState, formDispatch] = useFormReducer({ ...init, ...form });
 
@@ -43,19 +43,17 @@ const FormCon = ({
 
     const onSubmit = () => {
         let { isErr, data } = validateForm(formState, dispatchErr);
-        if (isErr) {
-            return;
-        }
+        let customErr = false;
         if (isFunc(customValid)) {
-            const customErr = customValid({
+            customErr = customValid({
                 data,
                 dispatchErr,
                 formState,
                 formDispatch,
             });
-            if (customErr) {
-                return;
-            }
+        }
+        if (isErr || customErr) {
+            return;
         }
         if (isFunc(formatData)) {
             data = formatData(data);
@@ -68,7 +66,10 @@ const FormCon = ({
 
     return (
         <formcontext.Provider value={{ formState, formDispatch }}>
-            <Form onSubmit={onSubmit} {...rest}>
+            <Form
+                onSubmit={asDiv ? null : onSubmit}
+                as={asDiv ? "div" : "form"}
+            >
                 {renderForm({
                     fetching,
                     onSubmit,

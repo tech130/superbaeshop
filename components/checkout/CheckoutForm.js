@@ -13,7 +13,8 @@ import { ApiContent } from "../common/DynamicContent";
 import { FormGroup } from "../form/FieldCon";
 import useUser from "../../hooks/redux/user/useUser";
 import P from "../styled/P";
-import SelectIp from "../form/SelectIp";
+import AddressLoder from "../address/AddressLoder";
+import urls from "../../apiService/urls";
 
 const checkoutForm = {
     inputs: {
@@ -62,7 +63,7 @@ const checkoutForm = {
                     value: "COD",
                 },
             ],
-            placeholder: "Payment Type",
+            placeholder: "Select payment type",
         },
     },
     uiProps: {
@@ -84,9 +85,9 @@ const checkoutForm = {
     ],
 };
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ coupon, redeem }) => {
     const [address_id, setAddress] = useState(null);
-    const [address_err, setAddressErr] = useState(null);
+    const [address_err, setAddressErr] = useState("");
 
     const chooseAddr = useCallback((id) => {
         setAddress(id);
@@ -95,7 +96,31 @@ const CheckoutForm = () => {
 
     return (
         <FormCon
+            asDiv
             form={checkoutForm}
+            config={{
+                url: urls.checkout,
+                method: "POST",
+            }}
+            customValid={() => {
+                if (!address_id) {
+                    setAddressErr("Choose an address");
+                    return true;
+                }
+                return false;
+            }}
+            formatData={(data) => {
+                const wallet = redeem
+                    ? { is_wallet: true }
+                    : coupon
+                    ? { coupon_code: coupon }
+                    : {};
+                return {
+                    ...data,
+                    address_id,
+                    ...wallet,
+                };
+            }}
             renderForm={(props) => (
                 <CheckoutRenderForm
                     {...props}
@@ -114,6 +139,7 @@ const CheckoutRenderForm = ({
     address_id,
     address_err,
     chooseAddr,
+    onSubmit,
 }) => {
     const { user } = useUser();
 
@@ -135,7 +161,9 @@ const CheckoutRenderForm = ({
                     {address_err}
                 </P>
             )}
-            <SubmitButton fetching={fetching}>PAY NOW</SubmitButton>
+            <SubmitButton onClick={onSubmit} fetching={fetching}>
+                CONTINUE CHECKOUT
+            </SubmitButton>
         </>
     );
 };
@@ -149,7 +177,7 @@ const AddressList = ({ chooseAddr, address_id }) => {
     }, []);
 
     return (
-        <ApiContent name={addrTyps.apiName}>
+        <ApiContent name={addrTyps.apiName} loader={<AddressLoder />}>
             <FormRow>
                 {list.map((item) => (
                     <AddressItem

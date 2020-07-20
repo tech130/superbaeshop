@@ -11,7 +11,7 @@ const HR = styled.hr`
             margin: 1.9em 0;
             text-align: center;
 
-            ::before {
+            &::before {
                 content: "${props.dataTitle}";
                 background: #fff;
                 position: relative;

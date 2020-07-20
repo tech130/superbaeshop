@@ -19,6 +19,10 @@ export const InputStyle = styled.input`
         outline: none;
         border: 1px solid #000;
     }
+
+    &:disabled {
+        background-color: #fafafa;
+    }
 `;
 
 const Input = ({

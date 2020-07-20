@@ -56,7 +56,7 @@ const form = (countries = []) => ({
         landmark: {
             name: "landmark",
             type: "text",
-            placeholder: "landmark",
+            placeholder: "Landmark",
         },
         country_id: {
             name: "country_id",

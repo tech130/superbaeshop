@@ -6,6 +6,7 @@ import Block from "../styled/Block";
 import HR from "../styled/Hr";
 import Checkbox from "../form/Checkbox";
 import Flex, { FlexItem } from "../styled/Flex";
+// import useSubmit from "../../hooks/http/useSubmit";
 
 const CouponIp = ({ redeem, coupon, onCouponChange, onRedeemChange }) => {
     return (
@@ -13,13 +14,14 @@ const CouponIp = ({ redeem, coupon, onCouponChange, onRedeemChange }) => {
             <Flex>
                 <FlexItem flexGrow={1}>
                     <Input
+                        disabled={redeem}
                         setValue={onCouponChange}
                         value={coupon}
                         placeholder="Enter coupon code"
                     />
                 </FlexItem>
                 <FlexItem>
-                    <SubmitBtn mb="0">CHECK</SubmitBtn>
+                    <SubmitBtn disabled={redeem} mb="0">CHECK</SubmitBtn>
                 </FlexItem>
             </Flex>
             <HR dataTitle="OR" />
