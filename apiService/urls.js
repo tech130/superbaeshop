@@ -11,6 +11,8 @@ const urls = {
     productDetail: (id) => `products/${id}/`,
     //cart
     cart: "cart/",
+    //address
+    address: "users/address/",
 };
 
 export default urls;

@@ -4,6 +4,10 @@ import FieldArray from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
 import { useActiveCountry } from "../common/CountryLink";
 import { setValue } from "../../hooks/form/formReducer";
+import { AddressModalBtn } from "../address/CreateAddress";
+import { H6 } from "../styled/Headings";
+import Flex from "../styled/Flex";
+import Txt from "../styled/Txt";
 
 const checkoutForm = {
     inputs: {
@@ -44,36 +48,36 @@ const checkoutForm = {
             type: "tel",
             placeholder: "Alternate Phone Number",
         },
-        street: {
-            name: "street",
-            type: "text",
-            placeholder: "Street Address",
-        },
-        locality: {
-            name: "locality",
-            type: "text",
-            placeholder: "Locality",
-        },
-        city: {
-            name: "city",
-            type: "text",
-            placeholder: "City",
-        },
-        state: {
-            name: "state",
-            type: "text",
-            placeholder: "State",
-        },
-        country: {
-            name: "country",
-            type: "countrySelect",
-            placeholder: "Country",
-        },
-        pincode: {
-            name: "pincode",
-            type: "number",
-            placeholder: "Pincode",
-        },
+        // street: {
+        //     name: "street",
+        //     type: "text",
+        //     placeholder: "Street Address",
+        // },
+        // locality: {
+        //     name: "locality",
+        //     type: "text",
+        //     placeholder: "Locality",
+        // },
+        // city: {
+        //     name: "city",
+        //     type: "text",
+        //     placeholder: "City",
+        // },
+        // state: {
+        //     name: "state",
+        //     type: "text",
+        //     placeholder: "State",
+        // },
+        // country: {
+        //     name: "country",
+        //     type: "countrySelect",
+        //     placeholder: "Country",
+        // },
+        // pincode: {
+        //     name: "pincode",
+        //     type: "number",
+        //     placeholder: "Pincode",
+        // },
     },
     defaultUiProps: {
         md: 6,
@@ -105,15 +109,8 @@ const checkoutForm = {
         "email",
         "phone_country",
         "phone",
-        "same_as",
         "alt_phone_country",
         "alt_phone",
-        "street",
-        "locality",
-        "city",
-        "state",
-        "country",
-        "pincode",
     ],
 };
 
@@ -126,15 +123,34 @@ const CheckoutRenderForm = ({ fetching, formDispatch }) => {
 
     useEffect(() => {
         if (activeCountry.code) {
-            formDispatch(setValue("phone_country", activeCountry.code));
-            formDispatch(setValue("alt_phone_country", activeCountry.code));
-            formDispatch(setValue("country", activeCountry.code));
+            formDispatch(setValue("phone_country", activeCountry.code2));
+            formDispatch(setValue("alt_phone_country", activeCountry.code2));
         }
     }, [activeCountry]);
 
     return (
         <>
             <FieldArray />
+            <H6>Choose Address</H6>
+            <AddressModalBtn
+                Btn={({ onClick }) => (
+                    <Flex
+                        height="100px"
+                        border="1px dashed #cecece"
+                        alignItems="center"
+                        justifyContent="center"
+                        onClick={onClick}
+                        margin="0px 0px 15px 0px"
+                        vertical
+                        as="a"
+                    >
+                        <Txt fontSize="28px" color="hsl(0, 0%, 50%)">
+                            +
+                        </Txt>
+                        <Txt fontSize="14px" color="hsl(0, 0%, 50%)">ADD ADDRESS</Txt>
+                    </Flex>
+                )}
+            />
             <SubmitButton fetching={fetching}>PAY NOW</SubmitButton>
         </>
     );
