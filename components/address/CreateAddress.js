@@ -18,6 +18,7 @@ const form = {
             name: "phone_country",
             type: "countrySelect",
             placeholder: "+91",
+            valKey: "dialCode",
         },
         phone: {
             name: "phone",

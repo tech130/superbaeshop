@@ -32,11 +32,6 @@ const checkoutForm = {
             type: "tel",
             placeholder: "Phone Number",
         },
-        same_as: {
-            name: "same_as",
-            type: "checkbox",
-            placeholder: "Same as registered number",
-        },
         alt_phone_country: {
             name: "phone_country",
             type: "countrySelect",
