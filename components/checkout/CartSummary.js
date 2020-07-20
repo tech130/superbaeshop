@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import styled from "styled-components";
 import HR from "../styled/Hr";
 import Flex from "../styled/Flex";
@@ -13,38 +13,8 @@ const CartSum = styled.div`
     margin-bottom: 15px;
 `;
 
-const calculateTotal = (activeCountry, cart = []) => {
-    const init = { shipping_fee: 0, cartTotal: 0 };
-    if (cart.length > 0 && activeCountry) {
-        return cart.reduce((acc, cur) => {
-            const selling_price =
-                cur.product &&
-                cur.product.product_country &&
-                cur.product.product_country[activeCountry]
-                    ? cur.product.product_country[activeCountry].selling_price
-                    : 0;
-            return {
-                shipping_fee: 0,
-                // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
-                cartTotal:
-                    acc.cartTotal +
-                    (selling_price
-                        ? parseFloat(selling_price) * parseInt(cur.quantity, 10)
-                        : 0),
-            };
-        }, init);
-    }
-    return init;
-};
-
-const CartSummary = ({ cart = [] }) => {
+const CartSummary = ({ cartTotal, shipping_fee, currency_type }) => {
     const { activeCountry } = useActiveCountry();
-
-    const { cartTotal, shipping_fee } = useMemo(
-        () => calculateTotal(activeCountry.id, cart),
-        [activeCountry, cart]
-    );
-
     return (
         <>
             <CartSum>
@@ -57,7 +27,7 @@ const CartSummary = ({ cart = [] }) => {
                         Cart Total
                     </P>
                     <div>
-                        {activeCountry.currency_type}
+                        {currency_type}
                         {cartTotal}
                     </div>
                 </Flex>
@@ -70,7 +40,7 @@ const CartSummary = ({ cart = [] }) => {
                         Delivery Charge
                     </P>
                     <div>
-                        + {activeCountry.currency_type}
+                        + {currency_type}
                         {shipping_fee}
                     </div>
                 </Flex>

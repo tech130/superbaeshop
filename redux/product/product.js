@@ -12,7 +12,6 @@ export const headerProductsTyps = {
 
 export const loadHeaderProducts = (payload) => {
     const { result, entities } = normalize(payload, [productSchema]);
-    console.log(result, entities);
     return (dispatch) => {
         dispatch(addEntity(entities));
         dispatch({

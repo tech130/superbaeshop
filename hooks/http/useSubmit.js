@@ -45,6 +45,7 @@ const useSubmit = (succFunc = null, errFunc = null) => {
                 if (!isCancel(err)) {
                     if (!didCancel) {
                         setfetching(false);
+                        console.log(err);
                         const errMsg = err.response
                             ? ajaxerrmsg(err.response)
                             : "Something went wrong";

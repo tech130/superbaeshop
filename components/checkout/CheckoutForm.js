@@ -15,6 +15,7 @@ import useUser from "../../hooks/redux/user/useUser";
 import P from "../styled/P";
 import AddressLoder from "../address/AddressLoder";
 import urls from "../../apiService/urls";
+import { getDialOption } from "../form/CountrySelect";
 
 const checkoutForm = {
     inputs: {
@@ -141,12 +142,16 @@ const CheckoutRenderForm = ({
     chooseAddr,
     onSubmit,
 }) => {
-    const { user } = useUser();
+    const { user, country } = useUser();
 
     useEffect(() => {
         if (user) {
             formDispatch(setValue("name", user.first_name || ""));
             formDispatch(setValue("phone", user.username || ""));
+            formDispatch(setValue("email", user.email || ""));
+            if(country && country.code2) {
+                formDispatch(setValue("dial_code", getDialOption(country.code2)));
+            }
         }
     }, []);
 

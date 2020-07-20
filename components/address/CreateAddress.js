@@ -131,8 +131,10 @@ const CreateAddress = ({ closeModal }) => {
                         renderForm={RenderForm}
                         resetOnSuccess
                         succFunc={(data) => {
+                            if (closeModal) {
+                                closeModal();
+                            }
                             dispatch(addAddress(data));
-                            closeModal();
                         }}
                     />
                 )}

@@ -61,7 +61,7 @@ export const common = async (ctx, userRoute = false) => {
     }
     await ctx.store.dispatch(fetchMaster());
     await ctx.store.dispatch(fetchHeaderProducts());
-    if (user.token) {
+    if (user.token && ctx.isServer) {
         await ctx.store.dispatch(fetchCart());
     }
 };

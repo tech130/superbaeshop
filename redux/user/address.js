@@ -4,6 +4,7 @@ import urls from "../../apiService/urls";
 export const addrTyps = {
     apiName: "addressList",
     load: "address/load",
+    add: "address/add",
     update: "address/update",
 };
 
@@ -34,7 +35,7 @@ export const addressList = (state = [], action) => {
         case addrTyps.load:
             return action.payload;
         case addrTyps.add:
-            return state.concat(action.payload);
+            return [...state, action.payload];
         case addrTyps.update:
             return state.map((x) => {
                 if (x.id === action.payload.id) {
