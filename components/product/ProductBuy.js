@@ -8,7 +8,6 @@ import Link from "next/link";
 import { addToLocalCart } from "../../redux/user/local_cart";
 import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
-import Loader from "../form/Loader";
 
 export const AddToLocalCart = ({ className = "", productId }) => {
     const dispatch = useDispatch();

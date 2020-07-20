@@ -3,7 +3,6 @@ import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2 } from "../styled/Headings";
 import P from "../styled/P";
-import { CartButton } from "../styled/Button";
 import Img from "../styled/Img";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
