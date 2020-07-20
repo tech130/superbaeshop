@@ -8,7 +8,6 @@ export const InputStyle = styled.input`
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.5;
     color: #000;
     background-color: #fff;
     background-clip: padding-box;
@@ -32,7 +31,7 @@ const Input = ({
     return (
         <InputStyle
             type={type}
-            onChange={e => {
+            onChange={(e) => {
                 if (setValue) {
                     setValue(e.target.value);
                 }
@@ -46,13 +45,12 @@ const Input = ({
 
 export const NumberInput = ({
     name = "",
-    type,
     className = "form-control",
     setValue = null,
     value = "",
     ...rest
 }) => {
-    const onKeyPress = event => {
+    const onKeyPress = (event) => {
         if (!(event.charCode >= 48 && event.charCode <= 57)) {
             event.preventDefault();
             return;
@@ -61,18 +59,19 @@ export const NumberInput = ({
 
     return (
         <InputStyle
+            {...rest}
             type="tel"
             name={name}
             className={className}
             onKeyPress={onKeyPress}
             value={value}
-            onChange={e => {
+            onChange={(e) => {
                 if (setValue) {
-                    setValue(e.target.value.replace(new RegExp("[^0-9]", "g"), ""));
-                    
+                    setValue(
+                        e.target.value.replace(new RegExp("[^0-9]", "g"), "")
+                    );
                 }
             }}
-            {...rest}
         />
     );
 };

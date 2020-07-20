@@ -45,13 +45,18 @@ const CheckStyle = styled.input`
     }
 `;
 
-const Checkbox = ({ name = "", setValue = null, value = false, placeholder }) => {
+const Checkbox = ({
+    name = "",
+    setValue = null,
+    value = false,
+    placeholder,
+}) => {
     return (
         <div>
             <CheckStyle
-                onChange={() => {
+                onChange={(e) => {
                     if (setValue) {
-                        setValue(!value);
+                        setValue(e.target.checked);
                     }
                 }}
                 type="checkbox"

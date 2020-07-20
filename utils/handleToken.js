@@ -10,6 +10,8 @@ export const setTokenOnBrowser = (token) => {
         cookies.set(TOKEN_KEY, token, {
             expires: date,
             sameSite: "strict",
+            path: "/",
+            domain: window.location.hostname,
         });
     }
 };

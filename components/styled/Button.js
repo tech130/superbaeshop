@@ -63,7 +63,7 @@ export const SubmitBtn = styled(Button)`
     font-size: 14px;
     min-height: 40px;
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: ${(props) => props.mb || "16px"};
 `;
 
 export const CartButton = styled(Button)`

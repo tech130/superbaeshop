@@ -74,11 +74,6 @@ const checkoutForm = {
             type: "number",
             placeholder: "Pincode",
         },
-        redeem: {
-            name: "redeem",
-            type: "checkbox",
-            placeholder: "Redeem wallet points",
-        },
     },
     defaultUiProps: {
         md: 6,
@@ -119,7 +114,6 @@ const checkoutForm = {
         "state",
         "country",
         "pincode",
-        "redeem",
     ],
 };
 

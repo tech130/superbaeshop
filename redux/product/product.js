@@ -24,16 +24,16 @@ export const loadHeaderProducts = (payload) => {
 
 export const fetchHeaderProducts = () => {
     return (dispatch, getState) => {
-        // if (!getState().headerProducts.length) {
-        return dispatch(
-            fetchApi(
-                { url: urls.products },
-                `headerProducts`,
-                loadHeaderProducts
-            )
-        );
-        // }
-        // return Promise.resolve();
+        if (!getState().headerProducts.length) {
+            return dispatch(
+                fetchApi(
+                    { url: urls.products },
+                    `headerProducts`,
+                    loadHeaderProducts
+                )
+            );
+        }
+        return Promise.resolve();
     };
 };
 
