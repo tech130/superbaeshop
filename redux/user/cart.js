@@ -89,7 +89,7 @@ export const cartList = (state = [], action) => {
 export default (state = {}, action) => {
     switch (action.type) {
         case ADD_ENTITIES:
-            return merge({}, action.payload.cart);
+            return merge({}, state, action.payload.cart || {});
         default:
             return state;
     }

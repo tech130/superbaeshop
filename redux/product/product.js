@@ -12,6 +12,7 @@ export const headerProductsTyps = {
 
 export const loadHeaderProducts = (payload) => {
     const { result, entities } = normalize(payload, [productSchema]);
+    console.log(result, entities);
     return (dispatch) => {
         dispatch(addEntity(entities));
         dispatch({
@@ -23,16 +24,16 @@ export const loadHeaderProducts = (payload) => {
 
 export const fetchHeaderProducts = () => {
     return (dispatch, getState) => {
-        if (!getState().headerProducts.length) {
-            return dispatch(
-                fetchApi(
-                    { url: urls.products },
-                    `headerProducts`,
-                    loadHeaderProducts
-                )
-            );
-        }
-        return Promise.resolve();
+        // if (!getState().headerProducts.length) {
+        return dispatch(
+            fetchApi(
+                { url: urls.products },
+                `headerProducts`,
+                loadHeaderProducts
+            )
+        );
+        // }
+        // return Promise.resolve();
     };
 };
 
@@ -60,7 +61,7 @@ export const fetchProduct = (id) => {
                 fetchApi(
                     { url: urls.productDetail(id) },
                     `product__${id}`,
-                    (res) => updateProduct(res)
+                    updateProduct
                 )
             );
         }
@@ -72,7 +73,7 @@ export const fetchProduct = (id) => {
 export default (state = {}, action) => {
     switch (action.type) {
         case ADD_ENTITIES:
-            return merge({}, action.payload.product);
+            return merge({}, state, action.payload.product || {});
         default:
             return state;
     }

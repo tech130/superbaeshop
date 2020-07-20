@@ -12,6 +12,7 @@ export const productSchema = new schema.Entity(
     {
         processStrategy: (value) => {
             if (value && value.product_country) {
+                console.log(value);
                 return {
                     ...value,
                     product_country: reduceProductCountry(
