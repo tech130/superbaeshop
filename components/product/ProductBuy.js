@@ -8,6 +8,7 @@ import Link from "next/link";
 import { addToLocalCart } from "../../redux/user/local_cart";
 import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
+import Loader from "../form/Loader";
 
 export const AddToLocalCart = ({ className = "", productId }) => {
     const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const AddToCart = ({ className = "", productId }) => {
 
     return (
         <CartButton disabled={fetching} className={className} onClick={onClick}>
-            Add to cart
+            {fetching ? "Adding to cart" : "Add to cart"}
         </CartButton>
     );
 };

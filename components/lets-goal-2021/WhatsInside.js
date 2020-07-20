@@ -8,6 +8,7 @@ import Img from "../styled/Img";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
 import Txt from "../styled/Txt";
+import ProductBuy from "../product/ProductBuy";
 
 const Dot = styled.div`
     width: 20px;
@@ -110,7 +111,7 @@ const WhatsInside = () => {
                                 Posters(12) & Washi tapes (5), A Wrapped
                                 Protective Box.
                             </P>
-                            <CartButton>Buy Now</CartButton>
+                            <ProductBuy productId={2} />
                         </Block>
                     </Col>
                 </Row>
