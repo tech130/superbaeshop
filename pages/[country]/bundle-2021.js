@@ -11,7 +11,7 @@ const Bundle = () => {
 
 Bundle.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct(productId));
+    await ctx.store.dispatch(fetchProduct("bundle-2021"));
 };
 
 export default Bundle;

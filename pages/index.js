@@ -16,7 +16,7 @@ const Home = () => {
 
 Home.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct(productId));
+    await ctx.store.dispatch(fetchProduct("the-professional-planner"));
 };
 
 export default Home;

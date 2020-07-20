@@ -5,7 +5,7 @@ import { setValue } from "../../hooks/form/formReducer";
 import { Row } from "styled-bootstrap-grid";
 import styled from "styled-components";
 
-const FormRow = styled(Row)`
+export const FormRow = styled(Row)`
     margin-left: -5px;
     margin-right: -5px;
 `;

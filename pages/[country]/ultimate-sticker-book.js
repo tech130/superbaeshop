@@ -11,7 +11,7 @@ const UltimateSticker = () => {
 
 UltimateSticker.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct(productId));
+    await ctx.store.dispatch(fetchProduct("ultimate-sticker-book"));
 };
 
 export default UltimateSticker;

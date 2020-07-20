@@ -6,13 +6,16 @@ import useUser from "../../hooks/redux/user/useUser";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { addToLocalCart } from "../../redux/user/local_cart";
+import useSubmit from "../../hooks/http/useSubmit";
+import urls from "../../apiService/urls";
 
 export const AddToLocalCart = ({ className = "", productId }) => {
     const dispatch = useDispatch();
     const country = useCountryParam();
     const inCart = useSelector(
         (state) =>
-            state.local_cart.filter((item) => item.product === productId).length > 0
+            state.local_cart.filter((item) => item.product === productId)
+                .length > 0
     );
 
     const onClick = useCallback(() => {
@@ -35,11 +38,34 @@ export const AddToLocalCart = ({ className = "", productId }) => {
     );
 };
 
+const AddToCart = ({ className = "", productId }) => {
+    const [fetching, submit] = useSubmit();
+
+    const onClick = useCallback(() => {
+        submit({
+            url: urls.cart,
+            method: "POST",
+            data: [
+                {
+                    product_id: productId,
+                    quantity: 1,
+                },
+            ],
+        });
+    }, [productId]);
+
+    return (
+        <CartButton disabled={fetching} className={className} onClick={onClick}>
+            Add to cart
+        </CartButton>
+    );
+};
+
 const ProductBuyBtn = ({ productId }) => {
     const { token } = useUser();
 
     if (token) {
-        return null;
+        return <AddToCart productId={productId} />;
     }
     return <AddToLocalCart productId={productId} />;
 };

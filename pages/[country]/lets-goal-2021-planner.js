@@ -30,7 +30,7 @@ const LetsGoal2021 = () => {
 
 LetsGoal2021.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct(productId));
+    await ctx.store.dispatch(fetchProduct("lets-goal-2021-planner"));
 };
 
 export default LetsGoal2021;

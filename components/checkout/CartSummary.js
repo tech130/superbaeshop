@@ -5,7 +5,6 @@ import Flex from "../styled/Flex";
 import P from "../styled/P";
 import Txt from "../styled/Txt";
 import { useActiveCountry } from "../common/CountryLink";
-import { useSelector } from "react-redux";
 
 const CartSum = styled.div`
     padding: 10px;
