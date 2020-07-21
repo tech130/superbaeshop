@@ -16,6 +16,8 @@ import P from "../styled/P";
 import AddressLoder from "../address/AddressLoder";
 import urls from "../../apiService/urls";
 import { getDialOption } from "../form/CountrySelect";
+import getAddress from "../../utils/getAddress";
+import { CheckoutConfirmModal } from "./CheckoutConfirm";
 
 const checkoutForm = {
     inputs: {
@@ -87,6 +89,7 @@ const checkoutForm = {
 };
 
 const CheckoutForm = ({ coupon, redeem }) => {
+    const [successData, setSuccess] = useState(null);
     const [address_id, setAddress] = useState(null);
     const [address_err, setAddressErr] = useState("");
 
@@ -95,42 +98,60 @@ const CheckoutForm = ({ coupon, redeem }) => {
         setAddressErr("");
     }, []);
 
+    const closeModal = useCallback(() => {
+        setSuccess(null);
+    }, []);
+
+    console.log(successData);
+
     return (
-        <FormCon
-            asDiv
-            form={checkoutForm}
-            config={{
-                url: urls.checkout,
-                method: "POST",
-            }}
-            customValid={() => {
-                if (!address_id) {
-                    setAddressErr("Choose an address");
-                    return true;
-                }
-                return false;
-            }}
-            formatData={(data) => {
-                const wallet = redeem
-                    ? { is_wallet: true }
-                    : coupon
-                    ? { coupon_code: coupon }
-                    : {};
-                return {
-                    ...data,
-                    address_id,
-                    ...wallet,
-                };
-            }}
-            renderForm={(props) => (
-                <CheckoutRenderForm
-                    {...props}
-                    address_id={address_id}
-                    address_err={address_err}
-                    chooseAddr={chooseAddr}
+        <>
+            <FormCon
+                asDiv
+                form={checkoutForm}
+                config={{
+                    url: urls.checkout,
+                    method: "POST",
+                }}
+                customValid={() => {
+                    if (!address_id) {
+                        setAddressErr("Choose an address");
+                        return true;
+                    }
+                    return false;
+                }}
+                formatData={(data) => {
+                    const wallet = redeem
+                        ? { is_wallet: true }
+                        : coupon
+                        ? { coupon_code: coupon }
+                        : {};
+                    return {
+                        ...data,
+                        address_id,
+                        ...wallet,
+                    };
+                }}
+                succFunc={(data) => {
+                    setSuccess(data);
+                }}
+                renderForm={(props) => (
+                    <CheckoutRenderForm
+                        {...props}
+                        address_id={address_id}
+                        address_err={address_err}
+                        chooseAddr={chooseAddr}
+                    />
+                )}
+            />
+            {successData && successData.id && (
+                <CheckoutConfirmModal
+                    isOpen
+                    closeModal={closeModal}
+                    data={successData}
                 />
             )}
-        />
+        </>
     );
 };
 
@@ -149,8 +170,10 @@ const CheckoutRenderForm = ({
             formDispatch(setValue("name", user.first_name || ""));
             formDispatch(setValue("phone", user.username || ""));
             formDispatch(setValue("email", user.email || ""));
-            if(country && country.code2) {
-                formDispatch(setValue("dial_code", getDialOption(country.code2)));
+            if (country && country.code2) {
+                formDispatch(
+                    setValue("dial_code", getDialOption(country.code2))
+                );
             }
         }
     }, []);
@@ -196,20 +219,6 @@ const AddressList = ({ chooseAddr, address_id }) => {
         </ApiContent>
     );
 };
-
-const getAddress = ({
-    door_no = "",
-    street_address = "",
-    locality = "",
-    city = "",
-    state = "",
-    country = {},
-    postal_code = "",
-    landmark = "",
-}) =>
-    `${door_no}, ${street_address}, ${locality}, ${city}, ${state}, ${
-        country ? country.title || "" : ""
-    }, ${postal_code}, ${landmark}`;
 
 const AddressItem = ({
     name = "",

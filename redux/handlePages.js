@@ -45,6 +45,16 @@ export const handleToken = async ({ req, store }) => {
     return {};
 };
 
+const mapPromises = (promises = []) =>
+    Promise.all(
+        promises.map(
+            (promise) =>
+                new Promise((resolve) => {
+                    promise.then(resolve).catch(resolve);
+                })
+        )
+    );
+
 export const common = async (ctx, userRoute = false) => {
     if (ctx.req) {
         try {
@@ -57,11 +67,15 @@ export const common = async (ctx, userRoute = false) => {
     if (userRoute) {
         if (!user.token) {
             redirect(ctx);
+            return;
         }
     }
-    await ctx.store.dispatch(fetchMaster());
-    await ctx.store.dispatch(fetchHeaderProducts());
+    const promises = [
+        ctx.store.dispatch(fetchMaster()),
+        ctx.store.dispatch(fetchHeaderProducts()),
+    ];
     if (user.token && ctx.isServer) {
-        await ctx.store.dispatch(fetchCart());
+        promises.push(ctx.store.dispatch(fetchCart()));
     }
+    await mapPromises(promises);
 };

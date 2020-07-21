@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "dayjs": "^1.8.29",
     "lodash.merge": "^4.6.2",
     "next": "9.3.0",
     "next-redux-wrapper": "^6.0.0-rc.7",

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Block from "../styled/Block";
 import Button from "../styled/Button";
-import { H2 } from "../styled/Headings";
+import { H2, H3 } from "../styled/Headings";
 import CloseIcon from "../icons/CloseIcon";
 
 const ModalHead = styled.div`
@@ -31,7 +31,7 @@ const ModalHeader = ({ closeModal = null, title = "", desc = "" }) => {
             <ClsBtn onClick={closeModal}>
                 <CloseIcon size={20} />
             </ClsBtn>
-            <H2>{title}</H2>
+            {title && <H3>{title}</H3>}
             {desc && <div className="modal-header-desc">{desc}</div>}
         </ModalHead>
     );
