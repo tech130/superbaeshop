@@ -10,6 +10,7 @@ import { setTokenOnBrowser } from "../../utils/handleToken";
 import urls from "../../apiService/urls";
 import { uploadLocalCart } from "../../redux/user/cart";
 import { clearLocalCart } from "../../redux/user/local_cart";
+import canUseDom from "../../utils/canUseDom";
 
 const otpForm = {
     inputs: {
@@ -51,6 +52,9 @@ const Otpform = ({ userData = {}, closeModal }) => {
                         setTokenOnBrowser(data.token);
                         dispatch(uploadLocalCart());
                         dispatch(clearLocalCart());
+                        if (canUseDom) {
+                            window.location.reload();
+                        }
                     }}
                     formatData={(data) => {
                         return {

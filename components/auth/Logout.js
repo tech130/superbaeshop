@@ -6,8 +6,8 @@ import Loader from "../form/Loader";
 import styled from "styled-components";
 import urls from "../../apiService/urls";
 import useUser from "../../hooks/redux/user/useUser";
-import { useRouter } from "next/router";
 import { removeTokenOnBrowser } from "../../utils/handleToken";
+import canUseDom from "../../utils/canUseDom";
 
 const AbsFull = styled.div`
     position: absolute;
@@ -22,7 +22,6 @@ const AbsFull = styled.div`
 `;
 
 const Logout = () => {
-    const router = useRouter();
     const { token } = useUser();
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit(
@@ -37,7 +36,9 @@ const Logout = () => {
     const handleLogout = () => {
         removeTokenOnBrowser();
         dispatch(logout());
-        router.replace("/");
+        if (canUseDom) {
+            window.location.replace("/");
+        }
         return;
     };
 

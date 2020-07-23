@@ -11,7 +11,6 @@ export const setTokenOnBrowser = (token) => {
             expires: date,
             sameSite: "strict",
             path: "/",
-            domain: window.location.hostname,
         });
     }
 };
