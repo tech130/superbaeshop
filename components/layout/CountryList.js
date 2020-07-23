@@ -7,7 +7,6 @@ import Txt from "../styled/Txt";
 import Link from "next/link";
 import { useActiveCountry } from "../common/CountryLink";
 import CaretDown from "../icons/CaretDown";
-import { useRouter } from "next/router";
 
 const CountryList = () => {
     const { countries, activeCountry } = useActiveCountry();
@@ -50,16 +49,16 @@ const CountrySelect = ({ activeCon = {}, countries = [] }) => {
     );
 };
 
-const CountryItem = ({ title = "", image, code2, code, currency_type }) => {
-    const router = useRouter();
-    const { pathname } = router;
-
+const CountryItem = ({
+    title = "",
+    image,
+    code2 = "",
+    code = "",
+    currency_type = "",
+}) => {
     return (
         <li>
-            <Link
-                href={pathname}
-                as={pathname.replace("[country]", code2.toLowerCase())}
-            >
+            <Link href={"/[country]"} as={`/${code2.toLowerCase()}`}>
                 <a>
                     <Img
                         width={16}
