@@ -1,15 +1,15 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
-import ProPlanner from "../components/professional-planner/ProPlanner";
 import { fetchProduct } from "../redux/product/product";
 import { common } from "../redux/handlePages";
+import LetsGoal2021 from "../components/lets-goal-2021/LetsGoal2021";
 
 const productId = 2;
 
 const Home = () => {
     return (
         <Layout productId={productId}>
-            <ProPlanner />
+            <LetsGoal2021 />
         </Layout>
     );
 };
