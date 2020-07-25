@@ -1,10 +1,10 @@
 import React from "react";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
-import CountryLink from "../common/CountryLink";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { DEFAULT_COUNTRY } from "../common/CountryLink";
 
 const ProdList = styled(Flex)`
     border-bottom: 1px solid #eaeaea;
@@ -52,7 +52,7 @@ const ProdItem = ({ id }) => {
         const href = `/[country]/${slug}`;
         return (
             <li>
-                <Link href={href} as={`/${country}/${slug}`}>
+                <Link href={href} as={`/${country || DEFAULT_COUNTRY}/${slug}`}>
                     <ProdLink isActive={href === pathname}>{title}</ProdLink>
                 </Link>
             </li>

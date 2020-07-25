@@ -13,11 +13,13 @@ const CountryLink = ({ children, className, href = "", as = "" }) => {
     );
 };
 
+export const DEFAULT_COUNTRY = "in";
+
 export const useCountryParam = () => {
     const router = useRouter();
     const { country } = router.query;
 
-    return country || "in";
+    return country || DEFAULT_COUNTRY;
 };
 
 export const useActiveCountry = () => {
@@ -39,7 +41,9 @@ export const useProdCountry = (product_country = {}) => {
     const { activeCountry } = useActiveCountry();
 
     return useMemo(() => {
-        return activeCountry && product_country && product_country[activeCountry.id]
+        return activeCountry &&
+            product_country &&
+            product_country[activeCountry.id]
             ? product_country[activeCountry.id]
             : {};
     }, [product_country, activeCountry]);

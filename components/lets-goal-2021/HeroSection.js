@@ -5,7 +5,6 @@ import Img from "../styled/Img";
 import Txt from "../styled/Txt";
 import Block from "../styled/Block";
 import P from "../styled/P";
-import { CartButton } from "../styled/Button";
 import Flex from "../styled/Flex";
 import ProductBuy from "../product/ProductBuy";
 
