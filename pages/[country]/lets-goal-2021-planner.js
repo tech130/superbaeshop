@@ -1,36 +1,22 @@
 import React from "react";
 import Layout from "../../components/layout/Layout";
-import HeroSection from "../../components/lets-goal-2021/HeroSection";
-import WhatsInside from "../../components/lets-goal-2021/WhatsInside";
-import Img from "../../components/styled/Img";
-import FreeInclusions from "../../components/lets-goal-2021/FreeInclusions";
-import PagesSlider from "../../components/lets-goal-2021/PagesSlider";
-import WalkThrough from "../../components/lets-goal-2021/WalkThrough";
 import { common } from "../../redux/handlePages";
 import { fetchProduct } from "../../redux/product/product";
+import LetsGoal2021 from "../../components/lets-goal-2021/LetsGoal2021";
 
 const productId = 2;
 
-const LetsGoal2021 = () => {
+const LetsGoal2021Page = () => {
     return (
         <Layout productId={productId}>
-            <HeroSection />
-            <WhatsInside />
-            <Img
-                fullWidth
-                src="/images/lets-goal-2021/intersection.jpg"
-                alt=""
-            />
-            <FreeInclusions />
-            <PagesSlider />
-            <WalkThrough />
+            <LetsGoal2021 />
         </Layout>
     );
 };
 
-LetsGoal2021.getInitialProps = async (ctx) => {
+LetsGoal2021Page.getInitialProps = async (ctx) => {
     await common(ctx);
     await ctx.store.dispatch(fetchProduct("lets-goal-2021-planner"));
 };
 
-export default LetsGoal2021;
+export default LetsGoal2021Page;

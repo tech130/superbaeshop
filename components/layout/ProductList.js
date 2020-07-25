@@ -3,6 +3,8 @@ import Flex from "../styled/Flex";
 import styled from "styled-components";
 import CountryLink from "../common/CountryLink";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const ProdList = styled(Flex)`
     border-bottom: 1px solid #eaeaea;
@@ -13,15 +15,6 @@ const ProdList = styled(Flex)`
         flex-wrap: nowrap;
         overflow-x: auto;
         white-space: nowrap;
-    }
-
-    ul li a {
-        display: inline-block;
-        padding: 10px 25px;
-        color: #000;
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 500;
     }
 `;
 
@@ -39,15 +32,29 @@ const ProductList = () => {
     );
 };
 
-const ProdItem = ({ id }) => {
-    const product = useSelector((state) => state.product[id] || {});
+const ProdLink = styled.a`
+    display: inline-block;
+    padding: 10px 25px;
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border-bottom: ${(props) => (props.isActive ? "2px solid #000" : "none")};
+`;
 
-    if (product.slug) {
+const ProdItem = ({ id }) => {
+    const router = useRouter();
+    const { pathname, query } = router;
+    const { country } = query;
+    const { slug, title } = useSelector((state) => state.product[id] || {});
+
+    if (slug && title) {
+        const href = `/[country]/${slug}`;
         return (
             <li>
-                <CountryLink href={`/${product.slug}`}>
-                    {product.title}
-                </CountryLink>
+                <Link href={href} as={`/${country}/${slug}`}>
+                    <ProdLink isActive={href === pathname}>{title}</ProdLink>
+                </Link>
             </li>
         );
     }

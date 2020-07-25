@@ -2,6 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Col } from "styled-bootstrap-grid";
 
+export const FormCol = styled(Col)`
+    padding-right: 5px;
+    padding-left: 5px;
+`;
+
 export const FormGroup = styled(Col)`
     padding-right: 5px;
     padding-left: 5px;
@@ -39,7 +44,6 @@ export const FormGroup = styled(Col)`
         font-size: 14px;
         color: #777;
     }
-
 `;
 
 const FieldCon = ({

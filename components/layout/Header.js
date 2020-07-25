@@ -74,8 +74,8 @@ const Header = () => {
                         </CountryLink>
                         <Ul alignItems="stretch">
                             <Hdrli>
-                                <CartCount />
                                 <CountryLink href="/checkout">
+                                    <CartCount />
                                     <CartIcon size={20} />
                                 </CountryLink>
                             </Hdrli>

@@ -6,7 +6,6 @@ import React, {
     useMemo,
 } from "react";
 import { FormRow } from "../form/FieldArray";
-import SubmitButton from "../form/SubmitButton";
 import { AddressModalBtn } from "../address/CreateAddress";
 import { H6 } from "../styled/Headings";
 import Flex from "../styled/Flex";
@@ -14,7 +13,7 @@ import Txt from "../styled/Txt";
 import { useDispatch, useSelector } from "react-redux";
 import { addrTyps, fetchAddress } from "../../redux/user/address";
 import { ApiContent } from "../common/DynamicContent";
-import FieldCon, { FormGroup } from "../form/FieldCon";
+import FieldCon, { FormCol } from "../form/FieldCon";
 import useUser from "../../hooks/redux/user/useUser";
 import AddressLoder from "../address/AddressLoder";
 import urls from "../../apiService/urls";
@@ -245,18 +244,33 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     <Loader size={40} />
                 </Flex>
             ) : (
-                <FormRow>
-                    <FormGroup md={6}>
-                        <SubmitButton onClick={onPayNow} disabled={fetching}>
-                            PAY NOW
-                        </SubmitButton>
-                    </FormGroup>
-                    <FormGroup md={6}>
-                        <SubmitButton onClick={onPayLater} disabled={fetching}>
-                            PAY LATER
-                        </SubmitButton>
-                    </FormGroup>
-                </FormRow>
+                <>
+                    <Button
+                        margin="0px 0px 10px 0px"
+                        block
+                        onClick={onPayNow}
+                        disabled={fetching}
+                        border="1px solid #ced4da"
+                        padding="8px"
+                    >
+                        PAY SECURELY VIA{" "}
+                        <img
+                            style={{ marginLeft: "10px" }}
+                            width={100}
+                            src="/images/razorpay-logo.svg"
+                        />
+                    </Button>
+                    <Button
+                        border="1px solid #ced4da"
+                        padding="8px"
+                        onClick={onPayLater}
+                        block
+                        disabled={fetching}
+                    >
+                        CASH ON DELIVERY (+{activeCountry.currency_type}
+                        {activeCountry.shipping_fee})
+                    </Button>
+                </>
             )}
 
             {successData && successData.id && (
@@ -281,17 +295,18 @@ const AddressList = ({ chooseAddr, address_id, activeCountryId = null }) => {
     return (
         <ApiContent name={addrTyps.apiName} loader={<AddressLoder />}>
             {list.length > 0 && (
-                <Carousel withoutControls slideWidth="250px" cellSpacing={10}>
+                <FormRow>
                     {list.map((item) => (
-                        <AddressItem
-                            activeCountryId={activeCountryId}
-                            isActive={item.id === address_id}
-                            chooseAddr={chooseAddr}
-                            {...item}
-                            key={item.id}
-                        />
+                        <FormCol md={6} key={item.id}>
+                            <AddressItem
+                                activeCountryId={activeCountryId}
+                                isActive={item.id === address_id}
+                                chooseAddr={chooseAddr}
+                                {...item}
+                            />
+                        </FormCol>
                     ))}
-                </Carousel>
+                </FormRow>
             )}
         </ApiContent>
     );
@@ -304,6 +319,7 @@ const AddrStl = styled(Button)`
     text-align: left;
     border: ${(props) => `1px solid ${props.isActive ? "#000" : "#ced4da"}`};
     padding: 10px;
+    margin-bottom: 10px;
 
     &:disabled {
         opacity: 1;
