@@ -8,6 +8,7 @@ import merge from "lodash.merge";
 export const cartTyps = {
     load: "cart/load",
     update: "cart/update",
+    clear: "cart/clear",
 };
 
 export const loadCartList = (payload) => {
@@ -70,6 +71,12 @@ export const uploadLocalCart = () => {
     };
 };
 
+export const clearCart = () => {
+    return {
+        type: cartTyps.clear,
+    };
+};
+
 const update = (state, payload) => {
     return [...new Set(state.concat(payload).filter((x) => !!x))];
 };
@@ -80,6 +87,8 @@ export const cartList = (state = [], action) => {
             return action.payload;
         case cartTyps.update:
             return update(state, action.payload);
+        case cartTyps.clear:
+            return [];
         default:
             return state;
     }
@@ -90,6 +99,8 @@ export default (state = {}, action) => {
     switch (action.type) {
         case ADD_ENTITIES:
             return merge({}, state, action.payload.cart || {});
+        case cartTyps.clear:
+            return {};
         default:
             return state;
     }

@@ -16,6 +16,7 @@ const urls = {
     //checkout
     checkout: "orders/checkout/",
     cod: (id) => `orders/cod-confirm/${id}/`,
+    myOrders: "orders/",
 };
 
 export default urls;

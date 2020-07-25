@@ -1,4 +1,3 @@
-import apiInstance from "../apiInstance";
 import clientApi from "../apiService/clientApi";
 
 export const apiTyps = {
