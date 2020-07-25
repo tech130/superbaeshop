@@ -38,9 +38,12 @@ const Login = ({ changeNumber, closeModal }) => {
                     }}
                     form={loginForm}
                     succFunc={(data, formState) => {
-                        changeNumber(formState.values);
+                        changeNumber({
+                            username: formState.values.username,
+                            desc: data && data.data ? data.data : "",
+                        });
                     }}
-                    customValid={({data, dispatchErr}) => {
+                    customValid={({ data, dispatchErr }) => {
                         const phneErr = phoneValid(data.username);
                         const emailErr = emailValid(data.username);
                         if (phneErr && emailErr) {

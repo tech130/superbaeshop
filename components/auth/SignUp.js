@@ -63,7 +63,10 @@ const SignUp = ({ changeNumber, closeModal }) => {
                         }}
                         form={signupForm(countries, activeCountry)}
                         succFunc={(data, formState) => {
-                            changeNumber(formState.values);
+                            changeNumber({
+                                username: formState.values.username,
+                                desc: data && data.data ? data.data : "",
+                            });
                         }}
                         renderForm={RenderForm}
                     />
