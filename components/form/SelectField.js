@@ -4,6 +4,7 @@ import TextArea from "./TextArea";
 import Checkbox from "./Checkbox";
 import CountrySelect from "./CountrySelect";
 import SelectIp from "./SelectIp";
+import RadioGroup from "./RadioGroup";
 // import Select from "./Select";
 
 const SelectField = (props) => {
@@ -27,6 +28,8 @@ const selectField = (type) => {
             return TextArea;
         case "checkbox":
             return Checkbox;
+        case "radiogroup":
+            return RadioGroup
         case "countrySelect":
             return CountrySelect;
         case "select":

@@ -64,21 +64,23 @@ const form = (countries = []) => ({
         },
         address_type: {
             name: "address_type",
-            type: "select",
-            placeholder: "Address type",
+            type: "radiogroup",
             options: [
                 {
-                    label: "Home",
+                    title: "Home",
                     value: "Home",
                 },
                 {
-                    label: "Work",
+                    title: "Work",
                     value: "Work",
                 },
             ],
         },
     },
     uiProps: {
+        address_type: {
+            md: 12,
+        },
         street_address: {
             md: 12,
         },
@@ -92,13 +94,13 @@ const form = (countries = []) => ({
     allIds: [
         "address_type",
         "door_no",
+        "landmark",
         "street_address",
         "locality",
         "city",
         "state",
         "country_id",
         "postal_code",
-        "landmark",
     ],
 });
 
