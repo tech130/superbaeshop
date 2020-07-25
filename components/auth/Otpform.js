@@ -14,7 +14,6 @@ import canUseDom from "../../utils/canUseDom";
 import { LinkButton } from "../styled/Button";
 import useSubmit from "../../hooks/http/useSubmit";
 import useInterval from "../../hooks/useInterval";
-import P from "../styled/P";
 import Flex from "../styled/Flex";
 import Txt from "../styled/Txt";
 
@@ -54,7 +53,7 @@ const Otpform = ({ userData = {}, closeModal }) => {
                     succFunc={(data) => {
                         dispatch(updateUser(data));
                         setTokenOnBrowser(data.token);
-                        dispatch(uploadLocalCart());
+                        dispatch(uploadLocalCart())
                         dispatch(clearLocalCart());
                         if (canUseDom) {
                             window.location.reload();

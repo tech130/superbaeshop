@@ -78,7 +78,14 @@ const form = (countries = []) => ({
             ],
         },
     },
-    uiProps: {},
+    uiProps: {
+        street_address: {
+            md: 12,
+        },
+        locality: {
+            md: 12,
+        },
+    },
     defaultUiProps: {
         md: 6,
     },

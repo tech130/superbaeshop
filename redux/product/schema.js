@@ -2,7 +2,16 @@ import { schema } from "normalizr";
 
 const reduceProductCountry = (product_country = []) =>
     Array.isArray(product_country)
-        ? product_country.reduce((acc, cur) => ({ ...acc, [cur.id]: cur }), {})
+        ? product_country.reduce(
+              (acc, cur) =>
+                  cur && cur.country && cur.country.id
+                      ? {
+                            ...acc,
+                            [cur.country.id]: cur,
+                        }
+                      : acc,
+              {}
+          )
         : {};
 
 // product

@@ -35,7 +35,7 @@ export const useActiveCountry = () => {
     };
 };
 
-export const useProdCountry = (product_country) => {
+export const useProdCountry = (product_country = {}) => {
     const { activeCountry } = useActiveCountry();
 
     return useMemo(() => {
