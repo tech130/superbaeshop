@@ -8,6 +8,7 @@ import urls from "../../apiService/urls";
 import useUser from "../../hooks/redux/user/useUser";
 import { removeTokenOnBrowser } from "../../utils/handleToken";
 import canUseDom from "../../utils/canUseDom";
+import { useCountryParam } from "../common/CountryLink";
 
 const AbsFull = styled.div`
     position: absolute;
@@ -23,6 +24,7 @@ const AbsFull = styled.div`
 
 const Logout = () => {
     const { token } = useUser();
+    const country = useCountryParam();
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit(
         () => {
@@ -37,7 +39,7 @@ const Logout = () => {
         removeTokenOnBrowser();
         dispatch(logout());
         if (canUseDom) {
-            window.location.replace("/");
+            window.location.replace(`/${country}`);
         }
         return;
     };

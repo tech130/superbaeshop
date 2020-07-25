@@ -7,7 +7,7 @@ import OrderList from "../../components/checkout/OrderList";
 
 const Orders = () => {
     return (
-        <Layout>
+        <Layout isAuthRoute>
             <Block padding="35px 0px">
                 <Container>
                     <Row>

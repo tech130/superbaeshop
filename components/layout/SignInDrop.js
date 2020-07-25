@@ -48,9 +48,9 @@ const SignInDrop = () => {
                             </CountryLink>
                         </li>
                         <li>
-                            <Link href="/logout">
+                            <CountryLink href="/logout">
                                 <a>Logout</a>
-                            </Link>
+                            </CountryLink>
                         </li>
                     </>
                 ) : (
