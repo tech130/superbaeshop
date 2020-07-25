@@ -10,13 +10,7 @@ import CountryLink from "../common/CountryLink";
 import { useCartCount } from "../../hooks/redux/checkout/useCart";
 
 const Hdr = styled.header`
-    background: rgba(255, 255, 255, 0.67);
     border-bottom: 1px solid #eaeaea;
-    backdrop-filter: blur(20px);
-    position: sticky;
-    top: 0;
-    z-index: 99;
-    font-size: 14px;
 `;
 
 const Hdrli = styled.li`

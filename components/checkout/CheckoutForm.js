@@ -20,14 +20,13 @@ import urls from "../../apiService/urls";
 import getAddress from "../../utils/getAddress";
 import { CheckoutConfirmModal } from "./CheckoutConfirm";
 import Input from "../form/Input";
-import Carousel from "nuka-carousel";
 import useSubmit from "../../hooks/http/useSubmit";
 import { emailValid, phoneValid } from "../../utils/validation";
 import Loader from "../form/Loader";
 import { useActiveCountry } from "../common/CountryLink";
 import SelectIp from "../form/SelectIp";
 import styled from "styled-components";
-import Button from "../styled/Button";
+import Button, { LinkButton } from "../styled/Button";
 
 const getDialOption = (x) => {
     return {
@@ -198,7 +197,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                 <FieldCon err={errors.dial_code} md={5}>
                     <SelectIp
                         value={values.dial_code}
-                        placeholder="+91"
+                        placeholder="Dial Code"
                         options={dialCodes}
                         setValue={(val) => onChange("dial_code", val)}
                     />
@@ -214,7 +213,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                 <FieldCon err={errors.alt_dial_code} md={5}>
                     <SelectIp
                         value={values.alt_dial_code}
-                        placeholder="+91"
+                        placeholder="Dial Code"
                         options={dialCodes}
                         setValue={(val) => onChange("alt_dial_code", val)}
                     />
@@ -228,7 +227,10 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     />
                 </FieldCon>
             </FormRow>
-            <H6>Choose your delivery address</H6>
+            <Flex justifyContent="space-between">
+                <H6>Choose your delivery address</H6>
+                <AddAddress />
+            </Flex>
             <FormRow>
                 <FieldCon err={errors.address_id}>
                     <AddressList
@@ -238,7 +240,6 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     />
                 </FieldCon>
             </FormRow>
-            <AddAddress />
             {fetching ? (
                 <Flex justifyContent="center" align="center">
                     <Loader size={40} />
@@ -297,7 +298,7 @@ const AddressList = ({ chooseAddr, address_id, activeCountryId = null }) => {
             {list.length > 0 && (
                 <FormRow>
                     {list.map((item) => (
-                        <FormCol md={6} key={item.id}>
+                        <FormCol md={12} key={item.id}>
                             <AddressItem
                                 activeCountryId={activeCountryId}
                                 isActive={item.id === address_id}
@@ -320,6 +321,7 @@ const AddrStl = styled(Button)`
     border: ${(props) => `1px solid ${props.isActive ? "#000" : "#ced4da"}`};
     padding: 10px;
     margin-bottom: 10px;
+    width: 100%;
 
     &:disabled {
         opacity: 1;
@@ -359,23 +361,7 @@ const AddAddress = () => {
     return (
         <AddressModalBtn
             Btn={({ onClick }) => (
-                <Flex
-                    height="100px"
-                    border="1px dashed #cecece"
-                    alignItems="center"
-                    justifyContent="center"
-                    onClick={onClick}
-                    margin="0px 0px 15px 0px"
-                    vertical
-                    as="a"
-                >
-                    <Txt fontSize="28px" color="hsl(0, 0%, 50%)">
-                        +
-                    </Txt>
-                    <Txt fontSize="14px" color="hsl(0, 0%, 50%)">
-                        ADD ADDRESS
-                    </Txt>
-                </Flex>
+                <LinkButton textDecor="underline" fontSize="13px" onClick={onClick}>+ Add Address</LinkButton>
             )}
         />
     );
