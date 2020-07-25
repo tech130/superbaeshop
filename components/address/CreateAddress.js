@@ -81,6 +81,9 @@ const form = (countries = []) => ({
         address_type: {
             md: 12,
         },
+        door_no: {
+            md: 12,
+        },
         street_address: {
             md: 12,
         },
@@ -94,9 +97,9 @@ const form = (countries = []) => ({
     allIds: [
         "address_type",
         "door_no",
-        "landmark",
         "street_address",
         "locality",
+        "landmark",
         "city",
         "state",
         "country_id",

@@ -6,7 +6,6 @@ import NProgress from "nprogress";
 import { BaseCSS } from "styled-bootstrap-grid";
 import withRedux from "next-redux-wrapper";
 import makeStore from "../redux/store";
-import UserandCart from "../components/common/UserandCart";
 import GlobalStyle from "../components/styled/GlobalStyle";
 import { ToastContainer } from "react-toastify";
 
@@ -31,13 +30,8 @@ function MyApp({ Component, pageProps, store }) {
                     name="viewport"
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
-                <link
-                    href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css"
-                    rel="stylesheet"
-                />
             </Head>
             <GlobalStyle />
-            <UserandCart />
             <BaseCSS />
             <Component {...pageProps} />
             <UploadCartModal />

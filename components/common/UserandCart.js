@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import {
     setTokenOnBrowser,
-    removeTokenOnBrowser,
+    // removeTokenOnBrowser,
 } from "../../utils/handleToken";
 import useUser from "../../hooks/redux/user/useUser";
 
@@ -11,9 +11,10 @@ const UserandCart = () => {
     useEffect(() => {
         if (token) {
             setTokenOnBrowser(token);
-        } else {
-            removeTokenOnBrowser();
         }
+        // else {
+        //     removeTokenOnBrowser();
+        // }
     }, [token]);
 
     return null;

@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useCallback, useReducer } from "react";
+import React, {
+    useEffect,
+    useState,
+    useCallback,
+    useReducer,
+    useMemo,
+} from "react";
 import { FormRow } from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
 import { AddressModalBtn } from "../address/CreateAddress";
@@ -12,7 +18,6 @@ import FieldCon, { FormGroup } from "../form/FieldCon";
 import useUser from "../../hooks/redux/user/useUser";
 import AddressLoder from "../address/AddressLoder";
 import urls from "../../apiService/urls";
-import CountrySelect, { getDialOption } from "../form/CountrySelect";
 import getAddress from "../../utils/getAddress";
 import { CheckoutConfirmModal } from "./CheckoutConfirm";
 import Input from "../form/Input";
@@ -20,14 +25,25 @@ import Carousel from "nuka-carousel";
 import useSubmit from "../../hooks/http/useSubmit";
 import { emailValid, phoneValid } from "../../utils/validation";
 import Loader from "../form/Loader";
+import { useActiveCountry } from "../common/CountryLink";
+import SelectIp from "../form/SelectIp";
+import styled from "styled-components";
+import Button from "../styled/Button";
+
+const getDialOption = (x) => {
+    return {
+        label: `+${x.dial_code} (${x.title})`,
+        value: x.dial_code,
+        image: x.image,
+    };
+};
 
 const init = ({ user = {}, country = {} }) => ({
     values: {
         name: user.first_name,
         email: user.email,
         phone: user.username,
-        dial_code:
-            country && country.code2 ? getDialOption(country.code2) : null,
+        dial_code: country && country.dial_code ? getDialOption(country) : null,
     },
     errors: {},
 });
@@ -63,9 +79,14 @@ export function formReducer(state, action) {
 }
 
 const CheckoutForm = ({ coupon, redeem }) => {
+    const { countries, activeCountry } = useActiveCountry();
     const [successData, setSuccess] = useState(null);
     const user = useUser();
     const [formState, formDispatch] = useReducer(formReducer, init(user));
+
+    const dialCodes = useMemo(() => {
+        return countries.map((x) => getDialOption(x));
+    }, []);
 
     const closeModal = useCallback(() => {
         setSuccess(null);
@@ -137,7 +158,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
             dial_code: values.dial_code.value,
             alt_dial_code:
                 values.alt_dial_code && values.alt_dial_code.value
-                    ? values.alt_dial_code
+                    ? values.alt_dial_code.value
                     : "",
             payment_type,
         };
@@ -176,10 +197,10 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     />
                 </FieldCon>
                 <FieldCon err={errors.dial_code} md={5}>
-                    <CountrySelect
+                    <SelectIp
                         value={values.dial_code}
                         placeholder="+91"
-                        valType="dialCode"
+                        options={dialCodes}
                         setValue={(val) => onChange("dial_code", val)}
                     />
                 </FieldCon>
@@ -192,10 +213,10 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     />
                 </FieldCon>
                 <FieldCon err={errors.alt_dial_code} md={5}>
-                    <CountrySelect
+                    <SelectIp
                         value={values.alt_dial_code}
                         placeholder="+91"
-                        valType="dialCode"
+                        options={dialCodes}
                         setValue={(val) => onChange("alt_dial_code", val)}
                     />
                 </FieldCon>
@@ -203,17 +224,18 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     <Input
                         type="tel"
                         value={values.alt_phone}
-                        placeholder="Alternate PH (optional)"
+                        placeholder="Alternate Ph. (Optional)"
                         setValue={(val) => onChange("alt_phone", val)}
                     />
                 </FieldCon>
             </FormRow>
-            <H6>Choose Address</H6>
+            <H6>Choose your delivery address</H6>
             <FormRow>
                 <FieldCon err={errors.address_id}>
                     <AddressList
                         chooseAddr={(id) => onChange("address_id", id)}
                         address_id={values.address_id}
+                        activeCountryId={activeCountry.id}
                     />
                 </FieldCon>
             </FormRow>
@@ -248,41 +270,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
     );
 };
 
-// const CheckoutRenderForm = ({
-//     fetching,
-//     formDispatch,
-//     address_id,
-//     address_err,
-//     chooseAddr,
-//     onSubmit,
-// }) => {
-//     useEffect(() => {
-//         if (user) {
-//             formDispatch(setValue("name", user.first_name || ""));
-//             formDispatch(setValue("phone", user.username || ""));
-//             formDispatch(setValue("email", user.email || ""));
-//             if (country && country.code2) {
-//                 formDispatch(
-//                     setValue("dial_code", getDialOption(country.code2))
-//                 );
-//             }
-//         }
-//     }, []);
-
-//     return (
-//         <>
-//             <FieldArray />
-
-//             {address_err && (
-//                 <P fontSize="14px" color="red">
-//                     {address_err}
-//                 </P>
-//             )}
-//         </>
-//     );
-// };
-
-const AddressList = ({ chooseAddr, address_id }) => {
+const AddressList = ({ chooseAddr, address_id, activeCountryId = null }) => {
     const dispatch = useDispatch();
     const list = useSelector((state) => state.addressList);
 
@@ -296,6 +284,7 @@ const AddressList = ({ chooseAddr, address_id }) => {
                 <Carousel withoutControls slideWidth="250px" cellSpacing={10}>
                     {list.map((item) => (
                         <AddressItem
+                            activeCountryId={activeCountryId}
                             isActive={item.id === address_id}
                             chooseAddr={chooseAddr}
                             {...item}
@@ -308,26 +297,45 @@ const AddressList = ({ chooseAddr, address_id }) => {
     );
 };
 
+const AddrStl = styled(Button)`
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    border: ${(props) => `1px solid ${props.isActive ? "#000" : "#ced4da"}`};
+    padding: 10px;
+
+    &:disabled {
+        opacity: 1;
+        cursor: not-allowed;
+    }
+`;
+
 const AddressItem = ({
     address_type = "",
     id,
     chooseAddr,
     isActive,
+    activeCountryId,
     ...rest
 }) => {
+    const countryId = rest.country && rest.country.id ? rest.country.id : null;
+    const disabled = countryId !== activeCountryId;
     return (
-        <Flex
-            onClick={() => chooseAddr(id)}
-            vertical
-            padding="10px"
-            border={`1px solid ${isActive ? "#000" : "#ced4da"}`}
-            as="a"
+        <AddrStl
+            disabled={disabled}
+            onClick={() => {
+                if (!disabled) {
+                    chooseAddr(id);
+                }
+            }}
+            isActive={isActive}
         >
             <Txt fontSize="14px" weight="500">
                 {address_type}
             </Txt>
             <Txt fontSize="12px">{`${getAddress(rest)}`}</Txt>
-        </Flex>
+        </AddrStl>
     );
 };
 

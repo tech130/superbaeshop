@@ -55,6 +55,11 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
         }
     };
 
+    const currencyCode =
+        data && data.address && data.address.country
+            ? data.address.country.currency_type || ""
+            : "";
+
     return (
         <>
             <ModalHeader
@@ -122,38 +127,56 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
                         {data.coupon_amount && (
                             <tr>
                                 <th>Coupon Amount</th>
-                                <td>{data.coupon_amount}</td>
+                                <td>
+                                    {currencyCode}
+                                    {data.coupon_amount}
+                                </td>
                             </tr>
                         )}
                         {data.shipping_charge && (
                             <tr>
                                 <th>Shipping Fee</th>
-                                <td>{data.shipping_charge}</td>
+                                <td>
+                                    {currencyCode}
+                                    {data.shipping_charge}
+                                </td>
                             </tr>
                         )}
                         {data.cod_charge && (
                             <tr>
                                 <th>COD Charge</th>
-                                <td>{data.cod_charge}</td>
+                                <td>
+                                    {currencyCode}
+                                    {data.cod_charge}
+                                </td>
                             </tr>
                         )}
                         {data.other_charge && (
                             <tr>
                                 <th>Other Charges</th>
-                                <td>{data.other_charge}</td>
+                                <td>
+                                    {currencyCode}
+                                    {data.other_charge}
+                                </td>
                             </tr>
                         )}
 
                         {data.total_amount && (
                             <tr>
                                 <th>Total Amount</th>
-                                <td>{data.total_amount}</td>
+                                <td>
+                                    {currencyCode}
+                                    {data.total_amount}
+                                </td>
                             </tr>
                         )}
                         {data.pay_amount && (
                             <tr>
                                 <th>Pay Amount</th>
-                                <td>{data.pay_amount}</td>
+                                <td>
+                                    {currencyCode}
+                                    {data.pay_amount}
+                                </td>
                             </tr>
                         )}
                     </tbody>
@@ -167,20 +190,12 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
 };
 
 const Address = ({
-    name = "",
     address_type = "",
-    dial_code = "",
-    phone = "",
     ...rest
 }) => {
     return (
         <Flex vertical>
-            <div>
-                {name} ({address_type})
-            </div>
-            <div>
-                +{dial_code} {phone}
-            </div>
+            <div>{address_type}</div>
             <div>{`${getAddress(rest)}`}</div>
         </Flex>
     );
