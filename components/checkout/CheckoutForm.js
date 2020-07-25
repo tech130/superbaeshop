@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useCallback } from "react";
-import FormCon from "../form/FormCon";
-import FieldArray, { FormRow } from "../form/FieldArray";
+import React, { useEffect, useState, useCallback, useReducer } from "react";
+import { FormRow } from "../form/FieldArray";
 import SubmitButton from "../form/SubmitButton";
-import { setValue } from "../../hooks/form/formReducer";
 import { AddressModalBtn } from "../address/CreateAddress";
 import { H6 } from "../styled/Headings";
 import Flex from "../styled/Flex";
@@ -10,140 +8,235 @@ import Txt from "../styled/Txt";
 import { useDispatch, useSelector } from "react-redux";
 import { addrTyps, fetchAddress } from "../../redux/user/address";
 import { ApiContent } from "../common/DynamicContent";
-import { FormGroup } from "../form/FieldCon";
+import FieldCon, { FormGroup } from "../form/FieldCon";
 import useUser from "../../hooks/redux/user/useUser";
-import P from "../styled/P";
 import AddressLoder from "../address/AddressLoder";
 import urls from "../../apiService/urls";
-import { getDialOption } from "../form/CountrySelect";
+import CountrySelect, { getDialOption } from "../form/CountrySelect";
 import getAddress from "../../utils/getAddress";
 import { CheckoutConfirmModal } from "./CheckoutConfirm";
+import Input from "../form/Input";
+import Carousel from "nuka-carousel";
+import useSubmit from "../../hooks/http/useSubmit";
+import { emailValid, phoneValid } from "../../utils/validation";
+import Loader from "../form/Loader";
 
-const checkoutForm = {
-    inputs: {
-        name: {
-            name: "name",
-            type: "text",
-            placeholder: "Name",
-        },
-        email: {
-            name: "email",
-            type: "email",
-            placeholder: "Email Id",
-        },
-        dial_code: {
-            name: "dial_code",
-            type: "countrySelect",
-            placeholder: "+91",
-            valType: "dialCode",
-        },
-        phone: {
-            name: "name",
-            type: "tel",
-            placeholder: "Phone Number",
-        },
-        alt_dial_code: {
-            name: "alt_dial_code",
-            type: "countrySelect",
-            placeholder: "+91",
-            valType: "dialCode",
-        },
-        alt_phone: {
-            name: "name",
-            type: "tel",
-            placeholder: "Alternate Phone Number",
-        },
-        payment_type: {
-            name: "name",
-            type: "select",
-            options: [
-                {
-                    label: "Online",
-                    value: "Online",
+const init = ({ user = {}, country = {} }) => ({
+    values: {
+        name: user.first_name,
+        email: user.email,
+        phone: user.username,
+        dial_code:
+            country && country.code2 ? getDialOption(country.code2) : null,
+    },
+    errors: {},
+});
+
+export function formReducer(state, action) {
+    switch (action.type) {
+        case "on_change":
+            return {
+                ...state,
+                values: {
+                    ...state.values,
+                    [action.name]: action.value,
                 },
-                {
-                    label: "COD",
-                    value: "COD",
+                errors: {
+                    ...state.errors,
+                    [action.name]: "",
                 },
-            ],
-            placeholder: "Select payment type",
-        },
-    },
-    uiProps: {
-        payment_type: {
-            md: 12,
-        },
-    },
-    defaultUiProps: {
-        md: 6,
-    },
-    allIds: [
-        "name",
-        "email",
-        "dial_code",
-        "phone",
-        "alt_dial_code",
-        "alt_phone",
-        "payment_type",
-    ],
-};
+            };
+        case "set_errors":
+            return {
+                ...state,
+                errors: action.payload,
+            };
+        case "reset_form":
+            return {
+                ...state,
+                errors: {},
+                values: {},
+            };
+        default:
+            return state;
+    }
+}
 
 const CheckoutForm = ({ coupon, redeem }) => {
     const [successData, setSuccess] = useState(null);
-    const [address_id, setAddress] = useState(null);
-    const [address_err, setAddressErr] = useState("");
-
-    const chooseAddr = useCallback((id) => {
-        setAddress(id);
-        setAddressErr("");
-    }, []);
+    const user = useUser();
+    const [formState, formDispatch] = useReducer(formReducer, init(user));
 
     const closeModal = useCallback(() => {
         setSuccess(null);
     }, []);
 
-    console.log(successData);
+    const onChange = useCallback((name, value) => {
+        formDispatch({
+            type: "on_change",
+            name,
+            value,
+        });
+    });
+
+    const { values, errors } = formState;
+
+    const [fetching, submit] = useSubmit((data) => {
+        setSuccess(data);
+    });
+
+    const onSubmit = (payment_type) => {
+        let err = {};
+        if (!values.name) {
+            err.name = "Name is required";
+        }
+        const emailErr = emailValid(values.email);
+        if (emailErr) {
+            err.email = emailErr;
+        }
+        const dialErr =
+            values.dial_code && values.dial_code.value
+                ? ""
+                : "Dial code is required";
+        if (dialErr) {
+            err.dial_code = dialErr;
+        }
+        const altdialErr =
+            values.alt_dial_code && values.alt_dial_code.value
+                ? ""
+                : "Dial code is required";
+        if (values.alt_dial_code && altdialErr) {
+            err.alt_dial_code = altdialErr;
+        }
+        const phoneErr = phoneValid(values.phone);
+        if (phoneErr) {
+            err.phone = phoneErr;
+        }
+        const altphoneErr = phoneValid(values.phone);
+        if (values.alt_phone && altphoneErr) {
+            err.alt_phone = altphoneErr;
+        }
+        if (!values.address_id) {
+            err.address_id = "Address is required";
+        }
+        if (Object.keys(err).length > 0) {
+            formDispatch({
+                type: "set_errors",
+                payload: err,
+            });
+            return;
+        }
+        const wallet = redeem
+            ? { is_wallet: true }
+            : coupon
+            ? { coupon_code: coupon }
+            : {};
+        let formData = {
+            ...wallet,
+            ...values,
+            dial_code: values.dial_code.value,
+            alt_dial_code:
+                values.alt_dial_code && values.alt_dial_code.value
+                    ? values.alt_dial_code
+                    : "",
+            payment_type,
+        };
+        submit({
+            url: urls.checkout,
+            method: "POST",
+            data: formData,
+        });
+    };
+
+    const onPayNow = () => {
+        onSubmit("Online");
+    };
+
+    const onPayLater = () => {
+        onSubmit("COD");
+    };
 
     return (
         <>
-            <FormCon
-                asDiv
-                form={checkoutForm}
-                config={{
-                    url: urls.checkout,
-                    method: "POST",
-                }}
-                customValid={() => {
-                    if (!address_id) {
-                        setAddressErr("Choose an address");
-                        return true;
-                    }
-                    return false;
-                }}
-                formatData={(data) => {
-                    const wallet = redeem
-                        ? { is_wallet: true }
-                        : coupon
-                        ? { coupon_code: coupon }
-                        : {};
-                    return {
-                        ...data,
-                        address_id,
-                        ...wallet,
-                    };
-                }}
-                succFunc={(data) => {
-                    setSuccess(data);
-                }}
-                renderForm={(props) => (
-                    <CheckoutRenderForm
-                        {...props}
-                        address_id={address_id}
-                        address_err={address_err}
-                        chooseAddr={chooseAddr}
+            <FormRow>
+                <FieldCon err={errors.name} md={6}>
+                    <Input
+                        setValue={(val) => onChange("name", val)}
+                        type="text"
+                        value={values.name}
+                        placeholder="Name"
                     />
-                )}
-            />
+                </FieldCon>
+                <FieldCon err={errors.email} md={6}>
+                    <Input
+                        type="email"
+                        value={values.email}
+                        placeholder="Email"
+                        setValue={(val) => onChange("email", val)}
+                    />
+                </FieldCon>
+                <FieldCon err={errors.dial_code} md={5}>
+                    <CountrySelect
+                        value={values.dial_code}
+                        placeholder="+91"
+                        valType="dialCode"
+                        setValue={(val) => onChange("dial_code", val)}
+                    />
+                </FieldCon>
+                <FieldCon err={errors.phone} md={7}>
+                    <Input
+                        type="tel"
+                        value={values.phone}
+                        placeholder="Phone Number"
+                        setValue={(val) => onChange("phone", val)}
+                    />
+                </FieldCon>
+                <FieldCon err={errors.alt_dial_code} md={5}>
+                    <CountrySelect
+                        value={values.alt_dial_code}
+                        placeholder="+91"
+                        valType="dialCode"
+                        setValue={(val) => onChange("alt_dial_code", val)}
+                    />
+                </FieldCon>
+                <FieldCon err={errors.alt_phone} md={7}>
+                    <Input
+                        type="tel"
+                        value={values.alt_phone}
+                        placeholder="Alternate PH (optional)"
+                        setValue={(val) => onChange("alt_phone", val)}
+                    />
+                </FieldCon>
+            </FormRow>
+            <H6>Choose Address</H6>
+            <FormRow>
+                <FieldCon err={errors.address_id}>
+                    <AddressList
+                        chooseAddr={(id) => onChange("address_id", id)}
+                        address_id={values.address_id}
+                    />
+                </FieldCon>
+            </FormRow>
+            <AddAddress />
+            {fetching ? (
+                <Flex justifyContent="center" align="center">
+                    <Loader size={40} />
+                </Flex>
+            ) : (
+                <FormRow>
+                    <FormGroup md={6}>
+                        <SubmitButton onClick={onPayNow} disabled={fetching}>
+                            PAY NOW
+                        </SubmitButton>
+                    </FormGroup>
+                    <FormGroup md={6}>
+                        <SubmitButton onClick={onPayLater} disabled={fetching}>
+                            PAY LATER
+                        </SubmitButton>
+                    </FormGroup>
+                </FormRow>
+            )}
+
             {successData && successData.id && (
                 <CheckoutConfirmModal
                     isOpen
@@ -155,46 +248,39 @@ const CheckoutForm = ({ coupon, redeem }) => {
     );
 };
 
-const CheckoutRenderForm = ({
-    fetching,
-    formDispatch,
-    address_id,
-    address_err,
-    chooseAddr,
-    onSubmit,
-}) => {
-    const { user, country } = useUser();
+// const CheckoutRenderForm = ({
+//     fetching,
+//     formDispatch,
+//     address_id,
+//     address_err,
+//     chooseAddr,
+//     onSubmit,
+// }) => {
+//     useEffect(() => {
+//         if (user) {
+//             formDispatch(setValue("name", user.first_name || ""));
+//             formDispatch(setValue("phone", user.username || ""));
+//             formDispatch(setValue("email", user.email || ""));
+//             if (country && country.code2) {
+//                 formDispatch(
+//                     setValue("dial_code", getDialOption(country.code2))
+//                 );
+//             }
+//         }
+//     }, []);
 
-    useEffect(() => {
-        if (user) {
-            formDispatch(setValue("name", user.first_name || ""));
-            formDispatch(setValue("phone", user.username || ""));
-            formDispatch(setValue("email", user.email || ""));
-            if (country && country.code2) {
-                formDispatch(
-                    setValue("dial_code", getDialOption(country.code2))
-                );
-            }
-        }
-    }, []);
+//     return (
+//         <>
+//             <FieldArray />
 
-    return (
-        <>
-            <FieldArray />
-            <H6>Choose Address</H6>
-            <AddressList chooseAddr={chooseAddr} address_id={address_id} />
-            <AddAddress />
-            {address_err && (
-                <P fontSize="14px" color="red">
-                    {address_err}
-                </P>
-            )}
-            <SubmitButton onClick={onSubmit} fetching={fetching}>
-                CONTINUE CHECKOUT
-            </SubmitButton>
-        </>
-    );
-};
+//             {address_err && (
+//                 <P fontSize="14px" color="red">
+//                     {address_err}
+//                 </P>
+//             )}
+//         </>
+//     );
+// };
 
 const AddressList = ({ chooseAddr, address_id }) => {
     const dispatch = useDispatch();
@@ -206,48 +292,42 @@ const AddressList = ({ chooseAddr, address_id }) => {
 
     return (
         <ApiContent name={addrTyps.apiName} loader={<AddressLoder />}>
-            <FormRow>
-                {list.map((item) => (
-                    <AddressItem
-                        isActive={item.id === address_id}
-                        chooseAddr={chooseAddr}
-                        {...item}
-                        key={item.id}
-                    />
-                ))}
-            </FormRow>
+            {list.length > 0 && (
+                <Carousel withoutControls slideWidth="250px" cellSpacing={10}>
+                    {list.map((item) => (
+                        <AddressItem
+                            isActive={item.id === address_id}
+                            chooseAddr={chooseAddr}
+                            {...item}
+                            key={item.id}
+                        />
+                    ))}
+                </Carousel>
+            )}
         </ApiContent>
     );
 };
 
 const AddressItem = ({
-    name = "",
     address_type = "",
-    dial_code = "",
-    phone = "",
     id,
     chooseAddr,
     isActive,
     ...rest
 }) => {
     return (
-        <FormGroup md={6}>
-            <Flex
-                onClick={() => chooseAddr(id)}
-                vertical
-                padding="10px"
-                border={`1px solid ${isActive ? "#000" : "#f5f5f5"}`}
-                as="a"
-            >
-                <Txt fontSize="14px" weight="500">
-                    {name} ({address_type})
-                </Txt>
-                <Txt fontSize="12px">
-                    +{dial_code} {phone}
-                </Txt>
-                <Txt fontSize="12px">{`${getAddress(rest)}`}</Txt>
-            </Flex>
-        </FormGroup>
+        <Flex
+            onClick={() => chooseAddr(id)}
+            vertical
+            padding="10px"
+            border={`1px solid ${isActive ? "#000" : "#ced4da"}`}
+            as="a"
+        >
+            <Txt fontSize="14px" weight="500">
+                {address_type}
+            </Txt>
+            <Txt fontSize="12px">{`${getAddress(rest)}`}</Txt>
+        </Flex>
     );
 };
 

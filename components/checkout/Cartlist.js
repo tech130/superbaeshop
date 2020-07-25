@@ -15,6 +15,7 @@ import { useActiveCountry } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import Block from "../styled/Block";
 import CartEmpty from "./CartEmpty";
+import LoginModalBtn from "../layout/LoginModalBtn";
 
 const Cartlist = () => {
     const { token } = useUser();
@@ -28,20 +29,27 @@ const LocalCartList = () => {
     const list = useLocalCart();
     const cartSummary = useCartSummary(list);
 
-    return (
-        <Row>
-            <Col lg={7}>
-                <CartSummary {...cartSummary} />
-                {list.length > 0 ? (
-                    list.map((item) => (
+    if (list.length > 0) {
+        return (
+            <Row>
+                <Col lg={7}>
+                    <CartSummary {...cartSummary} />
+                    {list.map((item) => (
                         <LocalCartItem {...item} key={item.id} />
-                    ))
-                ) : (
-                    <CartEmpty />
-                )}
-            </Col>
-        </Row>
-    );
+                    ))}
+                </Col>
+                <Col lg={5}>
+                    <LoginModalBtn block border="2px solid #f5f5f5" borderRadius="10px" padding="5px">
+                        Login to Checkout
+                    </LoginModalBtn>
+                    <LoginModalBtn fontSize="14px" block padding="5px" margin="5px 0px" isSignUp>
+                        New User? Sign Up
+                    </LoginModalBtn>
+                </Col>
+            </Row>
+        );
+    }
+    return <CartEmpty />
 };
 
 const MyCartList = () => {

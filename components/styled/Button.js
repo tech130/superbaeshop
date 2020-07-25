@@ -20,13 +20,45 @@ const Button = styled.button`
     -ms-user-select: none;
     user-select: none;
     background-color: ${(props) => props.bg || "transparent"};
+    ${(props) =>
+        props.fontSize &&
+        css`
+            font-size: ${props.fontSize};
+        `};
+    ${(props) =>
+        props.weight &&
+        css`
+            font-weight: ${props.weight};
+        `};
+    ${(props) =>
+        props.color &&
+        css`
+            color: ${props.color};
+        `};
+    ${(props) =>
+        props.lineHeight &&
+        css`
+            line-height: ${props.lineHeight};
+        `};
     border: ${(props) => props.border || "1px solid transparent"};
     border-radius: ${(props) => props.borderRadius || "0px"};
-    padding: ${(props) => props.padding || "0px"};
-    margin: ${(props) => props.margin || "0px"};
+    ${(props) =>
+        props.padding &&
+        css`
+            padding: ${props.padding};
+        `};
+    ${(props) =>
+        props.margin &&
+        css`
+            margin: ${props.margin};
+        `};
+    ${(props) =>
+        props.textAlign &&
+        css`
+            text-align: ${props.textAlign};
+        `};
     width: ${(props) => (props.block ? "100%" : "auto")};
     font-family: inherit;
-    line-height: inherit;
     cursor: pointer;
 
     &:focus {

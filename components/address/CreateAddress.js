@@ -17,17 +17,6 @@ const form = (countries = []) => ({
             type: "text",
             placeholder: "Name",
         },
-        dial_code: {
-            name: "dial_code",
-            type: "countrySelect",
-            placeholder: "+91",
-            valType: "dialCode",
-        },
-        phone: {
-            name: "phone",
-            type: "tel",
-            placeholder: "Mobile Number",
-        },
         door_no: {
             name: "door_no",
             type: "text",
@@ -94,10 +83,7 @@ const form = (countries = []) => ({
         md: 6,
     },
     allIds: [
-        "name",
         "address_type",
-        "dial_code",
-        "phone",
         "door_no",
         "street_address",
         "locality",
