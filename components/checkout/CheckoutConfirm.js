@@ -3,7 +3,6 @@ import Modal from "../modal/Modal";
 import ModalHeader from "../modal/ModalHeader";
 import Block from "../styled/Block";
 import styled from "styled-components";
-import useDateFormat from "../../hooks/useDateFormat";
 import Flex from "../styled/Flex";
 import getAddress from "../../utils/getAddress";
 import SubmitButton from "../form/SubmitButton";
@@ -11,6 +10,7 @@ import urls from "../../apiService/urls";
 import useSubmit from "../../hooks/http/useSubmit";
 import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
+import Txt from "../styled/Txt";
 
 const DtTble = styled.table`
     border-collapse: collapse;
@@ -40,7 +40,6 @@ const DtTble = styled.table`
 const CheckoutConfirm = ({ closeModal, data = {} }) => {
     const router = useRouter();
     const country = useCountryParam();
-    const createdOn = useDateFormat(data.created_on, "llll");
 
     const [fetching, submit] = useSubmit(() => {
         router.replace(`/[country]/orders`, `/${country}/orders`);
@@ -64,7 +63,12 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
         <>
             <ModalHeader
                 title="Checkout Confirmation"
-                desc={`Order Id: ${data.tracking_client_id || ""}`}
+                desc={
+                    <>
+                        Order Id:{" "}
+                        <Txt weight={500}>{data.tracking_client_id || ""}</Txt>`
+                    </>
+                }
                 closeModal={closeModal}
             />
             <Block padding="15px 15px">
@@ -86,28 +90,11 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
                             <tr>
                                 <th>Phone Number</th>
                                 <td>
-                                    +{data.dial_code} {data.phone}
+                                    +{data.dial_code} {data.phone}{" "}
+                                    {data.alt_phone && data.alt_dial_code
+                                        ? `/ +${data.alt_dial_code} ${data.alt_phone}`
+                                        : ""}
                                 </td>
-                            </tr>
-                        )}
-                        {data.alt_phone && (
-                            <tr>
-                                <th>Alternate Phone Number</th>
-                                <td>
-                                    +{data.alt_dial_code} {data.alt_phone}
-                                </td>
-                            </tr>
-                        )}
-                        {createdOn && (
-                            <tr>
-                                <th>Created on</th>
-                                <td>{createdOn}</td>
-                            </tr>
-                        )}
-                        {data.payment_type && (
-                            <tr>
-                                <th>Payment Type</th>
-                                <td>{data.payment_type}</td>
                             </tr>
                         )}
                         {data.address && data.address.id && (
@@ -118,49 +105,6 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
                                 </td>
                             </tr>
                         )}
-                        {data.coupon && (
-                            <tr>
-                                <th>Coupon Code</th>
-                                <td>{data.coupon}</td>
-                            </tr>
-                        )}
-                        {data.coupon_amount && (
-                            <tr>
-                                <th>Coupon Amount</th>
-                                <td>
-                                    {currencyCode}
-                                    {data.coupon_amount}
-                                </td>
-                            </tr>
-                        )}
-                        {data.shipping_charge && (
-                            <tr>
-                                <th>Shipping Fee</th>
-                                <td>
-                                    {currencyCode}
-                                    {data.shipping_charge}
-                                </td>
-                            </tr>
-                        )}
-                        {data.cod_charge && (
-                            <tr>
-                                <th>COD Charge</th>
-                                <td>
-                                    {currencyCode}
-                                    {data.cod_charge}
-                                </td>
-                            </tr>
-                        )}
-                        {data.other_charge && (
-                            <tr>
-                                <th>Other Charges</th>
-                                <td>
-                                    {currencyCode}
-                                    {data.other_charge}
-                                </td>
-                            </tr>
-                        )}
-
                         {data.total_amount && (
                             <tr>
                                 <th>Total Amount</th>
@@ -170,12 +114,64 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
                                 </td>
                             </tr>
                         )}
+                        {data.payment_type && (
+                            <tr>
+                                <th>Payment Type</th>
+                                <td>{data.payment_type}</td>
+                            </tr>
+                        )}
+                        {data.shipping_charge && (
+                            <tr>
+                                <th>Shipping Fee</th>
+                                <td>
+                                    + {currencyCode}
+                                    {data.shipping_charge}
+                                </td>
+                            </tr>
+                        )}
+                        {data.cod_charge && (
+                            <tr>
+                                <th>COD Charge</th>
+                                <td>
+                                    + {currencyCode}
+                                    {data.cod_charge}
+                                </td>
+                            </tr>
+                        )}
+                        {data.other_charge && (
+                            <tr>
+                                <th>Other Charges</th>
+                                <td>
+                                    + {currencyCode}
+                                    {data.other_charge}
+                                </td>
+                            </tr>
+                        )}
+                        {data.coupon && data.coupon_amount && (
+                            <>
+                                <tr>
+                                    <th>Coupon Code</th>
+                                    <td>{data.coupon}</td>
+                                </tr>
+                                <tr>
+                                    <th>Coupon Amount</th>
+                                    <td>
+                                        <Txt color="green" weight={600}>
+                                            - {currencyCode}
+                                            {data.coupon_amount}
+                                        </Txt>
+                                    </td>
+                                </tr>
+                            </>
+                        )}
                         {data.pay_amount && (
                             <tr>
-                                <th>Pay Amount</th>
+                                <th>Final Payable</th>
                                 <td>
-                                    {currencyCode}
-                                    {data.pay_amount}
+                                    <Txt weight={600} color="green">
+                                        {currencyCode}
+                                        {data.pay_amount}
+                                    </Txt>
                                 </td>
                             </tr>
                         )}
@@ -189,10 +185,7 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
     );
 };
 
-const Address = ({
-    address_type = "",
-    ...rest
-}) => {
+const Address = ({ address_type = "", ...rest }) => {
     return (
         <Flex vertical>
             <div>{address_type}</div>

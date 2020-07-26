@@ -15,7 +15,9 @@ const InfiniteList = ({
     return (
         <>
             {Array.isArray(allIds) && allIds.length > 0 ? (
-                allIds.map((item) => <RenderItem id={item} key={item} />)
+                allIds.map((item, idx) => (
+                    <RenderItem id={item} key={item + "---" + idx} />
+                ))
             ) : count === 0 ? (
                 <EmptyList title={emptyTitle} />
             ) : null}

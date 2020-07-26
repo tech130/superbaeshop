@@ -39,17 +39,28 @@ const LocalCartList = () => {
                     ))}
                 </Col>
                 <Col lg={5}>
-                    <LoginModalBtn block border="2px solid #f5f5f5" borderRadius="10px" padding="5px">
+                    <LoginModalBtn
+                        block
+                        border="2px solid #f5f5f5"
+                        borderRadius="10px"
+                        padding="5px"
+                    >
                         Login to Checkout
                     </LoginModalBtn>
-                    <LoginModalBtn fontSize="14px" block padding="5px" margin="5px 0px" isSignUp>
+                    <LoginModalBtn
+                        fontSize="14px"
+                        block
+                        padding="5px"
+                        margin="5px 0px"
+                        isSignUp
+                    >
                         New User? Sign Up
                     </LoginModalBtn>
                 </Col>
             </Row>
         );
     }
-    return <CartEmpty />
+    return <CartEmpty />;
 };
 
 const MyCartList = () => {
@@ -95,16 +106,16 @@ const CartListWithForm = ({ list = [] }) => {
     return (
         <Row>
             <Col lg={7}>
-                <CartSummary {...cartSummary} />
-                {list.map((item) => (
-                    <MyCartItem {...item} key={item.id} />
-                ))}
                 <CouponIp
                     coupon={coupon}
                     onCouponChange={onCouponChange}
                     redeem={redeem}
                     onRedeemChange={onRedeemChange}
                 />
+                <CartSummary {...cartSummary} />
+                {list.map((item) => (
+                    <MyCartItem {...item} key={item.id} />
+                ))}
             </Col>
             <Col lg={5}>
                 {cartSummary.impure ? (

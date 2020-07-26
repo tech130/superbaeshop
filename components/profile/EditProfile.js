@@ -50,11 +50,6 @@ const editForm = {
             type: "email",
             placeholder: "Enter your email",
         },
-        // country: {
-        //     name: "country",
-        //     type: "countrySelect",
-        //     placeholder: "Select your country",
-        // },
     },
     uiProps: {
         first_name: {
@@ -67,13 +62,9 @@ const editForm = {
             label: "Email",
             md: 12,
         },
-        // country: {
-        //     label: "Country",
-        // },
     },
     defaultUiProps: {
         md: 6,
-        xs: 6,
     },
     allIds: ["first_name", "last_name", "email"],
     isOptional: ["first_name", "last_name", "email"],

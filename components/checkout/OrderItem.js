@@ -98,7 +98,8 @@ const OrderItem = ({
                     <Flex alignItems="center" padding="0px 0px 10px 0px">
                         <OrderIcon size={14} strokeWidth={1} />
                         <Txt fontSize={14} margin="0px 5px">
-                            Order ID: <Txt weight={600}>{tracking_client_id}</Txt>
+                            Order ID:{" "}
+                            <Txt weight={600}>{tracking_client_id}</Txt>
                         </Txt>
                     </Flex>
                     <Flex alignItems="center" padding="0px 0px 10px 0px">
@@ -126,13 +127,11 @@ const OrderItem = ({
                             <DelP>
                                 +{dial_code}
                                 {phone}
+                                {alt_dial_code && alt_phone
+                                    ? ` / +${dial_code} ${phone}`
+                                    : ""}
                             </DelP>
-                            {alt_dial_code && alt_phone && (
-                                <DelP>
-                                    +{dial_code}
-                                    {phone}
-                                </DelP>
-                            )}
+
                             <DelP>{`${getAddress(address)}`}</DelP>
                         </Block>
                     </Col>
@@ -183,7 +182,6 @@ const OrderItem = ({
                                             </tr>
                                         </>
                                     )}
-
                                     <tr>
                                         <th>Final Payable:</th>
                                         <td>

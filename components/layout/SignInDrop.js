@@ -6,7 +6,6 @@ import HeaderDropdown from "./HeaderDropdown";
 import Button from "../styled/Button";
 import useUser from "../../hooks/redux/user/useUser";
 import CountryLink from "../common/CountryLink";
-import Link from "next/link";
 
 const SignInDrop = () => {
     const user = useUser();
@@ -48,9 +47,7 @@ const SignInDrop = () => {
                             </CountryLink>
                         </li>
                         <li>
-                            <CountryLink href="/logout">
-                                <a>Logout</a>
-                            </CountryLink>
+                            <CountryLink href="/logout">Logout</CountryLink>
                         </li>
                     </>
                 ) : (

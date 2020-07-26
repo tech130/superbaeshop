@@ -26,7 +26,7 @@ const CouponIp = ({ redeem, coupon, onCouponChange, onRedeemChange }) => {
     };
 
     return (
-        <Block padding="10px 0px">
+        <Block margin="0px 0px 15px 0px">
             <form onSubmit={onSubmit}>
                 <Flex>
                     <FlexItem flexGrow={1}>
