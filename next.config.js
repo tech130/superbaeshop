@@ -11,7 +11,7 @@ module.exports = withPlugins([
             inlineImageLimit: 8192,
             imagesFolder: "optimized-images",
             imagesName: "[name]-[hash].[ext]",
-            handleImages: ["jpeg", "png", "svg", "webp", "gif"],
+            handleImages: ["jpeg", "png", "svg", "webp"],
             removeOriginalExtension: false,
             optimizeImages: true,
             optimizeImagesInDev: false,
@@ -22,13 +22,6 @@ module.exports = withPlugins([
                 optimizationLevel: 3,
             },
             pngquant: false,
-            gifsicle: {
-                interlaced: true,
-                optimizationLevel: 3,
-            },
-            svgo: {
-                // enable/disable svgo plugins here
-            },
             webp: {
                 preset: "default",
                 quality: 75,
