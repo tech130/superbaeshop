@@ -29,7 +29,7 @@ const ProdPrice = ({
                 {...rest}
             >
                 {productCountry.country.currency_type}
-                {quantity * (productCountry[type] || 0)}
+                {quantity * (productCountry[type] || 0)}{" "}
             </Txt>
         );
     }

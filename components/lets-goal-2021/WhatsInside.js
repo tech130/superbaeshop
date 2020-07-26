@@ -4,10 +4,10 @@ import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2 } from "../styled/Headings";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
-import Txt from "../styled/Txt";
 import ProductBuy from "../product/ProductBuy";
 import Picture from "../common/Picture";
 import Dot from "../styled/Dot";
+import ProductPrice from "../product/ProductPrice";
 
 const slantSet = require("./images/slant.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
 
@@ -35,8 +35,8 @@ const WhatsInside = () => {
                                 PRODUCT PRICE
                             </P>
                             <P textAlign="center">
-                                <Txt>₹1536 </Txt>
-                                <Txt textDecor="line-through">₹2560</Txt>
+                                <ProductPrice id={2} />
+                                <ProductPrice type="original_price" id={2} />
                             </P>
                         </Flex>
                     </Col>
