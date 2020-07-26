@@ -27,11 +27,11 @@ const form = (countries = []) => ({
             type: "text",
             placeholder: "Street Address",
         },
-        locality: {
-            name: "locality",
-            type: "text",
-            placeholder: "Locality",
-        },
+        // locality: {
+        //     name: "locality",
+        //     type: "text",
+        //     placeholder: "Locality",
+        // },
         city: {
             name: "city",
             type: "text",
@@ -87,9 +87,9 @@ const form = (countries = []) => ({
         street_address: {
             md: 12,
         },
-        locality: {
-            md: 12,
-        },
+        // locality: {
+        //     md: 12,
+        // },
     },
     defaultUiProps: {
         md: 6,
@@ -98,7 +98,7 @@ const form = (countries = []) => ({
         "address_type",
         "door_no",
         "street_address",
-        "locality",
+        // "locality",
         "landmark",
         "city",
         "state",

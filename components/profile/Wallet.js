@@ -2,8 +2,10 @@ import React from "react";
 import Block from "../styled/Block";
 import { H5 } from "../styled/Headings";
 import Txt from "../styled/Txt";
+// import useUser from "../../hooks/redux/user/useUser";
 
 const Wallet = () => {
+
     return (
         <Block
             margin="0px 0px 15px 0px"
