@@ -12,7 +12,7 @@ const signupForm = (countries = []) => ({
         country: {
             name: "country",
             type: "select",
-            placeholder: "Select dial Code",
+            placeholder: "Select dial code",
             options: countries.map((x) => ({
                 label: `+${x.dial_code} (${x.title})`,
                 value: x.id,

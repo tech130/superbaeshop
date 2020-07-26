@@ -47,7 +47,7 @@ const ProfileDetails = ({ user, profile_pic }) => {
             </ProfileTop>
             <Row>
                 <ProfileItem heading="Name" desc={fullName} />
-                <ProfileItem heading="Email" desc="" />
+                <ProfileItem heading="Email" desc={user.email || ""} />
                 <ProfileItem heading="Phone Number" desc={user.username} />
             </Row>
             <Flex justifyContent="space-between" margin="0px 0px 8px 0px">
