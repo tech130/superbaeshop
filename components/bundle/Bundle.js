@@ -40,8 +40,8 @@ const Bundle = () => {
             </Block>
             <InterSec />
             <Block padding="35px 0px">
-                <Block padding="0px 0px 30px 0px">
-                    <H2 textAlign="center">
+                <Block padding="0px 10px 30px 10px">
+                    <H2 weight={400} textAlign="center">
                         So, its all my happiness bundled together?{" "}
                     </H2>
                     <P textAlign="center">
@@ -71,6 +71,9 @@ const Bundle = () => {
                         </Col>
                     </Row>
                 </Container>
+            </Block>
+            <Block padding="45px 0px">
+
             </Block>
         </>
     );

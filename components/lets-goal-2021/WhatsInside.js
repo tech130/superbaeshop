@@ -4,20 +4,12 @@ import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2 } from "../styled/Headings";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
-import styled from "styled-components";
 import Txt from "../styled/Txt";
 import ProductBuy from "../product/ProductBuy";
 import Picture from "../common/Picture";
+import Dot from "../styled/Dot";
 
 const slantSet = require("./images/slant.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
-
-const Dot = styled.div`
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    background-color: ${(props) => props.bg || "#F8D9C7"};
-`;
 
 const WhatsInside = () => {
     return (

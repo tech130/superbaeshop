@@ -1,7 +1,5 @@
 import React from "react";
-import { Row, Col } from "styled-bootstrap-grid";
 import Input from "../form/Input";
-import { SubmitBtn } from "../styled/Button";
 import Block from "../styled/Block";
 import HR from "../styled/Hr";
 import Checkbox from "../form/Checkbox";
