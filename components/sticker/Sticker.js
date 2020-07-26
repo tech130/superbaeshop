@@ -2,18 +2,17 @@ import React from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import Picture from "../common/Picture";
-import { H2, H1, H4 } from "../styled/Headings";
+import { H2, H1 } from "../styled/Headings";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
 import { InterSec } from "../styled/Hr";
 import StickerPrice from "./StickerPrice";
 import Dot from "../styled/Dot";
-import Txt from "../styled/Txt";
 import ProductPrice from "../product/ProductPrice";
 
-const notepadSet = require("./images/notepad.jpg?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
-const twoSet = require("./images/2.jpg?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
-const medicalSet = require("./images/medical.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
+const notepadSet = require("./images/notepad.jpg?resize");
+const twoSet = require("./images/2.jpg?resize");
+const medicalSet = require("./images/medical.png?resize");
 
 const productId = 4;
 

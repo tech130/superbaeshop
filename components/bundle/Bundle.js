@@ -1,15 +1,50 @@
 import React from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import Picture from "../common/Picture";
+import Picture, { ResponsivePicture } from "../common/Picture";
 import { H2, H1, H4 } from "../styled/Headings";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
 import BundlePrice from "./BundlePrice";
 import { InterSec } from "../styled/Hr";
+import styled from "styled-components";
+import CountryLink from "../common/CountryLink";
+import Txt from "../styled/Txt";
 
-const notepadSet = require("./images/notepad.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
-const medicalSet = require("./images/medical.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
+const notepadSet = require("./images/notepad.png?resize");
+const medicalSet = require("./images/medical.png?resize");
+
+const BundleStl = styled.div`
+    padding: 40px 0px;
+    position: relative;
+
+    &:nth-child(even) {
+        background: #fafafa;
+    }
+`;
+
+const BundleP = styled.p`
+    font-size: 18px;
+`;
+
+const BundleItem = ({ title = "", children = null, mathIcon = "+" }) => {
+    return (
+        <BundleStl>
+            <Container>
+                <Row alignItems="center">
+                    <Col md={5}>
+                        <H4>{title}</H4>
+                        <div>{children}</div>
+                        <Txt fontSize="4em">{mathIcon}</Txt>
+                    </Col>
+                    <Col mdOffset={2} md={5}>
+                        <ResponsivePicture fluid image={medicalSet} />
+                    </Col>
+                </Row>
+            </Container>
+        </BundleStl>
+    );
+};
 
 const Bundle = () => {
     return (
@@ -52,28 +87,63 @@ const Bundle = () => {
                     <BundlePrice />
                 </Flex>
             </Block>
-            <Block padding="35px 0px" bgColor="#FAFAFA">
+            <BundleItem title="Let's Goal 2021 + All free Inclusions">
+                <P color="#00A80B" fontSize="14px">
+                    Free Inclusions: Ikkigai Work Sheets, The Ultimate Sticker
+                    Book, Protective Wrapper Box, Pop Socket, Bookmarks (2)
+                </P>
+                <BundleP>
+                    Plus you can find some exciting BULLET JOURNAL Inspired
+                    spreads and amazing planner goodies!
+                </BundleP>
+                <Flex justifyContent="flex-end">
+                    <CountryLink href="/lets-goal-2021-planner">
+                        <Txt textDecor="underline">
+                            View Let&apos;s Goal 2021
+                        </Txt>
+                    </CountryLink>
+                </Flex>
+            </BundleItem>
+            <BundleItem title="A Wall Calendar">
+                <BundleP>
+                    Plus you can find some exciting BULLET JOURNAL Inspired
+                    spreads and amazing planner goodies!
+                </BundleP>
+            </BundleItem>
+            <BundleItem title="A Desk Calendar">
+                <BundleP>
+                    Plus you can find some exciting BULLET JOURNAL Inspired
+                    spreads and amazing planner goodies!
+                </BundleP>
+            </BundleItem>
+            <BundleItem title="A Pocket Planner">
+                <BundleP>
+                    Plus you can find some exciting BULLET JOURNAL Inspired
+                    spreads and amazing planner goodies!
+                </BundleP>
+            </BundleItem>
+            <BundleItem title="A Jot Book/Notebook">
+                <BundleP>
+                    Plus you can find some exciting BULLET JOURNAL Inspired
+                    spreads and amazing planner goodies!
+                </BundleP>
+            </BundleItem>
+            <BundleItem title="Greeting Cards (6)">
+                <BundleP>
+                    Plus you can find some exciting BULLET JOURNAL Inspired
+                    spreads and amazing planner goodies!
+                </BundleP>
+            </BundleItem>
+            <BundleItem title="Tote Bag" mathIcon={"="}>
+                <BundleP>
+                    Plus you can find some exciting BULLET JOURNAL Inspired
+                    spreads and amazing planner goodies!
+                </BundleP>
+            </BundleItem>
+            <Block padding="20px 0px">
                 <Container>
-                    <Row alignItems="center">
-                        <Col md={5}>
-                            <H4>A Wall Calendar</H4>
-                            <P fontSize="18px">
-                                Plus you can find some exciting BULLET JOURNAL
-                                Inspired spreads and amazing planner goodies!
-                            </P>
-                        </Col>
-                        <Col mdOffset={2} md={5}>
-                            <Picture
-                                fluid
-                                src={medicalSet.src}
-                                srcSet={medicalSet.srcSet}
-                            />
-                        </Col>
-                    </Row>
+                    <BundlePrice />
                 </Container>
-            </Block>
-            <Block padding="45px 0px">
-
             </Block>
         </>
     );

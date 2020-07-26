@@ -27,4 +27,16 @@ const Picture = ({
     );
 };
 
+export const ResponsivePicture = ({ image, ...rest }) => {
+    const { src, srcSet, placeholder } = image;
+    return (
+        <Picture
+            src={src}
+            srcSet={srcSet}
+            placeholder={placeholder}
+            {...rest}
+        />
+    );
+};
+
 export default Picture;

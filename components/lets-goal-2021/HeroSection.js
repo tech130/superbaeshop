@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import Img from "../styled/Img";
 import Txt from "../styled/Txt";
 import Block from "../styled/Block";
 import P from "../styled/P";
@@ -9,10 +8,8 @@ import Flex from "../styled/Flex";
 import ProductBuy from "../product/ProductBuy";
 import Picture from "../common/Picture";
 
-const frontSet = require("./images/front.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
+const frontSet = require("./images/front.png?resize");
 const bgSet = require("./images/herobg.jpg");
-
-console.log(bgSet);
 
 const HeroStyl = styled.section`
     padding: 40px 0px;

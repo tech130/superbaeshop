@@ -26,6 +26,11 @@ module.exports = withPlugins([
                 preset: "default",
                 quality: 75,
             },
+            responsive: {
+                sizes: [175, 350, 700, 1050, 1080],
+                placeholder: true,
+                placeholderSize: 35,
+            },
         },
     ],
 ]);
