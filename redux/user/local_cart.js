@@ -2,7 +2,6 @@ import { userTyps } from "./user";
 import { uuid } from "uuidv4";
 
 export const cartTyps = {
-    toggle: "local_cart/toggle",
     add: "local_cart/add",
     incQty: "local_cart/increase/quantity",
     decQty: "local_cart/decrease/quantity",
@@ -40,30 +39,21 @@ export const clearLocalCart = () => ({
 
 const init = [];
 
-const remove = (state, id) => state.filter((item) => item.id === id);
-
-const toggle = (state, payload) => {
-    const incart = state.filter((item) => item.product === payload.product);
-    if (incart.length > 0) {
-        return remove(state, payload.product);
-    }
-    return state.concat(state, payload);
-};
+const remove = (state, product) =>
+    state.filter((item) => item.product !== product);
 
 const add = (state, payload) => {
     const incart = state.filter((item) => item.product === payload.product);
     if (incart.length > 0) {
         return state;
     }
-    return state.concat(state, payload);
+    return [...state, payload];
 };
 
 export default (state = init, action) => {
     switch (action.type) {
         case cartTyps.add:
             return add(state, action.payload);
-        case cartTyps.toggle:
-            return toggle(state, action.payload);
         case cartTyps.remove:
             return remove(state, action.product);
         case cartTyps.incQty:
