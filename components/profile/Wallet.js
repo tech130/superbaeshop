@@ -5,10 +5,10 @@ import Txt from "../styled/Txt";
 import useUser from "../../hooks/redux/user/useUser";
 
 const Wallet = () => {
-    const { used_points, total_points } = useUser();
+    const { used_points, total_points, user_points } = useUser();
     const used = used_points || 0;
     const total = total_points || 0;
-    const available = parseFloat(total) - parseFloat(used);
+    const available = user_points || 0;
 
     return (
         <Block
@@ -34,7 +34,7 @@ const Wallet = () => {
                 <Txt>
                     Total Points:{" "}
                     <Txt fontWeight={500} color="#000">
-                        {total_points || 0}
+                        {total}
                     </Txt>
                 </Txt>
             </Block>

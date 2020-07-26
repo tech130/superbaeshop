@@ -8,23 +8,19 @@ const useLazyImage = (ref, src = "", srcSet = "", sizes = "") => {
     useEffect(() => {
         if (onScreen) {
             const img = new Image();
-            let onLoad = () => {
+            img.onload = () => {
                 set(false);
             };
-            img.addEventListener("load", onLoad);
-            img.addEventListener("error", onLoad);
+            img.src = src;
             if (srcSet) {
                 img.srcset = srcSet;
             }
             if (sizes) {
                 img.sizes = sizes;
             }
-            return () => {
-                img.removeEventListener("load", onLoad);
-                img.removeEventListener("error", onLoad);
-            };
+            return () => {};
         }
-    }, [src, onScreen]);
+    }, [src, srcSet, sizes, onScreen]);
 
     return loading;
 };
