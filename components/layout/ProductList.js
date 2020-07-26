@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { DEFAULT_COUNTRY } from "../common/CountryLink";
+import useProduct from "../../hooks/redux/product/useProduct";
 
 const ProdList = styled(Flex)`
     border-bottom: 1px solid #eaeaea;
@@ -45,7 +46,7 @@ const ProdLink = styled.a`
 const ProdItem = ({ id }) => {
     const router = useRouter();
     const { country, productSlug } = router.query;
-    const { slug, title } = useSelector((state) => state.product[id] || {});
+    const { slug, title } = useProduct(id);
 
     if (slug && title) {
         const href = `/[country]/[productSlug]`;

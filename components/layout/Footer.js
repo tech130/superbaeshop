@@ -6,6 +6,7 @@ import Block from "../styled/Block";
 import Flex from "../styled/Flex";
 import CountryLink from "../common/CountryLink";
 import { useSelector } from "react-redux";
+import useProduct from "../../hooks/redux/product/useProduct";
 
 const FooterCon = styled.footer`
     border-top: 4px solid #f5f5f5;
@@ -162,7 +163,7 @@ const FooterProducts = () => {
 };
 
 const FooterProductLink = ({ id }) => {
-    const product = useSelector((state) => state.product[id] || {});
+    const product = useProduct(id);
 
     if (product.slug) {
         return (

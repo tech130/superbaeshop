@@ -1,10 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Txt from "../styled/Txt";
 import { useProdCountry } from "../common/CountryLink";
+import useProduct from "../../hooks/redux/product/useProduct";
 
 const ProductPrice = ({ id, ...rest }) => {
-    const product = useSelector((state) => state.product[id] || {});
+    const product = useProduct(id);
 
     if (product.product_country) {
         return (
