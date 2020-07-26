@@ -2,9 +2,13 @@ import React from "react";
 import Block from "../styled/Block";
 import { H5 } from "../styled/Headings";
 import Txt from "../styled/Txt";
-// import useUser from "../../hooks/redux/user/useUser";
+import useUser from "../../hooks/redux/user/useUser";
 
 const Wallet = () => {
+    const { used_points, total_points } = useUser();
+    const used = used_points || 0;
+    const total = total_points || 0;
+    const available = parseFloat(total) - parseFloat(used);
 
     return (
         <Block
@@ -18,19 +22,19 @@ const Wallet = () => {
                 <Txt margin="0px 15px 0px 0px">
                     Available Points:{" "}
                     <Txt fontWeight={500} color="green">
-                        50
+                        {available}
                     </Txt>
                 </Txt>
                 <Txt margin="0px 15px 0px 0px">
                     Used Points:{" "}
                     <Txt fontWeight={500} color="red">
-                        100
+                        {used}
                     </Txt>
                 </Txt>
                 <Txt>
                     Total Points:{" "}
                     <Txt fontWeight={500} color="#000">
-                        100
+                        {total_points || 0}
                     </Txt>
                 </Txt>
             </Block>

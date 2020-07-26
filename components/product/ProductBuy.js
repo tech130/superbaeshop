@@ -79,9 +79,7 @@ const ProductBuy = ({ productId }) => {
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {
-        return (
-            <ProductBuyBtn productId={productId} is_pre_order={is_pre_order} />
-        );
+        return <ProductBuyBtn productId={id} is_pre_order={is_pre_order} />;
     }
     return null;
 };

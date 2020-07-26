@@ -6,6 +6,7 @@ import { Col, Row, Container } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import ProfileDetails from "./ProfileDetails";
 import { H6 } from "../styled/Headings";
+import WalletList from "./WalletList";
 
 const MyProfile = () => {
     const user = useUser();
@@ -20,11 +21,7 @@ const MyProfile = () => {
                         <Col lg={6}>
                             <Wallet />
                             <H6>Wallet History</H6>
-                            <WalletItem />
-                            <WalletItem />
-                            <WalletItem />
-                            <WalletItem />
-                            <WalletItem />
+                            <WalletList />
                         </Col>
                     </Row>
                 ) : null}

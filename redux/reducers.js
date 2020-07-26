@@ -9,6 +9,7 @@ import { LOG_OUT } from "../utils/constants";
 import { addressList } from "./user/address";
 import pagination from "./pagination";
 import orders from "./user/orders";
+import wallet from "./user/wallet";
 
 const appReducer = combineReducers({
     user,
@@ -22,6 +23,7 @@ const appReducer = combineReducers({
     local_cart,
     addressList,
     orders,
+    wallet,
 });
 
 const reducer = (state, action) => {

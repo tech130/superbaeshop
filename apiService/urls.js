@@ -4,6 +4,7 @@ const urls = {
     logout: "auth/logout/",
     myProfile: "users/",
     verifyOtp: "auth/verify-otp/",
+    wallet: "users/my-points/",
     //master
     master: "master-values/",
     //product
