@@ -22,4 +22,10 @@ const HR = styled.hr`
         `}
 `;
 
+export const InterSec = styled.div`
+    background-image: url("/images/intersection.jpg");
+    height: 50px;
+    background-repeat: repeat;
+`
+
 export default HR;

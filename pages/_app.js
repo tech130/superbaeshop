@@ -35,7 +35,17 @@ function MyApp({ Component, pageProps, store }) {
             <BaseCSS />
             <Component {...pageProps} />
             <UploadCartModal />
-            <ToastContainer />
+            <ToastContainer
+                position="bottom-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </Provider>
     );
 }

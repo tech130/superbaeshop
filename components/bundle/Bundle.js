@@ -2,10 +2,11 @@ import React from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import Picture from "../common/Picture";
-import { H2, H1, H6, H5, H4 } from "../styled/Headings";
+import { H2, H1, H4 } from "../styled/Headings";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
 import BundlePrice from "./BundlePrice";
+import { InterSec } from "../styled/Hr";
 
 const notepadSet = require("./images/notepad.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
 const medicalSet = require("./images/medical.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
@@ -37,6 +38,7 @@ const Bundle = () => {
                     </Row>
                 </Container>
             </Block>
+            <InterSec />
             <Block padding="35px 0px">
                 <Block padding="0px 0px 30px 0px">
                     <H2 textAlign="center">
@@ -53,14 +55,14 @@ const Bundle = () => {
             <Block padding="35px 0px" bgColor="#FAFAFA">
                 <Container>
                     <Row alignItems="center">
-                        <Col lg={5}>
+                        <Col md={5}>
                             <H4>A Wall Calendar</H4>
                             <P fontSize="18px">
                                 Plus you can find some exciting BULLET JOURNAL
                                 Inspired spreads and amazing planner goodies!
                             </P>
                         </Col>
-                        <Col lgOffset={2} lg={5}>
+                        <Col mdOffset={2} md={5}>
                             <Picture
                                 fluid
                                 src={medicalSet.src}

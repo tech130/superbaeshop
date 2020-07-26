@@ -14,6 +14,7 @@ const urls = {
     //address
     address: "users/address/",
     //checkout
+    validateOffer: "offers/validate/",
     checkout: "orders/checkout/",
     cod: (id) => `orders/cod-confirm/${id}/`,
     myOrders: "orders/",
