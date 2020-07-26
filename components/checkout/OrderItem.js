@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../styled/Button";
 import Flex, { FlexItem } from "../styled/Flex";
 import { H6 } from "../styled/Headings";
-import { Col, Row } from "styled-bootstrap-grid";
+import { Col, Row, Container } from "styled-bootstrap-grid";
 import Txt from "../styled/Txt";
 import CalenderIcon from "../icons/CalenderIcon";
 import OrderIcon from "../icons/OrderIcon";
@@ -47,7 +47,18 @@ const OrderSumSty = styled.table`
 
 const OrderHr = styled.div`
     border-top: 1px solid #f5f5f5;
-    margin: 10px 0px;
+`;
+
+const OrderHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+`;
+
+const DelP = styled.p`
+    font-size: 14px;
+    margin-bottom: 5px;
 `;
 
 const OrderItem = ({
@@ -77,125 +88,129 @@ const OrderItem = ({
 
     return (
         <Block
-            padding="10px"
+            padding="15px 0px"
             border="solid 2px #f5f5f5"
             borderRadius="10px"
             margin="0px 0px 15px 0px"
         >
-            <Row>
-                <Col md={12}>
-                    <Flex
-                        alignItems="center"
-                        justifyContent="space-between"
-                        margin="0px 0px 15px"
-                    >
-                        <Flex alignItems="center">
-                            <OrderIcon size={14} strokeWidth={1} />
-                            <Txt fontSize={14} margin="0px 5px">
-                                Order ID: {tracking_client_id}
-                            </Txt>
-                        </Flex>
-                        <Flex alignItems="center">
-                            <CalenderIcon size={14} strokeWidth={1} />
-                            <Txt fontSize={14} margin="0px 5px">
-                                {created}
-                            </Txt>
-                        </Flex>
+            <Container fluid>
+                <OrderHeader>
+                    <Flex alignItems="center" padding="0px 0px 10px 0px">
+                        <OrderIcon size={14} strokeWidth={1} />
+                        <Txt fontSize={14} margin="0px 5px">
+                            Order ID: <Txt weight={600}>{tracking_client_id}</Txt>
+                        </Txt>
                     </Flex>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={4}>
-                    {Array.isArray(order_items) &&
-                        order_items.map((item) => (
-                            <OrderCartItem {...item} key={item.id} />
-                        ))}
-                </Col>
-                <Col md={4}>
-                    <H6>Delivery Details</H6>
-                    <P margin="0px">{name}</P>
-                    <P margin="0px">{email}</P>
-                    <P margin="0px">
-                        +{dial_code}
-                        {phone}
-                    </P>
-                    {alt_dial_code && alt_phone && (
-                        <P margin="0px">
-                            +{dial_code}
-                            {phone}
-                        </P>
-                    )}
-                    <P margin="0px">{`${getAddress(address)}`}</P>
-                </Col>
-                <Col md={4}>
-                    <H6>Order Summary</H6>
-                    <OrderSumSty>
-                        <tbody>
-                            <tr>
-                                <th>Payment Type:</th>
-                                <td>{payment_type}</td>
-                            </tr>
-                            <tr>
-                                <th>Shipping Charge:</th>
-                                <td>
-                                    {currency_type}
-                                    {shipping_charge}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Other Charges:</th>
-                                <td>
-                                    {currency_type}
-                                    {other_charge}
-                                </td>
-                            </tr>
-                            {coupon && (
-                                <tr>
-                                    <th>Coupon Amount:</th>
-                                    <td>{coupon}</td>
-                                </tr>
+                    <Flex alignItems="center" padding="0px 0px 10px 0px">
+                        <CalenderIcon size={14} strokeWidth={1} />
+                        <Txt fontSize={14} margin="0px 5px">
+                            {created}
+                        </Txt>
+                    </Flex>
+                </OrderHeader>
+                <OrderHr />
+                <Row>
+                    <Col md={4}>
+                        <Block padding="10px 0px">
+                            {Array.isArray(order_items) &&
+                                order_items.map((item) => (
+                                    <OrderCartItem {...item} key={item.id} />
+                                ))}
+                        </Block>
+                    </Col>
+                    <Col md={4}>
+                        <Block padding="10px 0px">
+                            <H6>Delivery Details</H6>
+                            <DelP>{name}</DelP>
+                            <DelP>{email}</DelP>
+                            <DelP>
+                                +{dial_code}
+                                {phone}
+                            </DelP>
+                            {alt_dial_code && alt_phone && (
+                                <DelP>
+                                    +{dial_code}
+                                    {phone}
+                                </DelP>
                             )}
-                            <tr>
-                                <th>Coupon Amount:</th>
-                                <td>
-                                    {currency_type}
-                                    {coupon_amount}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Total Amount:</th>
-                                <td>
-                                    {currency_type}
-                                    {total_amount}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Pay Amount:</th>
-                                <td>
-                                    {currency_type}
-                                    {pay_amount}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </OrderSumSty>
-                </Col>
-            </Row>
-            <OrderHr />
-            <Flex alignItems="center" justifyContent="space-between">
-                <Flex alignItems="center">
-                    <Button
-                        margin="0px 10px 0px 0px"
-                        border="1px solid #000"
-                        padding="5px 20px"
-                    >
-                        {status}
-                    </Button>
-                    <div>Estd Delivery Date: 14 Jan 2020</div>
-                </Flex>
-                <Button border="1px solid #000" padding="5px 20px">
-                    Need help
-                </Button>
-            </Flex>
+                            <DelP>{`${getAddress(address)}`}</DelP>
+                        </Block>
+                    </Col>
+                    <Col md={4}>
+                        <Block padding="10px 0px">
+                            <H6>Order Summary</H6>
+                            <OrderSumSty>
+                                <tbody>
+                                    <tr>
+                                        <th>Total Amount:</th>
+                                        <td>
+                                            {currency_type}
+                                            {total_amount}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Payment Type:</th>
+                                        <td>{payment_type}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping Charge:</th>
+                                        <td>
+                                            + {currency_type}
+                                            {shipping_charge}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Other Charges:</th>
+                                        <td>
+                                            + {currency_type}
+                                            {other_charge}
+                                        </td>
+                                    </tr>
+                                    {coupon && (
+                                        <>
+                                            <tr>
+                                                <th>Coupon:</th>
+                                                <td>{coupon}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Coupon Amount:</th>
+                                                <td>
+                                                    <Txt weight={600}>
+                                                        - {currency_type}
+                                                        {coupon_amount}
+                                                    </Txt>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    )}
+
+                                    <tr>
+                                        <th>Final Payable:</th>
+                                        <td>
+                                            <Txt weight={600}>
+                                                {currency_type}
+                                                {pay_amount}
+                                            </Txt>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </OrderSumSty>
+                        </Block>
+                    </Col>
+                </Row>
+                <OrderHr />
+                <OrderHeader alignItems="center" justifyContent="space-between">
+                    <Flex alignItems="center" padding="10px 0px 0px 0px">
+                        <Button
+                            margin="0px 10px 0px 0px"
+                            border="1px solid #e3e3e3"
+                            padding="2px 20px"
+                        >
+                            {status}
+                        </Button>
+                    </Flex>
+                </OrderHeader>
+            </Container>
         </Block>
     );
 };
