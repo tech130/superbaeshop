@@ -2,21 +2,21 @@ import React from "react";
 import Layout from "../../components/layout/Layout";
 import { common } from "../../redux/handlePages";
 import { fetchProduct } from "../../redux/product/product";
-import LetsGoal2021 from "../../components/lets-goal-2021/LetsGoal2021";
+import Bundle from "../../components/bundle/Bundle";
 
-const productId = 2;
+const productId = 3;
 
 const Home = () => {
     return (
         <Layout productId={productId}>
-            <LetsGoal2021 />
+            <Bundle />
         </Layout>
     );
 };
 
 Home.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct("lets-goal-2021-planner"));
+    await ctx.store.dispatch(fetchProduct("bundle-2021"));
 };
 
 export default Home;

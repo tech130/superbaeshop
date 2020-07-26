@@ -44,16 +44,15 @@ const ProdLink = styled.a`
 
 const ProdItem = ({ id }) => {
     const router = useRouter();
-    const { pathname, query } = router;
-    const { country } = query;
+    const { country, productSlug } = router.query;
     const { slug, title } = useSelector((state) => state.product[id] || {});
 
     if (slug && title) {
-        const href = `/[country]/${slug}`;
+        const href = `/[country]/[productSlug]`;
         return (
             <li>
                 <Link href={href} as={`/${country || DEFAULT_COUNTRY}/${slug}`}>
-                    <ProdLink isActive={href === pathname}>{title}</ProdLink>
+                    <ProdLink isActive={productSlug === slug}>{title}</ProdLink>
                 </Link>
             </li>
         );
