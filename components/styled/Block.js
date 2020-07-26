@@ -46,6 +46,11 @@ const Block = styled.div`
         css`
             font-size: ${props.fontSize};
         `};
+    ${(props) =>
+        props.bgColor &&
+        css`
+            background-color: ${props.bgColor};
+        `};
 `;
 
 export const RelativeBlock = styled(Block)`
