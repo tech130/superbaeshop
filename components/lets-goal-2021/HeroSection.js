@@ -7,10 +7,16 @@ import Block from "../styled/Block";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
 import ProductBuy from "../product/ProductBuy";
+import Picture from "../common/Picture";
+
+const frontSet = require("./images/front.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
+const bgSet = require("./images/herobg.jpg");
+
+console.log(bgSet);
 
 const HeroStyl = styled.section`
     padding: 40px 0px;
-    background-image: url("/images/lets-goal-2021/herobg.jpg");
+    background-image: url(${bgSet});
     background-size: cover;
     background-attachment: fixed;
 `;
@@ -25,8 +31,9 @@ const HeroSection = () => {
             <Container>
                 <Row alignItems="center">
                     <Col lg={6}>
-                        <Img
-                            src="/images/lets-goal-2021/front.png"
+                        <Picture
+                            src={frontSet.src}
+                            srcSet={frontSet.srcSet}
                             alt="Let's Goal 2021"
                         />
                     </Col>

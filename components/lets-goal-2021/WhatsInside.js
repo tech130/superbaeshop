@@ -3,11 +3,13 @@ import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2 } from "../styled/Headings";
 import P from "../styled/P";
-import Img from "../styled/Img";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
 import Txt from "../styled/Txt";
 import ProductBuy from "../product/ProductBuy";
+import Picture from "../common/Picture";
+
+const slantSet = require("./images/slant.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
 
 const Dot = styled.div`
     width: 20px;
@@ -79,7 +81,7 @@ const WhatsInside = () => {
                 </Row>
                 <Row>
                     <Col lg={5}>
-                        <Img src="/images/lets-goal-2021/slant.png" />
+                        <Picture src={slantSet.src} srcSet={slantSet.srcSet} />
                     </Col>
                     <Col lg={7}>
                         <Block margin="15px 0px 0px 0px">

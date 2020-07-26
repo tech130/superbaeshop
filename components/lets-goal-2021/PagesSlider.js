@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2 } from "../styled/Headings";
@@ -6,8 +6,12 @@ import P from "../styled/P";
 import Carousel from "nuka-carousel";
 import Img from "../styled/Img";
 import Button from "../styled/Button";
+import useOnScreen from "../../hooks/layout/useOnScreen";
 
 const PagesSlider = () => {
+    const ref = useRef(null);
+    const onScreen = useOnScreen(ref);
+
     return (
         <Block padding="50px 0px">
             <Container>
@@ -19,38 +23,40 @@ const PagesSlider = () => {
                 </Block>
                 <Row justifyContent="center">
                     <Col lg={12}>
-                        <Carousel
-                            renderCenterLeftControls={({ previousSlide }) => (
-                                <LeftBtn onClick={previousSlide} />
-                            )}
-                            renderCenterRightControls={({ nextSlide }) => (
-                                <RightBtn onClick={nextSlide} />
-                            )}
-                            slidesToShow={1}
-                            autoplay
-                            wrapAround
-                        >
-                            <Img
-                                src="/images/lets-goal-2021/pages/open--1.png"
-                                alt=""
-                            />
-                            <Img
-                                src="/images/lets-goal-2021/pages/open--2.png"
-                                alt=""
-                            />
-                            <Img
-                                src="/images/lets-goal-2021/pages/open--3.png"
-                                alt=""
-                            />
-                            <Img
-                                src="/images/lets-goal-2021/pages/open--4.png"
-                                alt=""
-                            />
-                            <Img
-                                src="/images/lets-goal-2021/pages/open--5.png"
-                                alt=""
-                            />
-                        </Carousel>
+                        <div ref={ref}>
+                            <Carousel
+                                renderCenterLeftControls={({
+                                    previousSlide,
+                                }) => <LeftBtn onClick={previousSlide} />}
+                                renderCenterRightControls={({ nextSlide }) => (
+                                    <RightBtn onClick={nextSlide} />
+                                )}
+                                slidesToShow={1}
+                                autoplay={onScreen}
+                                wrapAround
+                            >
+                                <Img
+                                    src="/images/lets-goal-2021/pages/open--1.png"
+                                    alt=""
+                                />
+                                <Img
+                                    src="/images/lets-goal-2021/pages/open--2.png"
+                                    alt=""
+                                />
+                                <Img
+                                    src="/images/lets-goal-2021/pages/open--3.png"
+                                    alt=""
+                                />
+                                <Img
+                                    src="/images/lets-goal-2021/pages/open--4.png"
+                                    alt=""
+                                />
+                                <Img
+                                    src="/images/lets-goal-2021/pages/open--5.png"
+                                    alt=""
+                                />
+                            </Carousel>
+                        </div>
                     </Col>
                 </Row>
             </Container>
