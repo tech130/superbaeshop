@@ -96,6 +96,8 @@ export const SubmitBtn = styled(Button)`
     min-height: 40px;
     width: 100%;
     margin-bottom: ${(props) => props.mb || "16px"};
+    cursor: ${(props) => props.disabled ? "not-allowed" : "pointer"};
+    opacity: ${(props) => props.disabled ? 0.5 : 1};
 `;
 
 export const CartButton = styled(Button)`

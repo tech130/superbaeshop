@@ -14,6 +14,8 @@ import Txt from "../styled/Txt";
 import useScript from "../../hooks/useScript";
 import rZPay from "../../utils/rzPay";
 import ModalLoader from "../modal/ModalLoader";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/user/cart";
 
 const DtTble = styled.table`
     border-collapse: collapse;
@@ -191,7 +193,10 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
 const CodCheckout = ({ id }) => {
     const router = useRouter();
     const country = useCountryParam();
+    const dispatch = useDispatch();
+
     const [fetching, submit] = useSubmit(() => {
+        dispatch(clearCart());
         router.replace(`/[country]/orders`, `/${country}/orders`);
     });
 
@@ -207,19 +212,21 @@ const CodCheckout = ({ id }) => {
             <SubmitButton fetching={fetching} onClick={onClick}>
                 CONFIRM
             </SubmitButton>
-            <ModalLoader isOpen={fetching}   />
+            <ModalLoader isOpen={fetching} />
         </>
     );
 };
 
 const OnlineCheckout = ({ data }) => {
+    const [loaded] = useScript("https://checkout.razorpay.com/v1/checkout.js");
     const router = useRouter();
     const country = useCountryParam();
+    const dispatch = useDispatch();
+
     const [fetching, submit] = useSubmit(() => {
+        dispatch(clearCart());
         router.replace(`/[country]/orders`, `/${country}/orders`);
     });
-
-    const [loaded] = useScript("https://checkout.razorpay.com/v1/checkout.js");
 
     const handleSuccess = (data) => {
         submit({
@@ -236,9 +243,16 @@ const OnlineCheckout = ({ data }) => {
     };
 
     return (
-        <SubmitButton disabled={loaded} fetching={fetching} onClick={onClick}>
-            CONFIRM
-        </SubmitButton>
+        <>
+            <SubmitButton
+                disabled={!loaded}
+                fetching={fetching}
+                onClick={onClick}
+            >
+                CONFIRM
+            </SubmitButton>
+            <ModalLoader isOpen={fetching} />
+        </>
     );
 };
 
