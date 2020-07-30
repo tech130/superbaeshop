@@ -69,11 +69,11 @@ const CartSummary = ({
             <CartSum>
                 <SumItem
                     title="Cart Total"
-                    amt={`${currency_type}${cartTotal}`}
+                    amt={`${currency_type}${cartTotal.toFixed(2)}`}
                 />
                 <SumItem
                     title="Delivery Charge"
-                    amt={`+ ${currency_type}${shipping_fee}`}
+                    amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
                 />
                 {redeem ? (
                     <>
@@ -85,21 +85,21 @@ const CartSummary = ({
                         <SumItem
                             title="Redeem Amount"
                             bold
-                            amt={`- ${currency_type}${wallet_amount}`}
+                            amt={`- ${currency_type}${wallet_amount.toFixed(2)}`}
                         />
                     </>
                 ) : couponAmt ? (
                     <SumItem
                         title="Coupon Amount"
                         bold
-                        amt={`- ${currency_type}${couponAmt}`}
+                        amt={`- ${currency_type}${couponAmt.toFixed(2)}`}
                     />
                 ) : null}
                 <HR />
                 <SumItem
                     title="Grand Total"
                     bold
-                    amt={`${currency_type}${total}`}
+                    amt={`${currency_type}${total.toFixed(2)}`}
                 />
             </CartSum>
         </>
