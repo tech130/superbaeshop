@@ -1,12 +1,15 @@
-export default ({
-    door_no = "",
-    street_address = "",
-    city = "",
-    state = "",
-    country = {},
-    postal_code = "",
-    landmark = "",
-}) =>
-    `${door_no}, ${street_address}, ${landmark},${city}, ${state}, ${
-        country ? country.title || "" : ""
-    }, ${postal_code}`;
+const addr = [
+    "door_no",
+    "street_address",
+    "locality",
+    "landmark",
+    "city",
+    "state",
+    "country_id",
+    "postal_code",
+];
+
+export default (val = {}) =>
+    addr
+        .reduce((acc, cur) => (val[cur] ? [...acc, val[cur]] : acc), [])
+        .join(", ");

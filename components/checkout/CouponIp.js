@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 import { IconButton } from "../styled/Button";
 import CloseIcon from "../icons/CloseIcon";
+import Txt from "../styled/Txt";
 
 const CouponP = styled.div`
     display: flex;
@@ -60,7 +61,7 @@ const CouponIp = ({
         <Block margin="0px 0px 15px 0px">
             {coupon.id ? (
                 <CouponP hide={redeem}>
-                    {coupon.title}
+                    <Txt weight={500}>{coupon.code}</Txt> 
                     <IconButton onClick={() => onCouponChange({})}>
                         <CloseIcon stroke="#cecece" />
                     </IconButton>

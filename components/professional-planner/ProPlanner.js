@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, memo } from "react";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";
@@ -167,7 +167,7 @@ const ProfPlannerPic = styled(Img)`
     border: 1px solid #cecece;
 `;
 
-const ProfPlannerSlider = () => {
+const ProfPlannerSlider = memo(() => {
     const ref = useRef(null);
     const isMobile = useMedia({ maxWidth: 576 });
     const onScreen = useOnScreen(ref);
@@ -219,6 +219,6 @@ const ProfPlannerSlider = () => {
             </Container>
         </Block>
     );
-};
+});
 
 export default ProPlanner;

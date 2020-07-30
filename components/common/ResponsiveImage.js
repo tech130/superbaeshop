@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, memo } from "react";
 import styled from "styled-components";
 import useLazyImage from "../../hooks/layout/useLazyImage";
 
@@ -45,19 +45,40 @@ const ResponsiveImage = ({
             objFit={objFit}
         >
             <img className="placeholder-img" src={placeholder} alt="" />
-            <picture>
-                {source.length > 0 &&
-                    source.map((x, idx) => <source {...x} key={idx} />)}
-                <img
-                    className="responsive-img"
+            <RenderPicture
+                source={source}
+                src={src}
+                srcSet={srcSet}
+                sizes={sizes}
+                alt={alt}
+            />
+            <noscript>
+                <RenderPicture
+                    source={source}
                     src={src}
                     srcSet={srcSet}
                     sizes={sizes}
                     alt={alt}
                 />
-            </picture>
+            </noscript>
         </ImgCon>
     );
 };
 
-export default ResponsiveImage;
+//
+// eslint-disable-next-line react/display-name
+const RenderPicture = memo(({ source = [], src, srcSet, sizes, alt }) => (
+    <picture>
+        {source.length > 0 &&
+            source.map((x, idx) => <source {...x} key={idx} />)}
+        <img
+            className="responsive-img"
+            src={src}
+            srcSet={srcSet}
+            sizes={sizes}
+            alt={alt}
+        />
+    </picture>
+));
+
+export default memo(ResponsiveImage);
