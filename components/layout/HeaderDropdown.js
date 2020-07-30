@@ -16,23 +16,25 @@ const HeaderDropCon = styled.div`
         background: #fff;
         max-height: 300px;
         overflow-y: auto;
+        padding: 5px 0px;
     }
 
     .header-drop ul {
         list-style: none;
     }
 
-    .header-drop li {
-        padding: 6px 15px;
+    .header-drop li a {
+        padding: 5px 15px;
         font-size: 14px;
         margin: 0px !important;
-    }
-
-    .header-drop li a {
         color: #000 !important;
         text-decoration: none !important;
         display: flex;
         align-items: center;
+    }
+
+    .header-drop li a:hover {
+        background: #f5f5f5;
     }
 
     &:hover .header-drop {

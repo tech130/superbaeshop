@@ -7,7 +7,7 @@ const ImgCon = styled.div`
     width: ${(props) => props.imgWidth || "100%"};
     height: ${(props) => props.imgHeight || "auto"};
     transition: filter 0.5s ease-in 0s;
-    filter: ${(props) => `blur(${props.isLoading ? 10 : 0}px)`};
+    filter: ${(props) => `blur(${props.isLoading ? 5 : 0}px)`};
 
     img {
         width: 100%;
@@ -32,8 +32,9 @@ const ResponsiveImage = ({
     objFit,
 }) => {
     const { src, srcSet, placeholder } = image;
+    const sizes = "(max-width: 700px) 100vw, 700px";
     const ref = useRef(null);
-    const isLoading = useLazyImage(ref, image);
+    const isLoading = useLazyImage(ref, { src, srcSet, sizes });
 
     return (
         <ImgCon
@@ -51,6 +52,7 @@ const ResponsiveImage = ({
                     className="responsive-img"
                     src={src}
                     srcSet={srcSet}
+                    sizes={sizes}
                     alt={alt}
                 />
             </picture>
