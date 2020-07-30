@@ -88,12 +88,12 @@ const MyCartList = () => {
     );
 };
 
-const calculateTotal = (activeCountry, cart = []) => {
+const calculateTotal = (activeCountry = {}, cart = []) => {
     const init = {
         total_quantity: 0,
         coupon_amount: 0,
-        redeem_amount: 0,
-        shipping_fee: 0,
+        redeem_amount: parseFloat(activeCountry.redeem_point_cash || 0),
+        shipping_fee: parseFloat(activeCountry.shipping_fee || 0),
         cartTotal: 0,
         impure: false,
         currency_type: activeCountry.currency_type,
@@ -106,22 +106,10 @@ const calculateTotal = (activeCountry, cart = []) => {
                 cur.product.product_country[activeCountry.id]
                     ? cur.product.product_country[activeCountry.id]
                     : null;
-            if (!activeCon) {
-                return {
-                    ...acc,
-                    impure: true,
-                };
-            }
             const selling_price = activeCon ? activeCon.selling_price : 0;
-            const redeemAmt =
-                activeCon && activeCon.country
-                    ? parseFloat(activeCon.country.redeem_point_cash)
-                    : 0;
             return {
                 ...acc,
-                redeem_amount: redeemAmt,
-                shipping_fee: 0,
-                // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
+                impure: acc.impure ? acc.impure : activeCon ? false : true,
                 total_quantity: acc.total_quantity + parseInt(cur.quantity, 10),
                 cartTotal:
                     acc.cartTotal +
@@ -170,7 +158,12 @@ const CartListWithForm = ({ list = [] }) => {
                     onRedeemChange={onRedeemChange}
                     walletPoints={walletPoints}
                 />
-                <CartSummary {...cartSummary} redeem={redeem} coupon={coupon} walletPoints={walletPoints} />
+                <CartSummary
+                    {...cartSummary}
+                    redeem={redeem}
+                    coupon={coupon}
+                    walletPoints={walletPoints}
+                />
                 {list.map((item) => (
                     <MyCartItem {...item} key={item.id} />
                 ))}
