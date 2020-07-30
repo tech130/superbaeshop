@@ -63,7 +63,7 @@ const CartSummary = ({
             ? (parseFloat(coupon.payout || 0) / 100) * cartTotal
             : 0;
     const total =
-        shipping_fee + cartTotal + (redeem ? wallet_amount : couponAmt);
+        shipping_fee + cartTotal - (redeem ? wallet_amount : couponAmt);
     return (
         <>
             <CartSum>
@@ -85,21 +85,21 @@ const CartSummary = ({
                         <SumItem
                             title="Redeem Amount"
                             bold
-                            amt={`+ ${currency_type}${wallet_amount}`}
+                            amt={`- ${currency_type}${wallet_amount}`}
                         />
                     </>
                 ) : couponAmt ? (
                     <SumItem
                         title="Coupon Amount"
                         bold
-                        amt={`+ ${currency_type}${couponAmt}`}
+                        amt={`- ${currency_type}${couponAmt}`}
                     />
                 ) : null}
                 <HR />
                 <SumItem
                     title="Grand Total"
                     bold
-                    amt={`+ ${currency_type}${total}`}
+                    amt={`${currency_type}${total}`}
                 />
             </CartSum>
         </>
