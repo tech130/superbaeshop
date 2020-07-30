@@ -1,26 +1,36 @@
 import useOnScreen from "./useOnScreen";
 import { useState, useEffect } from "react";
 
-const useLazyImage = (ref, src = "", srcSet = "", sizes = "") => {
+const useLazyImage = (ref, image = {}) => {
     const [loading, set] = useState(true);
+    const [shown, setShown] = useState(false);
     const onScreen = useOnScreen(ref);
 
     useEffect(() => {
         if (onScreen) {
-            const img = new Image();
-            img.onload = () => {
+            setShown(true);
+        }
+    }, [onScreen]);
+
+    useEffect(() => {
+        if (shown) {
+            const onLoad = () => {
                 set(false);
             };
-            img.src = src;
-            if (srcSet) {
-                img.srcset = srcSet;
+            const img = new Image();
+            img.addEventListener("load", onLoad);
+            img.src = image.src;
+            if (image.srcSet) {
+                img.srcset = image.srcSet;
             }
-            if (sizes) {
-                img.sizes = sizes;
+            if (image.sizes) {
+                img.sizes = image.sizes;
             }
-            return () => {};
+            return () => {
+                img.removeEventListener("load", onLoad);
+            };
         }
-    }, [src, srcSet, sizes, onScreen]);
+    }, [image, shown]);
 
     return loading;
 };

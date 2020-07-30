@@ -10,8 +10,8 @@ import { InterSec } from "../styled/Hr";
 import styled from "styled-components";
 import CountryLink from "../common/CountryLink";
 import Txt from "../styled/Txt";
+import ResponsiveImage from "../common/ResponsiveImage";
 
-const notepadSet = require("./images/notepad.png?resize");
 const medicalSet = require("./images/medical.png?resize");
 
 const BundleStl = styled.div`
@@ -38,7 +38,7 @@ const BundleItem = ({ title = "", children = null, mathIcon = "+" }) => {
                         <Txt fontSize="4em">{mathIcon}</Txt>
                     </Col>
                     <Col mdOffset={2} md={5}>
-                        <ResponsivePicture fluid image={medicalSet} />
+                        <ResponsiveImage image={medicalSet} />
                     </Col>
                 </Row>
             </Container>
@@ -53,10 +53,8 @@ const Bundle = () => {
                 <Container>
                     <Row>
                         <Col lg={6} lgOffset={3}>
-                            <Picture
-                                fluid
-                                src={notepadSet.src}
-                                srcSet={notepadSet.srcSet}
+                            <ResponsiveImage
+                                image={require("./images/notepad.png?resize")}
                             />
                         </Col>
                         <Col lg={8} lgOffset={2}>
