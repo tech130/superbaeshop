@@ -13,6 +13,7 @@ import { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import useScript from "../../hooks/useScript";
 import rZPay from "../../utils/rzPay";
+import ModalLoader from "../modal/ModalLoader";
 
 const DtTble = styled.table`
     border-collapse: collapse;
@@ -202,9 +203,12 @@ const CodCheckout = ({ id }) => {
     };
 
     return (
-        <SubmitButton fetching={fetching} onClick={onClick}>
-            CONFIRM
-        </SubmitButton>
+        <>
+            <SubmitButton fetching={fetching} onClick={onClick}>
+                CONFIRM
+            </SubmitButton>
+            <ModalLoader isOpen={fetching}   />
+        </>
     );
 };
 

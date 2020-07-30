@@ -10,13 +10,18 @@ const Modal = ({
     maxWidth,
     bg,
     overlayClick = null,
+    overlayStyle,
     overlayClass = "",
     contentClass = "",
 }) => {
     if (isOpen) {
         return (
             <Portal id={id}>
-                <ModalOverlay onClick={overlayClick} className={overlayClass}>
+                <ModalOverlay
+                    style={overlayStyle}
+                    onClick={overlayClick}
+                    className={overlayClass}
+                >
                     <ModalContent
                         maxWidth={maxWidth}
                         bg={bg}
