@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import Flex from "../styled/Flex";
+import Flex, { FlexItem } from "../styled/Flex";
 import P from "../styled/P";
 import Input from "../form/Input";
 import SubmitButton from "../form/SubmitButton";
@@ -32,21 +32,21 @@ const Subscribe = () => {
                     </Col>
                     <Col lg={4} md={6} lgOffset={4} mdOffset={3}>
                         <form onSubmit={(e) => e.preventDefault()}>
-                            <Row>
-                                <Col noGutter col={9}>
+                            <Flex>
+                                <FlexItem flexGrow={1}>
                                     <Input
                                         type="email"
                                         placeholder="Enter your email"
                                         value={email}
                                         setValue={(val) => setEmail(val)}
                                     />
-                                </Col>
-                                <Col noGutter col={3}>
+                                </FlexItem>
+                                <FlexItem flexGrow={0} flexShrink={0}>
                                     <SubmitButton disabled={!email}>
                                         Subscribe
                                     </SubmitButton>
-                                </Col>
-                            </Row>
+                                </FlexItem>
+                            </Flex>
                         </form>
                     </Col>
                 </Row>

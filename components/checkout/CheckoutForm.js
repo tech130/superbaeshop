@@ -268,8 +268,9 @@ const CheckoutForm = ({ coupon, redeem }) => {
                         block
                         disabled={fetching}
                     >
-                        CASH ON DELIVERY (+{activeCountry.currency_type}
-                        {activeCountry.shipping_fee})
+                        CASH ON DELIVERY 
+                        {/* (+{activeCountry.currency_type}
+                        {activeCountry.shipping_fee}) */}
                     </Button>
                 </>
             )}
