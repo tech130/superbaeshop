@@ -1,5 +1,3 @@
-import { canUseDom } from "react-toastify/dist/utils";
-
 export default function rZPay(order, handleResponse) {
     var options = {
         key: order.api_key,
@@ -21,7 +19,7 @@ export default function rZPay(order, handleResponse) {
             color: "#faebe4",
         },
     };
-    if (canUseDom && window.Razorpay) {
+    if (window && window.Razorpay) {
         const rzp1 = new window.Razorpay(options);
         rzp1.open();
     }
