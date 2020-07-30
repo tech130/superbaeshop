@@ -88,6 +88,62 @@ const MyCartList = () => {
     );
 };
 
+const calculateTotal = (activeCountry, cart = []) => {
+    const init = {
+        total_quantity: 0,
+        coupon_amount: 0,
+        redeem_amount: 0,
+        shipping_fee: 0,
+        cartTotal: 0,
+        impure: false,
+        currency_type: activeCountry.currency_type,
+    };
+    if (cart.length > 0 && activeCountry.id) {
+        return cart.reduce((acc, cur) => {
+            const activeCon =
+                cur.product &&
+                cur.product.product_country &&
+                cur.product.product_country[activeCountry.id]
+                    ? cur.product.product_country[activeCountry.id]
+                    : null;
+            if (!activeCon) {
+                return {
+                    ...acc,
+                    impure: true,
+                };
+            }
+            const selling_price = activeCon ? activeCon.selling_price : 0;
+            console.log(activeCon.redeem_point_cash);
+            const redeemAmt =
+                activeCon && activeCon.country
+                    ? parseFloat(activeCon.country.redeem_point_cash)
+                    : 0;
+            return {
+                ...acc,
+                redeem_amount: redeemAmt,
+                shipping_fee: 0,
+                // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
+                quantity: acc.total_quantity + parseInt(cur.quantity, 10),
+                cartTotal:
+                    acc.cartTotal +
+                    (selling_price
+                        ? parseFloat(selling_price) * parseInt(cur.quantity, 10)
+                        : 0),
+            };
+        }, init);
+    }
+    return init;
+};
+
+export const useCartSummary = (cart, walletPoints = 0) => {
+    const { activeCountry } = useActiveCountry();
+    return useMemo(() => calculateTotal(activeCountry, cart), [
+        activeCountry,
+        cart,
+        walletPoints,
+    ]);
+};
+
 const CartListWithForm = ({ list = [] }) => {
     const [coupon, setCoupon] = useState({});
     const [redeem, setRedeem] = useState(false);
@@ -115,11 +171,7 @@ const CartListWithForm = ({ list = [] }) => {
                     onRedeemChange={onRedeemChange}
                     walletPoints={walletPoints}
                 />
-                <CartSummary
-                    {...cartSummary}
-                    walletPoints={walletPoints}
-                    coupon={coupon}
-                />
+                <CartSummary {...cartSummary} redeem={redeem} coupon={coupon} walletPoints={walletPoints} />
                 {list.map((item) => (
                     <MyCartItem {...item} key={item.id} />
                 ))}
@@ -147,51 +199,6 @@ const CartListWithForm = ({ list = [] }) => {
             </Col>
         </Row>
     );
-};
-
-const calculateTotal = (activeCountry, cart = []) => {
-    const init = {
-        shipping_fee: 0,
-        cartTotal: 0,
-        impure: false,
-        currency_type: activeCountry.currency_type,
-    };
-    if (cart.length > 0 && activeCountry.id) {
-        return cart.reduce((acc, cur) => {
-            const activeCon =
-                cur.product &&
-                cur.product.product_country &&
-                cur.product.product_country[activeCountry.id]
-                    ? cur.product.product_country[activeCountry.id]
-                    : null;
-            if (!activeCon) {
-                return {
-                    ...acc,
-                    impure: true,
-                };
-            }
-            const selling_price = activeCon ? activeCon.selling_price : 0;
-            return {
-                ...acc,
-                shipping_fee: 0,
-                // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
-                cartTotal:
-                    acc.cartTotal +
-                    (selling_price
-                        ? parseFloat(selling_price) * parseInt(cur.quantity, 10)
-                        : 0),
-            };
-        }, init);
-    }
-    return init;
-};
-
-export const useCartSummary = (cart) => {
-    const { activeCountry } = useActiveCountry();
-    return useMemo(() => calculateTotal(activeCountry, cart), [
-        activeCountry,
-        cart,
-    ]);
 };
 
 export default Cartlist;
