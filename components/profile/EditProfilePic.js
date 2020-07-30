@@ -34,7 +34,7 @@ const EditProfilePic = ({ profile_pic }) => {
             submit({
                 url: "users/",
                 data: formData,
-                method: "POST",
+                method: "PATCH",
                 processData: false,
                 mimeType: "multipart/form-data",
                 contentType: false,

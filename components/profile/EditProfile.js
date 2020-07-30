@@ -78,14 +78,14 @@ const EditProfileModal = ({ closeModal, isOpen }) => {
             <ModalHeader
                 closeModal={closeModal}
                 title="Edit Profile"
-                desc="Lorem Ipsum is simply dummy text of the printing "
+                desc="Edit you profile details"
             />
             <Block padding="25px 15px 30px">
                 <FormCon
                     form={editForm}
                     config={{
                         url: "users/",
-                        method: "POST",
+                        method: "PATCH",
                         processData: false,
                         mimeType: "multipart/form-data",
                         contentType: false,

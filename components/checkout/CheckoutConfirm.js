@@ -147,11 +147,11 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
                                 </td>
                             </tr>
                         )}
-                        {data.coupon && data.coupon_amount && (
+                        {data.coupon && data.coupon_amount && data.coupon_code && (
                             <>
                                 <tr>
                                     <th>Coupon Code</th>
-                                    <td>{data.coupon}</td>
+                                    <td>{data.coupon_code}</td>
                                 </tr>
                                 <tr>
                                     <th>Coupon Amount</th>

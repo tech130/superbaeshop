@@ -69,6 +69,7 @@ const OrderItem = ({
     total_amount = "",
     coupon_amount = "",
     coupon,
+    coupon_code = "",
     pay_amount,
     order_items = [],
     address = {},
@@ -165,11 +166,11 @@ const OrderItem = ({
                                             {other_charge}
                                         </td>
                                     </tr>
-                                    {coupon && (
+                                    {coupon && coupon_code && (
                                         <>
                                             <tr>
                                                 <th>Coupon:</th>
-                                                <td>{coupon}</td>
+                                                <td>{coupon_code}</td>
                                             </tr>
                                             <tr>
                                                 <th>Coupon Amount:</th>

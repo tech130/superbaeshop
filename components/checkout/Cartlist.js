@@ -89,11 +89,13 @@ const MyCartList = () => {
 };
 
 const CartListWithForm = ({ list = [] }) => {
-    const [coupon, setCoupon] = useState("");
+    const [coupon, setCoupon] = useState({});
     const [redeem, setRedeem] = useState(false);
 
+    const { used_points } = useUser();
+    const walletPoints = parseFloat(used_points) || 0;
+
     const onCouponChange = useCallback((value) => {
-        console.log(value);
         setCoupon(value);
     }, []);
 
@@ -111,8 +113,13 @@ const CartListWithForm = ({ list = [] }) => {
                     onCouponChange={onCouponChange}
                     redeem={redeem}
                     onRedeemChange={onRedeemChange}
+                    walletPoints={walletPoints}
                 />
-                <CartSummary {...cartSummary} />
+                <CartSummary
+                    {...cartSummary}
+                    walletPoints={walletPoints}
+                    coupon={coupon}
+                />
                 {list.map((item) => (
                     <MyCartItem {...item} key={item.id} />
                 ))}

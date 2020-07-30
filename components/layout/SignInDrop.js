@@ -55,19 +55,22 @@ const SignInDrop = () => {
                         <LoginModalBtn
                             padding="5px 10px"
                             border="1px solid #000"
-                            block
                             margin="0px 0px 5px"
+                            block
                         >
                             Sign In
                         </LoginModalBtn>
-                        <P fontSize="12px" margin="0px">
-                            New User ?{" "}
+                        <div>
                             <LoginModalBtn inline isSignUp>
-                                <Txt weight={500} textDecor="underline">
-                                    Sign Up
+                                <Txt
+                                    fontSize="12px"
+                                    weight={500}
+                                    textDecor="underline"
+                                >
+                                    New User? Sign Up
                                 </Txt>
                             </LoginModalBtn>
-                        </P>
+                        </div>
                     </li>
                 )}
             </ul>

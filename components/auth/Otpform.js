@@ -51,9 +51,9 @@ const Otpform = ({ userData = {}, closeModal }) => {
                         method: "POST",
                     }}
                     succFunc={(data) => {
-                        dispatch(updateUser(data));
                         setTokenOnBrowser(data.token);
-                        dispatch(uploadLocalCart())
+                        dispatch(updateUser(data));
+                        dispatch(uploadLocalCart());
                         dispatch(clearLocalCart());
                         if (canUseDom) {
                             window.location.reload();
