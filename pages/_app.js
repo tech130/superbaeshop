@@ -9,6 +9,7 @@ import makeStore from "../redux/store";
 import GlobalStyle from "../components/styled/GlobalStyle";
 import { ToastContainer } from "react-toastify";
 
+import "intersection-observer";
 import "../css/font.css";
 import "react-toastify/dist/ReactToastify.css";
 import UploadCartModal from "../components/auth/UploadCartModal";

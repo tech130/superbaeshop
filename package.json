@@ -14,6 +14,7 @@
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
+    "intersection-observer": "^0.11.0",
     "lodash.merge": "^4.6.2",
     "lqip-loader": "^2.2.0",
     "next": "9.3.0",

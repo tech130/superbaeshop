@@ -7,7 +7,7 @@ const ImgCon = styled.div`
     width: ${(props) => props.imgWidth || "100%"};
     height: ${(props) => props.imgHeight || "auto"};
     transition: filter 0.5s ease-in 0s;
-    filter: ${(props) => `blur(${props.loading ? 10 : 0}px)`};
+    filter: ${(props) => `blur(${props.isLoading ? 10 : 0}px)`};
 
     img {
         width: 100%;
@@ -15,11 +15,11 @@ const ImgCon = styled.div`
     }
 
     .placeholder-img {
-        display: ${(props) => (props.loading ? "block" : "none")};
+        display: ${(props) => (props.isLoading ? "block" : "none")};
     }
 
     .responsive-img {
-        display: ${(props) => (props.loading ? "none" : "block")};
+        display: ${(props) => (props.isLoading ? "none" : "block")};
     }
 `;
 
@@ -33,12 +33,12 @@ const ResponsiveImage = ({
 }) => {
     const { src, srcSet, placeholder } = image;
     const ref = useRef(null);
-    const loading = useLazyImage(ref, image);
+    const isLoading = useLazyImage(ref, image);
 
     return (
         <ImgCon
             ref={ref}
-            loading={loading}
+            isLoading={isLoading}
             imgHeight={imgHeight}
             imgWidth={imgWidth}
             objFit={objFit}
