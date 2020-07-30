@@ -11,6 +11,8 @@ import useSubmit from "../../hooks/http/useSubmit";
 import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
+import useScript from "../../hooks/useScript";
+import rZPay from "../../utils/rzPay";
 
 const DtTble = styled.table`
     border-collapse: collapse;
@@ -39,22 +41,6 @@ const DtTble = styled.table`
 `;
 
 const CheckoutConfirm = ({ closeModal, data = {} }) => {
-    const router = useRouter();
-    const country = useCountryParam();
-
-    const [fetching, submit] = useSubmit(() => {
-        router.replace(`/[country]/orders`, `/${country}/orders`);
-    });
-
-    const onClick = () => {
-        if (data.id && data.payment_type === "COD") {
-            submit({
-                url: urls.cod(data.id),
-                method: "GET",
-            });
-        }
-    };
-
     const currencyCode =
         data && data.address && data.address.country
             ? data.address.country.currency_type || ""
@@ -191,11 +177,64 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
                         )}
                     </tbody>
                 </DtTble>
-                <SubmitButton fetching={fetching} onClick={onClick}>
-                    CONFIRM
-                </SubmitButton>
+                {data.payment_type === "Online" && data.id ? (
+                    <OnlineCheckout data={data} />
+                ) : data.payment_type === "COD" && data.id ? (
+                    <CodCheckout id={data.id} />
+                ) : null}
             </Block>
         </>
+    );
+};
+
+const CodCheckout = ({ id }) => {
+    const router = useRouter();
+    const country = useCountryParam();
+    const [fetching, submit] = useSubmit(() => {
+        router.replace(`/[country]/orders`, `/${country}/orders`);
+    });
+
+    const onClick = () => {
+        submit({
+            url: urls.cod(id),
+            method: "GET",
+        });
+    };
+
+    return (
+        <SubmitButton fetching={fetching} onClick={onClick}>
+            CONFIRM
+        </SubmitButton>
+    );
+};
+
+const OnlineCheckout = ({ data }) => {
+    const router = useRouter();
+    const country = useCountryParam();
+    const [fetching, submit] = useSubmit(() => {
+        router.replace(`/[country]/orders`, `/${country}/orders`);
+    });
+
+    const [loaded] = useScript("https://checkout.razorpay.com/v1/checkout.js");
+
+    const handleSuccess = (data) => {
+        submit({
+            url: urls.paymentSuccess,
+            method: "POST",
+            data,
+        });
+    };
+
+    const onClick = () => {
+        if (loaded) {
+            rZPay(data, handleSuccess);
+        }
+    };
+
+    return (
+        <SubmitButton disabled={loaded} fetching={fetching} onClick={onClick}>
+            CONFIRM
+        </SubmitButton>
     );
 };
 

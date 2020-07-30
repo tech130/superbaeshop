@@ -18,6 +18,7 @@ const urls = {
     validateOffer: "offers/validate/",
     checkout: "orders/checkout/",
     cod: (id) => `orders/cod-confirm/${id}/`,
+    paymentSuccess: "orders/payment-success/",
     myOrders: "orders/",
 };
 

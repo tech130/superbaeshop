@@ -85,7 +85,7 @@ const EditProfileModal = ({ closeModal, isOpen }) => {
                     form={editForm}
                     config={{
                         url: "users/",
-                        method: "PATCH",
+                        method: "POST",
                         processData: false,
                         mimeType: "multipart/form-data",
                         contentType: false,

@@ -22,11 +22,11 @@ import { CheckoutConfirmModal } from "./CheckoutConfirm";
 import Input from "../form/Input";
 import useSubmit from "../../hooks/http/useSubmit";
 import { emailValid, phoneValid } from "../../utils/validation";
-import Loader from "../form/Loader";
 import { useActiveCountry } from "../common/CountryLink";
 import SelectIp from "../form/SelectIp";
 import styled from "styled-components";
 import Button, { LinkButton } from "../styled/Button";
+import ModalLoader from "../modal/ModalLoader";
 
 const getDialOption = (x) => {
     return {
@@ -240,40 +240,33 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     />
                 </FieldCon>
             </FormRow>
-            {fetching ? (
-                <Flex justifyContent="center" align="center">
-                    <Loader size={40} />
-                </Flex>
-            ) : (
-                <>
-                    <Button
-                        margin="0px 0px 10px 0px"
-                        block
-                        onClick={onPayNow}
-                        disabled={fetching}
-                        border="1px solid #ced4da"
-                        padding="8px"
-                    >
-                        PAY SECURELY VIA{" "}
-                        <img
-                            style={{ marginLeft: "10px" }}
-                            width={100}
-                            src="/images/razorpay-logo.svg"
-                        />
-                    </Button>
-                    <Button
-                        border="1px solid #ced4da"
-                        padding="8px"
-                        onClick={onPayLater}
-                        block
-                        disabled={fetching}
-                    >
-                        CASH ON DELIVERY 
-                        {/* (+{activeCountry.currency_type}
+            <Button
+                margin="0px 0px 10px 0px"
+                block
+                onClick={onPayNow}
+                disabled={fetching}
+                border="1px solid #ced4da"
+                padding="8px"
+            >
+                PAY SECURELY VIA{" "}
+                <img
+                    style={{ marginLeft: "10px" }}
+                    width={100}
+                    src="/images/razorpay-logo.svg"
+                />
+            </Button>
+            <Button
+                border="1px solid #ced4da"
+                padding="8px"
+                onClick={onPayLater}
+                block
+                disabled={fetching}
+            >
+                CASH ON DELIVERY
+                {/* (+{activeCountry.currency_type}
                         {activeCountry.shipping_fee}) */}
-                    </Button>
-                </>
-            )}
+            </Button>
+            <ModalLoader isOpen={fetching} />
 
             {successData && successData.id && (
                 <CheckoutConfirmModal
