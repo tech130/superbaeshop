@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import Picture from "../common/Picture";
 import styled from "styled-components";
 import Img from "../styled/Img";
 import { H3 } from "../styled/Headings";
@@ -12,6 +11,7 @@ import Block from "../styled/Block";
 import Flex from "../styled/Flex";
 import P from "../styled/P";
 import ResponsiveImage from "../common/ResponsiveImage";
+import useOnScreen from "../../hooks/layout/useOnScreen";
 
 const MeetTxt = styled.h1`
     font-size: 3.4rem;
@@ -35,9 +35,8 @@ const ProPlanner = () => {
                 <Container>
                     <Row alignItems="center">
                         <Col lg={7}>
-                            <Picture
-                                fluid
-                                src="/images/professional-planner/1.png"
+                            <ResponsiveImage
+                                image={require("./images/1.png?resize")}
                             />
                         </Col>
                         <Col lg={5}>
@@ -131,34 +130,31 @@ const ProPlanner = () => {
                 <Container fluid>
                     <Row>
                         <Col lg={12}>
-                            <Picture
-                                fluid
-                                margin="0px 0px 15px"
-                                source={[
-                                    {
-                                        media: "(max-width: 475px)",
-                                        srcSet:
-                                            "/images/professional-planner/3-mobile.png",
-                                    },
-                                ]}
-                                src="/images/professional-planner/3.png"
-                            />
+                            <Block margin="0px 0px 15px 0px">
+                                <ResponsiveImage
+                                    source={[
+                                        {
+                                            media: "(max-width: 475px)",
+                                            srcSet: require("./images/3-mobile.png"),
+                                        },
+                                    ]}
+                                    image={require("./images/3.png?resize")}
+                                />
+                            </Block>
                         </Col>
                         <Col lg={6}>
-                            <Picture
-                                fluid
-                                margin="0px 0px 15px"
-                                src="/images/professional-planner/4.png"
-                                alt=""
-                            />
+                            <Block margin="0px 0px 15px 0px">
+                                <ResponsiveImage
+                                    image={require("./images/4.png?resize")}
+                                />
+                            </Block>
                         </Col>
                         <Col lg={6}>
-                            <Picture
-                                margin="0px 0px 15px"
-                                fluid
-                                src="/images/professional-planner/5.png"
-                                alt=""
-                            />
+                            <Block margin="0px 0px 15px 0px">
+                                <ResponsiveImage
+                                    image={require("./images/5.png?resize")}
+                                />
+                            </Block>
                         </Col>
                     </Row>
                 </Container>
@@ -168,21 +164,22 @@ const ProPlanner = () => {
 };
 
 const ProfPlannerPic = styled(Img)`
-    border: 1px solid #f5f5f5;
+    border: 1px solid #cecece;
 `;
 
 const ProfPlannerSlider = () => {
+    const ref = useRef(null);
     const isMobile = useMedia({ maxWidth: 576 });
-
+    const onScreen = useOnScreen(ref);
     const props = isMobile ? { slideWidth: "200px" } : { slidesToShow: 4 };
 
     return (
-        <Block padding="50px 0px">
+        <Block padding="50px 0px" ref={ref}>
             <Container fluid>
                 <Carousel
                     withoutControls
                     wrapAround
-                    autoplay
+                    autoplay={onScreen}
                     cellSpacing={15}
                     {...props}
                 >
