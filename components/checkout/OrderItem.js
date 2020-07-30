@@ -69,6 +69,7 @@ const OrderItem = ({
     total_amount = "",
     coupon_amount = "",
     coupon,
+    is_wallet = false,
     coupon_code = "",
     pay_amount,
     order_items = [],
@@ -166,22 +167,35 @@ const OrderItem = ({
                                             {other_charge}
                                         </td>
                                     </tr>
-                                    {coupon && coupon_code && (
-                                        <>
-                                            <tr>
-                                                <th>Coupon:</th>
-                                                <td>{coupon_code}</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Coupon Amount:</th>
-                                                <td>
-                                                    <Txt weight={600}>
-                                                        - {currency_type}
-                                                        {coupon_amount}
-                                                    </Txt>
-                                                </td>
-                                            </tr>
-                                        </>
+                                    {is_wallet ? (
+                                        <tr>
+                                            <th>Wallet Discount Amount:</th>
+                                            <td>
+                                                <Txt weight={600}>
+                                                    - {currency_type}
+                                                    {coupon_amount}
+                                                </Txt>
+                                            </td>
+                                        </tr>
+                                    ) : (
+                                        coupon &&
+                                        coupon_code && (
+                                            <>
+                                                <tr>
+                                                    <th>Coupon:</th>
+                                                    <td>{coupon_code}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Coupon Amount:</th>
+                                                    <td>
+                                                        <Txt weight={600}>
+                                                            - {currency_type}
+                                                            {coupon_amount}
+                                                        </Txt>
+                                                    </td>
+                                                </tr>
+                                            </>
+                                        )
                                     )}
                                     <tr>
                                         <th>Final Payable:</th>

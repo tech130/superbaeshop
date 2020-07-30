@@ -30,6 +30,7 @@ const DtTble = styled.table`
         padding-bottom: 10px;
         padding-left: 5px;
         padding-right: 5px;
+        min-width: 145px;
     }
 
     th {
@@ -147,22 +148,35 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
                                 </td>
                             </tr>
                         )}
-                        {data.coupon && data.coupon_amount && data.coupon_code && (
-                            <>
-                                <tr>
-                                    <th>Coupon Code</th>
-                                    <td>{data.coupon_code}</td>
-                                </tr>
-                                <tr>
-                                    <th>Coupon Amount</th>
-                                    <td>
-                                        <Txt color="green" weight={600}>
-                                            - {currencyCode}
-                                            {data.coupon_amount}
-                                        </Txt>
-                                    </td>
-                                </tr>
-                            </>
+                        {data.is_wallet ? (
+                            <tr>
+                                <th>Wallet Discount Amount</th>
+                                <td>
+                                    <Txt color="green" weight={600}>
+                                        - {currencyCode}
+                                        {data.coupon_amount}
+                                    </Txt>
+                                </td>
+                            </tr>
+                        ) : (
+                            data.coupon &&
+                            data.coupon_code(
+                                <>
+                                    <tr>
+                                        <th>Coupon Code</th>
+                                        <td>{data.coupon_code}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Coupon Amount</th>
+                                        <td>
+                                            <Txt color="green" weight={600}>
+                                                - {currencyCode}
+                                                {data.coupon_amount}
+                                            </Txt>
+                                        </td>
+                                    </tr>
+                                </>
+                            )
                         )}
                         {data.pay_amount && (
                             <tr>
