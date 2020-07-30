@@ -12,8 +12,8 @@ const SignInDrop = () => {
 
     return (
         <HeaderDropdown
-            Btn={({ onClick }) => (
-                <Button onClick={onClick}>
+            btn={
+                <Button>
                     <div>
                         <P
                             lineHeight={1}
@@ -31,7 +31,7 @@ const SignInDrop = () => {
                         </Txt>
                     </div>
                 </Button>
-            )}
+            }
         >
             <ul>
                 {user.user && user.user.id ? (

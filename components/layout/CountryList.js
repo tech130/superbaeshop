@@ -23,8 +23,8 @@ const CountryList = () => {
 const CountrySelect = ({ activeCon = {}, countries = [] }) => {
     return (
         <HeaderDropdown
-            Btn={({ onClick }) => (
-                <Button onClick={onClick}>
+            btn={
+                <Button>
                     <Img
                         width={18}
                         height={13}
@@ -38,7 +38,7 @@ const CountrySelect = ({ activeCon = {}, countries = [] }) => {
                         <CaretDown size={14} />
                     </span>
                 </Button>
-            )}
+            }
         >
             <ul>
                 {countries.map((country) => (
