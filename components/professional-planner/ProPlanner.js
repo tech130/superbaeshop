@@ -11,15 +11,21 @@ import ProPlannerPrice from "./ProPlannerPrice";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
 import P from "../styled/P";
+import ResponsiveImage from "../common/ResponsiveImage";
 
 const MeetTxt = styled.h1`
-    font-size: 4rem;
+    font-size: 3.4rem;
     font-weight: 700;
     line-height: 68px;
     margin-bottom: 30px;
     background: linear-gradient(#616161, #333);
+    word-break: break-word;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @media (min-width: 768px) {
+        font-size: 4rem;
+    }
 `;
 
 const ProPlanner = () => {
@@ -38,8 +44,7 @@ const ProPlanner = () => {
                             <MeetTxt>
                                 Meet the <br />
                                 Perfect <br />
-                                Professional <br />
-                                planner
+                                Professional planner
                             </MeetTxt>
                             <H3 mb="35px" weight={700}>
                                 Crafted just for you!
@@ -56,7 +61,7 @@ const ProPlanner = () => {
                         <P
                             fontSize="4rem"
                             weight={700}
-                            margin="10px 25px 10px 0px"
+                            margin="10px 25px 15px 0px"
                             lineHeight={1}
                         >
                             Designed by artist
@@ -64,14 +69,14 @@ const ProPlanner = () => {
                         <P
                             lineHeight={1}
                             fontSize="2.2rem"
-                            margin="10px 0px"
+                            margin="0px 0px 15px 0px"
                             weight={500}
                         >
                             Engineered by experts
                         </P>
                     </Flex>
                     <Block margin="0px 0px 25px">
-                        <Txt fontSize="4rem" weight={700}>
+                        <Txt lineHeight={1} fontSize="3rem" weight={700}>
                             With highest quality print
                         </Txt>
                     </Block>
@@ -79,15 +84,7 @@ const ProPlanner = () => {
                 </Container>
             </Block>
 
-            <Block>
-                <Container fluid>
-                    <Picture
-                        fluid
-                        src="/images/professional-planner/2.png"
-                        alt=""
-                    />
-                </Container>
-            </Block>
+            <ProfPlannerSlider />
 
             <Block padding="35px 0px">
                 <Container>
@@ -108,35 +105,27 @@ const ProPlanner = () => {
                     </Row>
                     <Row>
                         <Col lg={7}>
-                            {/* <img
-                                src="/images/professional-planner/2.png"
-                                alt=""
-                            /> */}
+                            <ResponsiveImage
+                                image={require("./images/free-two-hardcover-books-mockup.png?resize")}
+                            />
                         </Col>
                         <Col lg={5}>
                             <P fontSize="18px" weight={500}>
-                                Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit. Ullam harum voluptatem
-                                repudiandae est obcaecati tenetur tempore,
-                                numquam labore deserunt, officiis possimus,
-                                magnam accusantium totam deleniti et! Odit
-                                minima consequuntur enim!
+                                Year In Pixels. Year Goals. Year Vision Board.
+                                Bookstagram. Professional Development Tracker.
+                                SWOT. Future Logs. Brain Dump.
                             </P>
-
                             <P fontSize="18px" weight={500}>
-                                Lorem, ipsum dolor sit amet consectetur
-                                adipisicing elit. Aut porro inventore unde. Ad
-                                eum similique accusantium dolor veniam nesciunt,
-                                magnam, maiores doloribus nihil, ipsa
-                                repudiandae possimus. Iusto fuga illum aliquid!
+                                Monthly Appointment Tracker. Schedule. Daily
+                                Planner. Project Tracker. Finance Tracker. Habit
+                                Tracker. Fitness Tracker. Meal, Water, Coffee
+                                Tracker. Movies/TV Show Tracker.
                             </P>
                             <ProPlannerPrice />
                         </Col>
                     </Row>
                 </Container>
             </Block>
-
-            <ProfPlannerSlider />
 
             <Block padding="35px 0px">
                 <Container fluid>
@@ -185,15 +174,17 @@ const ProfPlannerPic = styled(Img)`
 const ProfPlannerSlider = () => {
     const isMobile = useMedia({ maxWidth: 576 });
 
+    const props = isMobile ? { slideWidth: "200px" } : { slidesToShow: 4 };
+
     return (
-        <Block>
+        <Block padding="50px 0px">
             <Container fluid>
                 <Carousel
                     withoutControls
                     wrapAround
                     autoplay
                     cellSpacing={15}
-                    slidesToShow={isMobile ? 2 : 8}
+                    {...props}
                 >
                     <ProfPlannerPic
                         src="/images/professional-planner/slides/slide-1.jpg"
