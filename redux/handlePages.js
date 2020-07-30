@@ -36,6 +36,7 @@ export const handleToken = async ({ req, store }) => {
                 store.dispatch(updateUser(user));
                 return user;
             } catch (err) {
+                console.log(err);
                 store.dispatch(clearUser());
                 return {};
             }

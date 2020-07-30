@@ -94,7 +94,7 @@ const CouponIp = ({
                     name="redeem"
                     setValue={onRedeemChange}
                     value={redeem}
-                    placeholder={`Redeem wallet points. Available ${walletPoints} points`}
+                    placeholder={`Redeem wallet points. ${walletPoints} points available.`}
                 />
             </Flex>
         </Block>

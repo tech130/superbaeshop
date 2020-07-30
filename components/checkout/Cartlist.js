@@ -113,7 +113,6 @@ const calculateTotal = (activeCountry, cart = []) => {
                 };
             }
             const selling_price = activeCon ? activeCon.selling_price : 0;
-            console.log(activeCon.redeem_point_cash);
             const redeemAmt =
                 activeCon && activeCon.country
                     ? parseFloat(activeCon.country.redeem_point_cash)
@@ -123,7 +122,7 @@ const calculateTotal = (activeCountry, cart = []) => {
                 redeem_amount: redeemAmt,
                 shipping_fee: 0,
                 // acc.shipping_free + (cur.country ? cur.country.shipping_free : 0),
-                quantity: acc.total_quantity + parseInt(cur.quantity, 10),
+                total_quantity: acc.total_quantity + parseInt(cur.quantity, 10),
                 cartTotal:
                     acc.cartTotal +
                     (selling_price
@@ -148,8 +147,8 @@ const CartListWithForm = ({ list = [] }) => {
     const [coupon, setCoupon] = useState({});
     const [redeem, setRedeem] = useState(false);
 
-    const { used_points } = useUser();
-    const walletPoints = parseFloat(used_points) || 0;
+    const { user_points } = useUser();
+    const walletPoints = parseFloat(user_points) || 0;
 
     const onCouponChange = useCallback((value) => {
         setCoupon(value);
