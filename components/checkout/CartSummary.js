@@ -77,20 +77,16 @@ const CartSummary = ({
                 />
                 {redeem ? (
                     <>
-                        {redeemable > 0 && (
-                            <SumItem
-                                title="Redeemable Points"
-                                bold
-                                amt={redeemable}
-                            />
-                        )}
-                        {wallet_amount > 0 && (
-                            <SumItem
-                                title="Redeem Amount"
-                                bold
-                                amt={`+ ${currency_type}${wallet_amount}`}
-                            />
-                        )}
+                        <SumItem
+                            title="Redeemable Points"
+                            bold
+                            amt={redeemable}
+                        />
+                        <SumItem
+                            title="Redeem Amount"
+                            bold
+                            amt={`+ ${currency_type}${wallet_amount}`}
+                        />
                     </>
                 ) : couponAmt ? (
                     <SumItem
