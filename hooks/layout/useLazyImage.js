@@ -13,7 +13,7 @@ const useLazyImage = (ref, image = {}) => {
     }, [onScreen]);
 
     useEffect(() => {
-        if (shown) {
+        if (shown && loading) {
             const onLoad = () => {
                 set(false);
             };
@@ -30,7 +30,7 @@ const useLazyImage = (ref, image = {}) => {
                 img.removeEventListener("load", onLoad);
             };
         }
-    }, [image, shown]);
+    }, [image, shown, loading]);
 
     return loading;
 };
