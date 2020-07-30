@@ -47,8 +47,8 @@ const getRedeem = (quantity = 0, walletPoints = 0) => {
 };
 
 const CartSummary = ({
-    cartTotal,
-    shipping_fee,
+    cartTotal = 0,
+    shipping_fee = 0,
     currency_type,
     redeem_amount = 0,
     walletPoints = 0,
@@ -77,12 +77,20 @@ const CartSummary = ({
                 />
                 {redeem ? (
                     <>
-                        <SumItem title="Redeemable Points" bold amt={redeemable} />
-                        <SumItem
-                            title="Redeem Amount"
-                            bold
-                            amt={`+ ${currency_type}${wallet_amount}`}
-                        />
+                        {redeemable > 0 && (
+                            <SumItem
+                                title="Redeemable Points"
+                                bold
+                                amt={redeemable}
+                            />
+                        )}
+                        {wallet_amount > 0 && (
+                            <SumItem
+                                title="Redeem Amount"
+                                bold
+                                amt={`+ ${currency_type}${wallet_amount}`}
+                            />
+                        )}
                     </>
                 ) : couponAmt ? (
                     <SumItem
