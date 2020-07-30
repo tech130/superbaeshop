@@ -32,8 +32,11 @@ const CouponIp = ({
     walletPoints = 0,
 }) => {
     const [val, set] = useState("");
-    const [fetching, submit] = useSubmit((data) => {
-        onCouponChange(data);
+    const [fetching, submit] = useSubmit((data = {}) => {
+        onCouponChange({
+            code: val,
+            ...data,
+        });
         set("");
         toast.success("VALID COUPON");
     });

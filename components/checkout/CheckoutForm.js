@@ -147,8 +147,8 @@ const CheckoutForm = ({ coupon, redeem }) => {
         }
         const wallet = redeem
             ? { is_wallet: true }
-            : coupon
-            ? { coupon_code: coupon }
+            : coupon.code
+            ? { coupon_code: coupon.code }
             : {};
         let formData = {
             ...wallet,
@@ -361,7 +361,13 @@ const AddAddress = () => {
     return (
         <AddressModalBtn
             Btn={({ onClick }) => (
-                <LinkButton textDecor="underline" fontSize="13px" onClick={onClick}>+ Add Address</LinkButton>
+                <LinkButton
+                    textDecor="underline"
+                    fontSize="13px"
+                    onClick={onClick}
+                >
+                    + Add Address
+                </LinkButton>
             )}
         />
     );
