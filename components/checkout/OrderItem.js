@@ -12,6 +12,7 @@ import P from "../styled/P";
 import { useSelector } from "react-redux";
 import useDateFormat from "../../hooks/useDateFormat";
 import getAddress from "../../utils/getAddress";
+import OrderSummary from "./OrderSummary";
 
 const OrderImg = styled.img`
     width: 80px;
@@ -63,15 +64,6 @@ const DelP = styled.p`
 
 const OrderItem = ({
     tracking_client_id = "",
-    payment_type = "",
-    shipping_charge = "",
-    other_charge = "",
-    total_amount = "",
-    coupon_amount = "",
-    coupon,
-    is_wallet = false,
-    coupon_code = "",
-    pay_amount,
     order_items = [],
     address = {},
     created_on = "",
@@ -82,10 +74,8 @@ const OrderItem = ({
     alt_dial_code = "",
     status = "",
     email = "",
+    ...rest
 }) => {
-    const { country } = address || {};
-    const { currency_type } = country || {};
-
     const created = useDateFormat(created_on, "lll");
 
     return (
@@ -142,70 +132,7 @@ const OrderItem = ({
                             <H6>Order Summary</H6>
                             <OrderSumSty>
                                 <tbody>
-                                    <tr>
-                                        <th>Total Amount:</th>
-                                        <td>
-                                            {currency_type}
-                                            {total_amount}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Payment Type:</th>
-                                        <td>{payment_type}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Shipping Charge:</th>
-                                        <td>
-                                            + {currency_type}
-                                            {shipping_charge}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Other Charges:</th>
-                                        <td>
-                                            + {currency_type}
-                                            {other_charge}
-                                        </td>
-                                    </tr>
-                                    {is_wallet ? (
-                                        <tr>
-                                            <th>Wallet Discount Amount:</th>
-                                            <td>
-                                                <Txt weight={600}>
-                                                    - {currency_type}
-                                                    {coupon_amount}
-                                                </Txt>
-                                            </td>
-                                        </tr>
-                                    ) : (
-                                        coupon &&
-                                        coupon_code && (
-                                            <>
-                                                <tr>
-                                                    <th>Coupon:</th>
-                                                    <td>{coupon_code}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Coupon Amount:</th>
-                                                    <td>
-                                                        <Txt weight={600}>
-                                                            - {currency_type}
-                                                            {coupon_amount}
-                                                        </Txt>
-                                                    </td>
-                                                </tr>
-                                            </>
-                                        )
-                                    )}
-                                    <tr>
-                                        <th>Final Payable:</th>
-                                        <td>
-                                            <Txt weight={600}>
-                                                {currency_type}
-                                                {pay_amount}
-                                            </Txt>
-                                        </td>
-                                    </tr>
+                                    <OrderSummary {...rest} address={address} />
                                 </tbody>
                             </OrderSumSty>
                         </Block>

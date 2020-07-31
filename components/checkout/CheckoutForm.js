@@ -22,11 +22,12 @@ import { CheckoutConfirmModal } from "./CheckoutConfirm";
 import Input from "../form/Input";
 import useSubmit from "../../hooks/http/useSubmit";
 import { emailValid, phoneValid } from "../../utils/validation";
-import { useActiveCountry } from "../common/CountryLink";
+import CountryLink, { useActiveCountry } from "../common/CountryLink";
 import SelectIp from "../form/SelectIp";
 import styled from "styled-components";
 import Button, { LinkButton } from "../styled/Button";
 import ModalLoader from "../modal/ModalLoader";
+import P from "../styled/P";
 
 const getDialOption = (x) => {
     return {
@@ -240,6 +241,16 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     />
                 </FieldCon>
             </FormRow>
+            <P weight={500} fontSize="13px">
+                Note: All pre-orders will be processed by End of September. A
+                tracking link will be sent once your order is dispatched.
+                Delivery time 3-14 days depending on delivery location.
+                <br />
+                By placing this order you agree to our
+                <CountryLink href="/terms">
+                    <Txt textDecor="underline"> Terms and Conditions</Txt>
+                </CountryLink>
+            </P>
             <Button
                 margin="0px 0px 10px 0px"
                 block
@@ -255,19 +266,19 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     src="/images/razorpay-logo.svg"
                 />
             </Button>
-            <Button
-                border="1px solid #ced4da"
-                padding="8px"
-                onClick={onPayLater}
-                block
-                disabled={fetching}
-            >
-                CASH ON DELIVERY
-                {/* (+{activeCountry.currency_type}
-                        {activeCountry.shipping_fee}) */}
-            </Button>
+            {activeCountry.is_cod_available && (
+                <Button
+                    border="1px solid #ced4da"
+                    padding="8px"
+                    onClick={onPayLater}
+                    block
+                    disabled={fetching}
+                >
+                    CASH ON DELIVERY (+{activeCountry.currency_type}
+                    {activeCountry.cod_charge})
+                </Button>
+            )}
             <ModalLoader isOpen={fetching} />
-
             {successData && successData.id && (
                 <CheckoutConfirmModal
                     isOpen

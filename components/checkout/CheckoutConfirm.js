@@ -16,6 +16,7 @@ import rZPay from "../../utils/rzPay";
 import ModalLoader from "../modal/ModalLoader";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/user/cart";
+import OrderSummary from "./OrderSummary";
 
 const DtTble = styled.table`
     border-collapse: collapse;
@@ -44,11 +45,6 @@ const DtTble = styled.table`
 `;
 
 const CheckoutConfirm = ({ closeModal, data = {} }) => {
-    const currencyCode =
-        data && data.address && data.address.country
-            ? data.address.country.currency_type || ""
-            : "";
-
     return (
         <>
             <ModalHeader
@@ -95,89 +91,7 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
                                 </td>
                             </tr>
                         )}
-                        {data.total_amount && (
-                            <tr>
-                                <th>Total Amount</th>
-                                <td>
-                                    {currencyCode}
-                                    {data.total_amount}
-                                </td>
-                            </tr>
-                        )}
-                        {data.payment_type && (
-                            <tr>
-                                <th>Payment Type</th>
-                                <td>{data.payment_type}</td>
-                            </tr>
-                        )}
-                        {data.shipping_charge && (
-                            <tr>
-                                <th>Shipping Fee</th>
-                                <td>
-                                    + {currencyCode}
-                                    {data.shipping_charge}
-                                </td>
-                            </tr>
-                        )}
-                        {data.cod_charge && (
-                            <tr>
-                                <th>COD Charge</th>
-                                <td>
-                                    + {currencyCode}
-                                    {data.cod_charge}
-                                </td>
-                            </tr>
-                        )}
-                        {data.other_charge && (
-                            <tr>
-                                <th>Other Charges</th>
-                                <td>
-                                    + {currencyCode}
-                                    {data.other_charge}
-                                </td>
-                            </tr>
-                        )}
-                        {data.is_wallet ? (
-                            <tr>
-                                <th>Wallet Discount Amount</th>
-                                <td>
-                                    <Txt color="green" weight={600}>
-                                        - {currencyCode}
-                                        {data.coupon_amount}
-                                    </Txt>
-                                </td>
-                            </tr>
-                        ) : (
-                            data.coupon &&
-                            data.coupon_code(
-                                <>
-                                    <tr>
-                                        <th>Coupon Code</th>
-                                        <td>{data.coupon_code}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Coupon Amount</th>
-                                        <td>
-                                            <Txt color="green" weight={600}>
-                                                - {currencyCode}
-                                                {data.coupon_amount}
-                                            </Txt>
-                                        </td>
-                                    </tr>
-                                </>
-                            )
-                        )}
-                        {data.pay_amount && (
-                            <tr>
-                                <th>Final Payable</th>
-                                <td>
-                                    <Txt weight={600} color="green">
-                                        {currencyCode}
-                                        {data.pay_amount}
-                                    </Txt>
-                                </td>
-                            </tr>
-                        )}
+                        <OrderSummary {...data} />
                     </tbody>
                 </DtTble>
                 {data.payment_type === "Online" && data.id ? (
