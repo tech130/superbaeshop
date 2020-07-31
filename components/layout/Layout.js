@@ -7,6 +7,7 @@ import TopRollText from "./TopRollText";
 import styled from "styled-components";
 import { useCountryParam } from "../common/CountryLink";
 import useUser from "../../hooks/redux/user/useUser";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 const StickyTop = styled.div`
     backdrop-filter: blur(20px);
@@ -39,6 +40,7 @@ const Layout = ({ children, slug, isAuthRoute = false }) => {
             {children}
             <Subscribe />
             <Footer />
+            <WhatsAppIcon />
         </>
     );
 };
