@@ -4,6 +4,7 @@ import Block from "../../components/styled/Block";
 import { Container } from "styled-bootstrap-grid";
 import { common } from "../../redux/handlePages";
 import Cartlist from "../../components/checkout/Cartlist";
+import { fetchProfile } from "../../redux/user/user";
 
 const Checkout = () => {
     return (
@@ -18,7 +19,10 @@ const Checkout = () => {
 };
 
 Checkout.getInitialProps = async (ctx) => {
-    await common(ctx);
+    const { token } = await common(ctx);
+    if (token && !ctx.isServer) {
+        await ctx.store.dispatch(fetchProfile());
+    }
 };
 
 export default Checkout;

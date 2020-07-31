@@ -78,5 +78,11 @@ export const common = async (ctx, userRoute = false) => {
     if (user.token && ctx.isServer) {
         promises.push(ctx.store.dispatch(fetchCart()));
     }
-    await mapPromises(promises);
+    try {
+        await mapPromises(promises);
+    } catch (err) {
+        console.log(err);
+    }
+
+    return user;
 };
