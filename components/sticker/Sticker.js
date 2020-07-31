@@ -1,14 +1,14 @@
 import React from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import Picture from "../common/Picture";
 import { H2, H1 } from "../styled/Headings";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
 import { InterSec } from "../styled/Hr";
 import StickerPrice from "./StickerPrice";
 import Dot from "../styled/Dot";
-import ProductPrice from "../product/ProductPrice";
+import { ProductPrices } from "../product/ProductPrice";
+import ResponsiveImage from "../common/ResponsiveImage";
 
 const notepadSet = require("./images/notepad.jpg?resize");
 const twoSet = require("./images/2.jpg?resize");
@@ -27,25 +27,13 @@ const Sticker = () => {
                     <P textAlign="center">is here.</P>
                     <Row>
                         <Col lg={4}>
-                            <Picture
-                                fluid
-                                src={twoSet.src}
-                                srcSet={twoSet.srcSet}
-                            />
+                            <ResponsiveImage image={twoSet} />
                         </Col>
                         <Col lg={4}>
-                            <Picture
-                                fluid
-                                src={notepadSet.src}
-                                srcSet={notepadSet.srcSet}
-                            />
+                            <ResponsiveImage image={notepadSet} />
                         </Col>
                         <Col lg={4}>
-                            <Picture
-                                fluid
-                                src={twoSet.src}
-                                srcSet={twoSet.srcSet}
-                            />
+                            <ResponsiveImage image={twoSet} />
                         </Col>
                     </Row>
                 </Container>
@@ -68,10 +56,7 @@ const Sticker = () => {
                 <Container>
                     <Row>
                         <Col md={8}>
-                            <Picture
-                                src={medicalSet.src}
-                                srcSet={medicalSet.srcSet}
-                            />
+                            <ResponsiveImage image={medicalSet} />
                         </Col>
                         <Col md={4}>
                             <Flex
@@ -99,15 +84,7 @@ const Sticker = () => {
                                     Product Price
                                 </P>
                                 <P>
-                                    <div>
-                                        <ProductPrice id={productId} />
-                                    </div>
-                                    <div>
-                                        <ProductPrice
-                                            id={productId}
-                                            type="original_price"
-                                        />
-                                    </div>
+                                    <ProductPrices id={productId} />
                                 </P>
                             </Flex>
                             <Flex
