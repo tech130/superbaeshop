@@ -1,7 +1,17 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useProdCountry } from "../common/CountryLink";
 import useProduct from "../../hooks/redux/product/useProduct";
+
+const marquee = keyframes`
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+`;
 
 const TopBar = styled.div`
     background: #000;
@@ -10,9 +20,21 @@ const TopBar = styled.div`
     position: relative;
     overflow: hidden;
     height: 35px;
-    padding: 0px 15px;
-    line-height: 35px;
-    font-size: 14px;
+
+    div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate3d(100%, 0, 0);
+        animation: ${marquee} 30s linear infinite;
+        font-size: 14px;
+        min-width: 100%;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
 `;
 
 const TopRollText = ({ productId }) => {
@@ -21,7 +43,7 @@ const TopRollText = ({ productId }) => {
     }
     return (
         <TopBar>
-            <marquee>Organize your Life on the Go!</marquee>
+            <div>Organize your Life on the Go!</div>
         </TopBar>
     );
 };
@@ -33,13 +55,13 @@ const ProdRollText = ({ id }) => {
     if (prod && prod.promotion_text) {
         return (
             <TopBar>
-                <marquee>{prod.promotion_text}</marquee>
+                <div>{prod.promotion_text}</div>
             </TopBar>
         );
     }
     return (
         <TopBar>
-            <marquee>Currently Unavailable for your Country</marquee>
+            <div>Currently Unavailable for your Country</div>
         </TopBar>
     );
 };
