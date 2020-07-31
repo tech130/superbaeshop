@@ -1,10 +1,11 @@
 export default function rZPay(order, handleResponse) {
+    console.log(order)
     var options = {
         key: order.api_key,
         amount: order.amount_in_paisa,
-        name: "Let's goal 2020",
-        description: `#${order.order_id || ""}`,
-        order_id: order.order_id,
+        name: "Space & Beauty",
+        description: order.tracking_client_id,
+        order_id: order.tracking_client_id,
         // currency: "USD",
         image: "https://spaceandbeauty.com/images/logo-small.png",
         handler: (res) => {
