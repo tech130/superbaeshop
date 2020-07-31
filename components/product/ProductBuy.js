@@ -10,9 +10,18 @@ import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import { loadCartList } from "../../redux/user/cart";
 
+export const GotoCart = () => {
+    const country = useCountryParam();
+
+    return (
+        <Link href="/[country]/checkout" as={`/${country}/checkout`}>
+            <CartButton>Go to Cart</CartButton>
+        </Link>
+    );
+};
+
 export const AddToLocalCart = ({ className = "", productId, isPreOrder }) => {
     const dispatch = useDispatch();
-    const country = useCountryParam();
     const inCart = useSelector(
         (state) =>
             state.local_cart.filter((item) => item.product === productId)
@@ -26,11 +35,7 @@ export const AddToLocalCart = ({ className = "", productId, isPreOrder }) => {
     }, []);
 
     if (inCart) {
-        return (
-            <Link href="/[country]/checkout" as={`/${country}/checkout`}>
-                <CartButton>Go to Cart</CartButton>
-            </Link>
-        );
+        return <GotoCart />;
     }
     return (
         <CartButton className={className} onClick={onClick}>
@@ -39,7 +44,7 @@ export const AddToLocalCart = ({ className = "", productId, isPreOrder }) => {
     );
 };
 
-const AddToCart = ({ className = "", productId, isPreOrder }) => {
+const AddToCart = ({ className = "", productId, isPreOrder, inCart }) => {
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
         dispatch(loadCartList(data));
@@ -58,6 +63,9 @@ const AddToCart = ({ className = "", productId, isPreOrder }) => {
         });
     }, [productId]);
 
+    if (inCart && inCart.quantity) {
+        return <GotoCart />;
+    }
     return (
         <CartButton disabled={fetching} className={className} onClick={onClick}>
             {fetching
@@ -69,21 +77,34 @@ const AddToCart = ({ className = "", productId, isPreOrder }) => {
     );
 };
 
-const ProductBuyBtn = ({ productId, isPreOrder }) => {
+const ProductBuyBtn = ({ productId, isPreOrder, inCart }) => {
     const { token } = useUser();
-
     if (token) {
-        return <AddToCart productId={productId} isPreOrder={isPreOrder} />;
+        return (
+            <AddToCart
+                productId={productId}
+                inCart={inCart}
+                isPreOrder={isPreOrder}
+            />
+        );
     }
     return <AddToLocalCart productId={productId} isPreOrder={isPreOrder} />;
 };
 
 const ProductBuy = ({ productId }) => {
-    const { id, is_pre_order, product_country } = useProduct(productId);
+    const { id, is_pre_order, in_cart, product_country } = useProduct(
+        productId
+    );
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {
-        return <ProductBuyBtn productId={id} isPreOrder={is_pre_order} />;
+        return (
+            <ProductBuyBtn
+                productId={id}
+                inCart={in_cart}
+                isPreOrder={is_pre_order}
+            />
+        );
     }
     return null;
 };
