@@ -36,7 +36,7 @@ const OrderSummary = ({
                     {shipping_charge}
                 </td>
             </tr>
-            {parseFloat(cod_charge) && (
+            {parseFloat(cod_charge) > 0 && (
                 <tr>
                     <th>COD Charge</th>
                     <td>
