@@ -178,7 +178,7 @@ const FooterProductLink = ({ id }) => {
         return (
             <li>
                 <Link href={href} as={`/${country}/${slug}`}>
-                    {title}
+                    <a>{title}</a>
                 </Link>
             </li>
         );

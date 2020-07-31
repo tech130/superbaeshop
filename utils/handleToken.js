@@ -19,5 +19,6 @@ export const removeTokenOnBrowser = () => {
     if (canUseDom) {
         const cookies = new Cookies();
         cookies.remove(TOKEN_KEY);
+        console.log("LOG OUT");
     }
 };
