@@ -17,7 +17,7 @@ const StickyTop = styled.div`
     background: rgba(255, 255, 255, 0.67);
 `;
 
-const Layout = ({ children, productId, isAuthRoute = false }) => {
+const Layout = ({ children, slug, isAuthRoute = false }) => {
     const { token } = useUser();
     const country = useCountryParam();
 
@@ -31,7 +31,7 @@ const Layout = ({ children, productId, isAuthRoute = false }) => {
 
     return (
         <>
-            <TopRollText productId={productId} />
+            <TopRollText slug={slug} />
             <StickyTop>
                 <Header />
                 <ProductList />

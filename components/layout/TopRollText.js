@@ -37,9 +37,9 @@ const TopBar = styled.div`
     }
 `;
 
-const TopRollText = ({ productId }) => {
-    if (productId) {
-        return <ProdRollText id={productId} />;
+const TopRollText = ({ slug }) => {
+    if (slug) {
+        return <ProdRollText slug={slug} />;
     }
     return (
         <TopBar>
@@ -48,8 +48,8 @@ const TopRollText = ({ productId }) => {
     );
 };
 
-const ProdRollText = ({ id }) => {
-    const { product_country } = useProduct(id);
+const ProdRollText = ({ slug }) => {
+    const { product_country } = useProduct(slug);
     const prod = useProdCountry(product_country);
 
     if (prod && prod.promotion_text) {

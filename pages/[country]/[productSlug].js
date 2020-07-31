@@ -8,9 +8,9 @@ import products from "../../products";
 const ProductSlugPage = () => {
     const router = useRouter();
     const { productSlug } = router.query;
-    const { component } = products[productSlug];
+    const { component } = products[productSlug] || {};
 
-    return <Layout productId={productSlug}>{component || null}</Layout>;
+    return <Layout slug={productSlug}>{component || null}</Layout>;
 };
 
 ProductSlugPage.getInitialProps = async (ctx) => {

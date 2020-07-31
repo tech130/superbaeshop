@@ -25,3 +25,5 @@ export default {
         id: 3,
     },
 };
+
+export const getFirstProduct = (state) => state.headerProducts[0] || "";
