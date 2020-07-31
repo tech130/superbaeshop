@@ -14,6 +14,30 @@ const ProductPrice = ({ id, ...rest }) => {
     return null;
 };
 
+export const ProductPrices = ({ id, ...rest }) => {
+    const product = useProduct(id);
+
+    if (product.product_country) {
+        return (
+            <Txt {...rest}>
+                <ProdPrice
+                    type="original_price"
+                    product_country={product.product_country}
+                    margin="0px 8px 0px 0px"
+                    weight={300}
+                />
+                <ProdPrice
+                    margin="0px 8px 0px 0px"
+                    product_country={product.product_country}
+                    weight={600}
+                    {...rest}
+                />
+            </Txt>
+        );
+    }
+    return null;
+};
+
 const ProdPrice = ({
     product_country = [],
     type = "selling_price",

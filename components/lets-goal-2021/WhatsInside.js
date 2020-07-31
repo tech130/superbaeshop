@@ -7,7 +7,7 @@ import Flex from "../styled/Flex";
 import ProductBuy from "../product/ProductBuy";
 import Picture from "../common/Picture";
 import Dot from "../styled/Dot";
-import ProductPrice from "../product/ProductPrice";
+import { ProductPrices } from "../product/ProductPrice";
 
 const slantSet = require("./images/slant.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
 
@@ -35,8 +35,7 @@ const WhatsInside = () => {
                                 PRODUCT PRICE
                             </P>
                             <P textAlign="center">
-                                <ProductPrice id={2} />
-                                <ProductPrice type="original_price" id={2} />
+                                <ProductPrices id={2} />
                             </P>
                         </Flex>
                     </Col>

@@ -7,6 +7,7 @@ import P from "../styled/P";
 import Flex from "../styled/Flex";
 import ProductBuy from "../product/ProductBuy";
 import Picture from "../common/Picture";
+import { ProductPrices } from "../product/ProductPrice";
 
 const frontSet = require("./images/front.png?resize");
 const bgSet = require("./images/herobg.jpg");
@@ -90,6 +91,7 @@ const HeroSection = () => {
                                 <P fontSize="18px" textAlign="right">
                                     -DRITI
                                 </P>
+                                <ProductPrices fontSize="18px" id={2} />
                                 <ProductBuy productId={2} />
                             </Col>
                         </Row>

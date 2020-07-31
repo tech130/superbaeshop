@@ -10,7 +10,7 @@ import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import { loadCartList } from "../../redux/user/cart";
 
-export const AddToLocalCart = ({ className = "", productId }) => {
+export const AddToLocalCart = ({ className = "", productId, isPreOrder }) => {
     const dispatch = useDispatch();
     const country = useCountryParam();
     const inCart = useSelector(
@@ -34,12 +34,12 @@ export const AddToLocalCart = ({ className = "", productId }) => {
     }
     return (
         <CartButton className={className} onClick={onClick}>
-            Add to cart
+            {isPreOrder ? "Pre Order" : "Add to cart"}
         </CartButton>
     );
 };
 
-const AddToCart = ({ className = "", productId }) => {
+const AddToCart = ({ className = "", productId, isPreOrder }) => {
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
         dispatch(loadCartList(data));
@@ -60,18 +60,18 @@ const AddToCart = ({ className = "", productId }) => {
 
     return (
         <CartButton disabled={fetching} className={className} onClick={onClick}>
-            {fetching ? "Adding to cart" : "Add to cart"}
+            {isPreOrder ? "Pre Order" : "Add to cart"}
         </CartButton>
     );
 };
 
-const ProductBuyBtn = ({ productId }) => {
+const ProductBuyBtn = ({ productId, isPreOrder }) => {
     const { token } = useUser();
 
     if (token) {
-        return <AddToCart productId={productId} />;
+        return <AddToCart productId={productId} isPreOrder={isPreOrder} />;
     }
-    return <AddToLocalCart productId={productId} />;
+    return <AddToLocalCart productId={productId} isPreOrder={isPreOrder} />;
 };
 
 const ProductBuy = ({ productId }) => {
@@ -79,7 +79,7 @@ const ProductBuy = ({ productId }) => {
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {
-        return <ProductBuyBtn productId={id} is_pre_order={is_pre_order} />;
+        return <ProductBuyBtn productId={id} isPreOrder={is_pre_order} />;
     }
     return null;
 };

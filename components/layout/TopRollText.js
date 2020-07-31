@@ -21,7 +21,7 @@ const TopRollText = ({ productId }) => {
     }
     return (
         <TopBar>
-            <div>Organize your Life on the Go!</div>
+            <marquee>Organize your Life on the Go!</marquee>
         </TopBar>
     );
 };
