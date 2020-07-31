@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Container, Col, Row } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
-import CountryLink from "../common/CountryLink";
+import CountryLink, { useCountryParam } from "../common/CountryLink";
 import { useSelector } from "react-redux";
 import useProduct from "../../hooks/redux/product/useProduct";
 
@@ -58,7 +58,7 @@ const Footer = () => {
                             <Block margin="0px 0px 15px">
                                 <ul className="footer-list">
                                     <li>
-                                        <a href="hey@spaceandbeauty.com">
+                                        <a href="mailto:hey@spaceandbeauty.com">
                                             hey@spaceandbeauty.com
                                         </a>
                                     </li>
@@ -163,13 +163,15 @@ const FooterProducts = () => {
 };
 
 const FooterProductLink = ({ id }) => {
-    const product = useProduct(id);
+    const country = useCountryParam();
+    const { slug, title } = useProduct(id);
 
-    if (product.slug) {
+    if (slug) {
+        const href = `/[country]/[productSlug]`;
         return (
             <li>
-                <CountryLink href={`/${product.slug}`}>
-                    {product.title}
+                <CountryLink href={href} as={`/${country}/${slug}`}>
+                    {title}
                 </CountryLink>
             </li>
         );

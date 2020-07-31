@@ -24,10 +24,10 @@ export const fetchProfile = () =>
     fetchApi({ url: "users/" }, "user_profile", updateUser);
 
 //user reducer
-export default (state = { isloaded: false }, action) => {
+export default (state = {}, action) => {
     switch (action.type) {
         case userTyps.update:
-            return { ...state, isloaded: true, ...action.payload };
+            return { ...state, ...action.payload };
         case userTyps.clear:
             return {};
         default:
