@@ -13,7 +13,7 @@ import { useProdCountry } from "../common/CountryLink";
 import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import Loader from "../form/Loader";
-import { loadCartList } from "../../redux/user/cart";
+import { updateCartList } from "../../redux/user/cart";
 
 const CartStyl = styled(Flex)`
     padding: 10px;
@@ -120,7 +120,7 @@ export const LocalCartItem = ({ product = {}, quantity }) => {
 export const MyCartItem = ({ product = {}, quantity }) => {
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
-        dispatch(loadCartList(data));
+        dispatch(updateCartList(data));
     });
 
     const handleChange = useCallback(

@@ -24,9 +24,25 @@ export const loadCartList = (payload) => {
 
 export const updateCartList = (payload) => {
     const { result, entities } = normalize(payload, [cartSchema]);
-    console.log(result, entities);
-    return (dispatch) => {
+    return (dispatch, getState) => {
         dispatch(addEntity(entities));
+        const cartList = getState().cartList;
+        const cart = getState().cart;
+        const removeProducts = cartList.reduce((acc, cur) => {
+            if (result.includes(cur)) {
+                return acc;
+            }
+            if (cart[cur] && cart[cur].product) {
+                return {
+                    ...acc,
+                    [`${cart[cur].product}`]: {
+                        in_cart: null,
+                    },
+                };
+            }
+            return acc;
+        }, {});
+        dispatch(addEntity({ product: removeProducts }));
         dispatch({
             type: cartTyps.load,
             payload: Array.isArray(result) ? result : [],

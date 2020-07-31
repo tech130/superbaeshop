@@ -8,7 +8,7 @@ import Link from "next/link";
 import { addToLocalCart } from "../../redux/user/local_cart";
 import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
-import { loadCartList } from "../../redux/user/cart";
+import { updateCartList } from "../../redux/user/cart";
 
 export const GotoCart = () => {
     const country = useCountryParam();
@@ -47,7 +47,7 @@ export const AddToLocalCart = ({ className = "", productId, isPreOrder }) => {
 const AddToCart = ({ className = "", productId, isPreOrder, inCart }) => {
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
-        dispatch(loadCartList(data));
+        dispatch(updateCartList(data));
     });
 
     const onClick = useCallback(() => {
