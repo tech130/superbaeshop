@@ -78,7 +78,7 @@ const Footer = () => {
                                 <a
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    href="https://facebook.com"
+                                    href="https://www.facebook.com/spaceandbeauty.official/"
                                 >
                                     <img
                                         src="/images/icons/social-icons/facebook.svg"
@@ -88,7 +88,7 @@ const Footer = () => {
                                 <a
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    href="https://instagram.com"
+                                    href="https://www.instagram.com/spaceandbeautyofficial/"
                                 >
                                     <img
                                         src="/images/icons/social-icons/instagram.svg"
