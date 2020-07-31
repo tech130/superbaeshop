@@ -5,9 +5,27 @@ import Flex, { FlexItem } from "../styled/Flex";
 import P from "../styled/P";
 import Input from "../form/Input";
 import SubmitButton from "../form/SubmitButton";
+import useSubmit from "../../hooks/http/useSubmit";
+import { toast } from "react-toastify";
+import urls from "../../apiService/urls";
 
 const Subscribe = () => {
     const [email, setEmail] = useState("");
+
+    const [fetching, submit] = useSubmit(() => {
+        toast.success("Subscribed to newsletter");
+    });
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        submit({
+            url: urls.newsletter,
+            method: "POST",
+            data: {
+                email,
+            },
+        });
+    };
 
     return (
         <Block padding="50px 0px 70px 0px">
@@ -31,7 +49,7 @@ const Subscribe = () => {
                         </P>
                     </Col>
                     <Col lg={4} md={6} lgOffset={4} mdOffset={3}>
-                        <form onSubmit={(e) => e.preventDefault()}>
+                        <form onSubmit={onSubmit}>
                             <Flex>
                                 <FlexItem flexGrow={1}>
                                     <Input
@@ -42,7 +60,10 @@ const Subscribe = () => {
                                     />
                                 </FlexItem>
                                 <FlexItem flexGrow={0} flexShrink={0}>
-                                    <SubmitButton disabled={!email}>
+                                    <SubmitButton
+                                        fetching={fetching}
+                                        disabled={!email}
+                                    >
                                         Subscribe
                                     </SubmitButton>
                                 </FlexItem>
