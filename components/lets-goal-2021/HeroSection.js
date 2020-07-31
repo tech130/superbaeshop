@@ -91,8 +91,11 @@ const HeroSection = () => {
                                 <P fontSize="18px" textAlign="right">
                                     -DRITI
                                 </P>
-                                <ProductPrices fontSize="18px" id={2} />
-                                <ProductBuy productId={2} />
+                                <ProductPrices
+                                    fontSize="18px"
+                                    slug="lets-goal-2021-planner"
+                                />
+                                <ProductBuy slug="lets-goal-2021-planner" />
                             </Col>
                         </Row>
                     </Col>

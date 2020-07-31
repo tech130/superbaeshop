@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
-const useProduct = (id) => {
-    return useSelector((state) => state.product[id] || {});
+const useProduct = (slug) => {
+    return useSelector((state) => state.product[slug] || {});
 };
 
 export default useProduct;

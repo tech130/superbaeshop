@@ -7,7 +7,9 @@ import ProductBuy from "../product/ProductBuy";
 import ProductPrice from "../product/ProductPrice";
 
 const ProPlannerPrice = () => {
-    const { id, product_country } = useProduct(1);
+    const { id, product_country, slug } = useProduct(
+        "the-professional-planner"
+    );
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {
@@ -18,11 +20,11 @@ const ProPlannerPrice = () => {
                     <ProductPrice
                         weight={300}
                         type="original_price"
-                        id={1}
+                        slug={slug}
                     />{" "}
-                    <ProductPrice id={1} />
+                    <ProductPrice slug={slug} />
                 </H4>
-                <ProductBuy productId={id} />
+                <ProductBuy slug={slug} />
             </>
         );
     }

@@ -3,8 +3,8 @@ import Txt from "../styled/Txt";
 import { useProdCountry } from "../common/CountryLink";
 import useProduct from "../../hooks/redux/product/useProduct";
 
-const ProductPrice = ({ id, ...rest }) => {
-    const product = useProduct(id);
+const ProductPrice = ({ slug, ...rest }) => {
+    const product = useProduct(slug);
 
     if (product.product_country) {
         return (
@@ -14,8 +14,8 @@ const ProductPrice = ({ id, ...rest }) => {
     return null;
 };
 
-export const ProductPrices = ({ id, ...rest }) => {
-    const product = useProduct(id);
+export const ProductPrices = ({ slug, ...rest }) => {
+    const product = useProduct(slug);
     return (
         <Txt {...rest}>
             {product.product_country ? (

@@ -1,7 +1,6 @@
 import React from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import Picture, { ResponsivePicture } from "../common/Picture";
 import { H2, H1, H4 } from "../styled/Headings";
 import P from "../styled/P";
 import Flex from "../styled/Flex";

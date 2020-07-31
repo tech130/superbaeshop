@@ -19,6 +19,7 @@ export const productSchema = new schema.Entity(
     "product",
     {},
     {
+        idAttribute: (value) => value.slug,
         processStrategy: (value) => {
             if (value && value.product_country) {
                 return {

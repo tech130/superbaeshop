@@ -4,7 +4,7 @@ import ProductBuy from "../product/ProductBuy";
 import ProductPrice from "../product/ProductPrice";
 import Block from "../styled/Block";
 
-const productId = 3;
+const slug = "bundle-2021";
 
 const BundlePrice = () => {
     return (
@@ -14,13 +14,13 @@ const BundlePrice = () => {
                     weight={300}
                     fontSize="18px"
                     type="original_price"
-                    id={productId}
+                    slug={slug}
                 />
             </Block>
             <Block margin="0px 10px 0px 0px">
-                <ProductPrice weight={500} fontSize="18px" id={productId} />
+                <ProductPrice weight={500} fontSize="18px" slug={slug} />
             </Block>
-            <ProductBuy productId={productId} />
+            <ProductBuy slug={slug} />
         </Flex>
     );
 };

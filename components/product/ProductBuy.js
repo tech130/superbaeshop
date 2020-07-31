@@ -91,10 +91,8 @@ const ProductBuyBtn = ({ productId, isPreOrder, inCart }) => {
     return <AddToLocalCart productId={productId} isPreOrder={isPreOrder} />;
 };
 
-const ProductBuy = ({ productId }) => {
-    const { id, is_pre_order, in_cart, product_country } = useProduct(
-        productId
-    );
+const ProductBuy = ({ slug }) => {
+    const { id, is_pre_order, in_cart, product_country } = useProduct(slug);
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {

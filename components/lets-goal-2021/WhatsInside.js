@@ -35,7 +35,9 @@ const WhatsInside = () => {
                                 PRODUCT PRICE
                             </P>
                             <P textAlign="center">
-                                <ProductPrices id={2} />
+                                <ProductPrices
+                                    slug={"lets-goal-2021-planner"}
+                                />
                             </P>
                         </Flex>
                     </Col>
@@ -103,7 +105,7 @@ const WhatsInside = () => {
                                 Posters(12) & Washi tapes (5), A Wrapped
                                 Protective Box.
                             </P>
-                            <ProductBuy productId={2} />
+                            <ProductBuy slug={"lets-goal-2021-planner"} />
                         </Block>
                     </Col>
                 </Row>
