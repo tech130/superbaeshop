@@ -20,7 +20,7 @@ export const GotoCart = () => {
     );
 };
 
-export const AddToLocalCart = ({ className = "", productId, isPreOrder }) => {
+export const AddToLocalCart = ({ className = "", productId, isPreOrder, slug }) => {
     const dispatch = useDispatch();
     const inCart = useSelector(
         (state) =>
@@ -30,7 +30,7 @@ export const AddToLocalCart = ({ className = "", productId, isPreOrder }) => {
 
     const onClick = useCallback(() => {
         if (!inCart) {
-            dispatch(addToLocalCart(productId));
+            dispatch(addToLocalCart(productId, slug));
         }
     }, []);
 
@@ -77,7 +77,7 @@ const AddToCart = ({ className = "", productId, isPreOrder, inCart }) => {
     );
 };
 
-const ProductBuyBtn = ({ productId, isPreOrder, inCart }) => {
+const ProductBuyBtn = ({ productId, isPreOrder, inCart, slug }) => {
     const { token } = useUser();
     if (token) {
         return (
@@ -88,16 +88,19 @@ const ProductBuyBtn = ({ productId, isPreOrder, inCart }) => {
             />
         );
     }
-    return <AddToLocalCart productId={productId} isPreOrder={isPreOrder} />;
+    return <AddToLocalCart productId={productId} isPreOrder={isPreOrder} slug={slug} />;
 };
 
 const ProductBuy = ({ slug }) => {
-    const { id, is_pre_order, in_cart, product_country } = useProduct(slug);
+    const { id, is_pre_order, in_cart, product_country } = useProduct(
+        slug
+    );
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {
         return (
             <ProductBuyBtn
+                slug={slug}
                 productId={id}
                 inCart={in_cart}
                 isPreOrder={is_pre_order}

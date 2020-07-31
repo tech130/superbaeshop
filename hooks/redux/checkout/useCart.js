@@ -37,7 +37,7 @@ export const useLocalCart = () => {
         return cart.map((x) => {
             return {
                 ...x,
-                product: product[x.product],
+                product: product[x.slug],
             };
         });
     }, [cart, product]);

@@ -9,11 +9,12 @@ export const cartTyps = {
     clear: "local_cart/clear",
 };
 
-export const addToLocalCart = (product, quantity = 1) => ({
+export const addToLocalCart = (product, slug, quantity = 1) => ({
     type: cartTyps.add,
     payload: {
         id: uuid(),
         product,
+        slug,
         quantity,
     },
 });
