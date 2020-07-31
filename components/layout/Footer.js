@@ -8,6 +8,7 @@ import CountryLink, { useCountryParam } from "../common/CountryLink";
 import { useSelector } from "react-redux";
 import useProduct from "../../hooks/redux/product/useProduct";
 import Txt from "../styled/Txt";
+import Link from "next/link";
 
 const FooterCon = styled.footer`
     border-top: 4px solid #f5f5f5;
@@ -176,9 +177,9 @@ const FooterProductLink = ({ id }) => {
         const href = `/[country]/[productSlug]`;
         return (
             <li>
-                <CountryLink href={href} as={`/${country}/${slug}`}>
+                <Link href={href} as={`/${country}/${slug}`}>
                     {title}
-                </CountryLink>
+                </Link>
             </li>
         );
     }
