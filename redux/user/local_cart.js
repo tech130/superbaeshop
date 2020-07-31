@@ -62,7 +62,7 @@ export default (state = init, action) => {
                     return {
                         ...item,
                         quantity:
-                            item.quantity < 10
+                            item.quantity < 9
                                 ? item.quantity + 1
                                 : item.quantity,
                     };

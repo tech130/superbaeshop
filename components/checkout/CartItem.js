@@ -144,7 +144,7 @@ export const MyCartItem = ({ product = {}, quantity }) => {
     }, []);
 
     const onPlus = useCallback(() => {
-        if (quantity < 10) {
+        if (quantity < 9) {
             handleChange(quantity + 1);
         }
     }, [quantity]);
