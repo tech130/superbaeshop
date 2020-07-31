@@ -1,17 +1,7 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { useProdCountry } from "../common/CountryLink";
 import useProduct from "../../hooks/redux/product/useProduct";
-
-const marquee = keyframes`
-  from {
-    transform: translate3d(100%, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-100%, 0, 0);
-  }
-`;
 
 const TopBar = styled.div`
     background: #000;
@@ -20,21 +10,9 @@ const TopBar = styled.div`
     position: relative;
     overflow: hidden;
     height: 35px;
-
-    div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate3d(100%, 0, 0);
-        animation: ${marquee} 30s linear infinite;
-        font-size: 14px;
-        min-width: 100%;
-        overflow: hidden;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-    }
+    padding: 0px 15px;
+    line-height: 35px;
+    font-size: 14px;
 `;
 
 const TopRollText = ({ productId }) => {
@@ -55,13 +33,13 @@ const ProdRollText = ({ id }) => {
     if (prod && prod.promotion_text) {
         return (
             <TopBar>
-                <div>{prod.promotion_text}</div>
+                <marquee>{prod.promotion_text}</marquee>
             </TopBar>
         );
     }
     return (
         <TopBar>
-            <div>Currently Unavailable for your Country</div>
+            <marquee>Currently Unavailable for your Country</marquee>
         </TopBar>
     );
 };

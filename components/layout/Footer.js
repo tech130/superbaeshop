@@ -7,6 +7,7 @@ import Flex from "../styled/Flex";
 import CountryLink, { useCountryParam } from "../common/CountryLink";
 import { useSelector } from "react-redux";
 import useProduct from "../../hooks/redux/product/useProduct";
+import Txt from "../styled/Txt";
 
 const FooterCon = styled.footer`
     border-top: 4px solid #f5f5f5;
@@ -107,7 +108,12 @@ const Footer = () => {
                     </Col>
                     <Col md={2}>
                         <Block margin="0px 0px 15px">
-                            <div className="footer-title">Also shop on</div>
+                            <div className="footer-title">
+                                Also shop on{" "}
+                                <Txt fontSize="14px" weight={300}>
+                                    (coming soon)
+                                </Txt>{" "}
+                            </div>
                             <ul className="footer-list">
                                 <li>
                                     <a>Amazon</a>
