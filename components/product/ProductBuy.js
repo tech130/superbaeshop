@@ -60,7 +60,11 @@ const AddToCart = ({ className = "", productId, isPreOrder }) => {
 
     return (
         <CartButton disabled={fetching} className={className} onClick={onClick}>
-            {isPreOrder ? "Pre Order" : "Add to cart"}
+            {fetching
+                ? "Adding to cart"
+                : isPreOrder
+                ? "Pre order"
+                : "Add to cart"}
         </CartButton>
     );
 };
