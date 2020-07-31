@@ -9,7 +9,7 @@ const Home = () => {
     const slug = useSelector(getFirstProduct);
     const { component } = products[slug] || {};
 
-    return <Layout>{component || null}</Layout>;
+    return <Layout slug={slug}>{component || null}</Layout>;
 };
 
 Home.getInitialProps = async (ctx) => {
