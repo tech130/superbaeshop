@@ -61,7 +61,7 @@ const CouponIp = ({
         <Block margin="0px 0px 15px 0px">
             {coupon.id ? (
                 <CouponP hide={redeem}>
-                    <Txt weight={500}>{coupon.code}</Txt> 
+                    <Txt weight={500}>{coupon.code}</Txt>
                     <IconButton onClick={() => onCouponChange({})}>
                         <CloseIcon stroke="#cecece" />
                     </IconButton>
@@ -95,7 +95,7 @@ const CouponIp = ({
                     name="redeem"
                     setValue={onRedeemChange}
                     value={redeem}
-                    placeholder={`Redeem wallet points. ${walletPoints} points available.`}
+                    placeholder={`Redeem your wallet points.(${walletPoints} points available.)`}
                 />
             </Flex>
         </Block>
