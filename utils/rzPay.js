@@ -14,7 +14,7 @@ export default function rZPay(order, handleResponse) {
         prefill: {
             name: order.name,
             email: order.email,
-            contact: order.phone,
+            contact: `+${order.dial_code} ${order.phone}`,
         },
         theme: {
             color: "#faebe4",
