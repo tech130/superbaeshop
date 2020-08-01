@@ -1,5 +1,5 @@
 const urls = {
-    baseURL: "https://spaceandbeauty.billioncart.in/",
+    baseURL: "https://api.spaceandbeauty.com/",
     //user
     logout: "auth/logout/",
     myProfile: "users/",
