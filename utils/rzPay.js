@@ -5,7 +5,7 @@ export default function rZPay(order, handleResponse) {
         amount: order.amount_in_paisa,
         name: "Space & Beauty",
         description: order.tracking_client_id,
-        order_id: order.tracking_client_id,
+        order_id: order.transaction_id,
         // currency: "USD",
         image: "https://spaceandbeauty.com/images/logo-small.png",
         handler: (res) => {
