@@ -4,7 +4,7 @@ import local_cart from "./user/local_cart";
 import cart, { cartList } from "./user/cart";
 import product, { headerProducts } from "./product/product";
 import apiData from "./apiData";
-import master from "./master";
+import master, { terms } from "./master";
 import { LOG_OUT } from "../utils/constants";
 import { addressList } from "./user/address";
 import pagination from "./pagination";
@@ -16,6 +16,7 @@ const appReducer = combineReducers({
     apiData,
     pagination,
     master,
+    terms,
     product,
     headerProducts,
     cart,

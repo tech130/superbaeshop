@@ -22,6 +22,7 @@ const urls = {
     myOrders: "orders/",
     // others
     newsletter: "others-api/newsletter/",
+    terms: "others-api/html-content/1/",
 };
 
 export default urls;
