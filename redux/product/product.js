@@ -4,6 +4,7 @@ import { productSchema } from "./schema";
 import { addEntity, ADD_ENTITIES } from "../addEntity";
 import merge from "lodash.merge";
 import urls from "../../apiService/urls";
+import { cartTyps } from "../user/cart";
 
 export const headerProductsTyps = {
     load: "headerproducts/load",
@@ -68,11 +69,25 @@ export const fetchProduct = (id) => {
     };
 };
 
+const clearCart = (state) => {
+    let upt = {};
+    for (let key in state) {
+        Object.assign(upt, {
+            [key]: {
+                in_cart: null,
+            },
+        });
+    }
+    return merge({}, state, upt);
+};
+
 //product reducer
 export default (state = {}, action) => {
     switch (action.type) {
         case ADD_ENTITIES:
             return merge({}, state, action.payload.product || {});
+        case cartTyps.clear:
+            return clearCart(state);
         default:
             return state;
     }
