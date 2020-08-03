@@ -12,7 +12,7 @@ const WalletItem = ({ id }) => {
     if (!walletItem.id) {
         return null;
     }
-    const { is_credit, point } = walletItem;
+    const { is_credit, point, description } = walletItem;
     return (
         <Flex
             border="solid 2px #f5f5f5"
@@ -23,7 +23,7 @@ const WalletItem = ({ id }) => {
             padding="15px"
         >
             <P fontSize="14px" margin="0px">
-                Order ID: #123456789
+                {description}
             </P>
             <Txt
                 fontSize="14px"
