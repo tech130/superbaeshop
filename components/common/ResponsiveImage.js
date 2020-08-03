@@ -33,39 +33,7 @@ const ResponsiveImage = ({
     const ref = useRef(null);
     const isLoading = useLazyImage(ref, { src, srcSet, sizes });
 
-    return (
-        <ImgCon
-            ref={ref}
-            imgHeight={imgHeight}
-            imgWidth={imgWidth}
-            objFit={objFit}
-        >
-            <PlaceholderImg isLoading={isLoading} src={placeholder} alt="" />
-            <RenderPicture
-                source={source}
-                src={src}
-                srcSet={srcSet}
-                sizes={sizes}
-                isLoading={isLoading}
-                alt={alt}
-            />
-            <noscript>
-                <RenderPicture
-                    source={source}
-                    src={src}
-                    srcSet={srcSet}
-                    sizes={sizes}
-                    alt={alt}
-                />
-            </noscript>
-        </ImgCon>
-    );
-};
-
-//
-// eslint-disable-next-line react/display-name
-const RenderPicture = memo(
-    ({ isLoading = false, source = [], src, srcSet, sizes, alt }) => (
+    const renderImage = (
         <picture>
             {source.length > 0 &&
                 source.map((x, idx) => <source {...x} key={idx} />)}
@@ -77,7 +45,20 @@ const RenderPicture = memo(
                 alt={alt}
             />
         </picture>
-    )
-);
+    );
+
+    return (
+        <ImgCon
+            ref={ref}
+            imgHeight={imgHeight}
+            imgWidth={imgWidth}
+            objFit={objFit}
+        >
+            <PlaceholderImg isLoading={isLoading} src={placeholder} alt="" />
+            {renderImage}
+            <noscript>{renderImage}</noscript>
+        </ImgCon>
+    );
+};
 
 export default memo(ResponsiveImage);

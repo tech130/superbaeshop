@@ -105,7 +105,7 @@ const ProPlanner = () => {
                     <Row>
                         <Col lg={7}>
                             <ResponsiveImage
-                                image={require("./images/free-two-hardcover-books-mockup.png?resize")}
+                                image={require("./images/2.png?resize")}
                             />
                         </Col>
                         <Col lg={5}>
@@ -135,24 +135,24 @@ const ProPlanner = () => {
                                     source={[
                                         {
                                             media: "(max-width: 475px)",
-                                            srcSet: require("./images/3-mobile.png"),
+                                            srcSet: require("./images/3-mobile.jpg"),
                                         },
                                     ]}
-                                    image={require("./images/3.png?resize")}
+                                    image={require("./images/3.jpg?resize")}
                                 />
                             </Block>
                         </Col>
                         <Col lg={6}>
                             <Block margin="0px 0px 15px 0px">
                                 <ResponsiveImage
-                                    image={require("./images/4.png?resize")}
+                                    image={require("./images/4.jpg?resize")}
                                 />
                             </Block>
                         </Col>
                         <Col lg={6}>
                             <Block margin="0px 0px 15px 0px">
                                 <ResponsiveImage
-                                    image={require("./images/5.png?resize")}
+                                    image={require("./images/5.jpg?resize")}
                                 />
                             </Block>
                         </Col>
@@ -162,10 +162,6 @@ const ProPlanner = () => {
         </>
     );
 };
-
-const ProfPlannerPic = styled(Img)`
-    border: 1px solid #cecece;
-`;
 
 const ProfPlannerSlider = memo(() => {
     const ref = useRef(null);
@@ -183,37 +179,32 @@ const ProfPlannerSlider = memo(() => {
                     cellSpacing={15}
                     {...props}
                 >
-                    <ProfPlannerPic
-                        src="/images/professional-planner/slides/slide-1.jpg"
-                        alt=""
+                    <ResponsiveImage 
+                        image={require("./images/slides/1.jpg?resize")}
                     />
-                    <ProfPlannerPic
-                        src="/images/professional-planner/slides/slide-2.jpg"
-                        alt=""
+                    <ResponsiveImage 
+                        image={require("./images/slides/2.jpg?resize")}
                     />
-                    <ProfPlannerPic
-                        src="/images/professional-planner/slides/slide-3.jpg"
-                        alt=""
+                    <ResponsiveImage 
+                        image={require("./images/slides/2.jpg?resize")}
                     />
-                    <ProfPlannerPic
-                        src="/images/professional-planner/slides/slide-4.jpg"
-                        alt=""
+                    <ResponsiveImage 
+                        image={require("./images/slides/4.jpg?resize")}
                     />
-                    <ProfPlannerPic
-                        src="/images/professional-planner/slides/slide-5.jpg"
-                        alt=""
+                    <ResponsiveImage 
+                        image={require("./images/slides/5.jpg?resize")}
                     />
-                    <ProfPlannerPic
-                        src="/images/professional-planner/slides/slide-6.jpg"
-                        alt=""
+                    <ResponsiveImage 
+                        image={require("./images/slides/6.jpg?resize")}
                     />
-                    <ProfPlannerPic
-                        src="/images/professional-planner/slides/slide-7.jpg"
-                        alt=""
+                    <ResponsiveImage 
+                        image={require("./images/slides/7.jpg?resize")}
                     />
-                    <ProfPlannerPic
-                        src="/images/professional-planner/slides/slide-8.jpg"
-                        alt=""
+                    <ResponsiveImage 
+                        image={require("./images/slides/8.jpg?resize")}
+                    />
+                    <ResponsiveImage 
+                        image={require("./images/slides/9.jpg?resize")}
                     />
                 </Carousel>
             </Container>
