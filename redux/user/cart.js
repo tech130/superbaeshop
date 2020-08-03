@@ -4,6 +4,7 @@ import { normalize } from "normalizr";
 import { addEntity, ADD_ENTITIES } from "../addEntity";
 import { cartSchema } from "../product/schema";
 import merge from "lodash.merge";
+import canUseDom from "../../utils/canUseDom";
 
 export const cartTyps = {
     load: "cart/load",
@@ -69,6 +70,14 @@ export const fetchCartAlways = () => {
 
 export const UPLOAD_LOCAL_CART_APIDATA_KEY = "uploadLocalCart";
 
+
+export const localCartUploadSucc = (payload) => {
+    if (canUseDom) {
+        window.location.reload();
+    }
+    return (dispatch) => dispatch(loadCartList(payload));
+};
+
 export const uploadLocalCart = () => {
     return (dispatch, getState) => {
         const data = getState().local_cart.map((x) => {
@@ -81,7 +90,7 @@ export const uploadLocalCart = () => {
             fetchApi(
                 { url: urls.cart, method: "POST", data },
                 `uploadLocalCart`,
-                loadCartList
+                localCartUploadSucc
             )
         );
     };

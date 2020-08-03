@@ -10,7 +10,6 @@ import { setTokenOnBrowser } from "../../utils/handleToken";
 import urls from "../../apiService/urls";
 import { uploadLocalCart } from "../../redux/user/cart";
 import { clearLocalCart } from "../../redux/user/local_cart";
-import canUseDom from "../../utils/canUseDom";
 import { LinkButton } from "../styled/Button";
 import useSubmit from "../../hooks/http/useSubmit";
 import useInterval from "../../hooks/useInterval";
@@ -55,9 +54,6 @@ const Otpform = ({ userData = {}, closeModal }) => {
                         dispatch(updateUser(data));
                         dispatch(uploadLocalCart());
                         dispatch(clearLocalCart());
-                        if (canUseDom) {
-                            window.location.reload();
-                        }
                     }}
                     formatData={(data) => {
                         return {
