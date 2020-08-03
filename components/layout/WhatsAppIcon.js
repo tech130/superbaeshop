@@ -23,7 +23,7 @@ const WhatsAppIcon = () => {
         <Portal id="whatsapp-icon">
             <WhatsAppLink
                 className="whatsIcon"
-                href="https://wa.me/919600999559"
+                href="https://wa.me/919787054444"
                 target="_blank"
                 rel="noopener noreferrer"
             >
