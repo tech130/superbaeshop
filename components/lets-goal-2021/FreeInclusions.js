@@ -8,6 +8,7 @@ import ResponsiveImage from "../common/ResponsiveImage";
 
 const ColorBoxStyl = styled.div`
     display: flex;
+    align-items: stretch;
     flex-direction: column;
     background-color: ${(props) => props.bg || "#fddecb"};
     margin-bottom: 25px;
