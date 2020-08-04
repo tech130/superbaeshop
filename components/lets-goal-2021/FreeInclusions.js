@@ -17,9 +17,6 @@ const ColorBoxStyl = styled.div`
 `;
 
 const ColorBoxImg = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: -75px;
 `;
 

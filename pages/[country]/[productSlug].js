@@ -4,13 +4,19 @@ import { common } from "../../redux/handlePages";
 import { fetchProduct } from "../../redux/product/product";
 import { useRouter } from "next/router";
 import products from "../../products";
+import ProductSeo from "../../components/product/ProductSeo";
 
 const ProductSlugPage = () => {
     const router = useRouter();
     const { productSlug } = router.query;
     const { component } = products[productSlug] || {};
 
-    return <Layout slug={productSlug}>{component || null}</Layout>;
+    return (
+        <Layout slug={productSlug}>
+            <ProductSeo slug={productSlug} />
+            {component || null}
+        </Layout>
+    );
 };
 
 ProductSlugPage.getInitialProps = async (ctx) => {

@@ -23,7 +23,7 @@ const ProductList = () => {
     const state = useSelector((state) => state.headerProducts);
 
     return (
-        <ProdList justifyContent="center" alignItems="stretch">
+        <ProdList as="nav" justifyContent="center" alignItems="stretch">
             <ul>
                 {state.map((id) => (
                     <ProdItem id={id} key={id} />
