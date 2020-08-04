@@ -15,7 +15,9 @@ const ProductSlugPage = () => {
 
 ProductSlugPage.getInitialProps = async (ctx) => {
     await common(ctx);
-    await ctx.store.dispatch(fetchProduct(ctx.query.productSlug));
+    if (ctx.query.productSlug) {
+        await ctx.store.dispatch(fetchProduct(ctx.query.productSlug));
+    }
 };
 
 export default ProductSlugPage;

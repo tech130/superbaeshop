@@ -4,17 +4,41 @@ import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2 } from "../styled/Headings";
 import P from "../styled/P";
 import styled from "styled-components";
+import ResponsiveImage from "../common/ResponsiveImage";
 
-const ColorBox = styled.div`
+const ColorBoxStyl = styled.div`
     display: flex;
-    justify-content: flex-end;
-    align-items: stretch;
     flex-direction: column;
-    padding: 15px;
     background-color: ${(props) => props.bg || "#fddecb"};
     margin-bottom: 25px;
+    margin-top: 75px;
     min-height: 200px;
 `;
+
+const ColorBoxImg = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -75px;
+`;
+
+const ColorBoxContent = styled.div`
+    margin-top: auto;
+    padding: 15px;
+`;
+
+const ColorBox = ({ bg, children, image = {} }) => {
+    return (
+        <ColorBoxStyl bg={bg}>
+            {image.src && (
+                <ColorBoxImg>
+                    <ResponsiveImage image={image} />
+                </ColorBoxImg>
+            )}
+            <ColorBoxContent>{children}</ColorBoxContent>
+        </ColorBoxStyl>
+    );
+};
 
 const FreeInclusions = () => {
     return (
@@ -38,7 +62,10 @@ const FreeInclusions = () => {
                         </ColorBox>
                     </Col>
                     <Col md={4}>
-                        <ColorBox bg="#FFE7EF">
+                        <ColorBox
+                            bg="#FFE7EF"
+                            image={require("./images/free-inclusions/sticker-book-min.png?resize")}
+                        >
                             <div>
                                 <b>A Sticker Book</b> With a &quot;1000&quot;,
                                 a.k.a THOUSAND, Stickers in it.
@@ -54,7 +81,10 @@ const FreeInclusions = () => {
                         </ColorBox>
                     </Col>
                     <Col md={4}>
-                        <ColorBox bg="#D9E7EB">
+                        <ColorBox
+                            bg="#D9E7EB"
+                            image={require("./images/free-inclusions/pop-socket-min.png?resize")}
+                        >
                             <div>
                                 <b>Washitapes (2)</b> to make your planner more
                                 beautiful and to make you smile.
@@ -62,10 +92,13 @@ const FreeInclusions = () => {
                         </ColorBox>
                     </Col>
                     <Col md={4}>
-                        <ColorBox bg="#FDDEDF">
+                        <ColorBox
+                            bg="#FDDEDF"
+                            image={require("./images/free-inclusions/bookmarks-min.png?resize")}
+                        >
                             <div>
-                                <b>Bookmarks.</b> You need this. I am bored of writing
-                                more fancy content.
+                                <b>Bookmarks.</b> You need this. I am bored of
+                                writing more fancy content.
                             </div>
                         </ColorBox>
                     </Col>

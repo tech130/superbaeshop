@@ -4,9 +4,9 @@ import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2 } from "../styled/Headings";
 import P from "../styled/P";
 import Carousel from "nuka-carousel";
-import Img from "../styled/Img";
 import Button from "../styled/Button";
 import useOnScreen from "../../hooks/layout/useOnScreen";
+import ResponsiveImage from "../common/ResponsiveImage";
 
 const PagesSlider = () => {
     const ref = useRef(null);
@@ -14,15 +14,15 @@ const PagesSlider = () => {
 
     return (
         <Block padding="50px 0px">
-            <Container>
+            <Container fluid>
                 <Block>
                     <H2 textAlign="center" mb="0px">
                         Pages
                     </H2>
                     <P textAlign="center">Peek A Boo</P>
                 </Block>
-                <Row justifyContent="center">
-                    <Col lg={12}>
+                <Row>
+                    <Col lg={10} lgOffset={1}>
                         <div ref={ref}>
                             <Carousel
                                 renderCenterLeftControls={({
@@ -35,25 +35,29 @@ const PagesSlider = () => {
                                 autoplay={onScreen}
                                 wrapAround
                             >
-                                <Img
-                                    src="/images/lets-goal-2021/pages/open--1.png"
-                                    alt=""
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/0-min.png?resize")}
                                 />
-                                <Img
-                                    src="/images/lets-goal-2021/pages/open--2.png"
-                                    alt=""
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/1-min.png?resize")}
                                 />
-                                <Img
-                                    src="/images/lets-goal-2021/pages/open--3.png"
-                                    alt=""
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/2-min.png?resize")}
                                 />
-                                <Img
-                                    src="/images/lets-goal-2021/pages/open--4.png"
-                                    alt=""
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/3-min.png?resize")}
                                 />
-                                <Img
-                                    src="/images/lets-goal-2021/pages/open--5.png"
-                                    alt=""
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/4-min.png?resize")}
+                                />
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/5-min.png?resize")}
+                                />
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/6-min.png?resize")}
+                                />
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/7-min.png?resize")}
                                 />
                             </Carousel>
                         </div>

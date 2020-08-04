@@ -6,10 +6,10 @@ import Block from "../styled/Block";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
 import ProductBuy from "../product/ProductBuy";
-import Picture from "../common/Picture";
 import { ProductPrices } from "../product/ProductPrice";
+import ResponsiveImage from "../common/ResponsiveImage";
 
-const frontSet = require("./images/front.png?resize");
+const frontSet = require("./images/top-cover/1-min.png?resize");
 const bgSet = require("./images/herobg.jpg");
 
 const HeroStyl = styled.section`
@@ -29,9 +29,8 @@ const HeroSection = () => {
             <Container>
                 <Row alignItems="center">
                     <Col lg={6}>
-                        <Picture
-                            src={frontSet.src}
-                            srcSet={frontSet.srcSet}
+                        <ResponsiveImage 
+                            image={frontSet}
                             alt="Let's Goal 2021"
                         />
                     </Col>
