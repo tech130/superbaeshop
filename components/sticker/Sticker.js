@@ -10,12 +10,6 @@ import Dot from "../styled/Dot";
 import { ProductPrices } from "../product/ProductPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
 
-const notepadSet = require("./images/notepad.jpg?resize");
-const twoSet = require("./images/2.jpg?resize");
-const medicalSet = require("./images/medical.png?resize");
-
-const productId = 4;
-
 const Sticker = () => {
     return (
         <>
@@ -26,14 +20,10 @@ const Sticker = () => {
                     </H1>
                     <P textAlign="center">is here.</P>
                     <Row>
-                        <Col lg={4}>
-                            <ResponsiveImage image={twoSet} />
-                        </Col>
-                        <Col lg={4}>
-                            <ResponsiveImage image={notepadSet} />
-                        </Col>
-                        <Col lg={4}>
-                            <ResponsiveImage image={twoSet} />
+                        <Col md={8} mdOffset={2}>
+                            <ResponsiveImage
+                                image={require("./images/5.jpg?resize")}
+                            />
                         </Col>
                     </Row>
                 </Container>
@@ -54,9 +44,13 @@ const Sticker = () => {
                     </P>
                 </Block>
                 <Container>
-                    <Row>
+                    <Row alignItems="center">
                         <Col md={8}>
-                            <ResponsiveImage image={medicalSet} />
+                            <Block margin="0px 0px 25px 0px">
+                                <ResponsiveImage
+                                    image={require("./images/sticker-book.jpg?resize")}
+                                />
+                            </Block>
                         </Col>
                         <Col md={4}>
                             <Flex
@@ -68,10 +62,7 @@ const Sticker = () => {
                                 <P fontSize="18px" margin="0px 0px 5px 0px">
                                     Book Type
                                 </P>
-                                <P>
-                                    Classic Hardcover with rose gold foil
-                                    accents.
-                                </P>
+                                <P>Classic Softcover</P>
                             </Flex>
                             <Flex
                                 bg="#C6E1F1"
@@ -83,9 +74,7 @@ const Sticker = () => {
                                 <P fontSize="18px" margin="0px 0px 5px 0px">
                                     Product Price
                                 </P>
-                                <P>
-                                    <ProductPrices id={productId} />
-                                </P>
+                                <ProductPrices slug="ultimate-sticker-book" />
                             </Flex>
                             <Flex
                                 vertical

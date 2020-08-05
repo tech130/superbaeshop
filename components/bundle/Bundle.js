@@ -92,11 +92,10 @@ const Bundle = () => {
             </Block>
             <BundleItem
                 title="Let's Goal 2021 + All free Inclusions"
-                image={require("./images/lets-goal-2021.jpg?resize")}
+                image={require("./images/lets-goal.jpg?resize")}
             >
                 <P color="#00A80B" fontSize="14px">
-                    Free Inclusions: Ikkigai Work Sheets, The Ultimate Sticker
-                    Book, Protective Wrapper Box, Pop Socket, Bookmarks (2)
+                    Free Inclusions: The Ultimate Sticker Book, Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards(2) and a Protective Keepsake box
                 </P>
                 <BundleP>
                     This awesome all-in-one Goal Planner helps you plan and
@@ -112,7 +111,7 @@ const Bundle = () => {
             </BundleItem>
             <BundleItem
                 title="A Wall Calendar"
-                image={require("./images/desk-calendar.jpg?resize")}
+                image={require("./images/wall-calendar.jpg?resize")}
             >
                 <BundleP>
                     This Pretty Wall Calendar &apos;Senorita&apos; is designed
@@ -138,7 +137,7 @@ const Bundle = () => {
                     to do&apos;s and cross em&apos; all!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="A Jot Book/Notebook">
+            <BundleItem title="A Jot Book/Notebook" image={require("./images/jot-book.jpg?resize")}>
                 <BundleP>
                     A dotted notebook for your creativity overflow! Brainstorm
                     your brains out!

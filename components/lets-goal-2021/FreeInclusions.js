@@ -59,7 +59,7 @@ const FreeInclusions = () => {
                     </ColorBox>
                     <ColorBox
                         bg="#FFE7EF"
-                        image={require("./images/free-inclusions/sticker-book-2021-min.png?resize")}
+                        image={require("./images/free-inclusions/sticker-book-min.png?resize")}
                     >
                         <b>A Sticker Book</b> With a &quot;1000&quot;, a.k.a
                         THOUSAND, Stickers in it.
