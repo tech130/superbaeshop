@@ -58,7 +58,7 @@ const Bundle = () => {
                     <Row>
                         <Col lg={6} lgOffset={3}>
                             <ResponsiveImage
-                                image={require("./images/1.png?resize")}
+                                image={require("./images/cover-pic.jpg?resize")}
                                 alt="Bundle 2021"
                             />
                         </Col>
@@ -78,24 +78,28 @@ const Bundle = () => {
             </Block>
             <InterSec />
             <Block padding="35px 0px">
-                <Block padding="0px 10px 30px 10px">
-                    <H2 weight={400} textAlign="center">
-                        So, its all my happiness bundled together?{" "}
-                    </H2>
-                    <P textAlign="center">
-                        Yup, it is!! Check out what comes with the bundle!!
-                    </P>
-                </Block>
-                <Flex justifyContent="center" padding="0px 0px 15px 0px">
-                    <BundlePrice />
-                </Flex>
+                <Container>
+                    <Block padding="0px 10px 30px 10px">
+                        <H2 weight={400} textAlign="center">
+                            So, its all my happiness bundled together?{" "}
+                        </H2>
+                        <P textAlign="center">
+                            Yup, it is!! Check out what comes with the bundle!!
+                        </P>
+                    </Block>
+                    <Flex justifyContent="center" padding="0px 0px 15px 0px">
+                        <BundlePrice />
+                    </Flex>
+                </Container>
             </Block>
             <BundleItem
                 title="Let's Goal 2021 + All free Inclusions"
                 image={require("./images/lets-goal.jpg?resize")}
             >
                 <P color="#00A80B" fontSize="14px">
-                    Free Inclusions: The Ultimate Sticker Book, Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards(2) and a Protective Keepsake box
+                    Free Inclusions: The Ultimate Sticker Book, Pop Socket,
+                    Bookmarks(2), Ikigai WorkSheets, Postcards(2) and a
+                    Protective Keepsake box
                 </P>
                 <BundleP>
                     This awesome all-in-one Goal Planner helps you plan and
@@ -137,13 +141,19 @@ const Bundle = () => {
                     to do&apos;s and cross em&apos; all!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="A Jot Book/Notebook" image={require("./images/jot-book.jpg?resize")}>
+            <BundleItem
+                title="A Jot Book/Notebook"
+                image={require("./images/jot-book.jpg?resize")}
+            >
                 <BundleP>
                     A dotted notebook for your creativity overflow! Brainstorm
                     your brains out!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="Greeting Cards (6)">
+            <BundleItem
+                title="Greeting Cards (6)"
+                image={require("./images/greeting-cards.jpg?resize")}
+            >
                 <BundleP>
                     6 fun illustrated greetings for your shenanigans!
                 </BundleP>
