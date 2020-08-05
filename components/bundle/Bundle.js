@@ -81,7 +81,7 @@ const Bundle = () => {
                 <Container>
                     <Block padding="0px 10px 30px 10px">
                         <H2 weight={400} textAlign="center">
-                            So, its all my happiness bundled together?{" "}
+                            So, is it true that all my happy goodies are bundled together?{" "}
                         </H2>
                         <P textAlign="center">
                             Yup, it is!! Check out what comes with the bundle!!
@@ -155,7 +155,7 @@ const Bundle = () => {
                 image={require("./images/greeting-cards.jpg?resize")}
             >
                 <BundleP>
-                    6 fun illustrated greetings for your shenanigans!
+                    6 fun illustrated greetings for your constants!
                 </BundleP>
             </BundleItem>
             <BundleItem
