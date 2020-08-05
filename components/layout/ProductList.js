@@ -49,10 +49,10 @@ const ProdItem = ({ id }) => {
     const { slug, title } = useProduct(id);
 
     if (slug && title) {
-        const href = `/[country]/[productSlug]`;
+        const href = `/[country]/product/[productSlug]`;
         return (
             <li>
-                <Link href={href} as={`/${country || DEFAULT_COUNTRY}/${slug}`}>
+                <Link passHref href={href} as={`/${country || DEFAULT_COUNTRY}/product/${slug}`}>
                     <ProdLink isActive={productSlug === slug}>{title}</ProdLink>
                 </Link>
             </li>

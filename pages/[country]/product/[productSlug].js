@@ -1,10 +1,10 @@
 import React from "react";
-import Layout from "../../components/layout/Layout";
-import { common } from "../../redux/handlePages";
-import { fetchProduct } from "../../redux/product/product";
+import Layout from "../../../components/layout/Layout";
+import { common } from "../../../redux/handlePages";
+import { fetchProduct } from "../../../redux/product/product";
 import { useRouter } from "next/router";
-import products from "../../products";
-import ProductSeo from "../../components/product/ProductSeo";
+import products from "../../../products";
+import ProductSeo from "../../../components/product/ProductSeo";
 
 const ProductSlugPage = () => {
     const router = useRouter();

@@ -174,10 +174,10 @@ const FooterProductLink = ({ id }) => {
     const { slug, title } = useProduct(id);
 
     if (slug) {
-        const href = `/[country]/[productSlug]`;
+        const href = `/[country]/product/[productSlug]`;
         return (
             <li>
-                <Link href={href} as={`/${country}/${slug}`}>
+                <Link href={href} as={`/${country}/product/${slug}`}>
                     <a>{title}</a>
                 </Link>
             </li>

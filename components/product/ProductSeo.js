@@ -22,10 +22,7 @@ const ProductSeo = ({ slug }) => {
             <meta property="og:type" content="product" />
             {thumbnail_image && (
                 <>
-                    <meta
-                        property="og:image"
-                        content={thumbnail_image}
-                    />
+                    <meta property="og:image" content={thumbnail_image} />
                 </>
             )}
         </Head>
