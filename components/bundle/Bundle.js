@@ -7,9 +7,9 @@ import Flex from "../styled/Flex";
 import BundlePrice from "./BundlePrice";
 import { InterSec } from "../styled/Hr";
 import styled from "styled-components";
-import CountryLink from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import ResponsiveImage from "../common/ResponsiveImage";
+import ProductLink from "../product/ProductLink";
 
 const medicalSet = require("./images/medical.png?resize");
 
@@ -94,11 +94,11 @@ const Bundle = () => {
                     spreads and amazing planner goodies!
                 </BundleP>
                 <Flex justifyContent="flex-end">
-                    <CountryLink href="/lets-goal-2021-planner">
+                    <ProductLink slug="lets-goal-2021-planner">
                         <Txt textDecor="underline">
                             View Let&apos;s Goal 2021
                         </Txt>
-                    </CountryLink>
+                    </ProductLink>
                 </Flex>
             </BundleItem>
             <BundleItem title="A Wall Calendar">

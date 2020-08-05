@@ -4,11 +4,10 @@ import styled from "styled-components";
 import { Container, Col, Row } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
-import CountryLink, { useCountryParam } from "../common/CountryLink";
+import CountryLink from "../common/CountryLink";
 import { useSelector } from "react-redux";
-import useProduct from "../../hooks/redux/product/useProduct";
 import Txt from "../styled/Txt";
-import Link from "next/link";
+import ProductLink from "../product/ProductLink";
 
 const FooterCon = styled.footer`
     border-top: 4px solid #f5f5f5;
@@ -166,25 +165,15 @@ const Footer = () => {
 
 const FooterProducts = () => {
     const state = useSelector((state) => state.headerProducts);
-    return state.map((id) => <FooterProductLink id={id} key={id} />);
+    return state.map((slug) => <FooterProductLink slug={slug} key={slug} />);
 };
 
-const FooterProductLink = ({ id }) => {
-    const country = useCountryParam();
-    const { slug, title } = useProduct(id);
-
-    if (slug) {
-        const href = `/[country]/product/[productSlug]`;
-        return (
-            <li>
-                <Link href={href} as={`/${country}/product/${slug}`}>
-                    <a>{title}</a>
-                </Link>
-            </li>
-        );
-    }
-
-    return null;
+const FooterProductLink = ({ slug }) => {
+    return (
+        <li>
+            <ProductLink slug={slug} />
+        </li>
+    );
 };
 
 export default Footer;
