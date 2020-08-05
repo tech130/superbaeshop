@@ -34,10 +34,9 @@ const PagesSlider = () => {
                                 slidesToShow={1}
                                 autoplay={onScreen}
                                 wrapAround
+                                disableEdgeSwiping
+                                renderBottomCenterControls={null}
                             >
-                                <ResponsiveImage
-                                    image={require("./images/slider-pages/0-min.png?resize")}
-                                />
                                 <ResponsiveImage
                                     image={require("./images/slider-pages/1-min.png?resize")}
                                 />
@@ -54,10 +53,13 @@ const PagesSlider = () => {
                                     image={require("./images/slider-pages/5-min.png?resize")}
                                 />
                                 <ResponsiveImage
-                                    image={require("./images/slider-pages/6-min.png?resize")}
+                                    image={require("./images/slider-pages/7-min.png?resize")}
                                 />
                                 <ResponsiveImage
-                                    image={require("./images/slider-pages/7-min.png?resize")}
+                                    image={require("./images/slider-pages/8-min.png?resize")}
+                                />
+                                <ResponsiveImage
+                                    image={require("./images/slider-pages/9-min.png?resize")}
                                 />
                             </Carousel>
                         </div>

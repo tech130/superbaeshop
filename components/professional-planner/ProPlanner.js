@@ -3,7 +3,6 @@ import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
-import Img from "../styled/Img";
 import { H3 } from "../styled/Headings";
 import Txt from "../styled/Txt";
 import ProPlannerPrice from "./ProPlannerPrice";
@@ -181,9 +180,6 @@ const ProfPlannerSlider = memo(() => {
                 >
                     <ResponsiveImage 
                         image={require("./images/slides/1.jpg?resize")}
-                    />
-                    <ResponsiveImage 
-                        image={require("./images/slides/2.jpg?resize")}
                     />
                     <ResponsiveImage 
                         image={require("./images/slides/2.jpg?resize")}
