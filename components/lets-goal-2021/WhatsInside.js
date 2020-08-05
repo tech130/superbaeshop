@@ -80,13 +80,13 @@ const WhatsInside = () => {
                     <Col lg={7}>
                         <Block margin="15px 0px 0px 0px">
                             <P>
-                                <b>YEARLY SPREADS</b>: Year at a glance - 2021 & 2022, Year in Pixels, Vision Board, Level 10 Goals, Level 10 Life, Birthdays, Bookstagram, Self Care, Make yourself a Priority,  Sacred Rituals, Hygge, Mental Health, Social Stats, Brain Dump, Movies, Tv shows, Clean Home, Pack me up, Bucket List, Memories, Subscriptions.
+                                <b>YEARLY SPREADS</b>: Year at a glance - 2021 & 2022, Year in Pixels, Vision Board, Level 10 Goals, Level 10 Life, Birthdays, Bookstagram, Self Care, Make yourself a Priority,  Sacred Rituals, Hygge, Mental Health, Social Stats, Brain Dump, Clean Home, Pack me up, Bucket List, Memories, Subscriptions.
                             </P>
                             <P>
-                                <b>MONTHLY SPREADS</b>: My obsessions, Month at a glance + Notes, Goal Tracker, Events, To Do, Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Kill & Grow, Weekly/Daily spread, Gratitude, Introspections, Expense Tracker, Shopping List, Clean eating, Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker, Sleep Tracker, Sugar/Junk Tracker, Meal Planner.
+                                <b>MONTHLY SPREADS</b>: My obsessions, Month at a glance + Notes, Goal Tracker, Events, To Do, Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Kill & Grow, Weekly/Daily spread, Gratitude, Introspections, Expense Tracker, Shopping List, Clean eating, Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker, Sleep Tracker, Sugar/Junk Tracker, Meal Planner, Movies, Tv shows.
                             </P>
                             <P>
-                                <b>FREE GOODIES</b>: The Ultimate Sticker Book, Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards(2) and a Protective Keepsake box
+                                <b>FREE GOODIES</b>: The Ultimate Sticker Book, Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box
                             </P>
                             <ProductBuy slug={"lets-goal-2021-planner"} />
                         </Block>

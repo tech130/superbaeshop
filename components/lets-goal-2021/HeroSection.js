@@ -28,7 +28,7 @@ const HeroSection = () => {
             <Container>
                 <Row alignItems="center">
                     <Col lg={6}>
-                        <ResponsiveImage 
+                        <ResponsiveImage
                             image={frontSet}
                             alt="Let's Goal 2021"
                         />
@@ -65,10 +65,25 @@ const HeroSection = () => {
                                     Organize your Life on the Go!
                                 </ContStyl>
                                 <ContStyl>
-                                This awesome all-in-one Goal Planner helps you plan and track your everyday stuff without a Hitch! This planner is Bullet Journal Inspired, designed keeping in mind a system that is proven productive and efficient by a diverse range of people around the Globe!
+                                    LET&apos;S GOAL 2021 PLANNER is here to save you
+                                    from those OH-SO-BORING-PLANNERS AND BRING
+                                    ALONG FUN AND PRODUCTIVITY THIS YEAR!
                                 </ContStyl>
                                 <ContStyl>
-                                You can plan your Year ahead, Accomplish your Goals, not forget Birthdays, doctor appointments, track your Habits, Food, Fitness, Physical & Mental Health, Self Care and what not!
+                                    This awesome all-in-one Goal Planner helps
+                                    you plan and track your everyday stuff
+                                    without a Hitch! This planner is Bullet
+                                    Journal Inspired, designed keeping in mind a
+                                    system that is proven productive and
+                                    efficient by a diverse range of people
+                                    around the Globe!
+                                </ContStyl>
+                                <ContStyl>
+                                    You can plan your Year ahead, Accomplish
+                                    your Goals, not forget Birthdays, doctor
+                                    appointments, track your Habits, Food,
+                                    Fitness, Physical & Mental Health, Self Care
+                                    and what not!
                                 </ContStyl>
                                 <ProductPrices
                                     fontSize="18px"

@@ -98,7 +98,7 @@ const Bundle = () => {
             >
                 <P color="#00A80B" fontSize="14px">
                     Free Inclusions: The Ultimate Sticker Book, Pop Socket,
-                    Bookmarks(2), Ikigai WorkSheets, Postcards(2) and a
+                    Bookmarks(2), Ikigai WorkSheets, Postcards and a
                     Protective Keepsake box
                 </P>
                 <BundleP>

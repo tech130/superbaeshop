@@ -53,7 +53,9 @@ const FreeInclusions = () => {
                     </P>
                 </Block>
                 <Row justifyContent="center">
-                    <ColorBox image={require("./images/free-inclusions/ikkigai-min.png?resize")}>
+                    <ColorBox
+                        image={require("./images/free-inclusions/ikkigai-min.png?resize")}
+                    >
                         <b>Ikigai work sheets</b> that helps you to find your
                         true purpose.
                     </ColorBox>
@@ -64,9 +66,12 @@ const FreeInclusions = () => {
                         <b>A Sticker Book</b> With a &quot;1000&quot;, a.k.a
                         THOUSAND, Stickers in it.
                     </ColorBox>
-                    <ColorBox bg="#C6E1F1">
-                        A <b>Protective Wrapper Box</b> to keep your stuffs safe
-                        and warm.
+                    <ColorBox
+                        bg="#C6E1F1"
+                        image={require("./images/free-inclusions/post-card-min.png?resize")}
+                    >
+                        Share your love through a happy mail with this fun{" "}
+                        <b>Post Card</b>
                     </ColorBox>
                     <ColorBox
                         bg="#D9E7EB"
