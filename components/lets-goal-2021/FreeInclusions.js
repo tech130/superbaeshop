@@ -27,14 +27,16 @@ const ColorBoxContent = styled.div`
 
 const ColorBox = ({ bg, children, image = {} }) => {
     return (
-        <ColorBoxStyl bg={bg}>
-            {image.src && (
-                <ColorBoxImg>
-                    <ResponsiveImage image={image} />
-                </ColorBoxImg>
-            )}
-            <ColorBoxContent>{children}</ColorBoxContent>
-        </ColorBoxStyl>
+        <Col md={4}>
+            <ColorBoxStyl bg={bg}>
+                {image.src && (
+                    <ColorBoxImg>
+                        <ResponsiveImage image={image} />
+                    </ColorBoxImg>
+                )}
+                <ColorBoxContent>{children}</ColorBoxContent>
+            </ColorBoxStyl>
+        </Col>
     );
 };
 
@@ -43,6 +45,7 @@ const FreeInclusions = () => {
         <Block padding="50px 0px">
             <Container>
                 <Block padding="0px 0px 15px 0px">
+                ikkigai-min
                     <H2 textAlign="center" mb="0px">
                         Free Inclusions
                     </H2>
@@ -51,55 +54,35 @@ const FreeInclusions = () => {
                     </P>
                 </Block>
                 <Row justifyContent="center">
-                    <Col md={4}>
-                        <ColorBox>
-                            <div>
-                                <b>Ikigai work sheets</b> that helps you to find
-                                your true purpose.
-                            </div>
-                        </ColorBox>
-                    </Col>
-                    <Col md={4}>
-                        <ColorBox
-                            bg="#FFE7EF"
-                            image={require("./images/free-inclusions/sticker-book-min.png?resize")}
-                        >
-                            <div>
-                                <b>A Sticker Book</b> With a &quot;1000&quot;,
-                                a.k.a THOUSAND, Stickers in it.
-                            </div>
-                        </ColorBox>
-                    </Col>
-                    <Col md={4}>
-                        <ColorBox bg="#C6E1F1">
-                            <div>
-                                A <b>Protective Wrapper Box</b> to keep your
-                                stuffs safe and warm.
-                            </div>
-                        </ColorBox>
-                    </Col>
-                    <Col md={4}>
-                        <ColorBox
-                            bg="#D9E7EB"
-                            image={require("./images/free-inclusions/pop-socket-min.png?resize")}
-                        >
-                            <div>
-                                <b>Washitapes (2)</b> to make your planner more
-                                beautiful and to make you smile.
-                            </div>
-                        </ColorBox>
-                    </Col>
-                    <Col md={4}>
-                        <ColorBox
-                            bg="#FDDEDF"
-                            image={require("./images/free-inclusions/bookmarks-min.png?resize")}
-                        >
-                            <div>
-                                <b>Bookmarks.</b> You need this. I am bored of
-                                writing more fancy content.
-                            </div>
-                        </ColorBox>
-                    </Col>
+                    <ColorBox image={require("./images/free-inclusions/ikkigai-min.png?resize")}>
+                        <b>Ikigai work sheets</b> that helps you to find your
+                        true purpose.
+                    </ColorBox>
+                    <ColorBox
+                        bg="#FFE7EF"
+                        image={require("./images/free-inclusions/sticker-book-2021-min.png?resize")}
+                    >
+                        <b>A Sticker Book</b> With a &quot;1000&quot;, a.k.a
+                        THOUSAND, Stickers in it.
+                    </ColorBox>
+                    <ColorBox bg="#C6E1F1">
+                        A <b>Protective Wrapper Box</b> to keep your stuffs safe
+                        and warm.
+                    </ColorBox>
+                    <ColorBox
+                        bg="#D9E7EB"
+                        image={require("./images/free-inclusions/pop-socket-min.png?resize")}
+                    >
+                        <b>Washitapes (2)</b> to make your planner more
+                        beautiful and to make you smile.
+                    </ColorBox>
+                    <ColorBox
+                        bg="#FDDEDF"
+                        image={require("./images/free-inclusions/bookmarks-min.png?resize")}
+                    >
+                        <b>Bookmarks.</b> You need this. I am bored of writing
+                        more fancy content.
+                    </ColorBox>
                 </Row>
             </Container>
         </Block>

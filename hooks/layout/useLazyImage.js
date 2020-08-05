@@ -1,16 +1,25 @@
-import useOnScreen from "./useOnScreen";
 import { useState, useEffect } from "react";
 
 const useLazyImage = (ref, image = {}) => {
     const [loading, set] = useState(true);
     const [shown, setShown] = useState(false);
-    const onScreen = useOnScreen(ref);
 
     useEffect(() => {
-        if (onScreen) {
-            setShown(true);
+        let current = ref.current;
+        const observer = new IntersectionObserver(([entry], obv) => {
+            // Update our state when observer callback fires
+            if (entry.isIntersecting) {
+                setShown(true);
+                obv.unobserve(current);
+            }
+        });
+        if (current) {
+            observer.observe(current);
         }
-    }, [onScreen]);
+        return () => {
+            observer.unobserve(current);
+        };
+    }, []);
 
     useEffect(() => {
         if (shown && loading) {

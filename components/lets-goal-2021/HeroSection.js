@@ -9,8 +9,8 @@ import ProductBuy from "../product/ProductBuy";
 import { ProductPrices } from "../product/ProductPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
 
-const frontSet = require("./images/top-cover/1-min.png?resize");
-const bgSet = require("./images/herobg.jpg");
+const frontSet = require("./images/cover.png?resize");
+const bgSet = require("./images/herobg-min.jpg");
 
 const HeroStyl = styled.section`
     padding: 40px 0px;

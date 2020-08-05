@@ -1,11 +1,21 @@
 import React, { useRef, memo } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import useLazyImage from "../../hooks/layout/useLazyImage";
 
 const ImgCon = styled.div`
     display: block;
     width: ${(props) => props.imgWidth || "100%"};
     height: ${(props) => props.imgHeight || "auto"};
+    ${(props) =>
+        props.padding &&
+        css`
+            padding: ${props.padding};
+        `};
+    ${(props) =>
+        props.margin &&
+        css`
+            margin: ${props.margin};
+        `};
 `;
 
 const PlaceholderImg = styled.img`

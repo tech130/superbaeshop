@@ -26,7 +26,12 @@ const BundleP = styled.p`
     font-size: 18px;
 `;
 
-const BundleItem = ({ title = "", children = null, mathIcon = "+" }) => {
+const BundleItem = ({
+    title = "",
+    children = null,
+    mathIcon = "+",
+    image = {},
+}) => {
     return (
         <BundleStl>
             <Container>
@@ -36,9 +41,11 @@ const BundleItem = ({ title = "", children = null, mathIcon = "+" }) => {
                         <div>{children}</div>
                         <Txt fontSize="4em">{mathIcon}</Txt>
                     </Col>
-                    <Col mdOffset={2} md={5}>
-                        <ResponsiveImage image={medicalSet} />
-                    </Col>
+                    {image.src && (
+                        <Col mdOffset={2} md={5}>
+                            <ResponsiveImage image={image} alt={title} />
+                        </Col>
+                    )}
                 </Row>
             </Container>
         </BundleStl>
@@ -53,7 +60,8 @@ const Bundle = () => {
                     <Row>
                         <Col lg={6} lgOffset={3}>
                             <ResponsiveImage
-                                image={require("./images/notepad.png?resize")}
+                                image={require("./images/1.png?resize")}
+                                alt="Bundle 2021"
                             />
                         </Col>
                         <Col lg={8} lgOffset={2}>
@@ -84,7 +92,10 @@ const Bundle = () => {
                     <BundlePrice />
                 </Flex>
             </Block>
-            <BundleItem title="Let's Goal 2021 + All free Inclusions">
+            <BundleItem
+                title="Let's Goal 2021 + All free Inclusions"
+                image={require("./images/lets-goal-2021.jpg?resize")}
+            >
                 <P color="#00A80B" fontSize="14px">
                     Free Inclusions: Ikkigai Work Sheets, The Ultimate Sticker
                     Book, Protective Wrapper Box, Pop Socket, Bookmarks (2)
@@ -101,19 +112,19 @@ const Bundle = () => {
                     </ProductLink>
                 </Flex>
             </BundleItem>
-            <BundleItem title="A Wall Calendar">
+            <BundleItem title="A Wall Calendar" image={require("./images/desk-calendar.jpg?resize")}>
                 <BundleP>
                     Plus you can find some exciting BULLET JOURNAL Inspired
                     spreads and amazing planner goodies!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="A Desk Calendar">
+            <BundleItem title="A Desk Calendar" image={require("./images/desk-calendar.jpg?resize")}>
                 <BundleP>
                     Plus you can find some exciting BULLET JOURNAL Inspired
                     spreads and amazing planner goodies!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="A Pocket Planner">
+            <BundleItem title="A Pocket Planner" image={require("./images/pocket-planner.jpg?resize")}>
                 <BundleP>
                     Plus you can find some exciting BULLET JOURNAL Inspired
                     spreads and amazing planner goodies!
@@ -131,7 +142,7 @@ const Bundle = () => {
                     spreads and amazing planner goodies!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="Tote Bag" mathIcon={"="}>
+            <BundleItem title="Tote Bag" mathIcon={"="} image={require("./images/tote-bag.jpg?resize")}>
                 <BundleP>
                     Plus you can find some exciting BULLET JOURNAL Inspired
                     spreads and amazing planner goodies!

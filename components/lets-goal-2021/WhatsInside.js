@@ -5,11 +5,9 @@ import { H2 } from "../styled/Headings";
 import P from "../styled/P";
 import Flex from "../styled/Flex";
 import ProductBuy from "../product/ProductBuy";
-import Picture from "../common/Picture";
 import Dot from "../styled/Dot";
 import { ProductPrices } from "../product/ProductPrice";
-
-const slantSet = require("./images/slant.png?resize&sizes[]=350&sizes[]=720&sizes[]=1080");
+import ResponsiveImage from "../common/ResponsiveImage";
 
 const WhatsInside = () => {
     return (
@@ -74,7 +72,10 @@ const WhatsInside = () => {
                 </Row>
                 <Row>
                     <Col lg={5}>
-                        <Picture src={slantSet.src} srcSet={slantSet.srcSet} />
+                        <ResponsiveImage
+                            image={require("./images/inside.jpg?resize")}
+                            alt="Let's Goal 2021"
+                        />
                     </Col>
                     <Col lg={7}>
                         <Block margin="15px 0px 0px 0px">
