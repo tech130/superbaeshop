@@ -65,7 +65,7 @@ const WhatsInside = () => {
                                 BOOK TYPE
                             </P>
                             <P textAlign="center">
-                                Classic Hardcover with rose gold foil accents.
+                                Classic Hardcover with gold foil accents.
                             </P>
                         </Flex>
                     </Col>
@@ -80,31 +80,13 @@ const WhatsInside = () => {
                     <Col lg={7}>
                         <Block margin="15px 0px 0px 0px">
                             <P>
-                                <b>YEARLY SPREADS</b>: Year at a glance - 2020 &
-                                2021, Year in Pixels, My Best 20 in 2020, Level
-                                10 Goals, Level 10 Life, Birthdays, Bookstagram,
-                                Self Care, Affirmations, Art Therapy, Self
-                                Notes, Clean eating, New in town, Dishes to try,
-                                Food festivals, Cravings, Social Stats, Brain
-                                Dump, Movies, Tv shows, Clean Home, Pack me up,
-                                Bucket List, Memories, Subscriptions.
+                                <b>YEARLY SPREADS</b>: Year at a glance - 2021 & 2022, Year in Pixels, Vision Board, Level 10 Goals, Level 10 Life, Birthdays, Bookstagram, Self Care, Make yourself a Priority,  Sacred Rituals, Hygge, Mental Health, Social Stats, Brain Dump, Movies, Tv shows, Clean Home, Pack me up, Bucket List, Memories, Subscriptions.
                             </P>
                             <P>
-                                <b>MONTHLY SPREADS</b>: My obsessions, Month at
-                                a glance + Notes, Goal Tracker, Events, To Do,
-                                Ideas, Quotes, Habit Tracker, Sick Day/Period
-                                Tracker, Habits to Kill & Grow, Weekly/Daily
-                                spread, Gratitude, Introspections, Expense
-                                Tracker, Cosmic Savings, Shopping List, Weight
-                                Tracker, Diet Tracker, Exercise Tracker, Water
-                                Tracker, Sleep Tracker, Sugar/Junk Tracker, Meal
-                                Planner.
+                                <b>MONTHLY SPREADS</b>: My obsessions, Month at a glance + Notes, Goal Tracker, Events, To Do, Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Kill & Grow, Weekly/Daily spread, Gratitude, Introspections, Expense Tracker, Shopping List, Clean eating, Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker, Sleep Tracker, Sugar/Junk Tracker, Meal Planner.
                             </P>
                             <P>
-                                <b>FREE GOODIES</b>: Pen with Stylus(1),
-                                Stickers (5 Sheets), Bookmarks/Dividers(12),
-                                Posters(12) & Washi tapes (5), A Wrapped
-                                Protective Box.
+                                <b>FREE GOODIES</b>: The Ultimate Sticker Book, Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards(2) and a Protective Keepsake box
                             </P>
                             <ProductBuy slug={"lets-goal-2021-planner"} />
                         </Block>

@@ -45,7 +45,6 @@ const FreeInclusions = () => {
         <Block padding="50px 0px">
             <Container>
                 <Block padding="0px 0px 15px 0px">
-                ikkigai-min
                     <H2 textAlign="center" mb="0px">
                         Free Inclusions
                     </H2>
@@ -73,8 +72,7 @@ const FreeInclusions = () => {
                         bg="#D9E7EB"
                         image={require("./images/free-inclusions/pop-socket-min.png?resize")}
                     >
-                        <b>Washitapes (2)</b> to make your planner more
-                        beautiful and to make you smile.
+                        A <b>Pop socket</b> to stick your phone to your fingers.
                     </ColorBox>
                     <ColorBox
                         bg="#FDDEDF"

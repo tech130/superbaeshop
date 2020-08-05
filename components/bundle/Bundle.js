@@ -11,8 +11,6 @@ import Txt from "../styled/Txt";
 import ResponsiveImage from "../common/ResponsiveImage";
 import ProductLink from "../product/ProductLink";
 
-const medicalSet = require("./images/medical.png?resize");
-
 const BundleStl = styled.div`
     padding: 40px 0px;
     position: relative;
@@ -101,8 +99,8 @@ const Bundle = () => {
                     Book, Protective Wrapper Box, Pop Socket, Bookmarks (2)
                 </P>
                 <BundleP>
-                    Plus you can find some exciting BULLET JOURNAL Inspired
-                    spreads and amazing planner goodies!
+                    This awesome all-in-one Goal Planner helps you plan and
+                    track your everyday stuff without a Hitch!
                 </BundleP>
                 <Flex justifyContent="flex-end">
                     <ProductLink slug="lets-goal-2021-planner">
@@ -112,40 +110,55 @@ const Bundle = () => {
                     </ProductLink>
                 </Flex>
             </BundleItem>
-            <BundleItem title="A Wall Calendar" image={require("./images/desk-calendar.jpg?resize")}>
+            <BundleItem
+                title="A Wall Calendar"
+                image={require("./images/desk-calendar.jpg?resize")}
+            >
                 <BundleP>
-                    Plus you can find some exciting BULLET JOURNAL Inspired
-                    spreads and amazing planner goodies!
+                    This Pretty Wall Calendar &apos;Senorita&apos; is designed
+                    with beautiful Illustrated quotes! You can plan your dates
+                    and appointments too! Have a great Year ahead Chicas!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="A Desk Calendar" image={require("./images/desk-calendar.jpg?resize")}>
+            <BundleItem
+                title="A Desk Calendar"
+                image={require("./images/desk-calendar.jpg?resize")}
+            >
                 <BundleP>
-                    Plus you can find some exciting BULLET JOURNAL Inspired
-                    spreads and amazing planner goodies!
+                    A cute Desk accessory + fun Illustrations for 12 months!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="A Pocket Planner" image={require("./images/pocket-planner.jpg?resize")}>
+            <BundleItem
+                title="A Pocket Planner"
+                image={require("./images/pocket-planner.jpg?resize")}
+            >
                 <BundleP>
-                    Plus you can find some exciting BULLET JOURNAL Inspired
-                    spreads and amazing planner goodies!
+                    A mini Planner to fit anywhere! Carry this uber-cool pocket
+                    planner on the go! A peek into your events, appointments and
+                    to do&apos;s and cross em&apos; all!
                 </BundleP>
             </BundleItem>
             <BundleItem title="A Jot Book/Notebook">
                 <BundleP>
-                    Plus you can find some exciting BULLET JOURNAL Inspired
-                    spreads and amazing planner goodies!
+                    A dotted notebook for your creativity overflow! Brainstorm
+                    your brains out!
                 </BundleP>
             </BundleItem>
             <BundleItem title="Greeting Cards (6)">
                 <BundleP>
-                    Plus you can find some exciting BULLET JOURNAL Inspired
-                    spreads and amazing planner goodies!
+                    6 fun illustrated greetings for your shenanigans!
                 </BundleP>
             </BundleItem>
-            <BundleItem title="Tote Bag" mathIcon={"="} image={require("./images/tote-bag.jpg?resize")}>
+            <BundleItem
+                title="Tote Bag"
+                mathIcon={"="}
+                image={require("./images/tote-bag.jpg?resize")}
+            >
                 <BundleP>
-                    Plus you can find some exciting BULLET JOURNAL Inspired
-                    spreads and amazing planner goodies!
+                    Who doesn&apos;t need a cool tote?
+                    <br />
+                    from groceries to laptops, carry em&apos; all and go
+                    plastic-free!
                 </BundleP>
             </BundleItem>
             <Block padding="20px 0px">

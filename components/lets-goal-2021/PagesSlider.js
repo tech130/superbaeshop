@@ -19,7 +19,7 @@ const PagesSlider = () => {
                     <H2 textAlign="center" mb="0px">
                         Pages
                     </H2>
-                    <P textAlign="center">Peek A Boo</P>
+                    <P textAlign="center">Take a look inside</P>
                 </Block>
                 <Row>
                     <Col lg={10} lgOffset={1}>

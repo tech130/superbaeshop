@@ -10,11 +10,10 @@ import { ProductPrices } from "../product/ProductPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
 
 const frontSet = require("./images/cover.png?resize");
-const bgSet = require("./images/herobg-min.jpg");
 
 const HeroStyl = styled.section`
     padding: 40px 0px;
-    background-image: url(${bgSet});
+    background-color: #ffeded;
     background-size: cover;
     background-attachment: fixed;
 `;
@@ -66,30 +65,11 @@ const HeroSection = () => {
                                     Organize your Life on the Go!
                                 </ContStyl>
                                 <ContStyl>
-                                    LET&apos;S GOAL 2020 PLANNER is here to save
-                                    you from those OH-SO-BORING-PLANNERS AND
-                                    BRING ALONG FUN AND PRODUCTIVITY THIS YEAR!
+                                This awesome all-in-one Goal Planner helps you plan and track your everyday stuff without a Hitch! This planner is Bullet Journal Inspired, designed keeping in mind a system that is proven productive and efficient by a diverse range of people around the Globe!
                                 </ContStyl>
                                 <ContStyl>
-                                    This FAB planner is all that you need to get
-                                    your hands on this 2020 NEW YEAR.
+                                You can plan your Year ahead, Accomplish your Goals, not forget Birthdays, doctor appointments, track your Habits, Food, Fitness, Physical & Mental Health, Self Care and what not!
                                 </ContStyl>
-                                <ContStyl>
-                                    Take a big leap in sorting all your priority
-                                    everyday stuffs this LEAP YEAR!
-                                </ContStyl>
-                                <ContStyl>
-                                    Plus you can find some exciting BULLET
-                                    JOURNAL Inspired spreads and amazing planner
-                                    goodies!
-                                </ContStyl>
-                                <ContStyl>
-                                    CAN&apos;T WAIT FOR YOU GUYS TO GET HOLD OF
-                                    THEM!
-                                </ContStyl>
-                                <P fontSize="18px" textAlign="right">
-                                    -DRITI
-                                </P>
                                 <ProductPrices
                                     fontSize="18px"
                                     slug="lets-goal-2021-planner"
