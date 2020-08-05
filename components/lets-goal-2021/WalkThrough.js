@@ -10,7 +10,7 @@ const WalkThrough = () => {
             <Container>
                 <Block padding="0px 0px 25px 0px">
                     <H2 textAlign="center" mb="0px">
-                        The Magic Recipie
+                        The Magic Recipe
                     </H2>
                 </Block>
                 <ResponsiveImage

@@ -26,11 +26,15 @@ const Sticker = () => {
                             />
                         </Col>
                     </Row>
+                    <Flex
+                        vertical
+                        alignItems="center"
+                        padding="40px 0px 0px 0px"
+                    >
+                        <H2 mb="15px">A THOUSAND STICKERS TO CHERISH</H2>
+                        <StickerPrice />
+                    </Flex>
                 </Container>
-                <Flex vertical alignItems="center" padding="40px 0px 0px 0px">
-                    <H2 mb="15px">A THOUSAND STICKERS TO CHERISH</H2>
-                    <StickerPrice />
-                </Flex>
             </Block>
             <InterSec />
             <Block padding="35px 0px">
