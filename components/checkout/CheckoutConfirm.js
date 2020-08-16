@@ -111,7 +111,7 @@ const CodCheckout = ({ id }) => {
 
     const [fetching, submit] = useSubmit(() => {
         dispatch(clearCart());
-        router.replace(`/[country]/orders`, `/${country}/orders`);
+        router.replace(`/[country]/thank-you`, `/${country}/thank-you`);
     });
 
     const onClick = () => {
@@ -139,7 +139,7 @@ const OnlineCheckout = ({ data }) => {
 
     const [fetching, submit] = useSubmit(() => {
         dispatch(clearCart());
-        router.replace(`/[country]/orders`, `/${country}/orders`);
+        router.replace(`/[country]/thank-you`, `/${country}/thank-you`);
     });
 
     const handleSuccess = (data) => {
