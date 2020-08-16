@@ -5,7 +5,7 @@ import { pageview } from "../utils/analytics";
 const useAnalytics = () => {
     useEffect(() => {
         const handleRouteChange = (url) => {
-            pageview.pageview(url);
+            pageview(url);
         };
         Router.events.on("routeChangeComplete", handleRouteChange);
         return () => {
