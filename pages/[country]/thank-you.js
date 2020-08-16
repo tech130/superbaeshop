@@ -35,7 +35,7 @@ const Thankyou = () => {
                             </Block>
                             <H3 textAlign="center">Order Placed</H3>
                             <P textAlign="center">
-                                Thank you for shopping with us.
+                                Thank you for shopping with us
                             </P>
                         </Col>
                     </Row>
