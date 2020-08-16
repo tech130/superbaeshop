@@ -13,6 +13,7 @@ import "intersection-observer";
 import "../css/font.css";
 import "react-toastify/dist/ReactToastify.css";
 import UploadCartModal from "../components/auth/UploadCartModal";
+import useAnalytics from "../hooks/useAnalytics";
 
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
@@ -22,6 +23,8 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
+    useAnalytics();
+
     return (
         <Provider store={store}>
             <Head>
