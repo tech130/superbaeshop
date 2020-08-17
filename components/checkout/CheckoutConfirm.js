@@ -8,7 +8,6 @@ import getAddress from "../../utils/getAddress";
 import SubmitButton from "../form/SubmitButton";
 import urls from "../../apiService/urls";
 import useSubmit from "../../hooks/http/useSubmit";
-import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import useScript from "../../hooks/useScript";
@@ -105,13 +104,12 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
 };
 
 const CodCheckout = ({ id }) => {
-    const router = useRouter();
     const country = useCountryParam();
     const dispatch = useDispatch();
 
     const [fetching, submit] = useSubmit(() => {
         dispatch(clearCart());
-        router.replace(`/[country]/thank-you`, `/${country}/thank-you`);
+        window.location.replace(`/${country}/thank-you`);
     });
 
     const onClick = () => {
@@ -133,13 +131,12 @@ const CodCheckout = ({ id }) => {
 
 const OnlineCheckout = ({ data }) => {
     const [loaded] = useScript("https://checkout.razorpay.com/v1/checkout.js");
-    const router = useRouter();
     const country = useCountryParam();
     const dispatch = useDispatch();
 
     const [fetching, submit] = useSubmit(() => {
         dispatch(clearCart());
-        router.replace(`/[country]/thank-you`, `/${country}/thank-you`);
+        window.location.replace(`/${country}/thank-you`);
     });
 
     const handleSuccess = (data) => {

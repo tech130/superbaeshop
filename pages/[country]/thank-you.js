@@ -6,13 +6,15 @@ import { common } from "../../redux/handlePages";
 import { H3 } from "../../components/styled/Headings";
 import P from "../../components/styled/P";
 import { useCountryParam } from "../../components/common/CountryLink";
+import { useRouter } from "next/router";
 
 const Thankyou = () => {
     const country = useCountryParam();
+    const router = useRouter();
 
     useEffect(() => {
         const id = setTimeout(() => {
-            window.location.replace(`/${country}/orders`);
+            router.replace(`/[country]/orders`, `/${country}/orders`);
         }, 3000);
         return () => {
             clearTimeout(id);
