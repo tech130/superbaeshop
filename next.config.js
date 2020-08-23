@@ -15,9 +15,6 @@ module.exports = withPlugins([
             removeOriginalExtension: false,
             optimizeImages: true,
             optimizeImagesInDev: false,
-            mozjpeg: {
-                quality: 80,
-            },
             optipng: {
                 optimizationLevel: 3,
             },
