@@ -25,7 +25,7 @@ import { emailValid, phoneValid } from "../../utils/validation";
 import CountryLink, { useActiveCountry } from "../common/CountryLink";
 import SelectIp from "../form/SelectIp";
 import styled from "styled-components";
-import Button, { LinkButton } from "../styled/Button";
+import Button, { LinkButton, SubmitBtn } from "../styled/Button";
 import ModalLoader from "../modal/ModalLoader";
 import P from "../styled/P";
 
@@ -251,21 +251,13 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     <Txt textDecor="underline"> Terms and Conditions</Txt>
                 </CountryLink>
             </P>
-            <Button
+            <SubmitBtn
                 margin="0px 0px 10px 0px"
-                block
                 onClick={onPayNow}
                 disabled={fetching}
-                border="1px solid #ced4da"
-                padding="8px"
             >
-                PAY SECURELY VIA{" "}
-                <img
-                    style={{ marginLeft: "10px" }}
-                    width={100}
-                    src="/images/razorpay-logo.svg"
-                />
-            </Button>
+                CONTINUE
+            </SubmitBtn>
             {activeCountry.is_cod_available && (
                 <Button
                     border="1px solid #ced4da"
