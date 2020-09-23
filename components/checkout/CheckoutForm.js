@@ -256,19 +256,16 @@ const CheckoutForm = ({ coupon, redeem }) => {
                 onClick={onPayNow}
                 disabled={fetching}
             >
-                CONTINUE
+                PAY NOW
             </SubmitBtn>
             {activeCountry.is_cod_available && (
-                <Button
-                    border="1px solid #ced4da"
-                    padding="8px"
+                <SubmitBtn
                     onClick={onPayLater}
-                    block
                     disabled={fetching}
                 >
                     CASH ON DELIVERY (+{activeCountry.currency_type}
                     {activeCountry.cod_charge})
-                </Button>
+                </SubmitBtn>
             )}
             <ModalLoader isOpen={fetching} />
             {successData && successData.id && (
