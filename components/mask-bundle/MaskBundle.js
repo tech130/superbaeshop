@@ -1,0 +1,95 @@
+import React from "react";
+import Block from "../styled/Block";
+import { Container, Row, Col } from "styled-bootstrap-grid";
+import { H2, H1 } from "../styled/Headings";
+import P from "../styled/P";
+import Flex from "../styled/Flex";
+import { InterSec } from "../styled/Hr";
+import Dot from "../styled/Dot";
+import { ProductPrices } from "../product/ProductPrice";
+// import ResponsiveImage from "../common/ResponsiveImage";
+
+const MaskBundle = () => {
+    return (
+        <>
+            <Block padding="35px 0px">
+                <Container>
+                    <H1 mb="0px" textAlign="center">
+                        THE ULTIMATE STICKER BOOK
+                    </H1>
+                    <P textAlign="center">is here.</P>
+                    <Row>
+                        <Col md={8} mdOffset={2}></Col>
+                    </Row>
+                    <Flex
+                        vertical
+                        alignItems="center"
+                        padding="40px 0px 0px 0px"
+                    >
+                        <H2 mb="15px">A THOUSAND STICKERS TO CHERISH</H2>
+                    </Flex>
+                </Container>
+            </Block>
+            <InterSec />
+            <Block padding="35px 0px">
+                <Block padding="0px 10px 30px 10px">
+                    <H2 weight={400} textAlign="center">
+                        Is it true that this book has 1000 stickers?
+                    </H2>
+                    <P textAlign="center">
+                        Yes. The first sticker book to have a thousand stickers
+                        in it.
+                    </P>
+                </Block>
+                <Container>
+                    <Row alignItems="center">
+                        <Col md={8}>
+                            <Block margin="0px 0px 25px 0px"></Block>
+                        </Col>
+                        <Col md={4}>
+                            <Flex
+                                margin="0px 0px 15px 0px"
+                                vertical
+                                alignItem="stretch"
+                            >
+                                <Dot />
+                                <P fontSize="18px" margin="0px 0px 5px 0px">
+                                    Book Type
+                                </P>
+                                <P>Classic Softcover</P>
+                            </Flex>
+                            <Flex
+                                bg="#C6E1F1"
+                                vertical
+                                margin="0px 0px 15px 0px"
+                                alignItem="stretch"
+                            >
+                                <Dot bg="#FFE7EF" />
+                                <P fontSize="18px" margin="0px 0px 5px 0px">
+                                    Product Price
+                                </P>
+                                <ProductPrices slug="ultimate-sticker-book" />
+                            </Flex>
+                            <Flex
+                                vertical
+                                margin="0px 0px 15px 0px"
+                                alignItem="stretch"
+                            >
+                                <Dot bg="#C6E1F1" />
+                                <P fontSize="18px" margin="0px 0px 5px 0px">
+                                    Dimensions
+                                </P>
+                                <P>
+                                    Width-18.5 cm
+                                    <br /> Height - 23.5 cm
+                                </P>
+                            </Flex>
+                        </Col>
+                    </Row>
+                </Container>
+            </Block>
+        </>
+    );
+};
+
+export default MaskBundle;

@@ -1,7 +1,14 @@
-import Sticker from "./components/sticker/Sticker";
-import ProPlanner from "./components/professional-planner/ProPlanner";
-import LetsGoal2021 from "./components/lets-goal-2021/LetsGoal2021";
-import Bundle from "./components/bundle/Bundle";
+import dynamic from "next/dynamic";
+
+const Sticker = dynamic(() => import("./components/sticker/Sticker"));
+const ProPlanner = dynamic(() =>
+    import("./components/professional-planner/ProPlanner")
+);
+const LetsGoal2021 = dynamic(() =>
+    import("./components/lets-goal-2021/LetsGoal2021")
+);
+const Bundle = dynamic(() => import("./components/bundle/Bundle"));
+const Mask = dynamic(() => import("./components/mask-bundle/MaskBundle"));
 
 export default {
     "ultimate-sticker-book": {
@@ -22,6 +29,11 @@ export default {
     "bundle-2021": {
         slug: "bundle-2021",
         component: <Bundle />,
+        id: 3,
+    },
+    "mask-bundle": {
+        slug: "mask-bundle",
+        component: <Mask />,
         id: 3,
     },
 };
