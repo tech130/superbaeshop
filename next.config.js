@@ -30,4 +30,5 @@ module.exports = withPlugins([
             },
         },
     ],
+    { target: "serverless" },
 ]);
