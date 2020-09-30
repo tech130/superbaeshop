@@ -242,9 +242,9 @@ const CheckoutForm = ({ coupon, redeem }) => {
                 </FieldCon>
             </FormRow>
             <P weight={500} fontSize="13px">
-                Note: All pre-orders will be processed by End of September. A
-                tracking link will be sent once your order is dispatched.
-                Delivery time 3-14 days depending on delivery location.
+                Note: A tracking link will be sent once your order is
+                dispatched. Delivery time 3-14 days depending on delivery
+                location.
                 <br />
                 By placing this order you agree to our
                 <CountryLink href="/terms">
@@ -259,10 +259,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                 PAY NOW
             </SubmitBtn>
             {activeCountry.is_cod_available && (
-                <SubmitBtn
-                    onClick={onPayLater}
-                    disabled={fetching}
-                >
+                <SubmitBtn onClick={onPayLater} disabled={fetching}>
                     CASH ON DELIVERY (+{activeCountry.currency_type}
                     {activeCountry.cod_charge})
                 </SubmitBtn>
