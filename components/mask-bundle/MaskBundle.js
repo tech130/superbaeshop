@@ -56,7 +56,16 @@ const MaskBundle = () => {
                     </P>
                     <Row>
                         <Col md={6} mdOffset={3}>
-                            <Carousel autoplay withoutControls pauseOnHover>
+                            <Carousel
+                                autoplay
+                                renderCenterLeftControls={null}
+                                renderCenterRightControls={null}
+                                defaultControlsConfig={{
+                                    pagingDotsStyle: {
+                                        fill: "#fff",
+                                    },
+                                }}
+                            >
                                 <ResponsiveImage
                                     image={require("./images/slider/1.jpg?resize")}
                                 />
