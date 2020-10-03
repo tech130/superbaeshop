@@ -10,7 +10,7 @@ const ProductLink = ({ slug, children, className = "" }) => {
     if (id) {
         return (
             <Link
-                href="/[country]/product/[productSlug]"
+                href={`/[country]/product/${slug}`}
                 as={`/${country}/product/${slug}`}
             >
                 <a className={className}>{children || title}</a>
