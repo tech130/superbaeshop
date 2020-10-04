@@ -74,6 +74,8 @@ const MaskBundle = () => {
                                 autoplay
                                 renderCenterLeftControls={null}
                                 renderCenterRightControls={null}
+                                autoplayInterval={7000}
+                                wrapAround
                             >
                                 {images.map((img, idx) => (
                                     <div key={idx} style={imgPadding}>
