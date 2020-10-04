@@ -13,6 +13,18 @@ import ResponsiveImage from "../common/ResponsiveImage";
 
 const slug = "face-mask-bundle";
 
+const images = [
+    require("./images/slider/1.jpg?resize"),
+    require("./images/slider/2.jpg?resize"),
+    require("./images/slider/3.jpg?resize"),
+    require("./images/slider/4.jpg?resize"),
+    require("./images/slider/5.jpg?resize"),
+    require("./images/slider/6.jpg?resize"),
+    require("./images/slider/7.jpg?resize"),
+    require("./images/slider/8.jpg?resize"),
+    require("./images/slider/9.jpg?resize"),
+];
+
 const Point = ({ dotBg, point = "" }) => {
     return (
         <Col col={4}>
@@ -42,6 +54,8 @@ const MaskBuy = () => {
     );
 };
 
+const imgPadding = { paddingBottom: `50px` };
+
 const MaskBundle = () => {
     return (
         <>
@@ -60,39 +74,12 @@ const MaskBundle = () => {
                                 autoplay
                                 renderCenterLeftControls={null}
                                 renderCenterRightControls={null}
-                                defaultControlsConfig={{
-                                    pagingDotsStyle: {
-                                        fill: "#fff",
-                                    },
-                                }}
                             >
-                                <ResponsiveImage
-                                    image={require("./images/slider/1.jpg?resize")}
-                                />
-                                <ResponsiveImage
-                                    image={require("./images/slider/2.jpg?resize")}
-                                />
-                                <ResponsiveImage
-                                    image={require("./images/slider/3.jpg?resize")}
-                                />
-                                <ResponsiveImage
-                                    image={require("./images/slider/4.jpg?resize")}
-                                />
-                                <ResponsiveImage
-                                    image={require("./images/slider/5.jpg?resize")}
-                                />
-                                <ResponsiveImage
-                                    image={require("./images/slider/6.jpg?resize")}
-                                />
-                                <ResponsiveImage
-                                    image={require("./images/slider/7.jpg?resize")}
-                                />
-                                <ResponsiveImage
-                                    image={require("./images/slider/8.jpg?resize")}
-                                />
-                                <ResponsiveImage
-                                    image={require("./images/slider/9.jpg?resize")}
-                                />
+                                {images.map((img, idx) => (
+                                    <div key={idx} style={imgPadding}>
+                                        <ResponsiveImage image={img} />
+                                    </div>
+                                ))}
                             </Carousel>
                         </Col>
                     </Row>
@@ -115,9 +102,7 @@ const MaskBundle = () => {
                         <Point dotBg="#FFE7EF" point="Adjustable Ear loops" />
                         <Point dotBg="#C6E1F1" point="Comfortable to use" />
                         <Col md={8} mdOffset={2}>
-                            <ResponsiveImage
-                                image={require("./images/slider/9.jpg?resize")}
-                            />
+                            <ResponsiveImage image={images[8]} />
                         </Col>
                     </Row>
                     <MaskBuy />
