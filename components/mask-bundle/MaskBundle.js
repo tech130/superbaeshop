@@ -27,7 +27,7 @@ const images = [
 
 const Point = ({ dotBg, point = "" }) => {
     return (
-        <Col col={4}>
+        <Col col={6}>
             <Flex margin="0px 0px 15px 0px" vertical alignItems="center">
                 <Dot bg={dotBg} />
                 <P textAlign="center" margin="0px 0px 15px 10px">
@@ -64,10 +64,7 @@ const MaskBundle = () => {
                     <H1 mb="0px" textAlign="center">
                         The Mask Bundle
                     </H1>
-                    <P textAlign="center">
-                        7 Protective masks, with a 7 Layer protection, for all 7
-                        days a week
-                    </P>
+                    <P textAlign="center">for all 7 days a week</P>
                     <Row>
                         <Col md={6} mdOffset={3}>
                             <Carousel
@@ -79,7 +76,7 @@ const MaskBundle = () => {
                             >
                                 {images.map((img, idx) => (
                                     <div key={idx} style={imgPadding}>
-                                        <ResponsiveImage image={img} />
+                                        <ResponsiveImage image={img} alt="The Mask Bundle" />
                                     </div>
                                 ))}
                             </Carousel>
@@ -95,16 +92,23 @@ const MaskBundle = () => {
                         Why should I use these?
                     </H2>
                     <P textAlign="center">
-                        CONVENIENT | WASHABLE | REUSABLE | SAFE | FULL COVERAGE
+                        CONVENIENT | WASHABLE | REUSABLE | FULL COVERAGE
                     </P>
                 </Block>
                 <Container>
                     <Row>
-                        <Point point="7 Layer protection" />
-                        <Point dotBg="#FFE7EF" point="Adjustable Ear loops" />
-                        <Point dotBg="#C6E1F1" point="Comfortable to use" />
                         <Col md={8} mdOffset={2}>
-                            <ResponsiveImage image={images[8]} />
+                            <Row>
+                                <Point
+                                    dotBg="#FFE7EF"
+                                    point="Adjustable Ear loops"
+                                />
+                                <Point
+                                    dotBg="#C6E1F1"
+                                    point="Comfortable to use"
+                                />
+                            </Row>
+                            <ResponsiveImage image={images[8]} alt="The Mask Bundle" />
                         </Col>
                     </Row>
                     <MaskBuy />

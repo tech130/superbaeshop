@@ -27,6 +27,7 @@ module.exports = withPlugins([
                 sizes: [175, 350, 700, 1050, 1080],
                 placeholder: true,
                 placeholderSize: 35,
+                quality: 80,
             },
         },
     ],
