@@ -19,7 +19,7 @@ import AddressLoder from "../address/AddressLoder";
 import urls from "../../apiService/urls";
 import getAddress from "../../utils/getAddress";
 import { CheckoutConfirmModal } from "./CheckoutConfirm";
-import Input from "../form/Input";
+import Input, { NumberInput } from "../form/Input";
 import useSubmit from "../../hooks/http/useSubmit";
 import { emailValid, phoneValid } from "../../utils/validation";
 import CountryLink, { useActiveCountry } from "../common/CountryLink";
@@ -114,6 +114,8 @@ const CheckoutForm = ({ coupon, redeem }) => {
         if (emailErr) {
             err.email = emailErr;
         }
+
+        //phone number validation
         const dialErr =
             values.dial_code && values.dial_code.value
                 ? ""
@@ -121,24 +123,30 @@ const CheckoutForm = ({ coupon, redeem }) => {
         if (dialErr) {
             err.dial_code = dialErr;
         }
-        const altdialErr =
-            values.alt_dial_code && values.alt_dial_code.value
-                ? ""
-                : "Dial code is required";
-        if (values.alt_dial_code && altdialErr) {
-            err.alt_dial_code = altdialErr;
-        }
         const phoneErr = phoneValid(values.phone);
         if (phoneErr) {
             err.phone = phoneErr;
         }
-        const altphoneErr = phoneValid(values.phone);
-        if (values.alt_phone && altphoneErr) {
-            err.alt_phone = altphoneErr;
+
+        //alt phone number
+        if (values.alt_dial_code || values.alt_phone) {
+            const altdialErr =
+                values.alt_dial_code && values.alt_dial_code.value
+                    ? ""
+                    : "Dial code is required";
+            if (altdialErr) {
+                err.alt_dial_code = altdialErr;
+            }
+            const altphoneErr = phoneValid(values.alt_phone);
+            if (altphoneErr) {
+                err.alt_phone = altphoneErr;
+            }
         }
+
         if (!values.address_id) {
             err.address_id = "Address is required";
         }
+
         if (Object.keys(err).length > 0) {
             formDispatch({
                 type: "set_errors",
@@ -146,6 +154,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
             });
             return;
         }
+        
         const wallet = redeem
             ? { is_wallet: true }
             : coupon.code
@@ -204,8 +213,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     />
                 </FieldCon>
                 <FieldCon err={errors.phone} md={7}>
-                    <Input
-                        type="tel"
+                    <NumberInput
                         value={values.phone}
                         placeholder="Phone Number"
                         setValue={(val) => onChange("phone", val)}
@@ -220,8 +228,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     />
                 </FieldCon>
                 <FieldCon err={errors.alt_phone} md={7}>
-                    <Input
-                        type="tel"
+                    <NumberInput
                         value={values.alt_phone}
                         placeholder="Alternate Ph. (Optional)"
                         setValue={(val) => onChange("alt_phone", val)}

@@ -177,7 +177,7 @@ const CartListWithForm = ({ list = [] }) => {
                         border="2px solid #f5f5f5"
                     >
                         <Txt color="red" fontSize="14px">
-                            You have products unavaible for this country in your
+                            You have products unavailable for this country in your
                             cart. Change country or remove these products from
                             your cart to continue checkout.
                         </Txt>
