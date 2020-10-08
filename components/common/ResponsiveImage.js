@@ -4,6 +4,7 @@ import useLazyImage from "../../hooks/layout/useLazyImage";
 
 const ImgCon = styled.div`
     display: block;
+    position: relative;
     width: ${(props) => props.imgWidth || "100%"};
     height: ${(props) => props.imgHeight || "auto"};
     ${(props) =>
@@ -21,13 +22,17 @@ const ImgCon = styled.div`
 const PlaceholderImg = styled.img`
     width: 100%;
     height: 100%;
-    display: ${(props) => (props.isLoading ? "block" : "none")};
+    opacity: ${(props) => (props.isLoading ? 1 : 0)};
 `;
 
 const ResponsiveImg = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
-    display: ${(props) => (props.isLoading ? "none" : "block")};
 `;
 
 const ResponsiveImage = ({
@@ -41,6 +46,19 @@ const ResponsiveImage = ({
     const ref = useRef(null);
     const isLoading = useLazyImage(ref, image);
 
+    const picture = (
+        <picture>
+            {source.length > 0 &&
+                source.map((x, idx) => <source {...x} key={idx} />)}
+            <ResponsiveImg
+                isLoading={isLoading}
+                src={image.src}
+                srcSet={image.srcSet}
+                alt={alt}
+            />
+        </picture>
+    );
+
     return (
         <ImgCon
             ref={ref}
@@ -48,17 +66,13 @@ const ResponsiveImage = ({
             imgWidth={imgWidth}
             objFit={objFit}
         >
-            <PlaceholderImg isLoading={isLoading} src={image.placeholder} alt="" />
-            <picture>
-                {source.length > 0 &&
-                    source.map((x, idx) => <source {...x} key={idx} />)}
-                <ResponsiveImg
-                    isLoading={isLoading}
-                    src={image.src}
-                    srcSet={image.srcSet}
-                    alt={alt}
-                />
-            </picture>
+            <PlaceholderImg
+                isLoading={isLoading}
+                src={image.placeholder}
+                alt=""
+            />
+            {!isLoading && picture}
+            <noscript>{picture}</noscript>
         </ImgCon>
     );
 };
