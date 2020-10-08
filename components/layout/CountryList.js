@@ -66,6 +66,7 @@ const CountryItem = ({
                         margin="0px 5px 0px 0px"
                         src={image}
                         alt={`${title} flag`}
+                        loading="lazy"
                     />
                     <span>
                         {code} - {currency_type}

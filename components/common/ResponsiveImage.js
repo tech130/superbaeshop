@@ -38,24 +38,8 @@ const ResponsiveImage = ({
     imgWidth,
     objFit,
 }) => {
-    const { src, srcSet, placeholder } = image;
-    const sizes = "(max-width: 700px) 100vw, 700px";
     const ref = useRef(null);
-    const isLoading = useLazyImage(ref, { src, srcSet, sizes });
-
-    const renderImage = (
-        <picture>
-            {source.length > 0 &&
-                source.map((x, idx) => <source {...x} key={idx} />)}
-            <ResponsiveImg
-                isLoading={isLoading}
-                src={src}
-                srcSet={srcSet}
-                sizes={sizes}
-                alt={alt}
-            />
-        </picture>
-    );
+    const isLoading = useLazyImage(ref, image);
 
     return (
         <ImgCon
@@ -64,9 +48,17 @@ const ResponsiveImage = ({
             imgWidth={imgWidth}
             objFit={objFit}
         >
-            <PlaceholderImg isLoading={isLoading} src={placeholder} alt="" />
-            {renderImage}
-            <noscript>{renderImage}</noscript>
+            <PlaceholderImg isLoading={isLoading} src={image.placeholder} alt="" />
+            <picture>
+                {source.length > 0 &&
+                    source.map((x, idx) => <source {...x} key={idx} />)}
+                <ResponsiveImg
+                    isLoading={isLoading}
+                    src={image.src}
+                    srcSet={image.srcSet}
+                    alt={alt}
+                />
+            </picture>
         </ImgCon>
     );
 };

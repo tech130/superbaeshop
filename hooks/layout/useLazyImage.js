@@ -5,20 +5,20 @@ const useLazyImage = (ref, image = {}) => {
     const [shown, setShown] = useState(false);
 
     useEffect(() => {
-        let current = ref.current;
-        const observer = new IntersectionObserver(([entry], obv) => {
-            // Update our state when observer callback fires
-            if (entry.isIntersecting) {
-                setShown(true);
-                obv.unobserve(current);
-            }
-        });
-        if (current) {
+        if (ref.current) {
+            let { current } = ref;
+            const observer = new IntersectionObserver(([entry], obv) => {
+                // Update our state when observer callback fires
+                if (entry.isIntersecting) {
+                    setShown(true);
+                    obv.unobserve(current);
+                }
+            });
             observer.observe(current);
+            return () => {
+                observer.unobserve(current);
+            };
         }
-        return () => {
-            observer.unobserve(current);
-        };
     }, []);
 
     useEffect(() => {

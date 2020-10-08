@@ -9,7 +9,7 @@ import SignInDrop from "./SignInDrop";
 import CountryLink from "../common/CountryLink";
 import { useCartCount } from "../../hooks/redux/checkout/useCart";
 
-const Hdr = styled.header`
+const Hdr = styled.div`
     border-bottom: 1px solid #eaeaea;
 `;
 
