@@ -22,7 +22,6 @@ const images = [
     require("./images/slider/6.jpg?resize"),
     require("./images/slider/7.jpg?resize"),
     require("./images/slider/8.jpg?resize"),
-    require("./images/slider/9.jpg?resize"),
 ];
 
 const Point = ({ dotBg, point = "" }) => {
@@ -30,7 +29,7 @@ const Point = ({ dotBg, point = "" }) => {
         <Col col={6}>
             <Flex margin="0px 0px 15px 0px" vertical alignItems="center">
                 <Dot bg={dotBg} />
-                <P textAlign="center" margin="0px 0px 15px 10px">
+                <P textAlign="center" margin="0px 0px 15px 0px">
                     {point}
                 </P>
             </Flex>
@@ -76,7 +75,10 @@ const MaskBundle = () => {
                             >
                                 {images.map((img, idx) => (
                                     <div key={idx} style={imgPadding}>
-                                        <ResponsiveImage image={img} alt="The Mask Bundle" />
+                                        <ResponsiveImage
+                                            image={img}
+                                            alt="The Mask Bundle"
+                                        />
                                     </div>
                                 ))}
                             </Carousel>
@@ -97,7 +99,7 @@ const MaskBundle = () => {
                 </Block>
                 <Container>
                     <Row>
-                        <Col md={8} mdOffset={2}>
+                        <Col md={6} mdOffset={3}>
                             <Row>
                                 <Point
                                     dotBg="#FFE7EF"
@@ -108,7 +110,6 @@ const MaskBundle = () => {
                                     point="Comfortable to use"
                                 />
                             </Row>
-                            <ResponsiveImage image={images[8]} alt="The Mask Bundle" />
                         </Col>
                     </Row>
                     <MaskBuy />
