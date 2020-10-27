@@ -37,9 +37,9 @@ const updatePagination = (state = pageInit, action) => {
             return {
                 ...state,
                 fetching: false,
-                allIds: state.allIds.concat(payload.ids),
+                allIds: state.count ? state.allIds.concat(payload.ids) : payload.ids,
                 count: payload.count,
-                next: payload.next,
+                next: payload.next, 
             };
         case pageTypes.rejected:
             return {
