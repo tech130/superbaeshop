@@ -9,10 +9,13 @@ import OrderIcon from "../icons/OrderIcon";
 import Block from "../styled/Block";
 import styled from "styled-components";
 import P from "../styled/P";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useDateFormat from "../../hooks/useDateFormat";
 import getAddress from "../../utils/getAddress";
 import OrderSummary from "./OrderSummary";
+import useSubmit from "../../hooks/http/useSubmit";
+import urls from "../../apiService/urls";
+import { updateOrders } from "../../redux/user/orders";
 
 const OrderImg = styled.img`
     width: 80px;
@@ -62,6 +65,13 @@ const DelP = styled.p`
     margin-bottom: 5px;
 `;
 
+const TrackBtn = styled(Button)`
+    background: #000;
+    color: #fff !important;
+    padding: 2px 20px;
+    margin: 10px 0px 0px 0px;
+`;
+
 const OrderItem = ({
     tracking_client_id = "",
     order_items = [],
@@ -74,6 +84,9 @@ const OrderItem = ({
     alt_dial_code = "",
     status = "",
     email = "",
+    track_url,
+    id,
+    awb_code,
     ...rest
 }) => {
     const created = useDateFormat(created_on, "lll");
@@ -140,18 +153,49 @@ const OrderItem = ({
                 </Row>
                 <OrderHr />
                 <OrderHeader alignItems="center" justifyContent="space-between">
-                    <Flex alignItems="center" padding="10px 0px 0px 0px">
-                        <Button
-                            margin="0px 10px 0px 0px"
-                            border="1px solid #e3e3e3"
-                            padding="2px 20px"
+                    <Button
+                        margin="10px 10px 0px 0px"
+                        border="1px solid #e3e3e3"
+                        padding="2px 20px"
+                    >
+                        {status}
+                    </Button>
+                    {track_url ? (
+                        <TrackBtn
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            as="a"
+                            href={track_url}
                         >
-                            {status}
-                        </Button>
-                    </Flex>
+                            Track Order
+                        </TrackBtn>
+                    ) : awb_code ? (
+                        <TrackOrder id={id} />
+                    ) : null}
                 </OrderHeader>
             </Container>
         </Block>
+    );
+};
+
+const TrackOrder = ({ id }) => {
+    const dispatch = useDispatch();
+    const [fetching, submit] = useSubmit((data) => {
+        dispatch(updateOrders(data));
+        window.open(data.track_url, "_blank");
+    });
+
+    const onClick = () => {
+        submit({
+            url: urls.trackOrder(id),
+            method: "GET",
+        });
+    };
+
+    return (
+        <TrackBtn onClick={onClick} disabled={fetching}>
+            {fetching ? "Loading..." : "Track Order"}
+        </TrackBtn>
     );
 };
 

@@ -1,6 +1,6 @@
 import { ADD_ENTITIES } from "../addEntity";
 import merge from "lodash.merge";
-import { schema } from "normalizr";
+import { normalize, schema } from "normalizr";
 import { fetchData, clearPagi, fetchNextPage } from "../pagination";
 import urls from "../../apiService/urls";
 
@@ -13,6 +13,14 @@ export const fetchOrders = () =>
 export const fetchMoreOrders = () => fetchNextPage(orderListName, orderSchema);
 
 export const clearOrders = () => clearPagi(orderListName);
+
+export const updateOrders = (payload) => {
+    const { entities } = normalize(payload, orderSchema);
+    return {
+        type: ADD_ENTITIES,
+        payload: entities,
+    };
+};
 
 //order
 export default (state = {}, action) => {

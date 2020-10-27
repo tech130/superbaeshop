@@ -20,6 +20,7 @@ const urls = {
     cod: (id) => `orders/cod-confirm/${id}/`,
     paymentSuccess: "orders/payment-success/",
     myOrders: "orders/",
+    trackOrder: (id) => `orders/order-tracking/${id}/`,
     // others
     newsletter: "others-api/newsletter/",
     terms: "others-api/html-content/1/",
