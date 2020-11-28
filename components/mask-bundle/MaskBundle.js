@@ -21,7 +21,6 @@ const images = [
     require("./images/slider/5.jpg?resize"),
     require("./images/slider/6.jpg?resize"),
     require("./images/slider/7.jpg?resize"),
-    require("./images/slider/8.jpg?resize"),
 ];
 
 const Point = ({ dotBg, point = "" }) => {
