@@ -1,6 +1,7 @@
 import React from "react";
 import Portal from "../common/Portal";
 import styled from "styled-components";
+import useProduct from "../../hooks/redux/product/useProduct";
 
 const WhatsAppLink = styled.a`
     position: fixed;
@@ -18,12 +19,16 @@ const WhatsAppLink = styled.a`
     }
 `;
 
-const WhatsAppIcon = () => {
+const WhatsAppIcon = ({ slug = "" }) => {
+    const product = useProduct(slug);
+    const number =
+        product && product.support_number ? product.support_number : "919600999559";
+
     return (
         <Portal id="whatsapp-icon">
             <WhatsAppLink
                 className="whatsIcon"
-                href="https://wa.me/919600999559"
+                href={`https://wa.me/${number}`}
                 target="_blank"
                 rel="noopener noreferrer"
             >

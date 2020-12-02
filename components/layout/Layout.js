@@ -40,7 +40,7 @@ const Layout = ({ children, slug, isAuthRoute = false }) => {
             {children}
             <Subscribe />
             <Footer />
-            <WhatsAppIcon />
+            <WhatsAppIcon slug={slug} />
         </>
     );
 };
