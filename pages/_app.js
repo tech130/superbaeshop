@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-import "../css/fonts.css";
-import "../css/bootstrap-reboot.css";
-import "../css/bootstrap-grid.css";
-import "../css/theme.css";
-=======
 import React from "react";
 import { Provider } from "react-redux";
->>>>>>> release-1
 import Head from "next/head";
 import Router from "next/router";
 import NProgress from "nprogress";
@@ -36,17 +29,11 @@ function MyApp({ Component, pageProps, store }) {
         <Provider store={store}>
             <Head>
                 <title>Space and Beauty</title>
-<<<<<<< HEAD
-                <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-                <meta name="google-site-verification" content="pEYMGCIpxWCLypHxcXKh8xGrRQdVzWFRClgOUr9oR0w" />
-=======
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
->>>>>>> release-1
             </Head>
             <GlobalStyle />
             <BaseCSS />
