@@ -37,13 +37,13 @@ const MaskDetailsItem = ({ id, thumbnailImage, title }) => {
                 </Block>
                 <Button
                     onClick={onClick}
-                    padding="2px 10px"
+                    padding="5px 20px"
                     border="1px solid #cecece"
                     margin="5px 0px"
                     textDecor="underline"
-                    borderRadius="15px"
+                    borderRadius="20px"
                 >
-                    <Txt fontSize="12px">ADD TO CART</Txt>
+                    <Txt fontSize="13px" weight={500}>ADD TO CART</Txt>
                 </Button>
             </FlexItem>
         </CartStyl>
