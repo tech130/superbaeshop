@@ -57,7 +57,7 @@ const MaskAddOn = () => {
         return (
             <Block>
                 <Block margin="10px 0px">
-                    <Txt weight={500}>Stay Safe from COVID-19</Txt>
+                    <Txt weight={500}>Frequently bought together</Txt>
                 </Block>
                 <MaskDetailsItem id={id} thumbnailImage={thumbnail_image} title={title} />
             </Block>
