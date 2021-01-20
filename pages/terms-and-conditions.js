@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import TermsContent from "../components/static-content/TermsContent";
 
-export default () => {
+export default function Terms() {
     return (
         <>
             <header className="header">
@@ -53,4 +53,4 @@ export default () => {
             `}</style>
         </>
     );
-};
+}

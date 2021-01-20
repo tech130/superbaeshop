@@ -9,7 +9,9 @@ const addr = [
     "postal_code",
 ];
 
-export default (val = {}) =>
+const getAddress = (val = {}) =>
     addr
         .reduce((acc, cur) => (val[cur] ? [...acc, val[cur]] : acc), [])
         .join(", ");
+
+export default getAddress;
