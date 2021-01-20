@@ -1,0 +1,132 @@
+import { fetchApi } from "../apiData";
+import urls from "../../apiService/urls";
+import { normalize } from "normalizr";
+import { addEntity, ADD_ENTITIES } from "../addEntity";
+import { cartSchema } from "../product/schema";
+import merge from "lodash.merge";
+import canUseDom from "../../utils/canUseDom";
+
+export const cartTyps = {
+    load: "cart/load",
+    update: "cart/update",
+    clear: "cart/clear",
+};
+
+export const loadCartList = (payload) => {
+    const { result, entities } = normalize(payload, [cartSchema]);
+    return (dispatch) => {
+        dispatch(addEntity(entities));
+        dispatch({
+            type: cartTyps.load,
+            payload: Array.isArray(result) ? result : [],
+        });
+    };
+};
+
+export const updateCartList = (payload) => {
+    const { result, entities } = normalize(payload, [cartSchema]);
+    return (dispatch, getState) => {
+        dispatch(addEntity(entities));
+        const cartList = getState().cartList;
+        const cart = getState().cart;
+        const removeProducts = cartList.reduce((acc, cur) => {
+            if (result.includes(cur)) {
+                return acc;
+            }
+            if (cart[cur] && cart[cur].product) {
+                return {
+                    ...acc,
+                    [`${cart[cur].product}`]: {
+                        in_cart: null,
+                    },
+                };
+            }
+            return acc;
+        }, {});
+        dispatch(addEntity({ product: removeProducts }));
+        dispatch({
+            type: cartTyps.load,
+            payload: Array.isArray(result) ? result : [],
+        });
+    };
+};
+
+export const fetchCart = () => {
+    return (dispatch, getState) => {
+        if (!getState().cartList.length) {
+            return dispatch(
+                fetchApi({ url: urls.cart }, `cartList`, loadCartList)
+            );
+        }
+        return Promise.resolve();
+    };
+};
+
+export const fetchCartAlways = () => {
+    return (dispatch) => {
+        return dispatch(fetchApi({ url: urls.cart }, `cartList`, loadCartList));
+    };
+};
+
+export const UPLOAD_LOCAL_CART_APIDATA_KEY = "uploadLocalCart";
+
+
+export const localCartUploadSucc = (payload) => {
+    if (canUseDom) {
+        window.location.reload();
+    }
+    return (dispatch) => dispatch(loadCartList(payload));
+};
+
+export const uploadLocalCart = () => {
+    return (dispatch, getState) => {
+        const data = getState().local_cart.map((x) => {
+            return {
+                product_id: x.product,
+                quantity: x.quantity,
+            };
+        });
+        return dispatch(
+            fetchApi(
+                { url: urls.cart, method: "POST", data },
+                `uploadLocalCart`,
+                localCartUploadSucc
+            )
+        );
+    };
+};
+
+export const clearCart = () => {
+    return {
+        type: cartTyps.clear,
+    };
+};
+
+const update = (state, payload) => {
+    return [...new Set(state.concat(payload).filter((x) => !!x))];
+};
+
+export const cartList = (state = [], action) => {
+    switch (action.type) {
+        case cartTyps.load:
+            return action.payload;
+        case cartTyps.update:
+            return update(state, action.payload);
+        case cartTyps.clear:
+            return [];
+        default:
+            return state;
+    }
+};
+
+//cart list
+export default (state = {}, action) => {
+    switch (action.type) {
+        case ADD_ENTITIES:
+            return merge({}, state, action.payload.cart || {});
+        case cartTyps.clear:
+            return {};
+        default:
+            return state;
+    }
+};

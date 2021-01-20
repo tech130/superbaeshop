@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import Link from "next/link";
 
@@ -110,3 +111,9 @@ const Home = () => {
 };
 
 export default Home;
+=======
+import Bundle from "../components/bundle/Bundle";
+import ProductPage from "../components/product/ProductPage";
+
+export default ProductPage("bundle-2021", Bundle);
+>>>>>>> release-1

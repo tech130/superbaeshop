@@ -1,74 +1,98 @@
 import React from "react";
 import CartIcon from "../icons/CartIcon";
-import Link from "next/link";
+import Flex from "../styled/Flex";
+import styled from "styled-components";
+import { Container } from "styled-bootstrap-grid";
+import Ul from "../styled/Ul";
+import CountryList from "./CountryList";
+import SignInDrop from "./SignInDrop";
+import CountryLink from "../common/CountryLink";
+import { useCartCount } from "../../hooks/redux/checkout/useCart";
+
+const Hdr = styled.div`
+    border-bottom: 1px solid #eaeaea;
+`;
+
+const Hdrli = styled.li`
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+`;
+
+const CartCountStl = styled.span`
+    display: inline-block;
+    text-align: center;
+    border-radius: 16px;
+    line-height: 16px;
+    height: 16px;
+    min-width: 16px;
+    background: #000;
+    color: #fff;
+    font-size: 10px;
+    position: absolute;
+    top: 2px;
+    left: 12px;
+`;
+
+const HeaderLogo = styled.img`
+    height: 25px;
+
+    @media only screen and (min-width: 575px) {
+        height: 30px;
+    }
+`;
 
 const Header = () => {
     return (
         <>
-            <header className="header">
-                <div className="container">
-                    <nav className="d-flex justify-content-between align-items-center header-height">
-                        <Link href="/">
-                            <a className="logo">
-                                <img src="/images/logo.png" />
-                            </a>
-                        </Link>
-                        {/* <ul className="nav-list">
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">Products</a>
-                            </li>
-                            <li>
-                                <a href="#">Privacy</a>
-                            </li>
-                            <li>
-                                <a href="#">Terms & Conditions</a>
-                            </li>
-                        </ul> */}
-                        <a href="#">
-                            <CartIcon size={22} />
-                        </a>
-                    </nav>
-                </div>
-            </header>
-            <style jsx>{`
-                .header {
-                    background: #fff;
-                    border-bottom: 1px solid var(--theme-border);
-                }
-                .header-height {
-                    min-height: 60px;
-                }
-                .logo {
-                    flex: 0 0 220px;
-                }
-                .logo img {
-                    width: 100%;
-                }
-                .nav-list {
-                    flex: 1;
-                    list-style: none;
-                    display: flex;
-                    align-items: center;
-                    margin: 0;
-                    padding: 0;
-                    justify-content: space-evenly;
-                }
-                .nav-list li a {
-                    color: #000;
-                    padding: 0px 20px;
-                    font-size: 16px;
-                    font-weight: 600;
-                }
-                .nav-list li a:hover {
-                    color: #000;
-                    text-decoration: none;
-                }
-            `}</style>
+            <Hdr>
+                <Container>
+                    <Flex
+                        as="nav"
+                        justifyContent="space-between"
+                        alignItems="center"
+                        minHeight="50px"
+                    >
+                        <CountryLink>
+                            <picture>
+                                <source
+                                    media="(min-width:575px)"
+                                    srcSet="/images/logo.png"
+                                />
+                                <HeaderLogo
+                                    src={`/images/logo-small.png`}
+                                    alt="space and beauty logo"
+                                />
+                            </picture>
+                        </CountryLink>
+                        <Ul alignItems="stretch">
+                            <Hdrli>
+                                <CountryLink href="/checkout">
+                                    <CartCount />
+                                    <CartIcon size={20} />
+                                </CountryLink>
+                            </Hdrli>
+                            <Hdrli>
+                                <SignInDrop />
+                            </Hdrli>
+                            <Hdrli>
+                                <CountryList />
+                            </Hdrli>
+                        </Ul>
+                    </Flex>
+                </Container>
+            </Hdr>
         </>
     );
+};
+
+const CartCount = () => {
+    const count = useCartCount();
+    if (!count) {
+        return null;
+    }
+    return <CartCountStl>{count || 0}</CartCountStl>;
 };
 
 export default Header;
