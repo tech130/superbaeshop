@@ -15,7 +15,7 @@ import urls from "../../apiService/urls";
 import Loader from "../form/Loader";
 import { updateCartList } from "../../redux/user/cart";
 
-const CartStyl = styled(Flex)`
+export const CartStyl = styled(Flex)`
     padding: 10px;
     border: solid 2px #f5f5f5;
     border-radius: 10px;
@@ -23,7 +23,7 @@ const CartStyl = styled(Flex)`
     position: relative;
 `;
 
-const CartLdr = styled.div`
+export const CartLdr = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -66,7 +66,6 @@ const CartItem = ({
                 src={product.thumbnail_image}
                 alt=""
             />
-
             <FlexItem flexGrow={1} flexShrink={0}>
                 <P margin="0px" weight={500} fontSize="16px">
                     {product.title}
@@ -209,7 +208,7 @@ const CartRemoveBtn = ({ onClick }) => {
     );
 };
 
-const CartPrice = ({ quantity = 0, productCountry }) => {
+export const CartPrice = ({ quantity = 0, productCountry }) => {
     if (
         productCountry &&
         productCountry.country &&

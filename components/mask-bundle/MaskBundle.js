@@ -10,8 +10,7 @@ import { ProductPrices } from "../product/ProductPrice";
 import ProductBuy from "../product/ProductBuy";
 import Carousel from "nuka-carousel";
 import ResponsiveImage from "../common/ResponsiveImage";
-
-const slug = "face-mask-bundle";
+import slug from "./slug";
 
 const images = [
     require("./images/slider/1.jpg?resize"),

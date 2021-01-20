@@ -20,7 +20,12 @@ export const GotoCart = () => {
     );
 };
 
-export const AddToLocalCart = ({ className = "", productId, isPreOrder, slug }) => {
+export const AddToLocalCart = ({
+    className = "",
+    productId,
+    isPreOrder,
+    slug,
+}) => {
     const dispatch = useDispatch();
     const inCart = useSelector(
         (state) =>
@@ -44,7 +49,7 @@ export const AddToLocalCart = ({ className = "", productId, isPreOrder, slug }) 
     );
 };
 
-const AddToCart = ({ className = "", productId, isPreOrder, inCart }) => {
+export const useAddToCart = (productId, quantity = 1) => {
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
@@ -57,11 +62,17 @@ const AddToCart = ({ className = "", productId, isPreOrder, inCart }) => {
             data: [
                 {
                     product_id: productId,
-                    quantity: 1,
+                    quantity,
                 },
             ],
         });
     }, [productId]);
+
+    return { fetching, onClick };
+};
+
+const AddToCart = ({ className = "", productId, isPreOrder, inCart }) => {
+    const { fetching, onClick } = useAddToCart(productId);
 
     if (inCart && inCart.quantity) {
         return <GotoCart />;
@@ -88,13 +99,17 @@ const ProductBuyBtn = ({ productId, isPreOrder, inCart, slug }) => {
             />
         );
     }
-    return <AddToLocalCart productId={productId} isPreOrder={isPreOrder} slug={slug} />;
+    return (
+        <AddToLocalCart
+            productId={productId}
+            isPreOrder={isPreOrder}
+            slug={slug}
+        />
+    );
 };
 
 const ProductBuy = ({ slug }) => {
-    const { id, is_pre_order, in_cart, product_country } = useProduct(
-        slug
-    );
+    const { id, is_pre_order, in_cart, product_country } = useProduct(slug);
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {

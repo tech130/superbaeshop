@@ -16,6 +16,7 @@ import Txt from "../styled/Txt";
 import Block from "../styled/Block";
 import CartEmpty from "./CartEmpty";
 import LoginModalBtn from "../layout/LoginModalBtn";
+import MaskAddOn from "./MaskAddOn";
 
 const Cartlist = () => {
     const { token } = useUser();
@@ -167,6 +168,7 @@ const CartListWithForm = ({ list = [] }) => {
                 {list.map((item) => (
                     <MyCartItem {...item} key={item.id} />
                 ))}
+                <MaskAddOn />
             </Col>
             <Col lg={5}>
                 {cartSummary.impure ? (
