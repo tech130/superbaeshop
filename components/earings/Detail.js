@@ -21,7 +21,7 @@ const Detail = () => {
                         <H3 as="h1">The Goldie Earrings</H3>
                         <P fontSize="0.85rem">
                             The Goldie are the short, chunky earrings with
-                            golden finish to shine bright with every outfit.
+                            golden finish to shine bright with every outfit
                         </P>
                         <Block>
                             <Txt weight={600}>Features</Txt>
