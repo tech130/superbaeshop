@@ -23,11 +23,11 @@ export const updateOrders = (payload) => {
 };
 
 //order
-export default (state = {}, action) => {
+export default function orders(state = {}, action) {
     switch (action.type) {
         case ADD_ENTITIES:
             return merge({}, state, action.payload.order || {});
         default:
             return state;
     }
-};
+}

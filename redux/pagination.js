@@ -88,11 +88,11 @@ export const fetchNextPage = (name, schema) => {
 
 export const fetchFirstPage = (name, config, schema) => {
     return (dispatch, getState) => {
-        const { count } = getState().pagination[name] || {};
-        if (!count) {
-            return dispatch(fetchData(name, config, schema));
+        const { allIds } = getState().pagination[name] || {};
+        if (Array.isArray(allIds) && allIds.length > 0) {
+            return Promise.resolve();
         }
-        return Promise.resolve();
+        return dispatch(fetchData(name, config, schema));
     };
 };
 

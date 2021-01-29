@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
-const CountryLink = ({ children, className, href = "", as = "" }) => {
+const CountryLink = ({ children, className, href = "", asUrl = "" }) => {
     const country = useCountryParam();
 
     return (
-        <Link href={`/[country]${href}`} as={`/${country}${as || href}`}>
+        <Link href={`/[country]${href}`} as={`/${country}${asUrl || href}`}>
             <a className={className}>{children}</a>
         </Link>
     );

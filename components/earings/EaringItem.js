@@ -32,7 +32,10 @@ const EaringLink = styled(CountryLink)`
 const EaringItem = ({ thumbnail_image, title, slug }) => {
     return (
         <Block margin="0px 0px 25px 0px">
-            <EaringLink href="/product/earings/detail">
+            <EaringLink
+                href="/product/earings/[earingSlug]"
+                asUrl={`/product/earings/${slug}`}
+            >
                 <ImgCon>
                     <Img src={thumbnail_image} />
                 </ImgCon>
