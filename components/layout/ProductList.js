@@ -47,7 +47,7 @@ const ProdItem = ({ slug }) => {
     const { title } = useProduct(slug);
 
     if (slug && title) {
-        return <ProdLink slug={title} title={title} />;
+        return <ProdLink slug={slug} title={title} />;
     }
 
     return null;
