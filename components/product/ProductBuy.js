@@ -1,126 +1,120 @@
 import React, { useCallback } from "react";
 import useProduct from "../../hooks/redux/product/useProduct";
 import { useProdCountry, useCountryParam } from "../common/CountryLink";
-import { CartButton } from "../styled/Button";
+import Button from "../styled/Button";
 import useUser from "../../hooks/redux/user/useUser";
 import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
 import { addToLocalCart } from "../../redux/user/local_cart";
 import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
+import { useRouter } from "next/router";
+import styled from "styled-components";
 
-export const GotoCart = () => {
+export const getBtnText = (
+    inCart = false,
+    isPreOrder = false,
+    fetching = false
+) =>
+    inCart
+        ? "Go to Cart"
+        : isPreOrder
+        ? "Pre Order"
+        : `Add${fetching ? "ing" : ""} To Cart`;
+
+export const useGotoCart = () => {
     const country = useCountryParam();
-
-    return (
-        <Link href="/[country]/checkout" as={`/${country}/checkout`}>
-            <CartButton>Go to Cart</CartButton>
-        </Link>
-    );
+    const router = useRouter();
+    return useCallback(() => {
+        router.push("/[country]/checkout", `/${country}/checkout`);
+    }, [country]);
 };
 
-export const AddToLocalCart = ({
-    className = "",
-    productId,
-    isPreOrder,
-    slug,
-}) => {
-    const dispatch = useDispatch();
-    const inCart = useSelector(
-        (state) =>
-            state.local_cart.filter((item) => item.product === productId)
-                .length > 0
-    );
-
-    const onClick = useCallback(() => {
-        if (!inCart) {
-            dispatch(addToLocalCart(productId, slug));
-        }
-    }, []);
-
-    if (inCart) {
-        return <GotoCart />;
-    }
-    return (
-        <CartButton className={className} onClick={onClick}>
-            {isPreOrder ? "Pre Order" : "Add to cart"}
-        </CartButton>
-    );
-};
-
-export const useAddToCart = (productId, quantity = 1) => {
+export const useAddToCartApi = ({ id, in_cart, is_pre_order }) => {
+    const goToCart = useGotoCart();
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
     });
 
-    const onClick = useCallback(() => {
+    const inCart = in_cart && in_cart.quantity;
+
+    const onAddToCart = useCallback(() => {
         submit({
             url: urls.cart,
             method: "POST",
             data: [
                 {
-                    product_id: productId,
-                    quantity,
+                    product_id: id,
+                    quantity: 1,
                 },
             ],
         });
-    }, [productId]);
+    }, [id]);
 
-    return { fetching, onClick };
+    return {
+        fetching,
+        inCart,
+        onClick: inCart ? goToCart : onAddToCart,
+        btnText: getBtnText(inCart, is_pre_order, fetching),
+        isPreOrder: is_pre_order,
+    };
 };
 
-const AddToCart = ({ className = "", productId, isPreOrder, inCart }) => {
-    const { fetching, onClick } = useAddToCart(productId);
-
-    if (inCart && inCart.quantity) {
-        return <GotoCart />;
-    }
-    return (
-        <CartButton disabled={fetching} className={className} onClick={onClick}>
-            {fetching
-                ? "Adding to cart"
-                : isPreOrder
-                ? "Pre order"
-                : "Add to cart"}
-        </CartButton>
+export const useAddToLocalCart = ({ id, slug, is_pre_order }) => {
+    const goToCart = useGotoCart();
+    const dispatch = useDispatch();
+    const inCart = useSelector(
+        (state) =>
+            state.local_cart.filter((item) => item.product === id).length > 0
     );
+
+    const onAddToLocalCart = useCallback(() => {
+        if (!inCart) {
+            dispatch(addToLocalCart(id, slug));
+        }
+    }, []);
+
+    return {
+        fetching: false,
+        inCart,
+        onClick: inCart ? goToCart : onAddToLocalCart,
+        btnText: getBtnText(inCart, is_pre_order),
+        isPreOrder: is_pre_order,
+    };
 };
 
-const ProductBuyBtn = ({ productId, isPreOrder, inCart, slug }) => {
+export const useAddToCart = (product) => {
     const { token } = useUser();
-    if (token) {
-        return (
-            <AddToCart
-                productId={productId}
-                inCart={inCart}
-                isPreOrder={isPreOrder}
-            />
-        );
-    }
+    return token ? useAddToCartApi(product) : useAddToLocalCart(product);
+};
+
+export const AddToCart = ({ className = "", product = {} }) => {
+    const { onClick, fetching, btnText } = useAddToCart(product);
+
     return (
-        <AddToLocalCart
-            productId={productId}
-            isPreOrder={isPreOrder}
-            slug={slug}
-        />
+        <Button disabled={fetching} className={className} onClick={onClick}>
+            {btnText}
+        </Button>
     );
 };
+
+export const CartButton = styled(AddToCart)`
+    padding: 8px 30px;
+    border-radius: 30px;
+    background-color: #000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
+`;
 
 const ProductBuy = ({ slug }) => {
-    const { id, is_pre_order, in_cart, product_country } = useProduct(slug);
-    const productCountry = useProdCountry(product_country);
+    const product = useProduct(slug);
+    const productCountry = useProdCountry(product.product_country);
 
-    if (id && productCountry && productCountry.country) {
-        return (
-            <ProductBuyBtn
-                slug={slug}
-                productId={id}
-                inCart={in_cart}
-                isPreOrder={is_pre_order}
-            />
-        );
+    if (productCountry && productCountry.country) {
+        return <CartButton product={product} />;
     }
     return null;
 };

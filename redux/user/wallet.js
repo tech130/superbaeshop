@@ -1,14 +1,14 @@
 import { ADD_ENTITIES } from "../addEntity";
 import merge from "lodash.merge";
 import { schema } from "normalizr";
-import { fetchData, clearPagi, fetchNextPage } from "../pagination";
+import { fetchFirstPage, clearPagi, fetchNextPage } from "../pagination";
 import urls from "../../apiService/urls";
 
 export const walletListName = "walletList";
 export const orderSchema = new schema.Entity("wallet");
 
 export const fetchWallet = () =>
-    fetchData(walletListName, { url: urls.wallet }, orderSchema);
+    fetchFirstPage(walletListName, { url: urls.wallet }, orderSchema);
 
 export const fetchMoreWallet = () => fetchNextPage(walletListName, orderSchema);
 

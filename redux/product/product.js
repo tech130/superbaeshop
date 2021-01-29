@@ -27,7 +27,7 @@ export const fetchHeaderProducts = () => {
         if (!getState().headerProducts.length) {
             return dispatch(
                 fetchApi(
-                    { url: urls.products },
+                    { url: urls.headerProducts },
                     `headerProducts`,
                     loadHeaderProducts
                 )
@@ -82,7 +82,7 @@ const clearCart = (state) => {
 };
 
 //product reducer
-export default (state = {}, action) => {
+export default function product(state = {}, action) {
     switch (action.type) {
         case ADD_ENTITIES:
             return merge({}, state, action.payload.product || {});
@@ -91,4 +91,4 @@ export default (state = {}, action) => {
         default:
             return state;
     }
-};
+}

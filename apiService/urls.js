@@ -1,5 +1,5 @@
 const urls = {
-    baseURL: "https://api.spaceandbeauty.com/",
+    baseURL: "https://spaceandbeauty.billiontags.com/",
     //user
     logout: "auth/logout/",
     myProfile: "users/",
@@ -8,6 +8,7 @@ const urls = {
     //master
     master: "master-values/",
     //product
+    headerProducts: "products/home_products/",
     products: "products/",
     productDetail: (id) => `products/${id}/`,
     //cart

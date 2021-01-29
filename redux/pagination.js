@@ -37,9 +37,11 @@ const updatePagination = (state = pageInit, action) => {
             return {
                 ...state,
                 fetching: false,
-                allIds: state.count ? state.allIds.concat(payload.ids) : payload.ids,
+                allIds: state.count
+                    ? state.allIds.concat(payload.ids)
+                    : payload.ids,
                 count: payload.count,
-                next: payload.next, 
+                next: payload.next,
             };
         case pageTypes.rejected:
             return {
@@ -81,6 +83,16 @@ export const fetchNextPage = (name, schema) => {
             return dispatch(fetchData(name, { url: next }, schema));
         }
         return Promise.resolve();
+    };
+};
+
+export const fetchFirstPage = (name, config, schema) => {
+    return (dispatch, getState) => {
+        const { allIds } = getState().pagination[name] || {};
+        if (Array.isArray(allIds) && allIds.length > 0) {
+            return Promise.resolve();
+        }
+        return dispatch(fetchData(name, config, schema));
     };
 };
 

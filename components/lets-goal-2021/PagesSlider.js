@@ -7,6 +7,8 @@ import Carousel from "nuka-carousel";
 import Button from "../styled/Button";
 import useOnScreen from "../../hooks/layout/useOnScreen";
 import ResponsiveImage from "../common/ResponsiveImage";
+import LeftIcon from "../icons/LeftIcon";
+import RightIcon from "../icons/RightIcon";
 
 const PagesSlider = () => {
     const ref = useRef(null);
@@ -25,12 +27,8 @@ const PagesSlider = () => {
                     <Col lg={10} lgOffset={1}>
                         <div ref={ref}>
                             <Carousel
-                                renderCenterLeftControls={({
-                                    previousSlide,
-                                }) => <LeftBtn onClick={previousSlide} />}
-                                renderCenterRightControls={({ nextSlide }) => (
-                                    <RightBtn onClick={nextSlide} />
-                                )}
+                                renderCenterLeftControls={LeftBtn}
+                                renderCenterRightControls={RightBtn}
                                 slidesToShow={1}
                                 autoplay={onScreen}
                                 wrapAround
@@ -70,42 +68,18 @@ const PagesSlider = () => {
     );
 };
 
-const LeftBtn = ({ onClick }) => {
+const LeftBtn = ({ previousSlide }) => {
     return (
-        <Button onClick={onClick}>
-            <svg
-                viewBox="0 0 24 24"
-                width="34"
-                height="34"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            >
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
+        <Button onClick={previousSlide}>
+            <LeftIcon size={34} />
         </Button>
     );
 };
 
-const RightBtn = ({ onClick }) => {
+const RightBtn = ({ nextSlide }) => {
     return (
-        <Button onClick={onClick}>
-            <svg
-                viewBox="0 0 24 24"
-                width="34"
-                height="34"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            >
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+        <Button onClick={nextSlide}>
+            <RightIcon size={34} />
         </Button>
     );
 };

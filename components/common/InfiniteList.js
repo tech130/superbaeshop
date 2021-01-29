@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { Col } from "styled-bootstrap-grid";
 import useOnScreen from "../../hooks/layout/useOnScreen";
 import EmptyList from "./EmptyList";
 
@@ -19,7 +20,9 @@ const InfiniteList = ({
                     <RenderItem id={item} key={item + "---" + idx} />
                 ))
             ) : count === 0 ? (
-                <EmptyList title={emptyTitle} />
+                <Col md={12}>
+                    <EmptyList title={emptyTitle} />
+                </Col>
             ) : null}
             {fetching ? loader : next ? <LoadMore loadMore={loadMore} /> : null}
         </>
