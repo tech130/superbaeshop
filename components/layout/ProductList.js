@@ -19,23 +19,7 @@ const ProdList = styled(Flex)`
     }
 `;
 
-const ProductList = () => {
-    const state = useSelector((state) => state.headerProducts);
-
-    return (
-        <header>
-            <ProdList as="nav" justifyContent="center" alignItems="stretch">
-                <ul>
-                    {state.map((id) => (
-                        <ProdItem id={id} key={id} />
-                    ))}
-                </ul>
-            </ProdList>
-        </header>
-    );
-};
-
-const ProdLink = styled.a`
+const ProdLinkStl = styled.a`
     display: inline-block;
     padding: 10px 25px;
     color: #000;
@@ -45,23 +29,43 @@ const ProdLink = styled.a`
     border-bottom: ${(props) => (props.isActive ? "2px solid #000" : "none")};
 `;
 
-const ProdItem = ({ id }) => {
+const ProdLink = ({ slug, title }) => {
     const { asPath, query } = useRouter();
     const { country } = query;
-    const { slug, title } = useProduct(id);
+    const as = `/${country || DEFAULT_COUNTRY}/product/${slug}`;
+
+    return (
+        <li>
+            <Link passHref href={`/[country]/product/${slug}`} as={as}>
+                <ProdLinkStl isActive={as === asPath}>{title}</ProdLinkStl>
+            </Link>
+        </li>
+    );
+};
+
+const ProdItem = ({ slug }) => {
+    const { title } = useProduct(slug);
 
     if (slug && title) {
-        const as = `/${country || DEFAULT_COUNTRY}/product/${slug}`;
-        return (
-            <li>
-                <Link passHref href={`/[country]/product/${slug}`} as={as}>
-                    <ProdLink isActive={as === asPath}>{title}</ProdLink>
-                </Link>
-            </li>
-        );
+        return <ProdLink slug={title} title={title} />;
     }
 
     return null;
+};
+
+const ProductList = () => {
+    const state = useSelector((state) => state.headerProducts);
+
+    return (
+        <ProdList as="nav" justifyContent="center" alignItems="stretch">
+            <ul>
+                <ProdLink slug="earings" title="Earings" />
+                {state.map((slug) => (
+                    <ProdItem slug={slug} key={slug} />
+                ))}
+            </ul>
+        </ProdList>
+    );
 };
 
 export default ProductList;
