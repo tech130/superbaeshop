@@ -71,8 +71,8 @@ const EaringItem = ({ product = {} }) => {
     return (
         <Block margin="0px 0px 25px 0px">
             <EaringLink
-                href="/product/earings/[earingSlug]"
-                asUrl={`/product/earings/${slug}`}
+                href="/product/earrings/[earingSlug]"
+                asUrl={`/product/earrings/${slug}`}
             >
                 <ImgCon>
                     <Img src={thumbnail_image} />

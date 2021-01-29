@@ -10,6 +10,8 @@ import Txt from "../styled/Txt";
 import { ProductPrices } from "../product/ProductPrice";
 import { CartBtn } from "./EaringItem";
 import Carousel from "nuka-carousel";
+import RightIcon from "../icons/RightIcon";
+import LeftIcon from "../icons/LeftIcon";
 
 const FeatureList = styled.ul`
     list-style: none;
@@ -43,6 +45,22 @@ const MainImg = styled.img`
     width: 100%;
 `;
 
+const LeftBtn = ({ previousSlide }) => {
+    return (
+        <Button onClick={previousSlide}>
+            <LeftIcon size={24} />
+        </Button>
+    );
+};
+
+const RightBtn = ({ nextSlide }) => {
+    return (
+        <Button onClick={nextSlide}>
+            <RightIcon size={24} />
+        </Button>
+    );
+};
+
 const Detail = ({ slug }) => {
     const product = useProduct(slug);
     const {
@@ -60,8 +78,9 @@ const Detail = ({ slug }) => {
                     <Col md={6}>
                         <MainImgCon>
                             <Carousel
-                                renderCenterLeftControls={null}
-                                renderCenterRightControls={null}
+                                renderCenterLeftControls={LeftBtn}
+                                renderCenterRightControls={RightBtn}
+                                renderBottomCenterControls={null}
                             >
                                 <MainImg src={thumbnail_image} alt={title} />
                                 {product_images.map((x) => (
