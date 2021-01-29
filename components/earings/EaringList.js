@@ -4,7 +4,7 @@ import { Col, Container, Row } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import { H3 } from "../styled/Headings";
 import P from "../styled/P";
-import EaringItem from "./EaringItem";
+import EaringItem, { ItemLoader } from "./EaringItem";
 import InfiniteList from "../common/InfiniteList";
 import {
     earingListName,
@@ -15,14 +15,28 @@ import {
 import useProduct from "../../hooks/redux/product/useProduct";
 
 const RenderItem = ({ id }) => {
-    const data = useProduct(id);
+    const product = useProduct(id);
 
     return (
         <Col md={3}>
-            <EaringItem {...data} />
+            <EaringItem product={product} />
         </Col>
     );
 };
+
+const loader = (
+    <>
+        <Col md={3}>
+            <ItemLoader />
+        </Col>
+        <Col md={3}>
+            <ItemLoader />
+        </Col>
+        <Col md={3}>
+            <ItemLoader />
+        </Col>
+    </>
+);
 
 const EaringList = () => {
     const dispatch = useDispatch();
@@ -46,7 +60,7 @@ const EaringList = () => {
                 <P fontSize="14px">Cheerful and bright just like your vibes.</P>
                 <Row>
                     <InfiniteList
-                        loader={null}
+                        loader={loader}
                         RenderItem={RenderItem}
                         loadMore={loadMore}
                         emptyTitle="No products found"
