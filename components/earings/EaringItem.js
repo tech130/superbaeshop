@@ -45,6 +45,13 @@ const EaringLink = styled(CountryLink)`
     }
 `;
 
+const Title = styled.div`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+`;
+
 export const CartBtn = styled(AddToCart)`
     font-size: 14px;
     text-transform: uppercase;
@@ -78,7 +85,7 @@ const EaringItem = ({ product = {} }) => {
                     <Img src={thumbnail_image} />
                 </ImgCon>
                 <Block>
-                    <Txt weight={600}>{title}</Txt>
+                    <Title>{title}</Title>
                 </Block>
             </EaringLink>
             {productCountry && productCountry.country && (
