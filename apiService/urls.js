@@ -8,6 +8,7 @@ const urls = {
     //master
     master: "master-values/",
     //product
+    headerProducts: "products/home_products/",
     products: "products/",
     productDetail: (id) => `products/${id}/`,
     //cart
