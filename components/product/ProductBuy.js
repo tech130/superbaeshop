@@ -10,6 +10,45 @@ import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
 
+export const useAddToCart = (productId) => {
+    const dispatch = useDispatch();
+    const [fetching, submit] = useSubmit((data) => {
+        dispatch(updateCartList(data));
+    });
+
+    const onAddToCart = useCallback(() => {
+        submit({
+            url: urls.cart,
+            method: "POST",
+            data: [
+                {
+                    product_id: productId,
+                    quantity: 1,
+                },
+            ],
+        });
+    }, [productId]);
+
+    return [fetching, onAddToCart];
+};
+
+export const useAddToLocalCart = (productId, slug) => {
+    const dispatch = useDispatch();
+    const inCart = useSelector(
+        (state) =>
+            state.local_cart.filter((item) => item.product === productId)
+                .length > 0
+    );
+
+    const onAddToLocalCart = useCallback(() => {
+        if (!inCart) {
+            dispatch(addToLocalCart(productId, slug));
+        }
+    }, []);
+
+    return [inCart, onAddToLocalCart];
+};
+
 export const GotoCart = () => {
     const country = useCountryParam();
 
@@ -20,19 +59,13 @@ export const GotoCart = () => {
     );
 };
 
-export const AddToLocalCart = ({ className = "", productId, isPreOrder, slug }) => {
-    const dispatch = useDispatch();
-    const inCart = useSelector(
-        (state) =>
-            state.local_cart.filter((item) => item.product === productId)
-                .length > 0
-    );
-
-    const onClick = useCallback(() => {
-        if (!inCart) {
-            dispatch(addToLocalCart(productId, slug));
-        }
-    }, []);
+export const AddToLocalCart = ({
+    className = "",
+    productId,
+    isPreOrder,
+    slug,
+}) => {
+    const [inCart, onClick] = useAddToLocalCart(productId, slug);
 
     if (inCart) {
         return <GotoCart />;
@@ -45,23 +78,7 @@ export const AddToLocalCart = ({ className = "", productId, isPreOrder, slug }) 
 };
 
 const AddToCart = ({ className = "", productId, isPreOrder, inCart }) => {
-    const dispatch = useDispatch();
-    const [fetching, submit] = useSubmit((data) => {
-        dispatch(updateCartList(data));
-    });
-
-    const onClick = useCallback(() => {
-        submit({
-            url: urls.cart,
-            method: "POST",
-            data: [
-                {
-                    product_id: productId,
-                    quantity: 1,
-                },
-            ],
-        });
-    }, [productId]);
+    const [fetching, onClick] = useAddToCart(productId);
 
     if (inCart && inCart.quantity) {
         return <GotoCart />;
@@ -88,13 +105,17 @@ const ProductBuyBtn = ({ productId, isPreOrder, inCart, slug }) => {
             />
         );
     }
-    return <AddToLocalCart productId={productId} isPreOrder={isPreOrder} slug={slug} />;
+    return (
+        <AddToLocalCart
+            productId={productId}
+            isPreOrder={isPreOrder}
+            slug={slug}
+        />
+    );
 };
 
 const ProductBuy = ({ slug }) => {
-    const { id, is_pre_order, in_cart, product_country } = useProduct(
-        slug
-    );
+    const { id, is_pre_order, in_cart, product_country } = useProduct(slug);
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {
