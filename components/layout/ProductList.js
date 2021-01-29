@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import CountryLink, { DEFAULT_COUNTRY } from "../common/CountryLink";
+import { DEFAULT_COUNTRY } from "../common/CountryLink";
 import useProduct from "../../hooks/redux/product/useProduct";
 
 const ProdList = styled(Flex)`
@@ -26,11 +26,6 @@ const ProductList = () => {
         <header>
             <ProdList as="nav" justifyContent="center" alignItems="stretch">
                 <ul>
-                    <li>
-                        <CountryLink passHref href="/product/earings">
-                            <ProdLink>Earings</ProdLink>
-                        </CountryLink>
-                    </li>
                     {state.map((id) => (
                         <ProdItem id={id} key={id} />
                     ))}

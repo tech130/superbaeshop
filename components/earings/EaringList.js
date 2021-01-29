@@ -1,43 +1,57 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import { H3 } from "../styled/Headings";
 import P from "../styled/P";
 import EaringItem from "./EaringItem";
+import InfiniteList from "../common/InfiniteList";
+import {
+    earingListName,
+    fetchEarings,
+    // fetchEarings,
+    fetchMoreEarings,
+} from "../../redux/product/earings";
+import useProduct from "../../hooks/redux/product/useProduct";
+
+const RenderItem = ({ id }) => {
+    const data = useProduct(id);
+
+    return (
+        <Col md={3}>
+            <EaringItem {...data} />
+        </Col>
+    );
+};
 
 const EaringList = () => {
+    const dispatch = useDispatch();
+
+    const data = useSelector((state) => {
+        return state.pagination[earingListName] || {};
+    }, []);
+
+    useEffect(() => {
+        dispatch(fetchEarings());
+    }, []);
+
+    const loadMore = useCallback(() => {
+        dispatch(fetchMoreEarings());
+    }, [dispatch]);
+
     return (
         <Block padding="35px 0px">
             <Container>
                 <H3>Earings</H3>
-                <P fontSize="14px">
-                    Cheerful and bright just like your vibes.
-                </P>
+                <P fontSize="14px">Cheerful and bright just like your vibes.</P>
                 <Row>
-                    <Col md={3}>
-                        <EaringItem />
-                    </Col>
-                    <Col md={3}>
-                        <EaringItem />
-                    </Col>
-                    <Col md={3}>
-                        <EaringItem />
-                    </Col>
-                    <Col md={3}>
-                        <EaringItem />
-                    </Col>
-                    <Col md={3}>
-                        <EaringItem />
-                    </Col>
-                    <Col md={3}>
-                        <EaringItem />
-                    </Col>
-                    <Col md={3}>
-                        <EaringItem />
-                    </Col>
-                    <Col md={3} sm={6}>
-                        <EaringItem />
-                    </Col>
+                    <InfiniteList
+                        loader={null}
+                        RenderItem={RenderItem}
+                        loadMore={loadMore}
+                        emptyTitle="No products found"
+                        {...data}
+                    />
                 </Row>
             </Container>
         </Block>

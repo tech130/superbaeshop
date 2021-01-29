@@ -1,14 +1,14 @@
 import { ADD_ENTITIES } from "../addEntity";
 import merge from "lodash.merge";
 import { normalize, schema } from "normalizr";
-import { fetchData, clearPagi, fetchNextPage } from "../pagination";
+import { fetchFirstPage, clearPagi, fetchNextPage } from "../pagination";
 import urls from "../../apiService/urls";
 
 export const orderListName = "orderList";
 export const orderSchema = new schema.Entity("order");
 
 export const fetchOrders = () =>
-    fetchData(orderListName, { url: urls.myOrders }, orderSchema);
+    fetchFirstPage(orderListName, { url: urls.myOrders }, orderSchema);
 
 export const fetchMoreOrders = () => fetchNextPage(orderListName, orderSchema);
 
