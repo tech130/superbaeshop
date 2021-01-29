@@ -1,5 +1,5 @@
 const urls = {
-    baseURL: "http://192.168.0.4:8000/",
+    baseURL: "https://spaceandbeauty.billiontags.com/",
     //user
     logout: "auth/logout/",
     myProfile: "users/",
