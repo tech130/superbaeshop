@@ -56,8 +56,8 @@ const EaringList = () => {
     return (
         <Block padding="35px 0px">
             <Container>
-                <H3>Earings</H3>
-                <P fontSize="14px">Cheerful and bright just like your vibes.</P>
+                <H3>Earrings</H3>
+                {/* <P fontSize="14px">Cheerful and bright just like your vibes.</P> */}
                 <Row>
                     <InfiniteList
                         loader={loader}

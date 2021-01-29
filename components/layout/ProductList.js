@@ -59,7 +59,7 @@ const ProductList = () => {
     return (
         <ProdList as="nav" justifyContent="center" alignItems="stretch">
             <ul>
-                <ProdLink slug="earings" title="Earings" />
+                <ProdLink slug="earrings" title="Earrings" />
                 {state.map((slug) => (
                     <ProdItem slug={slug} key={slug} />
                 ))}
