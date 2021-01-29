@@ -1,11 +1,15 @@
 import React from "react";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import styled from "styled-components";
+import useProduct from "../../hooks/redux/product/useProduct";
 import Block from "../styled/Block";
 import Button from "../styled/Button";
 import { H3 } from "../styled/Headings";
 import P from "../styled/P";
 import Txt from "../styled/Txt";
+import { ProductPrices } from "../product/ProductPrice";
+import { CartBtn } from "./EaringItem";
+import Carousel from "nuka-carousel";
 
 const FeatureList = styled.ul`
     list-style: none;
@@ -31,11 +35,7 @@ const FeatureList = styled.ul`
     }
 `;
 
-const THUMB_SIZE = 80;
-
 const MainImgCon = styled.div`
-    position: relative;
-    padding-left: ${THUMB_SIZE + 15}px;
     margin-bottom: 1rem;
 `;
 
@@ -43,94 +43,73 @@ const MainImg = styled.img`
     width: 100%;
 `;
 
-const ThumbCon = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: ${THUMB_SIZE}px;
-    height: 100%;
-    overflow-y: auto;
-`;
+const Detail = ({ slug }) => {
+    const product = useProduct(slug);
+    const {
+        title,
+        thumbnail_image,
+        short_descriptions,
+        product_content = [],
+        product_images = [],
+    } = product;
 
-const ThumbImg = styled.img`
-    display: block;
-    width: ${THUMB_SIZE}px;
-    height: ${THUMB_SIZE}px;
-    margin-bottom: 15px;
-    border: 1px solid #eaeaea;
-    line-height: 0;
-`;
-
-const Detail = () => {
     return (
         <Block padding="35px 0px">
             <Container>
                 <Row>
                     <Col md={6}>
                         <MainImgCon>
-                            <ThumbCon>
-                                <ThumbImg src="/images/earings/3.jpeg" />
-                                <ThumbImg src="/images/earings/2.jpeg" />
-                                <ThumbImg src="/images/earings/5.jpeg" />
-                                <ThumbImg src="/images/earings/1.jpeg" />
-                            </ThumbCon>
-                            <MainImg src="/images/earings/3.jpeg" alt="" />
+                            <Carousel
+                                renderCenterLeftControls={null}
+                                renderCenterRightControls={null}
+                            >
+                                <MainImg src={thumbnail_image} alt={title} />
+                                {product_images.map((x) => (
+                                    <MainImg
+                                        src={x.image}
+                                        alt={x.title}
+                                        key={`${x.id}`}
+                                    />
+                                ))}
+                            </Carousel>
                         </MainImgCon>
                     </Col>
                     <Col md={6}>
                         <H3 mb="5px" as="h1">
-                            Squash Red Apple Earrings
+                            {title}
                         </H3>
                         <P margin="0px 0px 10px 0px" weight={300}>
-                            Feel the pleasure of hanging the real blossoming red
-                            on your ear lobes
+                            {short_descriptions}
                         </P>
                         <Block margin="0px 0px 10px 0px">
-                            <Txt
-                                fontSize="1.7rem"
+                            <ProductPrices
+                                fontSize="1.5rem"
                                 margin="0px 8px 0px 0px"
                                 weight={600}
-                            >
-                                ₹100
-                            </Txt>
-                            <Txt
-                                margin="0px 8px 0px 0px"
-                                textDecor="line-through"
-                                fontSize="1.2rem"
-                                color="#878787"
-                            >
-                                ₹200
-                            </Txt>
-                            <Txt color="#00A80B" weight={300}>
-                                (60% off)
-                            </Txt>
-                        </Block>
-                        <P>
-                            Carefully crafted and precisely sculpted
-                            apple-shaped jewel perfectly aligned with shopping
-                            and day-to-day outfits
-                        </P>
-                        <Block>
-                            <Txt fontSize="1.1rem" weight={600}>
-                                Features:
-                            </Txt>
-                        </Block>
-                        <FeatureList>
-                            <li>
-                                A touch of color, fun and joy for your every day
-                                look.
-                            </li>
-                            <li>The prettiest earrings got comfy as well.</li>
-                        </FeatureList>
+                                slug={slug}
+                            />
 
-                        <Button
-                            fontSize="14px"
-                            padding="5px 15px"
-                            block
-                            border="1px solid #000"
-                        >
-                            ADD TO CART
-                        </Button>
+                            {/* <Txt color="#00A80B" weight={300}>
+                                (60% off)
+                            </Txt> */}
+                        </Block>
+                        {product_content.map((x) => (
+                            <Block key={`${x.id}`}>
+                                <Block>
+                                    <Txt fontSize="1.1rem" weight={600}>
+                                        {x.heading}
+                                    </Txt>
+                                </Block>
+                                <Block margin="0px 0px 10px 0px">
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: x.content,
+                                        }}
+                                    />
+                                </Block>
+                            </Block>
+                        ))}
+                        <CartBtn product={product} />
                     </Col>
                 </Row>
             </Container>

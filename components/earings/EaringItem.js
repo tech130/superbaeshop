@@ -86,7 +86,7 @@ const EaringItem = ({ product = {} }) => {
                     <Block margin="0px 0px 5px 0px">
                         <ProductPrices slug={slug} />
                     </Block>
-                    <CartBtn product={product}>ADD TO CART</CartBtn>
+                    <CartBtn product={product} />
                 </>
             )}
         </Block>
