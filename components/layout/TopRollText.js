@@ -61,7 +61,7 @@ const ProdRollText = ({ slug }) => {
     }
     return (
         <TopBar>
-            <div>Currently Unavailable for your Country</div>
+            <div>Organize your Life on the Go!</div>
         </TopBar>
     );
 };
