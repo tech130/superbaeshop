@@ -49,6 +49,7 @@ const SquareImage = styled.div`
         top: 0;
         left: 0;
         height: 100%;
+        width: 100%;
         object-fit: cover;
         object-position: center center;
         display: ${(props) => (props.isLoading ? "none" : "block")};
