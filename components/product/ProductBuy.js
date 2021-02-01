@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import useProduct from "../../hooks/redux/product/useProduct";
 import { useProdCountry, useCountryParam } from "../common/CountryLink";
 import Button from "../styled/Button";
@@ -64,10 +64,11 @@ export const useAddToCartApi = ({ id, in_cart, is_pre_order }) => {
 export const useAddToLocalCart = ({ id, slug, is_pre_order }) => {
     const goToCart = useGotoCart();
     const dispatch = useDispatch();
-    const inCart = useSelector(
-        (state) =>
-            state.local_cart.filter((item) => item.product === id).length > 0
-    );
+    const list = useSelector((state) => state.local_cart);
+
+    const inCart = useMemo(() => {
+        return list.filter((item) => item.product === id).length > 0;
+    }, [list, id]);
 
     const onAddToLocalCart = useCallback(() => {
         if (!inCart) {
