@@ -2,10 +2,10 @@ import styled from "styled-components";
 import CountryLink, { useProdCountry } from "../common/CountryLink";
 import { ProductPrices } from "../product/ProductPrice";
 import Block from "../styled/Block";
-import Img from "../styled/Img";
-import Txt from "../styled/Txt";
 import { AddToCart } from "../product/ProductBuy";
 import ContentLoader from "react-content-loader";
+import { useRef } from "react";
+import useLazyImage from "../../hooks/layout/useLazyImage";
 
 export const ItemLoader = () => (
     <ContentLoader
@@ -15,6 +15,7 @@ export const ItemLoader = () => (
         viewBox="0 0 255 375"
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
+        style={{ width: "100%", height: "auto" }}
     >
         <rect x="0" y="0" rx="0" ry="0" width="255" height="255" />
         <rect x="0" y="277" rx="0" ry="0" width="227" height="15" />
@@ -34,6 +35,22 @@ const ImgCon = styled.div`
         top: 0;
         right: 0;
         font-size: 12px;
+    }
+`;
+
+const SquareImage = styled.div`
+    background-color: #f3f3f3;
+    width: 100%;
+    position: relative;
+    padding-top: 100%;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        object-fit: cover;
+        display: ${(props) => (props.isLoading ? "none" : "block")};
     }
 `;
 
@@ -71,6 +88,19 @@ export const CartBtn = styled(AddToCart)`
     }
 `;
 
+const EaringImage = ({ src, alt = "" }) => {
+    const ref = useRef(null);
+    const isLoading = useLazyImage(ref, { src });
+
+    return (
+        <SquareImage ref={ref} isLoading={isLoading}>
+            <picture>
+                <img src={src} alt={alt} />
+            </picture>
+        </SquareImage>
+    );
+};
+
 const EaringItem = ({ product = {} }) => {
     const { thumbnail_image, title, slug, product_country } = product;
     const productCountry = useProdCountry(product_country);
@@ -82,7 +112,7 @@ const EaringItem = ({ product = {} }) => {
                 asUrl={`/product/earrings/${slug}`}
             >
                 <ImgCon>
-                    <Img src={thumbnail_image} />
+                    <EaringImage src={thumbnail_image} alt={title} />
                 </ImgCon>
                 <Block>
                     <Title>{title}</Title>
