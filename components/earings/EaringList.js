@@ -40,9 +40,6 @@ const loader = (
         <EaringCol>
             <ItemLoader />
         </EaringCol>
-        <EaringCol>
-            <ItemLoader />
-        </EaringCol>
     </>
 );
 
