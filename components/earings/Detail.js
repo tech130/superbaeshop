@@ -8,41 +8,13 @@ import { H3 } from "../styled/Headings";
 import P from "../styled/P";
 import Txt from "../styled/Txt";
 import { ProductPrices } from "../product/ProductPrice";
-import { CartBtn } from "./EaringItem";
+import { CartBtn, EaringImage } from "./EaringItem";
 import Carousel from "nuka-carousel";
 import RightIcon from "../icons/RightIcon";
 import LeftIcon from "../icons/LeftIcon";
 
-const FeatureList = styled.ul`
-    list-style: none;
-    padding: 5px 0px;
-    margin-left: 15px;
-    margin-bottom: 5px;
-
-    li {
-        margin-bottom: 8px;
-        font-size: 0.95rem;
-        position: relative;
-        padding-left: 20px;
-    }
-
-    li::before {
-        content: "";
-        position: absolute;
-        top: 10px;
-        left: 0;
-        width: 10px;
-        height: 3px;
-        background-color: rgb(0 0 0 / 50%);
-    }
-`;
-
 const MainImgCon = styled.div`
     margin-bottom: 1rem;
-`;
-
-const MainImg = styled.img`
-    width: 100%;
 `;
 
 const LeftBtn = ({ previousSlide }) => {
@@ -82,9 +54,9 @@ const Detail = ({ slug }) => {
                                 renderCenterRightControls={RightBtn}
                                 renderBottomCenterControls={null}
                             >
-                                <MainImg src={thumbnail_image} alt={title} />
+                                <EaringImage src={thumbnail_image} alt={title} />
                                 {product_images.map((x) => (
-                                    <MainImg
+                                    <EaringImage
                                         src={x.image}
                                         alt={x.title}
                                         key={`${x.id}`}

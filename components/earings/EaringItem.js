@@ -89,7 +89,7 @@ export const CartBtn = styled(AddToCart)`
     }
 `;
 
-const EaringImage = ({ src, alt = "" }) => {
+export const EaringImage = ({ src, alt = "" }) => {
     const ref = useRef(null);
     const isLoading = useLazyImage(ref, { src });
 
@@ -116,7 +116,7 @@ const EaringItem = ({ product = {} }) => {
                     <EaringImage src={thumbnail_image} alt={title} />
                 </ImgCon>
                 <Block>
-                    <Title>{title}</Title>
+                    <Title title={title}>{title}</Title>
                 </Block>
             </EaringLink>
             {productCountry && productCountry.country && (

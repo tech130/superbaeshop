@@ -13,11 +13,14 @@ import styled from "styled-components";
 
 export const getBtnText = (
     inCart = false,
+    inStock = true,
     isPreOrder = false,
     fetching = false
 ) =>
     inCart
         ? "Go to Cart"
+        : !inStock
+        ? "Out of Stock"
         : isPreOrder
         ? "Pre Order"
         : `Add${fetching ? "ing" : ""} To Cart`;
@@ -30,7 +33,12 @@ export const useGotoCart = () => {
     }, [country]);
 };
 
-export const useAddToCartApi = ({ id, in_cart, is_pre_order }) => {
+export const useAddToCartApi = ({
+    id,
+    in_cart,
+    is_pre_order,
+    stock_status,
+}) => {
     const goToCart = useGotoCart();
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
@@ -55,13 +63,14 @@ export const useAddToCartApi = ({ id, in_cart, is_pre_order }) => {
     return {
         fetching,
         inCart,
-        onClick: inCart ? goToCart : onAddToCart,
-        btnText: getBtnText(inCart, is_pre_order, fetching),
+        onClick: inCart ? goToCart : stock_status ? onAddToCart : null,
+        btnText: getBtnText(inCart, stock_status, is_pre_order, fetching),
         isPreOrder: is_pre_order,
+        inStock: !!stock_status,
     };
 };
 
-export const useAddToLocalCart = ({ id, slug, is_pre_order }) => {
+export const useAddToLocalCart = ({ id, slug, is_pre_order, stock_status }) => {
     const goToCart = useGotoCart();
     const dispatch = useDispatch();
     const list = useSelector((state) => state.local_cart);
@@ -71,17 +80,16 @@ export const useAddToLocalCart = ({ id, slug, is_pre_order }) => {
     }, [list, id]);
 
     const onAddToLocalCart = useCallback(() => {
-        if (!inCart) {
-            dispatch(addToLocalCart(id, slug));
-        }
-    }, []);
+        dispatch(addToLocalCart(id, slug));
+    }, [id, slug]);
 
     return {
         fetching: false,
         inCart,
-        onClick: inCart ? goToCart : onAddToLocalCart,
-        btnText: getBtnText(inCart, is_pre_order),
+        onClick: inCart ? goToCart : stock_status ? onAddToLocalCart : null,
+        btnText: getBtnText(inCart, stock_status, is_pre_order),
         isPreOrder: is_pre_order,
+        inStock: !!stock_status,
     };
 };
 
@@ -91,10 +99,14 @@ export const useAddToCart = (product) => {
 };
 
 export const AddToCart = ({ className = "", product = {} }) => {
-    const { onClick, fetching, btnText } = useAddToCart(product);
+    const { onClick, fetching, btnText, inStock } = useAddToCart(product);
 
     return (
-        <Button disabled={fetching} className={className} onClick={onClick}>
+        <Button
+            disabled={fetching && inStock === false}
+            className={className}
+            onClick={onClick}
+        >
             {btnText}
         </Button>
     );
