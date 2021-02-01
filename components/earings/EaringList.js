@@ -14,27 +14,35 @@ import {
 } from "../../redux/product/earings";
 import useProduct from "../../hooks/redux/product/useProduct";
 
+const EaringCol = ({ children }) => {
+    return (
+        <Col col={6} lg={3} md={4}>
+            {children}
+        </Col>
+    );
+};
+
 const RenderItem = ({ id }) => {
     const product = useProduct(id);
 
     return (
-        <Col md={3}>
+        <EaringCol>
             <EaringItem product={product} />
-        </Col>
+        </EaringCol>
     );
 };
 
 const loader = (
     <>
-        <Col md={3}>
+        <EaringCol>
             <ItemLoader />
-        </Col>
-        <Col md={3}>
+        </EaringCol>
+        <EaringCol>
             <ItemLoader />
-        </Col>
-        <Col md={3}>
+        </EaringCol>
+        <EaringCol>
             <ItemLoader />
-        </Col>
+        </EaringCol>
     </>
 );
 
@@ -57,7 +65,7 @@ const EaringList = () => {
         <Block padding="35px 0px">
             <Container>
                 <H3>Earrings</H3>
-                <P fontSize="14px">{" "}</P>
+                <P fontSize="14px"> </P>
                 <Row>
                     <InfiniteList
                         loader={loader}
