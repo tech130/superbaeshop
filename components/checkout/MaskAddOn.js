@@ -12,8 +12,8 @@ import Button from "../styled/Button";
 import { useAddToCart } from "../product/ProductBuy";
 import Loader from "../form/Loader";
 
-const MaskDetailsItem = ({ id, thumbnailImage, title }) => {
-    const { fetching, onClick } = useAddToCart(id);
+const MaskDetailsItem = ({ product = {} }) => {
+    const { fetching, onClick, btnText } = useAddToCart(product);
 
     return (
         <CartStyl alignItems="center">
@@ -25,12 +25,12 @@ const MaskDetailsItem = ({ id, thumbnailImage, title }) => {
             <Img
                 margin="0px 15px 0px 0px"
                 width="100px"
-                src={thumbnailImage}
-                alt=""
+                src={product.thumbnail_image}
+                alt={product.title}
             />
             <FlexItem flexGrow={1} flexShrink={0}>
                 <P margin="0px" weight={500} fontSize="16px">
-                    {title}
+                    {product.title}
                 </P>
                 <Block>
                     <ProductPrices slug={slug} />
@@ -43,7 +43,9 @@ const MaskDetailsItem = ({ id, thumbnailImage, title }) => {
                     textDecor="underline"
                     borderRadius="20px"
                 >
-                    <Txt fontSize="13px" weight={500}>ADD TO CART</Txt>
+                    <Txt fontSize="13px" weight={500}>
+                        {btnText.toUpperCase()}
+                    </Txt>
                 </Button>
             </FlexItem>
         </CartStyl>
@@ -51,15 +53,20 @@ const MaskDetailsItem = ({ id, thumbnailImage, title }) => {
 };
 
 const MaskAddOn = () => {
-    const { id, is_pre_order, in_cart, thumbnail_image, title } = useProduct(slug);
+    const product = useProduct(slug);
 
-    if (id && !in_cart && !is_pre_order) {
+    if (
+        product.id &&
+        !product.in_cart &&
+        !product.is_pre_order &&
+        product.stock_status
+    ) {
         return (
             <Block>
                 <Block margin="10px 0px">
                     <Txt weight={500}>Frequently bought together</Txt>
                 </Block>
-                <MaskDetailsItem id={id} thumbnailImage={thumbnail_image} title={title} />
+                <MaskDetailsItem product={product} />
             </Block>
         );
     }
