@@ -95,7 +95,9 @@ export const useAddToLocalCart = ({ id, slug, is_pre_order, stock_status }) => {
 
 export const useAddToCart = (product) => {
     const { token } = useUser();
-    return token ? useAddToCartApi(product) : useAddToLocalCart(product);
+    const apiCart = useAddToCartApi(product);
+    const localCart = useAddToLocalCart(product);
+    return token ? apiCart : localCart;
 };
 
 export const AddToCart = ({ className = "", product = {} }) => {
