@@ -78,10 +78,12 @@ export const CartBtn = styled(AddToCart)`
     width: 100%;
     padding: 5px 15px;
     background: #fff;
+    color: #000;
 
     &:disabled {
         opacity: 1;
         cursor: not-allowed;
+        color: #000;
     }
 
     &:hover {

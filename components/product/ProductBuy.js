@@ -73,7 +73,7 @@ export const useAddToCart = ({
     return {
         fetching,
         inCart,
-        onClick,
+        onClick: stock_status ? onClick : null,
         btnText: getBtnText(inCart, stock_status, is_pre_order, fetching),
         isPreOrder: is_pre_order,
         inStock: !!stock_status,
@@ -85,7 +85,7 @@ export const AddToCart = ({ className = "", product = {} }) => {
 
     return (
         <Button
-            disabled={fetching && inStock === false}
+            disabled={fetching || !inStock}
             className={className}
             onClick={onClick}
         >
