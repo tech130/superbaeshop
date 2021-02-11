@@ -25,79 +25,59 @@ export const getBtnText = (
         ? "Pre Order"
         : `Add${fetching ? "ing" : ""} To Cart`;
 
-export const useGotoCart = () => {
-    const country = useCountryParam();
-    const router = useRouter();
-    return useCallback(() => {
-        router.push("/[country]/checkout", `/${country}/checkout`);
-    }, [country]);
-};
-
-export const useAddToCartApi = ({
+export const useAddToCart = ({
     id,
     in_cart,
     is_pre_order,
     stock_status,
+    slug,
 }) => {
-    const goToCart = useGotoCart();
     const dispatch = useDispatch();
+    const { token } = useUser();
+    const country = useCountryParam();
+    const router = useRouter();
+    const list = useSelector((state) => state.local_cart);
+
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
     });
 
-    const inCart = in_cart && in_cart.quantity;
+    const inCart = useMemo(() => {
+        if (token) {
+            return in_cart && in_cart.quantity;
+        }
+        return list.length
+            ? list.filter((item) => item.product === id).length > 0
+            : false;
+    }, [list, id, in_cart, token]);
 
-    const onAddToCart = useCallback(() => {
-        submit({
-            url: urls.cart,
-            method: "POST",
-            data: [
-                {
-                    product_id: id,
-                    quantity: 1,
-                },
-            ],
-        });
-    }, [id]);
+    const onClick = useCallback(() => {
+        if (inCart) {
+            router.push("/[country]/checkout", `/${country}/checkout`);
+        } else if (token) {
+            submit({
+                url: urls.cart,
+                method: "POST",
+                data: [
+                    {
+                        product_id: id,
+                        quantity: 1,
+                    },
+                ],
+            });
+        } else {
+            dispatch(addToLocalCart(id, slug));
+        }
+    }, [id, inCart, slug]);
 
     return {
         fetching,
         inCart,
-        onClick: inCart ? goToCart : stock_status ? onAddToCart : null,
+        onClick,
         btnText: getBtnText(inCart, stock_status, is_pre_order, fetching),
         isPreOrder: is_pre_order,
         inStock: !!stock_status,
     };
-};
-
-export const useAddToLocalCart = ({ id, slug, is_pre_order, stock_status }) => {
-    const goToCart = useGotoCart();
-    const dispatch = useDispatch();
-    const list = useSelector((state) => state.local_cart);
-
-    const inCart = useMemo(() => {
-        return list.filter((item) => item.product === id).length > 0;
-    }, [list, id]);
-
-    const onAddToLocalCart = useCallback(() => {
-        dispatch(addToLocalCart(id, slug));
-    }, [id, slug]);
-
-    return {
-        fetching: false,
-        inCart,
-        onClick: inCart ? goToCart : stock_status ? onAddToLocalCart : null,
-        btnText: getBtnText(inCart, stock_status, is_pre_order),
-        isPreOrder: is_pre_order,
-        inStock: !!stock_status,
-    };
-};
-
-export const useAddToCart = (product) => {
-    const { token } = useUser();
-    const apiCart = useAddToCartApi(product);
-    const localCart = useAddToLocalCart(product);
-    return token ? apiCart : localCart;
 };
 
 export const AddToCart = ({ className = "", product = {} }) => {
