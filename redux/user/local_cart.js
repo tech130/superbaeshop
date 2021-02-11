@@ -51,7 +51,7 @@ const add = (state, payload) => {
     return [...state, payload];
 };
 
-export default (state = init, action) => {
+export default function local_cart(state = init, action) {
     switch (action.type) {
         case cartTyps.add:
             return add(state, action.payload);
@@ -89,4 +89,4 @@ export default (state = init, action) => {
         default:
             return state;
     }
-};
+}

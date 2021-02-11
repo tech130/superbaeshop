@@ -24,7 +24,7 @@ export const fetchProfile = () =>
     fetchApi({ url: "users/" }, "user_profile", updateUser);
 
 //user reducer
-export default (state = {}, action) => {
+export default function user(state = {}, action) {
     switch (action.type) {
         case userTyps.update:
             return { ...state, ...action.payload };
@@ -33,4 +33,4 @@ export default (state = {}, action) => {
         default:
             return state;
     }
-};
+}

@@ -3,7 +3,7 @@ import reducer from "./reducers";
 import ReduxThunk from "redux-thunk";
 
 // CREATING INITIAL STORE
-export default (initialState) => {
+export default function store(initialState) {
     const composeEnhancers =
         typeof window === "object" &&
         process.env.NODE_ENV === "development" &&
@@ -30,4 +30,4 @@ export default (initialState) => {
     }
 
     return store;
-};
+}

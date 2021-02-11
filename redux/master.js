@@ -17,7 +17,9 @@ const loadTerms = (payload) => {
 export const fetchTerms = () => {
     return (dispatch, getState) => {
         if (!getState().terms.content) {
-            return dispatch(fetchApi({ url: urls.terms }, termsTyps.name, loadTerms));
+            return dispatch(
+                fetchApi({ url: urls.terms }, termsTyps.name, loadTerms)
+            );
         }
         return Promise.resolve();
     };
@@ -58,8 +60,7 @@ export const fetchMaster = () => {
     };
 };
 
-//user reducer
-export default (state = {}, action) => {
+export default function master(state = {}, action) {
     switch (action.type) {
         case masterTyps.update:
             return { ...state, ...action.payload };
@@ -68,4 +69,4 @@ export default (state = {}, action) => {
         default:
             return state;
     }
-};
+}

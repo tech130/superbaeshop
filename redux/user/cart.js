@@ -70,7 +70,6 @@ export const fetchCartAlways = () => {
 
 export const UPLOAD_LOCAL_CART_APIDATA_KEY = "uploadLocalCart";
 
-
 export const localCartUploadSucc = (payload) => {
     if (canUseDom) {
         window.location.reload();
@@ -119,8 +118,8 @@ export const cartList = (state = [], action) => {
     }
 };
 
-//cart list
-export default (state = {}, action) => {
+//cart
+export default function cart(state = {}, action) {
     switch (action.type) {
         case ADD_ENTITIES:
             return merge({}, state, action.payload.cart || {});
@@ -129,4 +128,4 @@ export default (state = {}, action) => {
         default:
             return state;
     }
-};
+}

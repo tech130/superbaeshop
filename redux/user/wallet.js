@@ -15,11 +15,11 @@ export const fetchMoreWallet = () => fetchNextPage(walletListName, orderSchema);
 export const clearWallet = () => clearPagi(walletListName);
 
 //wallet
-export default (state = {}, action) => {
+export default function wallet(state = {}, action) {
     switch (action.type) {
         case ADD_ENTITIES:
             return merge({}, state, action.payload.wallet || {});
         default:
             return state;
     }
-};
+}
