@@ -6,7 +6,7 @@ import P from "../styled/P";
 import Input from "../form/Input";
 import SubmitButton from "../form/SubmitButton";
 // import useSubmit from "../../hooks/http/useSubmit";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import urls from "../../apiService/urls";
 import useClientApi from "../../hooks/http/useClientApi";
 
@@ -18,14 +18,14 @@ const Subscribe = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await submit({
+            await submit({
                 url: urls.newsletter,
                 method: "POST",
                 data: {
                     email,
                 },
             });
-            console.log(res);
+            toast.success("Subscribed to newsletter");
         } catch (err) {
             console.log(err.message);
         }
