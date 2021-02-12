@@ -86,7 +86,7 @@ const WhatsInside = () => {
                                 <b>MONTHLY SPREADS</b>: My obsessions, Month at a glance + Notes, Goal Tracker, Events, To Do, Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Kill & Grow, Weekly/Daily spread, Gratitude, Introspections, Expense Tracker, Shopping List, Clean eating, Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker, Sleep Tracker, Sugar/Junk Tracker, Meal Planner, Movies, Tv shows.
                             </P>
                             <P>
-                                <b>FREE GOODIES</b>: The Ultimate Sticker Book, Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box
+                                <b>FREE GOODIES</b>: Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box
                             </P>
                             <ProductBuy slug={"lets-goal-2021-planner"} />
                         </Block>

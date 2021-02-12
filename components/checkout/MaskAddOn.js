@@ -6,7 +6,7 @@ import { FlexItem } from "../styled/Flex";
 import Img from "../styled/Img";
 import P from "../styled/P";
 import { ProductPrices } from "../product/ProductPrice";
-import slug from "../mask-bundle/slug";
+import slug from "../sticker/slug";
 import useProduct from "../../hooks/redux/product/useProduct";
 import Button from "../styled/Button";
 import { useAddToCart } from "../product/ProductBuy";
