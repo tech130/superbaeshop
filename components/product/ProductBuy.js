@@ -56,7 +56,7 @@ export const useAddToCart = ({
             router.push("/[country]/checkout", `/${country}/checkout`);
         } else if (token) {
             submit({
-                url: urls.cart,
+                url: urls.updateCart,
                 method: "POST",
                 data: [
                     {

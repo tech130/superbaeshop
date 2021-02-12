@@ -13,30 +13,36 @@ export const cartTyps = {
 };
 
 export const loadCartList = (payload) => {
-    const { result, entities } = normalize(payload, [cartSchema]);
+    const { cart, ...rest } = payload;
+    const cartList = Array.isArray(cart) ? cart : [];
+    const { result, entities } = normalize(cartList, [cartSchema]);
     return (dispatch) => {
         dispatch(addEntity(entities));
         dispatch({
             type: cartTyps.load,
-            payload: Array.isArray(result) ? result : [],
+            payload: {
+                cart: result,
+                ...rest,
+            },
         });
     };
 };
 
 export const updateCartList = (payload) => {
-    const { result, entities } = normalize(payload, [cartSchema]);
+    const { cart, ...rest } = payload;
+    const { result, entities } = normalize(cart, [cartSchema]);
     return (dispatch, getState) => {
         dispatch(addEntity(entities));
-        const cartList = getState().cartList;
-        const cart = getState().cart;
+        const cartList = getState().cartList.cart;
+        const cartEntity = getState().cart;
         const removeProducts = cartList.reduce((acc, cur) => {
             if (result.includes(cur)) {
                 return acc;
             }
-            if (cart[cur] && cart[cur].product) {
+            if (cartEntity[cur] && cartEntity[cur].product) {
                 return {
                     ...acc,
-                    [`${cart[cur].product}`]: {
+                    [`${cartEntity[cur].product}`]: {
                         in_cart: null,
                     },
                 };
@@ -46,7 +52,7 @@ export const updateCartList = (payload) => {
         dispatch(addEntity({ product: removeProducts }));
         dispatch({
             type: cartTyps.load,
-            payload: Array.isArray(result) ? result : [],
+            payload: { cart: Array.isArray(result) ? result : [], ...rest },
         });
     };
 };
@@ -55,7 +61,7 @@ export const fetchCart = () => {
     return (dispatch, getState) => {
         if (!getState().cartList.length) {
             return dispatch(
-                fetchApi({ url: urls.cart }, `cartList`, loadCartList)
+                fetchApi({ url: urls.listCart }, `cartList`, loadCartList)
             );
         }
         return Promise.resolve();
@@ -64,7 +70,9 @@ export const fetchCart = () => {
 
 export const fetchCartAlways = () => {
     return (dispatch) => {
-        return dispatch(fetchApi({ url: urls.cart }, `cartList`, loadCartList));
+        return dispatch(
+            fetchApi({ url: urls.listCart }, `cartList`, loadCartList)
+        );
     };
 };
 
@@ -87,8 +95,8 @@ export const uploadLocalCart = () => {
         });
         return dispatch(
             fetchApi(
-                { url: urls.cart, method: "POST", data },
-                `uploadLocalCart`,
+                { url: urls.updateCart, method: "POST", data },
+                UPLOAD_LOCAL_CART_APIDATA_KEY,
                 localCartUploadSucc
             )
         );
@@ -101,18 +109,14 @@ export const clearCart = () => {
     };
 };
 
-const update = (state, payload) => {
-    return [...new Set(state.concat(payload).filter((x) => !!x))];
-};
+const initCart = { cart: [] };
 
-export const cartList = (state = [], action) => {
+export const cartList = (state = initCart, action) => {
     switch (action.type) {
         case cartTyps.load:
             return action.payload;
-        case cartTyps.update:
-            return update(state, action.payload);
         case cartTyps.clear:
-            return [];
+            return initCart;
         default:
             return state;
     }

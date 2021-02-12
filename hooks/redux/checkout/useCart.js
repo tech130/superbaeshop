@@ -2,18 +2,19 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
 const useCart = () => {
-    const { cartList, cart, product } = useSelector((state) => {
+    const { cartList, cartEntity, product } = useSelector((state) => {
         return {
             product: state.product,
-            cart: state.cart,
+            cartEntity: state.cart,
             cartList: state.cartList,
         };
     });
 
     return useMemo(() => {
+        const { cart, ...rest } = cartList;
         let list = [];
-        cartList.forEach((item) => {
-            const cartItem = cart[item];
+        cart.forEach((item) => {
+            const cartItem = cartEntity[item];
             if (cartItem && cartItem.quantity) {
                 list.push({
                     ...cartItem,
@@ -21,8 +22,9 @@ const useCart = () => {
                 });
             }
         });
-        return list;
-    }, [cart, product, cartList]);
+
+        return { list, ...rest };
+    }, [cartEntity, product, cartList]);
 };
 
 export const useLocalCart = () => {
@@ -54,7 +56,7 @@ export const useCartCount = () => {
 
     return useMemo(() => {
         if (user.token) {
-            return cartList.length;
+            return cartList.cart.length;
         }
         return local_cart.length;
     }, [cartList, user, local_cart]);

@@ -12,7 +12,8 @@ const urls = {
     products: "products/",
     productDetail: (id) => `products/${id}/`,
     //cart
-    cart: "cart/",
+    listCart: "cart/list_cart/",
+    updateCart: "cart/update_create/",
     //address
     address: "users/address/",
     //checkout

@@ -125,7 +125,7 @@ export const MyCartItem = ({ product = {}, quantity }) => {
     const handleChange = useCallback(
         (qty) => {
             submit({
-                url: urls.cart,
+                url: urls.updateCart,
                 method: "POST",
                 data: [
                     {
