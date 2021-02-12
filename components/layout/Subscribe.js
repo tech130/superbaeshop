@@ -5,26 +5,30 @@ import Flex, { FlexItem } from "../styled/Flex";
 import P from "../styled/P";
 import Input from "../form/Input";
 import SubmitButton from "../form/SubmitButton";
-import useSubmit from "../../hooks/http/useSubmit";
-import { toast } from "react-toastify";
+// import useSubmit from "../../hooks/http/useSubmit";
+// import { toast } from "react-toastify";
 import urls from "../../apiService/urls";
+import useClientApi from "../../hooks/http/useClientApi";
 
 const Subscribe = () => {
     const [email, setEmail] = useState("");
 
-    const [fetching, submit] = useSubmit(() => {
-        toast.success("Subscribed to newsletter");
-    });
+    const [fetching, submit] = useClientApi();
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        submit({
-            url: urls.newsletter,
-            method: "POST",
-            data: {
-                email,
-            },
-        });
+        try {
+            const res = await submit({
+                url: urls.newsletter,
+                method: "POST",
+                data: {
+                    email,
+                },
+            });
+            console.log(res);
+        } catch (err) {
+            console.log(err.message);
+        }
     };
 
     return (
