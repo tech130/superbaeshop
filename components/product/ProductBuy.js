@@ -10,6 +10,9 @@ import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import useToggle from "../../hooks/useToggle";
+import Modal from "../modal/Modal";
+import DealsModal from "./DealsModal";
 
 export const getBtnText = (
     inCart = false,
@@ -23,23 +26,23 @@ export const getBtnText = (
         ? "Out of Stock"
         : isPreOrder
         ? "Pre Order"
-        : `Add${fetching ? "ing" : ""} To Cart`;
+        : `Add${fetching ? "ing" : ""} to Cart`;
 
-export const useAddToCart = ({
-    id,
-    in_cart,
-    is_pre_order,
-    stock_status,
-    slug,
-}) => {
+export const useAddToCart = (productDetails = {}, options = {}) => {
+    const { hasDeals = true, quantity = 1, isOffer = false } = options;
+    const { id, in_cart, is_pre_order, stock_status, slug } = productDetails;
     const dispatch = useDispatch();
     const { token } = useUser();
     const country = useCountryParam();
     const router = useRouter();
     const list = useSelector((state) => state.local_cart);
+    const { toggle, onTrue, onFalse } = useToggle();
 
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
+        if (hasDeals) {
+            onTrue();
+        }
     });
 
     const inCart = useMemo(() => {
@@ -61,14 +64,15 @@ export const useAddToCart = ({
                 data: [
                     {
                         product_id: id,
-                        quantity: 1,
+                        quantity: quantity,
+                        is_offer: isOffer,
                     },
                 ],
             });
         } else {
-            dispatch(addToLocalCart(id, slug));
+            dispatch(addToLocalCart(id, slug, quantity));
         }
-    }, [id, inCart, slug]);
+    }, [id, inCart, slug, quantity, isOffer]);
 
     return {
         fetching,
@@ -77,20 +81,34 @@ export const useAddToCart = ({
         btnText: getBtnText(inCart, stock_status, is_pre_order, fetching),
         isPreOrder: is_pre_order,
         inStock: !!stock_status,
+        isModalOpen: toggle,
+        closeModal: onFalse,
     };
 };
 
 export const AddToCart = ({ className = "", product = {} }) => {
-    const { onClick, fetching, btnText, inStock } = useAddToCart(product);
+    const {
+        onClick,
+        fetching,
+        btnText,
+        inStock,
+        isModalOpen,
+        closeModal,
+    } = useAddToCart(product);
 
     return (
-        <Button
-            disabled={fetching || !inStock}
-            className={className}
-            onClick={onClick}
-        >
-            {btnText}
-        </Button>
+        <>
+            <Button
+                disabled={fetching || !inStock}
+                className={className}
+                onClick={onClick}
+            >
+                {btnText}
+            </Button>
+            <Modal isOpen={isModalOpen}>
+                <DealsModal closeModal={closeModal} />
+            </Modal>
+        </>
     );
 };
 
