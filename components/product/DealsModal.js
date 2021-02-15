@@ -50,12 +50,12 @@ const DealItem = ({ product = {} }) => {
                         {currencyType}
                         {price}
                     </Txt>
-                    <Txt margin="0px 8px 0px 0px" weight={600}>
+                    <Txt margin="0px 10px 0px 0px" weight={600}>
                         {currencyType}
                         {(price * 0.8).toFixed(2)}
                     </Txt>
                     <Txt fontSize="14px" weight={600} color="green">
-                        20% OFF
+                        Extra 20% off
                     </Txt>
                 </Block>
             </FlexItem>

@@ -44,6 +44,7 @@ const CartItem = ({
     onPlus,
     onMinus,
     fetching = false,
+    is_offer = false,
 }) => {
     const productCountry = useProdCountry(
         product ? product.product_country : {}
@@ -75,6 +76,7 @@ const CartItem = ({
                         <CartPrice
                             productCountry={productCountry}
                             quantity={quantity}
+                            isOffer={is_offer}
                         />
                         <CartQuantity
                             quantity={quantity}
@@ -116,7 +118,7 @@ export const LocalCartItem = ({ product = {}, quantity }) => {
     );
 };
 
-export const MyCartItem = ({ product = {}, quantity }) => {
+export const MyCartItem = ({ product = {}, quantity, is_offer }) => {
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
@@ -162,6 +164,7 @@ export const MyCartItem = ({ product = {}, quantity }) => {
             onRemove={onRemove}
             onMinus={onMinus}
             onPlus={onPlus}
+            is_offer={is_offer}
         />
     );
 };
@@ -208,7 +211,11 @@ const CartRemoveBtn = ({ onClick }) => {
     );
 };
 
-export const CartPrice = ({ quantity = 0, productCountry }) => {
+export const CartPrice = ({
+    quantity = 0,
+    productCountry,
+    isOffer = false,
+}) => {
     if (
         productCountry &&
         productCountry.country &&
@@ -216,19 +223,46 @@ export const CartPrice = ({ quantity = 0, productCountry }) => {
     ) {
         return (
             <Block margin="0px 0px 5px 0px">
-                <Txt
-                    weight={300}
-                    textDecor="line-through"
-                    fontSize="14px"
-                    margin="0px 5px 0px 0px"
-                >
-                    {productCountry.country.currency_type}
-                    {(productCountry.original_price || 0) * quantity}
-                </Txt>
-                <Txt weight={600} fontSize="16px">
-                    {productCountry.country.currency_type}
-                    {(productCountry.selling_price || 0) * quantity}
-                </Txt>
+                {isOffer ? (
+                    <Block>
+                        <Txt
+                            weight={300}
+                            textDecor="line-through"
+                            fontSize="14px"
+                            margin="0px 5px 0px 0px"
+                        >
+                            {productCountry.country.currency_type}
+                            {(productCountry.selling_price || 0) * quantity}
+                        </Txt>
+                        <Txt weight={600} fontSize="16px" margin="0px 10px 0px 0px">
+                            {productCountry.country.currency_type}
+                            {(
+                                (productCountry.selling_price || 0) *
+                                quantity *
+                                0.8
+                            ).toFixed(2)}
+                        </Txt>
+                        <Txt fontSize="14px" weight={600} color="green">
+                            Extra 20% off
+                        </Txt>
+                    </Block>
+                ) : (
+                    <>
+                        <Txt
+                            weight={300}
+                            textDecor="line-through"
+                            fontSize="14px"
+                            margin="0px 5px 0px 0px"
+                        >
+                            {productCountry.country.currency_type}
+                            {(productCountry.original_price || 0) * quantity}
+                        </Txt>
+                        <Txt weight={600} fontSize="16px">
+                            {productCountry.country.currency_type}
+                            {(productCountry.selling_price || 0) * quantity}
+                        </Txt>
+                    </>
+                )}
             </Block>
         );
     }
