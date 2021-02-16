@@ -13,9 +13,7 @@ import { useAddToCart } from "../product/ProductBuy";
 import Loader from "../form/Loader";
 
 const MaskDetailsItem = ({ product = {} }) => {
-    const { fetching, onClick, btnText } = useAddToCart(product, {
-        hasDeals: false,
-    });
+    const { fetching, onClick, btnText } = useAddToCart(product);
 
     return (
         <CartStyl alignItems="center">

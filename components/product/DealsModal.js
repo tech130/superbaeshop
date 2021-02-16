@@ -25,7 +25,6 @@ const DealItem = ({ product = {} }) => {
     const price = productCountry.selling_price || 0;
 
     const { fetching, onClick, btnText } = useAddToCart(product, {
-        hasDeals: false,
         isOffer: true,
     });
 
