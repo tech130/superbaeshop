@@ -107,7 +107,7 @@ const DealsModal = ({ closeModal }) => {
             <ModalHeader
                 closeModal={closeModal}
                 title="Lightning Deals"
-                desc="Offers exclusive for you"
+                desc="Offers exclusive for you. This offer is only valid for next 24 hours."
             />
             <div>
                 {list.length === 0 ? (
