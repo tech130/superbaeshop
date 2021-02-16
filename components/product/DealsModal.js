@@ -22,7 +22,7 @@ export const ItemStyl = styled(Flex)`
 const DealItem = ({ product = {} }) => {
     const productCountry = useProdCountry(product.product_country);
     const currencyType = productCountry.country.currency_type;
-    const price = productCountry.original_price || 0;
+    const price = productCountry.selling_price || 0;
 
     const { fetching, onClick, btnText } = useAddToCart(product, {
         hasDeals: false,
