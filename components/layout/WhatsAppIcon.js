@@ -7,7 +7,7 @@ const WhatsAppLink = styled.a`
     position: fixed;
     right: 20pt;
     bottom: 18pt;
-    z-index: 9998;
+    z-index: 99;
     top: auto;
     cursor: pointer;
     border-radius: 50%;

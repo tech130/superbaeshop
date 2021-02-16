@@ -1,5 +1,6 @@
 const urls = {
-    baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+    baseURL:
+        process.env.NEXT_PUBLIC_BASE_URL || "https://api.spaceandbeauty.com/",
     //user
     logout: "auth/logout/",
     myProfile: "users/",

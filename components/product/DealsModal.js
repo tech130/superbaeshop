@@ -33,44 +33,53 @@ const DealItem = ({ product = {} }) => {
         <ItemStyl>
             <Img
                 margin="0px 15px 0px 0px"
-                width="100px"
+                width="80px"
                 src={product.thumbnail_image}
                 alt={product.title}
             />
             <FlexItem flexGrow={1} flexShrink={0}>
-                <P margin="0px" weight={500} fontSize="16px">
-                    {product.title}
-                </P>
-                <Block fontSize="16px">
-                    <Txt
-                        textDecor="line-through"
-                        margin="0px 8px 0px 0px"
-                        weight={300}
+                <Flex flexWrap justifyContent="space-between">
+                    <FlexItem flexGrow={1} flexShrink={0}>
+                        <P
+                            lineHeight={1}
+                            margin="0px 0px 5px 0px"
+                            weight={500}
+                            fontSize="16px"
+                        >
+                            {product.title}
+                        </P>
+                        <Flex flexWrap fontSize="16px">
+                            <Txt
+                                textDecor="line-through"
+                                margin="0px 8px 0px 0px"
+                                weight={300}
+                            >
+                                {currencyType}
+                                {price}
+                            </Txt>
+                            <Txt margin="0px 10px 0px 0px" weight={600}>
+                                {currencyType}
+                                {(price * 0.8).toFixed(2)}
+                            </Txt>
+                            <Txt fontSize="14px" weight={600} color="green">
+                                Extra 20% off
+                            </Txt>
+                        </Flex>
+                    </FlexItem>
+                    <Button
+                        onClick={onClick}
+                        padding="5px 20px"
+                        border="1px solid #cecece"
+                        margin="5px 0px"
+                        bg="#000"
+                        disabled={fetching}
                     >
-                        {currencyType}
-                        {price}
-                    </Txt>
-                    <Txt margin="0px 10px 0px 0px" weight={600}>
-                        {currencyType}
-                        {(price * 0.8).toFixed(2)}
-                    </Txt>
-                    <Txt fontSize="14px" weight={600} color="green">
-                        Extra 20% off
-                    </Txt>
-                </Block>
+                        <Txt fontSize="13px" color="#fff" weight={500}>
+                            {btnText}
+                        </Txt>
+                    </Button>
+                </Flex>
             </FlexItem>
-            <Button
-                onClick={onClick}
-                padding="5px 20px"
-                border="1px solid #cecece"
-                margin="5px 0px"
-                bg="#000"
-                disabled={fetching}
-            >
-                <Txt fontSize="13px" color="#fff" weight={500}>
-                    {btnText}
-                </Txt>
-            </Button>
         </ItemStyl>
     );
 };
