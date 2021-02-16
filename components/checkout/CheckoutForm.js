@@ -293,9 +293,14 @@ const CheckoutForm = ({ coupon, redeem }) => {
                 />
             )}
             <Modal isOpen={toggle}>
-                <DealsModal closeModal={onFalse} />
+                <DealsModal closeModal={onContine} />
                 <Block padding="15px">
                     <SubmitBtn onClick={onContine}>Continue Checkout</SubmitBtn>
+                    <Button block onClick={onContine}>
+                        <Txt textDecor="underline" fontSize="0.9rem">
+                            No Thanks
+                        </Txt>
+                    </Button>
                 </Block>
             </Modal>
         </>
