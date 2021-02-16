@@ -117,7 +117,7 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
                     (selling_price
                         ? parseFloat(selling_price) *
                           parseInt(cur.quantity, 10) *
-                          (cur.is_offer ? 0.8 : 1)
+                          (cur.offer_avail ? 0.8 : 1)
                         : 0),
             };
         }, init);

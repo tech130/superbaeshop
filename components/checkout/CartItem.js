@@ -44,7 +44,7 @@ const CartItem = ({
     onPlus,
     onMinus,
     fetching = false,
-    is_offer = false,
+    isOffer = false,
 }) => {
     const productCountry = useProdCountry(
         product ? product.product_country : {}
@@ -76,7 +76,7 @@ const CartItem = ({
                         <CartPrice
                             productCountry={productCountry}
                             quantity={quantity}
-                            isOffer={is_offer}
+                            isOffer={isOffer}
                         />
                         <CartQuantity
                             quantity={quantity}
@@ -118,7 +118,7 @@ export const LocalCartItem = ({ product = {}, quantity }) => {
     );
 };
 
-export const MyCartItem = ({ product = {}, quantity, is_offer }) => {
+export const MyCartItem = ({ product = {}, quantity, offer_avail }) => {
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
@@ -164,7 +164,7 @@ export const MyCartItem = ({ product = {}, quantity, is_offer }) => {
             onRemove={onRemove}
             onMinus={onMinus}
             onPlus={onPlus}
-            is_offer={is_offer}
+            isOffer={offer_avail}
         />
     );
 };
