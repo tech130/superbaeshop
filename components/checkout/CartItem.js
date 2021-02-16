@@ -224,7 +224,7 @@ export const CartPrice = ({
         return (
             <Block margin="0px 0px 5px 0px">
                 {isOffer ? (
-                    <Block>
+                    <Flex flexWrap>
                         <Txt
                             weight={300}
                             textDecor="line-through"
@@ -234,7 +234,11 @@ export const CartPrice = ({
                             {productCountry.country.currency_type}
                             {(productCountry.selling_price || 0) * quantity}
                         </Txt>
-                        <Txt weight={600} fontSize="16px" margin="0px 10px 0px 0px">
+                        <Txt
+                            weight={600}
+                            fontSize="16px"
+                            margin="0px 10px 0px 0px"
+                        >
                             {productCountry.country.currency_type}
                             {(
                                 (productCountry.selling_price || 0) *
@@ -245,7 +249,7 @@ export const CartPrice = ({
                         <Txt fontSize="14px" weight={600} color="green">
                             Extra 20% off
                         </Txt>
-                    </Block>
+                    </Flex>
                 ) : (
                     <>
                         <Txt
