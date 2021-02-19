@@ -11,6 +11,7 @@ const OrderSummary = ({
     is_wallet = false,
     coupon_code = "",
     pay_amount,
+    discount_amount = 0,
     address = {},
 }) => {
     const { country } = address || {};
@@ -22,18 +23,20 @@ const OrderSummary = ({
                 <th>Total Amount:</th>
                 <td>
                     {currency_type}
-                    {sub_total_amount}
+                    {sub_total_amount.toFixed(2)}
                 </td>
             </tr>
-            <tr>
-                <th>Payment Type:</th>
-                <td>{payment_type}</td>
-            </tr>
+            {payment_type && (
+                <tr>
+                    <th>Payment Type:</th>
+                    <td>{payment_type}</td>
+                </tr>
+            )}
             <tr>
                 <th>Shipping Charge:</th>
                 <td>
                     + {currency_type}
-                    {shipping_charge}
+                    {shipping_charge.toFixed(2)}
                 </td>
             </tr>
             {parseFloat(cod_charge) > 0 && (
@@ -41,7 +44,7 @@ const OrderSummary = ({
                     <th>COD Charge</th>
                     <td>
                         + {currency_type}
-                        {cod_charge}
+                        {cod_charge.toFixed(2)}
                     </td>
                 </tr>
             )}
@@ -49,10 +52,8 @@ const OrderSummary = ({
                 <tr>
                     <th>Wallet Discount Amount:</th>
                     <td>
-                        <Txt weight={600}>
-                            - {currency_type}
-                            {coupon_amount}
-                        </Txt>
+                        - {currency_type}
+                        {coupon_amount.toFixed(2)}
                     </td>
                 </tr>
             ) : (
@@ -66,21 +67,26 @@ const OrderSummary = ({
                         <tr>
                             <th>Coupon Amount:</th>
                             <td>
-                                <Txt weight={600}>
-                                    - {currency_type}
-                                    {coupon_amount}
-                                </Txt>
+                                - {currency_type}
+                                {coupon_amount.toFixed(2)}
                             </td>
                         </tr>
                     </>
                 )
             )}
             <tr>
+                <th>Offer Amount:</th>
+                <td>
+                    - {currency_type}
+                    {discount_amount.toFixed(2)}
+                </td>
+            </tr>
+            <tr>
                 <th>Final Payable:</th>
                 <td>
                     <Txt weight={600}>
                         {currency_type}
-                        {pay_amount}
+                        {pay_amount.toFixed(2)}
                     </Txt>
                 </td>
             </tr>

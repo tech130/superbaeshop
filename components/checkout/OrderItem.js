@@ -16,6 +16,7 @@ import OrderSummary from "./OrderSummary";
 import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import { updateOrders } from "../../redux/user/orders";
+import { toNum } from "../../utils";
 
 const OrderImg = styled.img`
     width: 80px;
@@ -87,6 +88,7 @@ const OrderItem = ({
     track_url,
     id,
     awb_code,
+    payment_type,
     ...rest
 }) => {
     const created = useDateFormat(created_on, "lll");
@@ -102,14 +104,21 @@ const OrderItem = ({
                 <OrderHeader>
                     <Flex alignItems="center" padding="0px 0px 10px 0px">
                         <OrderIcon size={14} strokeWidth={1} />
-                        <Txt fontSize={14} margin="0px 5px">
+                        <Txt fontSize="14px" margin="0px 5px">
                             Order ID:{" "}
                             <Txt weight={600}>{tracking_client_id}</Txt>
                         </Txt>
                     </Flex>
                     <Flex alignItems="center" padding="0px 0px 10px 0px">
+                        <Block border="1px solid #e3e3e3" padding="0px 20px">
+                            <Txt fontSize="14px" margin="0px 5px">
+                                {payment_type}
+                            </Txt>
+                        </Block>
+                    </Flex>
+                    <Flex alignItems="center" padding="0px 0px 10px 0px">
                         <CalenderIcon size={14} strokeWidth={1} />
-                        <Txt fontSize={14} margin="0px 5px">
+                        <Txt fontSize="14px" margin="0px 5px">
                             {created}
                         </Txt>
                     </Flex>
@@ -199,9 +208,20 @@ const TrackOrder = ({ id }) => {
     );
 };
 
-const OrderCartItem = ({ product = {}, unit_price, quantity, currency }) => {
+const OrderCartItem = ({
+    product = {},
+    unit_price,
+    quantity,
+    currency,
+    offer_amount = 0,
+    offer_title = "",
+}) => {
     const { title, thumbnail_image } = product || {};
     const { currency_type } = currency || {};
+
+    const price =
+        toNum(unit_price) * parseInt(quantity, 10) - toNum(offer_amount);
+
     return (
         <Flex alignItems="center" margin="0px 0px 15px 0px">
             <OrderImg className="order-img" src={thumbnail_image} alt={title} />
@@ -209,16 +229,24 @@ const OrderCartItem = ({ product = {}, unit_price, quantity, currency }) => {
                 <P margin="0px" weight={500} fontSize="16px">
                     {title}
                 </P>
-                <Block margin="0px 0px 5px 0px">
+                <Block margin="0px 0px 0px 0px">
                     <Txt weight={300} fontSize="14px" margin="0px 5px 0px 0px">
                         {quantity} x {currency_type}
-                        {unit_price} =
+                        {unit_price}{" "}
+                        {offer_amount ? `- ${offer_amount.toFixed(2)}` : ""} =
                     </Txt>
                     <Txt weight={600} fontSize="14px">
                         {currency_type}
-                        {parseFloat(unit_price) * parseInt(quantity, 10)}
+                        {price.toFixed(2)}
                     </Txt>
                 </Block>
+                {offer_title && (
+                    <Block margin="0px 0px 5px 0px">
+                        <Txt weight={600} fontSize="12px" color="green">
+                            Offer: {offer_title}
+                        </Txt>
+                    </Block>
+                )}
             </FlexItem>
         </Flex>
     );
