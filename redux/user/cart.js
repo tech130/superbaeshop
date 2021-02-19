@@ -2,7 +2,7 @@ import { fetchApi } from "../apiData";
 import urls from "../../apiService/urls";
 import { normalize } from "normalizr";
 import { addEntity, ADD_ENTITIES } from "../addEntity";
-import { cartSchema } from "../product/schema";
+import { cartListSchema } from "../product/schema";
 import merge from "lodash.merge";
 import canUseDom from "../../utils/canUseDom";
 
@@ -12,31 +12,27 @@ export const cartTyps = {
     clear: "cart/clear",
 };
 
+export const normalizeCartList = (data) => normalize(data, cartListSchema);
+
 export const loadCartList = (payload) => {
-    const { cart, ...rest } = payload;
-    const cartList = Array.isArray(cart) ? cart : [];
-    const { result, entities } = normalize(cartList, [cartSchema]);
+    const { result, entities } = normalizeCartList(payload);
     return (dispatch) => {
         dispatch(addEntity(entities));
         dispatch({
             type: cartTyps.load,
-            payload: {
-                cart: result,
-                ...rest,
-            },
+            payload: result,
         });
     };
 };
 
 export const updateCartList = (payload) => {
-    const { cart, ...rest } = payload;
-    const { result, entities } = normalize(cart, [cartSchema]);
+    const { result, entities } = normalizeCartList(payload);
     return (dispatch, getState) => {
         dispatch(addEntity(entities));
         const cartList = getState().cartList.cart;
         const cartEntity = getState().cart;
         const removeProducts = cartList.reduce((acc, cur) => {
-            if (result.includes(cur)) {
+            if (cartList.includes(cur)) {
                 return acc;
             }
             if (cartEntity[cur] && cartEntity[cur].product) {
@@ -52,7 +48,7 @@ export const updateCartList = (payload) => {
         dispatch(addEntity({ product: removeProducts }));
         dispatch({
             type: cartTyps.load,
-            payload: { cart: Array.isArray(result) ? result : [], ...rest },
+            payload: result,
         });
     };
 };

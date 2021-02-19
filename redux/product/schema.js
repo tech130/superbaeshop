@@ -38,3 +38,10 @@ export const productSchema = new schema.Entity(
 export const cartSchema = new schema.Entity("cart", {
     product: productSchema,
 });
+
+export const cartListSchema = {
+    cart: [cartSchema],
+    offer: {
+        cart_id: [cartSchema],
+    },
+};
