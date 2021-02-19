@@ -14,7 +14,7 @@ import {
 } from "../../redux/product/earings";
 import useProduct from "../../hooks/redux/product/useProduct";
 
-const EaringCol = ({ children }) => {
+export const EaringCol = ({ children }) => {
     return (
         <Col col={6} lg={3} md={4}>
             {children}
@@ -22,7 +22,7 @@ const EaringCol = ({ children }) => {
     );
 };
 
-const RenderItem = ({ id }) => {
+export const RenderItem = ({ id }) => {
     const product = useProduct(id);
 
     return (
@@ -32,7 +32,7 @@ const RenderItem = ({ id }) => {
     );
 };
 
-const loader = (
+export const loader = (
     <>
         <EaringCol>
             <ItemLoader />

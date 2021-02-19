@@ -23,15 +23,11 @@ export const getBtnText = (
         ? "Out of Stock"
         : isPreOrder
         ? "Pre Order"
-        : `Add${fetching ? "ing" : ""} To Cart`;
+        : `Add${fetching ? "ing" : ""} to Cart`;
 
-export const useAddToCart = ({
-    id,
-    in_cart,
-    is_pre_order,
-    stock_status,
-    slug,
-}) => {
+export const useAddToCart = (productDetails = {}, options = {}) => {
+    const { quantity = 1, isOffer = false } = options;
+    const { id, in_cart, is_pre_order, stock_status, slug } = productDetails;
     const dispatch = useDispatch();
     const { token } = useUser();
     const country = useCountryParam();
@@ -61,14 +57,15 @@ export const useAddToCart = ({
                 data: [
                     {
                         product_id: id,
-                        quantity: 1,
+                        quantity: quantity,
+                        is_offer: isOffer,
                     },
                 ],
             });
         } else {
-            dispatch(addToLocalCart(id, slug));
+            dispatch(addToLocalCart(id, slug, quantity));
         }
-    }, [id, inCart, slug]);
+    }, [id, inCart, slug, quantity, isOffer]);
 
     return {
         fetching,

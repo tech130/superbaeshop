@@ -59,13 +59,13 @@ const FreeInclusions = () => {
                         <b>Ikigai work sheets</b> that helps you to find your
                         true purpose.
                     </ColorBox>
-                    <ColorBox
+                    {/* <ColorBox
                         bg="#FFE7EF"
                         image={require("./images/free-inclusions/sticker-book-min.png?resize")}
                     >
                         <b>A Sticker Book</b> With a &quot;1000&quot;, a.k.a
                         THOUSAND, Stickers in it.
-                    </ColorBox>
+                    </ColorBox> */}
                     <ColorBox
                         bg="#C6E1F1"
                         image={require("./images/free-inclusions/post-card-min.png?resize")}

@@ -9,6 +9,7 @@ import StickerPrice from "./StickerPrice";
 import Dot from "../styled/Dot";
 import { ProductPrices } from "../product/ProductPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
+import slug from "./slug";
 
 const Sticker = () => {
     return (
@@ -78,7 +79,7 @@ const Sticker = () => {
                                 <P fontSize="18px" margin="0px 0px 5px 0px">
                                     Product Price
                                 </P>
-                                <ProductPrices slug="ultimate-sticker-book" />
+                                <ProductPrices slug={slug} />
                             </Flex>
                             <Flex
                                 vertical

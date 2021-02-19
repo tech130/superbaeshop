@@ -28,6 +28,10 @@ import styled from "styled-components";
 import Button, { LinkButton, SubmitBtn } from "../styled/Button";
 import ModalLoader from "../modal/ModalLoader";
 import P from "../styled/P";
+import DealsModal from "../product/DealsModal";
+import Modal from "../modal/Modal";
+import useToggle from "../../hooks/useToggle";
+import Block from "../styled/Block";
 
 const getDialOption = (x) => {
     return {
@@ -78,6 +82,8 @@ export function formReducer(state, action) {
 }
 
 const CheckoutForm = ({ coupon, redeem }) => {
+    const { toggle, onTrue, onFalse } = useToggle();
+    const [paymentType, setPaymentType] = useState("");
     const { countries, activeCountry } = useActiveCountry();
     const [successData, setSuccess] = useState(null);
     const user = useUser();
@@ -105,7 +111,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
         setSuccess(data);
     });
 
-    const onSubmit = (payment_type) => {
+    const onSubmit = (payType) => {
         let err = {};
         if (!values.name) {
             err.name = "Name is required";
@@ -154,27 +160,34 @@ const CheckoutForm = ({ coupon, redeem }) => {
             });
             return;
         }
-        
-        const wallet = redeem
-            ? { is_wallet: true }
-            : coupon.code
-            ? { coupon_code: coupon.code }
-            : {};
-        let formData = {
-            ...wallet,
-            ...values,
-            dial_code: values.dial_code.value,
-            alt_dial_code:
-                values.alt_dial_code && values.alt_dial_code.value
-                    ? values.alt_dial_code.value
-                    : "",
-            payment_type,
-        };
-        submit({
-            url: urls.checkout,
-            method: "POST",
-            data: formData,
-        });
+        setPaymentType(payType);
+        onTrue();
+    };
+
+    const onContine = () => {
+        if (paymentType) {
+            const wallet = redeem
+                ? { is_wallet: true }
+                : coupon.code
+                ? { coupon_code: coupon.code }
+                : {};
+            let formData = {
+                ...wallet,
+                ...values,
+                dial_code: values.dial_code.value,
+                alt_dial_code:
+                    values.alt_dial_code && values.alt_dial_code.value
+                        ? values.alt_dial_code.value
+                        : "",
+                payment_type: paymentType,
+            };
+            submit({
+                url: urls.checkout,
+                method: "POST",
+                data: formData,
+            });
+            onFalse();
+        }
     };
 
     const onPayNow = () => {
@@ -279,6 +292,17 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     data={successData}
                 />
             )}
+            <Modal isOpen={toggle}>
+                <DealsModal closeModal={onContine} />
+                <Block padding="15px">
+                    <SubmitBtn onClick={onContine}>Continue Checkout</SubmitBtn>
+                    <Button block onClick={onContine}>
+                        <Txt textDecor="underline" fontSize="0.9rem">
+                            No Thanks
+                        </Txt>
+                    </Button>
+                </Block>
+            </Modal>
         </>
     );
 };

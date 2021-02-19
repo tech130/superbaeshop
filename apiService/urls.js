@@ -1,5 +1,6 @@
 const urls = {
-    baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+    baseURL:
+        process.env.NEXT_PUBLIC_BASE_URL || "https://api.spaceandbeauty.com/",
     //user
     logout: "auth/logout/",
     myProfile: "users/",
@@ -11,6 +12,7 @@ const urls = {
     headerProducts: "products/home_products/",
     products: "products/",
     productDetail: (id) => `products/${id}/`,
+    similarProducts: (id) => `products/${id}/similar_products/`,
     //cart
     listCart: "cart/list_cart/",
     updateCart: "cart/update_create/",
