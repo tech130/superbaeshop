@@ -73,6 +73,8 @@ const TrackBtn = styled(Button)`
     margin: 10px 0px 0px 0px;
 `;
 
+const stl = { maxHeight: "210px", overflow: "auto" };
+
 const OrderItem = ({
     tracking_client_id = "",
     order_items = [],
@@ -126,12 +128,17 @@ const OrderItem = ({
                 <OrderHr />
                 <Row>
                     <Col md={4}>
-                        <Block padding="10px 0px">
-                            {Array.isArray(order_items) &&
-                                order_items.map((item) => (
-                                    <OrderCartItem {...item} key={item.id} />
-                                ))}
-                        </Block>
+                        <div style={stl}>
+                            <Block padding="10px 0px">
+                                {Array.isArray(order_items) &&
+                                    order_items.map((item) => (
+                                        <OrderCartItem
+                                            {...item}
+                                            key={item.id}
+                                        />
+                                    ))}
+                            </Block>
+                        </div>
                     </Col>
                     <Col md={4}>
                         <Block padding="10px 0px">
