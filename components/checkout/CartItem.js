@@ -52,6 +52,7 @@ const CartItem = ({
     const productCountry = useProdCountry(
         product ? product.product_country : {}
     );
+
     const isAvailable =
         productCountry &&
         productCountry.country &&
@@ -74,25 +75,33 @@ const CartItem = ({
                 <P margin="0px" weight={500} fontSize="16px">
                     {product.title}
                 </P>
-                {isAvailable ? (
+                {product.stock_status ? (
                     <>
-                        <CartPrice
-                            productCountry={productCountry}
-                            quantity={quantity}
-                            isOffer={isOffer}
-                            discount={discount}
-                            offer={offer}
-                        />
-                        <CartQuantity
-                            quantity={quantity}
-                            productId={product.id}
-                            onPlus={onPlus}
-                            onMinus={onMinus}
-                        />
+                        {isAvailable ? (
+                            <>
+                                <CartPrice
+                                    productCountry={productCountry}
+                                    quantity={quantity}
+                                    isOffer={isOffer}
+                                    discount={discount}
+                                    offer={offer}
+                                />
+                                <CartQuantity
+                                    quantity={quantity}
+                                    productId={product.id}
+                                    onPlus={onPlus}
+                                    onMinus={onMinus}
+                                />
+                            </>
+                        ) : (
+                            <Txt weight={300} color="red" fontSize="14px">
+                                Product unavailable for this country
+                            </Txt>
+                        )}
                     </>
                 ) : (
                     <Txt weight={300} color="red" fontSize="14px">
-                        Product unavailable for this country
+                        Out of Stock
                     </Txt>
                 )}
             </FlexItem>

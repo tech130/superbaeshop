@@ -17,10 +17,10 @@ export const getBtnText = (
     isPreOrder = false,
     fetching = false
 ) =>
-    inCart
-        ? "Go to Cart"
-        : !inStock
+    !inStock
         ? "Out of Stock"
+        : inCart
+        ? "Go to Cart"
         : isPreOrder
         ? "Pre Order"
         : `Add${fetching ? "ing" : ""} to Cart`;
