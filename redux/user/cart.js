@@ -5,6 +5,7 @@ import { addEntity, ADD_ENTITIES } from "../addEntity";
 import { cartListSchema } from "../product/schema";
 import merge from "lodash.merge";
 import canUseDom from "../../utils/canUseDom";
+import { isArray } from "../../utils";
 
 export const cartTyps = {
     load: "cart/load",
@@ -32,7 +33,7 @@ export const updateCartList = (payload) => {
         const cartList = getState().cartList.cart;
         const cartEntity = getState().cart;
         const removeProducts = cartList.reduce((acc, cur) => {
-            if (cartList.includes(cur)) {
+            if (isArray(result?.cart) && result.cart.includes(cur)) {
                 return acc;
             }
             if (cartEntity[cur] && cartEntity[cur].product) {
