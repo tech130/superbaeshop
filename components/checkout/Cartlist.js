@@ -97,20 +97,15 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
     const init = {
         total_quantity: 0,
         coupon_amount: 0,
-        redeem_amount: parseFloat(activeCountry.redeem_point_cash || 0),
-        shipping_fee: parseFloat(activeCountry.shipping_fee || 0),
+        redeem_amount: parseFloat(activeCountry?.redeem_point_cash ?? 0),
+        shipping_fee: parseFloat(activeCountry?.shipping_fee ?? 0),
         cartTotal: 0,
         impure: false,
         currency_type: activeCountry.currency_type,
     };
     if (cart.length > 0 && activeCountry.id) {
         return cart.reduce((acc, cur) => {
-            const activeCon =
-                cur.product &&
-                cur.product.product_country &&
-                cur.product.product_country[activeCountry.id]
-                    ? cur.product.product_country[activeCountry.id]
-                    : null;
+            const activeCon = cur?.product?.product_country?.[activeCountry.id];
             const selling_price = activeCon ? activeCon.selling_price : 0;
             return {
                 ...acc,
@@ -129,16 +124,20 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
     return init;
 };
 
-export const useCartSummary = (cart, walletPoints = 0) => {
+export const useCartSummary = (cart) => {
     const { activeCountry } = useActiveCountry();
     return useMemo(() => calculateTotal(activeCountry, cart), [
         activeCountry,
         cart,
-        walletPoints,
     ]);
 };
 
-const CartListWithForm = ({ list = [], offer }) => {
+const CartListWithForm = ({
+    list = [],
+    is_wallet = false,
+    is_coupon = false,
+    offer = {},
+}) => {
     const [coupon, setCoupon] = useState({});
     const [redeem, setRedeem] = useState(false);
 
@@ -153,7 +152,7 @@ const CartListWithForm = ({ list = [], offer }) => {
         setRedeem(value);
     }, []);
 
-    const cartSummary = useCartSummary(list, offer?.offer_amount);
+    const cartSummary = useCartSummary(list);
 
     return (
         <Row>
@@ -164,12 +163,15 @@ const CartListWithForm = ({ list = [], offer }) => {
                     redeem={redeem}
                     onRedeemChange={onRedeemChange}
                     walletPoints={walletPoints}
+                    isWallet={is_wallet}
+                    isCoupon={is_coupon}
                 />
                 <CartSummary
                     {...cartSummary}
                     redeem={redeem}
-                    coupon={coupon}
-                    walletPoints={walletPoints}
+                    coupon={is_coupon ? coupon : undefined}
+                    walletPoints={is_wallet ? walletPoints : undefined}
+                    offerAmount={offer?.offer_amount}
                 />
                 {list.map((item) => (
                     <MyCartItem {...item} key={item.id} />

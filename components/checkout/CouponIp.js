@@ -31,6 +31,8 @@ const CouponIp = ({
     onCouponChange,
     onRedeemChange,
     walletPoints = 0,
+    isWallet = false,
+    isCoupon = false,
 }) => {
     const [val, set] = useState("");
     const [fetching, submit] = useSubmit((data = {}) => {
@@ -59,45 +61,51 @@ const CouponIp = ({
 
     return (
         <Block margin="0px 0px 15px 0px">
-            {coupon.id ? (
-                <CouponP hide={redeem}>
-                    <Txt weight={500}>{coupon.code}</Txt>
-                    <IconButton onClick={() => onCouponChange({})}>
-                        <CloseIcon stroke="#cecece" />
-                    </IconButton>
-                </CouponP>
-            ) : (
-                <form onSubmit={onSubmit}>
-                    <Flex>
-                        <FlexItem flexGrow={1}>
-                            <Input
-                                disabled={redeem}
-                                setValue={setVal}
-                                value={val}
-                                placeholder="Enter coupon code"
-                            />
-                        </FlexItem>
-                        <FlexItem>
-                            <SubmitButton
-                                fetching={fetching}
-                                disabled={redeem}
-                                mb="0"
-                            >
-                                APPLY
-                            </SubmitButton>
-                        </FlexItem>
-                    </Flex>
-                </form>
+            {isCoupon && (
+                <Block>
+                    {coupon.id ? (
+                        <CouponP hide={redeem}>
+                            <Txt weight={500}>{coupon.code}</Txt>
+                            <IconButton onClick={() => onCouponChange({})}>
+                                <CloseIcon stroke="#cecece" />
+                            </IconButton>
+                        </CouponP>
+                    ) : (
+                        <form onSubmit={onSubmit}>
+                            <Flex>
+                                <FlexItem flexGrow={1}>
+                                    <Input
+                                        disabled={redeem}
+                                        setValue={setVal}
+                                        value={val}
+                                        placeholder="Enter coupon code"
+                                    />
+                                </FlexItem>
+                                <FlexItem>
+                                    <SubmitButton
+                                        fetching={fetching}
+                                        disabled={redeem}
+                                        mb="0"
+                                    >
+                                        APPLY
+                                    </SubmitButton>
+                                </FlexItem>
+                            </Flex>
+                        </form>
+                    )}
+                </Block>
             )}
-            <HR dataTitle="OR" />
-            <Flex justifyContent="center">
-                <Checkbox
-                    name="redeem"
-                    setValue={onRedeemChange}
-                    value={redeem}
-                    placeholder={`Redeem your wallet points.(${walletPoints} points available.)`}
-                />
-            </Flex>
+            {isWallet && isWallet && <HR dataTitle="OR" />}
+            {isWallet && (
+                <Flex justifyContent="center">
+                    <Checkbox
+                        name="redeem"
+                        setValue={onRedeemChange}
+                        value={redeem}
+                        placeholder={`Redeem your wallet points.(${walletPoints} points available.)`}
+                    />
+                </Flex>
+            )}
         </Block>
     );
 };

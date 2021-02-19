@@ -55,6 +55,7 @@ const CartSummary = ({
     total_quantity = 0,
     redeem = false,
     coupon = {},
+    offerAmount = 0,
 }) => {
     const redeemable = getRedeem(total_quantity, walletPoints);
     const wallet_amount = redeemable * redeem_amount;
@@ -63,7 +64,10 @@ const CartSummary = ({
             ? (parseFloat(coupon.payout || 0) / 100) * cartTotal
             : 0;
     const total =
-        shipping_fee + cartTotal - (redeem ? wallet_amount : couponAmt);
+        shipping_fee +
+        cartTotal -
+        (redeem ? wallet_amount : couponAmt) -
+        offerAmount;
     return (
         <>
             <CartSum>
@@ -85,7 +89,9 @@ const CartSummary = ({
                         <SumItem
                             title="Redeem Amount"
                             bold
-                            amt={`- ${currency_type}${wallet_amount.toFixed(2)}`}
+                            amt={`- ${currency_type}${wallet_amount.toFixed(
+                                2
+                            )}`}
                         />
                     </>
                 ) : couponAmt ? (
@@ -95,6 +101,10 @@ const CartSummary = ({
                         amt={`- ${currency_type}${couponAmt.toFixed(2)}`}
                     />
                 ) : null}
+                <SumItem
+                    title="Offer Amount"
+                    amt={`${currency_type}${offerAmount.toFixed(2)}`}
+                />
                 <HR />
                 <SumItem
                     title="Grand Total"
