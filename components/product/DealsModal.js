@@ -54,7 +54,7 @@ const DealItem = ({ product = {} }) => {
                                 weight={300}
                             >
                                 {currencyType}
-                                {price}
+                                {productCountry.original_price}
                             </Txt>
                             <Txt margin="0px 10px 0px 0px" weight={600}>
                                 {currencyType}

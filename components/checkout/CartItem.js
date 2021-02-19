@@ -14,6 +14,7 @@ import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import Loader from "../form/Loader";
 import { updateCartList } from "../../redux/user/cart";
+import { toBoolean, toNum } from "../../utils";
 
 export const CartStyl = styled(Flex)`
     padding: 10px;
@@ -45,6 +46,8 @@ const CartItem = ({
     onMinus,
     fetching = false,
     isOffer = false,
+    discount,
+    offer = {},
 }) => {
     const productCountry = useProdCountry(
         product ? product.product_country : {}
@@ -77,6 +80,8 @@ const CartItem = ({
                             productCountry={productCountry}
                             quantity={quantity}
                             isOffer={isOffer}
+                            discount={discount}
+                            offer={offer}
                         />
                         <CartQuantity
                             quantity={quantity}
@@ -118,7 +123,13 @@ export const LocalCartItem = ({ product = {}, quantity }) => {
     );
 };
 
-export const MyCartItem = ({ product = {}, quantity, offer_avail }) => {
+export const MyCartItem = ({
+    product = {},
+    quantity,
+    offer_avail,
+    discount,
+    offer,
+}) => {
     const dispatch = useDispatch();
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
@@ -165,6 +176,8 @@ export const MyCartItem = ({ product = {}, quantity, offer_avail }) => {
             onMinus={onMinus}
             onPlus={onPlus}
             isOffer={offer_avail}
+            discount={discount}
+            offer={offer}
         />
     );
 };
@@ -187,6 +200,25 @@ const CartQty = styled.div`
     font-weight: 500;
     margin: 0px 10px;
     font-size: 14px;
+`;
+
+const OfferTypeStl = styled.span`
+    display: inline-block;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(
+        to right,
+        #232526 0%,
+        #414345 51%,
+        #232526 100%
+    );
+    transition: 0.5s;
+    background-size: 200% auto;
+    font-size: 12px;
+    padding: 3px 9px;
+    line-height: 12px;
+    margin: 3px 5px 0px 0px;
+    font-weight: 600;
 `;
 
 const CartQuantity = ({ quantity, onMinus, onPlus }) => {
@@ -212,60 +244,52 @@ const CartRemoveBtn = ({ onClick }) => {
 };
 
 export const CartPrice = ({
-    quantity = 0,
+    quantity = 1,
     productCountry,
     isOffer = false,
+    offer = {},
+    discount = 0,
 }) => {
-    if (
-        productCountry &&
-        productCountry.country &&
-        productCountry.selling_price
-    ) {
+    const currencyType = productCountry?.country?.currency_type;
+    const strikedPrice = productCountry?.original_price;
+    const price = productCountry?.selling_price;
+
+    if (currencyType && price) {
+        const totalStrikedPrice = strikedPrice * quantity;
+        const totalPrice = price * quantity;
+        const offerDiscount = isOffer ? totalPrice * 0.2 : 0;
+        const totalDiscount = toNum(discount) + offerDiscount;
+        const total = totalPrice - totalDiscount;
+
         return (
             <Block margin="0px 0px 5px 0px">
-                {isOffer ? (
-                    <Flex flexWrap>
-                        <Txt
-                            weight={300}
-                            textDecor="line-through"
-                            fontSize="14px"
-                            margin="0px 5px 0px 0px"
-                        >
-                            {productCountry.country.currency_type}
-                            {(productCountry.selling_price || 0) * quantity}
+                <Block>
+                    <Txt
+                        weight={300}
+                        textDecor="line-through"
+                        fontSize="14px"
+                        margin="0px 5px 0px 0px"
+                    >
+                        {currencyType}
+                        {totalStrikedPrice.toFixed(2)}
+                    </Txt>
+                    <Txt weight={600} fontSize="16px" margin="0px 10px 0px 0px">
+                        {currencyType}
+                        {total.toFixed(2)}
+                    </Txt>
+                </Block>
+                {toBoolean(totalDiscount) && (
+                    <Block margin="0px 0px 2px 0px">
+                        <Txt color="green" fontSize="13px" weight={600}>
+                            Extra {currencyType}
+                            {totalDiscount.toFixed(2)} off applied
                         </Txt>
-                        <Txt
-                            weight={600}
-                            fontSize="16px"
-                            margin="0px 10px 0px 0px"
-                        >
-                            {productCountry.country.currency_type}
-                            {(
-                                (productCountry.selling_price || 0) *
-                                quantity *
-                                0.8
-                            ).toFixed(2)}
-                        </Txt>
-                        <Txt fontSize="14px" weight={600} color="green">
-                            Extra 20% off
-                        </Txt>
-                    </Flex>
-                ) : (
-                    <>
-                        <Txt
-                            weight={300}
-                            textDecor="line-through"
-                            fontSize="14px"
-                            margin="0px 5px 0px 0px"
-                        >
-                            {productCountry.country.currency_type}
-                            {(productCountry.original_price || 0) * quantity}
-                        </Txt>
-                        <Txt weight={600} fontSize="16px">
-                            {productCountry.country.currency_type}
-                            {(productCountry.selling_price || 0) * quantity}
-                        </Txt>
-                    </>
+                    </Block>
+                )}
+                {offer && offer.title && (
+                    <Block margin="0px 0px 8px 0px">
+                        <OfferTypeStl>{offer.title}</OfferTypeStl>
+                    </Block>
                 )}
             </Block>
         );

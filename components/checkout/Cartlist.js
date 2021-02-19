@@ -17,6 +17,7 @@ import Block from "../styled/Block";
 import CartEmpty from "./CartEmpty";
 import LoginModalBtn from "../layout/LoginModalBtn";
 import MaskAddOn from "./MaskAddOn";
+import { toNum } from "../../utils";
 
 const Cartlist = () => {
     const { token } = useUser();
@@ -97,8 +98,8 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
     const init = {
         total_quantity: 0,
         coupon_amount: 0,
-        redeem_amount: parseFloat(activeCountry?.redeem_point_cash ?? 0),
-        shipping_fee: parseFloat(activeCountry?.shipping_fee ?? 0),
+        redeem_amount: toNum(activeCountry?.redeem_point_cash),
+        shipping_fee: toNum(activeCountry?.shipping_fee),
         cartTotal: 0,
         impure: false,
         currency_type: activeCountry.currency_type,
@@ -114,7 +115,7 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
                 cartTotal:
                     acc.cartTotal +
                     (selling_price
-                        ? parseFloat(selling_price) *
+                        ? toNum(selling_price) *
                           parseInt(cur.quantity, 10) *
                           (cur.offer_avail ? 0.8 : 1)
                         : 0),

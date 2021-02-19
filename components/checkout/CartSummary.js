@@ -103,7 +103,7 @@ const CartSummary = ({
                 ) : null}
                 <SumItem
                     title="Offer Amount"
-                    amt={`${currency_type}${offerAmount.toFixed(2)}`}
+                    amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
                 />
                 <HR />
                 <SumItem
