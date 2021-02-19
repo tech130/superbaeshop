@@ -11,6 +11,7 @@ export const headerProductsTyps = {
     clear: "headerproducts/clear",
 };
 
+//header products
 export const loadHeaderProducts = (payload) => {
     const { result, entities } = normalize(payload, [productSchema]);
     return (dispatch) => {
@@ -22,6 +23,7 @@ export const loadHeaderProducts = (payload) => {
     };
 };
 
+//fetch header products
 export const fetchHeaderProducts = () => {
     return (dispatch, getState) => {
         if (!getState().headerProducts.length) {
@@ -66,6 +68,37 @@ export const fetchProduct = (id) => {
             );
         }
         return Promise.resolve();
+    };
+};
+
+export const similarProductsName = (slug) => `similarProducts---${slug}`;
+
+//header products
+export const loadSimilarProducts = (payload, slug) => {
+    const { result, entities } = normalize(payload, [productSchema]);
+    return (dispatch) => {
+        dispatch(addEntity(entities));
+        dispatch(
+            addEntity({
+                product: {
+                    [slug]: {
+                        similarProducts: result,
+                    },
+                },
+            })
+        );
+    };
+};
+
+export const fetchSimilarProducts = (slug) => {
+    return (dispatch) => {
+        return dispatch(
+            fetchApi(
+                { url: urls.similarProducts(slug) },
+                similarProductsName(slug),
+                (payload) => loadSimilarProducts(payload, slug)
+            )
+        );
     };
 };
 

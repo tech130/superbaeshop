@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import useProduct from "../../hooks/redux/product/useProduct";
 import Block from "../styled/Block";
 import Button from "../styled/Button";
-import { H3 } from "../styled/Headings";
+import { H3, H4 } from "../styled/Headings";
 import P from "../styled/P";
 import Txt from "../styled/Txt";
 import { ProductPrices } from "../product/ProductPrice";
@@ -12,6 +12,12 @@ import { CartBtn, EaringImage } from "./EaringItem";
 import Carousel from "nuka-carousel";
 import RightIcon from "../icons/RightIcon";
 import LeftIcon from "../icons/LeftIcon";
+import {
+    fetchSimilarProducts,
+    similarProductsName,
+} from "../../redux/product/product";
+import { useDispatch, useSelector } from "react-redux";
+import { loader, RenderItem } from "./EaringList";
 
 const MainImgCon = styled.div`
     margin-bottom: 1rem;
@@ -34,6 +40,7 @@ const RightBtn = ({ nextSlide }) => {
 };
 
 const Detail = ({ slug }) => {
+    const dispatch = useDispatch();
     const product = useProduct(slug);
     const {
         title,
@@ -41,7 +48,20 @@ const Detail = ({ slug }) => {
         short_descriptions,
         product_content = [],
         product_images = [],
+        similarProducts,
     } = product;
+
+    const api = useSelector(
+        (state) => state.apiData[similarProductsName(slug)] || {}
+    );
+
+    console.log(api);
+
+    useEffect(() => {
+        if (slug) {
+            dispatch(fetchSimilarProducts(slug));
+        }
+    }, [slug]);
 
     return (
         <Block padding="35px 0px">
@@ -54,7 +74,10 @@ const Detail = ({ slug }) => {
                                 renderCenterRightControls={RightBtn}
                                 renderBottomCenterControls={null}
                             >
-                                <EaringImage src={thumbnail_image} alt={title} />
+                                <EaringImage
+                                    src={thumbnail_image}
+                                    alt={title}
+                                />
                                 {product_images.map((x) => (
                                     <EaringImage
                                         src={x.image}
@@ -103,6 +126,17 @@ const Detail = ({ slug }) => {
                         <CartBtn product={product} />
                     </Col>
                 </Row>
+                <Block padding="35px 0px 0px 0px">
+                    <H4>Similar products</H4>
+                    <Row>
+                        {api.fetching
+                            ? loader
+                            : Array.isArray(similarProducts) &&
+                              similarProducts.map((product) => (
+                                  <RenderItem id={product} key={product} />
+                              ))}
+                    </Row>
+                </Block>
             </Container>
         </Block>
     );

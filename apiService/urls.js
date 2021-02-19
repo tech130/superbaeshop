@@ -12,6 +12,7 @@ const urls = {
     headerProducts: "products/home_products/",
     products: "products/",
     productDetail: (id) => `products/${id}/`,
+    similarProducts: (id) => `products/${id}/similar_products/`,
     //cart
     cart: "cart/",
     //address
