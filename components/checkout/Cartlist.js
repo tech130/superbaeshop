@@ -66,7 +66,7 @@ const LocalCartList = () => {
 
 const MyCartList = () => {
     const dispatch = useDispatch();
-    const { list } = useCart();
+    const cartList = useCart();
 
     useEffect(() => {
         dispatch(fetchCartAlways());
@@ -84,7 +84,11 @@ const MyCartList = () => {
                 </Row>
             }
         >
-            {list.length > 0 ? <CartListWithForm list={list} /> : <CartEmpty />}
+            {cartList.list.length > 0 ? (
+                <CartListWithForm {...cartList} />
+            ) : (
+                <CartEmpty />
+            )}
         </ApiContent>
     );
 };
@@ -134,7 +138,7 @@ export const useCartSummary = (cart, walletPoints = 0) => {
     ]);
 };
 
-const CartListWithForm = ({ list = [] }) => {
+const CartListWithForm = ({ list = [], offer }) => {
     const [coupon, setCoupon] = useState({});
     const [redeem, setRedeem] = useState(false);
 
@@ -149,7 +153,7 @@ const CartListWithForm = ({ list = [] }) => {
         setRedeem(value);
     }, []);
 
-    const cartSummary = useCartSummary(list);
+    const cartSummary = useCartSummary(list, offer?.offer_amount);
 
     return (
         <Row>
