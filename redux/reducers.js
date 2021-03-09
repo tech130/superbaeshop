@@ -10,6 +10,7 @@ import { addressList } from "./user/address";
 import pagination from "./pagination";
 import orders from "./user/orders";
 import wallet from "./user/wallet";
+import { productFilter } from "./product/listing";
 
 const appReducer = combineReducers({
     user,
@@ -19,6 +20,7 @@ const appReducer = combineReducers({
     terms,
     product,
     headerProducts,
+    productFilter,
     cart,
     cartList,
     local_cart,

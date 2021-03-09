@@ -3,11 +3,7 @@ import Layout from "../../../components/layout/Layout";
 import { common } from "../../../redux/handlePages";
 
 const CategoryListPage = () => {
-    return (
-        <Layout>
-            
-        </Layout>
-    );
+    return <Layout></Layout>;
 };
 
 CategoryListPage.getInitialProps = async (ctx) => {
