@@ -3,7 +3,7 @@ import urls from "../../apiService/urls";
 import { productSchema } from "./schema";
 import keysToQuery from "../../utils/keysToQuery";
 
-export const prodListName = (query = {}) => `orderList--${keysToQuery(query)}`;
+export const prodListName = (query = {}) => `productList--${keysToQuery(query)}`;
 
 export const fetchProducts = (query = {}) =>
     fetchFirstPage(
