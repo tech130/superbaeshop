@@ -9,7 +9,7 @@ const CountryLink = ({ children, className, href = "", query = {} }) => {
     return (
         <Link
             href={{
-                href: `/[country]${href}`,
+                pathname: `/[country]${href}`,
                 query: { ...query, country },
             }}
         >
