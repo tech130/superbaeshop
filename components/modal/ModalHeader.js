@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import Block from "../styled/Block";
 import Button from "../styled/Button";
-import { H2, H3 } from "../styled/Headings";
+import { H3 } from "../styled/Headings";
 import CloseIcon from "../icons/CloseIcon";
 
 const ModalHead = styled.div`

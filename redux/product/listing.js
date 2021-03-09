@@ -3,6 +3,7 @@ import urls from "../../apiService/urls";
 import { productSchema } from "./schema";
 import keysToQuery from "../../utils/keysToQuery";
 import { fetchApi } from "../apiData";
+import { fetchQueryData } from "../queryData";
 
 export const prodListName = (query = {}) =>
     `productList--${keysToQuery(query)}`;
@@ -68,3 +69,11 @@ export function productFilter(state = {}, action) {
             return state;
     }
 }
+
+export const categoryListName = (id) => `categoryList--${id}`;
+
+export const categorySelector = (state, id) =>
+    state?.queryData?.[categoryListName(id)];
+
+export const fetchCategories = (id) =>
+    fetchQueryData(categoryListName(id), { url: urls.categories(id) });

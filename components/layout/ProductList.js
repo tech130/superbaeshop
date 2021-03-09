@@ -111,10 +111,12 @@ const MegaMenu = ({ categories, image }) => {
     );
 };
 
-const CategoryLink = ({ title, categories = [], image }) => {
+const CategoryLink = ({ id, title, categories = [], image }) => {
     return (
         <ProdLinkStl>
-            {title}
+            <CountryLink href="/category/[categoryId]" asUrl={`/category/${id}`}>
+                {title}
+            </CountryLink>
             {Array.isArray(categories) && categories.length > 0 && (
                 <MegaMenu categories={categories} image={image} />
             )}

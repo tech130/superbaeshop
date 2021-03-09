@@ -11,11 +11,13 @@ import pagination from "./pagination";
 import orders from "./user/orders";
 import wallet from "./user/wallet";
 import { productFilter } from "./product/listing";
+import queryData from "./queryData";
 
 const appReducer = combineReducers({
     user,
     apiData,
     pagination,
+    queryData,
     master,
     terms,
     product,
