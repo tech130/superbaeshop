@@ -10,12 +10,11 @@ import useUser from "../../hooks/redux/user/useUser";
 import WhatsAppIcon from "./WhatsAppIcon";
 
 const StickyTop = styled.div`
-    backdrop-filter: blur(20px);
     position: sticky;
     top: 0;
     z-index: 99;
     font-size: 14px;
-    background: rgba(255, 255, 255, 0.67);
+    background: #fff;
 `;
 
 const Layout = ({ children, slug, isAuthRoute = false }) => {

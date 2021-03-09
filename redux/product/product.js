@@ -55,21 +55,8 @@ export const updateProduct = (payload) => {
     return (dispatch) => dispatch(addEntity(entities));
 };
 
-export const fetchProduct = (id) => {
-    return (dispatch, getState) => {
-        const product = getState().product[id] || {};
-        if (!product.id && !product.product_country) {
-            return dispatch(
-                fetchApi(
-                    { url: urls.productDetail(id) },
-                    `product__${id}`,
-                    updateProduct
-                )
-            );
-        }
-        return Promise.resolve();
-    };
-};
+export const fetchProduct = (id) =>
+    fetchApi({ url: urls.productDetail(id) }, `product__${id}`, updateProduct);
 
 export const similarProductsName = (slug) => `similarProducts---${slug}`;
 

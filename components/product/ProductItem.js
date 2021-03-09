@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import CountryLink, { useProdCountry } from "../common/CountryLink";
-import { ProductPrices } from "../product/ProductPrice";
+import { ProductPrices } from "./ProductPrice";
 import Block from "../styled/Block";
-import { AddToCart } from "../product/ProductBuy";
+import { AddToCart } from "./ProductBuy";
 import ContentLoader from "react-content-loader";
 import { useRef } from "react";
 import useLazyImage from "../../hooks/layout/useLazyImage";
@@ -56,7 +56,7 @@ const SquareImage = styled.div`
     }
 `;
 
-const EaringLink = styled(CountryLink)`
+const ProductLink = styled(CountryLink)`
     display: block;
 
     &:hover {
@@ -92,7 +92,7 @@ export const CartBtn = styled(AddToCart)`
     }
 `;
 
-export const EaringImage = ({ src, alt = "" }) => {
+export const ProductImage = ({ src, alt = "" }) => {
     const ref = useRef(null);
     const isLoading = useLazyImage(ref, { src });
 
@@ -105,23 +105,23 @@ export const EaringImage = ({ src, alt = "" }) => {
     );
 };
 
-const EaringItem = ({ product = {} }) => {
+const ProductItem = ({ product = {} }) => {
     const { thumbnail_image, title, slug, product_country } = product;
     const productCountry = useProdCountry(product_country);
 
     return (
         <Block margin="0px 0px 25px 0px">
-            <EaringLink
-                href="/product/earrings/[earingSlug]"
-                asUrl={`/product/earrings/${slug}`}
+            <ProductLink
+                href="/product/[productSlug]"
+                asUrl={`/product/${slug}`}
             >
                 <ImgCon>
-                    <EaringImage src={thumbnail_image} alt={title} />
+                    <ProductImage src={thumbnail_image} alt={title} />
                 </ImgCon>
                 <Block>
                     <Title title={title}>{title}</Title>
                 </Block>
-            </EaringLink>
+            </ProductLink>
             {productCountry && productCountry.country && (
                 <>
                     <Block margin="0px 0px 5px 0px">
@@ -134,4 +134,4 @@ const EaringItem = ({ product = {} }) => {
     );
 };
 
-export default EaringItem;
+export default ProductItem;

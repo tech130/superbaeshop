@@ -13,6 +13,7 @@ const urls = {
     products: "products/",
     productDetail: (id) => `products/${id}/`,
     similarProducts: (id) => `products/${id}/similar_products/`,
+    productFilter: "products/category_filter/",
     //cart
     listCart: "cart/list_cart/",
     updateCart: "cart/update_create/",

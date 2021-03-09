@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CartIcon from "../icons/CartIcon";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
@@ -8,6 +8,8 @@ import CountryList from "./CountryList";
 import SignInDrop from "./SignInDrop";
 import CountryLink from "../common/CountryLink";
 import { useCartCount } from "../../hooks/redux/checkout/useCart";
+import { useDispatch } from "react-redux";
+import { fetchCart } from "../../redux/user/cart";
 
 const Hdr = styled.div`
     border-bottom: 1px solid #eaeaea;
@@ -89,6 +91,12 @@ const Header = () => {
 
 const CartCount = () => {
     const count = useCartCount();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchCart());
+    }, []);
+
     if (!count) {
         return null;
     }

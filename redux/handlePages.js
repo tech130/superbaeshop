@@ -5,7 +5,6 @@ import { TOKEN_KEY } from "../utils/constants";
 import { updateUser, clearUser } from "./user/user";
 import { fetchMaster } from "./master";
 import { fetchHeaderProducts } from "./product/product";
-import { fetchCart } from "./user/cart";
 
 export const redirect = (ctx, location = "/") => {
     if (ctx.res) {
@@ -75,9 +74,6 @@ export const common = async (ctx, userRoute = false) => {
         ctx.store.dispatch(fetchMaster()),
         ctx.store.dispatch(fetchHeaderProducts()),
     ];
-    if (user.token && ctx.isServer) {
-        promises.push(ctx.store.dispatch(fetchCart()));
-    }
     try {
         await mapPromises(promises);
     } catch (err) {

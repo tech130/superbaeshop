@@ -7,8 +7,8 @@ import Button from "../styled/Button";
 import { H3, H4 } from "../styled/Headings";
 import P from "../styled/P";
 import Txt from "../styled/Txt";
-import { ProductPrices } from "../product/ProductPrice";
-import { CartBtn, EaringImage } from "./EaringItem";
+import { ProductPrices } from "./ProductPrice";
+import { CartBtn, ProductImage } from "./ProductItem";
 import Carousel from "nuka-carousel";
 import RightIcon from "../icons/RightIcon";
 import LeftIcon from "../icons/LeftIcon";
@@ -17,13 +17,16 @@ import {
     similarProductsName,
 } from "../../redux/product/product";
 import { useDispatch, useSelector } from "react-redux";
-import { loader, RenderItem } from "./EaringList";
+import { loader, RenderItem } from "./ProductList";
 
 const MainImgCon = styled.div`
     margin-bottom: 1rem;
 `;
 
-const LeftBtn = ({ previousSlide }) => {
+const LeftBtn = ({ previousSlide, slideCount }) => {
+    if (slideCount === 1) {
+        return null;
+    }
     return (
         <Button onClick={previousSlide}>
             <LeftIcon size={24} />
@@ -31,7 +34,10 @@ const LeftBtn = ({ previousSlide }) => {
     );
 };
 
-const RightBtn = ({ nextSlide }) => {
+const RightBtn = ({ nextSlide, slideCount }) => {
+    if (slideCount === 1) {
+        return null;
+    }
     return (
         <Button onClick={nextSlide}>
             <RightIcon size={24} />
@@ -55,8 +61,6 @@ const Detail = ({ slug }) => {
         (state) => state.apiData[similarProductsName(slug)] || {}
     );
 
-    console.log(api);
-
     useEffect(() => {
         if (slug) {
             dispatch(fetchSimilarProducts(slug));
@@ -73,13 +77,14 @@ const Detail = ({ slug }) => {
                                 renderCenterLeftControls={LeftBtn}
                                 renderCenterRightControls={RightBtn}
                                 renderBottomCenterControls={null}
+                                wrapAround
                             >
-                                <EaringImage
+                                <ProductImage
                                     src={thumbnail_image}
                                     alt={title}
                                 />
                                 {product_images.map((x) => (
-                                    <EaringImage
+                                    <ProductImage
                                         src={x.image}
                                         alt={x.title}
                                         key={`${x.id}`}
