@@ -111,10 +111,14 @@ const Filters = () => {
     const title = getTitle(data);
     return (
         <>
-            {title && <H4 mb="20px" textAlign="center">{title}</H4>}
+            {title && (
+                <H4 mb="20px" textAlign="center">
+                    {title}
+                </H4>
+            )}
             {list.length > 0 && (
                 <FilterListStyl>
-                    <FilterLinkStyl href={`/product${getTagQuery(query)}`}>
+                    <FilterLinkStyl href="/product" query={query}>
                         <FilterImg isActive={!query?.design_type}>
                             <img src="/images/all-selected.png" alt="" />
                         </FilterImg>
@@ -123,7 +127,8 @@ const Filters = () => {
                     {list.map((x) => {
                         return (
                             <FilterLinkStyl
-                                href={`/product${getTagQuery(query, x.id)}`}
+                                href="/product"
+                                query={{ ...query, design_type: x.id }}
                                 key={`tag--${x.id}`}
                             >
                                 <FilterImg

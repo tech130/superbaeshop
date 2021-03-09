@@ -113,7 +113,7 @@ const ProductItem = ({ product = {} }) => {
         <Block margin="0px 0px 25px 0px">
             <ProductLink
                 href="/product/[productSlug]"
-                asUrl={`/product/${slug}`}
+                query={{ productSlug: slug }}
             >
                 <ImgCon>
                     <ProductImage src={thumbnail_image} alt={title} />

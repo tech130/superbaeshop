@@ -68,7 +68,7 @@ const Category = ({ id, title, sub_categories = [] }) => {
     return (
         <MenuItem>
             <Block margin="10px 0px 10px 0px">
-                <CountryLink href={`/product?category=${id}`}>
+                <CountryLink href="/product" query={{ category: id }}>
                     <Txt weight={500} fontSize="15px">
                         {title}
                     </Txt>
@@ -78,7 +78,10 @@ const Category = ({ id, title, sub_categories = [] }) => {
                 .slice(0, Math.min(sub_categories.length, 10))
                 .map((sub) => (
                     <Block margin="0px 0px 5px 0px" key={sub.id}>
-                        <CountryLink href={`/product?sub_category=${sub.id}`}>
+                        <CountryLink
+                            href="/product"
+                            query={{ sub_category: sub.id }}
+                        >
                             <Txt weight={300} fontSize="14px">
                                 {sub.title}
                             </Txt>
@@ -114,7 +117,10 @@ const MegaMenu = ({ categories, image }) => {
 const CategoryLink = ({ id, title, categories = [], image }) => {
     return (
         <ProdLinkStl>
-            <CountryLink href="/category/[categoryId]" asUrl={`/category/${id}`}>
+            <CountryLink
+                href="/category/[categoryId]"
+                query={{ categoryId: id }}
+            >
                 {title}
             </CountryLink>
             {Array.isArray(categories) && categories.length > 0 && (

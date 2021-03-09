@@ -85,7 +85,8 @@ const CatItem = ({ id, image, sub_categories = [], title }) => {
                         {sub_categories.map((x) => (
                             <Col md={6} key={x.id}>
                                 <SubCatLink
-                                    href={`/product?sub_category=${x.id}`}
+                                    href="/product"
+                                    query={{ sub_category: x.id }}
                                 >
                                     {x.title}
                                 </SubCatLink>
