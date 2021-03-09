@@ -14,7 +14,6 @@ import {
 } from "../../redux/product/listing";
 import styled from "styled-components";
 import CountryLink from "../common/CountryLink";
-import keysToQuery from "../../utils/keysToQuery";
 import { H4 } from "../styled/Headings";
 
 export const ProdCol = ({ children }) => {
@@ -85,11 +84,6 @@ const FilterImg = styled.div`
         object-fit: cover;
     }
 `;
-
-const getTagQuery = (query = {}, design_type) => {
-    const { category, sub_category, super_category } = query;
-    return keysToQuery({ category, sub_category, super_category, design_type });
-};
 
 const getTitle = (data = {}) => {
     if (data?.sub_category) {
