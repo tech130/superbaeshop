@@ -26,6 +26,7 @@ const ViewAllLink = styled(CountryLink)`
     padding: 8px 15px;
     text-transform: uppercase;
     font-size: 13px;
+    margin-bottom: 5px;
 `;
 
 const CategoryDetail = () => {
@@ -42,7 +43,6 @@ const CategoryDetail = () => {
                     <Container>
                         <Flex
                             justifyContent="space-between"
-                            alignItems="center"
                             margin="0px 0px 15px 0px"
                             flexWrap
                         >
@@ -51,7 +51,7 @@ const CategoryDetail = () => {
                                     <H5 as="h1" mb="5px">{title}</H5>
                                 )}
                                 {short_description && (
-                                    <P margin="0px 0px 10px 0px" color="#909090">{short_description}</P>
+                                    <P margin="0px 0px 5px 0px" color="#909090">{short_description}</P>
                                 )}
                             </FlexItem>
                             <FlexItem>
