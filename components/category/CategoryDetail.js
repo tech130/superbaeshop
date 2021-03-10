@@ -43,7 +43,7 @@ const CategoryDetail = () => {
                         <Flex
                             justifyContent="space-between"
                             alignItems="center"
-                            margin="0px 0px 35px 0px"
+                            margin="0px 0px 15px 0px"
                             flexWrap
                         >
                             <FlexItem>
