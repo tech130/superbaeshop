@@ -23,7 +23,7 @@ export const ItemLoader = () => (
     </ContentLoader>
 );
 
-const ImgCon = styled.div`
+export const ImgCon = styled.div`
     margin-bottom: 10px;
     position: relative;
 

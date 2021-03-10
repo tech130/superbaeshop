@@ -8,7 +8,7 @@ const urls = {
     wallet: "users/my-points/",
     //master
     master: "master-values/",
-    categories: (id) => `master-values/categories/?super_category=${id}`,
+    categories: (id) => `master-values/categories/${id}/`,
     //product
     headerProducts: "products/home_products/",
     products: "products/",

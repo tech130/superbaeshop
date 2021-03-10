@@ -112,7 +112,10 @@ const Filters = () => {
             )}
             {list.length > 0 && (
                 <FilterListStyl>
-                    <FilterLinkStyl href="/product" query={query}>
+                    <FilterLinkStyl
+                        href="/product"
+                        query={{ ...query, design_type: "" }}
+                    >
                         <FilterImg isActive={!query?.design_type}>
                             <img src="/images/all-selected.png" alt="" />
                         </FilterImg>
