@@ -23,8 +23,12 @@ const filterTyps = {
     clear: "productFilter/clear",
 };
 
-export const filterName = ({ category = "All", sub_category = "All" }) =>
-    `productFilter--category=${category}--sub_category=${sub_category}`;
+export const filterName = ({
+    category = "All",
+    sub_category = "All",
+    super_category = "All",
+}) =>
+    `productFilter--super_category=${super_category}--category=${category}--sub_category=${sub_category}`;
 
 const loadFilters = (payload, name) => {
     return {
@@ -34,15 +38,16 @@ const loadFilters = (payload, name) => {
     };
 };
 
-export const fetchFilters = ({ category, sub_category }) => {
+export const fetchFilters = ({ category, sub_category, super_category }) => {
     return (dispatch) => {
-        const name = filterName({ category, sub_category });
+        const name = filterName({ category, sub_category, super_category });
         return dispatch(
             fetchApi(
                 {
                     url: `${urls.productFilter}${keysToQuery({
                         category,
                         sub_category,
+                        super_category,
                     })}`,
                 },
                 name,

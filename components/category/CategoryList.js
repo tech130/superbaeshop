@@ -21,8 +21,8 @@ const Type1Styl = styled(Button)`
 `;
 
 const CatImgStyl = styled.div`
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: ${(props) => (props.hasImage ? "transparent" : "#f3f3f3")};
     margin-bottom: 10px;
 
@@ -121,17 +121,25 @@ const CategoryList = ({ categories = [] }) => {
     }
     if (categories.length === 1) {
         const { show_products } = categories[0];
-        return show_products.map((x) => (
-            <Col col={6} lg={3} md={4} key={x.id}>
-                <Type2 {...x} />
-            </Col>
-        ));
+        return (
+            <Row>
+                {show_products.map((x) => (
+                    <Col col={6} lg={3} md={4} key={x.id}>
+                        <Type2 {...x} />
+                    </Col>
+                ))}
+            </Row>
+        );
     }
-    return categories.map((x) => (
-        <Col lg={2} md={3} col={4} key={x.id}>
-            <Type1 {...x} />
-        </Col>
-    ));
+    return (
+        <Row>
+            {categories.map((x) => (
+                <Col lg={2} md={3} col={4} key={x.id}>
+                    <Type1 {...x} />
+                </Col>
+            ))}
+        </Row>
+    );
 };
 
 export default CategoryList;

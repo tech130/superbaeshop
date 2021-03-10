@@ -1,11 +1,13 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Container, Row } from "styled-bootstrap-grid";
+import { Container } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { categorySelector } from "../../redux/product/listing";
+import CountryLink from "../common/CountryLink";
 import Block from "../styled/Block";
-import { H4 } from "../styled/Headings";
+import Flex, { FlexItem } from "../styled/Flex";
+import { H5 } from "../styled/Headings";
 import P from "../styled/P";
 import CategoryList from "./CategoryList";
 
@@ -17,37 +19,51 @@ const CatImStyl = styled.img`
     background-color: #f3f3f3;
 `;
 
+const ViewAllLink = styled(CountryLink)`
+    display: block;
+    background: #000;
+    color: #fff !important;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+`;
+
 const CategoryDetail = () => {
     const { query } = useRouter();
     const { data } = useSelector((state) =>
         categorySelector(state, query.categoryId)
     );
     if (data && Array.isArray(data.categories)) {
-        const { image, categories, type, title, short_description } = data;
+        const { id, image, categories, type, title, short_description } = data;
         return (
             <>
                 {image && <CatImStyl src={image} />}
                 <Block padding="30px 0px">
                     <Container>
-                        <Block margin="0px 0px 35px 0px">
-                            {title && (
-                                <H4 textAlign="center" mb="5px">
-                                    {title.toUpperCase()}
-                                </H4>
-                            )}
-                            {short_description && (
-                                <P
-                                    color="#909090"
-                                    weight={600}
-                                    textAlign="center"
+                        <Flex
+                            justifyContent="space-between"
+                            alignItems="center"
+                            margin="0px 0px 35px 0px"
+                            flexWrap
+                        >
+                            <FlexItem>
+                                {title && (
+                                    <H5 as="h1" mb="5px">{title}</H5>
+                                )}
+                                {short_description && (
+                                    <P margin="0px 0px 10px 0px" color="#909090">{short_description}</P>
+                                )}
+                            </FlexItem>
+                            <FlexItem>
+                                <ViewAllLink
+                                    href="/product"
+                                    query={{ super_category: id }}
                                 >
-                                    {short_description}
-                                </P>
-                            )}
-                        </Block>
-                        <Row>
-                            <CategoryList type={type} categories={categories} />
-                        </Row>
+                                    View All
+                                </ViewAllLink>
+                            </FlexItem>
+                        </Flex>
+                        <CategoryList type={type} categories={categories} />
                     </Container>
                 </Block>
             </>
