@@ -1,7 +1,8 @@
+import { useRouter } from "next/router";
 import { Col, Container, Row } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import useToggle from "../../hooks/useToggle";
-import CountryLink from "../common/CountryLink";
+import CountryLink, { useCountryParam } from "../common/CountryLink";
 import Modal from "../modal/Modal";
 import ModalHeader from "../modal/ModalHeader";
 import { ProductImage } from "../product/ProductItem";
@@ -17,7 +18,9 @@ const Type1Styl = styled(Button)`
     cursor: pointer;
     text-align: center;
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    padding: 15px 0px;
+    border: 1px solid #eaeaea;
 `;
 
 const CatImgStyl = styled.div`
@@ -40,11 +43,24 @@ const SubCatLink = styled(CountryLink)`
 `;
 
 const Type1 = ({ id, image, sub_categories = [], title }) => {
+    const country = useCountryParam();
+    const router = useRouter();
     const { toggle, onTrue, onFalse } = useToggle();
+
+    const onClick = () => {
+        if (sub_categories.length > 0) {
+            onTrue();
+        } else {
+            router.push(
+                `/[country]/product/?category=${id}`,
+                `/${country}/product/?category=${id}`
+            );
+        }
+    };
 
     return (
         <>
-            <Type1Styl onClick={onTrue}>
+            <Type1Styl onClick={onClick}>
                 <CatImgStyl hasImage={!!image}>
                     {image && <img loading="lazy" src={image} alt={title} />}
                 </CatImgStyl>

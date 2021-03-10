@@ -25,7 +25,7 @@ const ViewAllLink = styled(CountryLink)`
     color: #fff !important;
     padding: 8px 15px;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 13px;
 `;
 
 const CategoryDetail = () => {
@@ -59,7 +59,7 @@ const CategoryDetail = () => {
                                     href="/product"
                                     query={{ super_category: id }}
                                 >
-                                    View All
+                                    View Products
                                 </ViewAllLink>
                             </FlexItem>
                         </Flex>
