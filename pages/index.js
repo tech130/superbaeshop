@@ -1,4 +1,5 @@
-import Bundle from "../components/bundle/Bundle";
+import ProPlanner from "../components/professional-planner/ProPlanner";
 import ProductPage from "../components/product/ProductPage";
+import slug from "../components/professional-planner/slug";
 
-export default ProductPage("bundle-2021", Bundle);
+export default ProductPage(slug, ProPlanner);
