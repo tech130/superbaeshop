@@ -61,9 +61,11 @@ const Type1 = ({ id, image, sub_categories = [], title }) => {
     return (
         <>
             <Type1Styl onClick={onClick}>
-                <CatImgStyl hasImage={!!image}>
-                    {image && <img loading="lazy" src={image} alt={title} />}
-                </CatImgStyl>
+                {!!image && (
+                    <CatImgStyl>
+                        <img loading="lazy" src={image} alt={title} />
+                    </CatImgStyl>
+                )}
                 <span>{title}</span>
             </Type1Styl>
             <Modal isOpen={toggle} close={onFalse}>
