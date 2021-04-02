@@ -10,6 +10,7 @@ import CountryLink from "../common/CountryLink";
 import { useCartCount } from "../../hooks/redux/checkout/useCart";
 import { useDispatch } from "react-redux";
 import { fetchCart } from "../../redux/user/cart";
+import useUser from "../../hooks/redux/user/useUser";
 
 const Hdr = styled.div`
     border-bottom: 1px solid #eaeaea;
@@ -90,12 +91,15 @@ const Header = () => {
 };
 
 const CartCount = () => {
+    const { token } = useUser();
     const count = useCartCount();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchCart());
-    }, []);
+        if (token) {
+            dispatch(fetchCart());
+        }
+    }, [token]);
 
     if (!count) {
         return null;
