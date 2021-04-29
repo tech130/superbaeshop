@@ -120,7 +120,7 @@ const CreateAddress = ({ closeModal }) => {
                 closeModal={closeModal}
             />
             <Block padding="25px 15px 30px">
-                {countries.length > 1 && (
+                {countries.length > 0 && (
                     <FormCon
                         config={{
                             url: urls.address,
