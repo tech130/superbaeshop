@@ -11,6 +11,8 @@ import { ToastContainer } from "react-toastify";
 
 import "intersection-observer";
 import "../css/font.css";
+import "../css/theme.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-toastify/dist/ReactToastify.css";
 import UploadCartModal from "../components/auth/UploadCartModal";
 import useAnalytics from "../hooks/useAnalytics";

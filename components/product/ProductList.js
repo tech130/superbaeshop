@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row } from "styled-bootstrap-grid";
+import { Collapse } from 'reactstrap';
 import Block from "../styled/Block";
 import ProductItem, { ItemLoader } from "./ProductItem";
 import InfiniteList from "../common/InfiniteList";
@@ -13,9 +14,8 @@ import {
     prodListName,
 } from "../../redux/product/listing";
 import styled from "styled-components";
-import CountryLink from "../common/CountryLink";
+import CountryLink,{useCountryParam} from "../common/CountryLink";
 import { H4 } from "../styled/Headings";
-
 export const ProdCol = ({ children }) => {
     return (
         <Col col={6} lg={3} md={4}>
@@ -52,6 +52,7 @@ const FilterListStyl = styled.div`
     overflow-x: auto;
     margin-bottom: 15px;
 `;
+
 
 const FilterLinkStyl = styled(CountryLink)`
     flex: 0 0 100px;
@@ -100,17 +101,31 @@ const getTitle = (data = {}) => {
 
 const Filters = () => {
     const { query } = useRouter();
+    const router = useRouter();
     const data = useSelector((state) => filterSelector(state, query));
     const list = Array.isArray(data?.filter) ? data.filter : [];
     const title = getTitle(data);
+    const [activeCheck,setActive]=useState(query.design_type?query.design_type:"");
+    const [toggle,setToggle]=useState(true);
+    const country = useCountryParam();
+    const checkMarkChange=(id,href)=>{
+        setActive(id);
+        query.design_type=id;
+        router.push({
+            pathname: `/[country]${href}`,
+            query: { ...query, country },
+            key:`tag--${id}`
+        }
+        );
+    }
     return (
-        <>
+        <Block width="100%">
             {title && (
-                <H4 mb="20px" textAlign="center">
+                <H4 mb="20px" textAlign="left">
                     {title}
                 </H4>
             )}
-            {list.length > 0 && (
+            {/* {list.length > 0 && (
                 <FilterListStyl>
                     <FilterLinkStyl
                         href="/product"
@@ -140,8 +155,49 @@ const Filters = () => {
                         );
                     })}
                 </FilterListStyl>
-            )}
-        </>
+            )} */}
+            <div className="filter-branch">
+                <p className="fs-16">{title}</p>
+                <span onClick={()=>{setToggle(!toggle)}} className={toggle ? "rotate-down" : "rotate-up"}>
+                    <img src="/images/up_arrow.svg" alt="icon" />
+                </span>
+            </div>
+            <Collapse isOpen={toggle}>    
+                <ul className="filter-list">
+                    <li key={'all'}>
+                        <div className="check">
+                                <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === ""} onChange={()=>{checkMarkChange("","/product")}} />
+                                <span className="checkmark"></span>
+                            All
+                        </div>
+                    </li>
+                {list.length > 0?
+                <>
+                {list.map((item,index) => {
+                    return (
+                        <li key={index}>
+                            <div className="check">
+                                    <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === item.id.toString()} onChange={()=>{checkMarkChange(item.id,"/product")}} />
+                                    <span className="checkmark"></span>
+                                {item.title}
+                                
+                            </div>
+                        </li>
+                        
+                    );
+                })}
+                </>
+                :
+                ''
+                // <li>
+                //     <div className="check">
+                //         No Data
+                //     </div>
+                // </li>
+                }
+                </ul>
+            </Collapse>
+        </Block>
     );
 };
 
@@ -164,7 +220,7 @@ const EaringList = () => {
     return (
         <Block padding="35px 0px">
             <Container>
-                <Filters />
+                {/* <Filters />
                 <Row>
                     <InfiniteList
                         loader={loader}
@@ -173,6 +229,25 @@ const EaringList = () => {
                         emptyTitle="No products found"
                         {...data}
                     />
+                </Row> */}
+
+                <Row>
+                    <Col col={3} lg={2} md={3}>
+                        <Row>
+                            <Filters />
+                        </Row>
+                    </Col>
+                    <Col col={9} lg={10} md={9}>
+                        <Row>
+                            <InfiniteList
+                                loader={loader}
+                                RenderItem={RenderItem}
+                                loadMore={loadMore}
+                                emptyTitle="No products found"
+                                {...data}
+                            />
+                        </Row>
+                    </Col>
                 </Row>
             </Container>
         </Block>

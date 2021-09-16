@@ -79,7 +79,7 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
 
 export const AddToCart = ({ className = "", product = {} }) => {
     const { onClick, fetching, btnText, inStock } = useAddToCart(product);
-
+    console.log(className,'casssss')
     return (
         <Button
             disabled={fetching || !inStock}
