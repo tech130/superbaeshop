@@ -156,16 +156,17 @@ const Filters = () => {
                     })}
                 </FilterListStyl>
             )} */}
-            <div className="filter-branch">
-                <p className="fs-16">{title}</p>
-                <span onClick={()=>{setToggle(!toggle)}} className={toggle ? "rotate-down" : "rotate-up"}>
+            <div className="outline">
+            <div className="filter-branch cursor-pointer" onClick={()=>{setToggle(!toggle)}}>
+                <p className="f-14 mb-0">{title}</p>
+                <span  className={toggle ? "rotate-down" : "rotate-up"}>
                     <img src="/images/up_arrow.svg" alt="icon" />
                 </span>
             </div>
             <Collapse isOpen={toggle}>    
                 <ul className="filter-list">
                     <li key={'all'}>
-                        <div className="check">
+                        <div className="check f-13">
                                 <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === ""} onChange={()=>{checkMarkChange("","/product")}} />
                                 <span className="checkmark"></span>
                             All
@@ -176,7 +177,7 @@ const Filters = () => {
                 {list.map((item,index) => {
                     return (
                         <li key={index}>
-                            <div className="check">
+                            <div className="check f-13">
                                     <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === item.id.toString()} onChange={()=>{checkMarkChange(item.id,"/product")}} />
                                     <span className="checkmark"></span>
                                 {item.title}
@@ -197,6 +198,7 @@ const Filters = () => {
                 }
                 </ul>
             </Collapse>
+            </div>
         </Block>
     );
 };
@@ -208,7 +210,8 @@ const EaringList = () => {
     const data = useSelector((state) => {
         return state.pagination[prodListName(query)] || {};
     });
-
+    const Category = useSelector((state) => filterSelector(state, query));
+    const title = getTitle(Category);
     useEffect(() => {
         dispatch(fetchProducts(query));
     }, [query]);
@@ -217,6 +220,15 @@ const EaringList = () => {
         dispatch(fetchMoreProducts(query));
     }, [dispatch, query]);
 
+    const loadTotalInformation=(data)=>{
+        console.log(data)
+        let{count,fetching}=data;
+        return(
+            <p>
+                Showing {fetching ? <strong>{count?count:0}</strong> :<strong>{count?count:0}</strong> } results for {`"${title}"`}
+            </p>
+        )
+    }
     return (
         <Block padding="35px 0px">
             <Container>
@@ -230,7 +242,11 @@ const EaringList = () => {
                         {...data}
                     />
                 </Row> */}
-
+                <div className="row">
+                    <div className="col-12 p-0 pb-2">
+                        {loadTotalInformation(data)}
+                    </div>
+                </div>
                 <Row>
                     <Col col={3} lg={2} md={3}>
                         <Row>

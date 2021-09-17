@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Flex from "../styled/Flex";
+import { Col, Row, Container } from "styled-bootstrap-grid";
+import Block from "../styled/Block";
+import { H5 } from "../styled/Headings";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import CountryLink from "../common/CountryLink";
+import CountryLink, { useCountryParam } from "../common/CountryLink";
+import Txt from "../styled/Txt";
 
 const ProdList = styled(Flex)`
     border-bottom: 1px solid #eaeaea;
@@ -16,7 +21,15 @@ const ProdList = styled(Flex)`
         white-space: nowrap;
     }
 `;
-
+const ViewAllLink = styled(CountryLink)`
+    display: block;
+    background: #000;
+    color: #fff !important;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 5px;
+`;
 const ProdLinkStl = styled.li`
     cursor: pointer;
     display: inline-block;
@@ -25,6 +38,11 @@ const ProdLinkStl = styled.li`
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
+`;
+const SubCatLink = styled(CountryLink)`
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
 `;
 
 const CategoryLink = ({ id, title }) => {
@@ -40,17 +58,134 @@ const CategoryLink = ({ id, title }) => {
     );
 };
 
+const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
+    let { categories, is_active, id } = cat;
+    return (
+        <>
+            {is_active &&
+                <>
+                    <ProdLinkStl>
+                        <div id="main-cat" onClick={() => {
+                            if (id === toggle)
+                                setToggle('')
+                            else
+                                setToggle(id)
+                        }} >
+                            {cat.title}
+
+                        </div>
+                    </ProdLinkStl>
+                    <div key={index} id="main-cat-menu" className={`${id === toggle ? '' : 'd-none'}`}>
+                        <Row className="h-100">
+                            <Container>
+
+                                <div className="inside-outline">
+                                    <div className="d-flex justify-content-end">
+                                        
+                                        <div className="mt-2 pt-1">
+                                            <CountryLink href="/product" query={{ category: id }}>
+                                                <Txt textDecor="underline">View Products</Txt>
+                                            </CountryLink>
+                                        </div>
+                                        <button type="button" className="close" aria-label="Close">
+                                            <span aria-hidden="true" className="f-28" onClick={() => {
+                                                setToggle('')
+                                            }}>&times;</span>
+                                        </button>
+
+                                    </div>
+                                    <div className="inside-pad">
+                                        <Row className="h-100">
+
+                                            {
+                                                !!categories && categories.length > 0 &&
+                                                categories.map((cat, index) => {
+                                                    return (
+                                                        <>
+                                                            {cat.is_active &&
+
+                                                                <Col key={index} col={2} lg={2} md={2} sm={3}>
+                                                                    {loadCategories(cat,setToggle)}
+                                                                </Col>
+
+                                                            }
+                                                        </>
+                                                    )
+                                                })
+                                            }
+
+                                        </Row>
+                                    </div>
+                                </div>
+                            </Container>
+                        </Row>
+                    </div>
+                </>
+            }
+        </>
+    );
+};
+const loadCategories = (cat,setToggle) => {
+
+    let { sub_categories, title, is_active, id } = cat;
+    const { query } = useRouter();
+    const router = useRouter();
+    const country = useCountryParam();
+    return (
+        <>
+            {is_active &&
+                <div className="mb-3">
+                    <p className="mb-2 text-black font-weight-bold cursor-pointer" onClick={() => {
+                        setToggle('')
+                        router.push(
+                            `/[country]/product/?category=${id}`,
+                            `/${country}/product/?category=${id}`
+                        );
+
+                    }}>
+                        {title}
+                    </p>
+                    {
+                        sub_categories.length > 0 ?
+                            sub_categories.map((item) => {
+                                return (
+                                    <p className="mb-1 cursor-pointer" key={item.id}  onClick={()=>{
+                                        
+                                        query.sub_category=item.id;
+                                        query.category=id;
+                                        router.push({
+                                            pathname: `/[country]/product`,
+                                            query: {...query },
+                                        })
+                                        setToggle('')
+                                    }}>
+                                        {item.title}
+                                    </p>
+                                )
+                            })
+                            :
+                            <p className="mb-1" >
+                                No Data
+                            </p>
+                    }
+                </div>
+            }
+        </>
+    );
+};
+
+
 const ProductList = () => {
+    const [toggle, setToggle] = useState('');
     const data = useSelector((state) => ({
         products: state.headerProducts,
         categories: state.master.category || [],
     }));
-
     return (
         <ProdList as="nav" justifyContent="center" alignItems="stretch">
             <ul>
-                {data.categories.map((cat) => (
-                    <CategoryLink {...cat} key={`${cat.id}`} />
+                {data.categories.map((cat, index) => (
+                    <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={`${cat.id}`} index={index} />
                 ))}
             </ul>
         </ProdList>
