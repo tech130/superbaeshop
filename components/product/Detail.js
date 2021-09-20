@@ -111,7 +111,13 @@ const Detail = ({ slug }) => {
                             {/* <Txt color="#00A80B" weight={300}>
                                 (60% off)
                             </Txt> */}
+                            <Txt fontSize="12" color="#b5b5b5" weight={600}>
+                                Inclusive of all taxes
+                            </Txt>
                         </Block>
+                        <div className="seperator" />
+                            <CartBtn product={product} />
+                        <div className="seperator" />
                         {product_content.map((x) => (
                             <Block key={`${x.id}`}>
                                 <Block>
@@ -128,7 +134,7 @@ const Detail = ({ slug }) => {
                                 </Block>
                             </Block>
                         ))}
-                        <CartBtn product={product} />
+                        
                     </Col>
                 </Row>
                 <Block padding="35px 0px 0px 0px">

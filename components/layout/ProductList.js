@@ -80,18 +80,25 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                             <Container>
 
                                 <div className="inside-outline">
-                                    <div className="d-flex justify-content-end">
+                                    <div className="d-flex justify-content-end mb-1">
                                         
                                         <div className="mt-2 pt-1">
                                             <CountryLink href="/product" query={{ category: id }}>
                                                 <Txt textDecor="underline">View Products</Txt>
                                             </CountryLink>
                                         </div>
-                                        <button type="button" className="close" aria-label="Close">
+                                        {/* <button type="button" className="close" aria-label="Close">
                                             <span aria-hidden="true" className="f-28" onClick={() => {
                                                 setToggle('')
                                             }}>&times;</span>
-                                        </button>
+                                        </button> */}
+                                        <div className="close-container" onClick={() => {
+                                                setToggle('')
+                                            }}>
+                                            <div className="leftright"></div>
+                                            <div className="rightleft"></div>
+                                            {/* <label className="close">close</label> */}
+                                        </div>
 
                                     </div>
                                     <div className="inside-pad">
@@ -135,7 +142,7 @@ const loadCategories = (cat,setToggle) => {
         <>
             {is_active &&
                 <div className="mb-3">
-                    <p className="mb-2 text-black font-weight-bold cursor-pointer" onClick={() => {
+                    <p className="mb-2 font-weight-bold cursor-pointer categ-title" onClick={() => {
                         setToggle('')
                         router.push(
                             `/[country]/product/?category=${id}`,

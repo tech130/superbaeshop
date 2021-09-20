@@ -76,7 +76,7 @@ export const CartBtn = styled(AddToCart)`
     text-transform: uppercase;
     border: 1px solid #000;
     width: 100%;
-    padding: 5px 15px;
+    padding: 8px 15px;
     background: #fff;
     color: #000;
 
