@@ -115,8 +115,9 @@ input#custom-checkbox {
 .outline{
     border: 1px solid #eeeeee;
 }
-.outline:hover {
+.outline .hover-body:hover {
     background: #f7f7f7;
+    transition: 200ms;
 }
 #main-cat{
     position: relative;

@@ -104,14 +104,31 @@ const Filters = () => {
     const router = useRouter();
     const data = useSelector((state) => filterSelector(state, query));
     const list = Array.isArray(data?.filter) ? data.filter : [];
-    const title = getTitle(data);
+    const titleHead = getTitle(data);
     const [activeCheck,setActive]=useState(query.design_type?query.design_type:"");
-    const [toggle,setToggle]=useState('');
+    const [toggle,setToggle]=useState(list.length >0 ?list.map((item)=>{return item.title}) : []);
     const country = useCountryParam();
+    console.log(query,'query');
     const checkMarkChange=(id,href,filter_key)=>{
         setActive(activeCheck === id ? '':id);
-        query[`${filter_key}`]=activeCheck === id ? '':id;
-        debugger
+        if(query[`${filter_key}`] &&query[`${filter_key}`] !== ''){
+            if(Array.isArray(query[`${filter_key}`])){
+
+                query[`${filter_key}`].includes(id.toString()) ? 
+                                        query[`${filter_key}`].splice(query[`${filter_key}`].indexOf(id.toString()),1) :
+                                        query[`${filter_key}`].push(id) ;
+            }else{
+                let tempArray = query[`${filter_key}`] !== id.toString() ? query[`${filter_key}`].split('') :[];
+                tempArray.length === 0 ? '':tempArray.push(`${id}`)
+                query[`${filter_key}`]=tempArray
+            }
+        }else{
+            query[`${filter_key}`]=[id]
+        }
+        // query[`${filter_key}`]=query[`${filter_key}`] === ''? Array.isArray(query[`${filter_key}`])? 
+        //                     query[`${filter_key}`].includes(id) ? 
+        //                     query[`${filter_key}`].splice(query[`${filter_key}`].indexOf(id),1) :
+        //                     query[`${filter_key}`].push(id) : tempArray.push(id) :[id];
         router.push({
             pathname: `/[country]${href}`,
             query: { ...query, country },
@@ -121,9 +138,9 @@ const Filters = () => {
     }
     return (
         <Block width="100%">
-            {title && (
+            {titleHead && (
                 <H4 mb="20px" textAlign="left">
-                    {title}
+                    {titleHead}
                 </H4>
             )}
             {/* {list.length > 0 && (
@@ -161,14 +178,20 @@ const Filters = () => {
                 {list.map((item,index) => {
                     let{title,data,filter_key}=item;
                     return (
-                        <div key ={index}>
-                                <div className="filter-branch cursor-pointer" onClick={()=>{setToggle(title)}}>
+                        <div className="hover-body" key ={index}>
+                                <div className="filter-branch cursor-pointer" onClick={()=>{
+                                    if(toggle.includes(title)){
+                                        setToggle(toggle.filter(item => item !== title))
+                                    }else{
+                                        setToggle([...toggle,title])
+                                    }
+                                }}>
                                 <p className="f-14 mb-0">{title}</p>
                                 <span  className={toggle===title ? "rotate-down" : "rotate-up"}>
                                     <img src="/images/up_arrow.svg" alt="icon" />
                                 </span>
                             </div>
-                            <Collapse isOpen={toggle===title}>    
+                            <Collapse isOpen={toggle.includes(title)}>    
                                 <ul className="filter-list">
                                     <li key={'all'}>
                                         <div className="check f-13">
@@ -183,7 +206,10 @@ const Filters = () => {
                                     return (
                                         <li key={index}>
                                             <div className="check f-13">
-                                                    <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === list.id.toString()} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} />
+                                                    {/* <input type="checkbox" id="custom-checkbox" checked={Array.isArray(query[`${filter_key}`])? query[`${filter_key}`].includes(list.id.toString()) ?
+                                                        true:query[`${filter_key}`] === list.id.toString()? true:false :false} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} /> */}
+                                                    <input type="checkbox" id="custom-checkbox" checked={query[`${filter_key}`] !==''? Array.isArray(query[`${filter_key}`])? 
+                                                        query[`${filter_key}`].includes(list.id.toString()):query[`${filter_key}`] === list.id.toString():false} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} />
                                                     <span className="checkmark"></span>
                                                 {list.title}
                                                 
