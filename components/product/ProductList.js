@@ -106,11 +106,12 @@ const Filters = () => {
     const list = Array.isArray(data?.filter) ? data.filter : [];
     const title = getTitle(data);
     const [activeCheck,setActive]=useState(query.design_type?query.design_type:"");
-    const [toggle,setToggle]=useState(true);
+    const [toggle,setToggle]=useState('');
     const country = useCountryParam();
-    const checkMarkChange=(id,href)=>{
-        setActive(id);
-        query.design_type=id;
+    const checkMarkChange=(id,href,filter_key)=>{
+        setActive(activeCheck === id ? '':id);
+        query[`${filter_key}`]=activeCheck === id ? '':id;
+        debugger
         router.push({
             pathname: `/[country]${href}`,
             query: { ...query, country },
@@ -157,47 +158,95 @@ const Filters = () => {
                 </FilterListStyl>
             )} */}
             <div className="outline">
-            <div className="filter-branch cursor-pointer" onClick={()=>{setToggle(!toggle)}}>
-                <p className="f-14 mb-0">{title}</p>
-                <span  className={toggle ? "rotate-down" : "rotate-up"}>
-                    <img src="/images/up_arrow.svg" alt="icon" />
-                </span>
-            </div>
-            <Collapse isOpen={toggle}>    
-                <ul className="filter-list">
-                    <li key={'all'}>
-                        <div className="check f-13">
-                                <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === ""} onChange={()=>{checkMarkChange("","/product")}} />
-                                <span className="checkmark"></span>
-                            All
-                        </div>
-                    </li>
-                {list.length > 0?
-                <>
                 {list.map((item,index) => {
+                    let{title,data,filter_key}=item;
                     return (
-                        <li key={index}>
-                            <div className="check f-13">
-                                    <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === item.id.toString()} onChange={()=>{checkMarkChange(item.id,"/product")}} />
-                                    <span className="checkmark"></span>
-                                {item.title}
-                                
+                        <div key ={index}>
+                                <div className="filter-branch cursor-pointer" onClick={()=>{setToggle(title)}}>
+                                <p className="f-14 mb-0">{title}</p>
+                                <span  className={toggle===title ? "rotate-down" : "rotate-up"}>
+                                    <img src="/images/up_arrow.svg" alt="icon" />
+                                </span>
                             </div>
-                        </li>
-                        
+                            <Collapse isOpen={toggle===title}>    
+                                <ul className="filter-list">
+                                    <li key={'all'}>
+                                        <div className="check f-13">
+                                                {/* <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === ""} onChange={()=>{checkMarkChange("","/product",filter_key)}} /> */}
+                                                <span className="checkmark"></span>
+                                            All
+                                        </div>
+                                    </li>
+                                {data.length > 0?
+                                <>
+                                {data.map((list,index) => {
+                                    return (
+                                        <li key={index}>
+                                            <div className="check f-13">
+                                                    <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === list.id.toString()} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} />
+                                                    <span className="checkmark"></span>
+                                                {list.title}
+                                                
+                                            </div>
+                                        </li>
+                                        
+                                    );
+                                })}
+                                </>
+                                :
+                                ''
+                                // <li>
+                                //     <div className="check">
+                                //         No Data
+                                //     </div>
+                                // </li>
+                                }
+                                </ul>
+                            </Collapse>
+                        </div>
                     );
                 })}
-                </>
-                :
-                ''
-                // <li>
-                //     <div className="check">
-                //         No Data
-                //     </div>
-                // </li>
-                }
-                </ul>
-            </Collapse>
+                {/* <div className="filter-branch cursor-pointer" onClick={()=>{setToggle(!toggle)}}>
+                    <p className="f-14 mb-0">{title}</p>
+                    <span  className={toggle ? "rotate-down" : "rotate-up"}>
+                        <img src="/images/up_arrow.svg" alt="icon" />
+                    </span>
+                </div>
+                <Collapse isOpen={toggle}>    
+                    <ul className="filter-list">
+                        <li key={'all'}>
+                            <div className="check f-13">
+                                    <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === ""} onChange={()=>{checkMarkChange("","/product")}} />
+                                    <span className="checkmark"></span>
+                                All
+                            </div>
+                        </li>
+                    {list.length > 0?
+                    <>
+                    {list.map((item,index) => {
+                        return (
+                            <li key={index}>
+                                <div className="check f-13">
+                                        <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === item.id.toString()} onChange={()=>{checkMarkChange(item.id,"/product")}} />
+                                        <span className="checkmark"></span>
+                                    {item.title}
+                                    
+                                </div>
+                            </li>
+                            
+                        );
+                    })}
+                    </>
+                    :
+                    ''
+                    // <li>
+                    //     <div className="check">
+                    //         No Data
+                    //     </div>
+                    // </li>
+                    }
+                    </ul>
+                </Collapse> */}
             </div>
         </Block>
     );
