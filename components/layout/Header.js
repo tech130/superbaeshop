@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import CartIcon from "../icons/CartIcon";
 import Flex from "../styled/Flex";
 import styled from "styled-components";
@@ -10,7 +10,10 @@ import CountryLink from "../common/CountryLink";
 import { useCartCount } from "../../hooks/redux/checkout/useCart";
 import { useDispatch } from "react-redux";
 import { fetchCart } from "../../redux/user/cart";
+import Cartlist from "../../components/checkout/Cartlist";
 import useUser from "../../hooks/redux/user/useUser";
+import SlidingPane from "react-sliding-pane";
+import "react-sliding-pane/dist/react-sliding-pane.css";
 
 const Hdr = styled.div`
     border-bottom: 1px solid #eaeaea;
@@ -47,6 +50,9 @@ const HeaderLogo = styled.img`
 `;
 
 const Header = () => {
+    const [state, setState] = useState({
+        isPaneOpen: false,
+      });
     return (
         <>
             <Hdr>
@@ -71,10 +77,31 @@ const Header = () => {
                         </CountryLink>
                         <Ul alignItems="stretch">
                             <Hdrli>
-                                <CountryLink href="/checkout">
+                                {/* <CountryLink href="/checkout">
                                     <CartCount />
                                     <CartIcon size={20} />
-                                </CountryLink>
+                                </CountryLink> */}
+                                    <div className="cursor-pointer" >
+                                        <div onClick={() => setState({ isPaneOpen: true })}>
+                                        
+                                            <CartCount />
+                                            <CartIcon size={20} />
+                                        </div>
+                                       
+                                        <SlidingPane
+                                            className="some-custom-class"
+                                            overlayClassName="some-custom-overlay-class"
+                                            isOpen={state.isPaneOpen}
+                                            title="MY SHOPPING BAG"
+                                            width="40%"
+                                            onRequestClose={() => {
+                                            setState({ isPaneOpen: false });
+                                            }}
+                                        >
+                                            <Cartlist />
+                                        </SlidingPane>
+                                        
+                                        </div>
                             </Hdrli>
                             <Hdrli>
                                 <SignInDrop />

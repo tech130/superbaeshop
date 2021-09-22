@@ -4,6 +4,21 @@
     --theme-check : #f3f7f6;
     --theme-green : #25BE9B;
 }
+ /* overlay custom styles */
+.some-custom-overlay-class{
+    z-index: 9999;
+}
+.slide-pane__overlay.overlay-after-open{
+    background: linear-gradient(
+        113.87deg,rgb(190 216 247 / 69%),rgb(189 163 249 / 69%));
+        transition: background-color 0.5s !important;
+        /* transition: 4s !important; */
+        /* transition: unset !important; */
+        background-color: unset !important;
+        -webkit-transition: background-color 0.5s;
+        -moz-transition: background-color 0.5s;
+        /* will-change: opacity,visibility; */
+}
 ul.filter-list {
     max-height   : 200px;
     overflow-y   : auto;

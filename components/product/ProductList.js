@@ -111,7 +111,7 @@ const Filters = () => {
     console.log(query,'query');
     const checkMarkChange=(id,href,filter_key)=>{
         setActive(activeCheck === id ? '':id);
-        if(query[`${filter_key}`] &&query[`${filter_key}`] !== ''){
+        if(query[`${filter_key}`] &&query[`${filter_key}`] !== '' && id !== ''){
             if(Array.isArray(query[`${filter_key}`])){
 
                 query[`${filter_key}`].includes(id.toString()) ? 
@@ -123,7 +123,8 @@ const Filters = () => {
                 query[`${filter_key}`]=tempArray
             }
         }else{
-            query[`${filter_key}`]=[id]
+            query[`${filter_key}`] === id ?  delete query[`${filter_key}`] : query[`${filter_key}`]=id;
+            // query[`${filter_key}`]=id;
         }
         // query[`${filter_key}`]=query[`${filter_key}`] === ''? Array.isArray(query[`${filter_key}`])? 
         //                     query[`${filter_key}`].includes(id) ? 
@@ -178,58 +179,63 @@ const Filters = () => {
                 {list.map((item,index) => {
                     let{title,data,filter_key}=item;
                     return (
-                        <div className="hover-body" key ={index}>
-                                <div className="filter-branch cursor-pointer" onClick={()=>{
-                                    if(toggle.includes(title)){
-                                        setToggle(toggle.filter(item => item !== title))
-                                    }else{
-                                        setToggle([...toggle,title])
-                                    }
-                                }}>
-                                <p className="f-14 mb-0">{title}</p>
-                                <span  className={toggle===title ? "rotate-down" : "rotate-up"}>
-                                    <img src="/images/up_arrow.svg" alt="icon" />
-                                </span>
-                            </div>
-                            <Collapse isOpen={toggle.includes(title)}>    
-                                <ul className="filter-list">
-                                    <li key={'all'}>
-                                        <div className="check f-13">
-                                                {/* <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === ""} onChange={()=>{checkMarkChange("","/product",filter_key)}} /> */}
-                                                <span className="checkmark"></span>
-                                            All
-                                        </div>
-                                    </li>
-                                {data.length > 0?
-                                <>
-                                {data.map((list,index) => {
-                                    return (
-                                        <li key={index}>
+                        <>
+                        {
+                            data.length >0 &&
+                            <div className="hover-body" key ={index}>
+                                    <div className="filter-branch cursor-pointer" onClick={()=>{
+                                        if(toggle.includes(title)){
+                                            setToggle(toggle.filter(item => item !== title))
+                                        }else{
+                                            setToggle([...toggle,title])
+                                        }
+                                    }}>
+                                    <p className="f-14 mb-0">{title}</p>
+                                    <span  className={toggle===title ? "rotate-down" : "rotate-up"}>
+                                        <img src="/images/up_arrow.svg" alt="icon" />
+                                    </span>
+                                </div>
+                                <Collapse isOpen={toggle.includes(title)}>    
+                                    <ul className="filter-list">
+                                        <li key={'all'}>
                                             <div className="check f-13">
-                                                    {/* <input type="checkbox" id="custom-checkbox" checked={Array.isArray(query[`${filter_key}`])? query[`${filter_key}`].includes(list.id.toString()) ?
-                                                        true:query[`${filter_key}`] === list.id.toString()? true:false :false} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} /> */}
-                                                    <input type="checkbox" id="custom-checkbox" checked={query[`${filter_key}`] !==''? Array.isArray(query[`${filter_key}`])? 
-                                                        query[`${filter_key}`].includes(list.id.toString()):query[`${filter_key}`] === list.id.toString():false} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} />
+                                                    <input type="checkbox" id="custom-checkbox" checked={query[`${filter_key}`] !=='' ? false:true} onChange={()=>{checkMarkChange("","/product",filter_key)}} />
                                                     <span className="checkmark"></span>
-                                                {list.title}
-                                                
+                                                All
                                             </div>
                                         </li>
-                                        
-                                    );
-                                })}
-                                </>
-                                :
-                                ''
-                                // <li>
-                                //     <div className="check">
-                                //         No Data
-                                //     </div>
-                                // </li>
-                                }
-                                </ul>
-                            </Collapse>
-                        </div>
+                                    {data.length > 0?
+                                    <>
+                                    {data.map((list,index) => {
+                                        return (
+                                            <li key={index}>
+                                                <div className="check f-13">
+                                                        {/* <input type="checkbox" id="custom-checkbox" checked={Array.isArray(query[`${filter_key}`])? query[`${filter_key}`].includes(list.id.toString()) ?
+                                                            true:query[`${filter_key}`] === list.id.toString()? true:false :false} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} /> */}
+                                                        <input type="checkbox" id="custom-checkbox" checked={query[`${filter_key}`] !==''? Array.isArray(query[`${filter_key}`])? 
+                                                            query[`${filter_key}`].includes(list.id.toString()):query[`${filter_key}`] === list.id.toString():false} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} />
+                                                        <span className="checkmark"></span>
+                                                    {list.title}
+                                                    
+                                                </div>
+                                            </li>
+                                            
+                                        );
+                                    })}
+                                    </>
+                                    :
+                                    ''
+                                    // <li>
+                                    //     <div className="check">
+                                    //         No Data
+                                    //     </div>
+                                    // </li>
+                                    }
+                                    </ul>
+                                </Collapse>
+                            </div>
+                        }
+                        </>
                     );
                 })}
                 {/* <div className="filter-branch cursor-pointer" onClick={()=>{setToggle(!toggle)}}>
