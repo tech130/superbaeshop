@@ -17,7 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-toastify/dist/ReactToastify.css";
 import UploadCartModal from "../components/auth/UploadCartModal";
 import useAnalytics from "../hooks/useAnalytics";
-
+import { GridThemeProvider } from 'styled-bootstrap-grid';
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
 });
@@ -27,9 +27,37 @@ Router.events.on("routeChangeError", () => NProgress.done());
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
     useAnalytics();
-
+    const gridTheme = {
+        // gridColumns: 24, 
+        breakpoints: { // defaults below
+          xxl: 1440,
+          xl: 1200,
+          lg: 992,
+          md: 768,
+          sm: 576,
+          xs: 575,
+        },
+        // row: {
+        //   padding: 10,
+        // },
+        // col: {
+        //   padding: 5,
+        // },
+        container: {
+        //   padding: 0,
+          maxWidth: {
+            xxl: 1141,
+            xl: 1240,
+            lg: 960,
+            md: 720,
+            sm: 540,
+            xs: 540,
+          },
+        },
+      };
     return (
         <Provider store={store}>
+            <GridThemeProvider gridTheme={gridTheme}>
             <Head>
                 <title>Space and Beauty</title>
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -53,6 +81,7 @@ function MyApp({ Component, pageProps, store }) {
                 draggable
                 pauseOnHover
             />
+            </GridThemeProvider>
         </Provider>
     );
 }

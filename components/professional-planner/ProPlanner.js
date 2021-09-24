@@ -1,7 +1,7 @@
 import React, { useRef, memo } from "react";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
-import { Container, Row, Col } from "styled-bootstrap-grid";
+import {Container, Row, Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { H3 } from "../styled/Headings";
 import Txt from "../styled/Txt";
@@ -13,33 +13,40 @@ import ResponsiveImage from "../common/ResponsiveImage";
 import useOnScreen from "../../hooks/layout/useOnScreen";
 
 const MeetTxt = styled.h1`
-    font-size: 3.4rem;
+    font-size: 3rem;
     font-weight: 700;
-    line-height: 68px;
-    margin-bottom: 30px;
-    background: linear-gradient(#616161, #333);
+    line-height: 56px;
+    color: #000;
+    margin-bottom: 18px;
     word-break: break-word;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
     @media (min-width: 768px) {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 `;
 
 const ProPlanner = () => {
     return (
         <>
-            <Block padding="35px 0px">
-                <Container>
+            <Block padding="35px 0px 0px 0px">
+                <Container fluid>
+                    <div className="bg-gradients">
+                        <div className="gradient-content">
                     <Row alignItems="center">
-                        <Col lg={7}>
-                            <ResponsiveImage
-                                image={require("./images/1.png?resize")}
-                            />
-                        </Col>
-                        <Col lg={5}>
+                        <Col lg={6}>
                             <MeetTxt>
+                                Take back <br />
+                                your best self. <br />
+                            </MeetTxt>
+                                <p>Vibrants™ patches empower you to safely restore  <br />
+                                your body’s unique & optimal balance with nature.</p>
+                                <ProPlannerPrice />
+                            {/* <ResponsiveImage
+                                image={require("./images/1.png?resize")}
+                            /> */}
+                            
+                        </Col>
+                        <Col lg={6}>
+                            {/* <MeetTxt>
                                 Meet the <br />
                                 Perfect <br />
                                 Professional planner
@@ -47,12 +54,20 @@ const ProPlanner = () => {
                             <H3 mb="35px" weight={700}>
                                 Crafted just for you!
                             </H3>
-                            <ProPlannerPrice />
+                            <ProPlannerPrice /> */}
+                            <ResponsiveImage
+                                image={require("./images/cover.png?resize")}
+                            />
                         </Col>
                     </Row>
+                    </div>
+                    </div>
                 </Container>
             </Block>
 
+            <Block padding="20px 0px">
+                <ListAnimation />
+            </Block>
             <Block padding="35px 0px">
                 <Container>
                     <Flex alignItems="center" flexWrap>
@@ -162,6 +177,236 @@ const ProPlanner = () => {
     );
 };
 
+// const ListAnimation = memo(() => {
+
+//     return (
+//         <div className="">
+//             fdg
+//             {/* <img src="./images/svg/tick.svg?resize" /> */}
+//             <ResponsiveImage 
+//                         image={require("./images/svg/tick.svg?resize")}
+//                     />
+//         </div>
+//     );
+// });
+const ListAnimation = (() => {
+    return (
+        <Container fluid>
+        <div className="bg-gradients-tags">
+        <div className="d-flex flex-row newww">
+        <div className="animation-row">
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    DRUG FREE
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    NO SIDE EFFECTS
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img" >
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    NO INGREDIENTS
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    SAFE  ON ALL AGES
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    MONEY-BACK GUARANTEE
+                </span>
+            </div>
+        </div>
+        <div className="animation-row">
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    DRUG FREE
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    NO SIDE EFFECTS
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img" >
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    NO INGREDIENTS
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    SAFE  ON ALL AGES
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    MONEY-BACK GUARANTEE
+                </span>
+            </div>
+        </div>
+        <div className=" animation-row">
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    DRUG FREE
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    NO SIDE EFFECTS
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img" >
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    NO INGREDIENTS
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    SAFE  ON ALL AGES
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    MONEY-BACK GUARANTEE
+                </span>
+            </div>
+        </div>
+        <div className="animation-row">
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    DRUG FREE
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    NO SIDE EFFECTS
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img" >
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    NO INGREDIENTS
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    SAFE  ON ALL AGES
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    MONEY-BACK GUARANTEE
+                </span>
+            </div>
+        </div>
+        </div>
+        </div>
+        </Container>
+    );
+});
 const ProfPlannerSlider = memo(() => {
     const ref = useRef(null);
     const isMobile = useMedia({ maxWidth: 576 });
