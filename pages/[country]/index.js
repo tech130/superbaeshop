@@ -1,5 +1,6 @@
 import ProPlanner from "../../components/professional-planner/ProPlanner";
+import LetsGoal2021 from "../../components/lets-goal-2021/LetsGoal2021";
 import ProductPage from "../../components/product/ProductPage";
 import slug from "../../components/professional-planner/slug";
 
-export default ProductPage(slug, ProPlanner);
+export default ProductPage(slug, LetsGoal2021);

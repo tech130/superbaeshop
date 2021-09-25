@@ -10,9 +10,6 @@ import CountryLink, { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 
 const ProdList = styled(Flex)`
-    border-bottom: 1px solid #eaeaea;
-    position: relative;
-
     ul {
         list-style: none;
         display: flex;
@@ -44,7 +41,13 @@ const SubCatLink = styled(CountryLink)`
     font-size: 14px;
     margin-bottom: 5px;
 `;
-
+const FilterListStyl = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    margin-bottom: 15px;
+`;
 const CategoryLink = ({ id, title }) => {
     return (
         <ProdLinkStl>
@@ -83,7 +86,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                                     <div className="d-flex justify-content-end mb-1">
                                         
                                         <div className="mt-2 pt-1">
-                                            <CountryLink href="/product" query={{ category: id }}>
+                                            <CountryLink href="/product" query={{ super_category: id }}>
                                                 <Txt textDecor="underline">View Products</Txt>
                                             </CountryLink>
                                         </div>

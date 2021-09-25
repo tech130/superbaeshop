@@ -14,9 +14,12 @@ import Cartlist from "../../components/checkout/Cartlist";
 import useUser from "../../hooks/redux/user/useUser";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
+import ProductList from "./ProductList";
 
 const Hdr = styled.div`
-    border-bottom: 1px solid #eaeaea;
+    background: hsla(0,0%,100%,.5);
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
 `;
 
 const Hdrli = styled.li`
@@ -24,6 +27,7 @@ const Hdrli = styled.li`
     display: flex;
     align-items: center;
     position: relative;
+    
 `;
 
 const CartCountStl = styled.span`
@@ -42,10 +46,10 @@ const CartCountStl = styled.span`
 `;
 
 const HeaderLogo = styled.img`
-    height: 25px;
+    height: 45px;
 
     @media only screen and (min-width: 575px) {
-        height: 30px;
+        height: 60px;
     }
 `;
 
@@ -61,7 +65,8 @@ const Header = () => {
                         as="nav"
                         justifyContent="space-between"
                         alignItems="center"
-                        minHeight="50px"
+                        minHeight="80px"
+                        position="relative"
                     >
                         <CountryLink>
                             <picture>
@@ -75,6 +80,7 @@ const Header = () => {
                                 />
                             </picture>
                         </CountryLink>
+                        <ProductList />
                         <Ul alignItems="stretch">
                             <Hdrli>
                                 {/* <CountryLink href="/checkout">

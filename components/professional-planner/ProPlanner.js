@@ -11,6 +11,7 @@ import Flex from "../styled/Flex";
 import P from "../styled/P";
 import ResponsiveImage from "../common/ResponsiveImage";
 import useOnScreen from "../../hooks/layout/useOnScreen";
+import WhatsInside from "../lets-goal-2021/WhatsInside";
 
 const MeetTxt = styled.h1`
     font-size: 3rem;
@@ -27,7 +28,7 @@ const MeetTxt = styled.h1`
 const ProPlanner = () => {
     return (
         <>
-            <Block padding="35px 0px 0px 0px">
+            <Block padding="0px 0px 0px 0px">
                 <Container fluid>
                     <div className="bg-gradients">
                         <div className="gradient-content">
@@ -68,6 +69,7 @@ const ProPlanner = () => {
             <Block padding="20px 0px">
                 <ListAnimation />
             </Block>
+            <WhatsInside />
             <Block padding="35px 0px">
                 <Container>
                     <Flex alignItems="center" flexWrap>

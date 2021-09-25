@@ -139,11 +139,11 @@ const Filters = () => {
     }
     return (
         <Block width="100%">
-            {titleHead && (
+            {/* {titleHead && (
                 <H4 mb="20px" textAlign="left">
                     {titleHead}
                 </H4>
-            )}
+            )} */}
             {/* {list.length > 0 && (
                 <FilterListStyl>
                     <FilterLinkStyl
@@ -183,15 +183,15 @@ const Filters = () => {
                         {
                             data.length >0 &&
                             <div className="hover-body" key ={index}>
-                                    <div className="filter-branch cursor-pointer" onClick={()=>{
-                                        if(toggle.includes(title)){
-                                            setToggle(toggle.filter(item => item !== title))
-                                        }else{
-                                            setToggle([...toggle,title])
-                                        }
-                                    }}>
+                                <div className="filter-branch cursor-pointer" onClick={()=>{
+                                    if(toggle.includes(title)){
+                                        setToggle(toggle.filter(item => item !== title))
+                                    }else{
+                                        setToggle([...toggle,title])
+                                    }
+                                }}>
                                     <p className="f-14 mb-0">{title}</p>
-                                    <span  className={toggle===title ? "rotate-down" : "rotate-up"}>
+                                    <span  className={toggle.includes(title) ? "rotate-down" : "rotate-up"}>
                                         <img src="/images/up_arrow.svg" alt="icon" />
                                     </span>
                                 </div>

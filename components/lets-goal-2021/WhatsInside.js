@@ -15,7 +15,8 @@ const WhatsInside = () => {
             <Container>
                 <Block padding="0px 0px 15px 0px">
                     <H2 textAlign="center" mb="0px">
-                        What&apos;s Inside
+                        {/* What&apos;s Inside */}
+                        Smart insides too: OMG
                     </H2>
                     <P textAlign="center">
                         Check out what makes let&apos;s goal 2021 so special
@@ -80,14 +81,19 @@ const WhatsInside = () => {
                     <Col lg={7}>
                         <Block margin="15px 0px 0px 0px">
                             <P>
-                                <b>YEARLY SPREADS</b>: Year at a glance - 2021 & 2022, Year in Pixels, Vision Board, Level 10 Goals, Level 10 Life, Birthdays, Bookstagram, Self Care, Make yourself a Priority,  Sacred Rituals, Hygge, Mental Health, Social Stats, Brain Dump, Clean Home, Pack me up, Bucket List, Memories, Subscriptions.
+                                Goal tracker, Bookstagram, TV Show lists, Movie lists, My obsessions, Habit Tracker, Meal planner, My loved ones, Places to visit, things to do, Clean schedules, Improvement Plan, Subscriptions, Dream Board, Vision Board, Idea Board, Achievement Board, Gift list, Fitness Tracker, Nail art pages, Outfit Planner, Appointments, Journals, Goal Grid, Mood tracker, Expense Tracker, Playlist, Water tracker, Period Tracker, Level 10 Life
+
                             </P>
                             <P>
-                                <b>MONTHLY SPREADS</b>: My obsessions, Month at a glance + Notes, Goal Tracker, Events, To Do, Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Kill & Grow, Weekly/Daily spread, Gratitude, Introspections, Expense Tracker, Shopping List, Clean eating, Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker, Sleep Tracker, Sugar/Junk Tracker, Meal Planner, Movies, Tv shows.
+                                <b>YEARLY SPREADS</b>: Year at a glance - 2021 & 2022, Year in Pixels, Vision Board, Level 10 Goals,  Birthdays, Bookstagram, Self Care, Make yourself a Priority, Sacred Rituals, Hygge, Mental Health, Social Stats, Brain Dump, Clean Home, Pack me up, Bucket List, Memories, Subscriptions.4
+
                             </P>
                             <P>
+                                <b>MONTHLY SPREADS</b>: My obsessions, Month at a glance + Notes, Goal Tracker, Events, To Do, Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Kill & Grow, Weekly/Daily spread, Gratitude, Introspections, Expense Tracker, Shopping List, Clean eating, Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker, Sleep Tracker, Sugar/Junk Tracker, Meal Planner, Movies, Tv shows
+                            </P>
+                            {/* <P>
                                 <b>FREE GOODIES</b>: Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box
-                            </P>
+                            </P> */}
                             <ProductBuy slug={"lets-goal-2021-planner"} />
                         </Block>
                     </Col>

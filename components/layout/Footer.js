@@ -10,9 +10,10 @@ import Txt from "../styled/Txt";
 import ProductLink from "../product/ProductLink";
 
 const FooterCon = styled.footer`
-    border-top: 4px solid #f5f5f5;
-    padding: 30px 0px;
+    padding: 100px 0px 70px 0px;
     font-size: 16px;
+    background: #fff7f7;
+    color: black;
 
     .social-icons a {
         margin-right: 10px;
@@ -24,14 +25,14 @@ const FooterCon = styled.footer`
     .footer-title {
         font-size: 18px;
         font-weight: 600;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
     }
     .footer-list {
         list-style: none;
     }
     .footer-list li {
         font-size: 16px;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
     }
     .payment-icons img {
         height: 26px;
@@ -54,7 +55,7 @@ const Footer = () => {
                     <Col md={3}>
                         <Block margin="0px 0px 15px">
                             <Block margin="0px 0px 8px">
-                                <Logo width="220px" />
+                                <Logo width="100px" />
                             </Block>
                             <Block margin="0px 0px 15px">
                                 <ul className="footer-list">
@@ -96,6 +97,20 @@ const Footer = () => {
                                     />
                                 </a>
                             </Flex>
+                            <Block margin="25px 0px 15px">
+                                <ul className="footer-list">
+                                    <li>
+                                        <a href="mailto:hey@spaceandbeauty.com">
+                                        Need Help?
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <CountryLink href="/terms">
+                                            Press Inquiry?
+                                        </CountryLink>
+                                    </li>
+                                </ul>
+                            </Block>
                         </Block>
                     </Col>
                     <Col md={3}>
@@ -109,7 +124,7 @@ const Footer = () => {
                     <Col md={2}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">
-                                Also shop on{" "}
+                                Also shop on{" "} <br />
                                 <Txt fontSize="14px" weight={300}>
                                     (coming soon)
                                 </Txt>{" "}

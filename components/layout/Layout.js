@@ -14,7 +14,6 @@ const StickyTop = styled.div`
     top: 0;
     z-index: 99;
     font-size: 14px;
-    background: #fff;
 `;
 
 const Layout = ({ children, slug, isAuthRoute = false }) => {
@@ -31,14 +30,14 @@ const Layout = ({ children, slug, isAuthRoute = false }) => {
 
     return (
         <>
-            <TopRollText slug={slug} />
-            <StickyTop>
+            {/* <TopRollText slug={slug} /> */}
+                <StickyTop>
                 <Header />
-                <ProductList />
-            </StickyTop>
-            {children}
-            <Subscribe />
-            <Footer />
+                {/* <ProductList /> */}
+                </StickyTop>
+                {children}
+                <Subscribe />
+                <Footer />
             <WhatsAppIcon slug={slug} />
         </>
     );

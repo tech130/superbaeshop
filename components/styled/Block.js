@@ -51,6 +51,11 @@ const Block = styled.div`
         css`
             background-color: ${props.bgColor};
         `};
+    ${(props) =>
+        props.bgGround &&
+        css`
+            background: ${props.bgGround};
+        `};
 `;
 
 export const RelativeBlock = styled(Block)`
