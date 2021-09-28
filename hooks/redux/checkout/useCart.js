@@ -61,5 +61,17 @@ export const useCartCount = () => {
         return local_cart.length;
     }, [cartList, user, local_cart]);
 };
+export const useCartIsOpen = () => {
+    const { cartOpen } = useSelector((state) => {
+        return {
+            cartOpen:state.cartOpen
+        };
+    });
+
+    return useMemo(() => {
+        
+        return cartOpen;
+    }, [cartOpen]);
+};
 
 export default useCart;

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import user from "./user/user";
-import local_cart from "./user/local_cart";
+import local_cart,{cartOpen} from "./user/local_cart";
 import cart, { cartList } from "./user/cart";
 import product, { headerProducts } from "./product/product";
 import apiData from "./apiData";
@@ -29,6 +29,7 @@ const appReducer = combineReducers({
     addressList,
     orders,
     wallet,
+    cartOpen
 });
 
 const reducer = (state, action) => {

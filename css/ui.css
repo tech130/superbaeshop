@@ -43,6 +43,13 @@
         -moz-transition: background-color 0.5s;
         /* will-change: opacity,visibility; */
 }
+.custom-pane .slide-pane__header{
+    background: white;
+}
+.custom-pane .slide-pane__content{
+    background: white;
+    padding:0px
+}
 .bg-gradients{
     display: flex;
     justify-content: center;

@@ -4,7 +4,7 @@ import { useProdCountry, useCountryParam } from "../common/CountryLink";
 import Button from "../styled/Button";
 import useUser from "../../hooks/redux/user/useUser";
 import { useDispatch, useSelector } from "react-redux";
-import { addToLocalCart } from "../../redux/user/local_cart";
+import { addToLocalCart,cartIsOpen } from "../../redux/user/local_cart";
 import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
@@ -64,6 +64,8 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
             });
         } else {
             dispatch(addToLocalCart(id, slug, quantity));
+            
+             dispatch(cartIsOpen(true));
         }
     }, [id, inCart, slug, quantity, isOffer]);
 

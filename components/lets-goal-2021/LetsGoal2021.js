@@ -10,6 +10,7 @@ import ColorPicker from "./ColorPicker";
 import GoodVibes from "./GoodVibes";
 import TestimonialSection from "./TestimonialSection";
 import StayTuned from "./StayTuned";
+import SmartDigitalPlanner from "./SmartDigitalPlanner";
 import { InterSec } from "../styled/Hr";
 import Block from "../styled/Block";
 import { Container } from "styled-bootstrap-grid";
@@ -22,6 +23,7 @@ const LetsGoal2021 = () => {
             <WhatsInside />
             <InterSec />
             <Freebies />
+            {/* <SmartDigitalPlanner /> */}
             <OptionsSection />
             <ColorPicker />
             <TestimonialSection />

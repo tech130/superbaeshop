@@ -3,6 +3,7 @@ import { LocalCartItem, MyCartItem } from "./CartItem";
 import useCart, { useLocalCart } from "../../hooks/redux/checkout/useCart";
 import useUser from "../../hooks/redux/user/useUser";
 import CartSummary from "./CartSummary";
+import CartSummarySmall from "./CartSummarySmall";
 import { useDispatch } from "react-redux";
 import { fetchCartAlways } from "../../redux/user/cart";
 import { ApiContent } from "../common/DynamicContent";
@@ -14,11 +15,39 @@ import { H4 } from "../styled/Headings";
 import { useActiveCountry } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import Block from "../styled/Block";
+import P from "../styled/P";
 import CartEmpty from "./CartEmpty";
 import LoginModalBtn from "../layout/LoginModalBtn";
 import MaskAddOn from "./MaskAddOn";
 import { toNum } from "../../utils";
+import styled from "styled-components";
 
+const FlexBg = styled.div`
+  height: 65vh;
+  width: 100%;
+  background-color: #FFF444;
+  background:linear-gradient( 90deg,rgb(237 244 249) 0%,rgb(246 244 244) 50%,rgb(241 247 249) 100%);
+  flex-direction: column;
+  overflow-y: scroll;
+overflow-x: hidden;
+`;
+const FlexBgAmount = styled.div`
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF;
+padding:15px
+`;
+const CartButton = styled.button`
+padding: 15px 40px;
+border-radius: 8px;
+background-color: #262626;
+color: #fff;
+font-weight: 700;
+font-size: 16px;
+width: calc(100% - 60px);
+margin: 0px 30px 5px 30px;
+    
+`;
 const Cartlist = () => {
     const { token } = useUser();
     if (!token) {
@@ -33,33 +62,49 @@ const LocalCartList = () => {
 
     if (list.length > 0) {
         return (
-            <Row>
-                <Col lg={7}>
-                    <CartSummary {...cartSummary} />
-                    {list.map((item) => (
-                        <LocalCartItem {...item} key={item.id} />
-                    ))}
-                </Col>
-                <Col lg={5}>
-                    <LoginModalBtn
-                        block
-                        border="2px solid #f5f5f5"
-                        borderRadius="10px"
-                        padding="5px"
-                    >
-                        Login to Checkout
-                    </LoginModalBtn>
-                    <LoginModalBtn
-                        fontSize="14px"
-                        block
-                        padding="5px"
-                        margin="5px 0px"
-                        isSignUp
-                    >
-                        New User? Sign Up
-                    </LoginModalBtn>
-                </Col>
-            </Row>
+
+
+            <div className="px-3">
+
+                <Row>
+                    <FlexBg>
+                        <Col lg={12}>
+                            {list.map((item) => (
+                                <LocalCartItem {...item} key={item.id} />
+                            ))}
+                            
+
+                        </Col>
+                    </FlexBg>
+                    <FlexBgAmount>
+                        <Col lg={12}>
+                            <CartSummarySmall {...cartSummary} />
+                            <CartButton>PROCEED TO CHECKOUT</CartButton>
+                            <P fontSize="14" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
+                        </Col>
+                    </FlexBgAmount>
+                    {/* <Col lg={12}>
+                        <LoginModalBtn
+                            block
+                            border="2px solid #f5f5f5"
+                            borderRadius="10px"
+                            padding="5px"
+                        >
+                            Login to Checkout
+                        </LoginModalBtn>
+                        <LoginModalBtn
+                            fontSize="14px"
+                            block
+                            padding="5px"
+                            margin="5px 0px"
+                            isSignUp
+                        >
+                            New User? Sign Up
+                        </LoginModalBtn>
+                    </Col> */}
+                </Row>
+            </div>
+
         );
     }
     return <CartEmpty />;
@@ -116,8 +161,8 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
                     acc.cartTotal +
                     (selling_price
                         ? toNum(selling_price) *
-                          parseInt(cur.quantity, 10) *
-                          (cur.offer_avail ? 0.8 : 1)
+                        parseInt(cur.quantity, 10) *
+                        (cur.offer_avail ? 0.8 : 1)
                         : 0),
             };
         }, init);

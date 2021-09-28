@@ -10,14 +10,17 @@ import CountryLink from "../common/CountryLink";
 import { useCartCount } from "../../hooks/redux/checkout/useCart";
 import { useDispatch } from "react-redux";
 import { fetchCart } from "../../redux/user/cart";
+import { cartIsOpen } from "../../redux/user/local_cart";
+
 import Cartlist from "../../components/checkout/Cartlist";
 import useUser from "../../hooks/redux/user/useUser";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import ProductList from "./ProductList";
+import useCart, { useLocalCart,useCartIsOpen } from "../../hooks/redux/checkout/useCart";
 
 const Hdr = styled.div`
-    background: hsla(0,0%,100%,.5);
+    background: hsla(0,0%,100%,.6);
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
 `;
@@ -57,6 +60,10 @@ const Header = () => {
     const [state, setState] = useState({
         isPaneOpen: false,
       });
+      const dispatch = useDispatch();
+
+      const isPanel = useCartIsOpen();
+      console.log("wewe",isPanel)
     return (
         <>
             <Hdr>
@@ -88,20 +95,22 @@ const Header = () => {
                                     <CartIcon size={20} />
                                 </CountryLink> */}
                                     <div className="cursor-pointer" >
-                                        <div onClick={() => setState({ isPaneOpen: true })}>
+                                        <div onClick={() => dispatch(cartIsOpen(true))}>
                                         
                                             <CartCount />
                                             <CartIcon size={20} />
                                         </div>
                                        
                                         <SlidingPane
-                                            className="some-custom-class"
+                                            className="custom-pane"
                                             overlayClassName="some-custom-overlay-class"
-                                            isOpen={state.isPaneOpen}
+                                            isOpen={isPanel}
                                             title="MY SHOPPING BAG"
                                             width="40%"
+                                            shouldCloseOnEsc={false}
                                             onRequestClose={() => {
-                                            setState({ isPaneOpen: false });
+                                            // setState({ isPaneOpen: false });
+                                            dispatch(cartIsOpen(false));
                                             }}
                                         >
                                             <Cartlist />

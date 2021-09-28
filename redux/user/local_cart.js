@@ -7,8 +7,11 @@ export const cartTyps = {
     decQty: "local_cart/decrease/quantity",
     remove: "local_cart/remove",
     clear: "local_cart/clear",
+    isOpen: "local_cart/open",
 };
-
+export const openTypes = {
+    isOpen: "local_cart/open",
+};
 export const addToLocalCart = (product, slug, quantity = 1) => ({
     type: cartTyps.add,
     payload: {
@@ -33,6 +36,10 @@ export const cartRemove = (product) => ({
     type: cartTyps.remove,
     product,
 });
+export const cartIsOpen = (product) => ({
+    type: openTypes.isOpen,
+    product,
+});
 
 export const clearLocalCart = () => ({
     type: cartTyps.clearCart,
@@ -51,6 +58,16 @@ const add = (state, payload) => {
     return [...state, payload];
 };
 
+
+const initOption = false;
+export const cartOpen = (state = initOption, action) => {
+    switch (action.type) {
+        case cartTyps.isOpen:
+            return  action.product;
+        default:
+            return state;
+    }
+};
 export default function local_cart(state = init, action) {
     switch (action.type) {
         case cartTyps.add:
@@ -86,6 +103,8 @@ export default function local_cart(state = init, action) {
         case userTyps.clear:
         case cartTyps.clear:
             return init;
+        case cartTyps.isOpen:
+            return state;
         default:
             return state;
     }

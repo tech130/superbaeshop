@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useRef} from "react";
 import { Provider } from "react-redux";
 import Head from "next/head";
 import Router from "next/router";
@@ -8,7 +8,6 @@ import withRedux from "next-redux-wrapper";
 import makeStore from "../redux/store";
 import GlobalStyle from "../components/styled/GlobalStyle";
 import { ToastContainer } from "react-toastify";
-
 import "intersection-observer";
 import "../css/font.css";
 import "../css/theme.css";
@@ -18,6 +17,9 @@ import "react-toastify/dist/ReactToastify.css";
 import UploadCartModal from "../components/auth/UploadCartModal";
 import useAnalytics from "../hooks/useAnalytics";
 import { GridThemeProvider } from 'styled-bootstrap-grid';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+// import {Scrollbar} from 'smooth-scrollbar-react';
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
 });
@@ -27,6 +29,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
     useAnalytics();
+    // const scrollbar = useRef<BaseScrollbar | null>(null);
     const gridTheme = {
         // gridColumns: 24, 
         breakpoints: { // defaults below
@@ -55,6 +58,13 @@ function MyApp({ Component, pageProps, store }) {
           },
         },
       };
+      useEffect(() => {
+        if (AOS) {
+          AOS.init({
+            duration : 2000
+          })
+        } 
+    }, []);
     return (
         <Provider store={store}>
             <GridThemeProvider gridTheme={gridTheme}>
@@ -68,7 +78,19 @@ function MyApp({ Component, pageProps, store }) {
             </Head>
             <GlobalStyle />
             <BaseCSS />
+            {/* <Scrollbar
+              className="custom-class"
+              onScroll={(e)=>{console.log(e)}}
+              alwaysShowTracks
+              plugins={{
+                overscroll: {
+                  effect: "glow"
+                } 
+              }}
+            > */}
             <Component {...pageProps} />
+            {/* </Scrollbar> */}
+            
             <UploadCartModal />
             <ToastContainer
                 position="bottom-center"
