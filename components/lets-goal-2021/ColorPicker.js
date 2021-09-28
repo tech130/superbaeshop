@@ -112,7 +112,7 @@ const ContentSection = styled.div`
   justify-content: center;
 `;
 
-const colorOptions = ["#efa6b3","purple", "#c6e1f1",  "yellow", "#01a1bc", "orange"];
+const colorOptions = ["#efa6b3","black"];
 
 export default function ColorPicker() {
   const [colorInd, setColor] = useState('#efa6b3');
