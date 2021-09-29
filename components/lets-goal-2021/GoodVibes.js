@@ -22,11 +22,24 @@ const MainCaption = styled.div`
   padding: 18px 70px;
   border-left: 1px solid #afafaf;
   border-right: 1px solid #afafaf;
+  @media (max-width: 768px) {
+    padding: 15px 15px;
+    font-size: 1.6rem;
+}
+@media (max-width: 576px) {
+  padding: 15px 25px;
+}
 `;
 const SubCaption = styled.div`
   text-align: center;
   font-size: 1rem;
   font-weight: 700;
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+}
+@media (max-width: 576px) {
+  display:none
+}
 `;
 
 

@@ -1,25 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import Block from "../styled/Block";
-import Flex from "../styled/Flex";
-import Marquee from "react-fast-marquee";
-import ResponsiveImage from "../common/ResponsiveImage";
 import { Col, Row, Container } from "styled-bootstrap-grid";
 
 const BGImage = require("./images/Bg1.jpg?resize");
-// const BGImage2 = require("./images/bg2.jpg?resize");
 import BGImage2 from './images/bg2.jpg';
-import styled, { keyframes } from "styled-components";
-
-const rainbow_animation = keyframes`
-    0%,100% {
-        background-position: 0 0;
-    }
-
-    50% {
-        background-position: 100% 0;
-    }
-`;
-
+import styled from "styled-components";
 
 const MainCaption = styled.div`
   text-align: left;
@@ -28,6 +13,11 @@ const MainCaption = styled.div`
   color:#d8d8d8;
   line-height: 90px;
   margin-top:85px;
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    line-height: 45px;
+    margin-top:55px;
+}
 `;
 const SubCaption = styled.div`
   text-align: left;
@@ -36,6 +26,10 @@ const SubCaption = styled.div`
   color:#d8d8d8;
   line-height: 28px;
   margin-top:25px;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    text-align: center;
+}
 `;
 const StyledDiv = styled.div`
 background-image: url(${BGImage});
@@ -80,6 +74,9 @@ const ContentDiv = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    @media (max-width: 768px) {
+        height: 200vh;
+    }
 `;
 const FadeContainer = styled.div`
     height: 90vh;
@@ -89,6 +86,10 @@ const FadeContainer = styled.div`
     flex-direction: column;
     padding: 0px 0px 0px 90px;
     justify-content: end;
+    @media (max-width: 768px) {
+        padding: 0px 30px 0px 30px;
+        align-items: center;
+    }
 `;
 const PopUp = styled.div`
     height: 40px;

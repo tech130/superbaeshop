@@ -9,6 +9,9 @@ const MainCaption = styled.div`
   font-size: 2.5rem;
   font-weight: 700;
   color:${(props) => props.color || 'black'};
+  @media (max-width: 576px) {
+    font-size: 2rem;
+}
 `;
 
 const SmallHeading = styled.div`
@@ -16,6 +19,9 @@ const SmallHeading = styled.div`
   font-weight: ${(props) => props.fontWeight || 500};
   margin-top: ${(props) => props.marginTop || 0};
   color:${(props) => props.color || 'black'};
+  @media (max-width: 576px) {
+    font-size: 1rem;
+}
 `;
 
 const ColorSelector = styled.div`
@@ -38,24 +44,12 @@ const ColorDetailsContainer = styled.div`
   width: 20%;
   align-self: flex-start;
 `;
-// background:${(props) => `background: linear-gradient(to right, red 50%, blue 50%);` || "red"};
-// background-size: 200% 100%;
-//   background-position: right;
-//   animation: makeItfadeIn 3s 1s forwards;
-// background:${(props) =>  `linear-gradient(to right, ${props.bgColor} 50%, transparent 0);` };
 
-
-// background: linear-gradient(to left, salmon 50%, lightblue 50%) right;
-// background-size: 200%;
-// transition: .5s ease-out;
-// background-position: left;
 const flash = keyframes`
 100% {
   background-position: left;
 }
 `;
-// background: ${(props) => props.bgColor || "red"};
-// background:${(props) => `linear-gradient(to left, ${props.bgColor} 100%, ${props.bgColor2} 100%);` };
 const MainSection = styled.div`
 background: ${(props) => props.bgColor};
   display: flex;
@@ -93,6 +87,9 @@ background: ${(props) => props.bgColor2};
   position: relative;
   height: 55vw;
   overflow: hidden;
+  @media (max-width: 576px) {
+    height: 75vw;
+}
 `;
 
 
@@ -127,26 +124,7 @@ export default function ColorPicker() {
       bgColor={colorInd}
       bgColor2={colorInd2}
     >
-      {/* <MainSection
-        vertical
-        bgColor={colorInd}
-        animatie={doAnimate}
-        margin="3rem 0"
-        alignItems="center"
-      >
-        <FirstSection>
-          <MainCaption>Your Planner, Your color.</MainCaption>
-
-          <SmallHeading>
-            6 Fresh colors that reflect your personality.
-          </SmallHeading>
-        </FirstSection>
-
-        <Img src="/images/cutest-planner/book-pen.png" width="40%" />
-        <ColorDetailsContainer>
-        
-        </ColorDetailsContainer>
-        <ColorSelectorContainer> */}
+      
       {colorOptions.map((color, ind) => {
         return (
           <>
@@ -159,15 +137,7 @@ export default function ColorPicker() {
                 margin="3rem 0"
                 alignItems="center"
               >
-                {/* <FirstSection>
-                  <MainCaption>Your Planner, Your color.</MainCaption>
-
-                  <SmallHeading>
-                    6 Fresh colors that reflect your personality.
-                  </SmallHeading>
-                </FirstSection>
-
-                <Img src="/images/cutest-planner/book-pen.png" width="40%" /> */}
+               
 
                 <ColorSelectorContainer >
                   {/* {
@@ -196,8 +166,6 @@ export default function ColorPicker() {
           </>
         );
       })}
-      {/* </ColorSelectorContainer>
-              </MainSection> */}
       <ContentSection className="container">
         <FirstSection>
           <MainCaption color={`${colorInd === 'black'? 'white':'black'}`}>Your Planner, Your color </MainCaption>

@@ -53,7 +53,9 @@ const FooterCon = styled.footer`
     text-align: center;
     border: 1px solid #d0d0d0;
     margin: 50px 0px 30px 0px;
-    
+    @media (max-width: 576px) {
+        display:none;
+      }
     }
     
 `;
@@ -63,7 +65,7 @@ const Footer = () => {
         <FooterCon>
             <Container>
                 <Row>
-                    <Col md={3}>
+                    <Col md={3} sm={6} xs={6}>
                         <Block margin="0px 0px 15px">
                             <Block margin="0px 0px 8px">
                                 <Logo width="100px" />
@@ -124,7 +126,7 @@ const Footer = () => {
                             </Block>
                         </Block>
                     </Col>
-                    <Col md={3}>
+                    <Col md={3} sm={6} xs={6}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Products</div>
                             <ul className="footer-list">
@@ -132,7 +134,7 @@ const Footer = () => {
                             </ul>
                         </Block>
                     </Col>
-                    <Col md={2}>
+                    <Col md={2} sm={6} xs={6}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">
                                 Also shop on{" "} <br />
@@ -153,7 +155,7 @@ const Footer = () => {
                             </ul>
                         </Block>
                     </Col>
-                    <Col md={4}>
+                    <Col md={4} sm={6} xs={6}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Payment partner</div>
                             <Flex className="payment-icons" flexWrap>
@@ -181,31 +183,36 @@ const Footer = () => {
                         </Block>
                     </Col>
                 </Row>
-                <div className="footer-bottom-txt">
+                <div className="footer-bottom-txt ">
                     *The statements on Vibrant's products have not been evaluated by the U.S. Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease or illness
                 </div>
-                <div className="footer-bottom">
-                <span>© 2020 Space and Beauty All Rights Reserved.</span>
-                <span>
-                    Terms of Use
-                </span>
-                <span>
+                <div className="d-none d-md-block d-lg-block d-xl-block" >
+                    <div className="footer-bottom" >
+                    <span>© 2020 Space and Beauty All Rights Reserved.</span>
+                    <span>
+                        Terms of Use
+                    </span>
+                    <span>
 
-                    Privacy Policy
-                </span>
-                <span>
+                        Privacy Policy
+                    </span>
+                    <span>
 
 
-                    Refund Policy
-                    Subscription Policy
-                </span>
-                <span>
-                    Subscription Policy
-                </span>
-            </div>
+                        Refund Policy
+                        Subscription Policy
+                    </span>
+                    <span>
+                        Subscription Policy
+                    </span>
+                </div>
+                </div>
+                <div className="footer-bottom d-block d-md-none d-lg-none d-xl-none">
+                    <span>© 2020 Space and Beauty All Rights Reserved.</span>
+                </div>
             </Container>
 
-            
+
         </FooterCon>
     );
 };

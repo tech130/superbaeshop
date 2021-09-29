@@ -222,7 +222,8 @@ input#custom-checkbox {
     top: 70px;
     width: 100%;
     left: 0;
-    padding: 0px 15px;    
+    padding: 0px 15px;   
+     
 }
 
 #main-cat-menu .inside-outline{
@@ -375,3 +376,114 @@ input#custom-checkbox {
 .right-pop-slide:hover .roundTxt{
     display: block;
   }
+  @keyframes leftRight {
+    40% {
+      transform: translate(50px, 0) scale(.7);
+      opacity: 1;
+      color: #8c0463;
+    }
+  
+    60% {
+      color: #0f40ba;
+    }
+  
+    80% {
+      transform: translate(0) scale(2);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translate(0) scale(1);
+      opacity: 1;
+    }
+  }
+  .animateText span {
+    display: inline-block;
+  }
+  .animateText span{
+    opacity: 0;
+  transform: translate(-150px, 0) scale(.3);
+  animation: leftRight .5s forwards;
+  }
+  .animateText span:nth-of-type(2) {
+    animation-delay: .05s;
+  }
+  .animateText span:nth-of-type(3) {
+    animation-delay: .1s;
+  }
+  .animateText span:nth-of-type(4) {
+    animation-delay: .15s;
+  }
+  .animateText span:nth-of-type(5) {
+    animation-delay: .2s;
+  }
+  .animateText span:nth-of-type(6) {
+    animation-delay: .25s;
+  }
+  .animateText span:nth-of-type(7) {
+    animation-delay: .3s;
+  }
+  .animateText span:nth-of-type(8) {
+    animation-delay: .35s;
+  }
+  .animateText span:nth-of-type(9) {
+    animation-delay: .4s;
+  }
+  .animateText span:nth-of-type(10) {
+    animation-delay: .45s;
+  }
+  .animateText span:nth-of-type(11) {
+    animation-delay: .5s;
+  }
+  .animateText span:nth-of-type(12) {
+    animation-delay: .55s;
+  }
+  .animateText span:nth-of-type(13) {
+    animation-delay: .6s;
+  }
+  .animateText span:nth-of-type(14) {
+    animation-delay: .65s;
+  }
+  .animateText span:nth-of-type(15) {
+    animation-delay: .7s;
+  }
+  .animateText span:nth-of-type(16) {
+    animation-delay: .75s;
+  }
+  .animateText span:nth-of-type(17) {
+    animation-delay: .8s;
+  }
+  .animateText span:nth-of-type(18) {
+    animation-delay: .85s;
+  }
+  .animateText span:nth-of-type(19) {
+    animation-delay: .9s;
+  }
+  .animateText span:nth-of-type(20) {
+    animation-delay: .95s;
+  }
+
+
+  @media only screen and (max-width: 767px) {
+    #main-cat-menu{
+        top: 40px;
+    }
+    .bg-gradients p{
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+}
+  @media only screen and (max-width: 576px) {
+    body{
+        font-size: 14px;
+    }
+    .sampleTags .svg-img{
+        width: 24px;
+    }
+    .pop-up-list{
+        display: none;
+    }
+    .pop-up-text{
+        display: none;
+    }
+}

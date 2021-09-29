@@ -2,11 +2,16 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import Flex from "../styled/Flex";
 import Block from "../styled/Block";
+import { Container, Row, Col } from "styled-bootstrap-grid";
 
 const MainCaption = styled.div`
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin:10px 0px;
+}
 `;
 
 const SmallHeading = styled.div`
@@ -27,6 +32,11 @@ font-size: 15px;
 &:hover{
   color: white;
   background-color: #000;
+}
+@media (max-width: 576px) {
+  margin: 10px 0px 0px 0px;
+  padding: 0.7rem 2rem;
+  font-size: 14px;
 }
 `;
 
@@ -63,6 +73,15 @@ const TestimonialContainer = styled.div`
   animation-name: ${breatheAnimation};
   animation-duration: 2s;
   animation-iteration-count: infinite;
+  @media (max-width: 992px) {
+    width: 80%;
+}
+  @media (max-width: 768px) {
+    width: 90%;
+}
+  @media (max-width: 576px) {
+    width: 80%;
+}
 `;
 
 const Card = styled.div`
@@ -71,6 +90,10 @@ const Card = styled.div`
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   padding: 1rem 2rem;
   border-radius: 0.6rem;
+  @media (max-width: 768px) {
+    padding: 0.7rem 1rem;
+    font-size: 14px;  
+}
 `;
 const FlexBg = styled.div`
 display: flex;
@@ -78,11 +101,31 @@ justify-content: space-evenly;
 align-items: center;
   height: 100%;
   width: 100%;
-  padding: ${(props)=>props.padding ? props.padding :'0px 15px'};
+  padding: ${(props) => props.padding ? props.padding : '0px 15px'};
   background-color: #FFF444;
   background:linear-gradient(
     90deg,rgb(255 237 237) 0%,rgb(246 244 244) 50%,rgb(216 230 234) 100%);;
   border-radius: 8px;
+  @media (max-width: 992px) {
+    padding: 15px 35px;
+}
+  @media (max-width: 768px) {
+    padding: 15px 15px;
+}
+  
+`;
+const FlexAssing = styled.div`
+display: flex;
+justify-content: space-around;
+align-items: center;
+width:50%;
+height:80%;
+flex-direction: column;
+text-align: center;
+  @media (max-width: 768px) {
+    padding: 15px 15px;
+    
+}
 `;
 
 const TestimonailImage = styled.img`
@@ -101,7 +144,7 @@ const SpinningAnimation = styled.svg`
   animation: ${rotatingAnimation} 7s linear infinite;
 `;
 
-const TestimonialCard = ({ alignSelf,width }) => {
+const TestimonialCard = ({ alignSelf, width }) => {
   return (
     <TestimonialContainer alignSelf={alignSelf} width={width}>
       <Card>
@@ -238,41 +281,48 @@ export default function TestimonialSection() {
     <Block padding="45px 0px 0px 0px">
 
 
-      <Flex width="100%" height="50vw">
-        <Flex width="50%"  bgColor="#FFFFFF" height="100%" padding="0px 10px 0px 15px">
-        <FlexBg >
-          <Flex
+      <Container fluid>
+        <Row>
+          <Col  lg={6} sm={6} xs={12} >
+            <Flex width="100%" bgColor="#FFFFFF" height="100%" padding="0px 0px 30px 0px" >
+            <FlexBg >
+            <FlexAssing
             vertical
             alignItems="center"
             textAlign="center"
             width="50%"
             height="80%"
             justifyContent="space-around"
-            padding="50px 0px"
-          >
+            >
             <SpinningElement />
             <MainCaption>Feel the difference, totally risk-free.</MainCaption>
 
             <SmallHeading>
-              Feeking curious? We guarantee you'll our naturally balanced
-              feelings.
+            Feeking curious?We guarantee you'll our naturally balanced
+            feelings.
             </SmallHeading>
 
             <OutlinedButton>TRY NOW</OutlinedButton>
-          </Flex>
-        </FlexBg>
-        </Flex>
+            </FlexAssing>
+            </FlexBg>
+            </Flex>
+          </Col>
+          <Col lg={6} sm={6} xs={12} >
+            <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="100%" >
+              <FlexBg className="flex-column" padding="15px 70px" >
+                <TestimonialCard alignSelf="flex-end" width="70%" />
 
-        <Flex vertical width="50%" bgColor="#FFFFFF" padding="0px 15px 0px 10px" height="100%" >
-          <FlexBg className="flex-column"  padding="15px 70px" >
-            <TestimonialCard alignSelf="flex-end" width="70%"/>
+                <TestimonialCard alignSelf="flex-start" width="70%" />
 
-            <TestimonialCard alignSelf="flex-start" width="70%"/>
+                <TestimonialCard alignSelf="flex-end" width="70%" />
+              </FlexBg>
+            </Flex>
+          </Col>
+        </Row>
+      
 
-            <TestimonialCard alignSelf="flex-end" width="70%" />
-          </FlexBg>
-        </Flex>
-      </Flex>
-      </Block>
+
+    </Container>
+    </Block >
   );
 }

@@ -101,6 +101,10 @@ export const CartButton = styled(AddToCart)`
     font-weight: 700;
     font-size: 16px;
     box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 6px 20px;
+    }
 `;
 
 const ProductBuy = ({ slug }) => {

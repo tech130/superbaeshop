@@ -59,6 +59,10 @@ const CardContainer = styled.div`
   height: 40rem;
   align-items: center;
   overflow: hidden;
+  @media (max-width: 992px) {
+    flex-direction: column;
+    height: 100%;
+}
 `;
 
 const firstOptionSettings = [
@@ -101,6 +105,13 @@ const OptionLeftContainer = styled.div`
     background-position: left;
     width: 80%;
   }
+  @media (max-width: 992px) {
+    width: 100%;
+    padding: 30px 0px;
+    &:hover {
+      width: 100%;
+    }
+}
 `;
 
 const CartButtonLeft = styled.button`
@@ -115,18 +126,7 @@ const CartButtonLeft = styled.button`
     bottom: 50px;
     right: 75px;
 `;
-const CartButtonRight = styled.button`
-    padding: 8px 40px;
-    border-radius: 30px;
-    background-color: #000;
-    color: #fff;
-    font-weight: 700;
-    font-size: 16px;
-    box-shadow: 13px 8px 50px 25px rgb(0 0 0 / 10%);
-    position: absolute;
-    bottom: 50px;
-    left: 75px;
-`;
+
 const OptionRightContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -144,6 +144,13 @@ const OptionRightContainer = styled.div`
     background-position: right;
     width: 80%;
   }
+  @media (max-width: 992px) {
+    width: 100%;
+    padding: 30px 0px;
+    &:hover {
+      width: 100%;
+    }
+}
 `;
 const ImgContainer = styled.div`
 background-image: url(${BGImage2});
@@ -177,6 +184,12 @@ height: 100px;
     position: absolute;
     left: -51%;
     bottom: 15px;
+    @media (max-width: 576px) {
+      height: 75px;
+    width: 75px;
+    left: -65px;
+    bottom: 35px;
+  }
 `;
 export default function OptionsSection() {
   return (

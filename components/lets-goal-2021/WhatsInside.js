@@ -16,7 +16,29 @@ const WhatsInside = () => {
                 <Block padding="0px 0px 15px 0px">
                     <H2 textAlign="center" mb="0px">
                         {/* What&apos;s Inside */}
-                        Smart insides too: OMG
+                        <div className="animateText ">
+                            <span>S</span>
+                            <span>m</span>
+                            <span>a</span>
+                            <span>r</span>
+                            <span>t</span>&nbsp;
+                            <span>i</span>
+                            <span>n</span>
+                            <span>s</span>
+                            <span>i</span>
+                            <span>d</span>
+                            <span>e</span>
+                            <span>s</span>&nbsp;
+                            <span>t</span>
+                            <span>o</span>
+                            <span>o</span>
+                            <span>:</span>
+                            &nbsp;
+                            <span>O</span>
+                            <span>M</span>
+                            <span>G</span>
+                        </div>
+                        {/* Smart insides too: OMG */}
                     </H2>
                     <P textAlign="center">
                         Check out what makes let&apos;s goal 2021 so special

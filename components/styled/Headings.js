@@ -30,6 +30,10 @@ export const H4 = styled.h4`
     line-height: 1.2;
     margin-bottom: ${(props) => props.mb || "8px"};
     text-align: ${(props) => props.textAlign || "left"};
+    @media (max-width: 768px) {
+        font-size:1.25rem;
+        margin-bottom: 8px;
+    }
 `;
 
 export const H5 = styled.h5`

@@ -19,6 +19,12 @@ const MainCaption = styled.div`
   text-align: center;
   font-size: 3rem;
   font-weight: 700;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+}
+@media (max-width: 576px) {
+  font-size: 1.5rem;
+}
 `;
 const MainDiv = styled.div`
   width:100%;
@@ -49,6 +55,13 @@ animation: ${rainbow_animation} 4s ease-in-out infinite;
 background-size: 400% 100%;
 font-size: 3rem;
   font-weight: 700;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+}
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+    margin-bottom:0px;
+}
 `;
 
 const scrollTexts = [
@@ -95,7 +108,7 @@ const StayTuned = () => {
 
 
     return (
-        <Block padding="65px 0px"  className="overflow-hidden"> 
+        <Block padding="0px 0px 65px 0px"  className="overflow-hidden"> 
             <Flex vertical width="100%" alignItems="center" margin="3rem 0">
         <Flex alignItems="center" margin="3rem 0" >
           <MainCaption>Stay tuned</MainCaption>

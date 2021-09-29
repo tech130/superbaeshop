@@ -16,6 +16,12 @@ const ProdList = styled(Flex)`
         flex-wrap: nowrap;
         overflow-x: auto;
         white-space: nowrap;
+        
+    }
+    @media only screen and (max-width: 768px) {
+        background: hsla(0,0%,100%,.6);
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
     }
 `;
 const ViewAllLink = styled(CountryLink)`
@@ -35,6 +41,10 @@ const ProdLinkStl = styled.li`
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
+    @media only screen and (max-width: 575px) {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
 `;
 const SubCatLink = styled(CountryLink)`
     display: block;
@@ -114,7 +124,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                                                         <>
                                                             {cat.is_active &&
 
-                                                                <Col key={index} col={2} lg={2} md={2} sm={3}>
+                                                                <Col key={index} col={2} lg={2} md={2} sm={3} xs={4}>
                                                                     {loadCategories(cat,setToggle)}
                                                                 </Col>
 

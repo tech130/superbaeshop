@@ -8,6 +8,9 @@ const Txt = styled.span`
     ${(props) => props.textDecor && css`text-decoration: ${props.textDecor}`};
     ${(props) => props.padding && css`padding: ${props.padding}`};
     ${(props) => props.margin && css`margin: ${props.margin}`};
+    @media (max-width: 768px) {
+        font-size:1rem;
+    }
 `;
 
 export default Txt;

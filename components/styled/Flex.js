@@ -8,6 +8,7 @@ const Flex = styled(Block)`
     flex-direction: ${(props) => (props.vertical ? "column" : "row")};
     flex-wrap: ${(props) => (props.flexWrap ? "wrap" : "nowrap")};
     position: ${(props) => (props.position ? props.position : "unset")};
+    
 `;
 
 export const FlexItem = styled.div`
