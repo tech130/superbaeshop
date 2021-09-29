@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { LocalCartItem, MyCartItem } from "./CartItem";
-import useCart, { useLocalCart } from "../../hooks/redux/checkout/useCart";
+import useCart, { useLocalCart,useCartIsOpen } from "../../hooks/redux/checkout/useCart";
+import { cartIsOpen } from "../../redux/user/local_cart";
+
 import useUser from "../../hooks/redux/user/useUser";
 import CartSummary from "./CartSummary";
 import CartSummarySmall from "./CartSummarySmall";
@@ -21,6 +23,8 @@ import LoginModalBtn from "../layout/LoginModalBtn";
 import MaskAddOn from "./MaskAddOn";
 import { toNum } from "../../utils";
 import styled from "styled-components";
+import { useRouter } from "next/router";
+import {  useCountryParam } from "../common/CountryLink";
 
 const FlexBg = styled.div`
   height: 65vh;
@@ -50,16 +54,21 @@ margin: 0px 30px 5px 30px;
 `;
 const Cartlist = () => {
     const { token } = useUser();
+    const isPanel = useCartIsOpen();
     if (!token) {
-        return <LocalCartList />;
+        
+        return isPanel ?<LocalCartListPanel />:<LocalCartList /> ;
     }
     return <MyCartList />;
 };
 
-const LocalCartList = () => {
+const LocalCartListPanel = () => {
     const list = useLocalCart();
     const cartSummary = useCartSummary(list);
-
+    const country = useCountryParam();
+    const router = useRouter();
+    const dispatch = useDispatch();
+    
     if (list.length > 0) {
         return (
 
@@ -79,7 +88,12 @@ const LocalCartList = () => {
                     <FlexBgAmount>
                         <Col lg={12}>
                             <CartSummarySmall {...cartSummary} />
-                            <CartButton>PROCEED TO CHECKOUT</CartButton>
+                            <CartButton onClick={()=>{
+                                dispatch(cartIsOpen(false));
+                                router.push("/[country]/checkout", `/${country}/checkout`)}
+                                }>
+                                    PROCEED TO CHECKOUT
+                                </CartButton>
                             <P fontSize="14" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
                         </Col>
                     </FlexBgAmount>
@@ -105,6 +119,43 @@ const LocalCartList = () => {
                 </Row>
             </div>
 
+        );
+    }
+    return <CartEmpty />;
+};
+const LocalCartList = () => {
+    const list = useLocalCart();
+    const cartSummary = useCartSummary(list);
+
+    if (list.length > 0) {
+        return (
+            <Row>
+                <Col lg={7}>
+                    <CartSummary {...cartSummary} />
+                    {list.map((item) => (
+                        <LocalCartItem {...item} key={item.id} />
+                    ))}
+                </Col>
+                <Col lg={5}>
+                    <LoginModalBtn
+                        block
+                        border="2px solid #f5f5f5"
+                        borderRadius="10px"
+                        padding="5px"
+                    >
+                        Login to Checkout
+                    </LoginModalBtn>
+                    <LoginModalBtn
+                        fontSize="14px"
+                        block
+                        padding="5px"
+                        margin="5px 0px"
+                        isSignUp
+                    >
+                        New User? Sign Up
+                    </LoginModalBtn>
+                </Col>
+            </Row>
         );
     }
     return <CartEmpty />;

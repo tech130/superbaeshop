@@ -343,3 +343,35 @@ input#custom-checkbox {
   .right-pop-slide:hover .insiderR{
     bottom: 0px;
   }
+  .pop-up-list{
+    display: block;
+    position: absolute;
+   
+      overflow: hidden;
+      width: 122px;
+    transition: 0.8s ease-out;
+    bottom: 170px;
+    
+}
+.pop-up-list.left{
+    left: -120px;
+}
+.pop-up-list.right{
+    right: -120px;
+}
+.left-pop-slide:hover .pop-up-list.left{
+    left: 10%;
+  }
+.right-pop-slide:hover .pop-up-list.right{
+    right: 10%;
+  }
+  .roundTxt{
+      /* opacity: 0; */
+      display: none;
+  }
+.left-pop-slide:hover .roundTxt{
+    display: block;
+  }
+.right-pop-slide:hover .roundTxt{
+    display: block;
+  }

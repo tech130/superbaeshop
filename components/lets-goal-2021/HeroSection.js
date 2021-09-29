@@ -31,11 +31,13 @@ const HeroSection = () => {
                         <Row alignItems="center">
                             <Col lg={6}>
                                 <MeetTxt>
-                                    Take back <br />
-                                    your best self. <br />
+                                Cutest  
+ <br />
+ Planner Ever.<br />
                                 </MeetTxt>
-                                <p>Vibrants™ patches empower you to safely restore  <br />
-                                    your body’s unique & optimal balance with nature.</p>
+                                <p>The Ultimate Journaling Experience is here
+Preorder now!
+</p>
                                 <ProPlannerPrice />
                             </Col>
                             <Col lg={6}>
@@ -69,7 +71,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    DRUG FREE
+                CUTE
                 </span>
             </div>
             <div className="sampleTags">
@@ -79,7 +81,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    NO SIDE EFFECTS
+                 AESTHETIC
                 </span>
             </div>
             <div className="sampleTags">
@@ -89,7 +91,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    NO INGREDIENTS
+                 STUNNING
                 </span>
             </div>
             <div className="sampleTags">
@@ -99,7 +101,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    SAFE  ON ALL AGES
+                    ORIGINAL
                 </span>
             </div>
             <div className="sampleTags">
@@ -109,7 +111,37 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    MONEY-BACK GUARANTEE
+                 MAGICAL
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 SIMPLE
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 ELEGANT
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                  PRACTICAL
                 </span>
             </div>
         </div>
@@ -121,7 +153,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    DRUG FREE
+                CUTE
                 </span>
             </div>
             <div className="sampleTags">
@@ -131,7 +163,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    NO SIDE EFFECTS
+                 AESTHETIC
                 </span>
             </div>
             <div className="sampleTags">
@@ -141,7 +173,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    NO INGREDIENTS
+                 STUNNING
                 </span>
             </div>
             <div className="sampleTags">
@@ -151,7 +183,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    SAFE  ON ALL AGES
+                    ORIGINAL
                 </span>
             </div>
             <div className="sampleTags">
@@ -161,19 +193,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    MONEY-BACK GUARANTEE
-                </span>
-            </div>
-        </div>
-        <div className=" animation-row">
-            <div className="sampleTags">
-                <span className="svg-img">
-                    <ResponsiveImage 
-                        image={require("./images/tick.png?resize")}
-                    />
-                </span>
-                <span className="text-black font-weight-bold">
-                    DRUG FREE
+                 MAGICAL
                 </span>
             </div>
             <div className="sampleTags">
@@ -183,17 +203,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    NO SIDE EFFECTS
-                </span>
-            </div>
-            <div className="sampleTags">
-                <span className="svg-img" >
-                    <ResponsiveImage 
-                        image={require("./images/tick.png?resize")}
-                    />
-                </span>
-                <span className="text-black font-weight-bold">
-                    NO INGREDIENTS
+                 SIMPLE
                 </span>
             </div>
             <div className="sampleTags">
@@ -203,7 +213,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    SAFE  ON ALL AGES
+                 ELEGANT
                 </span>
             </div>
             <div className="sampleTags">
@@ -213,7 +223,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    MONEY-BACK GUARANTEE
+                  PRACTICAL
                 </span>
             </div>
         </div>
@@ -225,7 +235,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    DRUG FREE
+                CUTE
                 </span>
             </div>
             <div className="sampleTags">
@@ -235,7 +245,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    NO SIDE EFFECTS
+                 AESTHETIC
                 </span>
             </div>
             <div className="sampleTags">
@@ -245,7 +255,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    NO INGREDIENTS
+                 STUNNING
                 </span>
             </div>
             <div className="sampleTags">
@@ -255,7 +265,7 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    SAFE  ON ALL AGES
+                    ORIGINAL
                 </span>
             </div>
             <div className="sampleTags">
@@ -265,10 +275,123 @@ const ListAnimation = (() => {
                     />
                 </span>
                 <span className="text-black font-weight-bold">
-                    MONEY-BACK GUARANTEE
+                 MAGICAL
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 SIMPLE
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 ELEGANT
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                  PRACTICAL
                 </span>
             </div>
         </div>
+        <div className="animation-row">
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                CUTE
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 AESTHETIC
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img" >
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 STUNNING
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                    ORIGINAL
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 MAGICAL
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 SIMPLE
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                 ELEGANT
+                </span>
+            </div>
+            <div className="sampleTags">
+                <span className="svg-img">
+                    <ResponsiveImage 
+                        image={require("./images/tick.png?resize")}
+                    />
+                </span>
+                <span className="text-black font-weight-bold">
+                  PRACTICAL
+                </span>
+            </div>
+        </div>
+        
         </div>
         </div>
         </Container>

@@ -44,7 +44,18 @@ const FooterCon = styled.footer`
         padding-top: 15px;
         font-size: 14px;
         text-align: center;
+        display: flex;
+        justify-content: space-around;
     }
+    .footer-bottom-txt {
+        padding: 15px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #d0d0d0;
+    margin: 50px 0px 30px 0px;
+    
+    }
+    
 `;
 
 const Footer = () => {
@@ -101,7 +112,7 @@ const Footer = () => {
                                 <ul className="footer-list">
                                     <li>
                                         <a href="mailto:hey@spaceandbeauty.com">
-                                        Need Help?
+                                            Need Help?
                                         </a>
                                     </li>
                                     <li>
@@ -170,10 +181,31 @@ const Footer = () => {
                         </Block>
                     </Col>
                 </Row>
-            </Container>
-            <div className="footer-bottom">
-                © 2020 Space and Beauty All Rights Reserved.
+                <div className="footer-bottom-txt">
+                    *The statements on Vibrant's products have not been evaluated by the U.S. Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease or illness
+                </div>
+                <div className="footer-bottom">
+                <span>© 2020 Space and Beauty All Rights Reserved.</span>
+                <span>
+                    Terms of Use
+                </span>
+                <span>
+
+                    Privacy Policy
+                </span>
+                <span>
+
+
+                    Refund Policy
+                    Subscription Policy
+                </span>
+                <span>
+                    Subscription Policy
+                </span>
             </div>
+            </Container>
+
+            
         </FooterCon>
     );
 };

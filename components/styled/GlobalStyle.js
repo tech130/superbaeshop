@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "SfPro";
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -21,7 +21,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-size: 16px;
-  font-family: "Roboto";
+  font-family: "SfPro";
   font-weight: 400;
   line-height: 1.5;
   color: #212529;

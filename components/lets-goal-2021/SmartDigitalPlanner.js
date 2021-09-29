@@ -1,4 +1,4 @@
-import React, { useRef,useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
 import Marquee from "react-fast-marquee";
@@ -19,9 +19,11 @@ const rainbow_animation = keyframes`
         background-position: 100% 0;
     }
 `;
+
+
 const MainCaption = styled.div`
   text-align: left;
-  font-size: 4.5rem;
+  font-size: 5.5rem;
   font-weight: 700;
   color:#d8d8d8;
   line-height: 90px;
@@ -29,7 +31,7 @@ const MainCaption = styled.div`
 `;
 const SubCaption = styled.div`
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color:#d8d8d8;
   line-height: 28px;
@@ -83,10 +85,19 @@ const FadeContainer = styled.div`
     height: 90vh;
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    padding: 0px 60px;
-
+    padding: 0px 0px 0px 90px;
+    justify-content: end;
+`;
+const PopUp = styled.div`
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0px 0px 0px 90px;
+    justify-content: end;
 `;
 
 
@@ -95,21 +106,21 @@ const SmartDigitalPlanner = () => {
     const [isVisible, setVisible] = React.useState(false);
     useEffect(() => {
         const observer = new IntersectionObserver(entries => {
-          // In your case there's only one element to observe:     
-          console.log(entries)
-          if (entries[0].isIntersecting) {
-            // Not possible to set it back to false like this:
-            setVisible(true);
-            
-            // No need to keep observing:
-            observer.unobserve(domRef.current);
-          }
+            // In your case there's only one element to observe:     
+            console.log(entries)
+            if (entries[0].isIntersecting) {
+                // Not possible to set it back to false like this:
+                setVisible(true);
+
+                // No need to keep observing:
+                observer.unobserve(domRef.current);
+            }
         });
-        
+
         observer.observe(domRef.current);
-        
+
         return () => observer.unobserve(domRef.current);
-      }, []);
+    }, []);
     return (
         <Block padding="30px 0px" className="overflow-hidden">
             <StyledDiv>
@@ -119,57 +130,56 @@ const SmartDigitalPlanner = () => {
 
                             <Row>
                                 <Col lg={6}>
-                                    <ContentDiv ref={ domRef }>
-                                        <div data-aos="zoom-in-down"
-                                             data-aos-anchor-placement="center-center" data-aos-duration="200"
-                                            >
+                                    <ContentDiv ref={domRef}>
+                                        <div data-aos="fade-up"
+                                            data-aos-anchor-placement="center-center" data-aos-duration="500"
+                                        >
                                             <FadeContainer>
 
-                                            <MainCaption>
-                                                we’ve got
-                                                your back.
-                                            </MainCaption>
-                                            <SubCaption>
-                                                gain complete control over your credit card with CRED Protect.
-                                                receive category-based analysis of your spends, detect hidden charges,
-                                                and track your credit limit in real-time.
-                                            </SubCaption>
+                                                <MainCaption>
+                                                    Ooooh! <br />One more.
+                                                </MainCaption>
+                                                <SubCaption>
+                                                    The Smart Digital Planner
+                                                    One app. 1000s of options. Endless Possibilities.
+                                                    Clearly Smarter than any other app
+
+                                                </SubCaption>
+                                                
                                             </FadeContainer>
                                         </div>
                                     </ContentDiv>
                                     <ContentDiv>
-                                    <div data-aos="fade-in"
-     data-aos-anchor-placement="center-center" data-aos-duration="1000"
-                                            >
+                                        <div data-aos="fade-up"
+                                            data-aos-anchor-placement="center-center" data-aos-duration="500"
+                                        >
                                             <FadeContainer>
 
-                                            <MainCaption>
-                                                we’ve got
-                                                your back.
-                                            </MainCaption>
-                                            <SubCaption>
-                                                gain complete control over your credit card with CRED Protect.
-                                                receive category-based analysis of your spends, detect hidden charges,
-                                                and track your credit limit in real-time.
-                                            </SubCaption>
+                                                <MainCaption>
+                                                    Ooooh! <br />One more.
+                                                </MainCaption>
+                                                <SubCaption>
+                                                    gain complete control over your credit card with CRED Protect.
+                                                    receive category-based analysis of your spends, detect hidden charges,
+                                                    and track your credit limit in real-time.
+                                                </SubCaption>
                                             </FadeContainer>
 
                                         </div>
                                     </ContentDiv>
                                     <ContentDiv>
-                                    <div data-aos="fade-up"
-     data-aos-anchor-placement="center-center">
+                                        <div data-aos="fade-up"
+                                            data-aos-anchor-placement="center-center" data-aos-duration="500">
                                             <FadeContainer>
 
-                                            <MainCaption>
-                                                we’ve got
-                                                your back.
-                                            </MainCaption>
-                                            <SubCaption>
-                                                gain complete control over your credit card with CRED Protect.
-                                                receive category-based analysis of your spends, detect hidden charges,
-                                                and track your credit limit in real-time.
-                                            </SubCaption>
+                                                <MainCaption>
+                                                    Ooooh! <br />One more.
+                                                </MainCaption>
+                                                <SubCaption>
+                                                    gain complete control over your credit card with CRED Protect.
+                                                    receive category-based analysis of your spends, detect hidden charges,
+                                                    and track your credit limit in real-time.
+                                                </SubCaption>
                                             </FadeContainer>
 
                                         </div>
@@ -177,9 +187,9 @@ const SmartDigitalPlanner = () => {
 
                                 </Col>
                                 <Col lg={6}>
-                                    <MobDiv>
+                                    {/* <MobDiv>
 
-                                    </MobDiv>
+                                    </MobDiv> */}
                                 </Col>
                             </Row>
 

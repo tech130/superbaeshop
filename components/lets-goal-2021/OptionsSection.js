@@ -1,8 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Flex from "../styled/Flex";
 import Txt from "../styled/Txt";
+import P from "../styled/P";
 import { H3 } from "../styled/Headings";
+import BGImage2 from './images/walkthrough.png';
+import roundText from './images/popUpText.png';
 
 const MainCaption = styled.div`
   text-align: center;
@@ -24,6 +27,9 @@ const FirstOptionBlock = styled.div`
   padding: 1rem 2rem;
   font-size: 24px;
     font-weight: 600;
+    height: 100px;
+    position:relative;
+    width:100%;
 `;
 
 const OptionCard = styled.div`
@@ -33,6 +39,7 @@ const OptionCard = styled.div`
   background-color: white;
   margin-bottom: 75px;
   box-shadow: 35px 22px 40px 25px rgb(0 0 0 / 15%);
+  width:220px;
 `;
 
 const OptionItems = styled.div`
@@ -41,8 +48,9 @@ const OptionItems = styled.div`
   align-items: center;
   padding: 0.6rem 0;
   justify-content: ${(props) => props.justifyContent || "space-between"};
-  height: 100%;
-  color: gray;
+  height: 230px;
+  color: #000000;
+  position: relative;
 `;
 
 const CardContainer = styled.div`
@@ -50,30 +58,31 @@ const CardContainer = styled.div`
   width: 100%;
   height: 40rem;
   align-items: center;
+  overflow: hidden;
 `;
 
 const firstOptionSettings = [
-  "Planner",
-  "Notebook",
-  "Sticker Book",
-  "Bookmarks",
-  "Pop socket",
-  "Enamel Pins",
-  "Wall Calendar",
-  "Desk Calendar",
-  
+  "* Planner",
+  "* Notebook",
+  "* Sticker Book",
+  "* Bookmarks",
+  "* Pop socket",
+  "* Enamel Pins",
+  "* Wall Calendar",
+  "* Desk Calendar",
+
 ];
 const secondOptionSettings = [
-  "Planner",
-  "Notebook",
-  "Sticker Book",
-  "Bookmarks",
-  "Pop socket",
-  "Enamel Pins",
-  "Wall calendar",
-  "Desk Calendar",
-  "Tote Bag",
-  
+  "* Planner",
+  "* Notebook",
+  "* Sticker Book",
+  "* Bookmarks",
+  "* Pop socket",
+  "* Enamel Pins",
+  "* Wall calendar",
+  "* Desk Calendar",
+  "* Tote Bag",
+
 ];
 
 const OptionLeftContainer = styled.div`
@@ -136,32 +145,79 @@ const OptionRightContainer = styled.div`
     width: 80%;
   }
 `;
-
+const ImgContainer = styled.div`
+background-image: url(${BGImage2});
+  background-position:center;
+  background-position: center;
+  background-size: 100% auto;
+  position: relative;
+  height: 100px;
+  bottom: -50px;
+  z-index: 9;
+  
+`;
+const zoom_in_zoom_out = keyframes`
+0% {
+    transform: scale(0, 0);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+`;
+const PopUp = styled.div`
+height: 100px;
+    
+    width: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: ${zoom_in_zoom_out} 2s ease-out;
+    position: absolute;
+    left: -51%;
+    bottom: 15px;
+`;
 export default function OptionsSection() {
   return (
     <>
       <Flex width="100%" vertical alignItems="center" margin="1rem 0 0 0">
         <Flex vertical alignItems="center" margin="2rem 0">
-          <MainCaption>Two options to choose from.</MainCaption>
-          <SmallHeading>Which one will you choose?</SmallHeading>
+          <MainCaption>Two options to choose from </MainCaption>
+          <SmallHeading>Which one will you choose? Even the little things are a big deal
+          </SmallHeading>
         </Flex>
 
         <CardContainer>
           <OptionLeftContainer className="left-pop-slide">
             <OptionCard>
-              <FirstOptionBlock backgroundColor="#d6bcbd">Ultimate Planner</FirstOptionBlock>
-              <OptionItems>
-                {firstOptionSettings.map((firstOptionSetting) => {
+              <FirstOptionBlock backgroundColor="#d6bcbd">
+
+                <ImgContainer>
+
+                </ImgContainer>
+              </FirstOptionBlock>
+              <OptionItems justifyContent="center">
+                {/* {firstOptionSettings.map((firstOptionSetting) => {
                   return (
                     <SmallHeading key={firstOptionSetting} marginTop="5px">
                       {firstOptionSetting}
                     </SmallHeading>
                   );
-                })}
+                })} */}
+                <P fontSize="24px" weight="700" margin="10px 0px 0px 0px" >
+                  Ultimate Planner
+                </P>
+                <P fontSize="16px" weight="700" margin="0px 0px">
+                  Try Ultimate Planner
+                </P>
+                <PopUp className="roundTxt">
+                  <img src={roundText} />
+                </PopUp>
               </OptionItems>
-              <SmallHeading  marginTop="15px" color="black"  marginBottom="15px">
-                *Peace of mind. Included
-                  </SmallHeading>
+              <SmallHeading marginTop="0px" color="black" marginBottom="15px">
+                * Peace of mind. Included
+              </SmallHeading>
             </OptionCard>
             <CartButtonLeft>
               BUY
@@ -179,25 +235,49 @@ export default function OptionsSection() {
                 </div>
               </div>
             </div>
+            <div className="pop-up-list left">
+              <div className="insider-outline1">
+                <div className="insider1">
+                  {firstOptionSettings.map((firstOptionSetting) => {
+                    return (
+                      <SmallHeading key={firstOptionSetting} marginTop="0px">
+                        {firstOptionSetting}
+                      </SmallHeading>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </OptionLeftContainer>
 
-          <OptionRightContainer  className="right-pop-slide">
+          <OptionRightContainer className="right-pop-slide">
             <OptionCard>
               <FirstOptionBlock backgroundColor="#c6e1f1">
-                Ultimate Planner
+                <ImgContainer>
+
+                </ImgContainer>
               </FirstOptionBlock>
               <OptionItems justifyContent="center">
-                {secondOptionSettings.map((firstOptionSetting) => {
+                {/* {secondOptionSettings.map((firstOptionSetting) => {
                   return (
                     <SmallHeading key={firstOptionSetting}>
                       {firstOptionSetting}
                     </SmallHeading>
                   );
-                })}
+                })} */}
+                <P fontSize="24px" weight="700" margin="10px 0px 0px 0px" >
+                  Ultimate Planner
+                </P>
+                <P fontSize="16px" weight="700" margin="0px 0px">
+                  Try Ultimate Planner
+                </P>
+                <PopUp className="roundTxt">
+                  <img src={roundText} />
+                </PopUp>
               </OptionItems>
-                <SmallHeading   marginTop="15px" color="black"  marginBottom="15px">
+              <SmallHeading marginTop="15px" color="black" marginBottom="15px">
                 *Peace of mind. Included
-                  </SmallHeading>
+              </SmallHeading>
             </OptionCard>
             <CartButtonLeft>
               BUY
@@ -212,6 +292,19 @@ export default function OptionsSection() {
                     With highest quality print <br />
                     Which one will you choose?
                   </Txt>
+                </div>
+              </div>
+            </div>
+            <div className="pop-up-list right">
+              <div className="insider-outline1">
+                <div className="insider1">
+                  {secondOptionSettings.map((firstOptionSetting) => {
+                    return (
+                      <SmallHeading key={firstOptionSetting}>
+                        {firstOptionSetting}
+                      </SmallHeading>
+                    );
+                  })}
                 </div>
               </div>
             </div>

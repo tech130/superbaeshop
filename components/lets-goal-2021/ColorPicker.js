@@ -6,14 +6,16 @@ import styled, { css, keyframes } from "styled-components";
 
 const MainCaption = styled.div`
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
+  color:${(props) => props.color || 'black'};
 `;
 
 const SmallHeading = styled.div`
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: ${(props) => props.fontWeight || 500};
   margin-top: ${(props) => props.marginTop || 0};
+  color:${(props) => props.color || 'black'};
 `;
 
 const ColorSelector = styled.div`
@@ -27,7 +29,7 @@ const ColorSelector = styled.div`
 const ColorSelectorContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 325px;
+  width: max-content;
   align-self: flex-end;
 `;
 const ColorDetailsContainer = styled.div`
@@ -198,10 +200,10 @@ export default function ColorPicker() {
               </MainSection> */}
       <ContentSection className="container">
         <FirstSection>
-          <MainCaption>Your Planner, Your color.</MainCaption>
+          <MainCaption color={`${colorInd === 'black'? 'white':'black'}`}>Your Planner, Your color </MainCaption>
 
-          <SmallHeading>
-            6 Fresh colors that reflect your personality.
+          <SmallHeading color={`${colorInd === 'black'? 'white':'black'}`} marginTop="10px">
+          6 Fresh colors that reflect your personality
           </SmallHeading>
         </FirstSection>
 
