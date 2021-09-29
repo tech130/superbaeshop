@@ -463,20 +463,38 @@ input#custom-checkbox {
     animation-delay: .95s;
   }
 
-
+  .slide-pane_from_right{
+    width: 40%;
+  }
+  @media only screen and (max-width: 992px) {
+    .slide-pane_from_right{
+        width: 60%  !important;
+      }
+}
   @media only screen and (max-width: 767px) {
+    .slide-pane_from_right{
+        width: 70%  !important;
+      }
     #main-cat-menu{
         top: 40px;
+    }
+    .bg-gradients {
+        height: 65vw;
+       
     }
     .bg-gradients p{
         line-height: 20px;
         margin-bottom: 10px;
+       
     }
 }
   @media only screen and (max-width: 576px) {
     body{
         font-size: 14px;
     }
+    .slide-pane_from_right{
+        width: 80%  !important;
+      }
     .sampleTags .svg-img{
         width: 24px;
     }

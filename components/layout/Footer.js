@@ -14,7 +14,9 @@ const FooterCon = styled.footer`
     font-size: 16px;
     background: #fff7f7;
     color: black;
-
+    @media (max-width: 576px) {
+        padding: 80px 0px 40px 0px;
+      }
     .social-icons a {
         margin-right: 10px;
         margin-bottom: 5px;
@@ -65,7 +67,7 @@ const Footer = () => {
         <FooterCon>
             <Container>
                 <Row>
-                    <Col md={3} sm={6} xs={6}>
+                    <Col md={3} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <Block margin="0px 0px 8px">
                                 <Logo width="100px" />
@@ -126,7 +128,7 @@ const Footer = () => {
                             </Block>
                         </Block>
                     </Col>
-                    <Col md={3} sm={6} xs={6}>
+                    <Col md={3} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Products</div>
                             <ul className="footer-list">
@@ -134,7 +136,7 @@ const Footer = () => {
                             </ul>
                         </Block>
                     </Col>
-                    <Col md={2} sm={6} xs={6}>
+                    <Col md={2} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">
                                 Also shop on{" "} <br />
@@ -155,7 +157,7 @@ const Footer = () => {
                             </ul>
                         </Block>
                     </Col>
-                    <Col md={4} sm={6} xs={6}>
+                    <Col md={4} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Payment partner</div>
                             <Flex className="payment-icons" flexWrap>

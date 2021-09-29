@@ -124,7 +124,7 @@ flex-direction: column;
 text-align: center;
   @media (max-width: 768px) {
     padding: 15px 15px;
-    
+    width: 80%;
 }
 `;
 
@@ -287,12 +287,12 @@ export default function TestimonialSection() {
             <Flex width="100%" bgColor="#FFFFFF" height="100%" padding="0px 0px 30px 0px" >
             <FlexBg >
             <FlexAssing
-            vertical
-            alignItems="center"
-            textAlign="center"
-            width="50%"
-            height="80%"
-            justifyContent="space-around"
+            // vertical
+            // alignItems="center"
+            // textAlign="center"
+            // width="50%"
+            // height="80%"
+            // justifyContent="space-around"
             >
             <SpinningElement />
             <MainCaption>Feel the difference, totally risk-free.</MainCaption>
