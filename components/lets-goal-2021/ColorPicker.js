@@ -38,18 +38,8 @@ const ColorSelectorContainer = styled.div`
   width: max-content;
   align-self: flex-end;
 `;
-const ColorDetailsContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 20%;
-  align-self: flex-start;
-`;
 
-const flash = keyframes`
-100% {
-  background-position: left;
-}
-`;
+
 const MainSection = styled.div`
 background: ${(props) => props.bgColor};
   display: flex;
@@ -127,7 +117,7 @@ export default function ColorPicker() {
       
       {colorOptions.map((color, ind) => {
         return (
-          <>
+          <React.Fragment key ={ind}>
             {color === colorInd &&
               <MainSection
                 key={ind}
@@ -163,7 +153,7 @@ export default function ColorPicker() {
                 </ColorSelectorContainer>
               </MainSection>
             }
-          </>
+          </React.Fragment>
         );
       })}
       <ContentSection className="container">

@@ -12,7 +12,6 @@ const WhatsAppLink = styled.a`
     cursor: pointer;
     border-radius: 50%;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.21);
-
     img {
         height: 45pt;
         width: 45pt;

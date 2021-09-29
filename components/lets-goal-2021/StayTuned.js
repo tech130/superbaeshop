@@ -4,9 +4,9 @@ import Flex from "../styled/Flex";
 import Marquee from "react-fast-marquee";
 import ResponsiveImage from "../common/ResponsiveImage";
 
-import styled,{keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const rainbow_animation  = keyframes`
+const rainbow_animation = keyframes`
     0%,100% {
         background-position: 0 0;
     }
@@ -65,7 +65,7 @@ font-size: 3rem;
 `;
 
 const scrollTexts = [
-    "magical",
+  "magical",
   "simple",
   "elegant",
   "practical",
@@ -107,9 +107,9 @@ const scrollTexts = [
 const StayTuned = () => {
 
 
-    return (
-        <Block padding="0px 0px 65px 0px"  className="overflow-hidden"> 
-            <Flex vertical width="100%" alignItems="center" margin="3rem 0">
+  return (
+    <Block padding="0px 0px 65px 0px" className="overflow-hidden">
+      <Flex vertical width="100%" alignItems="center" margin="3rem 0">
         <Flex alignItems="center" margin="3rem 0" >
           <MainCaption>Stay tuned</MainCaption>
           <GradientText> @spaceandbeautyofficial </GradientText>
@@ -127,25 +127,25 @@ const StayTuned = () => {
               overflow: "hidden",
             }}
           >
-            {scrollTexts.map(({ name }) => {
+            {scrollTexts.map(( name, ind ) => {
               return (
-                  <MainDiv key={name}>
-                      <MainDiv2>
+                <MainDiv key={ind}>
+                  <MainDiv2>
                     <ResponsiveImage
-                    imgWidth="100%"
-                    imgHeight="100%"
-                    key={name}
-                    image={require("../lets-goal-2021/images/free-inclusions/ikkigai-min.png?resize")}
+                      imgWidth="100%"
+                      imgHeight="100%"
+                      key={name}
+                      image={require("../lets-goal-2021/images/free-inclusions/ikkigai-min.png?resize")}
                     />
-                    </MainDiv2>
+                  </MainDiv2>
                 </MainDiv>
               );
             })}
           </Marquee>
         </Flex>
       </Flex>
-        </Block>
-    );
+    </Block>
+  );
 };
 
 

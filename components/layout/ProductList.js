@@ -74,9 +74,9 @@ const CategoryLink = ({ id, title }) => {
 const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
     let { categories, is_active, id } = cat;
     return (
-        <>
+        <React.Fragment key ={id}>
             {is_active &&
-                <>
+                <React.Fragment >
                     <ProdLinkStl>
                         <div id="main-cat" onClick={() => {
                             if (id === toggle)
@@ -121,7 +121,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                                                 !!categories && categories.length > 0 &&
                                                 categories.map((cat, index) => {
                                                     return (
-                                                        <>
+                                                        <React.Fragment key={index}>
                                                             {cat.is_active &&
 
                                                                 <Col key={index} col={2} lg={2} md={2} sm={3} xs={4}>
@@ -129,7 +129,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                                                                 </Col>
 
                                                             }
-                                                        </>
+                                                        </React.Fragment>
                                                     )
                                                 })
                                             }
@@ -140,9 +140,9 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                             </Container>
                         </Row>
                     </div>
-                </>
+                </React.Fragment>
             }
-        </>
+        </React.Fragment>
     );
 };
 const loadCategories = (cat,setToggle) => {
@@ -205,7 +205,7 @@ const ProductList = () => {
         <ProdList as="nav" justifyContent="center" alignItems="stretch">
             <ul>
                 {data.categories.map((cat, index) => (
-                    <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={`${cat.id}`} index={index} />
+                    <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={index} index={index} />
                 ))}
             </ul>
         </ProdList>

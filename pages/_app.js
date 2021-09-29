@@ -1,4 +1,4 @@
-import React,{useEffect,useRef} from "react";
+import React,{useEffect} from "react";
 import { Provider } from "react-redux";
 import Head from "next/head";
 import Router from "next/router";
@@ -29,7 +29,6 @@ Router.events.on("routeChangeError", () => NProgress.done());
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
     useAnalytics();
-    // const scrollbar = useRef<BaseScrollbar | null>(null);
     const gridTheme = {
         // gridColumns: 24, 
         breakpoints: { // defaults below
