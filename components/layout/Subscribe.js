@@ -67,6 +67,7 @@ const Subscribe = () => {
                                     <SubmitButton
                                         fetching={fetching}
                                         disabled={!email}
+                                        className="subscribe-btn"
                                     >
                                         Subscribe
                                     </SubmitButton>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { LocalCartItem, MyCartItem } from "./CartItem";
-import useCart, { useLocalCart,useCartIsOpen } from "../../hooks/redux/checkout/useCart";
+import useCart, { useLocalCart, useCartIsOpen } from "../../hooks/redux/checkout/useCart";
 import { cartIsOpen } from "../../redux/user/local_cart";
 
 import useUser from "../../hooks/redux/user/useUser";
@@ -24,7 +24,7 @@ import MaskAddOn from "./MaskAddOn";
 import { toNum } from "../../utils";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import {  useCountryParam } from "../common/CountryLink";
+import { useCountryParam } from "../common/CountryLink";
 
 const FlexBg = styled.div`
   height: 65vh;
@@ -45,13 +45,28 @@ const CartOutline = styled.div`
   width: 100%;
   padding: 0px;
   height: 40vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 const CartRight = styled.div`
   width: 100%;
   padding: 0px 15px;
   height: 100%;
+  position: relative;
   
+`;
+const Pad = styled.div`
+  width: 100%;
+  padding: 25px;
+  
+`;
+const VerticalLine = styled.div`
+    width: 1px;
+    padding: 0px;
+    height: 100%;
+    position: absolute;
+    background: #ddd;
+    z-index: 99;
+    left: -15px;
 `;
 const CartButton = styled.button`
 padding: 15px 40px;
@@ -73,8 +88,8 @@ const Cartlist = () => {
     const { token } = useUser();
     const isPanel = useCartIsOpen();
     if (!token) {
-        
-        return isPanel ?<LocalCartListPanel />:<LocalCartList /> ;
+
+        return isPanel ? <LocalCartListPanel /> : <LocalCartList />;
     }
     return isPanel ? <MyCartListPanel /> : <MyCartList />;
 };
@@ -85,7 +100,7 @@ const LocalCartListPanel = () => {
     const country = useCountryParam();
     const router = useRouter();
     const dispatch = useDispatch();
-    
+
     if (list.length > 0) {
         return (
 
@@ -98,25 +113,25 @@ const LocalCartListPanel = () => {
                             {list.map((item) => (
                                 <LocalCartItem {...item} key={item.id} />
                             ))}
-                            
+
 
                         </Col>
                     </FlexBg>
                     <FlexBgAmount>
                         <Col lg={12}>
                             <CartSummarySmall {...cartSummary} />
-                            <CartButton onClick={()=>{
-                                
+                            <CartButton onClick={() => {
+
                                 router.push("/[country]/checkout", `/${country}/checkout`);
                                 dispatch(cartIsOpen(false));
                             }
-                                }>
-                                    PROCEED TO CHECKOUT
-                                </CartButton>
+                            }>
+                                PROCEED TO CHECKOUT
+                            </CartButton>
                             <P fontSize="14" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
                         </Col>
                     </FlexBgAmount>
-                   
+
                 </Row>
             </div>
 
@@ -131,7 +146,7 @@ const LocalCartList = () => {
     if (list.length > 0) {
         return (
             <Row>
-                
+
                 <Col lg={6}>
                     <LoginModalBtn
                         block
@@ -152,7 +167,7 @@ const LocalCartList = () => {
                     </LoginModalBtn>
                 </Col>
                 <Col lg={6}>
-                    
+
                     {list.map((item) => (
                         <LocalCartItem {...item} key={item.id} />
                     ))}
@@ -213,32 +228,32 @@ const MyCartListPanel = () => {
                             {cartList.list.map((item) => (
                                 <LocalCartItem {...item} key={item.id} />
                             ))}
-                            
+
 
                         </Col>
                     </FlexBg>
                     <FlexBgAmount>
                         <Col lg={12}>
                             <CartSummarySmall {...cartSummary} />
-                            <CartButton onClick={()=>{
-                                
+                            <CartButton onClick={() => {
+
                                 router.push("/[country]/checkout", `/${country}/checkout`);
                                 dispatch(cartIsOpen(false));
                             }
-                                }>
-                                    PROCEED TO CHECKOUT
-                                </CartButton>
+                            }>
+                                PROCEED TO CHECKOUT
+                            </CartButton>
                             <P fontSize="14" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
                         </Col>
                     </FlexBgAmount>
-                   
+
                 </Row>
             </div>
 
         );
     }
     return <CartEmpty />;
-    
+
 };
 
 const calculateTotal = (activeCountry = {}, cart = []) => {
@@ -304,8 +319,9 @@ const CartListWithForm = ({
 
     return (
         <Row>
-            
-            <Col lg={6}>
+
+            <Col lg={6} padding="0px 30px 0px 15px">
+            <Pad />
                 {cartSummary.impure ? (
                     <Block
                         textAlign="center"
@@ -323,34 +339,38 @@ const CartListWithForm = ({
                     <>
                         <H4 mb="20px">Checkout Details</H4>
                         <CheckoutForm coupon={coupon} redeem={redeem} />
+                        <Pad />
                     </>
                 )}
             </Col>
             <Col lg={6}>
                 <CartRight>
-                <CartOutline>
-                {list.map((item) => (
-                    <MyCartItem {...item} key={item.id} />
-                ))}
-                </CartOutline>
-                <CouponIp
-                    coupon={coupon}
-                    onCouponChange={onCouponChange}
-                    redeem={redeem}
-                    onRedeemChange={onRedeemChange}
-                    walletPoints={walletPoints}
-                    isWallet={is_wallet}
-                    isCoupon={is_coupon}
-                />
-                <CartSummary
-                    {...cartSummary}
-                    redeem={redeem}
-                    coupon={is_coupon ? coupon : undefined}
-                    walletPoints={is_wallet ? walletPoints : undefined}
-                    offerAmount={offer?.offer_amount}
-                />
-                
-                <MaskAddOn />
+                    <VerticalLine />
+                    <Pad />
+                    <CartOutline>
+                        {list.map((item) => (
+                            <MyCartItem {...item} key={item.id} />
+                        ))}
+                    </CartOutline>
+                    <CouponIp
+                        coupon={coupon}
+                        onCouponChange={onCouponChange}
+                        redeem={redeem}
+                        onRedeemChange={onRedeemChange}
+                        walletPoints={walletPoints}
+                        isWallet={is_wallet}
+                        isCoupon={is_coupon}
+                    />
+                    <CartSummary
+                        {...cartSummary}
+                        redeem={redeem}
+                        coupon={is_coupon ? coupon : undefined}
+                        walletPoints={is_wallet ? walletPoints : undefined}
+                        offerAmount={offer?.offer_amount}
+                    />
+
+                    <MaskAddOn />
+                    <Pad />
                 </CartRight>
             </Col>
         </Row>

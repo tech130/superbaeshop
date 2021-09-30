@@ -550,6 +550,11 @@ input#custom-checkbox {
     border-radius: 6px !important;
     margin-left: 15px;
   }
+  .subscribe-btn{
+    height: 47px;
+    border-radius: 6px !important;
+    margin-left: -1px;
+  }
   @media only screen and (max-width: 992px) {
     .slide-pane_from_right{
         width: 60%  !important;
