@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
-import styled from "styled-components";
+import styled ,{keyframes}from "styled-components";
 import { Container, Col, Row } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
@@ -8,9 +8,10 @@ import CountryLink from "../common/CountryLink";
 import { useSelector } from "react-redux";
 import Txt from "../styled/Txt";
 import ProductLink from "../product/ProductLink";
+import Hr from "../styled/Hr";
 
 const FooterCon = styled.footer`
-    padding: 100px 0px 70px 0px;
+    padding: 100px 0px 45px 0px;
     font-size: 16px;
     background: #fff7f7;
     color: black;
@@ -61,6 +62,37 @@ const FooterCon = styled.footer`
     }
     
 `;
+const rainbow_animation = keyframes`
+    0%,100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+`;
+const LogoContent = styled.div`
+    
+`;
+const Space = styled.div`
+    font-size: 28px;
+    background: linear-gradient(90deg,#60bbf1,#c6e1f1,#f57e93,#b4a8ff,#c8f1ff,#eda5b2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: ${rainbow_animation} 4s ease-in-out infinite;
+    background-size: 400% 100%;
+    font-weight: 700;
+    font-family:"Lato";
+`;
+const Beauty = styled.div`
+    font-family:"Brittany";
+    font-size: 23px;
+    margin-top: -10px;
+    @media only screen and (max-width: 575px) {
+        display: none;
+    }
+`;
 
 const Footer = () => {
     return (
@@ -70,7 +102,15 @@ const Footer = () => {
                     <Col md={3} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <Block margin="0px 0px 8px">
-                                <Logo width="100px" />
+                                {/* <Logo width="100px" /> */}
+                                <LogoContent>
+                                <Space>
+                                    SPACE
+                                </Space>
+                                <Beauty>
+                                    and beauty
+                                </Beauty>
+                            </LogoContent>
                             </Block>
                             <Block margin="0px 0px 15px">
                                 <ul className="footer-list">
@@ -185,9 +225,10 @@ const Footer = () => {
                         </Block>
                     </Col>
                 </Row>
-                <div className="footer-bottom-txt ">
+                {/* <div className="footer-bottom-txt ">
                     *The statements on Vibrant's products have not been evaluated by the U.S. Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease or illness
-                </div>
+                </div> */}
+                <Hr />
                 <div className="d-none d-md-block d-lg-block d-xl-block" >
                     <div className="footer-bottom" >
                     <span>© 2020 Space and Beauty All Rights Reserved.</span>

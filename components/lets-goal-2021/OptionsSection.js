@@ -6,19 +6,32 @@ import P from "../styled/P";
 import { H3 } from "../styled/Headings";
 import BGImage2 from './images/walkthrough.png';
 import roundText from './images/popUpText.png';
+import ProductBuy from "../product/ProductBuy";
 
 const MainCaption = styled.div`
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 700;
+  line-height: 1.1;
 `;
 
 const SmallHeading = styled.div`
-  font-size: 1rem;
-  
+  font-size: ${(props) => props.Fs || '16px'};
+  line-height: 1.1;
   font-weight: ${(props) => props.fontWeight || 500};
   margin-top: ${(props) => props.marginTop || 0};
   margin-bottom: ${(props) => props.marginBottom || 0};
+`;
+const SmallHeadingLi = styled.div`
+  font-size: ${(props) => props.Fs || '16px'};
+  line-height: 1.1;
+  font-weight: ${(props) => props.fontWeight || 500};
+  margin-top: ${(props) => props.marginTop || 0};
+  margin-bottom: ${(props) => props.marginBottom || '10px'};
+  border: 1px solid white;
+  padding: 4px 4px;
+  border-radius: 0px 10px 10px 0px;
+  background: #ffffff;
 `;
 
 const FirstOptionBlock = styled.div`
@@ -115,7 +128,6 @@ const OptionLeftContainer = styled.div`
 `;
 
 const CartButtonLeft = styled.button`
-    padding: 8px 40px;
     border-radius: 30px;
     background-color: #000;
     color: #fff;
@@ -197,7 +209,7 @@ export default function OptionsSection() {
       <Flex width="100%" vertical alignItems="center" margin="1rem 0 0 0">
         <Flex vertical alignItems="center" margin="2rem 0">
           <MainCaption>Two options to choose from </MainCaption>
-          <SmallHeading>Which one will you choose? Even the little things are a big deal
+          <SmallHeading Fs="28px">Which one will you choose? Even the little things are a big deal
           </SmallHeading>
         </Flex>
 
@@ -233,7 +245,8 @@ export default function OptionsSection() {
               </SmallHeading>
             </OptionCard>
             <CartButtonLeft>
-              BUY
+              <ProductBuy slug={"lets-goal-2021-planner"} >Pre Order</ProductBuy>
+              
             </CartButtonLeft>
             <div className="pop-up-text">
               <div className="insider-outline">
@@ -253,9 +266,9 @@ export default function OptionsSection() {
                 <div className="insider1">
                   {firstOptionSettings.map((firstOptionSetting) => {
                     return (
-                      <SmallHeading key={firstOptionSetting} marginTop="0px">
+                      <SmallHeadingLi key={firstOptionSetting} marginTop="0px">
                         {firstOptionSetting}
-                      </SmallHeading>
+                      </SmallHeadingLi>
                     );
                   })}
                 </div>
@@ -293,7 +306,8 @@ export default function OptionsSection() {
               </SmallHeading>
             </OptionCard>
             <CartButtonLeft>
-              BUY
+            <ProductBuy slug={"lets-goal-2021-planner"} >Pre Order</ProductBuy>
+              
             </CartButtonLeft>
             <div className="pop-up-text right">
               <div className="insider-outline">
@@ -313,9 +327,9 @@ export default function OptionsSection() {
                 <div className="insider1">
                   {secondOptionSettings.map((firstOptionSetting) => {
                     return (
-                      <SmallHeading key={firstOptionSetting}>
+                      <SmallHeadingLi key={firstOptionSetting}>
                         {firstOptionSetting}
-                      </SmallHeading>
+                      </SmallHeadingLi>
                     );
                   })}
                 </div>

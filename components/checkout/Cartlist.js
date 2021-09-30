@@ -41,6 +41,18 @@ const FlexBgAmount = styled.div`
   background-color: #FFFFFF;
 padding:15px
 `;
+const CartOutline = styled.div`
+  width: 100%;
+  padding: 0px;
+  height: 40vh;
+  overflow-y: scroll;
+`;
+const CartRight = styled.div`
+  width: 100%;
+  padding: 0px 15px;
+  height: 100%;
+  
+`;
 const CartButton = styled.button`
 padding: 15px 40px;
 border-radius: 8px;
@@ -50,6 +62,11 @@ font-weight: 700;
 font-size: 16px;
 width: calc(100% - 60px);
 margin: 0px 30px 5px 30px;
+@media (max-width: 576px) {
+    width: 100%;
+    margin: 0px;
+    font-size: 15px;
+    padding: 15px 15px;
     
 `;
 const Cartlist = () => {
@@ -59,7 +76,7 @@ const Cartlist = () => {
         
         return isPanel ?<LocalCartListPanel />:<LocalCartList /> ;
     }
-    return <MyCartList />;
+    return isPanel ? <MyCartListPanel /> : <MyCartList />;
 };
 
 const LocalCartListPanel = () => {
@@ -89,33 +106,17 @@ const LocalCartListPanel = () => {
                         <Col lg={12}>
                             <CartSummarySmall {...cartSummary} />
                             <CartButton onClick={()=>{
+                                
+                                router.push("/[country]/checkout", `/${country}/checkout`);
                                 dispatch(cartIsOpen(false));
-                                router.push("/[country]/checkout", `/${country}/checkout`)}
+                            }
                                 }>
                                     PROCEED TO CHECKOUT
                                 </CartButton>
                             <P fontSize="14" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
                         </Col>
                     </FlexBgAmount>
-                    {/* <Col lg={12}>
-                        <LoginModalBtn
-                            block
-                            border="2px solid #f5f5f5"
-                            borderRadius="10px"
-                            padding="5px"
-                        >
-                            Login to Checkout
-                        </LoginModalBtn>
-                        <LoginModalBtn
-                            fontSize="14px"
-                            block
-                            padding="5px"
-                            margin="5px 0px"
-                            isSignUp
-                        >
-                            New User? Sign Up
-                        </LoginModalBtn>
-                    </Col> */}
+                   
                 </Row>
             </div>
 
@@ -130,13 +131,8 @@ const LocalCartList = () => {
     if (list.length > 0) {
         return (
             <Row>
-                <Col lg={7}>
-                    <CartSummary {...cartSummary} />
-                    {list.map((item) => (
-                        <LocalCartItem {...item} key={item.id} />
-                    ))}
-                </Col>
-                <Col lg={5}>
+                
+                <Col lg={6}>
                     <LoginModalBtn
                         block
                         border="2px solid #f5f5f5"
@@ -154,6 +150,13 @@ const LocalCartList = () => {
                     >
                         New User? Sign Up
                     </LoginModalBtn>
+                </Col>
+                <Col lg={6}>
+                    
+                    {list.map((item) => (
+                        <LocalCartItem {...item} key={item.id} />
+                    ))}
+                    <CartSummary {...cartSummary} />
                 </Col>
             </Row>
         );
@@ -188,6 +191,54 @@ const MyCartList = () => {
             )}
         </ApiContent>
     );
+};
+const MyCartListPanel = () => {
+    const dispatch = useDispatch();
+    const cartList = useCart();
+    const cartSummary = useCartSummary(cartList.list);
+    const country = useCountryParam();
+    const router = useRouter();
+    useEffect(() => {
+        dispatch(fetchCartAlways());
+    }, []);
+    if (cartList.list.length > 0) {
+        return (
+
+
+            <div className="px-3">
+
+                <Row>
+                    <FlexBg>
+                        <Col lg={12}>
+                            {cartList.list.map((item) => (
+                                <LocalCartItem {...item} key={item.id} />
+                            ))}
+                            
+
+                        </Col>
+                    </FlexBg>
+                    <FlexBgAmount>
+                        <Col lg={12}>
+                            <CartSummarySmall {...cartSummary} />
+                            <CartButton onClick={()=>{
+                                
+                                router.push("/[country]/checkout", `/${country}/checkout`);
+                                dispatch(cartIsOpen(false));
+                            }
+                                }>
+                                    PROCEED TO CHECKOUT
+                                </CartButton>
+                            <P fontSize="14" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
+                        </Col>
+                    </FlexBgAmount>
+                   
+                </Row>
+            </div>
+
+        );
+    }
+    return <CartEmpty />;
+    
 };
 
 const calculateTotal = (activeCountry = {}, cart = []) => {
@@ -253,7 +304,35 @@ const CartListWithForm = ({
 
     return (
         <Row>
-            <Col lg={7}>
+            
+            <Col lg={6}>
+                {cartSummary.impure ? (
+                    <Block
+                        textAlign="center"
+                        padding="10px"
+                        borderRadius="10px"
+                        border="2px solid #f5f5f5"
+                    >
+                        <Txt color="red" fontSize="14px">
+                            You have products unavailable for this country in
+                            your cart. Change country or remove these products
+                            from your cart to continue checkout.
+                        </Txt>
+                    </Block>
+                ) : (
+                    <>
+                        <H4 mb="20px">Checkout Details</H4>
+                        <CheckoutForm coupon={coupon} redeem={redeem} />
+                    </>
+                )}
+            </Col>
+            <Col lg={6}>
+                <CartRight>
+                <CartOutline>
+                {list.map((item) => (
+                    <MyCartItem {...item} key={item.id} />
+                ))}
+                </CartOutline>
                 <CouponIp
                     coupon={coupon}
                     onCouponChange={onCouponChange}
@@ -270,31 +349,9 @@ const CartListWithForm = ({
                     walletPoints={is_wallet ? walletPoints : undefined}
                     offerAmount={offer?.offer_amount}
                 />
-                {list.map((item) => (
-                    <MyCartItem {...item} key={item.id} />
-                ))}
+                
                 <MaskAddOn />
-            </Col>
-            <Col lg={5}>
-                {cartSummary.impure ? (
-                    <Block
-                        textAlign="center"
-                        padding="10px"
-                        borderRadius="10px"
-                        border="2px solid #f5f5f5"
-                    >
-                        <Txt color="red" fontSize="14px">
-                            You have products unavailable for this country in
-                            your cart. Change country or remove these products
-                            from your cart to continue checkout.
-                        </Txt>
-                    </Block>
-                ) : (
-                    <>
-                        <H4>Checkout Details</H4>
-                        <CheckoutForm coupon={coupon} redeem={redeem} />
-                    </>
-                )}
+                </CartRight>
             </Col>
         </Row>
     );

@@ -217,7 +217,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                         setValue={(val) => onChange("email", val)}
                     />
                 </FieldCon>
-                <FieldCon err={errors.dial_code} md={5}>
+                <FieldCon err={errors.dial_code} md={6}>
                     <SelectIp
                         value={values.dial_code}
                         placeholder="Dial Code"
@@ -225,14 +225,14 @@ const CheckoutForm = ({ coupon, redeem }) => {
                         setValue={(val) => onChange("dial_code", val)}
                     />
                 </FieldCon>
-                <FieldCon err={errors.phone} md={7}>
+                <FieldCon err={errors.phone} md={6}>
                     <NumberInput
                         value={values.phone}
                         placeholder="Phone Number"
                         setValue={(val) => onChange("phone", val)}
                     />
                 </FieldCon>
-                <FieldCon err={errors.alt_dial_code} md={5}>
+                <FieldCon err={errors.alt_dial_code} md={6}>
                     <SelectIp
                         value={values.alt_dial_code}
                         placeholder="Dial Code"
@@ -240,7 +240,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                         setValue={(val) => onChange("alt_dial_code", val)}
                     />
                 </FieldCon>
-                <FieldCon err={errors.alt_phone} md={7}>
+                <FieldCon err={errors.alt_phone} md={6}>
                     <NumberInput
                         value={values.alt_phone}
                         placeholder="Alternate Ph. (Optional)"

@@ -7,13 +7,14 @@ import ResponsiveImage from "../common/ResponsiveImage";
 
 const MainCaption = styled.div`
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 700;
+  line-height: 1.1;
 `;
 
 const SmallHeading = styled.div`
-  font-size: 1rem;
-  
+  font-size: 28px;
+  line-height: 1.1;
   font-weight: ${(props) => props.fontWeight || 500};
   margin-top: ${(props) => props.marginTop || 0};
   margin-bottom: ${(props) => props.marginBottom || 0};

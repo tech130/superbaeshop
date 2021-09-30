@@ -1,10 +1,67 @@
 
 
+
+@font-face {
+    font-family: "Brittany";
+    src: url(../fonts/BrittanySignature.ttf);
+   
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Lato";
+    src: url(../fonts/Lato-Bold.ttf);
+   
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
 @font-face {
     font-family: "SfPro";
     src: url(../fonts/SfPro-Regular.ttf);
    
     font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "SfPro";
+    src: url(../fonts/SfPro-Regular-otf.OTF);
+   
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "SfPro";
+    src: url(../fonts/SfPro-Bold.OTF);
+   
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "SfPro";
+    src: url(../fonts/SfPro-Light.ttf);
+   
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "SfPro";
+    src: url(../fonts/SfPro-Thin.ttf);
+   
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "SfPro";
+    src: url(../fonts/SfPro-Medium.OTF);
+   
+    font-weight: 600;
     font-style: normal;
     font-display: swap;
 }

@@ -50,6 +50,9 @@
     background: white;
     padding:0px
 }
+.checkout-bg{
+  background:#fafafa;
+}
 .bg-gradients{
     display: flex;
     justify-content: center;
@@ -63,8 +66,9 @@
     margin: auto;
 }
 .bg-gradients p{
-    line-height: 28px;
-    margin-bottom: 40px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  font-size: 28px;
 }
 .bg-gradients-tags{
     /* padding: 1.125rem 0; */
@@ -388,7 +392,7 @@ input#custom-checkbox {
     }
   
     80% {
-      transform: translate(0) scale(2);
+      transform: translate(0) scale(1.5);
       opacity: 0;
     }
   
@@ -401,10 +405,18 @@ input#custom-checkbox {
     display: inline-block;
   }
   .animateText span{
-    opacity: 0;
+  opacity: 0;
   transform: translate(-150px, 0) scale(.3);
   animation: leftRight .5s forwards;
-  }
+  font-size: 3rem;
+  font-weight: 700;
+  animation-duration: 3s;
+}
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 200px;}
+}
+  
   .animateText span:nth-of-type(2) {
     animation-delay: .05s;
   }
@@ -465,6 +477,78 @@ input#custom-checkbox {
 
   .slide-pane_from_right{
     width: 40%;
+  }
+  .delete-trash{
+    background-color: #e3e3e3  !important;
+    border-radius: 50% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px !important;
+
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-transition: background 0.2s, color 0.2s;
+    -moz-transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s;
+    width: 30px !important;
+    height: 30px !important;
+    position: relative;
+
+  }
+  .delete-trash:after {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content:'';
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    top: -5px;
+    left: -5px;
+    padding: 5px;
+    box-shadow: 0 0 0 2px #e71515;
+    -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+    -webkit-transform: scale(.8);
+    -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+    -moz-transform: scale(.8);
+    -ms-transform: scale(.8);
+    transition: transform 0.2s, opacity 0.2s;
+    transform: scale(.8);
+    opacity: 0;
+    
+    /* position: relative; */
+}
+  /* .delete-trash:before {
+    speak: none;
+    font-size: 48px;
+    line-height: 90px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    display: block;
+    -webkit-font-smoothing: antialiased;
+} */
+  .delete-trash:hover {
+    background: rgb(247 209 209) !important;
+    color: #fb0000;
+}
+  .delete-trash:hover i {
+    color: #fb0000;
+}
+  .delete-trash:hover:after{
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  .coupon-submit{
+    height: 48px;
+    min-width: 90px;
+    border-radius: 6px !important;
+    margin-left: 15px;
   }
   @media only screen and (max-width: 992px) {
     .slide-pane_from_right{

@@ -2,9 +2,10 @@ import styled, { css } from "styled-components";
 
 const HR = styled.hr`
     margin: ${(props) => props.margin || "10px 0px"};
-    border-top: 1px solid #f5f5f5;
-    height: 0px;
-
+    border-top: 1px solid #c7c7c7;
+    height: 0px !important;
+    color: #606060;
+    opacity: 1;
     ${(props) =>
         props.dataTitle &&
         css`
@@ -13,7 +14,7 @@ const HR = styled.hr`
 
             &::before {
                 content: "${props.dataTitle}";
-                background: #fff;
+                background: #fafafa;
                 position: relative;
                 bottom: 14px;
                 font-size: 14px;

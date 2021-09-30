@@ -1,7 +1,7 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import HR from "../styled/Hr";
-
+import { Tooltip } from 'reactstrap';
 const CartSum = styled.div`
     padding: 10px;
     border: solid 2px #f5f5f5;
@@ -24,11 +24,11 @@ const CartSumAmt = styled.span`
     font-weight: ${(props) => (props.bold ? 700 : 400)};
 `;
 
-const SumItem = ({ title = "", bold = false, amt = "" }) => {
+const SumItem = ({ title = "", bold = false, amt = "" ,href="",id=""}) => {
     return (
         <CartSumItem>
             <CartSumTitle>{title}</CartSumTitle>
-            <CartSumAmt bold={bold}>{amt}</CartSumAmt>
+            <CartSumAmt bold={bold}><span href={href} id={id}>{amt}</span> </CartSumAmt>
         </CartSumItem>
     );
 };
@@ -68,17 +68,20 @@ const CartSummary = ({
         cartTotal -
         (redeem ? wallet_amount : couponAmt) -
         offerAmount;
+        const [tooltipOpen, setTooltipOpen] = useState(false);
+
+  const toggle = () => setTooltipOpen(!tooltipOpen);
     return (
         <>
             <CartSum>
-                <SumItem
+                {/* <SumItem
                     title="Cart Total"
                     amt={`${currency_type}${cartTotal.toFixed(2)}`}
-                />
-                <SumItem
+                /> */}
+                {/* <SumItem
                     title="Delivery Charge"
                     amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
-                />
+                /> */}
                 {redeem ? (
                     <>
                         <SumItem
@@ -101,16 +104,32 @@ const CartSummary = ({
                         amt={`- ${currency_type}${couponAmt.toFixed(2)}`}
                     />
                 ) : null}
-                <SumItem
+                {/* <SumItem
                     title="Offer Amount"
                     amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
-                />
-                <HR />
+                /> */}
+                
                 <SumItem
                     title="Grand Total"
                     bold
                     amt={`${currency_type}${total.toFixed(2)}`}
+                    href="#" id="DisabledAutoHideExample"
                 />
+                
+                <Tooltip placement="top" isOpen={tooltipOpen} autohide={false} target="DisabledAutoHideExample" toggle={toggle}>
+                   {/* <SumItem
+                    title="Cart Total"
+                    amt={`${currency_type}${cartTotal.toFixed(2)}`}
+                />  */}
+                <SumItem
+                    title="Delivery Charge"
+                    amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
+                />
+                 <SumItem
+                    title="Offer Amount"
+                    amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
+                /> 
+                </Tooltip>
             </CartSum>
         </>
     );

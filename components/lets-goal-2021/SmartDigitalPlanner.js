@@ -4,16 +4,68 @@ import { Col, Row, Container } from "styled-bootstrap-grid";
 
 const BGImage = require("./images/Bg1.jpg?resize");
 import BGImage2 from './images/bg2.jpg';
-import styled from "styled-components";
+import styled,{keyframes} from "styled-components";
+
+const animate = keyframes`
+0%,
+100% {
+  clip-path: polygon(
+    0% 45%,
+    16% 44%,
+    33% 50%,
+    54% 60%,
+    70% 61%,
+    84% 59%,
+    100% 52%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+50% {
+  clip-path: polygon(
+    0% 60%,
+    15% 65%,
+    34% 66%,
+    51% 62%,
+    67% 50%,
+    84% 45%,
+    100% 46%,
+    100% 100%,
+    0% 100%
+  );
+}
+`;
 
 const MainCaption = styled.div`
   text-align: left;
-  font-size: 5.5rem;
+  font-size: 4rem;
   font-weight: 700;
   color:#d8d8d8;
-  line-height: 90px;
-  margin-top:85px;
-  @media (max-width: 768px) {
+  line-height: 1.1;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: transparent;
+  -webkit-text-stroke: 2px #03a9f4;
+  white-space: nowrap;
+ @media (max-width: 768px) {
+    font-size: 3rem;
+    line-height: 45px;
+    margin-top:55px;
+}
+`;
+const MainCaption2 = styled.div`
+  text-align: left;
+  font-size: 4rem;
+  font-weight: 700;
+  color:#d8d8d8;
+  line-height: 1.1;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: #03a9f4;
+  animation: ${animate} 4s ease-in-out infinite;
+  white-space: nowrap;
+ @media (max-width: 768px) {
     font-size: 3rem;
     line-height: 45px;
     margin-top:55px;
@@ -25,7 +77,8 @@ const SubCaption = styled.div`
   font-weight: 700;
   color:#d8d8d8;
   line-height: 28px;
-  margin-top:25px;
+  margin-top:15px;
+  margin-bottom:85px;
   @media (max-width: 768px) {
     font-size: 1rem;
     text-align: center;
@@ -70,21 +123,21 @@ background-image: url(${BGImage2});
   height:400px;
 `;
 const ContentDiv = styled.div`
-    height: 200vh;
+    height: ${(props)=>props.width|| '150vh'};
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     @media (max-width: 768px) {
         height: 200vh;
     }
 `;
 const FadeContainer = styled.div`
-    height: 90vh;
+    height: 50vh;
     position: relative;
     display: flex;
-    align-items: flex-start;
+    align-items:center;
     flex-direction: column;
-    padding: 0px 0px 0px 90px;
+    margin: 0px 0px 0px 90px;
     justify-content: end;
     @media (max-width: 768px) {
         padding: 0px 30px 0px 30px;
@@ -100,46 +153,63 @@ const PopUp = styled.div`
     padding: 0px 0px 0px 90px;
     justify-content: end;
 `;
+const Position = styled.div`
+    height: 10px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0px 0px 0px 90px;
+    justify-content: end;
+`;
 
 
 const SmartDigitalPlanner = () => {
-    const domRef = useRef();
+    // const domRef = useRef();
     const [isVisible, setVisible] = React.useState(false);
     useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
-            // In your case there's only one element to observe:     
-            console.log(entries)
-            if (entries[0].isIntersecting) {
-                // Not possible to set it back to false like this:
-                setVisible(true);
+        // const observer = new IntersectionObserver(entries => {
+        //     // In your case there's only one element to observe:     
+        //     console.log(entries)
+        //     if (entries[0].isIntersecting) {
+        //         // Not possible to set it back to false like this:
+        //         setVisible(true);
 
-                // No need to keep observing:
-                observer.unobserve(domRef.current);
-            }
-        });
+        //         // No need to keep observing:
+        //         observer.unobserve(domRef.current);
+        //     }
+        // });
 
-        observer.observe(domRef.current);
+        // observer.observe(domRef.current);
 
-        return () => observer.unobserve(domRef.current);
+        // return () => observer.unobserve(domRef.current);
     }, []);
     return (
         <Block padding="30px 0px" className="overflow-hidden">
             <StyledDiv>
                 <OverHeight>
                     <OutlineDiv>
-                        <Container>
+                        <Container >
 
                             <Row>
                                 <Col lg={6}>
-                                    <ContentDiv ref={domRef}>
-                                        <div data-aos="fade-up"
-                                            data-aos-anchor-placement="center-center" data-aos-duration="500"
+                                    <ContentDiv width="80vh">
+                                        <div data-aos="fade-right"
+                                            data-aos-offset="300"
+                                            data-aos-easing="ease-in-sine"
+                                            data-aos-duration="700"
                                         >
                                             <FadeContainer>
-
-                                                <MainCaption>
-                                                    Ooooh! <br />One more.
-                                                </MainCaption>
+                                                {/* <div className=""> */}
+                                                <Position>
+                                                    <MainCaption>
+                                                        Ooooh! One more.
+                                                    </MainCaption>
+                                                    <MainCaption2>
+                                                        Ooooh! One more.
+                                                    </MainCaption2>
+                                                </Position>
+                                                {/* </div> */}
                                                 <SubCaption>
                                                     The Smart Digital Planner
                                                     One app. 1000s of options. Endless Possibilities.
@@ -151,14 +221,21 @@ const SmartDigitalPlanner = () => {
                                         </div>
                                     </ContentDiv>
                                     <ContentDiv>
-                                        <div data-aos="fade-up"
-                                            data-aos-anchor-placement="center-center" data-aos-duration="500"
+                                    <div data-aos="fade-right"
+                                            data-aos-offset="300"
+                                            data-aos-easing="ease-in-sine"
+                                            data-aos-duration="700"
                                         >
                                             <FadeContainer>
 
-                                                <MainCaption>
-                                                    Ooooh! <br />One more.
-                                                </MainCaption>
+                                            <Position>
+                                                    <MainCaption>
+                                                        Ooooh! One more.
+                                                    </MainCaption>
+                                                    <MainCaption2>
+                                                        Ooooh! One more.
+                                                    </MainCaption2>
+                                                </Position>
                                                 <SubCaption>
                                                     gain complete control over your credit card with CRED Protect.
                                                     receive category-based analysis of your spends, detect hidden charges,
@@ -169,13 +246,21 @@ const SmartDigitalPlanner = () => {
                                         </div>
                                     </ContentDiv>
                                     <ContentDiv>
-                                        <div data-aos="fade-up"
-                                            data-aos-anchor-placement="center-center" data-aos-duration="500">
+                                    <div data-aos="fade-right"
+                                            data-aos-offset="300"
+                                            data-aos-easing="ease-in-sine"
+                                            data-aos-duration="700"
+                                        >
                                             <FadeContainer>
 
-                                                <MainCaption>
-                                                    Ooooh! <br />One more.
-                                                </MainCaption>
+                                            <Position>
+                                                    <MainCaption>
+                                                        Ooooh! One more.
+                                                    </MainCaption>
+                                                    <MainCaption2>
+                                                        Ooooh! One more.
+                                                    </MainCaption2>
+                                                </Position>
                                                 <SubCaption>
                                                     gain complete control over your credit card with CRED Protect.
                                                     receive category-based analysis of your spends, detect hidden charges,

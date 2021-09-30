@@ -62,6 +62,7 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
                     },
                 ],
             });
+            dispatch(cartIsOpen(true));
         } else {
             dispatch(addToLocalCart(id, slug, quantity));
             

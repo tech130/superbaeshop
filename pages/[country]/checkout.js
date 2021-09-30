@@ -9,7 +9,7 @@ import { fetchProfile } from "../../redux/user/user";
 const Checkout = () => {
     return (
         <Layout>
-            <Block padding="35px 0px">
+            <Block className="checkout-bg" padding="35px 0px">
                 <Container>
                     <Cartlist />
                 </Container>

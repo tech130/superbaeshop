@@ -6,9 +6,9 @@ import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
 
 const MeetTxt = styled.h1`
-    font-size: 3rem;
+    font-size:56px;
     font-weight: 700;
-    line-height: 56px;
+    line-height: 1.1;
     color: #000;
     margin-bottom: 18px;
     word-break: break-word;
@@ -35,7 +35,7 @@ const HeroSection = () => {
                                     <p>The Ultimate Journaling Experience is here
                                         Preorder now!
                                     </p>
-                                    <ProPlannerPrice />
+                                    <ProPlannerPrice slug={"lets-goal-2021-planner"}/>
                                 </Col>
                                 <Col lg={6} sm={6} className="d-none d-sm-block">
                                     <ResponsiveImage

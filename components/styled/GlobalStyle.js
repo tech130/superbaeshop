@@ -285,15 +285,15 @@ ul {
 .react-select__control {
     border: 1px solid #ced4da !important;
     font-size: 1rem !important;
-    border-radius: 0px !important;
+    border-radius: 6px !important;
     box-shadow: none !important;
-    min-height: 40px;
+    min-height: 48px !important;
     transition: border-color 0.15s ease-in-out 0s,
         box-shadow 0.15s ease-in-out 0s;
 }
 
 .react-select__control--is-focused {
-    border-color: #000 !important;
+    border-color: #0f67cb !important;
 }
 
 .react-select__menu {

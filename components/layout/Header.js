@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import CartIcon from "../icons/CartIcon";
 import Flex from "../styled/Flex";
-import styled from "styled-components";
+import styled,{keyframes} from "styled-components";
 import { Container } from "styled-bootstrap-grid";
 import Ul from "../styled/Ul";
 import CountryList from "./CountryList";
@@ -11,18 +11,21 @@ import { useCartCount } from "../../hooks/redux/checkout/useCart";
 import { useDispatch } from "react-redux";
 import { fetchCart } from "../../redux/user/cart";
 import { cartIsOpen } from "../../redux/user/local_cart";
-
+import { useRouter } from "next/router";
 import Cartlist from "../../components/checkout/Cartlist";
 import useUser from "../../hooks/redux/user/useUser";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import ProductList from "./ProductList";
-import useCart, { useLocalCart,useCartIsOpen } from "../../hooks/redux/checkout/useCart";
+import  { useCartIsOpen } from "../../hooks/redux/checkout/useCart";
 
 const Hdr = styled.div`
     background: hsla(0,0%,100%,.6);
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
+    
+    border-bottom: ${(props)=>props.border};
+
 `;
 
 const Hdrli = styled.li`
@@ -56,6 +59,38 @@ const HeaderLogo = styled.img`
     }
 `;
 
+const rainbow_animation = keyframes`
+    0%,100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+`;
+const LogoContent = styled.div`
+    
+`;
+const Space = styled.div`
+    font-size: 28px;
+    background: linear-gradient(90deg,#60bbf1,#c6e1f1,#f57e93,#b4a8ff,#c8f1ff,#eda5b2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: ${rainbow_animation} 4s ease-in-out infinite;
+    background-size: 400% 100%;
+    font-weight: 700;
+    font-family:"Lato";
+`;
+const Beauty = styled.div`
+    font-family:"Brittany";
+    font-size: 23px;
+    margin-top: -10px;
+    @media only screen and (max-width: 575px) {
+        display: none;
+    }
+`;
+
 const Header = () => {
     const [state, setState] = useState({
         isPaneOpen: false,
@@ -63,10 +98,11 @@ const Header = () => {
       const dispatch = useDispatch();
 
       const isPanel = useCartIsOpen();
-      console.log("wewe",isPanel)
+      const {pathname} = useRouter();
+      console.log("wewe",pathname)
     return (
         <>
-            <Hdr>
+            <Hdr border={pathname ==="/[country]" ? '0px':'1px solid #ddd'} >
                 <Container>
                     <Flex
                         as="nav"
@@ -76,7 +112,25 @@ const Header = () => {
                         position="relative"
                     >
                         <CountryLink>
+                            <LogoContent>
+                                <Space>
+                                    SPACE
+                                </Space>
+                                <Beauty>
+                                    and beauty
+                                </Beauty>
+                            </LogoContent>
                             <picture>
+                                <source
+                                    media="(min-width:575px)"
+                                    srcSet="/images/logo.png"
+                                />
+                                {/* <HeaderLogo
+                                    src={`/images/logo-small.png`}
+                                    alt="space and beauty logo"
+                                /> */}
+                            </picture>
+                            {/* <picture>
                                 <source
                                     media="(min-width:575px)"
                                     srcSet="/images/logo.png"
@@ -85,7 +139,7 @@ const Header = () => {
                                     src={`/images/logo-small.png`}
                                     alt="space and beauty logo"
                                 />
-                            </picture>
+                            </picture> */}
                         </CountryLink>
                         <div className="d-sm-none d-none d-md-block d-lg-block d-xl-block">
                         <ProductList />

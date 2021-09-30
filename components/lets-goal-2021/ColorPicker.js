@@ -6,8 +6,9 @@ import styled, { css, keyframes } from "styled-components";
 
 const MainCaption = styled.div`
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
+  line-height: 1.1;
   color:${(props) => props.color || 'black'};
   @media (max-width: 576px) {
     font-size: 2rem;
@@ -15,7 +16,8 @@ const MainCaption = styled.div`
 `;
 
 const SmallHeading = styled.div`
-  font-size: 1.25rem;
+  font-size: 28px;
+  line-height: 1.1;
   font-weight: ${(props) => props.fontWeight || 500};
   margin-top: ${(props) => props.marginTop || 0};
   color:${(props) => props.color || 'black'};
@@ -101,11 +103,11 @@ const ContentSection = styled.div`
   justify-content: center;
 `;
 
-const colorOptions = ["#efa6b3","black"];
+const colorOptions = ["#f8d9c7","black"];
 
 export default function ColorPicker() {
-  const [colorInd, setColor] = useState('#efa6b3');
-  const [colorInd2, setColor2] = useState('#efa6b3');
+  const [colorInd, setColor] = useState('#f8d9c7');
+  const [colorInd2, setColor2] = useState('#f8d9c7');
   useEffect(() => {
 
   }, [colorInd]);
@@ -160,7 +162,7 @@ export default function ColorPicker() {
         <FirstSection>
           <MainCaption color={`${colorInd === 'black'? 'white':'black'}`}>Your Planner, Your color </MainCaption>
 
-          <SmallHeading color={`${colorInd === 'black'? 'white':'black'}`} marginTop="10px">
+          <SmallHeading color={`${colorInd === 'black'? 'white':'black'}`} marginTop="0px">
           6 Fresh colors that reflect your personality
           </SmallHeading>
         </FirstSection>

@@ -4,9 +4,9 @@ import styled from "styled-components";
 export const InputStyle = styled.input`
     display: block;
     width: 100%;
-    height: 40px;
+    height: 48px;
     padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 400;
     color: #000;
     background-color: #fff;
@@ -14,10 +14,13 @@ export const InputStyle = styled.input`
     border: 1px solid #ced4da;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     box-shadow: none;
+    border-radius: 6px;
 
     &:focus {
+        color:black;
         outline: none;
-        border: 1px solid #000;
+        border: 1px solid #0f67cb;
+        box-shadow: unset;
     }
 
     &:disabled {

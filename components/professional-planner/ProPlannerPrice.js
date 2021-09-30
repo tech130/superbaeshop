@@ -6,9 +6,9 @@ import useProduct from "../../hooks/redux/product/useProduct";
 import ProductBuy from "../product/ProductBuy";
 import ProductPrice from "../product/ProductPrice";
 
-const ProPlannerPrice = () => {
-    const { id, product_country, slug } = useProduct(
-        "the-professional-planner"
+const ProPlannerPrice = ({slug}) => {
+    const { id, product_country } = useProduct(
+        slug
     );
     const productCountry = useProdCountry(product_country);
 
@@ -16,7 +16,7 @@ const ProPlannerPrice = () => {
         return (
             <>
                 <H4 mb="15px" weight={700}>
-                    <Txt color="#777777">Priced just right at </Txt>
+                    <Txt fontSize="28px" lineHeight="1.1" color="#777777" >Priced just right at </Txt>
                     <ProductPrice
                         weight={300}
                         type="original_price"
@@ -31,7 +31,7 @@ const ProPlannerPrice = () => {
 
     return (
         <H4 mb="15px" weight={700}>
-            <Txt color="#777777">Currently unavailable for your country </Txt>
+            <Txt fontSize="28px" color="#777777">Currently unavailable for your country </Txt>
         </H4>
     );
 };

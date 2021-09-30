@@ -37,6 +37,15 @@ export const CartLdr = styled.div`
     z-index: 1;
     border-radius: 10px;
 `;
+export const ImgOutline = styled.div`
+    border:1px solid #d9d9d9;
+    border-radius:10px;
+    margin:0px 15px 0px 1px;
+    padding: 8px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+`;
 
 const CartItem = ({
     product = {},
@@ -65,12 +74,15 @@ const CartItem = ({
                     <Loader size={30} />
                 </CartLdr>
             )}
-            <Img
-                margin="0px 15px 0px 0px"
-                width="100px"
-                src={product.thumbnail_image}
-                alt=""
-            />
+            <ImgOutline>
+                <Img
+                    margin="0px 0px 0px 0px"
+                    width="100px"
+                    src={product.thumbnail_image}
+                    alt=""
+                    
+                />
+            </ImgOutline>
             <FlexItem flexGrow={1} flexShrink={0}>
                 <P margin="0px" weight={500} fontSize="16px">
                     {product.title}
@@ -246,7 +258,7 @@ const CartQuantity = ({ quantity, onMinus, onPlus }) => {
 
 const CartRemoveBtn = ({ onClick }) => {
     return (
-        <IconButton onClick={onClick}>
+        <IconButton className="delete-trash" onClick={onClick}>
             <ThrashIcon size={18} strokeWidth={1} />
         </IconButton>
     );

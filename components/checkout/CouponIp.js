@@ -61,6 +61,7 @@ const CouponIp = ({
 
     return (
         <Block margin="0px 0px 15px 0px">
+            
             {isCoupon && (
                 <Block>
                     {coupon.id ? (
@@ -72,6 +73,7 @@ const CouponIp = ({
                         </CouponP>
                     ) : (
                         <form onSubmit={onSubmit}>
+                            <HR dataTitle="Coupon" />
                             <Flex>
                                 <FlexItem flexGrow={1}>
                                     <Input
@@ -86,6 +88,7 @@ const CouponIp = ({
                                         fetching={fetching}
                                         disabled={redeem}
                                         mb="0"
+                                        className="coupon-submit"
                                     >
                                         APPLY
                                     </SubmitButton>
