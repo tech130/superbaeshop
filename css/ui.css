@@ -51,7 +51,7 @@
     padding:0px
 }
 .checkout-bg{
-  background:#fafafa;
+  background:#f5f6f9;
 }
 .bg-gradients{
     display: flex;
@@ -68,7 +68,7 @@
 .bg-gradients p{
   line-height: 1.1;
   margin-bottom: 20px;
-  font-size: 28px;
+  font-size: 24px;
 }
 .bg-gradients-tags{
     /* padding: 1.125rem 0; */
@@ -99,9 +99,10 @@
     margin: 0 2.125rem;
 }
 .sampleTags .svg-img{
-    width: 28px;
+    width: 26px;
     display: block;
-    margin-right: 10px;
+    margin-right: 8px;
+    opacity: 0.9;
 }
 ul.filter-list {
     max-height   : 200px;
@@ -408,9 +409,9 @@ input#custom-checkbox {
   opacity: 0;
   transform: translate(-150px, 0) scale(.3);
   animation: leftRight .5s forwards;
-  font-size: 3rem;
-  font-weight: 700;
-  animation-duration: 3s;
+  font-size: 48px;
+  font-weight: 500;
+  animation-duration: 2s;
 }
 @keyframes mymove {
   from {left: 0px;}

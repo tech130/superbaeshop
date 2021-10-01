@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect } from "react";
 import CartIcon from "../icons/CartIcon";
 import Flex from "../styled/Flex";
 import styled,{keyframes} from "styled-components";
@@ -20,7 +20,7 @@ import ProductList from "./ProductList";
 import  { useCartIsOpen } from "../../hooks/redux/checkout/useCart";
 
 const Hdr = styled.div`
-    background: hsla(0,0%,100%,.6);
+    background: hsla(0,0%,100%,.8);
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
     
@@ -51,13 +51,13 @@ const CartCountStl = styled.span`
     left: 12px;
 `;
 
-const HeaderLogo = styled.img`
-    height: 45px;
+// const HeaderLogo = styled.img`
+//     height: 45px;
 
-    @media only screen and (min-width: 575px) {
-        height: 60px;
-    }
-`;
+//     @media only screen and (min-width: 575px) {
+//         height: 60px;
+//     }
+// `;
 
 const rainbow_animation = keyframes`
     0%,100% {
@@ -92,9 +92,10 @@ const Beauty = styled.div`
 `;
 
 const Header = () => {
-    const [state, setState] = useState({
-        isPaneOpen: false,
-      });
+    // const [state, setState] = useState({
+    //     isPaneOpen: false,
+    //   });
+      
       const dispatch = useDispatch();
 
       const isPanel = useCartIsOpen();

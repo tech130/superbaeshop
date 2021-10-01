@@ -7,11 +7,12 @@ import { H3 } from "../styled/Headings";
 import BGImage2 from './images/walkthrough.png';
 import roundText from './images/popUpText.png';
 import ProductBuy from "../product/ProductBuy";
+import AnimateText from "../styled/AnimateText";
 
 const MainCaption = styled.div`
   text-align: center;
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 48px;
+  font-weight: 500;
   line-height: 1.1;
 `;
 
@@ -50,7 +51,7 @@ const OptionCard = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  margin-bottom: 75px;
+  margin-bottom: 55px;
   box-shadow: 35px 22px 40px 25px rgb(0 0 0 / 15%);
   width:220px;
 `;
@@ -206,10 +207,10 @@ height: 100px;
 export default function OptionsSection() {
   return (
     <>
-      <Flex width="100%" vertical alignItems="center" margin="1rem 0 0 0">
+      <Flex height="660px" width="100%" vertical alignItems="center" margin="1rem 0 0 0">
         <Flex vertical alignItems="center" margin="2rem 0">
-          <MainCaption>Two options to choose from </MainCaption>
-          <SmallHeading Fs="28px">Which one will you choose? Even the little things are a big deal
+          <MainCaption>Two options to choose <AnimateText>from</AnimateText> </MainCaption>
+          <SmallHeading Fs="24px">Which one will you choose? Even the little things are a big deal
           </SmallHeading>
         </Flex>
 
@@ -245,7 +246,7 @@ export default function OptionsSection() {
               </SmallHeading>
             </OptionCard>
             <CartButtonLeft>
-              <ProductBuy slug={"lets-goal-2021-planner"} >Pre Order</ProductBuy>
+              <ProductBuy slug={"lets-goal-2021-planner"} />
               
             </CartButtonLeft>
             <div className="pop-up-text">
@@ -292,10 +293,10 @@ export default function OptionsSection() {
                   );
                 })} */}
                 <P fontSize="24px" weight="700" margin="10px 0px 0px 0px" >
-                  Ultimate Planner
+                Ultimate Bundle
                 </P>
                 <P fontSize="16px" weight="700" margin="0px 0px">
-                  Try Ultimate Planner
+                  Try Ultimate Bundle
                 </P>
                 <PopUp className="roundTxt">
                   <img src={roundText} />
@@ -306,7 +307,7 @@ export default function OptionsSection() {
               </SmallHeading>
             </OptionCard>
             <CartButtonLeft>
-            <ProductBuy slug={"lets-goal-2021-planner"} >Pre Order</ProductBuy>
+            <ProductBuy slug={"lets-goal-2021-planner"} />
               
             </CartButtonLeft>
             <div className="pop-up-text right">

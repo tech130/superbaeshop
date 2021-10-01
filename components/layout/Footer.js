@@ -44,7 +44,7 @@ const FooterCon = styled.footer`
         padding: 2px;
     }
     .footer-bottom {
-        padding-top: 15px;
+        padding-top: 25px;
         font-size: 14px;
         text-align: center;
         display: flex;
@@ -209,14 +209,15 @@ const Footer = () => {
                                     src="/images/icons/payment/amazon.svg"
                                     alt="amazon pay logo"
                                 />
+                                 <img
+                                    src="/images/icons/payment/googlepay.svg"
+                                    alt="googlepay logo"
+                                />
                                 <img
                                     src="/images/icons/payment/razorpay.svg"
                                     alt="razorpay logo"
                                 />
-                                <img
-                                    src="/images/icons/payment/googlepay.svg"
-                                    alt="googlepay logo"
-                                />
+                               
                                 <img
                                     src="/images/icons/payment/paytm.jpg"
                                     alt="paytm logo"

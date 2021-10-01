@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps, store }) {
         container: {
         //   padding: 0,
           maxWidth: {
-            xxl: 1141,
+            xxl: 1440,
             xl: 1240,
             lg: 960,
             md: 720,

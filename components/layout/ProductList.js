@@ -1,42 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Flex from "../styled/Flex";
 import { Col, Row, Container } from "styled-bootstrap-grid";
-import Block from "../styled/Block";
-import { H5 } from "../styled/Headings";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import CountryLink, { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
+import ProductLink from "../product/ProductLink";
 
 const ProdList = styled(Flex)`
+max-width: 65vw;
     ul {
         list-style: none;
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         overflow-x: auto;
         white-space: nowrap;
-        
+        justify-content: space-evenly;
+    min-height: 42px;
+    align-items: center;
+
     }
     @media only screen and (max-width: 768px) {
         background: hsla(0,0%,100%,.6);
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
+    max-width: 100vw;
     }
 `;
-const ViewAllLink = styled(CountryLink)`
-    display: block;
-    background: #000;
-    color: #fff !important;
-    padding: 8px 15px;
-    text-transform: uppercase;
-    font-size: 13px;
-    margin-bottom: 5px;
-`;
+// const ViewAllLink = styled(CountryLink)`
+//     display: block;
+//     background: #000;
+//     color: #fff !important;
+//     padding: 8px 15px;
+//     text-transform: uppercase;
+//     font-size: 13px;
+//     margin-bottom: 5px;
+// `;
 const ProdLinkStl = styled.li`
     cursor: pointer;
     display: inline-block;
-    padding: 10px 25px;
+    padding: 4px 10px;
     color: #000;
     text-decoration: none;
     font-size: 15px;
@@ -46,35 +50,35 @@ const ProdLinkStl = styled.li`
         font-size: 12px;
     }
 `;
-const SubCatLink = styled(CountryLink)`
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-`;
-const FilterListStyl = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: auto;
-    margin-bottom: 15px;
-`;
-const CategoryLink = ({ id, title }) => {
-    return (
-        <ProdLinkStl>
-            <CountryLink
-                href="/category/[categoryId]"
-                query={{ categoryId: id }}
-            >
-                {title}
-            </CountryLink>
-        </ProdLinkStl>
-    );
-};
+// const SubCatLink = styled(CountryLink)`
+//     display: block;
+//     font-size: 14px;
+//     margin-bottom: 5px;
+// `;
+// const FilterListStyl = styled.div`
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     overflow-x: auto;
+//     margin-bottom: 15px;
+// `;
+// const CategoryLink = ({ id, title }) => {
+//     return (
+//         <ProdLinkStl>
+//             <CountryLink
+//                 href="/category/[categoryId]"
+//                 query={{ categoryId: id }}
+//             >
+//                 {title}
+//             </CountryLink>
+//         </ProdLinkStl>
+//     );
+// };
 
 const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
     let { categories, is_active, id } = cat;
     return (
-        <React.Fragment key ={id}>
+        <React.Fragment key={id}>
             {is_active &&
                 <React.Fragment >
                     <ProdLinkStl>
@@ -94,7 +98,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
 
                                 <div className="inside-outline">
                                     <div className="d-flex justify-content-end mb-1">
-                                        
+
                                         <div className="mt-2 pt-1">
                                             <CountryLink href="/product" query={{ super_category: id }}>
                                                 <Txt textDecor="underline">View Products</Txt>
@@ -106,8 +110,8 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                                             }}>&times;</span>
                                         </button> */}
                                         <div className="close-container" onClick={() => {
-                                                setToggle('')
-                                            }}>
+                                            setToggle('')
+                                        }}>
                                             <div className="leftright"></div>
                                             <div className="rightleft"></div>
                                             {/* <label className="close">close</label> */}
@@ -125,7 +129,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                                                             {cat.is_active &&
 
                                                                 <Col key={index} col={2} lg={2} md={2} sm={3} xs={4}>
-                                                                    {loadCategories(cat,setToggle)}
+                                                                    {loadCategories(cat, setToggle)}
                                                                 </Col>
 
                                                             }
@@ -145,7 +149,18 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
         </React.Fragment>
     );
 };
-const loadCategories = (cat,setToggle) => {
+const ProdTitle = ({ slug, index }) => {
+    return (
+        <React.Fragment key={index}>
+                    <ProdLinkStl>
+                    <ProductLink slug={slug} />
+                    </ProdLinkStl>
+                    
+            
+        </React.Fragment>
+    );
+};
+const loadCategories = (cat, setToggle) => {
 
     let { sub_categories, title, is_active, id } = cat;
     const { query } = useRouter();
@@ -169,13 +184,13 @@ const loadCategories = (cat,setToggle) => {
                         sub_categories.length > 0 ?
                             sub_categories.map((item) => {
                                 return (
-                                    <p className="mb-1 cursor-pointer" key={item.id}  onClick={()=>{
-                                        
-                                        query.sub_category=item.id;
-                                        query.category=id;
+                                    <p className="mb-1 cursor-pointer" key={item.id} onClick={() => {
+
+                                        query.sub_category = item.id;
+                                        query.category = id;
                                         router.push({
                                             pathname: `/[country]/product`,
-                                            query: {...query },
+                                            query: { ...query },
                                         })
                                         setToggle('')
                                     }}>
@@ -201,13 +216,24 @@ const ProductList = () => {
         products: state.headerProducts,
         categories: state.master.category || [],
     }));
+    let Show = 'products';
+    console.log(data)
     return (
         <ProdList as="nav" justifyContent="center" alignItems="stretch">
-            <ul>
-                {data.categories.map((cat, index) => (
-                    <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={index} index={index} />
-                ))}
-            </ul>
+            {
+                Show === "products" ?
+                    <ul>
+                        {data.products.map((slug, index) => (
+                            <ProdTitle  slug={slug} key={index} index={index} />
+                        ))}
+                    </ul>
+                    :
+                    <ul>
+                        {data.categories.map((cat, index) => (
+                            <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={index} index={index} />
+                        ))}
+                    </ul>
+            }
         </ProdList>
     );
 };

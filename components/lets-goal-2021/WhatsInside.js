@@ -3,6 +3,7 @@ import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2 } from "../styled/Headings";
 import P from "../styled/P";
+import AnimateText from "../styled/AnimateText";
 import Flex from "../styled/Flex";
 import ProductBuy from "../product/ProductBuy";
 import Dot from "../styled/Dot";
@@ -11,12 +12,12 @@ import ResponsiveImage from "../common/ResponsiveImage";
 
 const WhatsInside = () => {
     return (
-        <Block padding="50px 0px">
+        <Block margin="50px 0px" padding="0px 0px" height="680px">
             <Container>
                 <Block padding="0px 0px 15px 0px">
-                    <H2 textAlign="center" mb="0px">
+                    <H2 weight="500" fontSize="48px" textAlign="center" mb="0px">
                         {/* What&apos;s Inside */}
-                        <div className="animateText ">
+                        {/* <div className="animateText ">
                             <span>S</span>
                             <span>m</span>
                             <span>a</span>
@@ -37,10 +38,10 @@ const WhatsInside = () => {
                             <span>O</span>
                             <span>M</span>
                             <span>G</span>
-                        </div>
-                        {/* Smart insides too: OMG */}
+                        </div> */}
+                        Smart insides too: <AnimateText> OMG</AnimateText>
                     </H2>
-                    <P textAlign="center">
+                    <P textAlign="center" fontSize="24px">
                         Check out what makes let&apos;s goal 2021 so special
                     </P>
                 </Block>

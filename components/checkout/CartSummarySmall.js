@@ -1,6 +1,7 @@
-import React from "react";
+import React ,{useState}from "react";
 import styled from "styled-components";
 import HR from "../styled/Hr";
+import { Tooltip } from 'reactstrap';
 
 const CartSum = styled.div`
     
@@ -24,11 +25,11 @@ const CartSumAmt = styled.span`
     font-size: ${(props) => (props.font)}px;
 `;
 
-const SumItem = ({ title = "", bold = false, amt = "",font="16px" }) => {
+const SumItem = ({ title = "", bold = false, amt = "", font = "16px", href = "", id = "" }) => {
     return (
         <CartSumItem>
             <CartSumTitle font={font} >{title}</CartSumTitle>
-            <CartSumAmt font={font} bold={bold}>{amt}</CartSumAmt>
+            <CartSumAmt font={font} bold={bold}><span href={href} id={id}>{amt}</span></CartSumAmt>
         </CartSumItem>
     );
 };
@@ -68,6 +69,8 @@ const CartSummary = ({
         cartTotal -
         (redeem ? wallet_amount : couponAmt) -
         offerAmount;
+    const [tooltipOpen, setTooltipOpen] = useState(false);
+    const toggle = () => setTooltipOpen(!tooltipOpen);
     return (
         <>
             <CartSum>
@@ -110,7 +113,22 @@ const CartSummary = ({
                     font="22"
                     bold
                     amt={`${currency_type}${total.toFixed(2)}`}
+                    href="#" id="DisabledAutoHide"
                 />
+                <Tooltip placement="left" isOpen={tooltipOpen} autohide={false} target="DisabledAutoHide" toggle={toggle}>
+                    {/* <SumItem
+                    title="Cart Total"
+                    amt={`${currency_type}${cartTotal.toFixed(2)}`}
+                />  */}
+                    <SumItem
+                        title="Delivery Charge"
+                        amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
+                    />
+                    <SumItem
+                        title="Offer Amount"
+                        amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
+                    />
+                </Tooltip>
             </CartSum>
         </>
     );

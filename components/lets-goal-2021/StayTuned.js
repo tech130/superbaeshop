@@ -17,8 +17,8 @@ const rainbow_animation = keyframes`
 `;
 const MainCaption = styled.div`
   text-align: center;
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 48px;
+  font-weight: 500;
   @media (max-width: 768px) {
     font-size: 2rem;
 }

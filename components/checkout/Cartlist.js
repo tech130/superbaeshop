@@ -52,7 +52,7 @@ const CartRight = styled.div`
   padding: 0px 15px;
   height: 100%;
   position: relative;
-  
+  background-color: #fafafa;
 `;
 const Pad = styled.div`
   width: 100%;
@@ -66,7 +66,7 @@ const VerticalLine = styled.div`
     position: absolute;
     background: #ddd;
     z-index: 99;
-    left: -15px;
+    left: 0px;
 `;
 const CartButton = styled.button`
 padding: 15px 40px;
@@ -320,7 +320,7 @@ const CartListWithForm = ({
     return (
         <Row>
 
-            <Col lg={6} padding="0px 30px 0px 15px">
+            <Col lg={6} padding="0px">
             <Pad />
                 {cartSummary.impure ? (
                     <Block
@@ -343,7 +343,7 @@ const CartListWithForm = ({
                     </>
                 )}
             </Col>
-            <Col lg={6}>
+            <Col lg={6}  padding="0px" className="p-0">
                 <CartRight>
                     <VerticalLine />
                     <Pad />

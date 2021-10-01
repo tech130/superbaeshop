@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Flex from "../styled/Flex";
+import AnimateText from "../styled/AnimateText";
 import Img from "../styled/Img";
 
 import styled, { css, keyframes } from "styled-components";
 
 const MainCaption = styled.div`
   text-align: center;
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 48px;
+  font-weight: 500;
   line-height: 1.1;
   color:${(props) => props.color || 'black'};
   @media (max-width: 576px) {
@@ -16,7 +17,7 @@ const MainCaption = styled.div`
 `;
 
 const SmallHeading = styled.div`
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1.1;
   font-weight: ${(props) => props.fontWeight || 500};
   margin-top: ${(props) => props.marginTop || 0};
@@ -77,7 +78,7 @@ background: ${(props) => props.bgColor};
 const MainSectionOutside = styled.div`
 background: ${(props) => props.bgColor2};
   position: relative;
-  height: 55vw;
+  height: 650px;
   overflow: hidden;
   @media (max-width: 576px) {
     height: 75vw;
@@ -160,10 +161,10 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainCaption color={`${colorInd === 'black'? 'white':'black'}`}>Your Planner, Your color </MainCaption>
+          <MainCaption color={`${colorInd === 'black'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainCaption>
 
           <SmallHeading color={`${colorInd === 'black'? 'white':'black'}`} marginTop="0px">
-          6 Fresh colors that reflect your personality
+          2 Fresh colors that reflect your personality
           </SmallHeading>
         </FirstSection>
 
