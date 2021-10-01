@@ -23,6 +23,7 @@ const LetsGoal2021 = () => {
             <WhatsInside />
             <InterSec />
             <Freebies />
+            <InterSec />
             {/* <SmartDigitalPlanner /> */}
             <OptionsSection />
             <ColorPicker />

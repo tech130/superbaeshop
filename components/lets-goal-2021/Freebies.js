@@ -1,10 +1,11 @@
 import React from "react";
 import Block from "../styled/Block";
-import { Container,Row } from "styled-bootstrap-grid";
+import { Container, Row, Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import Flex from "../styled/Flex";
 import AnimateText from "../styled/AnimateText";
 import BgImage from './images/below-freebee/1.jpg';
+import ResponsiveImage from "../common/ResponsiveImage";
 
 const MainCaption = styled.div`
   text-align: center;
@@ -12,14 +13,15 @@ const MainCaption = styled.div`
   font-weight: 500;
   line-height: 1.1;
 `;
+// background-image: url(${BgImage});
 const OutLine = styled.div`
-    background-image: url(${BgImage});
     background-position:center;
   background-position: center;
   background-size: 90% auto;
   width: 100%;
-  padding:20px 0px;
-  height:680px;
+  padding:60px 15px 40px 15px;
+  height:100%;
+  background:white;
 `;
 
 const SmallHeading = styled.div`
@@ -29,26 +31,169 @@ const SmallHeading = styled.div`
   margin-top: ${(props) => props.marginTop || 0};
   margin-bottom: ${(props) => props.marginBottom || 0};
 `;
+const LeftDiv = styled.div`
+    width: 120px;
+    height: 120px;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+`;
+const LeftDivSmall = styled.div`
+    width: 60px;
+    height: 60px;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+`;
+const AlignItems = styled.div`
+    justify-content: ${(props) => props.justify || 'center'};
+    display: flex;
+    
+    margin-bottom: ${(props) => props.mb}px;
+
+`;
+
 
 const Freebies = () => {
     return (
-        <Block  padding="0px 15px" margin="0px 0px ">
+        <Block padding="0px 15px" margin="0px 0px ">
             <Row>
-            <Container fluid>
-            <Row>
-                <OutLine>
-                <Flex vertical alignItems="center" margin="1rem 0">
-                    <MainCaption>The Freebies are so <AnimateText> cool!</AnimateText></MainCaption>
-                    <SmallHeading>And they are all yours
-                    </SmallHeading>
-                </Flex>
-                {/* <ResponsiveImage
-                    image={require("./images/below-freebee/1.jpg?resize")}
-                /> */}
-                </OutLine>
-          </Row>
-            </Container>
-          </Row>
+                <Container fluid>
+                    <Row>
+                        <OutLine>
+
+                            <Row alignItems="center">
+                                <Col lg={3} xs={4} >
+                                    <AlignItems mb="40" justify="end">
+                                        <div
+                                            data-aos="fade-right"
+                                            data-aos-delay="700"
+                                            data-aos-duration="500"
+                                        >
+                                            <LeftDiv>
+                                                <ResponsiveImage
+                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                />
+                                            </LeftDiv>
+                                        </div>
+                                    </AlignItems>
+                                </Col>
+                                <Col lg={6} xs={4} className="d-none d-sm-block">
+
+                                </Col>
+                                <Col lg={3} xs={4} className="d-none d-sm-block">
+                                    <AlignItems justify="start" mb="40">
+                                        <div
+                                            data-aos="fade-left"
+                                            data-aos-delay="3000"
+                                            data-aos-duration="500"
+                                        >
+                                            <LeftDiv>
+                                                <ResponsiveImage
+                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                />
+                                            </LeftDiv>
+                                        </div>
+                                    </AlignItems>
+                                </Col>
+                            </Row>
+                            <Row alignItems="center">
+                                <Col lg={2} xs={4} >
+                                    <AlignItems justify="end" mb="40">
+                                        <div
+                                            data-aos="fade-right"
+                                            data-aos-delay="1500"
+                                            data-aos-duration="500"
+                                        >
+                                            <LeftDivSmall>
+                                                <ResponsiveImage
+                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                />
+                                            </LeftDivSmall>
+                                        </div>
+                                    </AlignItems>
+                                </Col>
+                                <Col lg={8} xs={4} className="d-none d-sm-block">
+                                    <Flex vertical alignItems="center" margin="1rem 0">
+                                        <div data-aos="fade-down"
+                                            data-aos-easing="linear"
+                                            data-aos-duration="500"
+                                            data-aos-delay="100"
+                                        >
+                                            <MainCaption>The Freebies are so <AnimateText> cool!</AnimateText></MainCaption>
+                                        </div>
+                                        <div data-aos="fade-zoom-in"
+                                            data-aos-easing="ease-in-back"
+                                            data-aos-delay="300"
+                                            data-aos-duration="500"
+                                            data-aos-offset="0"
+                                        >
+                                            <SmallHeading>And they are all yours
+                                            </SmallHeading>
+                                        </div>
+                                    </Flex>
+                                </Col>
+                                <Col lg={2} xs={4} className="d-none d-sm-block">
+                                    <AlignItems justify="start" mb="40">
+                                        <div
+                                            data-aos="fade-left"
+                                            data-aos-delay="2000"
+                                            data-aos-duration="500"
+                                        >
+                                            <LeftDivSmall>
+                                                <ResponsiveImage
+                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                />
+                                            </LeftDivSmall>
+                                        </div>
+                                    </AlignItems>
+                                </Col>
+                            </Row>
+                            <Row alignItems="center">
+                                <Col lg={3} xs={4} >
+                                    <AlignItems justify="end" mb="40">
+                                        <div
+                                            data-aos="fade-right"
+                                            data-aos-delay="2500"
+                                            data-aos-duration="500"
+                                        >
+                                            <LeftDiv>
+                                                <ResponsiveImage
+                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                />
+                                            </LeftDiv>
+                                        </div>
+                                    </AlignItems>
+                                </Col>
+                                <Col lg={6} xs={4} className="d-none d-sm-block">
+
+                                </Col>
+                                <Col lg={3} xs={4} className="d-none d-sm-block">
+                                    <AlignItems justify="start" mb="40">
+                                        <div
+                                            data-aos="fade-left"
+                                            data-aos-delay="1000"
+                                            data-aos-duration="500"
+                                        >
+                                            <LeftDiv>
+                                                <ResponsiveImage
+                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                />
+                                            </LeftDiv>
+                                        </div>
+                                    </AlignItems>
+                                </Col>
+                            </Row>
+
+
+                        </OutLine>
+                    </Row>
+                </Container>
+            </Row>
         </Block>
     );
 };
