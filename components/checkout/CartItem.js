@@ -17,11 +17,11 @@ import { updateCartList } from "../../redux/user/cart";
 import { toBoolean, toNum } from "../../utils";
 
 export const CartStyl = styled(Flex)`
-    padding: 10px;
-    border: solid 2px #f5f5f5;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    padding: 15px 10px;
+    border-radius: 0px;
+    margin-bottom: 0px;
     position: relative;
+    border-bottom: 1px solid #ddd;
 `;
 
 export const CartLdr = styled.div`

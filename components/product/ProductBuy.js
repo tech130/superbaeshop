@@ -9,7 +9,7 @@ import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
 import { useRouter } from "next/router";
-import styled from "styled-components";
+import styled ,{keyframes}from "styled-components";
 import AnimateText from "../styled/AnimateText";
 
 export const getBtnText = (
@@ -110,13 +110,37 @@ export const CartButton = styled(AddToCart)`
         padding: 6px 20px;
     }
 `;
+const rainbow_animation = keyframes`
+    0%,100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+`;
+export const NewButton = styled.button`
+    padding: 8px 30px;
+    border-radius: 30px;
+    color: black;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
+    background: linear-gradient(35deg,#f72bf1,#9ad7fb,#f57e93,#b4a8ff,#05f78e,#eda5b2);
+    animation: ${rainbow_animation} 4s ease-in-out infinite;
+    background-size: 300% 100%;
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 6px 20px;
+    }
+`;
 
 const ProductBuy = ({ slug }) => {
     const product = useProduct(slug);
     const productCountry = useProdCountry(product.product_country);
 
     if (productCountry && productCountry.country) {
-        return <CartButton product={product} />;
+        return <><CartButton product={product} /> <NewButton>Add to cart</NewButton> </>;
     }
     return null;
 };

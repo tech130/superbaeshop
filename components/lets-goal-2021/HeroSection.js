@@ -10,7 +10,7 @@ import CheckIcon from "../icons/CheckIcon";
 
 const MeetTxt = styled.h1`
     font-size:48px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.1;
     color: #000;
     margin-bottom: 18px;
@@ -64,9 +64,8 @@ const HeroSection = () => {
                             <Row alignItems="center">
                                 <Col lg={6} sm={6} >
                                     <MeetTxt>
-                                        Cutest
-                                        <br />
-                                        Planner <AnimateText>Ever</AnimateText><br />
+                                        Cutest Planner <AnimateText>Ever.</AnimateText><br />
+                                        {/* <br /> */}
                                     </MeetTxt>
                                     <p>The Ultimate Journaling Experience is here!
                                     </p>

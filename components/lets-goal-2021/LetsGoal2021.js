@@ -21,9 +21,9 @@ const LetsGoal2021 = () => {
         <>
             <HeroSection />
             <WhatsInside />
-            <InterSec />
+            {/* <InterSec /> */}
             <Freebies />
-            <InterSec />
+            {/* <InterSec /> */}
             {/* <SmartDigitalPlanner /> */}
             <OptionsSection />
             <ColorPicker />

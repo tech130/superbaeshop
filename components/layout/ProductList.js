@@ -40,14 +40,14 @@ max-width: 65vw;
 const ProdLinkStl = styled.li`
     cursor: pointer;
     display: inline-block;
-    padding: 4px 10px;
+    padding: 4px 25px;
     color: #000;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     @media only screen and (max-width: 575px) {
         padding: 5px 10px;
-        font-size: 12px;
+        font-size: 14px;
     }
 `;
 // const SubCatLink = styled(CountryLink)`

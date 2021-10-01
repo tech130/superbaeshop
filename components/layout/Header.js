@@ -103,7 +103,7 @@ const Header = () => {
       console.log("wewe",pathname)
     return (
         <>
-            <Hdr border={pathname ==="/[country]" ? '0px':'1px solid #ddd'} >
+            <Hdr border={pathname ==="/[country]" ? '1px solid #ddd':'1px solid #ddd'} >
                 <Container>
                     <Flex
                         as="nav"

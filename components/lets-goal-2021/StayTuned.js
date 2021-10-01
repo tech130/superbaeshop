@@ -18,7 +18,7 @@ const rainbow_animation = keyframes`
 const MainCaption = styled.div`
   text-align: center;
   font-size: 48px;
-  font-weight: 500;
+  font-weight: 700;
   @media (max-width: 768px) {
     font-size: 2rem;
 }
@@ -46,13 +46,14 @@ display: flex;
 
 // background: linear-gradient(to right, #f4edf4 0%, #eef2fa 51%, #d7bcbd 100%);
 // background: linear-gradient(to right,#6666ff,#0099ff,#00ff00,#ff3399,#6666ff);
-const GradientText = styled.h1`
+const GradientText = styled.span`
 background: linear-gradient(90deg,#60bbf1,#c6e1f1,#f57e93,#b4a8ff,#c8f1ff,#eda5b2);
 -webkit-background-clip: text;
 background-clip: text;
 color: transparent;
 animation: ${rainbow_animation} 4s ease-in-out infinite;
 background-size: 400% 100%;
+margin-bottom:0px;
 font-size: 3rem;
   font-weight: 700;
   @media (max-width: 768px) {
@@ -109,10 +110,10 @@ const StayTuned = () => {
 
   return (
     <Block padding="0px 0px 65px 0px" className="overflow-hidden">
-      <Flex vertical width="100%" alignItems="center" margin="3rem 0">
+      <Flex vertical width="100%" alignItems="center" margin="2rem 0">
         <Flex alignItems="center" margin="3rem 0" >
-          <MainCaption>Stay tuned</MainCaption>
-          <GradientText> @spaceandbeautyofficial </GradientText>
+          <MainCaption>Stay tuned  <GradientText>@spaceandbeautyofficial </GradientText></MainCaption>
+          
         </Flex>
 
         <Flex className="overflow-hidden">

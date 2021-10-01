@@ -52,7 +52,6 @@ const CartRight = styled.div`
   padding: 0px 15px;
   height: 100%;
   position: relative;
-  background-color: #fafafa;
 `;
 const Pad = styled.div`
   width: 100%;

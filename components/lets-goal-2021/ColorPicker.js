@@ -8,7 +8,7 @@ import styled, { css, keyframes } from "styled-components";
 const MainCaption = styled.div`
   text-align: center;
   font-size: 48px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.1;
   color:${(props) => props.color || 'black'};
   @media (max-width: 576px) {
@@ -78,7 +78,7 @@ background: ${(props) => props.bgColor};
 const MainSectionOutside = styled.div`
 background: ${(props) => props.bgColor2};
   position: relative;
-  height: 650px;
+  height: 640px;
   overflow: hidden;
   @media (max-width: 576px) {
     height: 75vw;
@@ -104,11 +104,11 @@ const ContentSection = styled.div`
   justify-content: center;
 `;
 
-const colorOptions = ["#f8d9c7","black"];
+const colorOptions = ["#ffdce2","black","white"];
 
 export default function ColorPicker() {
-  const [colorInd, setColor] = useState('#f8d9c7');
-  const [colorInd2, setColor2] = useState('#f8d9c7');
+  const [colorInd, setColor] = useState('#ffdce2');
+  const [colorInd2, setColor2] = useState('#ffdce2');
   useEffect(() => {
 
   }, [colorInd]);

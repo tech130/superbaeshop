@@ -102,9 +102,7 @@ align-items: center;
   height: 100%;
   width: 100%;
   padding: ${(props) => props.padding ? props.padding : '0px 15px'};
-  background-color: #FFF444;
-  background:linear-gradient(
-    90deg,rgb(255 237 237) 0%,rgb(246 244 244) 50%,rgb(216 230 234) 100%);;
+  background-color: #fbfaff;
   border-radius: 8px;
   @media (max-width: 992px) {
     padding: 15px 35px;
@@ -112,7 +110,22 @@ align-items: center;
   @media (max-width: 768px) {
     padding: 15px 15px;
 }
-  
+`;
+const FlexBg2 = styled.div`
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: ${(props) => props.padding ? props.padding : '0px 15px'};
+  background-color: #f2f6ff;
+  border-radius: 8px;
+  @media (max-width: 992px) {
+    padding: 15px 35px;
+}
+  @media (max-width: 768px) {
+    padding: 15px 15px;
+}
 `;
 const FlexAssing = styled.div`
 display: flex;
@@ -284,7 +297,7 @@ export default function TestimonialSection() {
       <Container fluid>
         <Row>
           <Col  lg={6} sm={6} xs={12} >
-            <Flex width="100%" bgColor="#FFFFFF" height="100%" padding="0px 0px 30px 0px" >
+            <Flex width="100%" bgColor="#FFFFFF" height="90vh" padding="0px 0px 30px 0px" >
             <FlexBg >
             <FlexAssing
             // vertical
@@ -308,14 +321,14 @@ export default function TestimonialSection() {
             </Flex>
           </Col>
           <Col lg={6} sm={6} xs={12} >
-            <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="100%" >
-              <FlexBg className="flex-column" padding="15px 70px" >
+            <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="90vh" >
+              <FlexBg2 className="flex-column" padding="15px 70px" >
                 <TestimonialCard alignSelf="flex-end" width="70%" />
 
                 <TestimonialCard alignSelf="flex-start" width="70%" />
 
                 <TestimonialCard alignSelf="flex-end" width="70%" />
-              </FlexBg>
+              </FlexBg2>
             </Flex>
           </Col>
         </Row>

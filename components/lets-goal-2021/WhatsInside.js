@@ -12,10 +12,10 @@ import ResponsiveImage from "../common/ResponsiveImage";
 
 const WhatsInside = () => {
     return (
-        <Block margin="50px 0px" padding="0px 0px" height="680px">
+        <Block margin="50px 0px" padding="0px 0px" height="100%">
             <Container>
                 <Block padding="0px 0px 15px 0px">
-                    <H2 weight="500" fontSize="48px" textAlign="center" mb="0px">
+                    <H2 weight="700" fontSize="48px" textAlign="center" mb="0px">
                         {/* What&apos;s Inside */}
                         {/* <div className="animateText ">
                             <span>S</span>
@@ -42,7 +42,7 @@ const WhatsInside = () => {
                         Smart insides too: <AnimateText> OMG</AnimateText>
                     </H2>
                     <P textAlign="center" fontSize="24px">
-                        Check out what makes let&apos;s goal 2021 so special
+                        Check out what makes my space 2022 so special
                     </P>
                 </Block>
                 <Row>

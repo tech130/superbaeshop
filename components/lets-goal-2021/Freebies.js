@@ -10,7 +10,7 @@ import ResponsiveImage from "../common/ResponsiveImage";
 const MainCaption = styled.div`
   text-align: center;
   font-size: 48px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.1;
 `;
 // background-image: url(${BgImage});
@@ -60,14 +60,14 @@ const AlignItems = styled.div`
 
 const Freebies = () => {
     return (
-        <Block padding="0px 15px" margin="0px 0px ">
+        <Block padding="0px 15px" margin="65px 0px 0px 0px">
             <Row>
                 <Container fluid>
                     <Row>
                         <OutLine>
 
                             <Row alignItems="center">
-                                <Col lg={3} xs={4} >
+                                <Col lg={3} xs={3} sm={3} md={3}>
                                     <AlignItems mb="40" justify="end">
                                         <div
                                             data-aos="fade-right"
@@ -82,10 +82,10 @@ const Freebies = () => {
                                         </div>
                                     </AlignItems>
                                 </Col>
-                                <Col lg={6} xs={4} className="d-none d-sm-block">
+                                <Col lg={6} xs={6} sm={6} md={6} className="d-none d-sm-block">
 
                                 </Col>
-                                <Col lg={3} xs={4} className="d-none d-sm-block">
+                                <Col lg={3} xs={3} sm={3} md={3} className="d-none d-sm-block">
                                     <AlignItems justify="start" mb="40">
                                         <div
                                             data-aos="fade-left"
@@ -102,7 +102,7 @@ const Freebies = () => {
                                 </Col>
                             </Row>
                             <Row alignItems="center">
-                                <Col lg={2} xs={4} >
+                                <Col lg={2} xs={2} sm={2} md={2}  >
                                     <AlignItems justify="end" mb="40">
                                         <div
                                             data-aos="fade-right"
@@ -117,7 +117,7 @@ const Freebies = () => {
                                         </div>
                                     </AlignItems>
                                 </Col>
-                                <Col lg={8} xs={4} className="d-none d-sm-block">
+                                <Col lg={8} xs={8}  sm={8} md={8}  className="">
                                     <Flex vertical alignItems="center" margin="1rem 0">
                                         <div data-aos="fade-down"
                                             data-aos-easing="linear"
@@ -137,7 +137,7 @@ const Freebies = () => {
                                         </div>
                                     </Flex>
                                 </Col>
-                                <Col lg={2} xs={4} className="d-none d-sm-block">
+                                <Col lg={2} xs={2} md={2} sm={2} className="d-none d-sm-block">
                                     <AlignItems justify="start" mb="40">
                                         <div
                                             data-aos="fade-left"
@@ -154,11 +154,11 @@ const Freebies = () => {
                                 </Col>
                             </Row>
                             <Row alignItems="center">
-                                <Col lg={3} xs={4} >
+                                <Col lg={3} xs={3} sm={3} md={3} >
                                     <AlignItems justify="end" mb="40">
                                         <div
                                             data-aos="fade-right"
-                                            data-aos-delay="2500"
+                                            data-aos-delay="2300"
                                             data-aos-duration="500"
                                         >
                                             <LeftDiv>
@@ -169,10 +169,10 @@ const Freebies = () => {
                                         </div>
                                     </AlignItems>
                                 </Col>
-                                <Col lg={6} xs={4} className="d-none d-sm-block">
+                                <Col lg={6} xs={6} sm={6} md={6}  className="d-none d-sm-block">
 
                                 </Col>
-                                <Col lg={3} xs={4} className="d-none d-sm-block">
+                                <Col lg={3} xs={3} sm={3} md={3}  className="d-none d-sm-block">
                                     <AlignItems justify="start" mb="40">
                                         <div
                                             data-aos="fade-left"

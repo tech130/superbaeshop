@@ -20,7 +20,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "SfPro";
   font-weight: 400;
   line-height: 1.5;

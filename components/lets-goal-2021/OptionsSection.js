@@ -12,7 +12,7 @@ import AnimateText from "../styled/AnimateText";
 const MainCaption = styled.div`
   text-align: center;
   font-size: 48px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.1;
 `;
 
@@ -37,7 +37,7 @@ const SmallHeadingLi = styled.div`
 
 const FirstOptionBlock = styled.div`
   color: black;
-  background-color: ${(props) => props.backgroundColor || "#edf5fb"};
+  background-color: ${(props) => props.backgroundColor || "#FFF"};
   padding: 1rem 2rem;
   font-size: 24px;
     font-weight: 600;
@@ -111,7 +111,7 @@ const OptionLeftContainer = styled.div`
   border:1px solid #e0e0e0;
   background: white;
   height: 100%;
-  background: linear-gradient(to left, #f7f5f5  50%, #c6e1f1 50%) right;
+  background: linear-gradient(to left,#ffffff 50%,#c6e1f1 50%) right;
   background-size: 200%;
   transition: 0.8s ease-out;
   position: relative;
@@ -146,7 +146,7 @@ const OptionRightContainer = styled.div`
   border: 1px solid #e0e0e0;
   background: white;
   height: 100%;
-  background: linear-gradient(to left, #d6bcbd 50%, #f7f5f5  50%) left;
+  background: linear-gradient(to left, #d6bcbd 50%, #ffffff  50%) left;
   background-size: 200%;
   transition: 0.8s ease-out;
   position: relative;
@@ -205,7 +205,7 @@ height: 100px;
 export default function OptionsSection() {
   return (
     <>
-      <Flex height="660px" width="100%" vertical alignItems="center" margin="1rem 0 0 0">
+      <Flex height="660px" width="100%" vertical alignItems="center" margin="15px 0 65px 0">
         <Flex vertical alignItems="center" margin="2rem 0">
           <MainCaption>Two options to choose <AnimateText>from</AnimateText> </MainCaption>
           <SmallHeading Fs="24px">Which one will you choose? Even the little things are a big deal
@@ -215,7 +215,7 @@ export default function OptionsSection() {
         <CardContainer>
           <OptionLeftContainer className="left-pop-slide">
             <OptionCard>
-              <FirstOptionBlock backgroundColor="#d6bcbd">
+              <FirstOptionBlock backgroundColor="#FFF">
 
                 <ImgContainer>
 
@@ -277,7 +277,7 @@ export default function OptionsSection() {
 
           <OptionRightContainer className="right-pop-slide">
             <OptionCard>
-              <FirstOptionBlock backgroundColor="#c6e1f1">
+              <FirstOptionBlock backgroundColor="#FFF">
                 <ImgContainer>
 
                 </ImgContainer>
