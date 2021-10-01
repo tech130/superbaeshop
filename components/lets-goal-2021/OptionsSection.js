@@ -130,11 +130,9 @@ const OptionLeftContainer = styled.div`
 
 const CartButtonLeft = styled.button`
     border-radius: 30px;
-    background-color: #000;
     color: #fff;
     font-weight: 700;
     font-size: 16px;
-    box-shadow: 13px 8px 50px 25px rgb(0 0 0 / 10%);
     position: absolute;
     bottom: 50px;
     right: 75px;

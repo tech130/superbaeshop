@@ -10,6 +10,7 @@ import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import AnimateText from "../styled/AnimateText";
 
 export const getBtnText = (
     inCart = false,
@@ -88,8 +89,10 @@ export const AddToCart = ({ className = "", product = {} }) => {
             disabled={fetching || !inStock}
             className={className}
             onClick={onClick}
+            bg="white"
+
         >
-            {btnText}
+            <AnimateText>{btnText}</AnimateText>
         </Button>
     );
 };
@@ -97,7 +100,7 @@ export const AddToCart = ({ className = "", product = {} }) => {
 export const CartButton = styled(AddToCart)`
     padding: 8px 30px;
     border-radius: 30px;
-    background-color: #000;
+    background-color: #FFF;
     color: #fff;
     font-weight: 700;
     font-size: 16px;
