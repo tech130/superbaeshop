@@ -6,21 +6,25 @@ import { AddToCart } from "./ProductBuy";
 import ContentLoader from "react-content-loader";
 import { useRef } from "react";
 import useLazyImage from "../../hooks/layout/useLazyImage";
+import Flex from "../styled/Flex";
 
 export const ItemLoader = () => (
-    <ContentLoader
-        speed={2}
-        width={255}
-        height={375}
-        viewBox="0 0 255 375"
-        backgroundColor="#f3f3f3"
-        foregroundColor="#ecebeb"
-        style={{ width: "100%", height: "auto" }}
-    >
-        <rect x="0" y="0" rx="0" ry="0" width="255" height="255" />
-        <rect x="0" y="277" rx="0" ry="0" width="227" height="15" />
-        <rect x="0" y="306" rx="0" ry="0" width="49" height="10" />
-    </ContentLoader>
+    <Flex padding="0px 10px" alignItems="center" vertical justifyContent="center">
+
+        <ContentLoader
+            speed={2}
+            width={255}
+            height={375}
+            viewBox="0 0 255 375"
+            backgroundColor="#f3f3f3"
+            foregroundColor="#ecebeb"
+            style={{ width: "100%", height: "auto" }}
+        >
+            <rect x="0" y="0" rx="0" ry="0" width="255" height="255" />
+            <rect x="0" y="277" rx="0" ry="0" width="227" height="15" />
+            <rect x="0" y="306" rx="0" ry="0" width="49" height="10" />
+        </ContentLoader>
+    </Flex>
 );
 
 export const ImgCon = styled.div`
@@ -68,7 +72,8 @@ const Title = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 16px;
 `;
 
 export const CartBtn = styled(AddToCart)`
@@ -77,9 +82,10 @@ export const CartBtn = styled(AddToCart)`
     border: 1px solid #000;
     width: 100%;
     padding: 8px 15px;
-    background: #fff;
-    color: #000;
+    background: #000;
+    color: #fff;
 
+    border-radius: 6px;
     &:disabled {
         opacity: 1;
         cursor: not-allowed;
@@ -110,7 +116,7 @@ const ProductItem = ({ product = {} }) => {
     const productCountry = useProdCountry(product_country);
 
     return (
-        <Block margin="0px 0px 25px 0px">
+        <Block margin="0px 0px 25px 0px" padding="0px 10px">
             <ProductLink
                 href="/product/[productSlug]"
                 query={{ productSlug: slug }}

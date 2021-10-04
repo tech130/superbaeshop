@@ -21,17 +21,21 @@ export const ProductPrices = ({ slug, ...rest }) => {
             {product.product_country ? (
                 <>
                     <ProdPrice
-                        type="original_price"
-                        product_country={product.product_country}
-                        margin="0px 8px 0px 0px"
-                        weight={300}
-                    />
-                    <ProdPrice
                         margin="0px 8px 0px 0px"
                         product_country={product.product_country}
                         weight={600}
+                        fontSize="16px"
                         {...rest}
                     />
+                    <ProdPrice
+                        type="original_price"
+                        product_country={product.product_country}
+                        margin="0px 8px 0px 0px"
+                        weight={600}
+                        color="#999999"
+                        fontSize="14px"
+                    />
+                    
                 </>
             ) : (
                 "Product unavailble for your country"

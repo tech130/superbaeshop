@@ -90,6 +90,14 @@ const Beauty = styled.div`
         display: none;
     }
 `;
+const BagTitle = styled.div`
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+    @media only screen and (max-width: 575px) {
+        font-size: 16px;
+    }
+`;
 
 const Header = () => {
     // const [state, setState] = useState({
@@ -162,7 +170,7 @@ const Header = () => {
                                             className="custom-pane"
                                             overlayClassName="some-custom-overlay-class"
                                             isOpen={isPanel}
-                                            title="MY SHOPPING BAG"
+                                            title={ <BagTitle>MY SHOPPING BAG</BagTitle>}
                                             width="40%"
                                             shouldCloseOnEsc={false}
                                             onRequestClose={() => {

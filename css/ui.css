@@ -45,6 +45,7 @@
 }
 .custom-pane .slide-pane__header{
     background: white;
+    border-bottom:none;
 }
 .custom-pane .slide-pane__content{
     background: white;

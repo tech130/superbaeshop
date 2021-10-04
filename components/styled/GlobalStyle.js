@@ -27,6 +27,9 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
+  @media (max-width: 768px) {
+    font-size: 14px;
+}
 }
 
 a {
