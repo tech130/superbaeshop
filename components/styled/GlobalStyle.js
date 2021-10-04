@@ -28,7 +28,7 @@ body {
   text-align: left;
   background-color: #fff;
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
 }
 }
 
