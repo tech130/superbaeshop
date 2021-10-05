@@ -140,7 +140,10 @@ const ProductBuy = ({ slug }) => {
     const productCountry = useProdCountry(product.product_country);
 
     if (productCountry && productCountry.country) {
-        return <><CartButton product={product} /> <NewButton>Add to cart</NewButton> </>;
+        return <>
+        <CartButton product={product} /> 
+        {/* <NewButton>Add to cart</NewButton>  */}
+        </>;
     }
     return null;
 };

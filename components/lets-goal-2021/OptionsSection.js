@@ -10,6 +10,15 @@ import ProductBuy from "../product/ProductBuy";
 import AnimateText from "../styled/AnimateText";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
+import bookmark from './images/icons/bookmark-white.png';
+import calendar from './images/icons/calendar.png';
+import year from './images/icons/icons8-new-year-calendar-50.png';
+import wall from './images/icons/icons8-wall-socket-with-plug-50.png';
+import office from './images/icons/office-push-pin.png';
+import shopping from './images/icons/shopping-bag.png';
+import wedding from './images/icons/wedding-planner.png';
+import writing from './images/icons/writing.png';
+
 const MainCaption = styled.div`
   text-align: center;
   font-size: 48px;
@@ -17,13 +26,13 @@ const MainCaption = styled.div`
   line-height: 1.1;
 `;
 
-// const SmallHeading = styled.div`
-//   font-size: ${(props) => props.Fs || '16px'};
-//   line-height: 1.1;
-//   font-weight: ${(props) => props.fontWeight || 500};
-//   margin-top: ${(props) => props.marginTop || 0};
-//   margin-bottom: ${(props) => props.marginBottom || 0};
-// `;
+const SmallHeadingSet = styled.div`
+  font-size: ${(props) => props.Fs || '16px'};
+  line-height: 1.1;
+  font-weight: ${(props) => props.fontWeight || 500};
+  margin-top: ${(props) => props.marginTop || 0};
+  margin-bottom: ${(props) => props.marginBottom || 0};
+`;
 const SmallHeadingLi = styled.div`
   font-size: ${(props) => props.Fs || '16px'};
   line-height: 1.1;
@@ -31,9 +40,16 @@ const SmallHeadingLi = styled.div`
   margin-top: ${(props) => props.marginTop || 0};
   margin-bottom: ${(props) => props.marginBottom || '10px'};
   border: 1px solid white;
-  padding: 4px 4px;
+  padding:6px 5px;
   border-radius: 0px 10px 10px 0px;
   background: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  span{
+    width: 16px;
+    height: 16px;
+    margin-right: 7px;
+  }
 `;
 
 const FirstOptionBlock = styled.div`
@@ -61,7 +77,7 @@ const OptionItems = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.6rem 0;
+  padding: 0.6rem 0.6rem;
   justify-content: ${(props) => props.justifyContent || "space-between"};
   height: 230px;
   color: #000000;
@@ -80,27 +96,27 @@ const CardContainer = styled.div`
 }
 `;
 
-const firstOptionSettings = [
-  "* Planner",
-  "* Notebook",
-  "* Sticker Book",
-  "* Bookmarks",
-  "* Pop socket",
-  "* Enamel Pins",
-  "* Wall Calendar",
-  "* Desk Calendar",
 
+const firstOptionSettings = [
+  { item: "Planner", icon:wedding },
+  { item: "Notebook", icon:writing },
+  { item: "Bookmarks", icon:bookmark },
+  { item: "Sticker Book", icon:writing },
+  { item: "Pop socket", icon:wall },
+  { item: "Enamel Pins", icon:office },
+  { item: "Wall Calendar", icon:calendar },
+  { item: "Desk Calendar", icon:year }
 ];
 const secondOptionSettings = [
-  "* Planner",
-  "* Notebook",
-  "* Sticker Book",
-  "* Bookmarks",
-  "* Pop socket",
-  "* Enamel Pins",
-  "* Wall calendar",
-  "* Desk Calendar",
-  "* Tote Bag",
+  { item: "Planner", icon:wedding },
+  { item: "Notebook", icon:writing },
+  { item: "Bookmarks", icon:bookmark },
+  { item: "Sticker Book", icon:writing },
+  { item: "Pop socket", icon:wall },
+  { item: "Enamel Pins", icon:office },
+  { item: "Wall Calendar", icon:year },
+  { item: "Desk Calendar", icon:calendar },
+  { item: "Tote Bag", icon:shopping },
 
 ];
 
@@ -112,7 +128,7 @@ const OptionLeftContainer = styled.div`
   border:1px solid #e0e0e0;
   background: white;
   height: 100%;
-  background: linear-gradient(to left,#ffffff 50%,#c6e1f1 50%) right;
+  background: linear-gradient(to left,#c6e1f1 50%,#ffffff 50%) right;
   background-size: 200%;
   transition: 0.8s ease-out;
   position: relative;
@@ -147,7 +163,7 @@ const OptionRightContainer = styled.div`
   border: 1px solid #e0e0e0;
   background: white;
   height: 100%;
-  background: linear-gradient(to left, #d6bcbd 50%, #ffffff  50%) left;
+  background: linear-gradient(to left, #ffffff 50%, #d6bcbd  50%) left;
   background-size: 200%;
   transition: 0.8s ease-out;
   position: relative;
@@ -187,20 +203,20 @@ const zoom_in_zoom_out = keyframes`
   }
 `;
 const PopUp = styled.div`
-height: 100px;
+height: 85px;
     
-    width: 100px;
+    width: 85px;
     border-radius: 50%;
     overflow: hidden;
     animation: ${zoom_in_zoom_out} 2s ease-out;
     position: absolute;
-    left: -51%;
-    bottom: 15px;
+    left: -54px;
+    bottom: 5px;
     @media (max-width: 576px) {
       height: 75px;
-    width: 75px;
+      width: 75px;
     left: -65px;
-    bottom: 35px;
+    bottom: 25px;
   }
 `;
 export default function OptionsSection() {
@@ -233,16 +249,16 @@ export default function OptionsSection() {
                 <P fontSize="24px" weight="700" margin="10px 0px 0px 0px" >
                   Ultimate Planner
                 </P>
-                <P fontSize="16px" weight="700" margin="0px 0px">
-                  Try Ultimate Planner
+                <P textAlign="center" fontSize="16px" weight="700" margin="0px 0px">
+                Plan your activities ahead and Go stress- free with our ultimate planner!
                 </P>
                 <PopUp className="roundTxt">
                   <img src={roundText} />
                 </PopUp>
               </OptionItems>
-              <SmallHeading marginTop="0px" color="black" marginBottom="15px">
-                * Peace of mind. Included
-              </SmallHeading>
+              <SmallHeadingSet marginTop="0px" color="black" marginBottom="15px">
+              Try ultimate planner now
+              </SmallHeadingSet>
             </OptionCard>
             <CartButtonLeft>
               <ProductBuy slug={"lets-goal-2021-planner"} />
@@ -252,7 +268,7 @@ export default function OptionsSection() {
               <div className="insider-outline">
                 <div className="insider">
                   <H3>
-                    To Choose
+                    {" "}
                   </H3>
                   <Txt lineHeight={1} fontSize="14px" weight={500}>
                     With highest quality print <br />
@@ -264,10 +280,13 @@ export default function OptionsSection() {
             <div className="pop-up-list left">
               <div className="insider-outline1">
                 <div className="insider1">
-                  {firstOptionSettings.map((firstOptionSetting) => {
+                  {firstOptionSettings.map((firstOptionSetting,index) => {
                     return (
-                      <SmallHeadingLi key={firstOptionSetting} marginTop="0px">
-                        {firstOptionSetting}
+                      <SmallHeadingLi key={index} marginTop="0px">
+                        <span>
+                        <img src={firstOptionSetting.icon} />
+                        </span>
+                        {firstOptionSetting.item}
                       </SmallHeadingLi>
                     );
                   })}
@@ -294,16 +313,16 @@ export default function OptionsSection() {
                 <P fontSize="24px" weight="700" margin="10px 0px 0px 0px" >
                 Ultimate Bundle
                 </P>
-                <P fontSize="16px" weight="700" margin="0px 0px">
-                  Try Ultimate Bundle
+                <P  textAlign="center"fontSize="16px" weight="700" margin="0px 0px">
+                  All happy goodies bundled together!
                 </P>
                 <PopUp className="roundTxt">
                   <img src={roundText} />
                 </PopUp>
               </OptionItems>
-              <SmallHeading marginTop="15px" color="black" marginBottom="15px">
-                *Peace of mind. Included
-              </SmallHeading>
+              <SmallHeadingSet marginTop="15px" color="black" marginBottom="15px">
+              Try Ultimate Bundle now
+              </SmallHeadingSet>
             </OptionCard>
             <CartButtonLeft>
             <ProductBuy slug={"lets-goal-2021-planner"} />
@@ -313,7 +332,7 @@ export default function OptionsSection() {
               <div className="insider-outline">
                 <div className="insiderR">
                   <H3>
-                    To Choose
+                    { " "}
                   </H3>
                   <Txt lineHeight={1} fontSize="14px" weight={500}>
                     With highest quality print <br />
@@ -325,10 +344,13 @@ export default function OptionsSection() {
             <div className="pop-up-list right">
               <div className="insider-outline1">
                 <div className="insider1">
-                  {secondOptionSettings.map((firstOptionSetting) => {
+                  {secondOptionSettings.map((firstOptionSetting,index) => {
                     return (
-                      <SmallHeadingLi key={firstOptionSetting}>
-                        {firstOptionSetting}
+                      <SmallHeadingLi key={index}>
+                        <span>
+                        <img src={firstOptionSetting.icon} />
+                        </span>
+                        {firstOptionSetting.item}
                       </SmallHeadingLi>
                     );
                   })}

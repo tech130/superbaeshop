@@ -357,16 +357,18 @@ input#custom-checkbox {
     position: absolute;
    
       overflow: hidden;
-      width: 122px;
+      width: 135px;
     transition: 0.8s ease-out;
-    bottom: 170px;
+    
     
 }
 .pop-up-list.left{
-    left: -120px;
+    left: -140px;
+    bottom: 130px;
 }
 .pop-up-list.right{
-    right: -120px;
+    right: -140px;
+    bottom: 120px;
 }
 .left-pop-slide:hover .pop-up-list.left{
     left: 10%;

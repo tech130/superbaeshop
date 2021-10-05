@@ -120,7 +120,6 @@ const LocalCartListPanel = () => {
                         <Col lg={12}>
                             <CartSummarySmall {...cartSummary} />
                             <CartButton onClick={() => {
-
                                 router.push("/[country]/checkout", `/${country}/checkout`);
                                 dispatch(cartIsOpen(false));
                             }

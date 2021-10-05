@@ -6,11 +6,16 @@ import { Container, Row, Col } from "styled-bootstrap-grid";
 import lisa from './images/testimonials/Lisa.jpeg';
 import Rosetta from './images/testimonials/Rosetta M.jpeg';
 import Shagufta from './images/testimonials/Shagufta Tamkeen.jpeg';
+import { useRouter } from "next/router";
+import { useCountryParam } from "../common/CountryLink";
+import { useDispatch } from "react-redux";
+import { cartIsOpen } from "../../redux/user/local_cart";
 
 const MainCaption = styled.div`
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
+  line-height: 1.2;
   @media (max-width: 576px) {
     font-size: 1.2rem;
     margin:10px 0px;
@@ -135,7 +140,7 @@ const FlexAssing = styled.div`
 display: flex;
 justify-content: space-around;
 align-items: center;
-width:50%;
+width:70%;
 height:80%;
 flex-direction: column;
 text-align: center;
@@ -294,6 +299,10 @@ const SpinningElement = () => {
 };
 
 export default function TestimonialSection() {
+  const country = useCountryParam();
+    const router = useRouter();
+    const dispatch = useDispatch();
+    
   return (
     <Block padding="45px 0px 0px 0px">
 
@@ -312,14 +321,19 @@ export default function TestimonialSection() {
             // justifyContent="space-around"
             >
             <SpinningElement />
-            <MainCaption>Feel the difference, totally risk-free.</MainCaption>
+            <MainCaption>Create a plan, Identify
+strategies and reach your goals.</MainCaption>
 
             <SmallHeading>
-            Feeking curious?We guarantee you'll our naturally balanced
-            feelings.
+            A planner that works in every place probably around the world!
             </SmallHeading>
 
-            <OutlinedButton>TRY NOW</OutlinedButton>
+            <OutlinedButton onClick={() => {
+
+// router.push("/[country]/checkout", `/${country}/checkout`);
+dispatch(cartIsOpen(true));
+}
+}>GET NOW</OutlinedButton>
             </FlexAssing>
             </FlexBg>
             </Flex>

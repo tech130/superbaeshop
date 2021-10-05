@@ -110,11 +110,26 @@ const WhatsInside = () => {
 
                             </P>
                             <P>
-                                <b>YEARLY SPREADS</b>: Year at a glance - 2021 & 2022, Year in Pixels, Vision Board, Level 10 Goals,  Birthdays, Bookstagram, Self Care, Make yourself a Priority, Sacred Rituals, Hygge, Mental Health, Social Stats, Brain Dump, Clean Home, Pack me up, Bucket List, Memories, Subscriptions.4
+                                <b>YEARLY SPREADS:</b> <b>Year at a glance - 2022 &amp; 2023, Year in pixels,</b> 
+                                All About Me, The
+real me, Year resolutions, Year affirmations, Birthdays, Memory board, Dream Journal, My deep
+secrets, Dream board, Vision board, Level 10 Goals, Level 10 Life, Idea board,
+Achievement board, Wish list (Things to buy, Things to do and Travel goals), My circle -
+My world, People who add sunshine to my life ( Partner, Mum, Dad, Sibling, Bff, Gang),
+My priorities, Bookstagram, Wall of movies, Tv show lists, Favourite quotes, Budget
+plan, Mental health, My period days, My Sick days, My fitness journey, Improvement
+plan, Sacred rituals, Products I Use, Clean home, Social stats, Social media passwords,
+Subscriptions, Who borrowed what? Gifts page, Best days, Therapy pages (Mandala,
+nail art), Self Portrait, Pen it down.
 
                             </P>
                             <P>
-                                <b>MONTHLY SPREADS</b>: My obsessions, Month at a glance + Notes, Goal Tracker, Events, To Do, Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Kill & Grow, Weekly/Daily spread, Gratitude, Introspections, Expense Tracker, Shopping List, Clean eating, Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker, Sleep Tracker, Sugar/Junk Tracker, Meal Planner, Movies, Tv shows
+                                <b>MONTHLY SPREADS:</b>
+                                My obsessions, Month at a glimpse+ Journal pages, Goal Tracker, Events, To Do,
+Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Stop&amp;Start,
+Weekly/Daily spread, Gratitude, Introspections, Sleep Tracker, Expense Tracker, Meal
+Planner, Sugar/Junk Tracker, Shopping List, Clean eating, Weight Tracker, Diet
+Tracker, Exercise Tracker, Water Tracker, Mood Tracker, Movies, Tv Shows.
                             </P>
                             {/* <P>
                                 <b>FREE GOODIES</b>: Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box

@@ -34,6 +34,8 @@ const SubCaption = styled.div`
   text-align: center;
   font-size: 1rem;
   font-weight: 700;
+  width: 35%;
+
   @media (max-width: 768px) {
     font-size: 0.7rem;
 }
@@ -70,15 +72,15 @@ const GoodVibes = () => {
             <StyledDiv
       >
           <SubCaption>
-          IF YOU DON’T LOVE IT,<br />
-          <span className="font-weight-normal">WE’LL REFUND YOU.</span>
+          Fastest worldwide shipping<br />
+          {/* <span className="font-weight-normal">WE’LL REFUND YOU.</span> */}
             
           </SubCaption>
 
-        <MainCaption>Good Vibes guaranteed.</MainCaption>
+        <MainCaption>Keep track of your activities on the go and achieve more goals with our planner.</MainCaption>
         <SubCaption>
-          IF YOU DON’T LOVE IT,<br />
-          <span className="font-weight-normal">WE’LL REFUND YOU.</span>
+        Safe payments<br />
+          {/* <span className="font-weight-normal">WE’LL REFUND YOU.</span> */}
             
           </SubCaption>
       </StyledDiv>

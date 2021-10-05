@@ -258,7 +258,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-bottom d-block d-md-none d-lg-none d-xl-none">
-                    <span>© 2020 Space and Beauty All Rights Reserved.</span>
+                    <span>© 2021 Space and Beauty All Rights Reserved.</span>
                 </div>
             </Container>
 
