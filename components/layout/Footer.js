@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
-import styled ,{keyframes}from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Container, Col, Row } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
@@ -107,13 +107,13 @@ const Footer = () => {
                             <Block margin="0px 0px 8px">
                                 {/* <Logo width="100px" /> */}
                                 <LogoContent>
-                                <Space>
-                                    SPACE
-                                </Space>
-                                <Beauty>
-                                    and beauty
-                                </Beauty>
-                            </LogoContent>
+                                    <Space>
+                                        SPACE
+                                    </Space>
+                                    <Beauty>
+                                        and beauty
+                                    </Beauty>
+                                </LogoContent>
                             </Block>
                             <Block margin="0px 0px 15px">
                                 <ul className="footer-list">
@@ -212,7 +212,7 @@ const Footer = () => {
                                     src="/images/icons/payment/amazon.svg"
                                     alt="amazon pay logo"
                                 />
-                                 <img
+                                <img
                                     src="/images/icons/payment/googlepay.svg"
                                     alt="googlepay logo"
                                 />
@@ -220,7 +220,7 @@ const Footer = () => {
                                     src="/images/icons/payment/razorpay.svg"
                                     alt="razorpay logo"
                                 />
-                               
+
                                 <img
                                     src="/images/icons/payment/paytm.jpg"
                                     alt="paytm logo"
@@ -235,25 +235,27 @@ const Footer = () => {
                 <Hr />
                 <div className="d-none d-md-block d-lg-block d-xl-block" >
                     <div className="footer-bottom" >
-                    <span>© 2020 Space and Beauty All Rights Reserved.</span>
-                    {/* <span>
+                        <span>© 2020 Space and Beauty All Rights Reserved.</span>
+                        {/* <span>
                         Terms of Use
                     </span> */}
-                    <span>
-                    <CountryLink href="/policy">
-                    Privacy Policy
-                                        </CountryLink>
-                        
-                    </span>
-                    <span>
+                        <span>
+                            <CountryLink href="/policy">
+                                Privacy Policy
+                            </CountryLink>
 
+                        </span>
+                        <span>
+                            <CountryLink href="/refund">
+                                Refund Policy
+                            </CountryLink>
 
-                        Refund Policy
-                    </span>
-                    {/* <span>
+                        </span>
+
+                        {/* <span>
                         Subscription Policy
                     </span> */}
-                </div>
+                    </div>
                 </div>
                 <div className="footer-bottom d-block d-md-none d-lg-none d-xl-none">
                     <span>© 2020 Space and Beauty All Rights Reserved.</span>
