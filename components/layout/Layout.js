@@ -39,7 +39,7 @@ const Layout = ({ children, slug, isAuthRoute = false }) => {
                 {/* <ProductList /> */}
                 </StickyTop>
                 {children}
-                <Subscribe />
+                {/* <Subscribe /> */}
                 <Footer />
             <WhatsAppIcon slug={slug} />
         </>

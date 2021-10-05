@@ -110,7 +110,7 @@ const CartSummary = ({
                 /> */}
                 <SumItem
                     title="Grand Total"
-                    font="22"
+                    font="20"
                     bold
                     amt={`${currency_type}${total.toFixed(2)}`}
                     href="#" id="DisabledAutoHide"

@@ -99,16 +99,16 @@ const WhatsInside = () => {
                 <Row>
                     <Col lg={5}>
                         <ResponsiveImage
-                            image={require("./images/inside.jpg?resize")}
+                            image={require("./images/inside.png?resize")}
                             alt="Let's Goal 2021"
                         />
                     </Col>
                     <Col lg={7}>
                         <Block margin="15px 0px 0px 0px">
-                            <P>
+                            {/* <P>
                                 Goal tracker, Bookstagram, TV Show lists, Movie lists, My obsessions, Habit Tracker, Meal planner, My loved ones, Places to visit, things to do, Clean schedules, Improvement Plan, Subscriptions, Dream Board, Vision Board, Idea Board, Achievement Board, Gift list, Fitness Tracker, Nail art pages, Outfit Planner, Appointments, Journals, Goal Grid, Mood tracker, Expense Tracker, Playlist, Water tracker, Period Tracker, Level 10 Life
 
-                            </P>
+                            </P> */}
                             <P>
                                 <b>YEARLY SPREADS:</b> <b>Year at a glance - 2022 &amp; 2023, Year in pixels,</b> 
                                 All About Me, The

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { LocalCartItem, MyCartItem } from "./CartItem";
 import useCart, { useLocalCart, useCartIsOpen } from "../../hooks/redux/checkout/useCart";
 import { cartIsOpen } from "../../redux/user/local_cart";
+import Flex from "../styled/Flex";
 
 import useUser from "../../hooks/redux/user/useUser";
 import CartSummary from "./CartSummary";
@@ -27,13 +28,25 @@ import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
 
 const FlexBg = styled.div`
-  height: 65vh;
+  height: 55vh;
   width: 100%;
   background-color: #FFF444;
-  background:linear-gradient( 90deg,rgb(237 244 249) 0%,rgb(246 244 244) 50%,rgb(241 247 249) 100%);
+  background:linear-gradient( 90deg,#fde5e9 0%,rgb(255 244 244) 50%,#ffe4e8 100%);
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
 overflow-x: hidden;
+`;
+const FlexPayment = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 20px;
+    justify-content: space-evenly;
+    img {
+    height: 22px;
+    margin-bottom: 10px;
+    padding: 2px;
+}
 `;
 const FlexBgAmount = styled.div`
   height: 100%;
@@ -126,9 +139,32 @@ const LocalCartListPanel = () => {
                             }>
                                 PROCEED TO CHECKOUT
                             </CartButton>
-                            <P fontSize="14" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
+                            <P fontSize="14px" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
                         </Col>
                     </FlexBgAmount>
+                    <FlexPayment className="payment-icons" flexWrap>
+                                <img
+                                    src="/images/icons/payment/paypal.svg"
+                                    alt="paypal payment logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/amazon.svg"
+                                    alt="amazon pay logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/googlepay.svg"
+                                    alt="googlepay logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/razorpay.svg"
+                                    alt="razorpay logo"
+                                />
+
+                                <img
+                                    src="/images/icons/payment/paytm.jpg"
+                                    alt="paytm logo"
+                                />
+                            </FlexPayment>
 
                 </Row>
             </div>
@@ -244,6 +280,29 @@ const MyCartListPanel = () => {
                             <P fontSize="14" margin="0px" textAlign="center">Shipping, taxes, and discounts added at checkout.</P>
                         </Col>
                     </FlexBgAmount>
+                    <FlexPayment className="payment-icons" flexWrap>
+                                <img
+                                    src="/images/icons/payment/paypal.svg"
+                                    alt="paypal payment logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/amazon.svg"
+                                    alt="amazon pay logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/googlepay.svg"
+                                    alt="googlepay logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/razorpay.svg"
+                                    alt="razorpay logo"
+                                />
+
+                                <img
+                                    src="/images/icons/payment/paytm.jpg"
+                                    alt="paytm logo"
+                                />
+                            </FlexPayment>
 
                 </Row>
             </div>

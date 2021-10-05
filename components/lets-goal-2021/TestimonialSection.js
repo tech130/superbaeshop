@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
 import { useDispatch } from "react-redux";
 import { cartIsOpen } from "../../redux/user/local_cart";
+import ProductBuy from "../product/ProductBuy";
 
 const MainCaption = styled.div`
   text-align: center;
@@ -96,9 +97,10 @@ const Card = styled.div`
   background-color: white;
   width: 100%;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  padding: 1rem 2rem;
-  font-size: 16px;  
+  padding: 1rem 2rem; 
   border-radius: 0.6rem;
+  font-weight: 500;
+  font-size: 16px;  
   @media (max-width: 768px) {
     padding: 0.7rem 1rem;
     font-size: 14px;  
@@ -304,7 +306,7 @@ export default function TestimonialSection() {
     const dispatch = useDispatch();
     
   return (
-    <Block padding="45px 0px 0px 0px">
+    <Block padding="65px 0px 0px 0px">
 
 
       <Container fluid>
@@ -327,13 +329,13 @@ strategies and reach your goals.</MainCaption>
             <SmallHeading>
             A planner that works in every place probably around the world!
             </SmallHeading>
-
-            <OutlinedButton onClick={() => {
+            <ProductBuy slug={"lets-goal-2021-planner"} />
+            {/* <OutlinedButton onClick={() => {
 
 // router.push("/[country]/checkout", `/${country}/checkout`);
 dispatch(cartIsOpen(true));
 }
-}>GET NOW</OutlinedButton>
+}>GET NOW</OutlinedButton> */}
             </FlexAssing>
             </FlexBg>
             </Flex>

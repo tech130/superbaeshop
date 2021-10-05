@@ -84,7 +84,7 @@ const CartItem = ({
                 />
             </ImgOutline>
             <FlexItem flexGrow={1} flexShrink={0}>
-                <P margin="0px" weight={500} fontSize="16px">
+                <P margin="0px" weight={700} fontSize="16px">
                     {product.title}
                 </P>
                 {product.stock_status ? (
@@ -209,7 +209,7 @@ const QtyBtn = styled(Button)`
     border-radius: 50%;
     text-align: center;
     border: 1px solid #cecece;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 0;
 `;
 
@@ -218,7 +218,7 @@ const CartQty = styled.div`
     width: 40px;
     text-align: center;
     border: 1px solid #cecece;
-    font-weight: 500;
+    font-weight: 700;
     margin: 0px 10px;
     font-size: 14px;
 `;

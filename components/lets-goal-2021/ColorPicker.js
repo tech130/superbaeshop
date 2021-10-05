@@ -4,6 +4,9 @@ import AnimateText from "../styled/AnimateText";
 import Img from "../styled/Img";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
+import plannerPink from './images/cover.png';
+import plannerWhite from './images/planner white.png';
+import plannerBlack from './images/planner black.png';
 
 import styled, { css, keyframes } from "styled-components";
 
@@ -106,7 +109,7 @@ const ContentSection = styled.div`
   justify-content: center;
 `;
 
-const colorOptions = ["#ffdce2","black","white"];
+const colorOptions = ["#ffdce2","#2a2a2a","white"];
 
 export default function ColorPicker() {
   const [colorInd, setColor] = useState('#ffdce2');
@@ -163,14 +166,14 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainHeading color={`${colorInd === 'black'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
+          <MainHeading color={`${colorInd === '#2a2a2a'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
 
-          <SmallHeading color={`${colorInd === 'black'? 'white':'black'}`}>
-          2 Fresh colors that reflect your personality
+          <SmallHeading color={`${colorInd === '#2a2a2a'? 'white':'black'}`}>
+          3 Fresh colors that reflect your personality
           </SmallHeading>
         </FirstSection>
 
-        <Img src="/images/cutest-planner/book-pen.png" width="50%" />
+        <Img src={ colorInd ==="#ffdce2" ? `${plannerPink}` : colorInd === '#2a2a2a' ? `${plannerBlack}`: `${plannerWhite}`} width="50%" />
         <ColorSelectorContainer>
           {
             colorOptions.map((colorr, ind) => {

@@ -23,6 +23,7 @@ const OutLine = styled.div`
   padding:60px 15px 40px 15px;
   height:100%;
   background:white;
+  overflow: hidden;
 `;
 
 // const SmallHeading = styled.div`
@@ -40,6 +41,10 @@ const LeftDiv = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    @media (max-width: 576px) {
+        width: 75px;
+    height: 75px;
+      }
 `;
 const LeftDivSmall = styled.div`
     width: 60px;
@@ -49,6 +54,10 @@ const LeftDivSmall = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    @media (max-width: 576px) {
+        width: 45px;
+    height: 45px;
+      }
 `;
 const AlignItems = styled.div`
     justify-content: ${(props) => props.justify || 'center'};
@@ -61,7 +70,7 @@ const AlignItems = styled.div`
 
 const Freebies = () => {
     return (
-        <Block padding="0px 15px" margin="65px 0px 0px 0px">
+        <Block padding="0px 15px" margin="65px 0px 0px 0px" className="overflow-hiden">
             <Row>
                 <Container fluid>
                     <Row>
@@ -77,16 +86,16 @@ const Freebies = () => {
                                         >
                                             <LeftDiv>
                                                 <ResponsiveImage
-                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                    image={require("./images/below-freebee/Freebie 1.png?resize")}
                                                 />
                                             </LeftDiv>
                                         </div>
                                     </AlignItems>
                                 </Col>
-                                <Col lg={6} xs={6} sm={6} md={6} className="d-none d-sm-block">
+                                <Col lg={6} xs={6} sm={6} md={6} className="">
 
                                 </Col>
-                                <Col lg={3} xs={3} sm={3} md={3} className="d-none d-sm-block">
+                                <Col lg={3} xs={3} sm={3} md={3} className="">
                                     <AlignItems justify="start" mb="40">
                                         <div
                                             data-aos="fade-left"
@@ -95,7 +104,7 @@ const Freebies = () => {
                                         >
                                             <LeftDiv>
                                                 <ResponsiveImage
-                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                    image={require("./images/below-freebee/Freebie 4.png?resize")}
                                                 />
                                             </LeftDiv>
                                         </div>
@@ -112,7 +121,7 @@ const Freebies = () => {
                                         >
                                             <LeftDivSmall>
                                                 <ResponsiveImage
-                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                    image={require("./images/below-freebee/Freebie 2.png?resize")}
                                                 />
                                             </LeftDivSmall>
                                         </div>
@@ -141,7 +150,7 @@ const Freebies = () => {
                                         </div>
                                     </Flex>
                                 </Col>
-                                <Col lg={2} xs={2} md={2} sm={2} className="d-none d-sm-block">
+                                <Col lg={2} xs={2} md={2} sm={2} className="">
                                     <AlignItems justify="start" mb="40">
                                         <div
                                             data-aos="fade-left"
@@ -150,7 +159,7 @@ const Freebies = () => {
                                         >
                                             <LeftDivSmall>
                                                 <ResponsiveImage
-                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                    image={require("./images/below-freebee/Freebie 3.png?resize")}
                                                 />
                                             </LeftDivSmall>
                                         </div>
@@ -167,16 +176,16 @@ const Freebies = () => {
                                         >
                                             <LeftDiv>
                                                 <ResponsiveImage
-                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                    image={require("./images/below-freebee/Freebie 4.png?resize")}
                                                 />
                                             </LeftDiv>
                                         </div>
                                     </AlignItems>
                                 </Col>
-                                <Col lg={6} xs={6} sm={6} md={6}  className="d-none d-sm-block">
+                                <Col lg={6} xs={6} sm={6} md={6}  className="">
 
                                 </Col>
-                                <Col lg={3} xs={3} sm={3} md={3}  className="d-none d-sm-block">
+                                <Col lg={3} xs={3} sm={3} md={3}  className="">
                                     <AlignItems justify="start" mb="40">
                                         <div
                                             data-aos="fade-left"
@@ -185,7 +194,7 @@ const Freebies = () => {
                                         >
                                             <LeftDiv>
                                                 <ResponsiveImage
-                                                    image={require("./images/below-freebee/flowers.jpg?resize")}
+                                                    image={require("./images/below-freebee/Freebie 1.png?resize")}
                                                 />
                                             </LeftDiv>
                                         </div>

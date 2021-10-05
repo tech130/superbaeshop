@@ -27,7 +27,12 @@ const MainCaption = styled.div`
     font-size: 1.6rem;
 }
 @media (max-width: 576px) {
-  padding: 15px 25px;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #afafaf;
+  border-top: 1px solid #afafaf;
+  font-size:24px;
+  padding: 15px 15px;
 }
 `;
 const SubCaption = styled.div`
@@ -40,7 +45,10 @@ const SubCaption = styled.div`
     font-size: 0.7rem;
 }
 @media (max-width: 576px) {
-  display:none
+  font-weight: 500;
+  font-size:18px;
+  width: 100%;
+  
 }
 `;
 
@@ -61,7 +69,14 @@ background-size: 400% 100%;
     align-items: center;
     display: flex;
     justify-content: space-evenly;
-    height:300px
+    height:300px;
+    @media (max-width: 576px) {
+      margin: 0px 0px;
+      padding:20px 50px;
+      
+    flex-direction: column;
+    justify-content: space-evenly;
+    }
 `;
 
 const GoodVibes = () => {

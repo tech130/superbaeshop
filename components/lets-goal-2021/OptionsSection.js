@@ -10,6 +10,7 @@ import ProductBuy from "../product/ProductBuy";
 import AnimateText from "../styled/AnimateText";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
+
 import bookmark from './images/icons/bookmark-white.png';
 import calendar from './images/icons/calendar.png';
 import year from './images/icons/icons8-new-year-calendar-50.png';
@@ -153,6 +154,11 @@ const CartButtonLeft = styled.button`
     position: absolute;
     bottom: 50px;
     right: 75px;
+    @media (max-width: 576px) {
+      bottom: 35px;
+      right: 50%;
+      margin-right: -60px;
+    }
 `;
 
 const OptionRightContainer = styled.div`
@@ -219,10 +225,28 @@ height: 85px;
     bottom: 25px;
   }
 `;
+const FlexNew = styled.div`
+height: 100%;
+width:100%;
+flex-direction:column;
+justify-content: start;
+flex-wrap: nowrap;
+align-items: center;
+margin: 15px 0 65px 0;
+    @media (max-width: 992px) {
+      height: 100%;
+  }
+    @media (max-width: 768px) {
+      height: 100%;
+  }
+    @media (max-width: 576px) {
+      height: 100%;
+  }
+`;
 export default function OptionsSection() {
   return (
     <>
-      <Flex height="660px" width="100%" vertical alignItems="center" margin="15px 0 65px 0">
+      <FlexNew >
         <Flex vertical alignItems="center" margin="2rem 0">
           <MainHeading textAlign="center">Two options to choose <AnimateText>from</AnimateText> </MainHeading>
           <SmallHeading textAlign="center">Which one will you choose? Even the little things are a big deal
@@ -359,7 +383,7 @@ export default function OptionsSection() {
             </div>
           </OptionRightContainer>
         </CardContainer>
-      </Flex>
+      </FlexNew>
     </>
   );
 }

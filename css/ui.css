@@ -485,7 +485,7 @@ input#custom-checkbox {
     width: 40%;
   }
   .delete-trash{
-    background-color: #e3e3e3  !important;
+    background-color: #ebebeb !important;
     border-radius: 50% !important;
     align-items: center !important;
     justify-content: center !important;
@@ -513,7 +513,7 @@ input#custom-checkbox {
     top: -5px;
     left: -5px;
     padding: 5px;
-    box-shadow: 0 0 0 2px #e71515;
+    box-shadow: 0 0 0 2px #ff9090;
     -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
     -webkit-transform: scale(.8);
     -moz-transition: -moz-transform 0.2s, opacity 0.2s;
@@ -537,11 +537,11 @@ input#custom-checkbox {
     -webkit-font-smoothing: antialiased;
 } */
   .delete-trash:hover {
-    background: rgb(247 209 209) !important;
-    color: #fb0000;
+    background: #fdd5d5 !important;
+    color: #ff1010;
 }
   .delete-trash:hover i {
-    color: #fb0000;
+    color: #ff1010;
 }
   .delete-trash:hover:after{
     -webkit-transform: scale(1);

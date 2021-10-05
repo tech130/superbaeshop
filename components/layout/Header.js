@@ -96,7 +96,7 @@ const Beauty = styled.div`
 const BagTitle = styled.div`
     font-size: 18px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 700;
     @media only screen and (max-width: 575px) {
         font-size: 16px;
     }

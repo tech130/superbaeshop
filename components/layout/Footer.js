@@ -157,7 +157,7 @@ const Footer = () => {
                             </Flex>
                             <Block margin="25px 0px 15px">
                                 <ul className="footer-list">
-                                    <li>
+                                    {/* <li>
                                         <a href="mailto:hey@spaceandbeauty.com">
                                             Need Help?
                                         </a>
@@ -166,7 +166,7 @@ const Footer = () => {
                                         <CountryLink href="/terms">
                                             Press Inquiry?
                                         </CountryLink>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </Block>
                         </Block>

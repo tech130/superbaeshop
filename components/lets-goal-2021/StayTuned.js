@@ -4,6 +4,16 @@ import Flex from "../styled/Flex";
 import Marquee from "react-fast-marquee";
 import ResponsiveImage from "../common/ResponsiveImage";
 import MainHeading from "../styled/MainHeading";
+import image1 from './images/testimonials/testify1.png';
+import image2 from './images/testimonials/testify2.png';
+import image3 from './images/testimonials/testify3.png';
+import image4 from './images/testimonials/testify4.png';
+import image5 from './images/testimonials/testify5.png';
+import image6 from './images/testimonials/testify6.png';
+import image7 from './images/testimonials/testify7.png';
+import image8 from './images/testimonials/testify8.png';
+import image9 from './images/testimonials/testify9.png';
+import image10 from './images/testimonials/testify10.png';
 
 import styled, { keyframes } from "styled-components";
 
@@ -28,17 +38,19 @@ const MainCaption = styled.div`
 }
 `;
 const MainDiv = styled.div`
-  width:100%;
-  height:230px !important;
+  height:250px !important;
   border-radius:10px;
-  background:#dce8eb;
-  margin:10px;
+  margin: 10px 0px;
+  display: flex;
 `;
 const MainDiv2 = styled.div`
-  width:100%;
   height:100% !important;
   display: flex;
   align-items: center;
+  margin: 0px 10px;
+  img{
+    width:250px;
+  }
 `;
 const FlexDiv = styled.div`
 display: flex;
@@ -62,50 +74,23 @@ margin-bottom:0px;
 `;
 
 const scrollTexts = [
-  "magical",
-  "simple",
-  "elegant",
-  "practical",
-  "Cute",
-  "aesthetic",
-  "stunning",
-  "original",
-  "magical",
-  "simple",
-  "elegant",
-  "practical",
-  "Cute",
-  "aesthetic",
-  "stunning",
-  "original",
-  "practical",
-  "Cute",
-  "aesthetic",
-  "stunning",
-  "original",
-  "practical",
-  "Cute",
-  "aesthetic",
-  "stunning",
-  "original",
-  "magical",
-  "simple",
-  "elegant",
-  "practical",
-  "Cute",
-  "aesthetic",
-  "stunning",
-  "original",
-  "magical",
-  "simple",
-  "elegant",
-  "practical",
+  {key:[image1,
+    image2,
+    image3,
+    image4,
+    image5]},
+  
+  {key:[image6,
+  image7,
+  image8,
+  image9,
+  image10]}
 ];
 const StayTuned = () => {
 
 
   return (
-    <Block padding="0px 0px 65px 0px" className="overflow-hidden">
+    <Block padding="0px 0px 15px 0px" className="overflow-hidden">
       <Flex vertical width="100%" alignItems="center" margin="2rem 0">
         <Flex alignItems="center" margin="3rem 0" >
           <MainHeading textAlign="center" mb="0px">Stay tuned  <GradientText>@spaceandbeautyofficial </GradientText></MainHeading>
@@ -117,7 +102,7 @@ const StayTuned = () => {
             speed={50}
             // gradientWidth={200}
             gradient={false}
-            loop={0}
+            // loop={0}
             delay={0}
             style={{
               padding: "0.6rem 0",
@@ -126,15 +111,30 @@ const StayTuned = () => {
           >
             {scrollTexts.map(( name, ind ) => {
               return (
+                // <MainDiv key={ind}>
+                //   <MainDiv2>
+                //     {/* <ResponsiveImage
+                //       imgWidth="100%"
+                //       imgHeight="100%"
+                //       key={name}
+                //       image={`${name}`}
+                //     /> */}
+                //     <img src={name} />
+                //   </MainDiv2>
+                // </MainDiv>
                 <MainDiv key={ind}>
-                  <MainDiv2>
-                    <ResponsiveImage
-                      imgWidth="100%"
-                      imgHeight="100%"
-                      key={name}
-                      image={require("../lets-goal-2021/images/free-inclusions/ikkigai-min.png?resize")}
-                    />
+                  {
+                    name.key.map((item,ind)=>{
+                      return(
+                      <MainDiv2 key={ind}>
+                        
+
+                    <img src={item} />
                   </MainDiv2>
+                      )
+                    })
+                  }
+                  
                 </MainDiv>
               );
             })}

@@ -15,7 +15,7 @@ const ProductLink = ({ slug, children, className = "" }) => {
                 href={`/[country]/product/${slug}`}
                 as={`/${country}/product/${slug}`}
             >
-                <a className={className}>{children || title === `Let's Goal 2021 Planner`?`My Space 2022`:title === `The Ultimate Sticker Book` ?'Sticker Book':title}</a>
+                <a className={className}>{children || title === `Let's Goal 2021 Planner`?`My Space 2022 Planner`:title === `The Ultimate Sticker Book` ?'Sticker Book':title}</a>
             </Link>
         );
     }
