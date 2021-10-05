@@ -81,13 +81,16 @@ const Space = styled.div`
     background-size: 400% 100%;
     font-weight: 700;
     font-family:"Lato";
+    @media only screen and (max-width: 575px) {
+        font-size: 26px;
+    }
 `;
 const Beauty = styled.div`
     font-family:"Brittany";
     font-size: 23px;
     margin-top: -10px;
     @media only screen and (max-width: 575px) {
-        display: none;
+        font-size: 21px;
     }
 `;
 const BagTitle = styled.div`

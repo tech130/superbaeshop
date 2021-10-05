@@ -14,40 +14,33 @@ import useOnScreen from "../../hooks/layout/useOnScreen";
 import WhatsInside from "../lets-goal-2021/WhatsInside";
 
 const MeetTxt = styled.h1`
-    font-size: 3rem;
+    font-size: 3.4rem;
     font-weight: 700;
-    line-height: 56px;
-    color: #000;
-    margin-bottom: 18px;
+    line-height: 68px;
+    margin-bottom: 30px;
+    background: linear-gradient(#616161, #333);
     word-break: break-word;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     @media (min-width: 768px) {
-        font-size: 3rem;
+        font-size: 4rem;
     }
 `;
 
 const ProPlanner = () => {
     return (
         <>
-            <Block padding="0px 0px 0px 0px">
-                <Container fluid>
-                    <div className="bg-gradients">
-                        <div className="gradient-content">
+            <Block padding="35px 0px">
+                <Container>
                     <Row alignItems="center">
-                        <Col lg={6}>
-                            <MeetTxt>
-                                Take back <br />
-                                your best self. <br />
-                            </MeetTxt>
-                                <p>Vibrants™ patches empower you to safely restore  <br />
-                                your body’s unique & optimal balance with nature.</p>
-                                <ProPlannerPrice />
-                            {/* <ResponsiveImage
+                        <Col lg={7}>
+                            <ResponsiveImage
                                 image={require("./images/1.png?resize")}
-                            /> */}
-                            
+                            />
                         </Col>
-                        <Col lg={6}>
-                            {/* <MeetTxt>
+                        <Col lg={5}>
+                            <MeetTxt>
                                 Meet the <br />
                                 Perfect <br />
                                 Professional planner
@@ -55,21 +48,16 @@ const ProPlanner = () => {
                             <H3 mb="35px" weight={700}>
                                 Crafted just for you!
                             </H3>
-                            <ProPlannerPrice /> */}
-                            <ResponsiveImage
-                                image={require("./images/cover.png?resize")}
-                            />
+                            <ProPlannerPrice slug={"the-professional-planner"}/>
                         </Col>
                     </Row>
-                    </div>
-                    </div>
                 </Container>
             </Block>
 
             {/* <Block padding="20px 0px">
                 <ListAnimation />
             </Block> */}
-            <WhatsInside />
+            {/* <WhatsInside /> */}
             <Block padding="35px 0px">
                 <Container>
                     <Flex alignItems="center" flexWrap>
@@ -95,7 +83,7 @@ const ProPlanner = () => {
                             With highest quality print
                         </Txt>
                     </Block>
-                    <ProPlannerPrice />
+                    <ProPlannerPrice  slug={"the-professional-planner"} />
                 </Container>
             </Block>
 
@@ -136,7 +124,7 @@ const ProPlanner = () => {
                                 Tracker. Fitness Tracker. Meal, Water, Coffee
                                 Tracker. Movies/TV Show Tracker.
                             </P>
-                            <ProPlannerPrice />
+                            <ProPlannerPrice  slug={"the-professional-planner"}/>
                         </Col>
                     </Row>
                 </Container>

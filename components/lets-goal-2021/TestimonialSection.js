@@ -3,6 +3,9 @@ import styled, { keyframes } from "styled-components";
 import Flex from "../styled/Flex";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
+import lisa from './images/testimonials/Lisa.jpeg';
+import Rosetta from './images/testimonials/Rosetta M.jpeg';
+import Shagufta from './images/testimonials/Shagufta Tamkeen.jpeg';
 
 const MainCaption = styled.div`
   text-align: center;
@@ -89,6 +92,7 @@ const Card = styled.div`
   width: 100%;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   padding: 1rem 2rem;
+  font-size: 16px;  
   border-radius: 0.6rem;
   @media (max-width: 768px) {
     padding: 0.7rem 1rem;
@@ -157,15 +161,15 @@ const SpinningAnimation = styled.svg`
   animation: ${rotatingAnimation} 7s linear infinite;
 `;
 
-const TestimonialCard = ({ alignSelf, width }) => {
+const TestimonialCard = ({ alignSelf, width ,content,img}) => {
   return (
     <TestimonialContainer alignSelf={alignSelf} width={width}>
       <Card>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, iusto.
+        {content}
       </Card>
       <TestimonailImage
         round
-        src="/images/cutest-planner/man-testimonial.png"
+        src={img}
       />
     </TestimonialContainer>
   );
@@ -322,12 +326,21 @@ export default function TestimonialSection() {
           </Col>
           <Col lg={6} sm={6} xs={12} >
             <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="90vh" >
-              <FlexBg2 className="flex-column" padding="15px 70px" >
-                <TestimonialCard alignSelf="flex-end" width="70%" />
+              <FlexBg2 className="flex-column" padding="20px 60px" >
+                <TestimonialCard alignSelf="flex-end" width="90%"
+                content="I did quite some research on the planners available and yours is one of the good and practical ones."
+                img={Rosetta}
+                />
 
-                <TestimonialCard alignSelf="flex-start" width="70%" />
+                <TestimonialCard alignSelf="flex-start" width="90%"
+                content="I received my planner it was as perfect as I expected have to say your planners cover each and everything and I’m so so in love with it."
+                img={Shagufta}
+                />
 
-                <TestimonialCard alignSelf="flex-end" width="70%" />
+                <TestimonialCard alignSelf="flex-end" width="90%" 
+                content="The journal is so aesthetic and amazing. Can’t stop scrolling the pages again and again!! Sticker book has my heart!"
+                img={lisa}
+                />
               </FlexBg2>
             </Flex>
           </Col>

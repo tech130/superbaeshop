@@ -126,7 +126,7 @@ export const NewButton = styled.button`
     font-weight: 700;
     font-size: 16px;
     box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
-    background: linear-gradient(35deg,#f72bf1,#9ad7fb,#f57e93,#b4a8ff,#05f78e,#eda5b2);
+    background: linear-gradient(90deg,#60bbf1,#c6e1f1,#f57e93,#b4a8ff,#c8f1ff,#eda5b2);
     animation: ${rainbow_animation} 4s ease-in-out infinite;
     background-size: 300% 100%;
     @media (max-width: 768px) {

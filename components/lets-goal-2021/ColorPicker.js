@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Flex from "../styled/Flex";
 import AnimateText from "../styled/AnimateText";
 import Img from "../styled/Img";
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
 
 import styled, { css, keyframes } from "styled-components";
 
@@ -16,16 +18,16 @@ const MainCaption = styled.div`
 }
 `;
 
-const SmallHeading = styled.div`
-  font-size: 24px;
-  line-height: 1.1;
-  font-weight: ${(props) => props.fontWeight || 500};
-  margin-top: ${(props) => props.marginTop || 0};
-  color:${(props) => props.color || 'black'};
-  @media (max-width: 576px) {
-    font-size: 1rem;
-}
-`;
+// const SmallHeading = styled.div`
+//   font-size: 24px;
+//   line-height: 1.1;
+//   font-weight: ${(props) => props.fontWeight || 500};
+//   margin-top: ${(props) => props.marginTop || 0};
+//   color:${(props) => props.color || 'black'};
+//   @media (max-width: 576px) {
+//     font-size: 1rem;
+// }
+// `;
 
 const ColorSelector = styled.div`
   background: ${(props) => props.background || "red"};
@@ -161,14 +163,14 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainCaption color={`${colorInd === 'black'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainCaption>
+          <MainHeading color={`${colorInd === 'black'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
 
-          <SmallHeading color={`${colorInd === 'black'? 'white':'black'}`} marginTop="0px">
+          <SmallHeading color={`${colorInd === 'black'? 'white':'black'}`}>
           2 Fresh colors that reflect your personality
           </SmallHeading>
         </FirstSection>
 
-        <Img src="/images/cutest-planner/book-pen.png" width="60%" />
+        <Img src="/images/cutest-planner/book-pen.png" width="50%" />
         <ColorSelectorContainer>
           {
             colorOptions.map((colorr, ind) => {

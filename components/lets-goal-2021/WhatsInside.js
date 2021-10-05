@@ -9,13 +9,14 @@ import ProductBuy from "../product/ProductBuy";
 import Dot from "../styled/Dot";
 import { ProductPrices } from "../product/ProductPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
-
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
 const WhatsInside = () => {
     return (
         <Block margin="50px 0px" padding="0px 0px" height="100%">
             <Container>
                 <Block padding="0px 0px 15px 0px">
-                    <H2 weight="700" fontSize="48px" textAlign="center" mb="0px">
+                    {/* <H2 weight="700" fontSize="48px" textAlign="center" mb="0px"> */}
                         {/* What&apos;s Inside */}
                         {/* <div className="animateText ">
                             <span>S</span>
@@ -39,11 +40,12 @@ const WhatsInside = () => {
                             <span>M</span>
                             <span>G</span>
                         </div> */}
-                        Smart insides too: <AnimateText> OMG</AnimateText>
-                    </H2>
-                    <P textAlign="center" fontSize="24px">
+                        
+                    {/* </H2> */}
+                    <MainHeading textAlign="center">Smart insides too: <AnimateText> OMG</AnimateText></MainHeading>
+                    <SmallHeading textAlign="center" >
                         Check out what makes my space 2022 so special
-                    </P>
+                    </SmallHeading>
                 </Block>
                 <Row>
                     <Col md={4}>

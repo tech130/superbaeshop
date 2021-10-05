@@ -84,13 +84,16 @@ const Space = styled.div`
     background-size: 400% 100%;
     font-weight: 700;
     font-family:"Lato";
+    @media only screen and (max-width: 575px) {
+        font-size: 26px;
+    }
 `;
 const Beauty = styled.div`
     font-family:"Brittany";
     font-size: 23px;
     margin-top: -10px;
     @media only screen and (max-width: 575px) {
-        display: none;
+        font-size: 21px;
     }
 `;
 
@@ -233,22 +236,23 @@ const Footer = () => {
                 <div className="d-none d-md-block d-lg-block d-xl-block" >
                     <div className="footer-bottom" >
                     <span>© 2020 Space and Beauty All Rights Reserved.</span>
-                    <span>
+                    {/* <span>
                         Terms of Use
-                    </span>
+                    </span> */}
                     <span>
-
-                        Privacy Policy
+                    <CountryLink href="/policy">
+                    Privacy Policy
+                                        </CountryLink>
+                        
                     </span>
                     <span>
 
 
                         Refund Policy
-                        Subscription Policy
                     </span>
-                    <span>
+                    {/* <span>
                         Subscription Policy
-                    </span>
+                    </span> */}
                 </div>
                 </div>
                 <div className="footer-bottom d-block d-md-none d-lg-none d-xl-none">

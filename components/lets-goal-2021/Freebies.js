@@ -6,7 +6,8 @@ import Flex from "../styled/Flex";
 import AnimateText from "../styled/AnimateText";
 import BgImage from './images/below-freebee/1.jpg';
 import ResponsiveImage from "../common/ResponsiveImage";
-
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
 const MainCaption = styled.div`
   text-align: center;
   font-size: 48px;
@@ -24,13 +25,13 @@ const OutLine = styled.div`
   background:white;
 `;
 
-const SmallHeading = styled.div`
-  font-size: 24px;
-  line-height: 1.1;
-  font-weight: ${(props) => props.fontWeight || 500};
-  margin-top: ${(props) => props.marginTop || 0};
-  margin-bottom: ${(props) => props.marginBottom || 0};
-`;
+// const SmallHeading = styled.div`
+//   font-size: 24px;
+//   line-height: 1.1;
+//   font-weight: ${(props) => props.fontWeight || 500};
+//   margin-top: ${(props) => props.marginTop || 0};
+//   margin-bottom: ${(props) => props.marginBottom || 0};
+// `;
 const LeftDiv = styled.div`
     width: 120px;
     height: 120px;
@@ -124,7 +125,8 @@ const Freebies = () => {
                                             data-aos-duration="500"
                                             data-aos-delay="100"
                                         >
-                                            <MainCaption>The Freebies are so <AnimateText> cool!</AnimateText></MainCaption>
+                                            <MainHeading textAlign="center">The Freebies are so <AnimateText> cool!</AnimateText></MainHeading>
+                   
                                         </div>
                                         <div data-aos="fade-zoom-in"
                                             data-aos-easing="ease-in-back"
@@ -132,8 +134,10 @@ const Freebies = () => {
                                             data-aos-duration="500"
                                             data-aos-offset="0"
                                         >
-                                            <SmallHeading>And they are all yours
-                                            </SmallHeading>
+                                             <SmallHeading textAlign="center" >
+                                             And they are all yours
+                    </SmallHeading>
+                                          
                                         </div>
                                     </Flex>
                                 </Col>

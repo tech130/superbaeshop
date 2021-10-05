@@ -8,7 +8,8 @@ import BGImage2 from './images/walkthrough.png';
 import roundText from './images/popUpText.png';
 import ProductBuy from "../product/ProductBuy";
 import AnimateText from "../styled/AnimateText";
-
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
 const MainCaption = styled.div`
   text-align: center;
   font-size: 48px;
@@ -16,13 +17,13 @@ const MainCaption = styled.div`
   line-height: 1.1;
 `;
 
-const SmallHeading = styled.div`
-  font-size: ${(props) => props.Fs || '16px'};
-  line-height: 1.1;
-  font-weight: ${(props) => props.fontWeight || 500};
-  margin-top: ${(props) => props.marginTop || 0};
-  margin-bottom: ${(props) => props.marginBottom || 0};
-`;
+// const SmallHeading = styled.div`
+//   font-size: ${(props) => props.Fs || '16px'};
+//   line-height: 1.1;
+//   font-weight: ${(props) => props.fontWeight || 500};
+//   margin-top: ${(props) => props.marginTop || 0};
+//   margin-bottom: ${(props) => props.marginBottom || 0};
+// `;
 const SmallHeadingLi = styled.div`
   font-size: ${(props) => props.Fs || '16px'};
   line-height: 1.1;
@@ -207,8 +208,8 @@ export default function OptionsSection() {
     <>
       <Flex height="660px" width="100%" vertical alignItems="center" margin="15px 0 65px 0">
         <Flex vertical alignItems="center" margin="2rem 0">
-          <MainCaption>Two options to choose <AnimateText>from</AnimateText> </MainCaption>
-          <SmallHeading Fs="24px">Which one will you choose? Even the little things are a big deal
+          <MainHeading textAlign="center">Two options to choose <AnimateText>from</AnimateText> </MainHeading>
+          <SmallHeading textAlign="center">Which one will you choose? Even the little things are a big deal
           </SmallHeading>
         </Flex>
 

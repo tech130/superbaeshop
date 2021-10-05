@@ -14,6 +14,9 @@ export const H2 = styled.h2`
     line-height: 1.2;
     margin-bottom: ${(props) => props.mb || "8px"};
     text-align: ${(props) => props.textAlign || "left"};
+    @media (max-width: 768px) {
+        font-size:32px;
+    }
 `;
 
 export const H3 = styled.h3`

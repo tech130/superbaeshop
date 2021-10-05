@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
 import AnimateText from "../styled/AnimateText";
 import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
@@ -16,7 +18,7 @@ const MeetTxt = styled.h1`
     margin-bottom: 18px;
     word-break: break-word;
     @media (max-width: 768px) {
-        font-size: 2rem;
+        font-size: 32px;
         line-height: 35px;
     }
 `;
@@ -67,7 +69,8 @@ const HeroSection = () => {
                                         Cutest Planner <AnimateText>Ever.</AnimateText><br />
                                         {/* <br /> */}
                                     </MeetTxt>
-                                    <p>The Ultimate Journaling Experience is here!
+                                 
+                                    <p >The Ultimate Journaling Experience is here!
                                     </p>
                                     <ProPlannerPrice slug={"lets-goal-2021-planner"}/>
                                 </Col>

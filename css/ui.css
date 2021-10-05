@@ -71,6 +71,7 @@
   line-height: 1.1;
   margin-bottom: 20px;
   font-size: 24px;
+  font-weight: 500;
 }
 .bg-gradients-tags{
     /* padding: 1.125rem 0; */
@@ -575,9 +576,9 @@ input#custom-checkbox {
        
     }
     .bg-gradients p{
-        line-height: 20px;
+        line-height: 22px;
         margin-bottom: 10px;
-       
+        font-size: 20px;
     }
 }
   @media only screen and (max-width: 576px) {
