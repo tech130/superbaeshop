@@ -86,7 +86,7 @@ background: ${(props) => props.bgColor2};
   height: 640px;
   overflow: hidden;
   @media (max-width: 576px) {
-    height: 75vw;
+    height: 85vw;
 }
 `;
 
