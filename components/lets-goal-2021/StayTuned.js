@@ -90,9 +90,9 @@ const StayTuned = () => {
 
 
   return (
-    <Block padding="0px 0px 15px 0px" className="overflow-hidden">
-      <Flex vertical width="100%" alignItems="center" margin="2rem 0">
-        <Flex alignItems="center" margin="3rem 0" >
+    <Block padding="0px 0px 0px 0px" className="overflow-hidden">
+      <Flex vertical width="100%" alignItems="center" margin="0">
+        <Flex alignItems="center" margin="30px 0" >
           <MainHeading textAlign="center" mb="0px">Stay tuned  <GradientText>@spaceandbeautyofficial </GradientText></MainHeading>
           
         </Flex>

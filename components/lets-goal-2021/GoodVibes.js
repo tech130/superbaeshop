@@ -83,7 +83,7 @@ const GoodVibes = () => {
 
 
     return (
-        <Block padding="30px 0px"  className="overflow-hidden"> 
+        <Block padding="65px 0px"  className="overflow-hidden"> 
             <StyledDiv
       >
           <SubCaption>

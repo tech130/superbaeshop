@@ -323,11 +323,10 @@ export default function TestimonialSection() {
             // justifyContent="space-around"
             >
             <SpinningElement />
-            <MainCaption>Create a plan, Identify
-strategies and reach your goals.</MainCaption>
+            <MainCaption>Pen down atleast one happy moment and a positive thought each day and all the things that you are grateful for.</MainCaption>
 
             <SmallHeading>
-            A planner that works in every place probably around the world!
+            Improve your over all mental health, mindset and well-being with our planner.
             </SmallHeading>
             <ProductBuy slug={"lets-goal-2021-planner"} />
             {/* <OutlinedButton onClick={() => {

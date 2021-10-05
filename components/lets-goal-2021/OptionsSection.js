@@ -6,6 +6,7 @@ import P from "../styled/P";
 import { H3 } from "../styled/Headings";
 import BGImage2 from './images/walkthrough.png';
 import roundText from './images/popUpText.png';
+import roundText2 from './images/popUpText2.png';
 import ProductBuy from "../product/ProductBuy";
 import AnimateText from "../styled/AnimateText";
 import MainHeading from "../styled/MainHeading";
@@ -169,7 +170,7 @@ const OptionRightContainer = styled.div`
   border: 1px solid #e0e0e0;
   background: white;
   height: 100%;
-  background: linear-gradient(to left, #ffffff 50%, #d6bcbd  50%) left;
+  background: linear-gradient(to left, #ffffff 50%, #ffdce2  50%) left;
   background-size: 200%;
   transition: 0.8s ease-out;
   position: relative;
@@ -341,7 +342,7 @@ export default function OptionsSection() {
                   All happy goodies bundled together!
                 </P>
                 <PopUp className="roundTxt">
-                  <img src={roundText} />
+                  <img src={roundText2} />
                 </PopUp>
               </OptionItems>
               <SmallHeadingSet marginTop="15px" color="black" marginBottom="15px">

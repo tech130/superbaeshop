@@ -599,4 +599,12 @@ input#custom-checkbox {
     .pop-up-text{
         display: none;
     }
+    .bg-gradients {
+      height: 100%;
+      text-align: center;
+      padding: 20px 0px;
+  }
+    .bg-gradients h4{
+      text-align: center !important;
+  }
 }

@@ -64,7 +64,7 @@ const HeroSection = () => {
                     <div className="bg-gradients">
                         <div className="gradient-content">
                             <Row alignItems="center">
-                                <Col lg={6} sm={6} >
+                                <Col lg={6} sm={6} xs={12}>
                                     <MeetTxt>
                                         Cutest Planner <AnimateText>Ever.</AnimateText><br />
                                         {/* <br /> */}
@@ -74,7 +74,7 @@ const HeroSection = () => {
                                     </p>
                                     <ProPlannerPrice slug={"lets-goal-2021-planner"}/>
                                 </Col>
-                                <Col lg={6} sm={6} className="d-none d-sm-block">
+                                <Col lg={6} sm={6} xs={12}>
                                     <ResponsiveImage
                                         image={require("./images/cover.png?resize")}
                                     />
