@@ -29,15 +29,7 @@ max-width: 65vw;
     position: relative;
     }
 `;
-// const ViewAllLink = styled(CountryLink)`
-//     display: block;
-//     background: #000;
-//     color: #fff !important;
-//     padding: 8px 15px;
-//     text-transform: uppercase;
-//     font-size: 13px;
-//     margin-bottom: 5px;
-// `;
+
 const ProdLinkStl = styled.li`
     cursor: pointer;
     display: inline-block;
@@ -51,30 +43,7 @@ const ProdLinkStl = styled.li`
         font-size: 14px;
     }
 `;
-// const SubCatLink = styled(CountryLink)`
-//     display: block;
-//     font-size: 14px;
-//     margin-bottom: 5px;
-// `;
-// const FilterListStyl = styled.div`
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     overflow-x: auto;
-//     margin-bottom: 15px;
-// `;
-// const CategoryLink = ({ id, title }) => {
-//     return (
-//         <ProdLinkStl>
-//             <CountryLink
-//                 href="/category/[categoryId]"
-//                 query={{ categoryId: id }}
-//             >
-//                 {title}
-//             </CountryLink>
-//         </ProdLinkStl>
-//     );
-// };
+
 
 const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
     let { categories, is_active, id } = cat;
