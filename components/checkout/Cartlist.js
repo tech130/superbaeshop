@@ -43,7 +43,6 @@ const FlexPayment = styled.div`
     padding-bottom: 20px;
     justify-content: space-evenly;
     img {
-    height: 22px;
     margin-bottom: 10px;
     padding: 2px;
 }
@@ -69,6 +68,15 @@ const CartRight = styled.div`
 const Pad = styled.div`
   width: 100%;
   padding: 25px;
+  
+`;
+const CartListOut = styled.div`
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:30px 0px;
   
 `;
 const VerticalLine = styled.div`
@@ -143,28 +151,32 @@ const LocalCartListPanel = () => {
                         </Col>
                     </FlexBgAmount>
                     <FlexPayment className="payment-icons" flexWrap>
+                    <img
+                                    src="/images/icons/payment/paypalSmall.svg"
+                                    alt="amazon payment logo"
+                                />
                                 <img
-                                    src="/images/icons/payment/paypal.svg"
+                                    src="/images/icons/payment/amazonSmall.svg"
                                     alt="paypal payment logo"
                                 />
                                 <img
-                                    src="/images/icons/payment/amazon.svg"
-                                    alt="amazon pay logo"
+                                    src="/images/icons/payment/discoverSmall.svg"
+                                    alt="discover pay logo"
                                 />
-                                <img
+                                {/* <img
                                     src="/images/icons/payment/googlepay.svg"
                                     alt="googlepay logo"
-                                />
+                                /> */}
                                 <img
-                                    src="/images/icons/payment/razorpay.svg"
-                                    alt="razorpay logo"
+                                    src="/images/icons/payment/masterSmall.svg"
+                                    alt="master logo"
                                 />
 
                                 <img
-                                    src="/images/icons/payment/paytm.jpg"
-                                    alt="paytm logo"
+                                    src="/images/icons/payment/visaSmall.svg"
+                                    alt="visa logo"
                                 />
-                            </FlexPayment>
+                    </FlexPayment>
 
                 </Row>
             </div>
@@ -179,35 +191,60 @@ const LocalCartList = () => {
 
     if (list.length > 0) {
         return (
-            <Row>
+            
+            // <Row>
+                    <CartListOut className="row">
 
-                <Col lg={6}>
-                    <LoginModalBtn
-                        block
-                        border="2px solid #f5f5f5"
-                        borderRadius="10px"
-                        padding="5px"
-                    >
-                        Login to Checkout
-                    </LoginModalBtn>
-                    <LoginModalBtn
-                        fontSize="14px"
-                        block
-                        padding="5px"
-                        margin="5px 0px"
-                        isSignUp
-                    >
-                        New User? Sign Up
-                    </LoginModalBtn>
-                </Col>
-                <Col lg={6}>
-
-                    {list.map((item) => (
-                        <LocalCartItem {...item} key={item.id} />
-                    ))}
-                    <CartSummary {...cartSummary} />
-                </Col>
-            </Row>
+                    
+                    <Col lg={8} sm={12}  mdOffset={2}>
+                    <H4 mb="30px" textAlign="center" weight={700} >Cart List</H4>
+                        {list.map((item) => (
+                            <LocalCartItem {...item} key={item.id} />
+                        ))}
+                        <CartSummary {...cartSummary}  />
+                        <Col lg={4} sm={6} mdOffset={4} smOffset={3}>
+                        <LoginModalBtn
+                            block
+                            border="1px solid #000"
+                            borderRadius="10px"
+                            padding="5px"
+                            color="white"
+                            bg="black"
+                        >
+                            Login to Checkout
+                        </LoginModalBtn>
+                        <LoginModalBtn
+                            fontSize="14px"
+                            block
+                            padding="5px"
+                            margin="5px 0px"
+                            isSignUp
+                        >
+                            <u>New User? Sign Up</u>
+                        </LoginModalBtn>
+                    </Col>
+                    </Col>
+                    {/* <Col lg={8} sm={12} mdOffset={2}>
+                        <LoginModalBtn
+                            block
+                            border="2px solid #f5f5f5"
+                            borderRadius="10px"
+                            padding="5px"
+                        >
+                            Login to Checkout
+                        </LoginModalBtn>
+                        <LoginModalBtn
+                            fontSize="14px"
+                            block
+                            padding="5px"
+                            margin="5px 0px"
+                            isSignUp
+                        >
+                            New User? Sign Up
+                        </LoginModalBtn>
+                    </Col> */}
+            </CartListOut>
+                // </Row>
         );
     }
     return <CartEmpty />;
@@ -260,7 +297,7 @@ const MyCartListPanel = () => {
                     <FlexBg>
                         <Col lg={12}>
                             {cartList.list.map((item) => (
-                                <LocalCartItem {...item} key={item.id} />
+                                <MyCartItem {...item} key={item.id} />
                             ))}
 
 
@@ -281,28 +318,32 @@ const MyCartListPanel = () => {
                         </Col>
                     </FlexBgAmount>
                     <FlexPayment className="payment-icons" flexWrap>
-                                <img
-                                    src="/images/icons/payment/paypal.svg"
-                                    alt="paypal payment logo"
-                                />
-                                <img
-                                    src="/images/icons/payment/amazon.svg"
-                                    alt="amazon pay logo"
-                                />
-                                <img
+                        <img
+                            src="/images/icons/payment/paypalSmall.svg"
+                            alt="amazon payment logo"
+                        />
+                        <img
+                            src="/images/icons/payment/amazonSmall.svg"
+                            alt="paypal payment logo"
+                        />
+                        <img
+                            src="/images/icons/payment/discoverSmall.svg"
+                            alt="discover pay logo"
+                        />
+                        {/* <img
                                     src="/images/icons/payment/googlepay.svg"
                                     alt="googlepay logo"
-                                />
-                                <img
-                                    src="/images/icons/payment/razorpay.svg"
-                                    alt="razorpay logo"
-                                />
+                                /> */}
+                        <img
+                            src="/images/icons/payment/masterSmall.svg"
+                            alt="master logo"
+                        />
 
-                                <img
-                                    src="/images/icons/payment/paytm.jpg"
-                                    alt="paytm logo"
-                                />
-                            </FlexPayment>
+                        <img
+                            src="/images/icons/payment/visaSmall.svg"
+                            alt="visa logo"
+                        />
+                    </FlexPayment>
 
                 </Row>
             </div>
@@ -378,7 +419,7 @@ const CartListWithForm = ({
         <Row>
 
             <Col lg={6} padding="0px">
-            <Pad />
+                <Pad />
                 {cartSummary.impure ? (
                     <Block
                         textAlign="center"
@@ -400,7 +441,7 @@ const CartListWithForm = ({
                     </>
                 )}
             </Col>
-            <Col lg={6}  padding="0px" className="p-0">
+            <Col lg={6} padding="0px" className="p-0">
                 <CartRight>
                     <VerticalLine />
                     <Pad />

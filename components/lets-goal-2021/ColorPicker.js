@@ -4,7 +4,7 @@ import AnimateText from "../styled/AnimateText";
 import Img from "../styled/Img";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
-import plannerPink from './images/cover.png';
+import plannerPink from './images/cover3.png';
 import plannerWhite from './images/planner white.png';
 import plannerBlack from './images/planner black.png';
 
@@ -38,6 +38,7 @@ const ColorSelector = styled.div`
   width: 2.5rem;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: #d1d1d1 0px 0px 7px 2px;
 `;
 
 const ColorSelectorContainer = styled.div`
@@ -55,7 +56,7 @@ background: ${(props) => props.bgColor};
   width: 100%;
   align-items: center;
   padding: 3rem ;
-  overflow:hiden;
+  overflow:hidden;
 
   position: absolute;
   top: 0;
@@ -96,6 +97,9 @@ const FirstSection = styled.div`
   flex-direction: column;
   align-self: flex-start;
 `;
+const ImageHeight = styled.div`
+  height:200px;
+`;
 const ContentSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -107,6 +111,9 @@ const ContentSection = styled.div`
   bottom: 0;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    justify-content: space-evenly;
+}
 `;
 
 const colorOptions = ["#ffdce2","#2a2a2a","white"];
@@ -130,7 +137,7 @@ export default function ColorPicker() {
               <MainSection
                 key={ind}
                 vertical
-                bgColor={colorInd}
+                bgColor={colorInd === "#ffdce2"? "#2a2a2a":colorInd === "#2a2a2a"? "white":"#ffdce2"}
                 bgColor2={colorInd2}
                 margin="3rem 0"
                 alignItems="center"
@@ -166,14 +173,15 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainHeading color={`${colorInd === '#2a2a2a'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
+          <MainHeading color={`${colorInd === '#ffdce2'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
 
-          <SmallHeading color={`${colorInd === '#2a2a2a'? 'white':'black'}`}>
+          <SmallHeading color={`${colorInd === '#ffdce2'? 'white':'black'}`}>
           3 Fresh colors that reflect your personality
           </SmallHeading>
         </FirstSection>
-
+        {/* <ImageHeight > */}
         <Img src={ colorInd ==="#ffdce2" ? `${plannerPink}` : colorInd === '#2a2a2a' ? `${plannerBlack}`: `${plannerWhite}`} width="50%" />
+        {/* </ImageHeight> */}
         <ColorSelectorContainer>
           {
             colorOptions.map((colorr, ind) => {

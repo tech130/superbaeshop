@@ -26,6 +26,7 @@ max-width: 65vw;
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
     max-width: 100vw;
+    position: relative;
     }
 `;
 // const ViewAllLink = styled(CountryLink)`
@@ -219,7 +220,7 @@ const ProductList = () => {
     let Show = 'products';
     console.log(data)
     return (
-        <ProdList as="nav" justifyContent="center" alignItems="stretch">
+        <ProdList justifyContent="center" alignItems="stretch">
             {
                 Show === "products" ?
                     <ul>

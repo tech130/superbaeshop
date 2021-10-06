@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import LoginModalBtn from "./LoginModalBtn";
 import Txt from "../styled/Txt";
 import P from "../styled/P";
@@ -10,15 +10,16 @@ import Block from "../styled/Block";
 
 const SignInDrop = () => {
     const user = useUser();
-
+const[toggle,settoggle]=useState(false);
     return (
         <HeaderDropdown
+        toggle={null}
             btn={
                 <Button>
                     <div>
                         <P
                             lineHeight={1}
-                            fontSize="12px"
+                            fontSize="16px"
                             weight={400}
                             margin="0px"
                         >
@@ -27,7 +28,7 @@ const SignInDrop = () => {
                                 ? user.user.first_name || "User"
                                 : "Sign In"}
                         </P>
-                        <Txt lineHeight={1} fontSize="14px" weight={600}>
+                        <Txt lineHeight={1} fontSize="16px" weight={600}>
                             Your Account
                         </Txt>
                     </div>

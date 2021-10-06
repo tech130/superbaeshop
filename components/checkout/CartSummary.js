@@ -20,18 +20,20 @@ const CartSumItem = styled.div`
 
 const CartSumTitle = styled.span`
     font-weight: 600;
+    font-weight: ${(props) => (props.bold ? 700 : 400)};
+    font-size: ${(props) => (props.font)};
 `;
 const ToolCustom = styled.span`
     font-weight: 700;
     position: absolute;
-    right: -4px;
-    top: 1px;
-    font-size: 15px;
+    right: -8px;
+    bottom: 10px;
+    font-size: 12px;
     margin: 3px;
     border: 1px solid #000000;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +49,7 @@ const CartSumAmt = styled.span`
 const SumItem = ({ title = "", bold = false, amt = "",font = "16px", href = "", id = "" }) => {
     return (
         <CartSumItem>
-            <CartSumTitle>{title}</CartSumTitle>
+            <CartSumTitle bold={bold} font={font}>{title}</CartSumTitle>
             <CartSumAmt font={font} bold={bold}>{amt} </CartSumAmt>
         </CartSumItem>
     );
@@ -132,7 +134,7 @@ const CartSummary = ({
                 <SumItem
                     title="Grand Total"
                     bold
-                    font="16px"
+                    font="18px"
                     amt={`${currency_type}${total.toFixed(2)}`}
                     
                 />

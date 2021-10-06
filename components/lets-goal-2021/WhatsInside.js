@@ -76,7 +76,7 @@ const WhatsInside = () => {
                                 DIMENSIONS
                             </P>
                             <P textAlign="center">
-                                Width: 18.5 cm, Height: 23.5 cm
+                                Width: 22 cm, Height: 17 cm
                             </P>
                         </Flex>
                     </Col>
@@ -125,11 +125,7 @@ nail art), Self Portrait, Pen it down.
                             </P>
                             <P>
                                 <b>MONTHLY SPREADS:</b>
-                                My obsessions, Month at a glimpse+ Journal pages, Goal Tracker, Events, To Do,
-Ideas, Quotes, Habit Tracker, Sick Day/Period Tracker, Habits to Stop&amp;Start,
-Weekly/Daily spread, Gratitude, Introspections, Sleep Tracker, Expense Tracker, Meal
-Planner, Sugar/Junk Tracker, Shopping List, Clean eating, Weight Tracker, Diet
-Tracker, Exercise Tracker, Water Tracker, Mood Tracker, Movies, Tv Shows.
+                                My obsessions, Playlist of the Month, Month at a glimpse+ Goal Grid, Mood Tracker, Journal pages, Goal Tracker, Events, To Do, Habit Tracker, Sick Day/Period Tracker, Weekly/Daily spread, Mandala Coloring, Outfit designing, Nail art designing, Meal Planner, Expense Tracker Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker.
                             </P>
                             {/* <P>
                                 <b>FREE GOODIES</b>: Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box

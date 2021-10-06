@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Button from "../styled/Button";
 import Block from "../styled/Block";
 import HeaderDropdown from "./HeaderDropdown";
@@ -21,10 +21,12 @@ const CountryList = () => {
 };
 
 const CountrySelect = ({ activeCon = {}, countries = [] }) => {
+    const[toggle,settoggle]=useState(false);
     return (
         <HeaderDropdown
+        toggle={toggle}
             btn={
-                <Button>
+                <Button onClick={()=>{settoggle(!toggle)}}>
                     <Img
                         width={18}
                         height={13}
@@ -42,7 +44,7 @@ const CountrySelect = ({ activeCon = {}, countries = [] }) => {
         >
             <ul>
                 {countries.map((country) => (
-                    <CountryItem {...country} key={country.id} />
+                    <CountryItem {...country} toggle={toggle} settoggle={settoggle} key={country.id} />
                 ))}
             </ul>
         </HeaderDropdown>
@@ -55,9 +57,11 @@ const CountryItem = ({
     code2 = "",
     code = "",
     currency_type = "",
+    settoggle="",
+    toggle=false
 }) => {
     return (
-        <li>
+        <li  onClick={()=>{settoggle(!toggle)}}>
             <Link href={"/[country]"} as={`/${code2.toLowerCase()}`}>
                 <a>
                     <Img

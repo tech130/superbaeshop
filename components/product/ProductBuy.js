@@ -92,7 +92,8 @@ export const AddToCart = ({ className = "", product = {} }) => {
             bg="white"
 
         >
-            <AnimateText>{btnText}</AnimateText>
+            {btnText}
+            {/* <AnimateText>{btnText}</AnimateText> */}
         </Button>
     );
 };
@@ -100,7 +101,7 @@ export const AddToCart = ({ className = "", product = {} }) => {
 export const CartButton = styled(AddToCart)`
     padding: 8px 30px;
     border-radius: 30px;
-    background-color: #FFF;
+    background-color: #000;
     color: #fff;
     font-weight: 700;
     font-size: 16px;

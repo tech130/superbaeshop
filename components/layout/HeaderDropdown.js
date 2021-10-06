@@ -9,7 +9,7 @@ const HeaderDropCon = styled.div`
         position: absolute;
         top: 100%;
         right: 0px;
-        z-index: 10;
+        z-index: 999999;
         box-shadow: 0px 11px 12px 8px rgba(0, 0, 0, 0.03);
         width: max-content;
         max-width: 230px;
@@ -42,11 +42,11 @@ const HeaderDropCon = styled.div`
     }
 `;
 
-const HeaderDropdown = ({ className = "", btn = null, children }) => {
+const HeaderDropdown = ({ className = "", btn = null, children,toggle=false }) => {
     return (
-        <HeaderDropCon className={className}>
+        <HeaderDropCon className={className }>
             {btn}
-            <div className="header-drop">{children}</div>
+            <div className={`header-drop ${toggle === null ?'':toggle ? 'd-block':'d-none'}`}>{children}</div>
         </HeaderDropCon>
     );
 };

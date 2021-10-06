@@ -87,14 +87,16 @@ const GoodVibes = () => {
             <StyledDiv
       >
           <SubCaption>
-          Fastest worldwide shipping<br />
+            {" "}
+          {/* Fastest worldwide shipping<br /> */}
           {/* <span className="font-weight-normal">WE’LL REFUND YOU.</span> */}
             
           </SubCaption>
 
         <MainCaption>Keep track of your activities on the go and achieve more goals with our planner.</MainCaption>
         <SubCaption>
-        Safe payments<br />
+          {" "}
+        {/* Safe payments<br /> */}
           {/* <span className="font-weight-normal">WE’LL REFUND YOU.</span> */}
             
           </SubCaption>

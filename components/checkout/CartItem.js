@@ -40,10 +40,9 @@ export const CartLdr = styled.div`
 export const ImgOutline = styled.div`
     border:1px solid #d9d9d9;
     border-radius:10px;
-    margin:0px 15px 0px 1px;
-    padding: 8px;
-    width: 100px;
-    height: 100px;
+    margin:0px 20px 0px 1px;
+    width: 120px;
+    height: 120px;
     overflow: hidden;
 `;
 
@@ -77,14 +76,14 @@ const CartItem = ({
             <ImgOutline>
                 <Img
                     margin="0px 0px 0px 0px"
-                    width="100px"
+                    width="120px"
                     src={product.thumbnail_image}
                     alt=""
                     
                 />
             </ImgOutline>
             <FlexItem flexGrow={1} flexShrink={0}>
-                <P margin="0px" weight={700} fontSize="16px">
+                <P margin="0px" weight={700} fontSize="18px">
                     {product.title}
                 </P>
                 {product.stock_status ? (
@@ -204,23 +203,25 @@ export const MyCartItem = ({
 };
 
 const QtyBtn = styled(Button)`
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
     text-align: center;
-    border: 1px solid #cecece;
+    border: 1px solid #000000;
     font-weight: 700;
     line-height: 0;
+    font-size: 16px;
+    padding: 0px;
 `;
 
 const CartQty = styled.div`
-    height: 25px;
-    width: 40px;
+    height: 24px;
+    width: 35px;
     text-align: center;
-    border: 1px solid #cecece;
+    border: 0px;
     font-weight: 700;
-    margin: 0px 10px;
-    font-size: 14px;
+    margin: 0px 0px;
+    font-size: 16px;
 `;
 
 const OfferTypeStl = styled.span`
@@ -244,7 +245,7 @@ const OfferTypeStl = styled.span`
 
 const CartQuantity = ({ quantity, onMinus, onPlus }) => {
     return (
-        <Flex alignItems="center">
+        <Flex margin="10px 0px 0px 0px" alignItems="center">
             <QtyBtn className="btn cart-qty-btn" onClick={onMinus}>
                 -
             </QtyBtn>
@@ -283,7 +284,7 @@ export const CartPrice = ({
         const total = totalPrice - totalDiscount;
 
         return (
-            <Block margin="0px 0px 5px 0px">
+            <Block margin="5px 0px 5px 0px">
                 <Block>
                     <Txt
                         weight={300}

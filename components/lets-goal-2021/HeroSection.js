@@ -30,6 +30,11 @@ const ScrollText = styled.div`
   font-weight:500;
   align-items: center;
 `;
+const ResponsiveHeight = styled.div`
+    @media (max-width: 575px) {
+        height:100px;
+    }
+`;
 const scrollTexts = [
     "Cute",
     "aesthetic",
@@ -64,6 +69,12 @@ const HeroSection = () => {
                     <div className="bg-gradients">
                         <div className="gradient-content">
                             <Row alignItems="center">
+                                
+                                <Col lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                    <ResponsiveImage
+                                        image={require("./images/cover.png?resize")}
+                                    />
+                                </Col>
                                 <Col lg={6} sm={6} xs={12}>
                                     <MeetTxt>
                                         Cutest Planner <AnimateText>Ever.</AnimateText><br />
@@ -74,17 +85,19 @@ const HeroSection = () => {
                                     </p>
                                     <ProPlannerPrice slug={"lets-goal-2021-planner"}/>
                                 </Col>
-                                <Col lg={6} sm={6} xs={12}>
-                                    <ResponsiveImage
-                                        image={require("./images/cover.png?resize")}
-                                    />
+                                <Col lg={6} sm={6} xs={12} className="d-block d-sm-none d-md-none d-lg-none d-xl-none">
+                                    {/* <ResponsiveHeight> */}
+                                        <ResponsiveImage
+                                            image={require("./images/cover3.png?resize")}
+                                        />
+                                    {/* </ResponsiveHeight> */}
                                 </Col>
                             </Row>
                         </div>
                     </div>
                 </Container>
             </Block>
-            <Block padding="20px 0px">
+            <Block padding="0px 0px">
                 <ListAnimation />
             </Block>
         </>

@@ -18,7 +18,7 @@ align-items: center;
 `;
 const CartEmpty = () => {
     return (
-        <Flex alignItems="center" vertical justifyContent="center">
+        <Flex padding= "40px 0px 20px 0px" alignItems="center" vertical justifyContent="center">
             <Img width="280px" src="/images/meanwhile.jpeg" alt="" />
             <H5 textAlign="center">Your cart is empty</H5>
         </Flex>

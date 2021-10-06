@@ -171,7 +171,7 @@ const Footer = () => {
                             </Block>
                         </Block>
                     </Col>
-                    <Col md={3} sm={6} xs={12}>
+                    <Col md={2} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">Products</div>
                             <ul className="footer-list">
@@ -200,11 +200,51 @@ const Footer = () => {
                             </ul>
                         </Block>
                     </Col>
-                    <Col md={4} sm={6} xs={12}>
+                    <Col md={2} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
-                            <div className="footer-title">Payment partner</div>
+                            <div className="footer-title">
+                            Why us!
+                            </div>
+                            <ul className="footer-list">
+                                <li>
+                                    <a> Fastest worldwide shipping</a>
+                                </li>
+                                <li>
+                                    <a>Safe payments</a>
+                                </li>
+                            </ul>
+                        </Block>
+                    </Col>
+                    <Col md={3} sm={12} xs={12}>
+                        <Block margin="0px 0px 15px">
+                            <div className="footer-title">Payment Options</div>
                             <Flex className="payment-icons" flexWrap>
                                 <img
+                                    src="/images/icons/payment/paypalSmall.svg"
+                                    alt="amazon payment logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/amazonSmall.svg"
+                                    alt="paypal payment logo"
+                                />
+                                <img
+                                    src="/images/icons/payment/discoverSmall.svg"
+                                    alt="discover pay logo"
+                                />
+                                {/* <img
+                                    src="/images/icons/payment/googlepay.svg"
+                                    alt="googlepay logo"
+                                /> */}
+                                <img
+                                    src="/images/icons/payment/masterSmall.svg"
+                                    alt="master logo"
+                                />
+
+                                <img
+                                    src="/images/icons/payment/visaSmall.svg"
+                                    alt="visa logo"
+                                />
+                                {/* <img
                                     src="/images/icons/payment/paypal.svg"
                                     alt="paypal payment logo"
                                 />
@@ -224,10 +264,11 @@ const Footer = () => {
                                 <img
                                     src="/images/icons/payment/paytm.jpg"
                                     alt="paytm logo"
-                                />
+                                /> */}
                             </Flex>
                         </Block>
                     </Col>
+                    
                 </Row>
                 {/* <div className="footer-bottom-txt ">
                     *The statements on Vibrant's products have not been evaluated by the U.S. Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease or illness
