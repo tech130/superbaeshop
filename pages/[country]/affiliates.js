@@ -17,8 +17,8 @@ const Affiliates = () => {
     );
 };
 
-// Affiliates.getInitialProps = async (ctx) => {
-//     await common(ctx, true);
-// };
+Affiliates.getInitialProps = async (ctx) => {
+    await common(ctx, true);
+};
 
 export default Affiliates;

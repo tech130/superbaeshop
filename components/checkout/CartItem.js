@@ -17,11 +17,14 @@ import { updateCartList } from "../../redux/user/cart";
 import { toBoolean, toNum } from "../../utils";
 
 export const CartStyl = styled(Flex)`
-    padding: 15px 10px;
+    padding: 20px 10px;
     border-radius: 0px;
     margin-bottom: 0px;
     position: relative;
     border-bottom: 1px solid #ddd;
+    @media (max-width: 576px) {
+        padding: 20px 0px;
+    }
 `;
 
 export const CartLdr = styled.div`
@@ -38,12 +41,14 @@ export const CartLdr = styled.div`
     border-radius: 10px;
 `;
 export const ImgOutline = styled.div`
-    border:1px solid #d9d9d9;
     border-radius:10px;
     margin:0px 20px 0px 1px;
     width: 120px;
     height: 120px;
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 `;
 
 const CartItem = ({

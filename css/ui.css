@@ -569,7 +569,7 @@ input#custom-checkbox {
 }
   @media only screen and (max-width: 767px) {
     .slide-pane_from_right{
-        width: 70%  !important;
+        width: 80%  !important;
       }
     #main-cat-menu{
         top: 40px;
@@ -589,7 +589,7 @@ input#custom-checkbox {
         font-size: 14px;
     }
     .slide-pane_from_right{
-        width: 80%  !important;
+        width: 100%  !important;
       }
     .sampleTags .svg-img{
         width: 24px;
