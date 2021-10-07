@@ -17,6 +17,13 @@ const FooterCon = styled.footer`
     color: black;
     @media (max-width: 576px) {
         padding: 80px 0px 40px 0px;
+        text-align: center;
+        .payment-icons{
+            justify-content: center;
+        }
+        .social-icons{
+            justify-content: center;
+        }
       }
     .social-icons a {
         margin-right: 10px;
@@ -58,6 +65,7 @@ const FooterCon = styled.footer`
     margin: 50px 0px 30px 0px;
     @media (max-width: 576px) {
         display:none;
+        
       }
     }
     

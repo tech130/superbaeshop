@@ -99,7 +99,7 @@ const Freebies = () => {
                                     <AlignItems justify="start" mb="40">
                                         <div
                                             data-aos="fade-left"
-                                            data-aos-delay="3000"
+                                            data-aos-delay="2000"
                                             data-aos-duration="500"
                                         >
                                             <LeftDiv>
@@ -171,7 +171,7 @@ const Freebies = () => {
                                     <AlignItems justify="end" mb="40">
                                         <div
                                             data-aos="fade-right"
-                                            data-aos-delay="2300"
+                                            data-aos-delay="1500"
                                             data-aos-duration="500"
                                         >
                                             <LeftDiv>

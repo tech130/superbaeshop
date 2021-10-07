@@ -22,11 +22,12 @@ max-width: 65vw;
 
     }
     @media only screen and (max-width: 768px) {
-        background: hsla(0,0%,100%,.6);
+        background: hsla(0,0%,100%,.7);
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
     max-width: 100vw;
     position: relative;
+    z-index: -1;
     }
 `;
 
