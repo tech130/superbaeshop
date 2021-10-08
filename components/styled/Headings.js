@@ -6,6 +6,7 @@ export const H1 = styled.h1`
     line-height: 1.2;
     margin-bottom: ${(props) => props.mb || "8px"};
     text-align: ${(props) => props.textAlign || "left"};
+    
 `;
 
 export const H2 = styled.h2`
@@ -14,6 +15,7 @@ export const H2 = styled.h2`
     line-height: 1.2;
     margin-bottom: ${(props) => props.mb || "8px"};
     text-align: ${(props) => props.textAlign || "left"};
+    color: ${(props) => props.color || "#000"};
     @media (max-width: 768px) {
         font-size:32px;
     }
@@ -25,6 +27,7 @@ export const H3 = styled.h3`
     line-height: 1.2;
     margin-bottom: ${(props) => props.mb || "8px"};
     text-align: ${(props) => props.textAlign || "left"};
+    color: ${(props) => props.color || "#000"};
 `;
 
 export const H4 = styled.h4`
