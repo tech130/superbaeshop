@@ -4,7 +4,7 @@ import Flex from "../styled/Flex";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import lisa from './images/testimonials/Lisa.jpeg';
-import Rosetta from './images/testimonials/Rosetta M.jpeg';
+import Rosetta from './images/testimonials/testi1.jpeg';
 import Shagufta from './images/testimonials/Shagufta Tamkeen.jpeg';
 import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
@@ -82,6 +82,7 @@ const TestimonialContainer = styled.div`
   animation-name: ${breatheAnimation};
   animation-duration: 2s;
   animation-iteration-count: infinite;
+  
   @media (max-width: 992px) {
     width: 80%;
 }
@@ -101,10 +102,15 @@ const Card = styled.div`
   border-radius: 0.6rem;
   font-weight: 500;
   font-size: 16px;  
+  min-height:105px;
+  max-height:105px;
+  overflow-y:auto;
   @media (max-width: 768px) {
     padding: 0.7rem 1rem;
     font-size: 14px;  
-}
+    max-height:106px;
+    max-height:106px;
+  }
 `;
 const FlexBg = styled.div`
 display: flex;
@@ -161,7 +167,7 @@ border-radius: 50%;
 object-fit: cover;
 background: white;
 padding: 8px;
-bottom: 20px;
+bottom: 0px;
 `;
 
 const SpinningAnimation = styled.svg`
@@ -343,7 +349,8 @@ dispatch(cartIsOpen(true));
             <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="90vh" >
               <FlexBg2 className="flex-column" padding="20px 60px" >
                 <TestimonialCard alignSelf="flex-end" width="90%"
-                content="I did quite some research on the planners available and yours is one of the good and practical ones."
+                content="Name: Shruti Sriram
+                It helps me believe that myself is magical and gives me a sense of being there! It’s like at end of the day the planner is like a person to me and it’s there for me."
                 img={Rosetta}
                 />
 
