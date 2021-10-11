@@ -88,7 +88,7 @@ const RenderForm = ({ fetching, formDispatch }) => {
     return (
         <>
             <FieldArray />
-            <SubmitButton fetching={fetching}>CONTINUE</SubmitButton>
+            <SubmitButton fetching={fetching}>Continue</SubmitButton>
         </>
     );
 };

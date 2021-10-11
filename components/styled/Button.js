@@ -91,8 +91,8 @@ export const SubmitBtn = styled(Button)`
     background: #000;
     color: #fff;
     padding: 0 15px;
-    text-transform: uppercase;
-    font-size: 14px;
+    text-transform: capitalize;
+    font-size: 16px;
     min-height: 40px;
     width: 100%;
     margin-bottom: ${(props) => props.mb || "16px"};

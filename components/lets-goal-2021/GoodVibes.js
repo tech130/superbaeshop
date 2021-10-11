@@ -20,8 +20,8 @@ const MainCaption = styled.div`
   font-size: 2rem;
   font-weight: 700;
   padding: 18px 70px;
-  border-left: 1px solid #afafaf;
-  border-right: 1px solid #afafaf;
+  // border-left: 1px solid #afafaf;
+  // border-right: 1px solid #afafaf;
   @media (max-width: 768px) {
     padding: 15px 15px;
     font-size: 1.6rem;
@@ -29,8 +29,8 @@ const MainCaption = styled.div`
 @media (max-width: 576px) {
   border-left: none;
   border-right: none;
-  border-bottom: 1px solid #afafaf;
-  border-top: 1px solid #afafaf;
+  // border-bottom: 1px solid #afafaf;
+  // border-top: 1px solid #afafaf;
   font-size:24px;
   padding: 15px 15px;
 }

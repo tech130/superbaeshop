@@ -148,10 +148,8 @@ const OptionLeftContainer = styled.div`
 `;
 
 const CartButtonLeft = styled.button`
-    border-radius: 30px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 16px;
+    padding: 0px;
+    border: 0px;
     position: absolute;
     bottom: 50px;
     right: 75px;
@@ -350,7 +348,7 @@ export default function OptionsSection() {
               </SmallHeadingSet>
             </OptionCard>
             <CartButtonLeft>
-            <ProductBuy slug={"lets-goal-2021-planner"} />
+            <ProductBuy slug={"bundle-2021"} />
               
             </CartButtonLeft>
             <div className="pop-up-text right">

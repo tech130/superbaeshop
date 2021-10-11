@@ -295,15 +295,14 @@ input#custom-checkbox {
     transition: all .3s ease-in;
   }
   
-  label{
+  /* label{
     color: white;
-    font-family: Helvetica, Arial, sans-serif; 
     font-size: .6em;
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: all .3s ease-in;
     opacity: 0;
-  }
+  } */
   
   
   .close-container:hover .leftright{

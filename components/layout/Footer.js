@@ -190,20 +190,27 @@ const Footer = () => {
                     <Col md={2} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">
-                                Also shop on{" "} <br />
+                                Also shop on{" "} 
+                                {/* <br />
                                 <Txt fontSize="14px" weight={300}>
                                     (coming soon)
-                                </Txt>{" "}
+                                </Txt>{" "} */}
                             </div>
                             <ul className="footer-list">
                                 <li>
-                                    <a>Amazon</a>
+                                    <a>Amazon <Txt fontSize="14px" weight={300}>
+                                    (coming soon)
+                                </Txt>{" "}</a>
                                 </li>
                                 <li>
-                                    <a>Etsy</a>
+                                    <a>Etsy <Txt fontSize="14px" weight={300}>
+                                    (coming soon)
+                                </Txt>{" "}</a>
                                 </li>
                                 <li>
-                                    <a>Wish</a>
+                                    <a>Wish <Txt fontSize="14px" weight={300}>
+                                    (coming soon)
+                                </Txt>{" "}</a>
                                 </li>
                             </ul>
                         </Block>

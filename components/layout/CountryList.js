@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useRef, useEffect } from "react";
 import Button from "../styled/Button";
 import Block from "../styled/Block";
 import HeaderDropdown from "./HeaderDropdown";
@@ -21,8 +21,22 @@ const CountryList = () => {
 };
 
 const CountrySelect = ({ activeCon = {}, countries = [] }) => {
+    const wrapperRef = useRef(null);
     const[toggle,settoggle]=useState(false);
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside, false);
+        return () => {
+          document.removeEventListener("click", handleClickOutside, false);
+        };
+      }, []);
+      const handleClickOutside = event => {
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            settoggle(false);
+        }
+      };
     return (
+        <div ref={wrapperRef}>
+
         <HeaderDropdown
         toggle={toggle}
             btn={
@@ -48,6 +62,7 @@ const CountrySelect = ({ activeCon = {}, countries = [] }) => {
                 ))}
             </ul>
         </HeaderDropdown>
+        </div>
     );
 };
 
