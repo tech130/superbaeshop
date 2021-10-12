@@ -625,4 +625,9 @@ input#custom-checkbox {
   .login-model{
     max-width: 375px;
   }
+  .position-bug{
+    position: relative; 
+    z-index: -1;
+  }
+  
 }

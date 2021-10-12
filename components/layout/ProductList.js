@@ -26,8 +26,8 @@ max-width: 65vw;
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
     max-width: 100vw;
-    position: relative;
-    z-index: -1;
+    // position: relative;
+    // z-index: -1;
     }
 `;
 

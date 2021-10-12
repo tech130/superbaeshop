@@ -33,9 +33,9 @@ const Layout = ({ children, slug, isAuthRoute = false }) => {
             {/* <TopRollText slug={slug} /> */}
                 <StickyTop>
                 <Header />
-                <div className="d-block d-md-none d-lg-none d-xl-none">
-                        <ProductList />
-                            </div>
+                <div className="d-block d-md-none d-lg-none d-xl-none position-bug">
+                    <ProductList />
+                </div>
                 {/* <ProductList /> */}
                 </StickyTop>
                 {children}
