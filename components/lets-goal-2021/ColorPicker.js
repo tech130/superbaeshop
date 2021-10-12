@@ -116,7 +116,7 @@ const ContentSection = styled.div`
 }
 `;
 
-const colorOptions = ["#ffdce2","#2a2a2a","white"];
+const colorOptions = ["#ffdce2","#2a2a2a"];
 
 export default function ColorPicker() {
   const [colorInd, setColor] = useState('#ffdce2');
@@ -137,7 +137,7 @@ export default function ColorPicker() {
               <MainSection
                 key={ind}
                 vertical
-                bgColor={colorInd === "#ffdce2"? "#2a2a2a":colorInd === "#2a2a2a"? "white":"#ffdce2"}
+                bgColor={colorInd === "#ffdce2"? "#2a2a2a":colorInd === "#2a2a2a"? "#ffdce2":"#ffdce2"}
                 bgColor2={colorInd2}
                 margin="3rem 0"
                 alignItems="center"

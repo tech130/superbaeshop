@@ -87,14 +87,19 @@ export const LinkButton = styled.button`
     }
 `;
 
-export const SubmitBtn = styled(Button)`
-    background: #000;
+export const SubmitBtn = styled.button`
+    background: linear-gradient(118deg, rgba(209,78,154,1) 14%, rgba(255,86,109,1) 60%);
     color: #fff;
-    padding: 0 15px;
-    text-transform: capitalize;
+    font-weight: 700;
     font-size: 16px;
+    box-shadow: rgb(255 86 109) 0px 8px 25px 0px;
+    padding: 8px 30px;
+    border-radius: 30px;
+    // padding: 0 15px;
+    text-transform: capitalize;
     min-height: 40px;
     width: 100%;
+    border:1px solid transparent;
     margin-bottom: ${(props) => props.mb || "16px"};
     cursor: ${(props) => props.disabled ? "not-allowed" : "pointer"};
     opacity: ${(props) => props.disabled ? 0.5 : 1};

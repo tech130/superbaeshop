@@ -60,6 +60,7 @@ const[toggle,settoggle]=useState(false);
                                 border="1px solid #000"
                                 margin="0px 0px 3px"
                                 block
+                                className="new_btn_login"
                             >
                                 Sign In
                             </LoginModalBtn>

@@ -349,7 +349,7 @@ dispatch(cartIsOpen(true));
             <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="90vh" >
               <FlexBg2 className="flex-column" padding="20px 60px" >
                 <TestimonialCard alignSelf="flex-end" width="90%"
-                content="Name: Shruti Sriram
+                content="Shruti Sriram
                 It helps me believe that myself is magical and gives me a sense of being there! It’s like at end of the day the planner is like a person to me and it’s there for me."
                 img={Rosetta}
                 />

@@ -33,6 +33,28 @@ import Modal from "../modal/Modal";
 import useToggle from "../../hooks/useToggle";
 import Block from "../styled/Block";
 
+const ImportantPoints = styled.ul`
+    width: 90%;
+    background-color: #f5f6f9;
+    list-style: inside;
+    list-style-type: circle;
+    border: 1px solid #ff566d4f;
+    padding: 15px;
+    border-radius: 8px;
+    margin: auto;
+    margin-bottom: 30px;
+    li{
+        color: black;
+    font-weight: 700;
+    font-size: 16px;
+    @media (max-width: 576px) {
+        font-size: 14px;
+    }
+    }
+    @media (max-width: 576px) {
+        width: 100%;
+    }
+`;
 const getDialOption = (x) => {
     return {
         label: `+${x.dial_code} (${x.title})`,
@@ -271,6 +293,18 @@ const CheckoutForm = ({ coupon, redeem }) => {
                     <Txt textDecor="underline"> Terms and Conditions</Txt>
                 </CountryLink>
             </P>
+            <ImportantPoints>
+                <li>
+                Now a step closer to creating your own space full of beauty.
+                </li>
+                <li>
+                The 2022 catalogue is now available for pre-order.
+                </li>
+                <li>
+                Deliveries starting November 15.
+                </li>
+
+            </ImportantPoints>
             <SubmitBtn
                 margin="0px 0px 10px 0px"
                 onClick={onPayNow}

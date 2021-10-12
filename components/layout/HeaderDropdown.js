@@ -10,13 +10,13 @@ const HeaderDropCon = styled.div`
         top: 100%;
         right: 0px;
         z-index: 999999;
-        box-shadow: 0px 11px 12px 8px rgba(0, 0, 0, 0.03);
+        box-shadow: 1px 7px 20px 8px rgb(0 0 0 / 11%);
         width: max-content;
         max-width: 230px;
         background: #fff;
         max-height: 300px;
         overflow-y: auto;
-        padding: 5px 0px;
+        padding: 10px 5px;
     }
 
     .header-drop ul {

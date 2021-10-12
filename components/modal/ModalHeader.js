@@ -8,7 +8,7 @@ const ModalHead = styled.div`
     background: #fff;
     color: #000;
     position: relative;
-    border-bottom: solid 4px #f5f5f5;
+    border-bottom: ${(props)=>props.border} ;
 
     .modal-header-desc {
         font-size: 14px;
@@ -23,9 +23,9 @@ const ClsBtn = styled(Button)`
     color: #000;
 `;
 
-const ModalHeader = ({ closeModal = null, title = "", desc = "" }) => {
+const ModalHeader = ({ closeModal = null, title = "", desc = "",border="solid 4px #f5f5f5" ,className=""}) => {
     return (
-        <ModalHead>
+        <ModalHead border={border} className={className}>
             <ClsBtn onClick={closeModal}>
                 <CloseIcon size={20} />
             </ClsBtn>

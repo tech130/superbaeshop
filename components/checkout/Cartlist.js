@@ -3,7 +3,6 @@ import { LocalCartItem, MyCartItem } from "./CartItem";
 import useCart, { useLocalCart, useCartIsOpen } from "../../hooks/redux/checkout/useCart";
 import { cartIsOpen } from "../../redux/user/local_cart";
 import Flex from "../styled/Flex";
-
 import useUser from "../../hooks/redux/user/useUser";
 import CartSummary from "./CartSummary";
 import CartSummarySmall from "./CartSummarySmall";
@@ -87,6 +86,9 @@ const VerticalLine = styled.div`
     background: #ddd;
     z-index: 99;
     left: 0px;
+    @media (max-width: 992px) {
+        display:none;
+    }
 `;
 const CartButton = styled.button`
 padding: 15px 40px;
@@ -97,12 +99,13 @@ font-weight: 700;
 font-size: 16px;
 width: calc(100% - 60px);
 margin: 0px 30px 5px 30px;
+border:1px solid transparent;
 @media (max-width: 576px) {
     width: 100%;
     margin: 0px;
     font-size: 15px;
     padding: 15px 15px;
-    
+}
 `;
 const Cartlist = () => {
     const { token } = useUser();

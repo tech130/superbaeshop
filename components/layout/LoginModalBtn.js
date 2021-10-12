@@ -5,7 +5,13 @@ import Button from "../styled/Button";
 import Login from "../auth/Login";
 import Otpform from "../auth/Otpform";
 import SignUp from "../auth/SignUp";
+import styled from "styled-components";
 
+
+const LoginButton = styled(Button)`
+
+   
+`;
 const LoginModalBtn = ({ className, isSignUp, children, ...rest }) => {
     const [open, setOpen] = useState(false);
 
@@ -33,7 +39,7 @@ const LoginModalBtn = ({ className, isSignUp, children, ...rest }) => {
 
 const LoginModal = ({ isOpen, closeModal, isSignUp }) => {
     return (
-        <Modal isOpen={isOpen} overlayClick={closeModal} maxWidth="375px">
+        <Modal isOpen={isOpen} overlayClick={closeModal} bg="#f7f7ff" contentClass="login-model" maxWidth="375px">
             <LoginModalBody isSignUp={isSignUp} closeModal={closeModal} />
         </Modal>
     );

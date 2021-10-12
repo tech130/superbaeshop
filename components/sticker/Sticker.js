@@ -10,18 +10,20 @@ import Dot from "../styled/Dot";
 import { ProductPrices } from "../product/ProductPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
 import slug from "./slug";
-
+import AnimateText from "../styled/AnimateText";
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
 const Sticker = () => {
     return (
         <>
             <Block padding="35px 0px">
                 <Container>
-                    <H1 mb="0px" textAlign="center">
-                        THE ULTIMATE STICKER BOOK
-                    </H1>
-                    <P textAlign="center">is here.</P>
+                    <MainHeading mb="0px" textAlign="center">
+                        THE ULTIMATE STICKER <AnimateText> BOOK</AnimateText>
+                    </MainHeading>
+                    <SmallHeading textAlign="center">is here.</SmallHeading>
                     <Row>
-                        <Col md={8} mdOffset={2}>
+                        <Col className="mt-5" md={8} mdOffset={2}>
                             <ResponsiveImage
                                 image={require("./images/5.jpg?resize")}
                             />
@@ -40,13 +42,13 @@ const Sticker = () => {
             <InterSec />
             <Block padding="35px 0px">
                 <Block padding="0px 10px 30px 10px">
-                    <H2 weight={400} textAlign="center">
-                        Is it true that this book has 1000 stickers?
-                    </H2>
-                    <P textAlign="center">
+                    <MainHeading weight={400} textAlign="center">
+                        Is it true that this book has 1000 <AnimateText> stickers?</AnimateText>
+                    </MainHeading>
+                    <SmallHeading textAlign="center">
                         Yes. The first sticker book to have a thousand stickers
                         in it.
-                    </P>
+                    </SmallHeading>
                 </Block>
                 <Container>
                     <Row alignItems="center">

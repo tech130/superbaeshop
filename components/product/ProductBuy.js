@@ -101,11 +101,12 @@ export const AddToCart = ({ className = "", product = {} }) => {
 export const CartButton = styled(AddToCart)`
     padding: 8px 30px;
     border-radius: 30px;
-    background-color: #000;
+    // background-color: #000;
+    background: linear-gradient(118deg, rgba(209,78,154,1) 14%, rgba(255,86,109,1) 60%);
     color: #fff;
     font-weight: 700;
     font-size: 16px;
-    box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
+    box-shadow: rgb(255 86 109) 0px 8px 25px 0px;
     @media (max-width: 768px) {
         font-size: 14px;
         padding: 6px 20px;

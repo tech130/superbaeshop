@@ -12,8 +12,10 @@ const Overlay = styled.div`
     top: 0;
     left: 0;
     z-index: 99;
-    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(113.87deg,rgba(205,228,255,.686275),rgba(214,196,255,.690196));
     overflow-y: auto;
+    border-radius: 8px;
+    overflow: hidden;
 `;
 
 const ModalOverlay = ({ children, className, style = {}, onClick }) => {

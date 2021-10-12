@@ -57,6 +57,13 @@ const FooterCon = styled.footer`
         display: flex;
         justify-content: space-around;
     }
+    .footer-bottom-small {
+        padding: 8px 0px;
+        font-size: 14px;
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+    }
     .footer-bottom-txt {
         padding: 15px;
     font-size: 14px;
@@ -291,7 +298,7 @@ const Footer = () => {
                 <Hr />
                 <div className="d-none d-md-block d-lg-block d-xl-block" >
                     <div className="footer-bottom" >
-                        <span>© 2020 Space and Beauty All Rights Reserved.</span>
+                        <span>© {new Date().getFullYear()} Space and Beauty All Rights Reserved.</span>
                         {/* <span>
                         Terms of Use
                     </span> */}
@@ -308,13 +315,31 @@ const Footer = () => {
 
                         </span>
 
-                        {/* <span>
-                        Subscription Policy
-                    </span> */}
                     </div>
                 </div>
-                <div className="footer-bottom d-block d-md-none d-lg-none d-xl-none">
-                    <span>© 2021 Space and Beauty All Rights Reserved.</span>
+                <div className="d-block d-md-none d-lg-none d-xl-none pt-3">
+                <div className="footer-bottom-small" >
+                       
+                        <span>
+                            <CountryLink href="/policy">
+                                Privacy Policy
+                            </CountryLink>
+
+                        </span>
+                        <span>
+                            <CountryLink href="/refund">
+                                Refund Policy
+                            </CountryLink>
+
+                        </span>
+
+                    </div>
+                    <div className="footer-bottom-small" >
+                        <span>© {new Date().getFullYear()} Space and Beauty All Rights Reserved.</span>
+                       
+
+                    </div>
+                    {/* <span>© {new Date().getFullYear()} Space and Beauty All Rights Reserved.</span> */}
                 </div>
             </Container>
 

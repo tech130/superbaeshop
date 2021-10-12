@@ -3,10 +3,12 @@ import styled from "styled-components";
 
 const MdContent = styled.div`
     max-width: ${(props) => props.maxWidth || "650px"};
-    width: 90%;
+    width: 100%;
     height: auto;
     background: ${(props) => props.bg || "#fff"};
     margin: auto;
+    border-radius: 8px;
+    overflow: hidden;
 `;
 
 const ModalContent = ({ children, className, maxWidth, bg }) => {

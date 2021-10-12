@@ -12,16 +12,18 @@ import P from "../styled/P";
 import ResponsiveImage from "../common/ResponsiveImage";
 import useOnScreen from "../../hooks/layout/useOnScreen";
 import WhatsInside from "../lets-goal-2021/WhatsInside";
+import AnimateText from "../styled/AnimateText";
 
 const MeetTxt = styled.h1`
     font-size: 3.4rem;
     font-weight: 700;
     line-height: 68px;
     margin-bottom: 30px;
-    background: linear-gradient(#616161, #333);
-    word-break: break-word;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: black;
+    // background: linear-gradient(#616161, #333);
+    // word-break: break-word;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
 
     @media (min-width: 768px) {
         font-size: 4rem;
@@ -43,7 +45,7 @@ const ProPlanner = () => {
                             <MeetTxt>
                                 Meet the <br />
                                 Perfect <br />
-                                Professional planner
+                                Professional  <AnimateText> planner</AnimateText>
                             </MeetTxt>
                             <H3 mb="35px" weight={700}>
                                 Crafted just for you!
@@ -67,8 +69,14 @@ const ProPlanner = () => {
                             margin="10px 25px 15px 0px"
                             lineHeight={1}
                         >
-                            Designed by artist
+                            Designed by <AnimateText> artist</AnimateText>
                         </P>
+                        
+                    </Flex>
+                    <Block margin="0px 0px 25px">
+                        <Txt lineHeight={1} fontSize="3rem" weight={700}>
+                            With highest quality print
+                        </Txt>
                         <P
                             lineHeight={1}
                             fontSize="2.2rem"
@@ -77,11 +85,6 @@ const ProPlanner = () => {
                         >
                             Engineered by experts
                         </P>
-                    </Flex>
-                    <Block margin="0px 0px 25px">
-                        <Txt lineHeight={1} fontSize="3rem" weight={700}>
-                            With highest quality print
-                        </Txt>
                     </Block>
                     <ProPlannerPrice  slug={"the-professional-planner"} />
                 </Container>
@@ -101,7 +104,7 @@ const ProPlanner = () => {
                                     lineHeight={1.2}
                                 >
                                     A magical piece of design to fit every
-                                    aspects of your life
+                                    aspects of your <AnimateText> life</AnimateText>
                                 </Txt>
                             </Block>
                         </Col>
