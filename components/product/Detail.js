@@ -18,6 +18,7 @@ import {
 } from "../../redux/product/product";
 import { useDispatch, useSelector } from "react-redux";
 import { loader, RenderItem } from "./ProductList";
+import ResponsiveImage from "../common/ResponsiveImage";
 
 const MainImgCon = styled.div`
     margin-bottom: 1rem;
@@ -48,13 +49,15 @@ const RightBtn = ({ nextSlide, slideCount }) => {
 const Detail = ({ slug }) => {
     const dispatch = useDispatch();
     const product = useProduct(slug);
+    console.log(product, "kkkkkk")
     const {
         title,
         thumbnail_image,
         short_descriptions,
         product_content = [],
         product_images = [],
-        similarProducts,
+        similarProducts =[],
+        category = {},
     } = product;
 
     const api = useSelector(
@@ -66,7 +69,8 @@ const Detail = ({ slug }) => {
             dispatch(fetchSimilarProducts(slug));
         }
     }, [slug]);
-
+    let similarProductsEdited = similarProducts.slice(0,4);
+    
     return (
         <Block padding="35px 0px">
             <Container>
@@ -116,7 +120,7 @@ const Detail = ({ slug }) => {
                             </Txt>
                         </Block>
                         <div className="seperator" />
-                            <CartBtn product={product} />
+                        <CartBtn product={product} />
                         <div className="seperator" />
                         {product_content.map((x) => (
                             <Block key={`${x.id}`}>
@@ -134,7 +138,7 @@ const Detail = ({ slug }) => {
                                 </Block>
                             </Block>
                         ))}
-                        
+
                     </Col>
                 </Row>
                 <Block padding="35px 0px 0px 0px">
@@ -142,11 +146,38 @@ const Detail = ({ slug }) => {
                     <Row>
                         {api.fetching
                             ? loader
-                            : Array.isArray(similarProducts) &&
-                              similarProducts.map((product) => (
-                                  <RenderItem id={product} key={product} />
-                              ))}
+                            : Array.isArray(similarProductsEdited) &&
+                            similarProductsEdited.map((product) => (
+                                <RenderItem id={product} key={product} />
+                            ))}
                     </Row>
+                </Block>
+                <Block padding="35px 0px 0px 0px">
+                    {/* <H4> products</H4> */}
+                    {/* <Row> */}
+                        {category && !!category.category_images ?
+                            (
+                                <>
+                                    {
+
+                                        category.category_images.map((item, index) => {
+                                            return (
+
+                                                <Block key={index} padding="0px">
+                                                        <img
+                                                            src={item.image}
+                                                            alt="product image"
+                                                        />
+                                                </Block>
+                                            )
+                                        })
+                                    }
+                                </>
+                            )
+
+                            :
+                            ''}
+                    {/* </Row> */}
                 </Block>
             </Container>
         </Block>

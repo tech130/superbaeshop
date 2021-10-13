@@ -27,7 +27,10 @@ const LetsGoal2021 = () => {
             {/* <SmartDigitalPlanner /> */}
             <OptionsSection />
             <ColorPicker />
+            <Block padding="65px 0px 0px 0px">
+
             <TestimonialSection />
+            </Block>
             <StayTuned />
             <GoodVibes />
             {/* <FreeInclusions />

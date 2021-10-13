@@ -154,8 +154,8 @@ const Header = () => {
                             </picture> */}
                         </CountryLink>
                         <div className="d-sm-none d-none d-md-block d-lg-block d-xl-block">
-                        <ProductList />
-                            </div>
+                            <ProductList Show="products" />
+                        </div>
                         <Ul alignItems="stretch">
                             <Hdrli>
                                 {/* <CountryLink href="/checkout">

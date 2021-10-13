@@ -316,7 +316,7 @@ export default function TestimonialSection() {
     const dispatch = useDispatch();
     
   return (
-    <Block padding="65px 0px 0px 0px">
+    
 
 
       <Container fluid>
@@ -375,6 +375,5 @@ dispatch(cartIsOpen(true));
 
 
     </Container>
-    </Block >
   );
 }

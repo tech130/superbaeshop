@@ -21,7 +21,7 @@ const UnitWrapperText = styled.div`
     padding-top: 47px;
     position: relative;
     z-index: 4;
-    @media (max-width: 565px) {
+    @media only screen and (max-width: 575px) {
         padding-top: 75px;
     }
  .main_sample{

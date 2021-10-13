@@ -7,13 +7,15 @@ import { useSelector } from "react-redux";
 import CountryLink, { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import ProductLink from "../product/ProductLink";
+import Link from "next/link";
 
 const ProdList = styled(Flex)`
 max-width: 65vw;
+// flex-wrap: nowrap;
     ul {
         list-style: none;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         overflow-x: auto;
         white-space: nowrap;
         justify-content: space-evenly;
@@ -34,7 +36,7 @@ max-width: 65vw;
 const ProdLinkStl = styled.li`
     cursor: pointer;
     display: inline-block;
-    padding: 4px 25px;
+    padding: 4px 15px;
     color: #000;
     text-decoration: none;
     font-size: 18px;
@@ -50,10 +52,11 @@ const ProdLinkStl = styled.li`
 
 
 const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
+
     let { categories, is_active, id } = cat;
     return (
         <React.Fragment key={id}>
-            {is_active &&
+            {is_active && cat.title ==="PHONE CASES" &&
                 <React.Fragment >
                     <ProdLinkStl>
                         <div id="main-cat" onClick={() => {
@@ -62,7 +65,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                             else
                                 setToggle(id)
                         }} >
-                            {cat.title}
+                            {cat.title==="PHONE CASES" ?"Phone Cases":cat.title }
 
                         </div>
                     </ProdLinkStl>
@@ -127,7 +130,7 @@ const ProdTitle = ({ slug, index }) => {
     return (
         <React.Fragment key={index}>
                     <ProdLinkStl>
-                    <ProductLink slug={slug} />
+                        <ProductLink slug={slug} />
                     </ProdLinkStl>
                     
             
@@ -184,17 +187,19 @@ const loadCategories = (cat, setToggle) => {
 };
 
 
-const ProductList = () => {
+const ProductList = ({Show=''}) => {
     const [toggle, setToggle] = useState('');
     const data = useSelector((state) => ({
         products: state.headerProducts,
         categories: state.master.category || [],
     }));
-    let Show = 'products';
+    const router = useRouter();
+    const country = useCountryParam();
+    // let Show = 'productsdg';
     console.log(data,'products')
     return (
         <ProdList justifyContent="center" alignItems="stretch">
-            {
+            {/* {
                 Show === "products" ?
                     <ul>
                         {data.products.map((slug, index) => (
@@ -207,7 +212,44 @@ const ProductList = () => {
                             <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={index} index={index} />
                         ))}
                     </ul>
-            }
+            } */}
+            <>
+            {/* <ul>
+                        {data.products.map((slug, index) => (
+                            <ProdTitle  slug={slug} key={index} index={index} />
+                        ))}
+                    </ul> */}
+                    
+                    <ul>
+                    {data.products.map((slug, index) => (
+                            <ProdTitle  slug={slug} key={index} index={index} />
+                        ))}
+                        {data.categories.map((cat, index) => (
+                            <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={index} index={index} />
+                        ))}
+                        <ProdLinkStl>
+                        <span onClick={()=>{
+                            router.push(
+                                `/[country]/product/laptopskin`,
+                                `/${country}/product/laptopskin`
+                            );
+                        }} >
+                            Laptop Skins
+                        </span>
+                        </ProdLinkStl>
+                        <ProdLinkStl>
+                        
+                        <span onClick={()=>{
+                            router.push(
+                                `/[country]/product/PopSocket`,
+                                `/${country}/product/PopSocket`
+                            );
+                        }} >
+                            Pop Socket
+                        </span>
+                        </ProdLinkStl>
+                    </ul>
+                    </>
         </ProdList>
     );
 };
