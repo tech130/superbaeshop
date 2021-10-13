@@ -106,10 +106,12 @@ export const CartButton = styled(AddToCart)`
     color: #fff;
     font-weight: 700;
     font-size: 16px;
-    box-shadow: rgb(255 86 109) 0px 8px 25px 0px;
+    box-shadow:  rgb(255 148 163) 0px 5px 16px 0px;
     @media (max-width: 768px) {
         font-size: 14px;
         padding: 6px 20px;
+    box-shadow: unset;
+
     }
 `;
 const rainbow_animation = keyframes`
@@ -127,7 +129,7 @@ export const NewButton = styled.button`
     color: black;
     font-weight: 700;
     font-size: 16px;
-    box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
+    box-shadow: rgb(255 148 163) 0px 5px 16px 0px;
     background: linear-gradient(90deg,#60bbf1,#c6e1f1,#f57e93,#b4a8ff,#c8f1ff,#eda5b2);
     animation: ${rainbow_animation} 4s ease-in-out infinite;
     background-size: 300% 100%;

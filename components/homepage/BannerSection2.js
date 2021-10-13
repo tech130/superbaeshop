@@ -13,7 +13,9 @@ const UnitWrapper = styled.div`
     position: relative;
     min-height:580px;
     overflow: hidden;
-
+    @media only screen and (max-width: 575px) {
+        min-height: 480px;
+    }
 `;
 
 const UnitWrapperText = styled.div`
@@ -22,7 +24,7 @@ const UnitWrapperText = styled.div`
     position: relative;
     z-index: 4;
     @media only screen and (max-width: 575px) {
-        padding: 50px 0px;
+        padding: 25px 0px ;
     }
  .main_sample{
     // text-align: center;
@@ -60,6 +62,9 @@ const UnitWrapperImage = styled.div`
     justify-content: center;
     img{
         height:100%;
+    }
+    @media only screen and (max-width: 734px) {
+        height: auto;
     }
 }
 `;

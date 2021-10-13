@@ -59,8 +59,9 @@ const Sticker = () => {
                                 />
                             </Block>
                         </Col>
-                        <Col md={4}>
+                        <Col md={4} >
                             <Flex
+                                className=" d-sm-flex align-items-center d-md-block "
                                 margin="0px 0px 15px 0px"
                                 vertical
                                 alignItem="stretch"
@@ -72,6 +73,7 @@ const Sticker = () => {
                                 <P>Classic Softcover</P>
                             </Flex>
                             <Flex
+                            className=" d-sm-flex align-items-center d-md-block "
                                 bg="#C6E1F1"
                                 vertical
                                 margin="0px 0px 15px 0px"
@@ -84,6 +86,7 @@ const Sticker = () => {
                                 <ProductPrices slug={slug} />
                             </Flex>
                             <Flex
+                            className=" d-sm-flex align-items-center d-md-block "
                                 vertical
                                 margin="0px 0px 15px 0px"
                                 alignItem="stretch"

@@ -17,12 +17,15 @@ const ProPlannerPrice = ({slug}) => {
             <>
                 <H4 mb="15px" fontSize="18px" weight={700}>
                     <Txt fontSize="18px" lineHeight="1.1" color="#777777" >Priced just right at </Txt>
+                    
+                    <ProductPrice slug={slug} />
+                    {" "}
                     <ProductPrice
                         weight={300}
                         type="original_price"
                         slug={slug}
-                    />{" "}
-                    <ProductPrice slug={slug} />
+                    />
+                   
                 </H4>
                 <ProductBuy slug={slug} />
             </>

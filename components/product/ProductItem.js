@@ -79,13 +79,15 @@ const Title = styled.div`
 export const CartBtn = styled(AddToCart)`
     font-size: 14px;
     text-transform: uppercase;
-    border: 1px solid #000;
+    border: 1px solid transparent;
     width: 100%;
     padding: 8px 15px;
-    background: #000;
+    // background: #000;
     color: #fff;
-
+    font-weight: 700;
+    background: linear-gradient(118deg, rgba(209,78,154,1) 14%, rgba(255,86,109,1) 60%);
     border-radius: 6px;
+    box-shadow:  rgb(255 148 163) 0px 5px 16px 0px;
     &:disabled {
         opacity: 1;
         cursor: not-allowed;
@@ -93,8 +95,14 @@ export const CartBtn = styled(AddToCart)`
     }
 
     &:hover {
-        background: #000;
+        background: linear-gradient(118deg, rgba(209,78,154,1) 14%, rgba(255,86,109,1) 60%);
         color: #fff;
+    }
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 6px 20px;
+    box-shadow: unset;
+
     }
 `;
 

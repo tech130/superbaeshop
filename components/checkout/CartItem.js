@@ -45,8 +45,8 @@ export const CartLdr = styled.div`
 export const ImgOutline = styled.div`
     border-radius:10px;
     // margin:0px 20px 0px 1px;
-    width: 120px;
-    height: 120px;
+    max-width: 120px;
+    max-height: 120px;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
@@ -89,7 +89,7 @@ const CartItem = ({
                     
                 />
             </ImgOutline>
-            <FlexItem flexGrow={1} flexShrink={0} margin="0px 0px 0px 20px">
+            <FlexItem flexGrow={1} flexShrink={0} padding="0px 0px 0px 20px">
                 <P margin="0px" weight={700} fontSize="18px">
                     {product.title}
                 </P>

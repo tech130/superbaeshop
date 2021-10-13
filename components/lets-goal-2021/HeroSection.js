@@ -9,6 +9,7 @@ import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
 import Marquee from "react-fast-marquee";
 import CheckIcon from "../icons/CheckIcon";
+import { ProductPrices } from "../product/ProductPrice";
 
 const MeetTxt = styled.h1`
     font-size:48px;

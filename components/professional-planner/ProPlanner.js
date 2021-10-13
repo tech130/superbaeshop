@@ -13,7 +13,8 @@ import ResponsiveImage from "../common/ResponsiveImage";
 import useOnScreen from "../../hooks/layout/useOnScreen";
 import WhatsInside from "../lets-goal-2021/WhatsInside";
 import AnimateText from "../styled/AnimateText";
-
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
 const MeetTxt = styled.h1`
     font-size: 3.4rem;
     font-weight: 700;
@@ -27,6 +28,16 @@ const MeetTxt = styled.h1`
 
     @media (min-width: 768px) {
         font-size: 4rem;
+    }
+`;
+const ResponsiveSet = styled.div`
+    width:100%;
+    height:100%;
+    @media (max-width: 576px) {
+        height:400px;
+        div{
+            height:100%;
+        }
     }
 `;
 
@@ -97,7 +108,7 @@ const ProPlanner = () => {
                     <Row>
                         <Col>
                             <Block textAlign="center" margin="0px 0px 48px 0px">
-                                <Txt
+                                <P
                                     fontSize="4rem"
                                     weight={700}
                                     align="center"
@@ -105,7 +116,7 @@ const ProPlanner = () => {
                                 >
                                     A magical piece of design to fit every
                                     aspects of your <AnimateText> life</AnimateText>
-                                </Txt>
+                                </P>
                             </Block>
                         </Col>
                     </Row>
@@ -138,6 +149,7 @@ const ProPlanner = () => {
                     <Row>
                         <Col lg={12}>
                             <Block margin="0px 0px 15px 0px">
+                                <ResponsiveSet>
                                 <ResponsiveImage
                                     source={[
                                         {
@@ -147,6 +159,7 @@ const ProPlanner = () => {
                                     ]}
                                     image={require("./images/3.jpg?resize")}
                                 />
+                                </ResponsiveSet>
                             </Block>
                         </Col>
                         <Col lg={6}>
