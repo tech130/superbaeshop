@@ -137,9 +137,20 @@ export const NewButton = styled.button`
     }
 `;
 
-const ProductBuy = ({ slug }) => {
-    const product = useProduct(slug);
-    const productCountry = useProdCountry(product.product_country);
+const ProductBuy = ({ slug,addition="" }) => {
+    let product={};
+    let product_country={};
+    if(addition === "bundle-2021"){
+       let tempProduct = useProduct(slug);
+       product=tempProduct.sub_product;
+       product_country=tempProduct.product_country;
+       console.log(product,"sub")
+    }else{
+
+        product = useProduct(slug);
+        product_country=product.product_country
+    }
+    const productCountry = useProdCountry(product_country);
 
     if (productCountry && productCountry.country) {
         return <>

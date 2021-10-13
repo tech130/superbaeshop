@@ -348,7 +348,7 @@ export default function OptionsSection() {
               </SmallHeadingSet>
             </OptionCard>
             <CartButtonLeft>
-            <ProductBuy slug={"bundle-2021"} />
+            <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021"/>
               
             </CartButtonLeft>
             <div className="pop-up-text right">
