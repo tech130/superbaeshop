@@ -6,10 +6,8 @@ import useProduct from "../../hooks/redux/product/useProduct";
 const ProductLink = ({ slug, children, className = "" }) => {
     const country = useCountryParam();
     const { id, title } = useProduct(slug);
-    const data = useProduct(slug);
-    console.log(data)
 
-    if (id && slug!== 'bundle-2021'&& slug !== 'face-mask-bundle') {
+    if (id ) {
         return (
             <Link
                 href={`/[country]/product/${slug}`}

@@ -2,8 +2,11 @@ import React, { useRef, memo } from "react";
 import styled from "styled-components";
 import Block from "../styled/Block";
 import { H1, H2, H3 } from "../styled/Headings";
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
 import P from "../styled/P";
 import { useRouter } from "next/router";
+import AnimateText from "../styled/AnimateText";
 
 
 const UnitWrapper = styled.div`
@@ -14,35 +17,40 @@ const UnitWrapper = styled.div`
 `;
 
 const UnitWrapperText = styled.div`
-text-align: center;
-padding-top: 47px;
-position: relative;
-z-index: 4;
- h2{
     text-align: center;
-    font-size: 46px;
-    font-weight: 600;
+    padding-top: 47px;
+    position: relative;
+    z-index: 4;
+    @media (max-width: 565px) {
+        padding-top: 75px;
+    }
+ .main_sample{
+    // text-align: center;
+    // font-size: 46px;
+    // font-weight: 600;
     letter-spacing: -.005em;
     line-height: 1.07143;
-    max-width: 500px;
+    max-width: 600px;
     width: 88%;
     margin-left: auto;
     margin-right: auto;
  }
- h3{
-    text-align: center;
-    font-size: 28px;
-    font-weight: 400;
+ .small_sample{
+    // text-align: center;
+    // font-size: 28px;
+    // font-weight: 400;
     margin-top: 6px;
     max-width: 500px;
     width: 88%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15px;
  }
  p{
     color: #86868b;
     margin-bottom: 0rem;
  }
+
 `;
 const UnitWrapperImage = styled.div`
 position: absolute;
@@ -91,14 +99,25 @@ const CartButton = styled.button`
     margin-top: 1rem;
     padding: 8px 30px;
     border-radius: 30px;
-    background-color: #000;
+    // background-color: #000;
+    // color: #fff;
+    // font-weight: 600;
+    // font-size: 14px;
+    // box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
+    
+    background: linear-gradient(118deg, rgba(209,78,154,1) 14%, rgba(255,86,109,1) 60%);
     color: #fff;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: rgba(22, 53, 76, 0.18) 0px 7px 25px 0px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: rgb(255 86 109) 0px 8px 25px 0px;
+    border: 1px solid transparent;
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 6px 20px;
+    }
 `
 
-const BannerSection = ({ dark, title, sub_title, desc, img, ...restProps }) => {
+const BannerSection = ({ dark, title, sub_title, desc, img, animateText = '', ...restProps }) => {
     const router = useRouter();
     const { country } = router.query;
     return (
@@ -107,19 +126,24 @@ const BannerSection = ({ dark, title, sub_title, desc, img, ...restProps }) => {
 
             <UnitWrapper>
                 <UnitWrapperText>
-                    <H2 color={dark ? "#fff" : "#000"}>
-                        {title}
-                    </H2>
-                    <H3 color={dark ? "#fff" : "#000"}>
+                    <MainHeading className="main_sample" textAlign="center" color={dark ? "#fff" : "#000"}>
+                        {title}{" "}
+                        {animateText &&
+                            <AnimateText>
+                                {animateText}
+                            </AnimateText>
+                        }
+                    </MainHeading>
+                    <SmallHeading className="small_sample" textAlign="center" color={dark ? "#fff" : "#000"}>
                         {sub_title}
-                    </H3>
+                    </SmallHeading>
                     {
                         desc &&
                         <P>{desc}</P>
                     }
-                    <CartButton onClick={()=>{
+                    <CartButton onClick={() => {
                         router.push("/[country]/product/lets-goal-2021-planner", `/${country}/product/lets-goal-2021-planner`);
-                    }}>Buy</CartButton>
+                    }}>Buy Now</CartButton>
 
                 </UnitWrapperText>
                 <UnitWrapperImage>

@@ -191,7 +191,7 @@ const ProductList = () => {
         categories: state.master.category || [],
     }));
     let Show = 'products';
-    console.log(data)
+    console.log(data,'products')
     return (
         <ProdList justifyContent="center" alignItems="stretch">
             {

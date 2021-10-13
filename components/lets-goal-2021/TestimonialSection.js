@@ -77,12 +77,15 @@ const rotatingAnimation = keyframes`
 const TestimonialContainer = styled.div`
   width: ${(props) => props.width || "60%"};
   align-self: ${(props) => props.alignSelf || "flex-end"};
-  height: 8rem;
+  // height: 8rem;
   position: relative;
   animation-name: ${breatheAnimation};
   animation-duration: 2s;
   animation-iteration-count: infinite;
-  
+  padding: 1rem 2rem; 
+  border-radius: 0.6rem;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   @media (max-width: 992px) {
     width: 80%;
 }
@@ -91,25 +94,26 @@ const TestimonialContainer = styled.div`
 }
   @media (max-width: 576px) {
     width: 80%;
+    padding: 0.7rem 1rem;
 }
 `;
 
 const Card = styled.div`
-  background-color: white;
+  // background-color: white;
   width: 100%;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  padding: 1rem 2rem; 
-  border-radius: 0.6rem;
+  // box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  // padding: 1rem 2rem; 
+  // border-radius: 0.6rem;
   font-weight: 500;
   font-size: 16px;  
-  min-height:105px;
-  max-height:105px;
+  min-height:60px;
+  max-height:75px;
   overflow-y:auto;
   @media (max-width: 768px) {
-    padding: 0.7rem 1rem;
+    // padding: 0.7rem 1rem;
     font-size: 14px;  
-    max-height:106px;
-    max-height:106px;
+    min-height: 65px;
+    max-height: 84px;
   }
 `;
 const FlexBg = styled.div`
@@ -159,15 +163,15 @@ text-align: center;
 `;
 
 const TestimonailImage = styled.img`
-position: absolute;
-right: 6px;
-width: 60px;
-height: 60px;
-border-radius: 50%;
-object-fit: cover;
-background: white;
-padding: 8px;
-bottom: 0px;
+  position: absolute;
+  right: 9px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  padding: 8px;
+  bottom: -28px;
 `;
 
 const SpinningAnimation = styled.svg`
