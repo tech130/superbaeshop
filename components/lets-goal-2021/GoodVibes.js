@@ -76,6 +76,7 @@ background-size: 400% 100%;
       
     flex-direction: column;
     justify-content: space-evenly;
+    height:340px;
     }
 `;
 

@@ -6,7 +6,26 @@ import ModalHeader from "../modal/ModalHeader";
 import Block from "../styled/Block";
 import { useActiveCountry } from "../common/CountryLink";
 import { setValue } from "../../hooks/form/formReducer";
+import styled from "styled-components";
 
+const Title = styled.div`
+    color:#000;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 40px;
+`;
+const TitlDescription = styled.div`
+    text-align: center;
+    color: #000;
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+    max-width: 350px;
+    margin: auto;
+    line-height: 1.1;
+`;
 const signupForm = (countries = []) => ({
     inputs: {
         country: {
@@ -50,8 +69,10 @@ const SignUp = ({ changeNumber, closeModal }) => {
     return (
         <>
             <ModalHeader
-                title={"Sign Up"}
-                desc="Create your account with us. We will make sure you and your data is safe. "
+            border="none"
+            className="login_model_bg"
+            title={<Title>Sign Up</Title>}
+            desc={<TitlDescription>Create your account with us. We will make sure you and your data is safe.</TitlDescription>}
                 closeModal={closeModal}
             />
             <Block padding="25px 15px 30px">

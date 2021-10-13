@@ -15,6 +15,8 @@ import urls from "../../apiService/urls";
 import Loader from "../form/Loader";
 import { updateCartList } from "../../redux/user/cart";
 import { toBoolean, toNum } from "../../utils";
+import minus from '../../public/images/minus.png';
+import plus from '../../public/images/add.png';
 
 export const CartStyl = styled(Flex)`
     padding: 20px 10px;
@@ -42,7 +44,7 @@ export const CartLdr = styled.div`
 `;
 export const ImgOutline = styled.div`
     border-radius:10px;
-    margin:0px 20px 0px 1px;
+    // margin:0px 20px 0px 1px;
     width: 120px;
     height: 120px;
     overflow: hidden;
@@ -87,7 +89,7 @@ const CartItem = ({
                     
                 />
             </ImgOutline>
-            <FlexItem flexGrow={1} flexShrink={0}>
+            <FlexItem flexGrow={1} flexShrink={0} margin="0px 0px 0px 20px">
                 <P margin="0px" weight={700} fontSize="18px">
                     {product.title}
                 </P>
@@ -212,7 +214,7 @@ const QtyBtn = styled(Button)`
     width: 20px;
     border-radius: 50%;
     text-align: center;
-    border: 1px solid #000000;
+    // border: 1px solid #000000;
     font-weight: 700;
     line-height: 0;
     font-size: 16px;
@@ -252,11 +254,11 @@ const CartQuantity = ({ quantity, onMinus, onPlus }) => {
     return (
         <Flex margin="10px 0px 0px 0px" alignItems="center">
             <QtyBtn className="btn cart-qty-btn" onClick={onMinus}>
-                -
+                <img src={minus} alt="minus" />
             </QtyBtn>
             <CartQty>{quantity}</CartQty>
             <QtyBtn className="btn cart-qty-btn" onClick={onPlus}>
-                +
+            <img src={plus} alt="plus" />
             </QtyBtn>
         </Flex>
     );

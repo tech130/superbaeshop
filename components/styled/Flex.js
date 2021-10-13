@@ -14,6 +14,7 @@ const Flex = styled(Block)`
 export const FlexItem = styled.div`
     flex-grow: ${(props) => props.flexGrow || "auto"};
     flex-shrink: ${(props) => props.flexShrink || "auto"};
+    margin: ${(props) => props.margin || "0px"};
 `;
 
 export default Flex;
