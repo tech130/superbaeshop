@@ -86,7 +86,7 @@ export const CartBtn = styled(AddToCart)`
     color: #fff;
     font-weight: 700;
     background: linear-gradient(118deg, rgba(209,78,154,1) 14%, rgba(255,86,109,1) 60%);
-    border-radius: 6px;
+    border-radius: 30px;
     box-shadow:  rgb(251 145 159) 0px 8px 25px 0px;
     &:disabled {
         opacity: 1;

@@ -109,11 +109,12 @@ const CartButton = styled.button`
     color: #fff;
     font-weight: 700;
     font-size: 16px;
-    box-shadow: rgb(255 86 109) 0px 8px 25px 0px;
+    box-shadow: rgb(251 145 159) 0px 8px 25px 0px;
     border: 1px solid transparent;
     @media (max-width: 768px) {
         font-size: 14px;
         padding: 6px 20px;
+        box-shadow: unset;
     }
 `
 

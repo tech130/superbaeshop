@@ -92,19 +92,26 @@ const VerticalLine = styled.div`
 `;
 const CartButton = styled.button`
 padding: 15px 40px;
-border-radius: 8px;
-background-color: #262626;
+// border-radius: 8px;
+// background-color: #262626;
 color: #fff;
 font-weight: 700;
 font-size: 16px;
-width: calc(100% - 60px);
-margin: 0px 30px 5px 30px;
+// width: calc(100% - 60px);
+// margin: 0px 30px 5px 30px;
 border:1px solid transparent;
+background: linear-gradient(118deg, rgba(209,78,154,1) 14%, rgba(255,86,109,1) 60%);
+padding: 8px 30px;
+border-radius: 30px;
+box-shadow:  rgb(251 145 159) 0px 8px 25px 0px;
+margin: auto;
+margin-bottom: 5px;
 @media (max-width: 576px) {
-    width: 100%;
+    // width: 100%;
     margin: 0px;
     font-size: 15px;
     padding: 15px 15px;
+    box-shadow: unset;
 }
 `;
 const Cartlist = () => {

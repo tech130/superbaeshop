@@ -632,4 +632,7 @@ input#custom-checkbox {
   #main-cat-menu .inside-pad {
     padding: 0px 10px 30px 10px;
 }
+.responseBottom{
+  margin-bottom: 15px !important;
+}
 }
