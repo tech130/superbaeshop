@@ -21,6 +21,9 @@ max-width: 65vw;
         justify-content: space-evenly;
     min-height: 42px;
     align-items: center;
+    @media only screen and (max-width: 565px) {
+        justify-content: flex-start;
+    }
 
     }
     @media only screen and (max-width: 768px) {

@@ -84,7 +84,7 @@ const VerticalLine = styled.div`
     height: 100%;
     position: absolute;
     background: #ddd;
-    z-index: 99;
+    z-index: 0;
     left: 0px;
     @media (max-width: 992px) {
         display:none;

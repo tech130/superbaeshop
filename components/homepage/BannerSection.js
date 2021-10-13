@@ -117,7 +117,7 @@ const CartButton = styled.button`
     }
 `
 
-const BannerSection = ({ dark, title, sub_title, desc, img, animateText = '', ...restProps }) => {
+const BannerSection = ({ dark, title, sub_title, desc, img, animateText = '',slug="", ...restProps }) => {
     const router = useRouter();
     const { country } = router.query;
     return (
@@ -142,7 +142,7 @@ const BannerSection = ({ dark, title, sub_title, desc, img, animateText = '', ..
                         <P>{desc}</P>
                     }
                     <CartButton onClick={() => {
-                        router.push("/[country]/product/lets-goal-2021-planner", `/${country}/product/lets-goal-2021-planner`);
+                        router.push(`/[country]/product${slug}`, `/${country}/product${slug}`);
                     }}>Buy Now</CartButton>
 
                 </UnitWrapperText>
