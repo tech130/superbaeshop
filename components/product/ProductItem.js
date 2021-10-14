@@ -80,14 +80,14 @@ export const CartBtn = styled(AddToCart)`
     font-size: 14px;
     text-transform: uppercase;
     border: 1px solid transparent;
-    width: 100%;
-    padding: 8px 15px;
+    // width: 100%;
+    padding: 8px 30px;
     // background: #000;
     color: #fff;
     font-weight: 700;
     background: linear-gradient(118deg, rgba(209,78,154,1) 14%, rgba(255,86,109,1) 60%);
     border-radius: 30px;
-    box-shadow:  rgb(251 145 159) 0px 8px 25px 0px;
+    box-shadow:  rgb(251 145 159) 0px 7px 15px 0px;
     &:disabled {
         opacity: 1;
         cursor: not-allowed;
@@ -141,7 +141,10 @@ const ProductItem = ({ product = {} }) => {
                     <Block margin="0px 0px 5px 0px">
                         <ProductPrices slug={slug} />
                     </Block>
+                    <div className="text-center">
+
                     <CartBtn product={product} />
+                    </div>
                 </>
             )}
         </Block>

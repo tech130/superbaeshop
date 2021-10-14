@@ -32,9 +32,8 @@ const ScrollText = styled.div`
   align-items: center;
 `;
 const ResponsiveHeight = styled.div`
-    @media (max-width: 575px) {
-        height:100px;
-    }
+    max-width: 500px;
+    margin: auto;
 `;
 const scrollTexts = [
     "Cute",
@@ -72,9 +71,11 @@ const HeroSection = () => {
                             <Row alignItems="center">
                                 
                                 <Col lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                <ResponsiveHeight>
                                     <ResponsiveImage
                                         image={require("./images/cover.png?resize")}
                                     />
+                                    </ResponsiveHeight>
                                 </Col>
                                 <Col lg={6} sm={6} xs={12}>
                                     <MeetTxt>

@@ -120,7 +120,9 @@ const Detail = ({ slug }) => {
                             </Txt>
                         </Block>
                         <div className="seperator" />
+                        <div className="text-center">
                         <CartBtn product={product} />
+                        </div>
                         <div className="seperator" />
                         {product_content.map((x) => (
                             <Block key={`${x.id}`}>
@@ -141,17 +143,7 @@ const Detail = ({ slug }) => {
 
                     </Col>
                 </Row>
-                <Block padding="35px 0px 0px 0px">
-                    <H4>Similar products</H4>
-                    <Row>
-                        {api.fetching
-                            ? loader
-                            : Array.isArray(similarProductsEdited) &&
-                            similarProductsEdited.map((product) => (
-                                <RenderItem id={product} key={product} />
-                            ))}
-                    </Row>
-                </Block>
+                
                 <Block padding="35px 0px 0px 0px">
                     {/* <H4> products</H4> */}
                     {/* <Row> */}
@@ -178,6 +170,17 @@ const Detail = ({ slug }) => {
                             :
                             ''}
                     {/* </Row> */}
+                </Block>
+                <Block padding="35px 0px 0px 0px">
+                    <H4>Similar products</H4>
+                    <Row>
+                        {api.fetching
+                            ? loader
+                            : Array.isArray(similarProductsEdited) &&
+                            similarProductsEdited.map((product) => (
+                                <RenderItem id={product} key={product} />
+                            ))}
+                    </Row>
                 </Block>
             </Container>
         </Block>

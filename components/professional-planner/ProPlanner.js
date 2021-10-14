@@ -34,33 +34,39 @@ const ResponsiveSet = styled.div`
     width:100%;
     height:100%;
     @media (max-width: 576px) {
-        height:400px;
+        height:645px;
         div{
             height:100%;
         }
     }
 `;
+const ResponsiveHeight = styled.div`
+    max-width: 570px;
+    margin: auto;
+`;
 
 const ProPlanner = () => {
     return (
         <>
-            <Block padding="35px 0px">
+            <Block padding="0px 0px 35px 0px">
                 <Container>
                     <Row alignItems="center">
                         <Col lg={7}>
+                        <ResponsiveHeight>
                             <ResponsiveImage
                                 image={require("./images/1.png?resize")}
                             />
+                        </ResponsiveHeight>
                         </Col>
                         <Col lg={5}>
-                            <MeetTxt>
+                            <MainHeading>
                                 Meet the <br />
                                 Perfect <br />
                                 Professional  <AnimateText> planner</AnimateText>
-                            </MeetTxt>
-                            <H3 mb="35px" weight={700}>
+                            </MainHeading>
+                            <SmallHeading mb="35px" weight={700}>
                                 Crafted just for you!
-                            </H3>
+                            </SmallHeading>
                             <ProPlannerPrice slug={"the-professional-planner"}/>
                         </Col>
                     </Row>
@@ -74,20 +80,20 @@ const ProPlanner = () => {
             <Block padding="35px 0px">
                 <Container>
                     <Flex alignItems="center" flexWrap>
-                        <P
+                        <MainHeading
                             fontSize="4rem"
                             weight={700}
                             margin="10px 25px 15px 0px"
                             lineHeight={1}
                         >
                             Designed by <AnimateText> artist</AnimateText>
-                        </P>
+                        </MainHeading>
                         
                     </Flex>
                     <Block margin="0px 0px 25px">
-                        <Txt lineHeight={1} fontSize="3rem" weight={700}>
+                        <SmallHeading lineHeight={1} fontSize="3rem" weight={700}>
                             With highest quality print
-                        </Txt>
+                        </SmallHeading>
                         <P
                             lineHeight={1}
                             fontSize="2.2rem"
@@ -108,7 +114,7 @@ const ProPlanner = () => {
                     <Row>
                         <Col>
                             <Block textAlign="center" margin="0px 0px 48px 0px">
-                                <P
+                                <MainHeading
                                     fontSize="4rem"
                                     weight={700}
                                     align="center"
@@ -116,7 +122,7 @@ const ProPlanner = () => {
                                 >
                                     A magical piece of design to fit every
                                     aspects of your <AnimateText> life</AnimateText>
-                                </P>
+                                </MainHeading>
                             </Block>
                         </Col>
                     </Row>

@@ -39,10 +39,10 @@ const Sticker = () => {
                     </Flex>
                 </Container>
             </Block>
-            <InterSec />
+            {/* <InterSec /> */}
             <Block padding="35px 0px">
                 <Block padding="0px 10px 30px 10px">
-                    <MainHeading weight={400} textAlign="center">
+                    <MainHeading textAlign="center">
                         Is it true that this book has 1000 <AnimateText> stickers?</AnimateText>
                     </MainHeading>
                     <SmallHeading textAlign="center">

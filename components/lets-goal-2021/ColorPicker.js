@@ -46,6 +46,7 @@ const ColorSelectorContainer = styled.div`
   justify-content: space-around;
   width: max-content;
   align-self: flex-end;
+  margin-top: -25px;
 `;
 
 
@@ -87,7 +88,7 @@ background: ${(props) => props.bgColor2};
   height: 640px;
   overflow: hidden;
   @media (max-width: 576px) {
-    height: 85vw;
+  height: 460px;;
 }
 `;
 
@@ -96,6 +97,9 @@ const FirstSection = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
+  @media (max-width: 768px) {
+    align-self: center;
+  }
 `;
 const ImageHeight = styled.div`
   height:200px;
@@ -127,7 +131,7 @@ export default function ColorPicker() {
   return (
     <MainSectionOutside
       bgColor={colorInd}
-      bgColor2={colorInd2}
+      bgColor2={colorInd}
     >
       
       {colorOptions.map((color, ind) => {
@@ -173,10 +177,10 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainHeading color={`${colorInd === '#ffdce2'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
+          <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
 
-          <SmallHeading color={`${colorInd === '#ffdce2'? 'white':'black'}`}>
-          3 Fresh colors that reflect your personality
+          <SmallHeading  className="text-sm-left text-center" color={`${colorInd === '#ffdce2'? 'white':'black'}`}>
+          2 Fresh colors that reflect your personality
           </SmallHeading>
         </FirstSection>
         {/* <ImageHeight > */}

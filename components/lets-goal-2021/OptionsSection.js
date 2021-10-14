@@ -231,7 +231,7 @@ flex-direction:column;
 justify-content: start;
 flex-wrap: nowrap;
 align-items: center;
-margin: 15px 0 65px 0;
+margin: 15px 0 0px 0;
     @media (max-width: 992px) {
       height: 100%;
   }

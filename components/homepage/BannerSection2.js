@@ -14,7 +14,7 @@ const UnitWrapper = styled.div`
     min-height:580px;
     overflow: hidden;
     @media only screen and (max-width: 575px) {
-        min-height: 480px;
+        min-height: 300px;
     }
 `;
 
@@ -24,7 +24,7 @@ const UnitWrapperText = styled.div`
     position: relative;
     z-index: 4;
     @media only screen and (max-width: 575px) {
-        padding: 25px 0px ;
+        padding: 25px 0px 0px 0px ;
     }
  .main_sample{
     // text-align: center;
@@ -56,11 +56,11 @@ const UnitWrapperText = styled.div`
 `;
 const UnitWrapperImage = styled.div`
     overflow: hidden;
-    height: 400px;
+    height: ${(props)=>props.height || '400px'};
     display: flex;
     align-items: center;
     justify-content: center;
-    padding:30px 0px 0px 0px;
+    margin: ${(props)=>props.margin || '30px 0px 0px 0px'};
     img{
         height:100%;
     }
@@ -125,7 +125,7 @@ const CartButton = styled.button`
     }
 `
 
-const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',slug="", ...restProps }) => {
+const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',slug="",height="",margin="", ...restProps }) => {
     const router = useRouter();
     const { country } = router.query;
     return (
@@ -154,7 +154,7 @@ const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',sl
                     }}>Buy Now</CartButton>
 
                 </UnitWrapperText>
-                <UnitWrapperImage>
+                <UnitWrapperImage height={height} margin={margin}>
                     <img src={img} />
                     {/* <UnitWrapperImageFigure {...restProps} img={img}></UnitWrapperImageFigure> */}
                 </UnitWrapperImage>

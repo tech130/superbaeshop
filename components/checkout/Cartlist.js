@@ -105,7 +105,7 @@ padding: 8px 30px;
 border-radius: 30px;
 box-shadow:  rgb(251 145 159) 0px 8px 25px 0px;
 margin: auto;
-margin-bottom: 5px;
+margin-bottom: 15px;
 @media (max-width: 576px) {
     // width: 100%;
     margin: 0px;
