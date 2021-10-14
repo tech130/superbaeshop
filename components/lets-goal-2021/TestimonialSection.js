@@ -321,7 +321,7 @@ export default function TestimonialSection() {
 
       <Container fluid>
         <Row>
-          <Col  lg={6} sm={6} xs={12} >
+          <Col  lg={6} sm={12} xs={12} >
             <Flex width="100%" bgColor="#FFFFFF" height="90vh" padding="0px 0px 30px 0px" >
             <FlexBg >
             <FlexAssing
@@ -349,7 +349,7 @@ dispatch(cartIsOpen(true));
             </FlexBg>
             </Flex>
           </Col>
-          <Col lg={6} sm={6} xs={12} >
+          <Col lg={6} sm={12} xs={12} >
             <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="90vh" >
               <FlexBg2 className="flex-column" padding="20px 60px" >
                 <TestimonialCard alignSelf="flex-end" width="90%"

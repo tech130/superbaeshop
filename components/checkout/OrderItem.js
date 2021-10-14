@@ -19,7 +19,7 @@ import { updateOrders } from "../../redux/user/orders";
 import { toNum } from "../../utils";
 
 const OrderImg = styled.img`
-    width: 80px;
+    width: 120px;
     margin-right: 15px;
     height: auto;
 `;
@@ -106,7 +106,7 @@ const OrderItem = ({
                 <OrderHeader>
                     <Flex alignItems="center" padding="0px 0px 10px 0px">
                         <OrderIcon size={14} strokeWidth={1} />
-                        <Txt fontSize="14px" margin="0px 5px">
+                        <Txt weight={400} fontSize="16px" margin="0px 5px">
                             Order ID:{" "}
                             <Txt weight={600}>{tracking_client_id}</Txt>
                         </Txt>
@@ -142,7 +142,7 @@ const OrderItem = ({
                     </Col>
                     <Col md={4}>
                         <Block padding="10px 0px">
-                            <H6>Delivery Details</H6>
+                            <H6 weight={600}>Delivery Details</H6>
                             <DelP>{name}</DelP>
                             <DelP>{email}</DelP>
                             <DelP>
@@ -233,7 +233,7 @@ const OrderCartItem = ({
         <Flex alignItems="center" margin="0px 0px 15px 0px">
             <OrderImg className="order-img" src={thumbnail_image} alt={title} />
             <FlexItem flexgrow={1}>
-                <P margin="0px" weight={500} fontSize="16px">
+                <P margin="0px 0px 10px 0px" weight={600} fontSize="18px">
                     {title}
                 </P>
                 <Block margin="0px 0px 0px 0px">

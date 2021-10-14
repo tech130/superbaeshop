@@ -12,6 +12,7 @@ import OrderLoader from "./OrderLoader";
 import { H4 } from "../styled/Headings";
 import useUser from "../../hooks/redux/user/useUser";
 import Block from "../styled/Block";
+import MainHeading from "../styled/MainHeading";
 
 const OrderListing = () => {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const OrderListing = () => {
     return (
         <>
             <Block padding="0px 0px 10px 0px">
-                <H4>My Orders</H4>
+                <MainHeading>My Orders</MainHeading>
             </Block>
             <InfiniteList
                 loader={

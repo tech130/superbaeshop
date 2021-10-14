@@ -15,7 +15,7 @@ const ProPlannerPrice = ({slug}) => {
     if (id && productCountry && productCountry.country) {
         return (
             <>
-                <H4 className="responseBottom" mb="15px" fontSize="18px" weight={700}>
+                <H4 className="responseBottom text-center text-sm-start" mb="15px" fontSize="18px" weight={700}>
                     <Txt  fontSize="18px" lineHeight="1.1" color="#777777" >Priced just right at </Txt>
                     
                     <ProductPrice slug={slug} />

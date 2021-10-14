@@ -1,7 +1,7 @@
 import React, { useRef, memo } from "react";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
-import {Container, Row, Col } from "styled-bootstrap-grid";
+import { Container, Row, Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
 import { H3 } from "../styled/Headings";
 import Txt from "../styled/Txt";
@@ -51,23 +51,32 @@ const ProPlanner = () => {
             <Block padding="0px 0px 35px 0px">
                 <Container>
                     <Row alignItems="center">
-                        <Col lg={7}>
-                        <ResponsiveHeight>
-                            <ResponsiveImage
-                                image={require("./images/1.png?resize")}
-                            />
-                        </ResponsiveHeight>
+                        <Col lg={7} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            <ResponsiveHeight>
+                                <ResponsiveImage
+                                    image={require("./images/1.png?resize")}
+                                />
+                            </ResponsiveHeight>
                         </Col>
                         <Col lg={5}>
-                            <MainHeading>
+                            <MainHeading className="text-center text-sm-start">
                                 Meet the <br />
                                 Perfect <br />
                                 Professional  <AnimateText> planner</AnimateText>
                             </MainHeading>
-                            <SmallHeading mb="35px" weight={700}>
+                            <SmallHeading mb="35px" weight={700} className="text-center text-sm-start">
                                 Crafted just for you!
                             </SmallHeading>
-                            <ProPlannerPrice slug={"the-professional-planner"}/>
+                            <div className="text-center text-sm-start">
+                                <ProPlannerPrice slug={"the-professional-planner"} />
+                            </div>
+                        </Col>
+                        <Col lg={6} sm={6} xs={12} className="d-block d-sm-none d-md-none d-lg-none d-xl-none">
+                            {/* <ResponsiveHeight> */}
+                            <ResponsiveImage
+                                image={require("./images/1.png?resize")}
+                            />
+                            {/* </ResponsiveHeight> */}
                         </Col>
                     </Row>
                 </Container>
@@ -79,8 +88,8 @@ const ProPlanner = () => {
             {/* <WhatsInside /> */}
             <Block padding="35px 0px">
                 <Container>
-                    <Flex alignItems="center" flexWrap>
-                        <MainHeading
+                    {/* <Flex alignItems="center" flexWrap> */}
+                        <MainHeading className="text-center text-sm-start"
                             fontSize="4rem"
                             weight={700}
                             margin="10px 25px 15px 0px"
@@ -88,22 +97,25 @@ const ProPlanner = () => {
                         >
                             Designed by <AnimateText> artist</AnimateText>
                         </MainHeading>
-                        
-                    </Flex>
+
+                    {/* </Flex> */}
                     <Block margin="0px 0px 25px">
-                        <SmallHeading lineHeight={1} fontSize="3rem" weight={700}>
+                        <SmallHeading className="text-center text-sm-start" lineHeight={1} fontSize="3rem" weight={700}>
                             With highest quality print
                         </SmallHeading>
-                        <P
+                        <SmallHeading
                             lineHeight={1}
-                            fontSize="2.2rem"
+                            fontSize="2rem"
                             margin="0px 0px 15px 0px"
                             weight={500}
+                            className="text-center text-sm-start" 
                         >
                             Engineered by experts
-                        </P>
+                        </SmallHeading>
                     </Block>
-                    <ProPlannerPrice  slug={"the-professional-planner"} />
+                    <div className="text-center text-sm-start">
+                        <ProPlannerPrice slug={"the-professional-planner"} />
+                    </div>
                 </Container>
             </Block>
 
@@ -114,7 +126,7 @@ const ProPlanner = () => {
                     <Row>
                         <Col>
                             <Block textAlign="center" margin="0px 0px 48px 0px">
-                                <MainHeading
+                                <MainHeading className="text-center text-sm-center"
                                     fontSize="4rem"
                                     weight={700}
                                     align="center"
@@ -144,7 +156,9 @@ const ProPlanner = () => {
                                 Tracker. Fitness Tracker. Meal, Water, Coffee
                                 Tracker. Movies/TV Show Tracker.
                             </P>
-                            <ProPlannerPrice  slug={"the-professional-planner"}/>
+                            <div className="text-center text-sm-start">
+                                <ProPlannerPrice slug={"the-professional-planner"} />
+                            </div>
                         </Col>
                     </Row>
                 </Container>
@@ -156,15 +170,15 @@ const ProPlanner = () => {
                         <Col lg={12}>
                             <Block margin="0px 0px 15px 0px">
                                 <ResponsiveSet>
-                                <ResponsiveImage
-                                    source={[
-                                        {
-                                            media: "(max-width: 475px)",
-                                            srcSet: require("./images/3-mobile.jpg"),
-                                        },
-                                    ]}
-                                    image={require("./images/3.jpg?resize")}
-                                />
+                                    <ResponsiveImage
+                                        source={[
+                                            {
+                                                media: "(max-width: 475px)",
+                                                srcSet: require("./images/3-mobile.jpg"),
+                                            },
+                                        ]}
+                                        image={require("./images/3.jpg?resize")}
+                                    />
                                 </ResponsiveSet>
                             </Block>
                         </Col>
@@ -218,28 +232,28 @@ const ProfPlannerSlider = memo(() => {
                     cellSpacing={15}
                     {...props}
                 >
-                    <ResponsiveImage 
+                    <ResponsiveImage
                         image={require("./images/slides/1.jpg?resize")}
                     />
-                    <ResponsiveImage 
+                    <ResponsiveImage
                         image={require("./images/slides/2.jpg?resize")}
                     />
-                    <ResponsiveImage 
+                    <ResponsiveImage
                         image={require("./images/slides/4.jpg?resize")}
                     />
-                    <ResponsiveImage 
+                    <ResponsiveImage
                         image={require("./images/slides/5.jpg?resize")}
                     />
-                    <ResponsiveImage 
+                    <ResponsiveImage
                         image={require("./images/slides/6.jpg?resize")}
                     />
-                    <ResponsiveImage 
+                    <ResponsiveImage
                         image={require("./images/slides/7.jpg?resize")}
                     />
-                    <ResponsiveImage 
+                    <ResponsiveImage
                         image={require("./images/slides/8.jpg?resize")}
                     />
-                    <ResponsiveImage 
+                    <ResponsiveImage
                         image={require("./images/slides/9.jpg?resize")}
                     />
                 </Carousel>

@@ -90,7 +90,7 @@ const HeroSection = () => {
                                 <Col lg={6} sm={6} xs={12} className="d-block d-sm-none d-md-none d-lg-none d-xl-none">
                                     {/* <ResponsiveHeight> */}
                                         <ResponsiveImage
-                                            image={require("./images/cover3.png?resize")}
+                                            image={require("./images/cover.png?resize")}
                                         />
                                     {/* </ResponsiveHeight> */}
                                 </Col>

@@ -108,7 +108,7 @@ margin: auto;
 margin-bottom: 15px;
 @media (max-width: 576px) {
     // width: 100%;
-    margin: 0px;
+    // margin: 0px;
     font-size: 15px;
     padding: 15px 15px;
     box-shadow: unset;

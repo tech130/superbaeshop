@@ -139,12 +139,12 @@ const Freebies = () => {
                                 </Col>
                                 <Col lg={6} xs={6} sm={6} md={6} className="">
                                 <OuterSpace>
-                                    <NewFreetop width="130px" top="40px" left="15%">
+                                    <NewFreetop width="100px" top="40px" left="15%">
                                         <ResponsiveImage
                                                     image={require("./images/below-freebee/8.jpeg?resize")}
                                                 />
                                     </NewFreetop>
-                                    <NewFreeRight width="140px" top="0px" right="12%">
+                                    <NewFreeRight width="170px" top="20px" right="12%">
                                         <ResponsiveImage
                                                     image={require("./images/below-freebee/19.png?resize")}
                                                 />
@@ -180,9 +180,9 @@ const Freebies = () => {
                                     </AlignItems> */}
                                     <OuterSpace>
                                     
-                                    <NewFreeRight width="140px" top="0px" right="1%">
+                                    <NewFreeRight width="200px" top="-12px" right="5%">
                                         <ResponsiveImage
-                                                    image={require("./images/below-freebee/17.jpeg?resize")}
+                                                    image={require("./images/below-freebee/9.png?resize")}
                                                 />
                                     </NewFreeRight>
                                 </OuterSpace>
@@ -226,8 +226,8 @@ const Freebies = () => {
                                     </NewFreetop>
                                 </Col>
                             </Row>
-                            <Row alignItems="center">
-                                <Col lg={4} xs={3} sm={3} md={3} >
+                            <Row alignItems="start">
+                                <Col lg={4} xs={3} sm={2} md={3} >
                                     {/* <AlignItems justify="end" mb="40">
                                         
                                             <LeftDiv>
@@ -245,25 +245,25 @@ const Freebies = () => {
                                         
                                     </OuterSpace>
                                 </Col>
-                                <Col lg={4} xs={6} sm={6} md={6} className="">
+                                <Col lg={4} xs={6} sm={7} md={6} className="">
                                     <OuterSpace>
-                                        <NewFreetop width="160px" top="0px" left="-10%">
+                                        <NewFreetop width="230px" top="25px" left="-10%">
                                             <ResponsiveImage
-                                                        image={require("./images/below-freebee/9.png?resize")}
+                                                        image={require("./images/below-freebee/17.jpeg?resize")}
                                                     />
                                         </NewFreetop>
-                                        <NewFreeRight width="125px" top="-20px" right="10px">
+                                        <NewFreeRight restop="-10px" width="140px" top="-10px" right="10px">
                                             <ResponsiveImage
-                                                        image={require("./images/below-freebee/16.jpeg?resize")}
+                                                        image={require("./images/below-freebee/22.png?resize")}
                                                     />
                                         </NewFreeRight>
                                     </OuterSpace>
                                     <AlignItems mb="40" justify="center">
                                         
                                             <LeftDiv>
-                                                <ResponsiveImage
+                                                {/* <ResponsiveImage
                                                     image={require("./images/below-freebee/22.png?resize")}
-                                                />
+                                                /> */}
                                             </LeftDiv>
                                     </AlignItems>
                                 </Col>

@@ -130,7 +130,9 @@ nail art), Self Portrait, Pen it down.
                             {/* <P>
                                 <b>FREE GOODIES</b>: Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box
                             </P> */}
+                            <P textAlign="center">
                             <ProductBuy slug={"lets-goal-2021-planner"} />
+                            </P>
                         </Block>
                     </Col>
                 </Row>
