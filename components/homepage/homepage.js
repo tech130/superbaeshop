@@ -18,35 +18,9 @@ import Stickerbook from './images/Stickerbook.jpeg';
 import popsocket from './images/popsocket.png';
 import Plannerpink from './images/Plannerpink.png';
 import Plannerblack from './images/Plannerblack.png';
-import laptopskin from './images/laptopskin.jpeg';
-const MainCaption = styled.div`
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-`;
+import laptopskin from './images/laptopskin.png';
+import phonecase from './images/phonecase.jpeg';
 
-const GradientText = styled.h1`
-  margin-left: 1rem;
-  font-size: 2rem;
-  background: linear-gradient(to right, #f4edf4 0%, #eef2fa 51%, #d7bcbd 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-const ImageCon = styled.div`
-width: 250px;
-height: 250px;
-margin-right: 18px;
-text-align: center;
-background-color: transparent;
-position: relative;
-overflow: hidden;
-border-radius: 12px;
-@media only screen and (min-width: 734px) {
-    width: 300px;
-    height: 300px;
-    margin-right: 16px;
-}
-`;
 
 
 const HomePage = () => {
@@ -54,15 +28,15 @@ const HomePage = () => {
         <Container fluid>
             {/* <Row> */}
             <BannerSection2 dark={false}
-            height={"400px"} margin="20px 0px 0px 0px"
-             slug="/lets-goal-2021-planner"
+                height={"400px"} margin="20px 0px 0px 0px" resHeight="auto"
+                slug="/lets-goal-2021-planner"
                 title={"My space 2022 "} animateText="Planner" sub_title={"PRE-BOOKING open now!"} desc={""}
                 img={Plannerpink}
                 // img={"https://www.apple.com/v/home/ab/images/heroes/iphone-12/iphone_12_updated__jepm2xpxncuy_large.jpg"}
                 img2={"https://www.apple.com/v/home/ab/images/heroes/iphone-12/iphone_12_updated__jepm2xpxncuy_small_2x.jpg"} />
 
             <BannerSection2 dark={false}
-            height={"500px"}margin="40px 0px 0px 0px"
+            height={"500px"}margin="40px 0px 0px 0px" resHeight="auto"
             slug="/the-professional-planner"
                 title={"Work  "} animateText="Planner" sub_title={"Getting things done was never this easy"} desc={""}
                 // img={"https://www.apple.com/v/home/ab/images/heroes/iphone-12-pro/iphone_12_pro_us__e5oyysg4k0ya_large.jpg"} 
@@ -74,7 +48,7 @@ const HomePage = () => {
                     <Row>
                         <Col lg={6}>
                             <Block margin="0px 0px 0px 0px">
-                                <BannerSection2 dark={false} width={"1262px"} height={"440px"}margin="10px 0px 0px 0px"
+                                <BannerSection2 dark={false} width={"1262px"} resHeight="420px" height={"440px"}margin="10px 0px 0px 0px"
                                 slug="/ultimate-sticker-book"
                                     title={"The Ultimate Sticker  "} animateText="Book" sub_title={"Now with 1500+ stickers"} desc={""}
                                     // img={"https://www.apple.com/v/home/ab/images/promos/ipad-pro/promo_ipad_pro_non_avail__c6f02v7gnwgi_large.jpg"}
@@ -84,13 +58,13 @@ const HomePage = () => {
                         </Col>
                         <Col lg={6}>
                             <Block margin="0px 0px 15px 0px">
-                                <BannerSection2 dark={false} width={"1262px"} height={"440px"}margin="10px 0px 0px 0px"
+                                <BannerSection2 dark={false} width={"1262px"} resHeight="420px" height={"440px"}margin="10px 0px 0px 0px"
                                 slug="?super_category=1"
                                     title={"Phone"} animateText="Cases" sub_title={"One that truly sticks with you"} desc={""}
                                     // img={"https://www.apple.com/v/home/ab/images/promos/watch-series-6/promo_watch_series_6_lte__f8lrasjnry2y_large.jpg"}
                                 //     img={Stickerbook}
                                 //    img2={"https://www.apple.com/v/home/ab/images/promos/watch-series-6/promo_watch_series_6_lte__f8lrasjnry2y_small_2x.jpg"} />
-                                img={"https://www.apple.com/v/home/ab/images/promos/apple-fitness-plus/tile__cauwwcyyn9hy_large.jpg"} 
+                                img={phonecase} 
                                     img2={"https://www.apple.com/v/home/ab/images/promos/back-to-school-2021/promo_bts__bg3cb4kaoqoi_small_2x.jpg"}/> 
                             </Block>
                         </Col>
@@ -102,7 +76,7 @@ const HomePage = () => {
                     <Row>
                         <Col lg={6}>
                             <Block margin="0px 0px 0px 0px">
-                                <BannerSection2 dark={false} width={"1154px"} height={"370px"} margin="10px 0px 0px 0px"
+                                <BannerSection2 dark={false} width={"1154px"} resHeight="auto" height={"370px"} margin="10px 0px 0px 0px"
                                    slug="/laptopskin"
                                     title={"Laptop "} animateText="Skins" sub_title={"Soon bringing the essence in you"} desc={""}
                                 //    img={"https://www.apple.com/v/home/ab/images/promos/ipad-pro/promo_ipad_pro_non_avail__c6f02v7gnwgi_large.jpg"}
@@ -115,7 +89,7 @@ const HomePage = () => {
                         </Col>
                         <Col lg={6}>
                             <Block margin="0px 0px 0px 0px">
-                                <BannerSection2 dark={false} width={"1262px"} height={"370px"}margin="10px 0px 0px 0px"
+                                <BannerSection2 dark={false} width={"1262px"} resHeight="auto" height={"370px"}margin="10px 0px 0px 0px"
                                  slug="/PopSocket"
                                     title={"Pop "} animateText="Sockets" sub_title={"  "} desc={""}
                                     // img={"https://www.apple.com/v/home/ab/images/promos/back-to-school-2021/promo_bts__bg3cb4kaoqoi_large.jpg"}

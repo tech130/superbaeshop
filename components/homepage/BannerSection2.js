@@ -65,7 +65,7 @@ const UnitWrapperImage = styled.div`
         height:100%;
     }
     @media only screen and (max-width: 734px) {
-        height: auto;
+        height:  ${(props)=>props.resHeight};
     }
 }
 `;
@@ -125,7 +125,7 @@ const CartButton = styled.button`
     }
 `
 
-const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',slug="",height="",margin="", ...restProps }) => {
+const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',slug="",height="",resHeight="",margin="", ...restProps }) => {
     const router = useRouter();
     const { country } = router.query;
     return (
@@ -154,7 +154,7 @@ const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',sl
                     }}>Buy Now</CartButton>
 
                 </UnitWrapperText>
-                <UnitWrapperImage height={height} margin={margin}>
+                <UnitWrapperImage height={height} margin={margin} resHeight={resHeight}>
                     <img src={img} />
                     {/* <UnitWrapperImageFigure {...restProps} img={img}></UnitWrapperImageFigure> */}
                 </UnitWrapperImage>
