@@ -6,7 +6,6 @@ import { fetchFilters } from "../../../redux/product/listing";
 import AOS from 'aos';
 
 const ProductListPage = ({ filters }) => {
-    console.log(filters);
     // AOS.init({
     //     duration : 2000
     //   })

@@ -111,7 +111,6 @@ const Header = () => {
 
       const isPanel = useCartIsOpen();
       const {pathname} = useRouter();
-      console.log("wewe",pathname)
     return (
         <>
             <Hdr border={pathname ==="/[country]" ? '1px solid #ddd':'1px solid #ddd'} >

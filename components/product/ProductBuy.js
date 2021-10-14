@@ -83,7 +83,6 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
 
 export const AddToCart = ({ className = "", product = {} }) => {
     const { onClick, fetching, btnText, inStock } = useAddToCart(product);
-    console.log(className,'casssss')
     return (
         <Button
             disabled={fetching || !inStock}
@@ -146,7 +145,6 @@ const ProductBuy = ({ slug,addition="" }) => {
        let tempProduct = useProduct(slug);
        product=tempProduct.sub_product;
        product_country=tempProduct.product_country;
-       console.log(product,"sub")
     }else{
 
         product = useProduct(slug);

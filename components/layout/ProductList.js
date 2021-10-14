@@ -199,7 +199,6 @@ const ProductList = ({Show=''}) => {
     const router = useRouter();
     const country = useCountryParam();
     // let Show = 'productsdg';
-    console.log(data,'products')
     return (
         <ProdList justifyContent="center" alignItems="stretch">
             {/* {

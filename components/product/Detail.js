@@ -49,7 +49,6 @@ const RightBtn = ({ nextSlide, slideCount }) => {
 const Detail = ({ slug }) => {
     const dispatch = useDispatch();
     const product = useProduct(slug);
-    console.log(product, "kkkkkk")
     const {
         title,
         thumbnail_image,

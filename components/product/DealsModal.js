@@ -99,7 +99,6 @@ const DealsModal = ({ closeModal }) => {
         return deals;
     }, [products, product]);
 
-    console.log(list);
 
     return (
         <>

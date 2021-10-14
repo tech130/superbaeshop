@@ -81,7 +81,6 @@ export const fetchApi = (config, name, handleRes) => {
                     });
                 })
                 .catch((err) => {
-                    console.log(err);
                     // dispatch(handleHttpErr(err));
                     dispatch({
                         type: apiTyps.rejected,

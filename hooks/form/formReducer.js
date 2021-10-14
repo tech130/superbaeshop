@@ -9,7 +9,6 @@ export const init = {
 };
 
 export default function formReducer(state, action) {
-    // console.log(state,action)
     switch (action.type) {
         case "on_change":
             return {

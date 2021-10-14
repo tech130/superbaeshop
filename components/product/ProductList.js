@@ -131,7 +131,6 @@ const Filters = () => {
     const [activeCheck, setActive] = useState(query.design_type ? query.design_type : "");
     const [toggle, setToggle] = useState(list.length > 0 ? list.map((item) => { return item.title }) : []);
     const country = useCountryParam();
-    console.log(query, 'query');
     const checkMarkChange = (id, href, filter_key) => {
         setActive(activeCheck === id ? '' : id);
         if (query[`${filter_key}`] && query[`${filter_key}`] !== '' && id !== '') {
@@ -325,7 +324,6 @@ const EaringList = () => {
     }, [dispatch, query]);
     const [toggle, setToggle] = useState(false);
     const loadTotalInformation = (data) => {
-        console.log(data)
         let { count, fetching } = data;
         return (
             <p>
