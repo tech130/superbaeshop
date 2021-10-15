@@ -88,7 +88,7 @@ const CouponIp = ({
                                         fetching={fetching}
                                         disabled={redeem}
                                         mb="0"
-                                        className="coupon-submit"
+                                        className="coupon-submit no_box_shadow"
                                     >
                                         APPLY
                                     </SubmitButton>

@@ -96,14 +96,14 @@ const CartSummary = ({
     return (
         <>
             <CartSum>
-                {/* <SumItem
-                    title="Cart Total"
+                <SumItem
+                    title="Subtotal"
                     amt={`${currency_type}${cartTotal.toFixed(2)}`}
-                /> */}
-                {/* <SumItem
-                    title="Delivery Charge"
+                />
+                <SumItem
+                    title="Taxes and Charges"
                     amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
-                /> */}
+                />
                 {redeem ? (
                     <>
                         <SumItem
@@ -138,13 +138,10 @@ const CartSummary = ({
                     amt={`${currency_type}${total.toFixed(2)}`}
                     
                 />
-                <ToolCustom href="#" id="DisabledAutoHideExample">!
+                {/* <ToolCustom href="#" id="DisabledAutoHideExample">!
                 </ToolCustom>
                 <Tooltip placement="top" isOpen={tooltipOpen} autohide={false} target="DisabledAutoHideExample" toggle={toggle}>
-                    {/* <SumItem
-                    title="Cart Total"
-                    amt={`${currency_type}${cartTotal.toFixed(2)}`}
-                />  */}
+                  
                     <SumItem
                         title="Delivery Charge"
                         amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
@@ -153,7 +150,7 @@ const CartSummary = ({
                         title="Offer Amount"
                         amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
                     />
-                </Tooltip>
+                </Tooltip> */}
             </CartSum>
         </>
     );

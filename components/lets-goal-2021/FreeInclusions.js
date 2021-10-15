@@ -30,7 +30,7 @@ const ColorBoxStylNew = styled.div`
     position:relative;
     padding-bottom: 60px;
     height:${(props) => props.height || "100%"};
-    border: 1px solid #efebff;
+    border: 1px solid transparent ;
     justify-content: center;
     box-shadow: 1px 1px 18px 1px #efebff;
     border-radius: 30px;

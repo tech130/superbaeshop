@@ -67,7 +67,10 @@
 }
 
 .checkout-bg{
-  background:#f5f6f9;
+  background:#f9f9f9;
+}
+.no_box_shadow{
+  box-shadow: none !important;
 }
 .bg-gradients{
     display: flex;

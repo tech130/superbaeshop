@@ -35,7 +35,7 @@ import Block from "../styled/Block";
 
 const ImportantPoints = styled.ul`
     width: 90%;
-    background-color: #f5f6f9;
+    background-color: #f9f9f9;
     list-style: inside;
     list-style-type: circle;
     border: 1px solid #ff566d4f;
@@ -306,6 +306,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
 
             </ImportantPoints>
             <SubmitBtn
+                className="no_box_shadow"
                 margin="0px 0px 10px 0px"
                 onClick={onPayNow}
                 disabled={fetching}
@@ -313,7 +314,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                 PAY NOW
             </SubmitBtn>
             {activeCountry.is_cod_available && (
-                <SubmitBtn onClick={onPayLater} disabled={fetching}>
+                <SubmitBtn  className="no_box_shadow" onClick={onPayLater} disabled={fetching}>
                     CASH ON DELIVERY (+{activeCountry.currency_type}
                     {activeCountry.cod_charge})
                 </SubmitBtn>

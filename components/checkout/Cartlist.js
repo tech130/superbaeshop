@@ -223,11 +223,10 @@ const LocalCartList = () => {
                         <Col lg={4} sm={6} mdOffset={4} smOffset={3}>
                         <LoginModalBtn
                             block
-                            border="1px solid #000"
-                            borderRadius="10px"
-                            padding="5px"
-                            color="white"
-                            bg="black"
+                            padding="5px 10px"
+                                border="1px solid #000"
+                                margin="0px 0px 3px"
+                                className="new_btn_login no_box_shadow"
                         >
                             Login to Checkout
                         </LoginModalBtn>

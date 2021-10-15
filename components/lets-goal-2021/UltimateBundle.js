@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
+import Txt from "../styled/Txt";
 import Marquee from "react-fast-marquee";
 import ProductBuy from "../product/ProductBuy";
 import { Container, Row, Col } from "styled-bootstrap-grid";
@@ -11,7 +12,10 @@ import image2 from './images/ultimate-bundle/WALL CALENDAR.png';
 import image3 from './images/ultimate-bundle/weekly planner-01 (1).png';
 import image4 from './images/ultimate-bundle/laptopskin.png';
 import image5 from './images/ultimate-bundle/slam book.png';
-
+import { ProductPrices } from "../product/ProductPrice";
+import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
+import { useProdCountry } from "../common/CountryLink";
+import useProduct from "../../hooks/redux/product/useProduct";
 import styled from "styled-components";
 
 const MainDiv = styled.div`
@@ -30,7 +34,7 @@ const MainDiv2 = styled.div`
   display: flex;
   align-items: center;
   margin: 0px 15px;
-  border: 1px solid #dbcece;
+  border: 1px solid transparent;
   box-shadow:  1px 1px 16px 1px #efebff;
   border-radius: 20px;
 
@@ -58,7 +62,12 @@ const scrollTexts = [
 ];
 const UltimateBundle = () => {
 
-
+    let tempProduct = useProduct("lets-goal-2021-planner");
+    let product=tempProduct.sub_product;
+    let product_country=product.product_country;
+    console.log(product_country)
+    // const productCountry = useProdCountry(product_country[0]);
+    const productCountry = product_country[0];
     return (
         <Block padding="0px 0px 65px 0px" className="overflow-hidden">
             <div className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
@@ -71,6 +80,7 @@ const UltimateBundle = () => {
 
                     <Flex className="overflow-hidden">
                         <Marquee
+                            play={true}
                             speed={50}
                             // gradientWidth={200}
                             gradient={false}
@@ -103,6 +113,34 @@ const UltimateBundle = () => {
                         </Marquee>
                     </Flex>
                     <Flex alignItems="center" margin="30px 0px 0px 0px" >
+                        <Txt  fontSize="18px" weight="700" lineHeight="1.1" color="#777777" >Priced just right at  </Txt>
+                        
+                        <Txt
+                textDecor={"none" }
+                margin="0px 8px 0px 10px"
+                weight={700}
+                        fontSize="16px"
+               
+            >
+                
+                {productCountry.country.currency_type}
+                {1 * (productCountry["selling_price"] || 0)}{" "}
+            </Txt>
+                        <Txt
+                        margin="0px 8px 0px 0px"
+                        weight={600}
+                        color="#999999"
+                        fontSize="14px"
+                textDecor={"line-through "}
+               
+            >
+                {productCountry.country.currency_type}
+                {1 * (productCountry["original_price"] || 0)}{" "}
+            </Txt>
+                            {/* <ProductPrices slug={"lets-goal-2021-planner"} addition="bundle-2021" /> */}
+                    
+                        </Flex>
+                    <Flex alignItems="center" margin="10px 0px 0px 0px" >
                         <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021" />
 
                     </Flex>
@@ -142,6 +180,10 @@ const UltimateBundle = () => {
                     })}
                     <Flex vertical width="100%" alignItems="center" margin="0">
                         <Flex alignItems="center" margin="30px 0px 0px 0px" >
+                            <ProductPrices slug={"lets-goal-2021-planner"} addition="bundle-2021" />
+                    
+                        </Flex>
+                        <Flex alignItems="center" margin="10px 0px 0px 0px" >
                             <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021" />
 
                         </Flex>
