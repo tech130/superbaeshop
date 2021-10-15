@@ -1,45 +1,51 @@
 import React, { useEffect, useState } from "react";
-import Flex from "../styled/Flex";
 import AnimateText from "../styled/AnimateText";
 import Img from "../styled/Img";
 import MainHeading from "../styled/MainHeading";
-import SmallHeading from "../styled/SmallHeading";
-import plannerPink from './images/cover3.png';
+// import SmallHeading from "../styled/SmallHeading";
+// import plannerPink from './images/cover3.png';
 // import plannerWhite from './images/planner white.png';
 import plannerBlack from './images/planner black.png';
 import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 
-const MainCaption = styled.div`
-  text-align: center;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.1;
-  color:${(props) => props.color || 'black'};
-  @media (max-width: 576px) {
-    font-size: 2rem;
-}
-`;
+// const MainCaption = styled.div`
+//   text-align: center;
+//   font-size: 48px;
+//   font-weight: 700;
+//   line-height: 1.1;
+//   color:${(props) => props.color || 'black'};
+//   @media (max-width: 576px) {
+//     font-size: 2rem;
+// }
+// `;
 
-const ColorSelector = styled.div`
-  background: ${(props) => props.background || "red"};
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: #d1d1d1 0px 0px 7px 2px;
-`;
+// const ColorSelector = styled.div`
+//   background: ${(props) => props.background || "red"};
+//   height: 2.5rem;
+//   width: 2.5rem;
+//   border-radius: 50%;
+//   cursor: pointer;
+//   box-shadow: #d1d1d1 0px 0px 7px 2px;
+// `;
 
 const ColorSelectorContainer = styled.div`
   display: flex;
   justify-content: space-around;
   width: max-content;
-  align-self: flex-end;
-  margin-top: -25px;
+  align-self: center;
+  margin-top: -15px;
+  flex-direction: row;
   h4{
     margin-bottom:0px;
     margin-right: 20px;
+    @media (max-width: 576px) {
+      margin-bottom:10px;
+    }
+  }
+  @media (max-width: 576px) {
+    flex-direction: column;
   }
 `;
 
@@ -82,7 +88,7 @@ background: ${(props) => props.bgColor2};
   height: 640px;
   overflow: hidden;
   @media (max-width: 576px) {
-  height: 460px;;
+  height: 460px;
 }
 `;
 
@@ -95,9 +101,7 @@ const FirstSection = styled.div`
     align-self: center;
   }
 `;
-const ImageHeight = styled.div`
-  height:200px;
-`;
+
 const ContentSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -111,6 +115,19 @@ const ContentSection = styled.div`
   justify-content: center;
   @media (max-width: 768px) {
     justify-content: space-evenly;
+}
+`;
+const ImageHeight = styled.div`
+  max-height: 460px;
+  img{
+    height: 100%;
+    width: auto;
+  }
+  @media (max-width: 768px) {
+    max-height: 375px;
+}
+  @media (max-width: 768px) {
+    max-height: 275px;
 }
 `;
 
@@ -157,9 +174,9 @@ export default function ColorPicker() {
             2 Fresh colors that reflect your personality
           </SmallHeading> */}
         </FirstSection>
-        {/* <ImageHeight > */}
+        <ImageHeight >
         <Img src={colorInd === "#ffdce2" ? `${plannerBlack}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerBlack}`} width="50%" />
-        {/* </ImageHeight> */}
+        </ImageHeight>
         <ColorSelectorContainer>
           {/* {
             colorOptions.map((colorr, ind) => {

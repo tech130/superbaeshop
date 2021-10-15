@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import Block from "../styled/Block";
 import { Col, Row, Container } from "styled-bootstrap-grid";
 
@@ -100,18 +100,10 @@ position: static;
   height:100%;
   background:black;
 `;
-const MobDiv = styled.div`
-position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 400px;
-    background: white;
-    width: 300px;
-`;
+
 const OutlineDiv = styled.div`
   height: 100%;
   position:relative;
-
 `;
 const StyledDivMinHeight = styled.div`
 // background-image: url('');
@@ -143,15 +135,7 @@ const FadeContainer = styled.div`
         align-items: center;
     }
 `;
-const PopUp = styled.div`
-    height: 40px;
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 0px 0px 0px 90px;
-    justify-content: end;
-`;
+
 const Position = styled.div`
     height: 10px;
     position: relative;

@@ -6,27 +6,41 @@ import Txt from "../styled/Txt";
 import Flex, { FlexItem } from "../styled/Flex";
 import Img from "../styled/Img";
 import P from "../styled/P";
-import Button from "../styled/Button";
 import ModalHeader from "../modal/ModalHeader";
 import EmptyList from "../common/EmptyList";
 import { useProdCountry } from "../common/CountryLink";
-import { useAddToCart } from "./ProductBuy";
-
+import { AddToCart } from "./ProductBuy";
 export const ItemStyl = styled(Flex)`
     padding: 15px;
     border-bottom: solid 2px #f5f5f5;
     position: relative;
     align-items: center;
 `;
+export const CartButton = styled(AddToCart)`
+    padding: 5px 20px;
+    border-radius: 30px;
+    background: #f5f6f9;
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: none;
+    text-transform: uppercase;
+    border: 1px solid #cecece;
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 5px 20px;
+    box-shadow: none;
 
+    }
+`;
 const DealItem = ({ product = {} }) => {
     const productCountry = useProdCountry(product.product_country);
     const currencyType = productCountry.country.currency_type;
     const price = productCountry.selling_price || 0;
 
-    const { fetching, onClick, btnText } = useAddToCart(product, {
-        isOffer: true,
-    });
+    // const { fetching, onClick, btnText } = useAddToCart(product, {
+    //     isOffer: true,
+    // });
 
     return (
         <ItemStyl>
@@ -65,7 +79,8 @@ const DealItem = ({ product = {} }) => {
                             </Txt>
                         </Flex>
                     </FlexItem>
-                    <Button
+                    <CartButton product={product} /> 
+                    {/* <Button
                         onClick={onClick}
                         padding="5px 20px"
                         border="1px solid #cecece"
@@ -76,7 +91,7 @@ const DealItem = ({ product = {} }) => {
                         <Txt fontSize="13px" color="#fff" weight={500}>
                             {btnText}
                         </Txt>
-                    </Button>
+                    </Button> */}
                 </Flex>
             </FlexItem>
         </ItemStyl>

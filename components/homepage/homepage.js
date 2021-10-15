@@ -7,7 +7,7 @@ import GoodVibes from "../lets-goal-2021/GoodVibes";
 import StayTuned from "../lets-goal-2021/StayTuned";
 import TestimonialSection from "../lets-goal-2021/TestimonialSection";
 import workplanner from './images/workplanner.png';
-import Stickerbook from './images/Stickerbook.jpeg';
+import Stickerbook from './images/Stickerbook.png';
 import popsocket from './images/popsocket.png';
 import Plannerpink from './images/Plannerpink.png';
 import laptopskin from './images/laptopskin.png';

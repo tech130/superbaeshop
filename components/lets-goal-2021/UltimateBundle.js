@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
 import Txt from "../styled/Txt";
@@ -13,8 +13,6 @@ import image3 from './images/ultimate-bundle/weekly Planner copy.jpg';
 import image4 from './images/ultimate-bundle/laptop copy (1).jpg';
 import image5 from './images/ultimate-bundle/Slam Book copy.jpg';
 import { ProductPrices } from "../product/ProductPrice";
-import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
-import { useProdCountry } from "../common/CountryLink";
 import useProduct from "../../hooks/redux/product/useProduct";
 import styled from "styled-components";
 
