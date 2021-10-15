@@ -2,8 +2,7 @@ import React, { useRef, useEffect } from "react";
 import Block from "../styled/Block";
 import { Col, Row, Container } from "styled-bootstrap-grid";
 
-const BGImage = require("./images/Bg1.jpg?resize");
-import BGImage2 from './images/bg2.jpg';
+// import BGImage2 from './images/bg2.jpg';
 import styled, { keyframes } from "styled-components";
 
 const animate = keyframes`
@@ -85,7 +84,7 @@ const SubCaption = styled.div`
 }
 `;
 const StyledDiv = styled.div`
-background-image: url(${BGImage});
+// background-image: url('');
   background-position:center;
   background-size: 100% 100%;
   position: relative;
@@ -115,7 +114,7 @@ const OutlineDiv = styled.div`
 
 `;
 const StyledDivMinHeight = styled.div`
-background-image: url(${BGImage2});
+// background-image: url('');
   background-position:center;
   background-size: 100% 100%;
   position: relative;

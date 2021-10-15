@@ -103,22 +103,22 @@ const Freebies = () => {
             <Row>
                 <Container fluid>
                     <Row>
-                        <OutLine>
+                    {/* <OutLine>
 
                             <Row alignItems="center">
                                 <Col lg={3} xs={3} sm={3} md={3}>
                                     <AlignItems mb="40" justify="end">
-                                        {/* <div
-                                            data-aos="fade-right"
-                                            data-aos-delay="700"
-                                            data-aos-duration="500"
-                                        > */}
+                                        // <div
+                                        //     data-aos="fade-right"
+                                        //     data-aos-delay="700"
+                                        //     data-aos-duration="500"
+                                        // > 
                                         <LeftDiv>
                                             <ResponsiveImage
                                                 image={require("./images/below-freebee/2.jpeg?resize")}
                                             />
                                         </LeftDiv>
-                                        {/* </div> */}
+                                        // </div> 
                                     </AlignItems>
                                 </Col>
                                 <Col lg={6} xs={6} sm={6} md={6} className="">
@@ -137,31 +137,19 @@ const Freebies = () => {
                                 </Col>
                                 <Col lg={3} xs={3} sm={3} md={3} className="">
                                     <AlignItems justify="start" mb="40">
-                                        {/* <div
-                                            data-aos="fade-left"
-                                            data-aos-delay="2000"
-                                            data-aos-duration="500"
-                                        > */}
+                                       
                                         <LeftDiv>
                                             <ResponsiveImage
                                                 image={require("./images/below-freebee/NOTES.png?resize")}
                                             />
                                         </LeftDiv>
-                                        {/* </div> */}
                                     </AlignItems>
 
                                 </Col>
                             </Row>
                             <Row alignItems="center">
                                 <Col lg={2} xs={2} sm={2} md={2}  >
-                                    {/* <AlignItems justify="end" mb="40">
-                                       
-                                            <LeftDivSmall>
-                                                <ResponsiveImage
-                                                    image={require("./images/below-freebee/17.jpeg?resize")}
-                                                />
-                                            </LeftDivSmall>
-                                    </AlignItems> */}
+                                  
                                     <OuterSpace>
 
                                         <NewFreeRight width="200px" top="-12px" right="5%">
@@ -173,36 +161,17 @@ const Freebies = () => {
                                 </Col>
                                 <Col lg={8} xs={8} sm={8} md={8} className="">
                                     <Flex vertical alignItems="center" margin="1rem 0">
-                                        {/* <div data-aos="fade-down"
-                                            data-aos-easing="linear"
-                                            data-aos-duration="500"
-                                            data-aos-delay="100"
-                                        > */}
+                                        
                                         <MainHeading textAlign="center">The Freebies are so <AnimateText> cool!</AnimateText></MainHeading>
 
-                                        {/* </div> */}
-                                        {/* <div data-aos="fade-zoom-in"
-                                            data-aos-easing="ease-in-back"
-                                            data-aos-delay="300"
-                                            data-aos-duration="500"
-                                            data-aos-offset="0"
-                                        > */}
                                         <SmallHeading textAlign="center" >
                                             And they are all yours
                                         </SmallHeading>
 
-                                        {/* </div> */}
                                     </Flex>
                                 </Col>
                                 <Col lg={2} xs={2} md={2} sm={2} className="">
-                                    {/* <AlignItems justify="start" mb="40">
-                                      
-                                            <LeftDivSmall>
-                                                <ResponsiveImage
-                                                    image={require("./images/below-freebee/15.jpeg?resize")}
-                                                />
-                                            </LeftDivSmall>
-                                    </AlignItems> */}
+                                   
                                     <NewFreetop width="140px" top="0px" left="1%">
                                         <ResponsiveImage
                                             image={require("./images/below-freebee/21.png?resize")}
@@ -212,14 +181,7 @@ const Freebies = () => {
                             </Row>
                             <Row alignItems="start">
                                 <Col lg={4} xs={3} sm={2} md={3} >
-                                    {/* <AlignItems justify="end" mb="40">
-                                        
-                                            <LeftDiv>
-                                                <ResponsiveImage
-                                                    image={require("./images/below-freebee/11.png?resize")}
-                                                />
-                                            </LeftDiv>
-                                    </AlignItems> */}
+                                   
                                     <OuterSpace>
                                         <NewFreeRight restop="0px" width="160px" top="30px" right="25%">
                                             <ResponsiveImage
@@ -245,25 +207,18 @@ const Freebies = () => {
                                     <AlignItems mb="40" justify="center">
 
                                         <LeftDiv>
-                                            {/* <ResponsiveImage
-                                                    image={require("./images/below-freebee/22.png?resize")}
-                                                /> */}
+                                            
                                         </LeftDiv>
                                     </AlignItems>
                                 </Col>
                                 <Col lg={4} xs={3} sm={3} md={3} className="">
                                     <AlignItems justify="start" mb="40">
-                                        {/* <div
-                                            data-aos="fade-left"
-                                            data-aos-delay="1000"
-                                            data-aos-duration="500"
-                                        > */}
+                                      
                                         <LeftDiv>
                                             <ResponsiveImage
                                                 image={require("./images/below-freebee/NOTEBOOK.png?resize")}
                                             />
                                         </LeftDiv>
-                                        {/* </div> */}
                                     </AlignItems>
                                     <OuterSpace>
                                         <NewFreeRight restop="15px" width="160px" top="-40px" right="10%">
@@ -278,6 +233,7 @@ const Freebies = () => {
 
 
                         </OutLine>
+                        */}
                     </Row>
                 </Container>
             </Row>

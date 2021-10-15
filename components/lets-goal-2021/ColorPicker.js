@@ -5,8 +5,9 @@ import Img from "../styled/Img";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
 import plannerPink from './images/cover3.png';
-import plannerWhite from './images/planner white.png';
+// import plannerWhite from './images/planner white.png';
 import plannerBlack from './images/planner black.png';
+import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 
 import styled, { css, keyframes } from "styled-components";
 
@@ -36,6 +37,10 @@ const ColorSelectorContainer = styled.div`
   width: max-content;
   align-self: flex-end;
   margin-top: -25px;
+  h4{
+    margin-bottom:0px;
+    margin-right: 20px;
+  }
 `;
 
 
@@ -130,7 +135,7 @@ export default function ColorPicker() {
               <MainSection
                 key={ind}
                 vertical
-                bgColor={colorInd === "#ffdce2" ? "#2a2a2a" : colorInd === "#2a2a2a" ? "#ffdce2" : "#ffdce2"}
+                bgColor={colorInd === "#ffdce2" ? "#ffdce2" : colorInd === "#2a2a2a" ? "#2a2a2a" : "#ffdce2"}
                 bgColor2={colorInd2}
                 margin="3rem 0"
                 alignItems="center"
@@ -146,17 +151,17 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
+          <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'black' : 'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
 
           {/* <SmallHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>
             2 Fresh colors that reflect your personality
           </SmallHeading> */}
         </FirstSection>
         {/* <ImageHeight > */}
-        <Img src={colorInd === "#ffdce2" ? `${plannerPink}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerWhite}`} width="50%" />
+        <Img src={colorInd === "#ffdce2" ? `${plannerBlack}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerBlack}`} width="50%" />
         {/* </ImageHeight> */}
         <ColorSelectorContainer>
-          {
+          {/* {
             colorOptions.map((colorr, ind) => {
               return (
                 <Flex
@@ -175,7 +180,8 @@ export default function ColorPicker() {
                 </Flex>
               )
             })
-          }
+          } */}
+          <ProPlannerPrice slug={"lets-goal-2021-planner"} planner="black-planner" />
 
         </ColorSelectorContainer>
       </ContentSection>

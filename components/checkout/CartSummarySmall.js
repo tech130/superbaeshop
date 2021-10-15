@@ -12,11 +12,11 @@ const CartSumItem = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: ${(props) => (props.mb || '0px')};
 `;
 
 const CartSumTitle = styled.span`
-    font-weight: 600;
+    font-weight: ${(props) => (props.bold ? 700 : 400)};
     font-size: ${(props) => (props.font)}px;
 `;
 
@@ -25,10 +25,10 @@ const CartSumAmt = styled.span`
     font-size: ${(props) => (props.font)}px;
 `;
 
-const SumItem = ({ title = "", bold = false, amt = "", font = "16px", href = "", id = "" }) => {
+const SumItem = ({ title = "",mb="", bold = false, amt = "", font = "16px", href = "", id = "" }) => {
     return (
-        <CartSumItem>
-            <CartSumTitle font={font} >{title}</CartSumTitle>
+        <CartSumItem mb={mb}>
+            <CartSumTitle bold={bold} font={font} >{title}</CartSumTitle>
             <CartSumAmt font={font} bold={bold}><span href={href} id={id}>{amt}</span></CartSumAmt>
         </CartSumItem>
     );
@@ -64,16 +64,28 @@ const CartSummary = ({
         coupon.id && coupon.payout
             ? (parseFloat(coupon.payout || 0) / 100) * cartTotal
             : 0;
+    let taxAmount = ((cartTotal - couponAmt) / 100) * 18
     const total =
-        shipping_fee +
+        (shipping_fee +
         cartTotal -
         (redeem ? wallet_amount : couponAmt) -
-        offerAmount;
+        offerAmount)+taxAmount;
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const toggle = () => setTooltipOpen(!tooltipOpen);
+    let FinalCharge = shipping_fee+taxAmount;
     return (
         <>
             <CartSum>
+            <SumItem
+            font="14px"
+                    title="Subtotal"
+                    amt={`${currency_type}${cartTotal.toFixed(2)}`}
+                />
+                <SumItem
+                font="14px"
+                    title="Taxes and Charges"
+                    amt={`+ ${currency_type}${FinalCharge.toFixed(2)}`}
+                />
                 {/* <SumItem
                     title="Cart Total"
                     amt={`${currency_type}${cartTotal.toFixed(2)}`}
@@ -109,6 +121,7 @@ const CartSummary = ({
                     amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
                 /> */}
                 <SumItem
+                mb={"10px"}
                     title="Grand Total"
                     font="20"
                     bold

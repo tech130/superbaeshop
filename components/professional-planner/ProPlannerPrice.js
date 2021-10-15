@@ -6,10 +6,11 @@ import useProduct from "../../hooks/redux/product/useProduct";
 import ProductBuy from "../product/ProductBuy";
 import ProductPrice from "../product/ProductPrice";
 
-const ProPlannerPrice = ({slug}) => {
+const ProPlannerPrice = ({slug,planner=""}) => {
     const { id, product_country } = useProduct(
         slug
     );
+    
     const productCountry = useProdCountry(product_country);
 
     if (id && productCountry && productCountry.country) {
@@ -27,7 +28,7 @@ const ProPlannerPrice = ({slug}) => {
                     />
                    
                 </H4>
-                <ProductBuy slug={slug} />
+                <ProductBuy slug={slug} planner={planner} />
             </>
         );
     }

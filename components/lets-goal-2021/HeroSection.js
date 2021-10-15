@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import Block from "../styled/Block";
-import MainHeading from "../styled/MainHeading";
-import SmallHeading from "../styled/SmallHeading";
 import AnimateText from "../styled/AnimateText";
 import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 import ResponsiveImage from "../common/ResponsiveImage";

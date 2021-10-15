@@ -27,7 +27,7 @@ import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
 
 const FlexBg = styled.div`
-  height: 55vh;
+  height: 49vh;
   width: 100%;
   background-color: #FFF444;
   background:linear-gradient( 90deg,#fde5e9 0%,rgb(255 244 244) 50%,#ffe4e8 100%);

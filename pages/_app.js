@@ -18,8 +18,8 @@ import "react-toastify/dist/ReactToastify.css";
 import UploadCartModal from "../components/auth/UploadCartModal";
 import useAnalytics from "../hooks/useAnalytics";
 import { GridThemeProvider } from 'styled-bootstrap-grid';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
 // import {Scrollbar} from 'smooth-scrollbar-react';
 Router.events.on("routeChangeStart", () => {
     NProgress.start();
@@ -58,13 +58,13 @@ function MyApp({ Component, pageProps, store }) {
           },
         },
       };
-      useEffect(() => {
-        if (AOS) {
-          AOS.init({
-            duration : 2000
-          })
-        } 
-    }, []);
+    //   useEffect(() => {
+    //     if (AOS) {
+    //       AOS.init({
+    //         duration : 2000
+    //       })
+    //     } 
+    // }, []);
     return (
         <Provider store={store}>
             <GridThemeProvider gridTheme={gridTheme}>

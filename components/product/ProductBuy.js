@@ -27,7 +27,7 @@ export const getBtnText = (
 
 export const useAddToCart = (productDetails = {}, options = {}) => {
     const { quantity = 1, isOffer = false } = options;
-    const { id, in_cart, is_pre_order, stock_status, slug } = productDetails;
+    const { id, in_cart, is_pre_order, stock_status, slug,color_code='' } = productDetails;
     const dispatch = useDispatch();
     const { token } = useUser();
     const country = useCountryParam();
@@ -58,6 +58,7 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
                         product_id: id,
                         quantity: quantity,
                         is_offer: isOffer,
+                        color_code:color_code
                     },
                 ],
             });
@@ -137,7 +138,7 @@ export const NewButton = styled.button`
     }
 `;
 
-const ProductBuy = ({ slug,addition="" }) => {
+const ProductBuy = ({ slug,addition="",planner="" }) => {
     let product={};
     let product_country={};
     if(addition === "bundle-2021"){
@@ -150,7 +151,9 @@ const ProductBuy = ({ slug,addition="" }) => {
         product_country=product.product_country
     }
     const productCountry = useProdCountry(product_country);
-
+    if(planner !== ''){
+        product["color"]='black';
+    }
     if (productCountry && productCountry.country) {
         return <>
         <CartButton product={product} /> 

@@ -2,7 +2,6 @@ import React from "react";
 import HeroSection from "./HeroSection";
 import WhatsInside from "./WhatsInside";
 import FreeInclusions from "./FreeInclusions";
-import PagesSlider from "./PagesSlider";
 import Freebies from "./Freebies";
 import OptionsSection from "./OptionsSection";
 import WalkThrough from "./WalkThrough";
@@ -33,7 +32,7 @@ const LetsGoal2021 = () => {
             {/* <InterSec /> */}
             {/* <SmartDigitalPlanner /> */}
             {/* <OptionsSection /> */}
-            {/* <ColorPicker /> */}
+            <ColorPicker />
             <Block padding="65px 0px 0px 0px">
 
                 <TestimonialSection />
