@@ -1,8 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 import Block from "../styled/Block";
 import Flex from "../styled/Flex";
 import Marquee from "react-fast-marquee";
-import ResponsiveImage from "../common/ResponsiveImage";
 import MainHeading from "../styled/MainHeading";
 import image1 from './images/testimonials/testify1.png';
 import image2 from './images/testimonials/testify2.png';
@@ -26,17 +25,7 @@ const rainbow_animation = keyframes`
         background-position: 100% 0;
     }
 `;
-const MainCaption = styled.div`
-  text-align: center;
-  font-size: 48px;
-  font-weight: 700;
-  @media (max-width: 768px) {
-    font-size: 2rem;
-}
-@media (max-width: 576px) {
-  font-size: 1.5rem;
-}
-`;
+
 const MainDiv = styled.div`
   height:250px !important;
   border-radius:10px;
@@ -56,9 +45,6 @@ const FlexDiv = styled.div`
 display: flex;
   over-flow:hidden;
 `;
-
-// background: linear-gradient(to right, #f4edf4 0%, #eef2fa 51%, #d7bcbd 100%);
-// background: linear-gradient(to right,#6666ff,#0099ff,#00ff00,#ff3399,#6666ff);
 const GradientText = styled.span`
 background: linear-gradient(90deg,#60bbf1,#c6e1f1,#f57e93,#b4a8ff,#c8f1ff,#eda5b2);
 -webkit-background-clip: text;
@@ -74,17 +60,21 @@ margin-bottom:0px;
 `;
 
 const scrollTexts = [
-  {key:[image1,
-    image2,
-    image3,
-    image4,
-    image5]},
-  
-  {key:[image6,
-  image7,
-  image8,
-  image9,
-  image10]}
+  {
+    key: [image1,
+      image2,
+      image3,
+      image4,
+      image5]
+  },
+
+  {
+    key: [image6,
+      image7,
+      image8,
+      image9,
+      image10]
+  }
 ];
 const StayTuned = () => {
 
@@ -94,7 +84,7 @@ const StayTuned = () => {
       <Flex vertical width="100%" alignItems="center" margin="0">
         <Flex alignItems="center" margin="30px 0" >
           <MainHeading textAlign="center" mb="0px">Stay tuned  <GradientText>@spaceandbeautyofficial </GradientText></MainHeading>
-          
+
         </Flex>
 
         <Flex className="overflow-hidden">
@@ -109,32 +99,22 @@ const StayTuned = () => {
               overflow: "hidden",
             }}
           >
-            {scrollTexts.map(( name, ind ) => {
+            {scrollTexts.map((name, ind) => {
               return (
-                // <MainDiv key={ind}>
-                //   <MainDiv2>
-                //     {/* <ResponsiveImage
-                //       imgWidth="100%"
-                //       imgHeight="100%"
-                //       key={name}
-                //       image={`${name}`}
-                //     /> */}
-                //     <img src={name} />
-                //   </MainDiv2>
-                // </MainDiv>
+
                 <MainDiv key={ind}>
                   {
-                    name.key.map((item,ind)=>{
-                      return(
-                      <MainDiv2 key={ind}>
-                        
+                    name.key.map((item, ind) => {
+                      return (
+                        <MainDiv2 key={ind}>
 
-                    <img src={item} />
-                  </MainDiv2>
+
+                          <img src={item} />
+                        </MainDiv2>
                       )
                     })
                   }
-                  
+
                 </MainDiv>
               );
             })}

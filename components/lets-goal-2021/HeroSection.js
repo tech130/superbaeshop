@@ -9,7 +9,6 @@ import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
 import Marquee from "react-fast-marquee";
 import CheckIcon from "../icons/CheckIcon";
-import { ProductPrices } from "../product/ProductPrice";
 
 const MeetTxt = styled.h1`
     font-size:48px;
@@ -60,7 +59,7 @@ const scrollTexts = [
     "simple",
     "elegant",
     "practical",
-  ];
+];
 const HeroSection = () => {
     return (
         <>
@@ -69,12 +68,12 @@ const HeroSection = () => {
                     <div className="bg-gradients">
                         <div className="gradient-content">
                             <Row alignItems="center">
-                                
+
                                 <Col lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                                <ResponsiveHeight>
-                                    <ResponsiveImage
-                                        image={require("./images/cover.png?resize")}
-                                    />
+                                    <ResponsiveHeight>
+                                        <ResponsiveImage
+                                            image={require("./images/cover.png?resize")}
+                                        />
                                     </ResponsiveHeight>
                                 </Col>
                                 <Col lg={6} sm={6} xs={12}>
@@ -82,16 +81,16 @@ const HeroSection = () => {
                                         Cutest Planner <AnimateText>Ever.</AnimateText><br />
                                         {/* <br /> */}
                                     </MeetTxt>
-                                 
+
                                     <p >The Ultimate Journaling Experience is here!
                                     </p>
-                                    <ProPlannerPrice slug={"lets-goal-2021-planner"}/>
+                                    <ProPlannerPrice slug={"lets-goal-2021-planner"} />
                                 </Col>
                                 <Col lg={6} sm={6} xs={12} className="d-block d-sm-none d-md-none d-lg-none d-xl-none">
                                     {/* <ResponsiveHeight> */}
-                                        <ResponsiveImage
-                                            image={require("./images/cover.png?resize")}
-                                        />
+                                    <ResponsiveImage
+                                        image={require("./images/cover.png?resize")}
+                                    />
                                     {/* </ResponsiveHeight> */}
                                 </Col>
                             </Row>
@@ -110,202 +109,31 @@ export default HeroSection;
 const ListAnimation = (() => {
     return (
         <Container fluid>
-            {/* <div className="bg-gradients-tags">
-                <div className="d-flex flex-row newww">
-                    <div className="animation-row">
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                CUTE
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                AESTHETIC
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img" >
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                STUNNING
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                ORIGINAL
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                MAGICAL
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                SIMPLE
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                ELEGANT
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                PRACTICAL
-                            </span>
-                        </div>
-                    </div>
-                    <div className="animation-row">
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                CUTE
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                AESTHETIC
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img" >
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                STUNNING
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                ORIGINAL
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                MAGICAL
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                SIMPLE
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                ELEGANT
-                            </span>
-                        </div>
-                        <div className="sampleTags">
-                            <span className="svg-img">
-                                <ResponsiveImage
-                                    image={require("./images/tick.png?resize")}
-                                />
-                            </span>
-                            <span className="text-black font-weight-bold">
-                                PRACTICAL
-                            </span>
-                        </div>
-                    </div>
-                    
-
-                </div>
-            </div> */}
-        
             <Marquee
-          speed={70}
-        //   gradientWidth={0}
-        gradient={false}
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg,rgba(255,247,238,.85),#eef5ff)",
-            padding: "0.6rem 0",
-            overflow: "hidden",
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-        >
-          {scrollTexts.map((text) => {
-            return (
-              <ScrollText key={text}>
-                <div style={{ marginRight: "8px",    padding: "4px 0px" }}>
-                  <CheckIcon />
-                </div>
-                {text}
-              </ScrollText>
-            );
-          })}
-        </Marquee>
+                speed={70}
+                //   gradientWidth={0}
+                gradient={false}
+                style={{
+                    backgroundImage:
+                        "linear-gradient(90deg,rgba(255,247,238,.85),#eef5ff)",
+                    padding: "0.6rem 0",
+                    overflow: "hidden",
+                    display: "flex",
+                    justifyContent: "space-around",
+                }}
+            >
+                {scrollTexts.map((text) => {
+                    return (
+                        <ScrollText key={text}>
+                            <div style={{ marginRight: "8px", padding: "4px 0px" }}>
+                                <CheckIcon />
+                            </div>
+                            {text}
+                        </ScrollText>
+                    );
+                })}
+            </Marquee>
         </Container>
-        
+
     );
 });

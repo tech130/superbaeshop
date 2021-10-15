@@ -3,12 +3,9 @@ import Layout from "../../../components/layout/Layout";
 import { common } from "../../../redux/handlePages";
 import ProductList from "../../../components/product/ProductList";
 import { fetchFilters } from "../../../redux/product/listing";
-import AOS from 'aos';
 
 const ProductListPage = ({ filters }) => {
-    // AOS.init({
-    //     duration : 2000
-    //   })
+  
     return (
         <Layout>
             <ProductList />

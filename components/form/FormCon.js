@@ -36,6 +36,9 @@ const FormCon = ({
                 formDispatch(resetForm());
             }
         },
+        (data) => {
+            // console.log(data);
+        }
     );
 
     const onSubmit = () => {

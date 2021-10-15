@@ -21,17 +21,6 @@ const MainCaption = styled.div`
 }
 `;
 
-// const SmallHeading = styled.div`
-//   font-size: 24px;
-//   line-height: 1.1;
-//   font-weight: ${(props) => props.fontWeight || 500};
-//   margin-top: ${(props) => props.marginTop || 0};
-//   color:${(props) => props.color || 'black'};
-//   @media (max-width: 576px) {
-//     font-size: 1rem;
-// }
-// `;
-
 const ColorSelector = styled.div`
   background: ${(props) => props.background || "red"};
   height: 2.5rem;
@@ -120,7 +109,7 @@ const ContentSection = styled.div`
 }
 `;
 
-const colorOptions = ["#ffdce2","#2a2a2a"];
+const colorOptions = ["#ffdce2", "#2a2a2a"];
 
 export default function ColorPicker() {
   const [colorInd, setColor] = useState('#ffdce2');
@@ -133,41 +122,21 @@ export default function ColorPicker() {
       bgColor={colorInd}
       bgColor2={colorInd}
     >
-      
+
       {colorOptions.map((color, ind) => {
         return (
-          <React.Fragment key ={ind}>
+          <React.Fragment key={ind}>
             {color === colorInd &&
               <MainSection
                 key={ind}
                 vertical
-                bgColor={colorInd === "#ffdce2"? "#2a2a2a":colorInd === "#2a2a2a"? "#ffdce2":"#ffdce2"}
+                bgColor={colorInd === "#ffdce2" ? "#2a2a2a" : colorInd === "#2a2a2a" ? "#ffdce2" : "#ffdce2"}
                 bgColor2={colorInd2}
                 margin="3rem 0"
                 alignItems="center"
               >
-               
-
                 <ColorSelectorContainer >
-                  {/* {
-                    colorOptions.map((colorr, ind) => {
-                      return (
-                        <Flex
-                          key={ind}
-                          bgColor={colorInd === colorr ? "gray" : ""}
-                          padding="1px"
-                          borderRadius="4px"
-                        >
-                          <ColorSelector
-                            background={colorr}
-                            onClick={() => {
-                              setColor(colorr);
-                            }}
-                          />
-                        </Flex>
-                      )
-                    })
-                  } */}
+
 
                 </ColorSelectorContainer>
               </MainSection>
@@ -177,14 +146,14 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2'? 'white':'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
+          <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
 
-          <SmallHeading  className="text-sm-left text-center" color={`${colorInd === '#ffdce2'? 'white':'black'}`}>
-          2 Fresh colors that reflect your personality
+          <SmallHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>
+            2 Fresh colors that reflect your personality
           </SmallHeading>
         </FirstSection>
         {/* <ImageHeight > */}
-        <Img src={ colorInd ==="#ffdce2" ? `${plannerPink}` : colorInd === '#2a2a2a' ? `${plannerBlack}`: `${plannerWhite}`} width="50%" />
+        <Img src={colorInd === "#ffdce2" ? `${plannerPink}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerWhite}`} width="50%" />
         {/* </ImageHeight> */}
         <ColorSelectorContainer>
           {

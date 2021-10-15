@@ -42,15 +42,19 @@ const ProdLinkStl = styled.li`
     padding: 4px 15px;
     color: #000;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     a{
         color: #000;
+    }
+    @media only screen and (min-width: 1280px) {
+        font-size: 18px;
     }
     @media only screen and (max-width: 575px) {
         padding: 5px 10px;
         font-size: 14px;
     }
+    
 `;
 
 

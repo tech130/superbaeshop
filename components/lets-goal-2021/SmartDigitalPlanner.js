@@ -4,7 +4,7 @@ import { Col, Row, Container } from "styled-bootstrap-grid";
 
 const BGImage = require("./images/Bg1.jpg?resize");
 import BGImage2 from './images/bg2.jpg';
-import styled,{keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const animate = keyframes`
 0%,
@@ -123,7 +123,7 @@ background-image: url(${BGImage2});
   height:400px;
 `;
 const ContentDiv = styled.div`
-    height: ${(props)=>props.width|| '150vh'};
+    height: ${(props) => props.width || '150vh'};
     position: relative;
     display: flex;
     align-items: flex-end;
@@ -167,7 +167,7 @@ const Position = styled.div`
 const SmartDigitalPlanner = () => {
     // const domRef = useRef();
     // const [isVisible, setVisible] = React.useState(false);
-    
+
     return (
         <Block padding="30px 0px" className="overflow-hidden">
             <StyledDiv>
@@ -200,19 +200,19 @@ const SmartDigitalPlanner = () => {
                                                     Clearly Smarter than any other app
 
                                                 </SubCaption>
-                                                
+
                                             </FadeContainer>
                                         </div>
                                     </ContentDiv>
                                     <ContentDiv>
-                                    <div data-aos="fade-right"
+                                        <div data-aos="fade-right"
                                             data-aos-offset="300"
                                             data-aos-easing="ease-in-sine"
                                             data-aos-duration="700"
                                         >
                                             <FadeContainer>
 
-                                            <Position>
+                                                <Position>
                                                     <MainCaption>
                                                         Ooooh! One more.
                                                     </MainCaption>
@@ -230,14 +230,14 @@ const SmartDigitalPlanner = () => {
                                         </div>
                                     </ContentDiv>
                                     <ContentDiv>
-                                    <div data-aos="fade-right"
+                                        <div data-aos="fade-right"
                                             data-aos-offset="300"
                                             data-aos-easing="ease-in-sine"
                                             data-aos-duration="700"
                                         >
                                             <FadeContainer>
 
-                                            <Position>
+                                                <Position>
                                                     <MainCaption>
                                                         Ooooh! One more.
                                                     </MainCaption>

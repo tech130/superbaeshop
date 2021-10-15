@@ -21,13 +21,6 @@ import shopping from './images/icons/shopping-bag.png';
 import wedding from './images/icons/wedding-planner.png';
 import writing from './images/icons/writing.png';
 
-const MainCaption = styled.div`
-  text-align: center;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1.1;
-`;
-
 const SmallHeadingSet = styled.div`
   font-size: ${(props) => props.Fs || '16px'};
   line-height: 1.1;
@@ -100,25 +93,25 @@ const CardContainer = styled.div`
 
 
 const firstOptionSettings = [
-  { item: "Planner", icon:wedding },
-  { item: "Notebook", icon:writing },
-  { item: "Bookmarks", icon:bookmark },
-  { item: "Sticker Book", icon:writing },
-  { item: "Pop socket", icon:wall },
-  { item: "Enamel Pins", icon:office },
-  { item: "Wall Calendar", icon:calendar },
-  { item: "Desk Calendar", icon:year }
+  { item: "Planner", icon: wedding },
+  { item: "Notebook", icon: writing },
+  { item: "Bookmarks", icon: bookmark },
+  { item: "Sticker Book", icon: writing },
+  { item: "Pop socket", icon: wall },
+  { item: "Enamel Pins", icon: office },
+  { item: "Wall Calendar", icon: calendar },
+  { item: "Desk Calendar", icon: year }
 ];
 const secondOptionSettings = [
-  { item: "Planner", icon:wedding },
-  { item: "Notebook", icon:writing },
-  { item: "Bookmarks", icon:bookmark },
-  { item: "Sticker Book", icon:writing },
-  { item: "Pop socket", icon:wall },
-  { item: "Enamel Pins", icon:office },
-  { item: "Wall Calendar", icon:year },
-  { item: "Desk Calendar", icon:calendar },
-  { item: "Tote Bag", icon:shopping },
+  { item: "Planner", icon: wedding },
+  { item: "Notebook", icon: writing },
+  { item: "Bookmarks", icon: bookmark },
+  { item: "Sticker Book", icon: writing },
+  { item: "Pop socket", icon: wall },
+  { item: "Enamel Pins", icon: office },
+  { item: "Wall Calendar", icon: year },
+  { item: "Desk Calendar", icon: calendar },
+  { item: "Tote Bag", icon: shopping },
 
 ];
 
@@ -262,30 +255,24 @@ export default function OptionsSection() {
                 </ImgContainer>
               </FirstOptionBlock>
               <OptionItems justifyContent="center">
-                {/* {firstOptionSettings.map((firstOptionSetting) => {
-                  return (
-                    <SmallHeading key={firstOptionSetting} marginTop="5px">
-                      {firstOptionSetting}
-                    </SmallHeading>
-                  );
-                })} */}
+
                 <P fontSize="24px" weight="700" margin="10px 0px 0px 0px" >
                   Ultimate Planner
                 </P>
                 <P textAlign="center" fontSize="16px" weight="700" margin="0px 0px">
-                Plan your activities ahead and Go stress- free with our ultimate planner!
+                  Plan your activities ahead and Go stress- free with our ultimate planner!
                 </P>
                 <PopUp className="roundTxt">
                   <img src={roundText} />
                 </PopUp>
               </OptionItems>
               <SmallHeadingSet marginTop="0px" color="black" marginBottom="15px">
-              Try ultimate planner now
+                Try ultimate planner now
               </SmallHeadingSet>
             </OptionCard>
             <CartButtonLeft>
               <ProductBuy slug={"lets-goal-2021-planner"} />
-              
+
             </CartButtonLeft>
             <div className="pop-up-text">
               <div className="insider-outline">
@@ -303,11 +290,11 @@ export default function OptionsSection() {
             <div className="pop-up-list left">
               <div className="insider-outline1">
                 <div className="insider1">
-                  {firstOptionSettings.map((firstOptionSetting,index) => {
+                  {firstOptionSettings.map((firstOptionSetting, index) => {
                     return (
                       <SmallHeadingLi key={index} marginTop="0px">
                         <span>
-                        <img src={firstOptionSetting.icon} />
+                          <img src={firstOptionSetting.icon} />
                         </span>
                         {firstOptionSetting.item}
                       </SmallHeadingLi>
@@ -326,17 +313,11 @@ export default function OptionsSection() {
                 </ImgContainer>
               </FirstOptionBlock>
               <OptionItems justifyContent="center">
-                {/* {secondOptionSettings.map((firstOptionSetting) => {
-                  return (
-                    <SmallHeading key={firstOptionSetting}>
-                      {firstOptionSetting}
-                    </SmallHeading>
-                  );
-                })} */}
+
                 <P fontSize="24px" weight="700" margin="10px 0px 0px 0px" >
-                Ultimate Bundle
+                  Ultimate Bundle
                 </P>
-                <P  textAlign="center"fontSize="16px" weight="700" margin="0px 0px">
+                <P textAlign="center" fontSize="16px" weight="700" margin="0px 0px">
                   All happy goodies bundled together!
                 </P>
                 <PopUp className="roundTxt">
@@ -344,18 +325,18 @@ export default function OptionsSection() {
                 </PopUp>
               </OptionItems>
               <SmallHeadingSet marginTop="15px" color="black" marginBottom="15px">
-              Try Ultimate Bundle now
+                Try Ultimate Bundle now
               </SmallHeadingSet>
             </OptionCard>
             <CartButtonLeft>
-            <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021"/>
-              
+              <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021" />
+
             </CartButtonLeft>
             <div className="pop-up-text right">
               <div className="insider-outline">
                 <div className="insiderR">
                   <H3>
-                    { " "}
+                    {" "}
                   </H3>
                   <Txt lineHeight={1} fontSize="14px" weight={500}>
                     With highest quality print <br />
@@ -367,11 +348,11 @@ export default function OptionsSection() {
             <div className="pop-up-list right">
               <div className="insider-outline1">
                 <div className="insider1">
-                  {secondOptionSettings.map((firstOptionSetting,index) => {
+                  {secondOptionSettings.map((firstOptionSetting, index) => {
                     return (
                       <SmallHeadingLi key={index}>
                         <span>
-                        <img src={firstOptionSetting.icon} />
+                          <img src={firstOptionSetting.icon} />
                         </span>
                         {firstOptionSetting.item}
                       </SmallHeadingLi>

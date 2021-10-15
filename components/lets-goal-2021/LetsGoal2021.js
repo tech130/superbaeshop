@@ -11,10 +11,9 @@ import GoodVibes from "./GoodVibes";
 import TestimonialSection from "./TestimonialSection";
 import StayTuned from "./StayTuned";
 import SmartDigitalPlanner from "./SmartDigitalPlanner";
+import UltimateBundle from "./UltimateBundle";
 import { InterSec } from "../styled/Hr";
 import Block from "../styled/Block";
-import { Container } from "styled-bootstrap-grid";
-import ResponsiveImage from "../common/ResponsiveImage";
 
 const LetsGoal2021 = () => {
     return (
@@ -28,6 +27,7 @@ const LetsGoal2021 = () => {
             <div className="d-block d-md-none d-lg-none d-xl-none">
                 <FreeInclusions />
             </div>
+            <UltimateBundle />
             {/* <Freebies /> */}
             {/* <InterSec /> */}
             {/* <SmartDigitalPlanner /> */}
@@ -35,20 +35,11 @@ const LetsGoal2021 = () => {
             <ColorPicker />
             <Block padding="65px 0px 0px 0px">
 
-            <TestimonialSection />
+                <TestimonialSection />
             </Block>
             <StayTuned />
             <GoodVibes />
-            {/* <FreeInclusions />
-            <Block padding="15px 0">
-                <Container>
-                    <ResponsiveImage
-                        image={require("./images/below-freebee/1.jpg?resize")}
-                    />
-                </Container>
-            </Block>
-            <PagesSlider />
-            <WalkThrough /> */}
+            
         </>
     );
 };

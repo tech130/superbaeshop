@@ -58,7 +58,7 @@ const ProPlanner = () => {
                                 />
                             </ResponsiveHeight>
                         </Col>
-                        <Col lg={5}>
+                        <Col lg={5} className="responsemarginTop">
                             <MainHeading className="text-center text-sm-start">
                                 Meet the <br />
                                 Perfect <br />
@@ -71,12 +71,10 @@ const ProPlanner = () => {
                                 <ProPlannerPrice slug={"the-professional-planner"} />
                             </div>
                         </Col>
-                        <Col lg={6} sm={6} xs={12} className="d-block d-sm-none d-md-none d-lg-none d-xl-none">
-                            {/* <ResponsiveHeight> */}
+                        <Col lg={6} sm={6} xs={12} className="d-block d-sm-none d-md-none d-lg-none d-xl-none pt-1">
                             <ResponsiveImage
                                 image={require("./images/1.png?resize")}
                             />
-                            {/* </ResponsiveHeight> */}
                         </Col>
                     </Row>
                 </Container>
@@ -203,18 +201,7 @@ const ProPlanner = () => {
     );
 };
 
-// const ListAnimation = memo(() => {
 
-//     return (
-//         <div className="">
-//             fdg
-//             {/* <img src="./images/svg/tick.svg?resize" /> */}
-//             <ResponsiveImage 
-//                         image={require("./images/svg/tick.svg?resize")}
-//                     />
-//         </div>
-//     );
-// });
 
 const ProfPlannerSlider = memo(() => {
     const ref = useRef(null);

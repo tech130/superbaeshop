@@ -1,12 +1,9 @@
-import React, { useRef } from "react";
+import React from "react";
 import Block from "../styled/Block";
-import Flex from "../styled/Flex";
-import Marquee from "react-fast-marquee";
-import ResponsiveImage from "../common/ResponsiveImage";
 
-import styled,{keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const rainbow_animation  = keyframes`
+const rainbow_animation = keyframes`
     0%,100% {
         background-position: 0 0;
     }
@@ -52,10 +49,6 @@ const SubCaption = styled.div`
 }
 `;
 
-
-
-// background: linear-gradient(to right, #f4edf4 0%, #eef2fa 51%, #d7bcbd 100%);
-// background: linear-gradient(to right,#6666ff,#0099ff,#00ff00,#ff3399,#6666ff);
 const StyledDiv = styled.div`
 background: linear-gradient(45deg, #fff6f1, #eef7ff, #fff2f1, #fff6f1, #eef7ff, #fff2f1);
 -webkit-background-clip: text;
@@ -83,27 +76,27 @@ background-size: 400% 100%;
 const GoodVibes = () => {
 
 
-    return (
-        <Block padding="65px 0px"  className="overflow-hidden"> 
-            <StyledDiv
+  return (
+    <Block padding="65px 0px" className="overflow-hidden">
+      <StyledDiv
       >
-          <SubCaption>
-            {" "}
-            Making things happen<br />
+        <SubCaption>
+          {" "}
+          Making things happen<br />
           {/* <span className="font-weight-normal">WE’LL REFUND YOU.</span> */}
-            
-          </SubCaption>
+
+        </SubCaption>
 
         <MainCaption>Keep track of your activities on the go and achieve more goals with our planner.</MainCaption>
         <SubCaption>
           {" "}
           Building a better you<br />
           {/* <span className="font-weight-normal">WE’LL REFUND YOU.</span> */}
-            
-          </SubCaption>
+
+        </SubCaption>
       </StyledDiv>
-        </Block>
-    );
+    </Block>
+  );
 };
 
 

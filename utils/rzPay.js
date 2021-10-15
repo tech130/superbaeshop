@@ -1,4 +1,5 @@
 export default function rZPay(order, handleResponse) {
+    // console.log(order)
     var options = {
         key: order.api_key,
         amount: order.amount_in_paisa,

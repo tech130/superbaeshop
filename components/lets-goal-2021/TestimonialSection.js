@@ -1,15 +1,10 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import Flex from "../styled/Flex";
-import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import lisa from './images/testimonials/Lisa.jpeg';
 import Rosetta from './images/testimonials/testi1.jpeg';
 import Shagufta from './images/testimonials/Shagufta Tamkeen.jpeg';
-import { useRouter } from "next/router";
-import { useCountryParam } from "../common/CountryLink";
-import { useDispatch } from "react-redux";
-import { cartIsOpen } from "../../redux/user/local_cart";
 import ProductBuy from "../product/ProductBuy";
 
 const MainCaption = styled.div`
@@ -28,25 +23,6 @@ const SmallHeading = styled.div`
   font-weight: ${(props) => props.fontWeight || 500};
   margin-top: ${(props) => props.marginTop || 0};
   color: grey;
-`;
-
-const OutlinedButton = styled.button`
-border: 2px solid #212529;
-border-radius: 8px;
-padding: 1rem 2.5rem;
-font-weight: 700;
-color: black;
-background-color: #f6f4f4;
-font-size: 15px;
-&:hover{
-  color: white;
-  background-color: #000;
-}
-@media (max-width: 576px) {
-  margin: 10px 0px 0px 0px;
-  padding: 0.7rem 2rem;
-  font-size: 14px;
-}
 `;
 
 const breatheAnimation = keyframes`
@@ -178,7 +154,7 @@ const SpinningAnimation = styled.svg`
   animation: ${rotatingAnimation} 7s linear infinite;
 `;
 
-const TestimonialCard = ({ alignSelf, width ,content,img}) => {
+const TestimonialCard = ({ alignSelf, width, content, img }) => {
   return (
     <TestimonialContainer alignSelf={alignSelf} width={width}>
       <Card>
@@ -311,67 +287,54 @@ const SpinningElement = () => {
 };
 
 export default function TestimonialSection() {
-  const country = useCountryParam();
-    const router = useRouter();
-    const dispatch = useDispatch();
-    
+
+
   return (
-    
 
 
-      <Container fluid>
-        <Row>
-          <Col  lg={6} sm={12} xs={12} >
-            <Flex width="100%" bgColor="#FFFFFF" height="90vh" padding="0px 0px 30px 0px" >
+
+    <Container fluid>
+      <Row>
+        <Col lg={6} sm={12} xs={12} >
+          <Flex width="100%" bgColor="#FFFFFF" height="90vh" padding="0px 0px 30px 0px" >
             <FlexBg >
-            <FlexAssing
-            // vertical
-            // alignItems="center"
-            // textAlign="center"
-            // width="50%"
-            // height="80%"
-            // justifyContent="space-around"
-            >
-            <SpinningElement />
-            <MainCaption>Pen down atleast one happy moment and a positive thought each day and all the things that you are grateful for.</MainCaption>
+              <FlexAssing
+              >
+                <SpinningElement />
+                <MainCaption>Pen down atleast one happy moment and a positive thought each day and all the things that you are grateful for.</MainCaption>
 
-            <SmallHeading>
-            Improve your over all mental health, mindset and well-being with our planner.
-            </SmallHeading>
-            <ProductBuy slug={"lets-goal-2021-planner"} />
-            {/* <OutlinedButton onClick={() => {
+                <SmallHeading>
+                  Improve your over all mental health, mindset and well-being with our planner.
+                </SmallHeading>
+                <ProductBuy slug={"lets-goal-2021-planner"} />
 
-// router.push("/[country]/checkout", `/${country}/checkout`);
-dispatch(cartIsOpen(true));
-}
-}>GET NOW</OutlinedButton> */}
-            </FlexAssing>
+              </FlexAssing>
             </FlexBg>
-            </Flex>
-          </Col>
-          <Col lg={6} sm={12} xs={12} >
-            <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="90vh" >
-              <FlexBg2 className="flex-column" padding="20px 60px" >
-                <TestimonialCard alignSelf="flex-end" width="90%"
+          </Flex>
+        </Col>
+        <Col lg={6} sm={12} xs={12} >
+          <Flex vertical width="100%" bgColor="#FFFFFF" padding="0px 0px 30px 0px" height="90vh" >
+            <FlexBg2 className="flex-column" padding="20px 60px" >
+              <TestimonialCard alignSelf="flex-end" width="90%"
                 content="Shruti Sriram
                 It helps me believe that myself is magical and gives me a sense of being there! It’s like at end of the day the planner is like a person to me and it’s there for me."
                 img={Rosetta}
-                />
+              />
 
-                <TestimonialCard alignSelf="flex-start" width="90%"
+              <TestimonialCard alignSelf="flex-start" width="90%"
                 content="I received my planner it was as perfect as I expected have to say your planners cover each and everything and I’m so so in love with it."
                 img={Shagufta}
-                />
+              />
 
-                <TestimonialCard alignSelf="flex-end" width="90%" 
+              <TestimonialCard alignSelf="flex-end" width="90%"
                 content="The journal is so aesthetic and amazing. Can’t stop scrolling the pages again and again!! Sticker book has my heart!"
                 img={lisa}
-                />
-              </FlexBg2>
-            </Flex>
-          </Col>
-        </Row>
-      
+              />
+            </FlexBg2>
+          </Flex>
+        </Col>
+      </Row>
+
 
 
     </Container>

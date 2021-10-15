@@ -1,8 +1,6 @@
 import React from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
-import { H2 } from "../styled/Headings";
-import P from "../styled/P";
 import styled from "styled-components";
 import ResponsiveImage from "../common/ResponsiveImage";
 import MainHeading from "../styled/MainHeading";
@@ -46,9 +44,21 @@ const ColorBoxImg = styled.div`
 `;
 const ColorBoxImgNew = styled.div`
     // width:${(props) => props.width || "100%"};
-    width: 100%;
+    // width: 100%;
+    // margin: auto;
+    // padding:20px;
+    width: 300px;
+    height: 300px;
     margin: auto;
-    padding:20px;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div{
+        width: auto;
+        height: 100%;
+    }
 `;
 
 const ColorBoxContent = styled.div`
@@ -95,15 +105,15 @@ const ColorBoxNew = ({ width = "", mt = "", bg, children, image = {} }) => {
 const ColorBox = ({ width = "", height = "", mt = "", bg, children, image = {} }) => {
     return (
         <Col xs={12} sm={12} md={4} className="mb-5">
-        <ColorBoxStylNew bg={bg} mt={mt} height={height}>
-            {image.src && (
-                <ColorBoxImgNew width={width} mt={mt}>
-                    <ResponsiveImage image={image} />
-                </ColorBoxImgNew>
-            )}
-            <ColorBoxContentNew>{children}</ColorBoxContentNew>
-            
-        </ColorBoxStylNew>
+            <ColorBoxStylNew bg={bg} mt={mt} height={height}>
+                {image.src && (
+                    <ColorBoxImgNew width={width} mt={mt}>
+                        <ResponsiveImage image={image} />
+                    </ColorBoxImgNew>
+                )}
+                <ColorBoxContentNew>{children}</ColorBoxContentNew>
+
+            </ColorBoxStylNew>
         </Col>
     );
 };
@@ -140,7 +150,7 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#e1f1fe"
-                        image={require("./images/below-freebee/notebok.png?resize")}
+                        image={require("./images/below-freebee/NOTEBOOK.png?resize")}
                     >
                         <SmallHeadingText textAlign="center" >Notebook</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
@@ -198,7 +208,7 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#e1f1fe"
-                        image={require("./images/below-freebee/NOTES PNG.png?resize")}
+                        image={require("./images/below-freebee/NOTES.png?resize")}
                     >
                         <SmallHeadingText textAlign="center" >Notes</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
@@ -253,7 +263,7 @@ const FreeInclusions = () => {
                         <SmallHeadingText textAlign="center" >Pink Box</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
                     </ColorBox>
-                  
+
                 </Row>
 
             </Container>

@@ -16,32 +16,7 @@ const WhatsInside = () => {
         <Block margin="50px 0px" padding="0px 0px" height="100%">
             <Container>
                 <Block padding="0px 0px 15px 0px">
-                    {/* <H2 weight="700" fontSize="48px" textAlign="center" mb="0px"> */}
-                        {/* What&apos;s Inside */}
-                        {/* <div className="animateText ">
-                            <span>S</span>
-                            <span>m</span>
-                            <span>a</span>
-                            <span>r</span>
-                            <span>t</span>&nbsp;
-                            <span>i</span>
-                            <span>n</span>
-                            <span>s</span>
-                            <span>i</span>
-                            <span>d</span>
-                            <span>e</span>
-                            <span>s</span>&nbsp;
-                            <span>t</span>
-                            <span>o</span>
-                            <span>o</span>
-                            <span>:</span>
-                            &nbsp;
-                            <span>O</span>
-                            <span>M</span>
-                            <span>G</span>
-                        </div> */}
-                        
-                    {/* </H2> */}
+
                     <MainHeading textAlign="center">Smart insides too: <AnimateText> OMG</AnimateText></MainHeading>
                     <SmallHeading textAlign="center" >
                         Check out what makes my space 2022 so special
@@ -110,17 +85,17 @@ const WhatsInside = () => {
 
                             </P> */}
                             <P>
-                                <b>YEARLY SPREADS:</b> <b>Year at a glance - 2022 &amp; 2023, Year in pixels,</b> 
+                                <b>YEARLY SPREADS:</b> <b>Year at a glance - 2022 &amp; 2023, Year in pixels,</b>
                                 All About Me, The
-real me, Year resolutions, Year affirmations, Birthdays, Memory board, Dream Journal, My deep
-secrets, Dream board, Vision board, Level 10 Goals, Level 10 Life, Idea board,
-Achievement board, Wish list (Things to buy, Things to do and Travel goals), My circle -
-My world, People who add sunshine to my life ( Partner, Mum, Dad, Sibling, Bff, Gang),
-My priorities, Bookstagram, Wall of movies, Tv show lists, Favourite quotes, Budget
-plan, Mental health, My period days, My Sick days, My fitness journey, Improvement
-plan, Sacred rituals, Products I Use, Clean home, Social stats, Social media passwords,
-Subscriptions, Who borrowed what? Gifts page, Best days, Therapy pages (Mandala,
-nail art), Self Portrait, Pen it down.
+                                real me, Year resolutions, Year affirmations, Birthdays, Memory board, Dream Journal, My deep
+                                secrets, Dream board, Vision board, Level 10 Goals, Level 10 Life, Idea board,
+                                Achievement board, Wish list (Things to buy, Things to do and Travel goals), My circle -
+                                My world, People who add sunshine to my life ( Partner, Mum, Dad, Sibling, Bff, Gang),
+                                My priorities, Bookstagram, Wall of movies, Tv show lists, Favourite quotes, Budget
+                                plan, Mental health, My period days, My Sick days, My fitness journey, Improvement
+                                plan, Sacred rituals, Products I Use, Clean home, Social stats, Social media passwords,
+                                Subscriptions, Who borrowed what? Gifts page, Best days, Therapy pages (Mandala,
+                                nail art), Self Portrait, Pen it down.
 
                             </P>
                             <P>
@@ -130,9 +105,12 @@ nail art), Self Portrait, Pen it down.
                             {/* <P>
                                 <b>FREE GOODIES</b>: Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box
                             </P> */}
-                            <P textAlign="center">
+                            {/* <P textAlign="center">
                             <ProductBuy slug={"lets-goal-2021-planner"} />
-                            </P>
+                            </P> */}
+                            <div className="text-center text-sm-start">
+                                <ProductBuy slug={"lets-goal-2021-planner"} />
+                            </div>
                         </Block>
                     </Col>
                 </Row>
