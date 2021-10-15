@@ -10,7 +10,6 @@ import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
 import { useRouter } from "next/router";
 import styled ,{keyframes}from "styled-components";
-import AnimateText from "../styled/AnimateText";
 
 export const getBtnText = (
     inCart = false,
@@ -47,7 +46,6 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
             ? list.filter((item) => item.product === id).length > 0
             : false;
     }, [list, id, in_cart, token]);
-
     const onClick = useCallback(() => {
         if (inCart) {
             router.push("/[country]/checkout", `/${country}/checkout`);
@@ -63,6 +61,7 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
                     },
                 ],
             });
+          
             dispatch(cartIsOpen(true));
         } else {
             dispatch(addToLocalCart(id, slug, quantity));

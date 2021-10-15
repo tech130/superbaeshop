@@ -119,9 +119,17 @@ const Cartlist = () => {
     const isPanel = useCartIsOpen();
     if (!token) {
 
-        return isPanel ? <LocalCartListPanel /> : <LocalCartList />;
+        return <LocalCartList />;
     }
-    return isPanel ? <MyCartListPanel /> : <MyCartList />;
+    return  <MyCartList />;
+};
+export const CartlistPanel = () => {
+    const { token } = useUser();
+    if (!token) {
+
+        return <LocalCartListPanel />
+    }
+    return <MyCartListPanel /> ;
 };
 
 const LocalCartListPanel = () => {

@@ -12,7 +12,8 @@ import { useDispatch } from "react-redux";
 import { fetchCart } from "../../redux/user/cart";
 import { cartIsOpen } from "../../redux/user/local_cart";
 import { useRouter } from "next/router";
-import Cartlist from "../../components/checkout/Cartlist";
+// import Cartlist from "../../components/checkout/Cartlist";
+import {CartlistPanel} from "../../components/checkout/Cartlist";
 import useUser from "../../hooks/redux/user/useUser";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
@@ -180,7 +181,7 @@ const Header = () => {
                                             dispatch(cartIsOpen(false));
                                             }}
                                         >
-                                            <Cartlist />
+                                            <CartlistPanel />
                                         </SlidingPane>
                                         
                                         </div>

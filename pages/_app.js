@@ -12,6 +12,7 @@ import "intersection-observer";
 import "../css/font.css";
 import "../css/theme.css";
 import "../css/ui.css";
+import "../css/scroll.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-toastify/dist/ReactToastify.css";
 import UploadCartModal from "../components/auth/UploadCartModal";

@@ -19,12 +19,26 @@ max-width: 65vw;
         overflow-x: auto;
         white-space: nowrap;
         justify-content: space-evenly;
-    min-height: 42px;
-    align-items: center;
+        min-height: 42px;
+        align-items: center;
+    
+    @media only screen and (min-width: 768px) {
+        overflow-x: hidden;
+        justify-content: flex-start;
+    }
+    @media only screen and (min-width: 1200px) {
+        justify-content: space-evenly;
+    }
     @media only screen and (max-width: 565px) {
         justify-content: flex-start;
     }
 
+    }
+    @media only screen and (min-width: 768px) {
+        ul:hover{
+            overflow-x: auto;
+        }
+        
     }
     @media only screen and (max-width: 768px) {
         background: hsla(0,0%,100%,.7);

@@ -11,10 +11,28 @@ import useProduct from "../../hooks/redux/product/useProduct";
 import Button from "../styled/Button";
 import { useAddToCart } from "../product/ProductBuy";
 import Loader from "../form/Loader";
+import styled from "styled-components";
+import { AddToCart } from "../product/ProductBuy";
 
+export const CartButton = styled(AddToCart)`
+    padding: 5px 20px;
+    border-radius: 30px;
+    background: #f5f6f9;
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: none;
+    text-transform: uppercase;
+    border: 1px solid #cecece;
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 5px 20px;
+    box-shadow: none;
+
+    }
+`;
 const MaskDetailsItem = ({ product = {} }) => {
     const { fetching, onClick, btnText } = useAddToCart(product);
-
     return (
         <CartStyl alignItems="center">
             {fetching && (
@@ -35,7 +53,8 @@ const MaskDetailsItem = ({ product = {} }) => {
                 <Block>
                     <ProductPrices slug={slug} />
                 </Block>
-                <Button
+                <CartButton product={product} /> 
+                {/* <Button
                     onClick={onClick}
                     padding="5px 20px"
                     border="1px solid #cecece"
@@ -46,7 +65,7 @@ const MaskDetailsItem = ({ product = {} }) => {
                     <Txt fontSize="13px" weight={500}>
                         {btnText.toUpperCase()}
                     </Txt>
-                </Button>
+                </Button> */}
             </FlexItem>
         </CartStyl>
     );
