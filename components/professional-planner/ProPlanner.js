@@ -3,33 +3,15 @@ import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import styled from "styled-components";
-import { H3 } from "../styled/Headings";
-import Txt from "../styled/Txt";
 import ProPlannerPrice from "./ProPlannerPrice";
 import Block from "../styled/Block";
-import Flex from "../styled/Flex";
 import P from "../styled/P";
 import ResponsiveImage from "../common/ResponsiveImage";
 import useOnScreen from "../../hooks/layout/useOnScreen";
-import WhatsInside from "../lets-goal-2021/WhatsInside";
 import AnimateText from "../styled/AnimateText";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
-const MeetTxt = styled.h1`
-    font-size: 3.4rem;
-    font-weight: 700;
-    line-height: 68px;
-    margin-bottom: 30px;
-    color: black;
-    // background: linear-gradient(#616161, #333);
-    // word-break: break-word;
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
 
-    @media (min-width: 768px) {
-        font-size: 4rem;
-    }
-`;
 const ResponsiveSet = styled.div`
     width:100%;
     height:100%;
@@ -79,11 +61,6 @@ const ProPlanner = () => {
                     </Row>
                 </Container>
             </Block>
-
-            {/* <Block padding="20px 0px">
-                <ListAnimation />
-            </Block> */}
-            {/* <WhatsInside /> */}
             <Block padding="35px 0px">
                 <Container>
                     {/* <Flex alignItems="center" flexWrap> */}
