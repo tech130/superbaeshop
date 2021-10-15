@@ -104,7 +104,7 @@ const ColorBoxNew = ({ width = "", mt = "", bg, children, image = {} }) => {
 
 const ColorBox = ({ width = "", height = "", mt = "", bg, children, image = {} }) => {
     return (
-        <Col xs={12} sm={12} md={4} lg={3} className="mb-5">
+        <Col xs={12} sm={12} md={4} lg={4} xl={3} className="mb-5">
             <ColorBoxStylNew bg={bg} mt={mt} height={height}>
                 {image.src && (
                     <ColorBoxImgNew width={width} mt={mt}>
