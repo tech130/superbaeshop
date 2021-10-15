@@ -21,18 +21,19 @@ const LetsGoal2021 = () => {
             <HeroSection />
             <WhatsInside />
             {/* <InterSec /> */}
-            <div className="d-none d-md-block d-lg-block d-xl-block">
+            {/* <div className="d-none d-md-block d-lg-block d-xl-block">
                 <Freebies />
-            </div>
-            <div className="d-block d-md-none d-lg-none d-xl-none">
+            </div> */}
+            {/* <div className="d-block d-md-none d-lg-none d-xl-none">
                 <FreeInclusions />
-            </div>
+            </div> */}
+                <FreeInclusions />
             <UltimateBundle />
             {/* <Freebies /> */}
             {/* <InterSec /> */}
             {/* <SmartDigitalPlanner /> */}
             {/* <OptionsSection /> */}
-            <ColorPicker />
+            {/* <ColorPicker /> */}
             <Block padding="65px 0px 0px 0px">
 
                 <TestimonialSection />

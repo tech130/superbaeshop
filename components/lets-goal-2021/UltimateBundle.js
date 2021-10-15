@@ -7,11 +7,11 @@ import ProductBuy from "../product/ProductBuy";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import MainHeading from "../styled/MainHeading";
 import AnimateText from "../styled/AnimateText";
-import image1 from './images/ultimate-bundle/desk calendar mockup 1 (1).png';
-import image2 from './images/ultimate-bundle/WALL CALENDAR.png';
-import image3 from './images/ultimate-bundle/weekly planner-01 (1).png';
-import image4 from './images/ultimate-bundle/laptopskin.png';
-import image5 from './images/ultimate-bundle/slam book.png';
+import image1 from './images/ultimate-bundle/Desk Calendar copy (1).jpg';
+import image2 from './images/ultimate-bundle/Wall Calendar (1).jpg';
+import image3 from './images/ultimate-bundle/weekly Planner copy.jpg';
+import image4 from './images/ultimate-bundle/laptop copy (1).jpg';
+import image5 from './images/ultimate-bundle/Slam Book copy.jpg';
 import { ProductPrices } from "../product/ProductPrice";
 import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 import { useProdCountry } from "../common/CountryLink";
@@ -37,7 +37,7 @@ const MainDiv2 = styled.div`
   border: 1px solid transparent;
   box-shadow:  1px 1px 16px 1px #efebff;
   border-radius: 20px;
-
+  overflow: hidden;
   img{
     width:250px;
   }
@@ -73,7 +73,7 @@ const UltimateBundle = () => {
             <div className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                 <Flex vertical width="100%" alignItems="center" margin="0">
                     <Flex alignItems="center" margin="0px 0px 30px 0" >
-                        <MainHeading textAlign="center" mb="0px">Best things in life are <AnimateText> free </AnimateText></MainHeading>
+                        <MainHeading textAlign="center" mb="0px">Add these and get your <AnimateText> bundle </AnimateText></MainHeading>
 
                     </Flex>
 

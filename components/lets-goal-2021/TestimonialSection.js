@@ -306,7 +306,7 @@ export default function TestimonialSection() {
                 <SmallHeading>
                   Improve your over all mental health, mindset and well-being with our planner.
                 </SmallHeading>
-                <ProductBuy slug={"lets-goal-2021-planner"} />
+                {/* <ProductBuy slug={"lets-goal-2021-planner"} /> */}
 
               </FlexAssing>
             </FlexBg>

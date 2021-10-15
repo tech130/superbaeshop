@@ -28,7 +28,7 @@ const ColorBoxStylNew = styled.div`
     background-color: #fff;
     // min-height: 250px;
     position:relative;
-    padding-bottom: 60px;
+    // padding-bottom: 60px;
     height:${(props) => props.height || "100%"};
     border: 1px solid transparent ;
     justify-content: center;
@@ -104,7 +104,7 @@ const ColorBoxNew = ({ width = "", mt = "", bg, children, image = {} }) => {
 
 const ColorBox = ({ width = "", height = "", mt = "", bg, children, image = {} }) => {
     return (
-        <Col xs={12} sm={12} md={4} className="mb-5">
+        <Col xs={12} sm={6} md={4} lg={3} className="mb-5">
             <ColorBoxStylNew bg={bg} mt={mt} height={height}>
                 {image.src && (
                     <ColorBoxImgNew width={width} mt={mt}>
@@ -133,27 +133,27 @@ const FreeInclusions = () => {
                         mt="75px"
                         width="300px"
                         bg="#efebff"
-                        image={require("./images/below-freebee/pocket planner png.png?resize")}
+                        image={require("./images/free-inclusions/My Space Planner.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Planner</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Planner</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
 
                     <ColorBox
                         width="300px"
                         bg="#fff0ef"
-                        image={require("./images/below-freebee/2.jpeg?resize")}
+                        image={require("./images/free-inclusions/Sticker Book.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Sticker Book</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Sticker Book</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
                     <ColorBox
                         width="300px"
                         bg="#e1f1fe"
-                        image={require("./images/below-freebee/NOTEBOOK.png?resize")}
+                        image={require("./images/free-inclusions/A5 Note Book.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Notebook</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Notebook</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
 
 
@@ -161,28 +161,28 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#efebff"
-                        image={require("./images/below-freebee/11.png?resize")}
+                        image={require("./images/free-inclusions/pocket Notebook copy.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Small Notebook</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Small Notebook</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
 
                     <ColorBox
                         width="300px"
                         bg="#fff0ef"
-                        image={require("./images/below-freebee/SCRUNCHIES.png?resize")}
+                        image={require("./images/free-inclusions/Scrunchy.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Scrunchies</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Scrunchies</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
                     <ColorBox
                         mt="70px"
                         width="360px"
                         bg="#e1f1fe"
-                        image={require("./images/below-freebee/POP SOCKET.png?resize")}
+                        image={require("./images/free-inclusions/Pop Socket copy.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Pop socket</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Pop socket</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
 
 
@@ -191,27 +191,27 @@ const FreeInclusions = () => {
                         mt="130px"
                         width="300px"
                         bg="#efebff"
-                        image={require("./images/below-freebee/BADGE New White star.png?resize")}
+                        image={require("./images/free-inclusions/Badge.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Badge</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Badge</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
 
                     <ColorBox
                         width="300px"
                         bg="#fff0ef"
-                        image={require("./images/below-freebee/9.png?resize")}
+                        image={require("./images/free-inclusions/To do list.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >To do list</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >To do list</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
                     <ColorBox
                         width="300px"
                         bg="#e1f1fe"
-                        image={require("./images/below-freebee/NOTES.png?resize")}
+                        image={require("./images/free-inclusions/Notes.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Notes</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Notes</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
 
 
@@ -219,33 +219,33 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#efebff"
-                        image={require("./images/below-freebee/Freebie 4.png?resize")}
+                        image={require("./images/free-inclusions/Bookmark.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Bookmark</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Bookmark</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
 
                     <ColorBox
                         mt="75px"
                         width="300px"
                         bg="#fff0ef"
-                        image={require("./images/below-freebee/Freebie 2.png?resize")}
+                        image={require("./images/free-inclusions/Post Card.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Post card</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Post card</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
                     <ColorBox
                         width="300px"
                         bg="#e1f1fe"
-                        image={require("./images/below-freebee/play cards.jpeg?resize")}
+                        image={require("./images/free-inclusions/Play Card.jpg?resize")}
                     >
-                        <SmallHeadingText textAlign="center" >Play card</SmallHeadingText>
-                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
+                        {/* <SmallHeadingText textAlign="center" >Play card</SmallHeadingText>
+                        <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
                     </ColorBox>
 
 
 
-                    <ColorBox
+                    {/* <ColorBox
                         width="300px"
                         bg="#efebff"
                         image={require("./images/below-freebee/holographic stickers.png?resize")}
@@ -262,7 +262,7 @@ const FreeInclusions = () => {
                     >
                         <SmallHeadingText textAlign="center" >Pink Box</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub>
-                    </ColorBox>
+                    </ColorBox> */}
 
                 </Row>
 

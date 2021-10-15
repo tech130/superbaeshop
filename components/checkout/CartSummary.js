@@ -85,14 +85,17 @@ const CartSummary = ({
         coupon.id && coupon.payout
             ? (parseFloat(coupon.payout || 0) / 100) * cartTotal
             : 0;
+    let taxAmount = ((cartTotal - couponAmt) / 100) * 18
     const total =
-        shipping_fee +
+        (shipping_fee +
         cartTotal -
         (redeem ? wallet_amount : couponAmt) -
-        offerAmount;
-    const [tooltipOpen, setTooltipOpen] = useState(false);
+        offerAmount)+taxAmount;
 
-    const toggle = () => setTooltipOpen(!tooltipOpen);
+    // const [tooltipOpen, setTooltipOpen] = useState(false);
+
+    // const toggle = () => setTooltipOpen(!tooltipOpen);
+    let FinalCharge = shipping_fee+taxAmount;
     return (
         <>
             <CartSum>
@@ -102,7 +105,7 @@ const CartSummary = ({
                 />
                 <SumItem
                     title="Taxes and Charges"
-                    amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
+                    amt={`+ ${currency_type}${FinalCharge.toFixed(2)}`}
                 />
                 {redeem ? (
                     <>

@@ -148,9 +148,9 @@ export default function ColorPicker() {
         <FirstSection>
           <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
 
-          <SmallHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>
+          {/* <SmallHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>
             2 Fresh colors that reflect your personality
-          </SmallHeading>
+          </SmallHeading> */}
         </FirstSection>
         {/* <ImageHeight > */}
         <Img src={colorInd === "#ffdce2" ? `${plannerPink}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerWhite}`} width="50%" />
