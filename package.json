@@ -8,7 +8,8 @@
     "start": "next start -p 4000"
   },
   "dependencies": {
-    "axios": "^0.21.4",
+    "aos": "^2.3.4",
+    "axios": "^0.21.1",
     "bootstrap": "^5.1.1",
     "dayjs": "^1.8.29",
     "image-trace-loader": "^1.0.2",
@@ -35,7 +36,8 @@
     "reactstrap": "^8.10.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "responsive-loader": "^2.3.0",
+    "responsive-loader": "^1.2.0",
+    "sharp": "^0.25.4",
     "styled-bootstrap-grid": "^3.1.0",
     "styled-components": "^5.1.0",
     "svg-sprite-loader": "^5.0.0",
@@ -47,8 +49,6 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.7",
     "eslint": "7.5",
-    "eslint-plugin-react": "^7.20.3",
-    "jimp": "^0.16.1",
-    "responsive-loader-sharp": "^0.8.0"
+    "eslint-plugin-react": "^7.20.3"
   }
 }
