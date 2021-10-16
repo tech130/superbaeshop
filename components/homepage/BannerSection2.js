@@ -67,6 +67,7 @@ const UnitWrapperImage = styled.div`
     }
     @media only screen and (max-width: 734px) {
         height:  ${(props)=>props.resHeight};
+        margin: 25px 0px 35px 0px;
     }
 }
 `;

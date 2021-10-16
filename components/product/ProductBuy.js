@@ -151,7 +151,6 @@ const ProductBuy = ({ slug,addition="",planner="" }) => {
         product_country=product.product_country
     }
     const productCountry = useProdCountry(product_country);
-    debugger
     if(planner === 'black-planner'){
         product["color"]='black';
     }

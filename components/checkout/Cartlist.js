@@ -304,11 +304,21 @@ const MyCartListPanel = () => {
     useEffect(() => {
         dispatch(fetchCartAlways());
     }, []);
-    if (cartList.list.length > 0) {
-        return (
-
-
-            <div className="px-3">
+    
+    return (
+        <ApiContent
+            name="cartList"
+            loader={
+                <Row>
+                    <Col lg={7}>
+                        <CartItemLoader />
+                        <CartItemLoader />
+                    </Col>
+                </Row>
+            }
+        >
+            {cartList.list.length > 0 ? (
+                <div className="px-3">
 
                 <Row>
                     <FlexBg>
@@ -347,10 +357,6 @@ const MyCartListPanel = () => {
                             src="/images/icons/payment/discoverSmall.svg"
                             alt="discover pay logo"
                         />
-                        {/* <img
-                                    src="/images/icons/payment/googlepay.svg"
-                                    alt="googlepay logo"
-                                /> */}
                         <img
                             src="/images/icons/payment/masterSmall.svg"
                             alt="master logo"
@@ -364,10 +370,11 @@ const MyCartListPanel = () => {
 
                 </Row>
             </div>
-
-        );
-    }
-    return <CartEmpty />;
+            ) : (
+                <CartEmpty />
+            )}
+        </ApiContent>
+    )
 
 };
 
