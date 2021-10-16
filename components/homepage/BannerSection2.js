@@ -129,6 +129,7 @@ const CartButton = styled.button`
 const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',slug="",height="",resHeight="",margin="", ...restProps }) => {
     const router = useRouter();
     const country = useCountryParam();
+    
     return (
         <Block padding="3px 0px" margin="0px -15px">
 
