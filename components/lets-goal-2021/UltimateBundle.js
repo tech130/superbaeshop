@@ -56,8 +56,8 @@ const scrollTexts = [
 const UltimateBundle = () => {
 
     let tempProduct = useProduct("lets-goal-2021-planner");
-    let product=tempProduct.sub_product;
-    let product_country=product.product_country;
+    let product = tempProduct.sub_product;
+    let product_country = product.product_country;
     // const productCountry = useProdCountry(product_country[0]);
     const productCountry = product_country[0];
     return (
@@ -105,33 +105,33 @@ const UltimateBundle = () => {
                         </Marquee>
                     </Flex>
                     <Flex alignItems="center" margin="30px 0px 0px 0px" >
-                        <Txt  fontSize="18px" weight="700" lineHeight="1.1" color="#777777" >Priced just right at  </Txt>
-                        
+                        <Txt fontSize="18px" weight="700" lineHeight="1.1" color="#777777" >Priced just right at  </Txt>
+
                         <Txt
-                textDecor={"none" }
-                margin="0px 8px 0px 10px"
-                weight={700}
-                        fontSize="16px"
-               
-            >
-                
-                {productCountry.country.currency_type}
-                {1 * (productCountry["selling_price"] || 0)}{" "}
-            </Txt>
+                            textDecor={"none"}
+                            margin="0px 8px 0px 10px"
+                            weight={700}
+                            fontSize="16px"
+
+                        >
+
+                            {productCountry.country.currency_type}
+                            {1 * (productCountry["selling_price"] || 0)}{" "}
+                        </Txt>
                         <Txt
-                        margin="0px 8px 0px 0px"
-                        weight={600}
-                        color="#999999"
-                        fontSize="14px"
-                textDecor={"line-through "}
-               
-            >
-                {productCountry.country.currency_type}
-                {1 * (productCountry["original_price"] || 0)}{" "}
-            </Txt>
-                            {/* <ProductPrices slug={"lets-goal-2021-planner"} addition="bundle-2021" /> */}
-                    
-                        </Flex>
+                            margin="0px 8px 0px 0px"
+                            weight={600}
+                            color="#999999"
+                            fontSize="14px"
+                            textDecor={"line-through "}
+
+                        >
+                            {productCountry.country.currency_type}
+                            {1 * (productCountry["original_price"] || 0)}{" "}
+                        </Txt>
+                        {/* <ProductPrices slug={"lets-goal-2021-planner"} addition="bundle-2021" /> */}
+
+                    </Flex>
                     <Flex alignItems="center" margin="10px 0px 0px 0px" >
                         <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021" />
 
@@ -142,7 +142,7 @@ const UltimateBundle = () => {
                 <Container>
                     <Flex vertical width="100%" alignItems="center" margin="0">
                         <Flex alignItems="center" margin="0px 0px 30px 0" >
-                            <MainHeading textAlign="center" mb="0px">Best things in life are  <AnimateText>free </AnimateText></MainHeading>
+                            <MainHeading textAlign="center" mb="0px">Add these and get your <AnimateText> bundle </AnimateText></MainHeading>
 
                         </Flex>
                     </Flex>
@@ -172,8 +172,32 @@ const UltimateBundle = () => {
                     })}
                     <Flex vertical width="100%" alignItems="center" margin="0">
                         <Flex alignItems="center" margin="30px 0px 0px 0px" >
-                            <ProductPrices slug={"lets-goal-2021-planner"} addition="bundle-2021" />
-                    
+                            <Txt fontSize="18px" weight="700" lineHeight="1.1" color="#777777" >Priced just right at  </Txt>
+
+                            <Txt
+                                textDecor={"none"}
+                                margin="0px 8px 0px 10px"
+                                weight={700}
+                                fontSize="16px"
+
+                            >
+
+                                {productCountry.country.currency_type}
+                                {1 * (productCountry["selling_price"] || 0)}{" "}
+                            </Txt>
+                            <Txt
+                                margin="0px 8px 0px 0px"
+                                weight={600}
+                                color="#999999"
+                                fontSize="14px"
+                                textDecor={"line-through "}
+
+                            >
+                                {productCountry.country.currency_type}
+                                {1 * (productCountry["original_price"] || 0)}{" "}
+                            </Txt>
+                            {/* <ProductPrices slug={"lets-goal-2021-planner"} addition="bundle-2021" /> */}
+
                         </Flex>
                         <Flex alignItems="center" margin="10px 0px 0px 0px" >
                             <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021" />

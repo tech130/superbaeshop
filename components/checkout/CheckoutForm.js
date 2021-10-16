@@ -32,6 +32,7 @@ import DealsModal from "../product/DealsModal";
 import Modal from "../modal/Modal";
 import useToggle from "../../hooks/useToggle";
 import Block from "../styled/Block";
+import { toast } from "react-toastify";
 
 const ImportantPoints = styled.ul`
     width: 90%;
@@ -172,7 +173,16 @@ const CheckoutForm = ({ coupon, redeem }) => {
         }
 
         if (!values.address_id) {
-            err.address_id = "Address is required";
+            err.address_id = "Please select a address";
+            toast.error("Address is required", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
 
         if (Object.keys(err).length > 0) {

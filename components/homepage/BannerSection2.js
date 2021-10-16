@@ -7,7 +7,7 @@ import SmallHeading from "../styled/SmallHeading";
 import P from "../styled/P";
 import { useRouter } from "next/router";
 import AnimateText from "../styled/AnimateText";
-import { useCountryParam } from "../common/CountryLink";
+import {  useCountryParam } from "../common/CountryLink";
 
 
 const UnitWrapper = styled.div`
@@ -129,7 +129,7 @@ const CartButton = styled.button`
 const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',slug="",height="",resHeight="",margin="", ...restProps }) => {
     const router = useRouter();
     const country = useCountryParam();
-    
+
     return (
         <Block padding="3px 0px" margin="0px -15px">
 

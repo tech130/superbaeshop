@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps, store }) {
             xxl: 1440,
             xl: 1240,
             lg: 960,
-            md: 720,
+            md: 780,
             sm: 540,
             xs: 540,
           },

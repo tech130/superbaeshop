@@ -4,7 +4,7 @@ import Flex from "../styled/Flex";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import lisa from './images/testimonials/Lisa.jpeg';
 import Rosetta from './images/testimonials/testi1.jpeg';
-import Shagufta from './images/testimonials/Shagufta Tamkeen.jpeg';
+import Shagufta from './images/testimonials/ShaguftaTamkeen.jpeg';
 import ProductBuy from "../product/ProductBuy";
 
 const MainCaption = styled.div`

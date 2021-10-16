@@ -56,8 +56,16 @@ const ColorBoxImgNew = styled.div`
     align-items: center;
     justify-content: center;
     div{
-        width: auto;
-        height: 100%;
+        // width: auto;
+        // height: 100%;
+    }
+    @media (min-width: 786px) {
+        width: 230px;
+        height: 230px;
+    }
+    @media (min-width: 992px) {
+        width: 300px;
+        height: 300px;
     }
 `;
 
@@ -65,21 +73,21 @@ const ColorBoxContent = styled.div`
     margin-top: auto;
     padding: 30px 0px;
 `;
-const SmallHeadingText = styled.p`
-    font-size: 24px;
-    text-transform: capitalize;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 0;
-    color: black;
-`;
-const ColorBoxContentSub = styled.p`
-    font-size: 16px;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 0;
-    color: #262626;
-`;
+// const SmallHeadingText = styled.p`
+//     font-size: 24px;
+//     text-transform: capitalize;
+//     font-weight: 700;
+//     text-align: center;
+//     margin-bottom: 0;
+//     color: black;
+// `;
+// const ColorBoxContentSub = styled.p`
+//     font-size: 16px;
+//     font-weight: 500;
+//     text-align: center;
+//     margin-bottom: 0;
+//     color: #262626;
+// `;
 const ColorBoxContentNew = styled.div`
     margin-top: auto;
     position: absolute;
@@ -102,13 +110,13 @@ const ColorBoxNew = ({ width = "", mt = "", bg, children, image = {} }) => {
     );
 };
 
-const ColorBox = ({ width = "", height = "", mt = "", bg, children, image = {} }) => {
+const ColorBox = ({ width = "", height = "",img="", mt = "", bg, children, image = {} }) => {
     return (
         <Col xs={12} sm={12} md={4} lg={4} xl={3} className="mb-5">
             <ColorBoxStylNew bg={bg} mt={mt} height={height}>
                 {image.src && (
                     <ColorBoxImgNew width={width} mt={mt}>
-                        <ResponsiveImage image={image} />
+                        <ResponsiveImage  imgWidth={"100%"} image={image} />
                     </ColorBoxImgNew>
                 )}
                 <ColorBoxContentNew>{children}</ColorBoxContentNew>
@@ -129,11 +137,10 @@ const FreeInclusions = () => {
                     </SmallHeading>
                 </Block>
                 <Row justifyContent="center">
-                    <ColorBox
-                        mt="75px"
-                        width="300px"
-                        bg="#efebff"
-                        image={require("./images/free-inclusions/My Space Planner.jpg?resize")}
+                    
+                        <ColorBox
+                        bg="#fff0ef"
+                        image={require("./images/free-inclusions/planner.jpg?resize")}
                     >
                         {/* <SmallHeadingText textAlign="center" >Planner</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
@@ -142,7 +149,7 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#fff0ef"
-                        image={require("./images/free-inclusions/Sticker Book.jpg?resize")}
+                        image={require("./images/free-inclusions/StickerBook.jpg?resize")}
                     >
                         {/* <SmallHeadingText textAlign="center" >Sticker Book</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
@@ -150,7 +157,7 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#e1f1fe"
-                        image={require("./images/free-inclusions/A5 Note Book.jpg?resize")}
+                        image={require("./images/free-inclusions/A5NoteBook.jpg?resize")}
                     >
                         {/* <SmallHeadingText textAlign="center" >Notebook</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
@@ -161,7 +168,7 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#efebff"
-                        image={require("./images/free-inclusions/pocket Notebook copy.jpg?resize")}
+                        image={require("./images/free-inclusions/pocketNotebookcopy.jpg?resize")}
                     >
                         {/* <SmallHeadingText textAlign="center" >Small Notebook</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
@@ -179,7 +186,7 @@ const FreeInclusions = () => {
                         mt="70px"
                         width="360px"
                         bg="#e1f1fe"
-                        image={require("./images/free-inclusions/Pop Socket copy.jpg?resize")}
+                        image={require("./images/free-inclusions/PopSocketcopy.jpg?resize")}
                     >
                         {/* <SmallHeadingText textAlign="center" >Pop socket</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
@@ -200,7 +207,7 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#fff0ef"
-                        image={require("./images/free-inclusions/To do list.jpg?resize")}
+                        image={require("./images/free-inclusions/Todolist.jpg?resize")}
                     >
                         {/* <SmallHeadingText textAlign="center" >To do list</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
@@ -229,7 +236,7 @@ const FreeInclusions = () => {
                         mt="75px"
                         width="300px"
                         bg="#fff0ef"
-                        image={require("./images/free-inclusions/Post Card.jpg?resize")}
+                        image={require("./images/free-inclusions/PostCard.jpg?resize")}
                     >
                         {/* <SmallHeadingText textAlign="center" >Post card</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}
@@ -237,7 +244,7 @@ const FreeInclusions = () => {
                     <ColorBox
                         width="300px"
                         bg="#e1f1fe"
-                        image={require("./images/free-inclusions/Play Card.jpg?resize")}
+                        image={require("./images/free-inclusions/PlayCard.jpg?resize")}
                     >
                         {/* <SmallHeadingText textAlign="center" >Play card</SmallHeadingText>
                         <ColorBoxContentSub>{"Lorem Ipsum is simply dummy"}</ColorBoxContentSub> */}

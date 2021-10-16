@@ -25,7 +25,7 @@ export const getBtnText = (
         ? "Pre Order"
         : `Add${fetching ? "ing" : ""} to Cart`;
 
-export const useAddToCart = (productDetails = {}, options = {}) => {
+export const useAddToCart = (productDetails = {},planner='', options = {}) => {
     const { quantity = 1, isOffer = false } = options;
     const { id, in_cart, is_pre_order, stock_status, slug,color_code='' } = productDetails;
     const dispatch = useDispatch();
@@ -58,7 +58,7 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
                         product_id: id,
                         quantity: quantity,
                         is_offer: isOffer,
-                        color_code:color_code
+                        color_code:planner === 'black-planner' ? 'black':''
                     },
                 ],
             });
@@ -81,8 +81,8 @@ export const useAddToCart = (productDetails = {}, options = {}) => {
     };
 };
 
-export const AddToCart = ({ className = "", product = {} }) => {
-    const { onClick, fetching, btnText, inStock } = useAddToCart(product);
+export const AddToCart = ({ className = "", product = {},planner='' }) => {
+    const { onClick, fetching, btnText, inStock } = useAddToCart(product,planner);
     return (
         <Button
             disabled={fetching || !inStock}
@@ -151,12 +151,13 @@ const ProductBuy = ({ slug,addition="",planner="" }) => {
         product_country=product.product_country
     }
     const productCountry = useProdCountry(product_country);
-    if(planner !== ''){
+    debugger
+    if(planner === 'black-planner'){
         product["color"]='black';
     }
     if (productCountry && productCountry.country) {
         return <>
-        <CartButton product={product} /> 
+        <CartButton product={product} planner={planner}/> 
         {/* <NewButton>Add to cart</NewButton>  */}
         </>;
     }

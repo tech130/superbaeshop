@@ -25,7 +25,7 @@ const PagesSlider = () => {
                     <SmallHeading textAlign="center">Take a look inside</SmallHeading>
                 </Block>
                 <Row>
-                    <Col lg={8} lgOffset={2}>
+                    <Col lg={10} lgOffset={1} xl={8} xlOffset={2}>
                         <div ref={ref}>
                             <Carousel
                                 renderCenterLeftControls={LeftBtn}

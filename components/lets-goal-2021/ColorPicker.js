@@ -37,6 +37,7 @@ const ColorSelectorContainer = styled.div`
   align-self: center;
   margin-top: -15px;
   flex-direction: row;
+  align-items: center;
   h4{
     margin-bottom:0px;
     margin-right: 20px;
@@ -168,7 +169,7 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'black' : 'black'}`}>Your Planner, Your <AnimateText> color</AnimateText> </MainHeading>
+          <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'black' : 'black'}`}>Black Edition - Once Gone, Gone for <AnimateText> ever</AnimateText> </MainHeading>
 
           {/* <SmallHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>
             2 Fresh colors that reflect your personality
