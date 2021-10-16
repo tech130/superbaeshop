@@ -13,6 +13,7 @@ const useCart = () => {
     return useMemo(() => {
         const { cart, ...rest } = cartList;
         let list = [];
+        
         cart.forEach((item) => {
             const cartItem = cartEntity[item];
             if (cartItem && cartItem.quantity) {
@@ -39,7 +40,7 @@ export const useLocalCart = () => {
         return cart.map((x) => {
             return {
                 ...x,
-                product: product[x.slug],
+                product: x.slug === 'bundle-2021'?product['lets-goal-2021-planner'].sub_product: product[x.slug] ,
             };
         });
     }, [cart, product]);

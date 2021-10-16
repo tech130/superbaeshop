@@ -1,7 +1,6 @@
-import React, { useRef, memo } from "react";
+import React from "react";
 import styled from "styled-components";
 import Block from "../styled/Block";
-import { H1, H2, H3 } from "../styled/Headings";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
 import P from "../styled/P";

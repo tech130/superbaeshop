@@ -1,13 +1,14 @@
-import React, { useRef, memo } from "react";
+import React from "react";
 import styled from "styled-components";
 import Block from "../styled/Block";
-import { H1, H2, H3 } from "../styled/Headings";
+// import { H1, H2, H3 } from "../styled/Headings";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
 import P from "../styled/P";
 import { useRouter } from "next/router";
 import AnimateText from "../styled/AnimateText";
-import {  useCountryParam } from "../common/CountryLink";
+import { useCountryParam } from "../common/CountryLink";
+import ResponsiveImage from "../common/ResponsiveImage";
 
 
 const UnitWrapper = styled.div`
@@ -57,16 +58,23 @@ const UnitWrapperText = styled.div`
 `;
 const UnitWrapperImage = styled.div`
     overflow: hidden;
-    height: ${(props)=>props.height || '400px'};
+    height: ${(props) => props.height || '400px'};
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: ${(props)=>props.margin || '30px 0px 0px 0px'};
+    margin: ${(props) => props.margin || '30px 0px 0px 0px'};
+    div{
+        height: 100%;
+        width: auto;
+        @media only screen and (max-width: 734px) {
+            width: 100%;
+        }
+    }
     img{
         height:100%;
     }
     @media only screen and (max-width: 734px) {
-        height:  ${(props)=>props.resHeight};
+        height:  ${(props) => props.resHeight};
         margin: 25px 0px 35px 0px;
     }
 }
@@ -127,7 +135,7 @@ const CartButton = styled.button`
     }
 `
 
-const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',slug="",height="",resHeight="",margin="", ...restProps }) => {
+const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '', slug = "", height = "", resHeight = "", margin = "", ...restProps }) => {
     const router = useRouter();
     const country = useCountryParam();
 
@@ -158,7 +166,10 @@ const BannerSection2 = ({ dark, title, sub_title, desc, img, animateText = '',sl
 
                 </UnitWrapperText>
                 <UnitWrapperImage height={height} margin={margin} resHeight={resHeight}>
-                    <img src={img} />
+                    <ResponsiveImage
+                        image={require(`${img}?resize`)}
+                    />
+                    {/* <img src={img} /> */}
                     {/* <UnitWrapperImageFigure {...restProps} img={img}></UnitWrapperImageFigure> */}
                 </UnitWrapperImage>
             </UnitWrapper>

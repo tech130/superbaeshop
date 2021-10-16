@@ -7,11 +7,13 @@ import ProductBuy from "../product/ProductBuy";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import MainHeading from "../styled/MainHeading";
 import AnimateText from "../styled/AnimateText";
-import image1 from './images/ultimate-bundle/Desk Calendar copy (1).jpg';
-import image2 from './images/ultimate-bundle/Wall Calendar (1).jpg';
-import image3 from './images/ultimate-bundle/weekly Planner copy.jpg';
-import image4 from './images/ultimate-bundle/laptop copy (1).jpg';
-import image5 from './images/ultimate-bundle/Slam Book copy.jpg';
+// import image1 from './images/ultimate-bundle/Desk.jpg';
+// import image2 from './images/ultimate-bundle/Wall.jpg';
+// import image3 from './images/ultimate-bundle/weekly.jpg';
+// import image4 from './images/ultimate-bundle/laptop.jpg';
+// import image5 from './images/ultimate-bundle/Slam.jpg';
+import ResponsiveImage from "../common/ResponsiveImage";
+
 import { ProductPrices } from "../product/ProductPrice";
 import useProduct from "../../hooks/redux/product/useProduct";
 import styled from "styled-components";
@@ -45,11 +47,11 @@ const MainDiv2 = styled.div`
 
 const scrollTexts = [
     {
-        key: [image1,
-            image2,
-            image3,
-            image4,
-            image5]
+        key: ['./images/ultimate-bundle/Desk.jpg',
+            './images/ultimate-bundle/Wall.jpg',
+            './images/ultimate-bundle/weekly.jpg',
+            './images/ultimate-bundle/Newlaptop.jpg',
+            './images/ultimate-bundle/Slam.jpg']
     },
 
 ];
@@ -92,8 +94,10 @@ const UltimateBundle = () => {
                                                 return (
                                                     <MainDiv2 key={ind}>
 
-
-                                                        <img src={item} />
+                                                        <ResponsiveImage
+                                                            image={require(`${item}?resize`)}
+                                                        />
+                                                        {/* <img src={item} /> */}
                                                     </MainDiv2>
                                                 )
                                             })
@@ -156,9 +160,11 @@ const UltimateBundle = () => {
                                             <Col key={index} sm={12} xs={12}>
                                                 <MainDiv key={ind}>
                                                     <MainDiv2 >
+                                                        <ResponsiveImage
+                                                            image={require(`${item}?resize`)}
+                                                        />
 
-
-                                                        <img src={item} />
+                                                        {/* <img src={item} /> */}
                                                     </MainDiv2>
                                                 </MainDiv>
                                             </Col>

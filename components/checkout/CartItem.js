@@ -64,10 +64,10 @@ const CartItem = ({
     discount,
     offer = {},
 }) => {
-    const productCountry = useProdCountry(
+    let productCountry = useProdCountry(
         product ? product.product_country : {}
     );
-
+    productCountry = product.slug === "bundle-2021" ? product.product_country[0]:productCountry;
     const isAvailable =
         productCountry &&
         productCountry.country &&
