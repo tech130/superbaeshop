@@ -17,6 +17,7 @@ import { updateCartList } from "../../redux/user/cart";
 import { toBoolean, toNum } from "../../utils";
 import minus from '../../public/images/minus.png';
 import plus from '../../public/images/add.png';
+import useUser from "../../hooks/redux/user/useUser";
 
 export const CartStyl = styled(Flex)`
     padding: 20px 10px;
@@ -67,7 +68,14 @@ const CartItem = ({
     let productCountry = useProdCountry(
         product ? product.product_country : {}
     );
-    productCountry = product.slug === "bundle-2021" ? product.product_country[0]:productCountry;
+    const { token } = useUser();
+    if(!token){
+
+        productCountry = product.slug === "bundle-2021" ? product.product_country[0]:productCountry;
+    }else{
+        productCountry = product.slug === "bundle-2021" ? product.product_country[1]:productCountry;
+
+    }
     const isAvailable =
         productCountry &&
         productCountry.country &&
