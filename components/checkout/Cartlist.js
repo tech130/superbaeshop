@@ -390,7 +390,8 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
     };
     if (cart.length > 0 && activeCountry.id) {
         return cart.reduce((acc, cur) => {
-            const activeCon = cur?.product?.product_country?.[activeCountry.id];
+
+            const activeCon = cur.slug === 'bundle-2021'? cur?.product?.product_country[0]: cur?.product?.product_country?.[activeCountry.id];
             const selling_price = activeCon ? activeCon.selling_price : 0;
             return {
                 ...acc,
