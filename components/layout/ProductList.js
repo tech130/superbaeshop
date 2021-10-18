@@ -8,6 +8,7 @@ import CountryLink, { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import ProductLink from "../product/ProductLink";
 import Link from "next/link";
+import {PLANNER_PRODUCTS_PATH} from "../../utils/constants"
 
 const ProdList = styled(Flex)`
 max-width: 65vw;
@@ -77,7 +78,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
     let { categories, is_active, id } = cat;
     return (
         <React.Fragment key={id}>
-            {is_active && cat.title ==="PHONE CASES" &&
+            {is_active && cat.title === "PHONE CASES" &&
                 <React.Fragment >
                     <ProdLinkStl>
                         <div id="main-cat" onClick={() => {
@@ -86,7 +87,7 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                             else
                                 setToggle(id)
                         }} >
-                            {cat.title==="PHONE CASES" ?"Phone Cases":cat.title }
+                            {cat.title === "PHONE CASES" ? "Phone Cases" : cat.title}
 
                         </div>
                     </ProdLinkStl>
@@ -150,11 +151,11 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
 const ProdTitle = ({ slug, index }) => {
     return (
         <React.Fragment key={index}>
-                    <ProdLinkStl>
-                        <ProductLink slug={slug} />
-                    </ProdLinkStl>
-                    
-            
+            <ProdLinkStl>
+                <ProductLink slug={slug} />
+            </ProdLinkStl>
+
+
         </React.Fragment>
     );
 };
@@ -208,12 +209,13 @@ const loadCategories = (cat, setToggle) => {
 };
 
 
-const ProductList = ({Show=''}) => {
+const ProductList = ({ Show = '' }) => {
     const [toggle, setToggle] = useState('');
     const data = useSelector((state) => ({
         products: state.headerProducts,
         categories: state.master.category || [],
     }));
+    console.log(data)
     const router = useRouter();
     const country = useCountryParam();
     // let Show = 'productsdg';
@@ -234,21 +236,22 @@ const ProductList = ({Show=''}) => {
                     </ul>
             } */}
             <>
-            {/* <ul>
+                {/* <ul>
                         {data.products.map((slug, index) => (
                             <ProdTitle  slug={slug} key={index} index={index} />
                         ))}
                     </ul> */}
-                    
-                    <ul>
-                    {data.products.map((slug, index) => (
-                            <ProdTitle  slug={slug} key={index} index={index} />
+
+                <ul>
+                    {data.products.filter(item => !PLANNER_PRODUCTS_PATH.includes(item.slug)  )
+                        .map((slug, index) => (
+                            <ProdTitle slug={slug} key={index} index={index} />
                         ))}
-                        {data.categories.map((cat, index) => (
-                            <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={index} index={index} />
-                        ))}
-                        <ProdLinkStl>
-                        <span onClick={()=>{
+                    {data.categories.map((cat, index) => (
+                        <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={index} index={index} />
+                    ))}
+                    <ProdLinkStl>
+                        <span onClick={() => {
                             router.push(
                                 `/[country]/product/laptopskin`,
                                 `/${country}/product/laptopskin`
@@ -256,10 +259,10 @@ const ProductList = ({Show=''}) => {
                         }} >
                             Laptop Skins
                         </span>
-                        </ProdLinkStl>
-                        <ProdLinkStl>
-                        
-                        <span onClick={()=>{
+                    </ProdLinkStl>
+                    <ProdLinkStl>
+
+                        <span onClick={() => {
                             router.push(
                                 `/[country]/product/PopSocket`,
                                 `/${country}/product/PopSocket`
@@ -267,9 +270,9 @@ const ProductList = ({Show=''}) => {
                         }} >
                             Pop Socket
                         </span>
-                        </ProdLinkStl>
-                    </ul>
-                    </>
+                    </ProdLinkStl>
+                </ul>
+            </>
         </ProdList>
     );
 };

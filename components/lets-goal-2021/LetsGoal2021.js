@@ -13,11 +13,45 @@ import StayTuned from "./StayTuned";
 import UltimateBundle from "./UltimateBundle";
 import PagesSlider from "./PageSlider";
 import Block from "../styled/Block";
+import { Container, Row, Col } from "styled-bootstrap-grid";
+import MainHeading from "../styled/MainHeading";
+import AnimateText from "../styled/AnimateText";
+import Flex from "../styled/Flex";
+import styled from "styled-components";
+import ResponsiveImage from "../common/ResponsiveImage";
 
+const FlexBox = styled(Flex)`
+    align-items: center;
+    justify-content: center;
+`;
+const ImageBox = styled(Flex)`
+    
+    
+    border-radius: 50%;
+    overflow: hidden;
+    background: gray;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid ${(props)=>props.borderColor};
+    margin: 0px 15px;
+    padding:4px;
+
+`;
+const ImageInside = styled(Flex)`
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: gray;
+    align-items: center;
+    justify-content: center;
+
+`;
 const LetsGoal2021 = () => {
     return (
         <>
-            <HeroSection />
+        <HeroSection />
             <WhatsInside />
             {/* <InterSec /> */}
             {/* <div className="d-none d-md-block d-lg-block d-xl-block">
@@ -33,13 +67,14 @@ const LetsGoal2021 = () => {
             {/* <InterSec /> */}
             {/* <SmartDigitalPlanner /> */}
             {/* <OptionsSection /> */}
-            <ColorPicker />
+            {/* <ColorPicker /> */}
             <Block padding="65px 0px 0px 0px">
 
                 <TestimonialSection />
             </Block>
             <StayTuned />
             <GoodVibes />
+       
             
         </>
     );

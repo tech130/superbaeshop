@@ -3,3 +3,10 @@ export const LOG_OUT = "LOG_OUT";
 
 export const PAGINATION_FILTER_KEY = "filter__";
 
+export const PLANNER_PRODUCTS_PATH = [
+    "/[country]/product/lets-goal-2021-planner",
+    "/[country]/product/my-space-2022-planner-black",
+    "/[country]/product/bundle-2021",
+    "/[country]/product/ultimate-bundle-2022-black",
+                                    ];
+

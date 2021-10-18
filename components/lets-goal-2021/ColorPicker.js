@@ -5,7 +5,7 @@ import MainHeading from "../styled/MainHeading";
 // import SmallHeading from "../styled/SmallHeading";
 // import plannerPink from './images/cover3.png';
 // import plannerWhite from './images/planner white.png';
-import plannerBlack from './images/planner black.png';
+import plannerBlack from './images/plannerblack.png';
 import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 
 import styled from "styled-components";
