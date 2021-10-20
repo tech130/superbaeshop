@@ -81,7 +81,7 @@ const Bundle = () => {
                     <Row>
                         <Col lg={6} lgOffset={3}>
                             <ResponsiveImage
-                                image={require("./images/cover-pic.jpg?resize")}
+                                image={require("./images/cover-pic.png?resize")}
                                 alt="Bundle 2021"
                             />
                         </Col>

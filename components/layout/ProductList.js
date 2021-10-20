@@ -215,7 +215,6 @@ const ProductList = ({ Show = '' }) => {
         products: state.headerProducts,
         categories: state.master.category || [],
     }));
-    console.log(data)
     const router = useRouter();
     const country = useCountryParam();
     // let Show = 'productsdg';

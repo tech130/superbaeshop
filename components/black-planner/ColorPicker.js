@@ -143,7 +143,7 @@ const ImageHeight = styled.div`
 
 const colorOptions = ["#ffdce2", "#2a2a2a"];
 
-export default function ColorPicker({slug}) {
+export default function ColorPicker({ slug }) {
   const [colorInd, setColor] = useState('#ffdce2');
   const [colorInd2, setColor2] = useState('#ffdce2');
   useEffect(() => {
@@ -185,10 +185,10 @@ export default function ColorPicker({slug}) {
           </SmallHeading> */}
         </FirstSection>
         <ImageHeight >
-        <ResponsiveImage
-                                            image={require("../lets-goal-2021/images/plannerblack.png?resize")}
-                                        />
-        {/* <Img src={colorInd === "#ffdce2" ? `${plannerBlack}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerBlack}`} width="50%" /> */}
+          <ResponsiveImage
+            image={require("../lets-goal-2021/images/plannerblack.png?resize")}
+          />
+          {/* <Img src={colorInd === "#ffdce2" ? `${plannerBlack}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerBlack}`} width="50%" /> */}
         </ImageHeight>
         <ColorSelectorContainer>
           {/* {

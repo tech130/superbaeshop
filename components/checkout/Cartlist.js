@@ -25,7 +25,7 @@ import { toNum } from "../../utils";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
-
+import useLockBodyScroll from "../../hooks/layout/useLockBodyScroll";
 const FlexBg = styled.div`
   height: 49vh;
   width: 100%;
@@ -124,6 +124,7 @@ const Cartlist = () => {
     return  <MyCartList />;
 };
 export const CartlistPanel = () => {
+    useLockBodyScroll(true);
     const { token } = useUser();
     if (!token) {
 

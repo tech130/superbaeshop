@@ -11,7 +11,10 @@ import CountryLink from "../common/CountryLink";
 const FlexBox = styled(Flex)`
     align-items: center;
     justify-content: center;
-    margin: 20px 0px;
+    margin: 20px 10px;
+    @media only screen and (max-width: 575px) {
+        margin: 20px 10px 0px 10px;
+    }
 `;
 const FlexOutline = styled(Flex)`
     align-items: center;
@@ -21,8 +24,18 @@ const FlexOutline = styled(Flex)`
         font-size: 14px;
         font-weight: 600;
         color: ${(props) => props.events ==='none' ? ' #004b85':'#000'};
+        display: block;
+        line-height: 1;
+        margin: 5px 0px 0px 0px;    
     }
     pointer-events:${(props) => props.events};
+    a{
+        text-align:center;
+    }
+    .sub-text{
+        font-size: 14px;
+        color: #4c4c4c;
+    }
     @media only screen and (max-width: 575px) {
         a{
             text-align:center;
@@ -48,6 +61,11 @@ const ImageInside = styled(Flex)`
     background: #d5d5d5;
     align-items: center;
     justify-content: center;
+    @media only screen and (max-width: 575px) {
+        width: 55px;
+        height: 55px;
+    }
+    
 `;
 const ProductTab = () => {
     const { pathname } = useRouter();
@@ -78,6 +96,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/lets-goal-2021-planner">
                                         <span>Pink Planner</span>
+                                        <div className="sub-text">12 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/my-space-2022-planner-black' ? 'none' : 'auto'}>
@@ -93,6 +112,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/bundle-2021">
                                         <span>Black Planner</span>
+                                        <div className="sub-text">12 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/bundle-2021' ? 'none' : 'auto'}>
@@ -108,6 +128,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/bundle-2021">
                                         <span>Pink Bundle</span>
+                                        <div className="sub-text">18 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/ultimate-bundle-2022-black' ? 'none' : 'auto'}>
@@ -123,6 +144,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/ultimate-bundle-2022-black">
                                         <span>Black Bundle</span>
+                                        <div className="sub-text">18 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                             </FlexBox>

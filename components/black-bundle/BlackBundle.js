@@ -57,7 +57,7 @@ const BlackBundle = () => {
                         </Col>
                         <Col lg={6} lgOffset={3}>
                             <ResponsiveImage
-                                image={require("../bundle/images/cover-pic.jpg?resize")}
+                                image={require("../bundle/images/cover-pic.png?resize")}
                                 alt="Bundle 2021"
                             />
                         </Col>
