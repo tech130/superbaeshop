@@ -5,7 +5,6 @@ import MainHeading from "../styled/MainHeading";
 // import SmallHeading from "../styled/SmallHeading";
 // import plannerPink from './images/cover3.png';
 // import plannerWhite from './images/planner white.png';
-import plannerBlack from './images/plannerblack.png';
 import ProPlannerPrice from "../professional-planner/ProPlannerPrice";
 import ResponsiveImage from "../common/ResponsiveImage";
 
@@ -116,11 +115,20 @@ const ContentSection = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 768px) {
-    justify-content: space-evenly;
+    justify-content: center;
 }
 `;
 const ImageHeight = styled.div`
-  max-height: 460px;
+  max-height: 450px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+  div{
+    height: 100%;
+    width: auto;
+  }
   img{
     height: 100%;
     width: auto;
@@ -129,13 +137,13 @@ const ImageHeight = styled.div`
     max-height: 375px;
 }
   @media (max-width: 768px) {
-    max-height: 275px;
+    max-height: 260px;
 }
 `;
 
 const colorOptions = ["#ffdce2", "#2a2a2a"];
 
-export default function ColorPicker() {
+export default function ColorPicker({slug}) {
   const [colorInd, setColor] = useState('#ffdce2');
   const [colorInd2, setColor2] = useState('#ffdce2');
   useEffect(() => {
@@ -170,14 +178,17 @@ export default function ColorPicker() {
       })}
       <ContentSection className="container">
         <FirstSection>
-          <MainHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'black' : 'black'}`}>Black Edition - Once Gone, Gone for <AnimateText> ever</AnimateText> </MainHeading>
+          <MainHeading className="text-center" color={`${colorInd === '#ffdce2' ? 'black' : 'black'}`}>Black Edition - Once Gone, Gone for <AnimateText> ever</AnimateText> </MainHeading>
 
           {/* <SmallHeading className="text-sm-left text-center" color={`${colorInd === '#ffdce2' ? 'white' : 'black'}`}>
             2 Fresh colors that reflect your personality
           </SmallHeading> */}
         </FirstSection>
         <ImageHeight >
-        <Img src={colorInd === "#ffdce2" ? `${plannerBlack}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerBlack}`} width="50%" />
+        <ResponsiveImage
+                                            image={require("../lets-goal-2021/images/plannerblack.png?resize")}
+                                        />
+        {/* <Img src={colorInd === "#ffdce2" ? `${plannerBlack}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerBlack}`} width="50%" /> */}
         </ImageHeight>
         <ColorSelectorContainer>
           {/* {
@@ -200,7 +211,7 @@ export default function ColorPicker() {
               )
             })
           } */}
-          <ProPlannerPrice slug={"lets-goal-2021-planner"} planner="black-planner" />
+          <ProPlannerPrice slug={slug} />
 
         </ColorSelectorContainer>
       </ContentSection>

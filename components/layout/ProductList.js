@@ -8,7 +8,7 @@ import CountryLink, { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import ProductLink from "../product/ProductLink";
 import Link from "next/link";
-import {PLANNER_PRODUCTS_PATH} from "../../utils/constants"
+import {PLANNER_PRODUCTS} from "../../utils/constants"
 
 const ProdList = styled(Flex)`
 max-width: 65vw;
@@ -243,7 +243,7 @@ const ProductList = ({ Show = '' }) => {
                     </ul> */}
 
                 <ul>
-                    {data.products.filter(item => !PLANNER_PRODUCTS_PATH.includes(item.slug)  )
+                    {data.products.filter(item => !PLANNER_PRODUCTS.includes(item)  )
                         .map((slug, index) => (
                             <ProdTitle slug={slug} key={index} index={index} />
                         ))}

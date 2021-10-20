@@ -20,34 +20,22 @@ import Flex from "../styled/Flex";
 import styled from "styled-components";
 import ResponsiveImage from "../common/ResponsiveImage";
 
-const FlexBox = styled(Flex)`
-    align-items: center;
-    justify-content: center;
-`;
-const ImageBox = styled(Flex)`
-    
-    
-    border-radius: 50%;
-    overflow: hidden;
-    background: gray;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid ${(props)=>props.borderColor};
-    margin: 0px 15px;
-    padding:4px;
 
-`;
-const ImageInside = styled(Flex)`
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: gray;
-    align-items: center;
-    justify-content: center;
-
-`;
+const images=[
+    './images/free-inclusions/planner.jpg',
+    './images/free-inclusions/StickerBook.jpg',
+    './images/free-inclusions/A5NoteBook.jpg',
+    './images/free-inclusions/pocketNotebookcopy.jpg',
+    './images/free-inclusions/Scrunchy.jpg',
+    './images/free-inclusions/PopSocketcopy.jpg',
+    './images/free-inclusions/Badge.jpg',
+    './images/free-inclusions/Todolist.jpg',
+    './images/free-inclusions/Notes.jpg',
+    './images/free-inclusions/Bookmark.jpg',
+    './images/free-inclusions/PostCard.jpg',
+    './images/free-inclusions/PlayCard.jpg',
+]
+const slug="lets-goal-2021-planner";
 const LetsGoal2021 = () => {
     return (
         <>
@@ -61,7 +49,7 @@ const LetsGoal2021 = () => {
                 <FreeInclusions />
             </div> */}
             <PagesSlider />
-            <FreeInclusions />
+            <FreeInclusions images={images} slug={slug} />
             <UltimateBundle />
             {/* <Freebies /> */}
             {/* <InterSec /> */}

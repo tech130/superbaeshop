@@ -2,7 +2,8 @@ import axios from "axios";
 
 const { CancelToken, create, isCancel } = axios;
 
-const baseURL = "https://spaceandbeauty.billioncart.in/";
+// const baseURL = "https://spaceandbeauty.billioncart.in/";
+const baseURL = "https://spaceandbeauty.billiontags.com/";
 
 const apiInstance = create({
     baseURL,

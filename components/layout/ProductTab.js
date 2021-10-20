@@ -20,9 +20,14 @@ const FlexOutline = styled(Flex)`
     span{
         font-size: 14px;
         font-weight: 600;
-        color: black;
+        color: ${(props) => props.events ==='none' ? ' #004b85':'#000'};
     }
     pointer-events:${(props) => props.events};
+    @media only screen and (max-width: 575px) {
+        a{
+            text-align:center;
+        }
+    }
 `;
 const ImageBox = styled(Flex)`
     border-radius: 50%;

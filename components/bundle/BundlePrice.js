@@ -6,7 +6,7 @@ import Block from "../styled/Block";
 
 const slug = "bundle-2021";
 
-const BundlePrice = () => {
+const BundlePrice = ({slug}) => {
     return (
         <Flex alignItems="center">
             <Block margin="0px 5px 0px 0px">

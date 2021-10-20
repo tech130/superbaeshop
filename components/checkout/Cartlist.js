@@ -310,7 +310,7 @@ const MyCartListPanel = () => {
             name="cartList"
             loader={
                 <Row>
-                    <Col lg={7}>
+                    <Col lg={6}>
                         <CartItemLoader />
                         <CartItemLoader />
                     </Col>

@@ -10,7 +10,10 @@ import styled from "styled-components";
 import Txt from "../styled/Txt";
 import ResponsiveImage from "../common/ResponsiveImage";
 import ProductLink from "../product/ProductLink";
-
+import FreeInclusions from "../lets-goal-2021/FreeInclusions";
+import MainHeading from "../styled/MainHeading";
+import SmallHeading from "../styled/SmallHeading";
+import AnimateText from "../styled/AnimateText";
 const BundleStl = styled.div`
     padding: 40px 0px;
     position: relative;
@@ -23,7 +26,27 @@ const BundleStl = styled.div`
 const BundleP = styled.p`
     font-size: 18px;
 `;
+const images=[
+    './images/free-inclusions/planner.jpg',
+    './images/free-inclusions/StickerBook.jpg',
+    './images/free-inclusions/A5NoteBook.jpg',
+    './images/free-inclusions/pocketNotebookcopy.jpg',
+    './images/free-inclusions/Scrunchy.jpg',
+    './images/free-inclusions/PopSocketcopy.jpg',
+    './images/free-inclusions/Badge.jpg',
+    './images/free-inclusions/Todolist.jpg',
+    './images/free-inclusions/Notes.jpg',
+    './images/free-inclusions/Bookmark.jpg',
+    './images/free-inclusions/PostCard.jpg',
+    './images/free-inclusions/PlayCard.jpg',
+    './images/ultimate-bundle/Desk.jpg',
+            './images/ultimate-bundle/Wall.jpg',
+            './images/ultimate-bundle/weekly.jpg',
+            './images/ultimate-bundle/Newlaptop.jpg',
+            './images/ultimate-bundle/Slam.jpg'
+]
 
+const slug="bundle-2021";
 const BundleItem = ({
     title = "",
     children = null,
@@ -64,20 +87,24 @@ const Bundle = () => {
                         </Col>
                         <Col lg={8} lgOffset={2}>
                             <Block padding="10px 0px">
-                                <H1 mb="0px">A BUNDLE OF JOY FOR A NEW YEAR</H1>
-                                <P fontWeight={300}>
-                                    The all in one bundle for 2021
-                                </P>
+                                <MainHeading>A BUNDLE OF JOY FOR A NEW <AnimateText> YEAR</AnimateText></MainHeading>
+                                <SmallHeading fontWeight={300}>
+                                    The all in one bundle for 2022
+                                </SmallHeading>
                             </Block>
                             <Flex justifyContent="flex-end">
-                                <BundlePrice />
+                                <BundlePrice slug="bundle-2021"/>
                             </Flex>
                         </Col>
                     </Row>
                 </Container>
             </Block>
+            <FreeInclusions images={images} slug={slug} />
+            <Flex justifyContent="center" padding="0px 0px 45px 0px">
+                        <BundlePrice slug="bundle-2021"/>
+                    </Flex>
             <InterSec />
-            <Block padding="35px 0px">
+            {/* <Block padding="35px 0px">
                 <Container>
                     <Block padding="0px 10px 30px 10px">
                         <H2 weight={400} textAlign="center">
@@ -88,7 +115,7 @@ const Bundle = () => {
                         </P>
                     </Block>
                     <Flex justifyContent="center" padding="0px 0px 15px 0px">
-                        <BundlePrice />
+                        <BundlePrice slug="bundle-2021"/>
                     </Flex>
                 </Container>
             </Block>
@@ -169,12 +196,12 @@ const Bundle = () => {
                     from groceries to laptops, carry em&apos; all and go
                     plastic-free!
                 </BundleP>
-            </BundleItem>
-            <Block padding="20px 0px">
+            </BundleItem> */}
+            {/* <Block padding="20px 0px">
                 <Container>
-                    <BundlePrice />
+                    <BundlePrice slug="bundle-2021"/>
                 </Container>
-            </Block>
+            </Block> */}
         </>
     );
 };

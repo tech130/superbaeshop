@@ -137,7 +137,8 @@ const UltimateBundle = () => {
 
                     </Flex>
                     <Flex alignItems="center" margin="10px 0px 0px 0px" >
-                        <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021" />
+                        {/* <ProductBuy slug={"lets-goal-2021-planner"} addition="bundle-2021" /> */}
+                        <ProductBuy slug={'bundle-2021'} />
 
                     </Flex>
                 </Flex>

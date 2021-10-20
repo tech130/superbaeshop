@@ -80,7 +80,7 @@ const CartItem = ({
         productCountry &&
         productCountry.country &&
         productCountry.selling_price;
-
+console.log(product)
     return (
         <CartStyl alignItems="center">
             {fetching && (
