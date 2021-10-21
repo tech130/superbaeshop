@@ -81,19 +81,19 @@ const Bundle = () => {
                     <Row>
                         <Col lg={6} lgOffset={3}>
                             <ResponsiveImage
-                                image={require("./images/cover-pic.png?resize")}
+                                image={require("./images/pinkbundle.png?resize")}
                                 alt="Bundle 2021"
                             />
                         </Col>
                         <Col lg={8} lgOffset={2}>
                             <Block padding="10px 0px">
-                                <MainHeading>A BUNDLE OF JOY FOR A NEW <AnimateText> YEAR</AnimateText></MainHeading>
+                                <MainHeading>A BUNDLE OF JOY FOR A NEW <AnimateText> YEAR</AnimateText><br />Pink Edition</MainHeading>
                                 <SmallHeading fontWeight={300}>
                                     The all in one bundle for 2022
                                 </SmallHeading>
                             </Block>
                             <Flex justifyContent="flex-end">
-                                <BundlePrice slug="bundle-2021"/>
+                                <BundlePrice slug={slug}/>
                             </Flex>
                         </Col>
                     </Row>
@@ -101,7 +101,7 @@ const Bundle = () => {
             </Block>
             <FreeInclusions images={images} slug={slug} />
             <Flex justifyContent="center" padding="0px 0px 45px 0px">
-                        <BundlePrice slug="bundle-2021"/>
+                        <BundlePrice slug={slug}/>
                     </Flex>
             <InterSec />
             {/* <Block padding="35px 0px">

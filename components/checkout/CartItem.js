@@ -68,19 +68,18 @@ const CartItem = ({
     let productCountry = useProdCountry(
         product ? product.product_country : {}
     );
-    const { token } = useUser();
-    if(!token){
+    // const { token } = useUser();
+    // if(!token){
 
-        productCountry = product.slug === "bundle-2021" ? product.product_country[0]:productCountry;
-    }else{
-        productCountry = product.slug === "bundle-2021" ? product.product_country[1]:productCountry;
+    //     productCountry = product.slug === "bundle-2021" ? product.product_country[0]:productCountry;
+    // }else{
+    //     productCountry = product.slug === "bundle-2021" ? product.product_country[1]:productCountry;
 
-    }
+    // }
     const isAvailable =
         productCountry &&
         productCountry.country &&
         productCountry.selling_price;
-console.log(product)
     return (
         <CartStyl alignItems="center">
             {fetching && (

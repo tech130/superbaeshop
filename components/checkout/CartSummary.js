@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import HR from "../styled/Hr";
 import { Tooltip } from 'reactstrap';
+import { eventForPixelAddToCart } from "../../utils/analytics";
+import { useProdCountry } from "../common/CountryLink";
+
 const CartSum = styled.div`
     padding: 10px;
     border: solid 2px #f5f5f5;
@@ -78,6 +81,7 @@ const CartSummary = ({
     redeem = false,
     coupon = {},
     offerAmount = 0,
+    list=[]
 }) => {
     const redeemable = getRedeem(total_quantity, walletPoints);
     const wallet_amount = redeemable * redeem_amount;
@@ -96,6 +100,12 @@ const CartSummary = ({
 
     // const toggle = () => setTooltipOpen(!tooltipOpen);
     let FinalCharge = shipping_fee+taxAmount;
+    const {product_country}=list[0];
+    const productCountry = useProdCountry(product_country);
+    let currencyCode = productCountry.country? productCountry.country.code:'INR';
+    let ids =list.map(item=>{return item.id})
+    eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
+
     return (
         <>
             <CartSum>

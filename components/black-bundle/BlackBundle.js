@@ -45,7 +45,7 @@ const BlackBundle = () => {
                         <Col lg={8} lgOffset={2} className="pb-5">
                             <Block padding="10px 0px">
                             <Block padding="10px 0px">
-                                <MainHeading>A BLACK BUNDLE OF JOY FOR A NEW <AnimateText> YEAR</AnimateText></MainHeading>
+                                <MainHeading>A BLACK BUNDLE OF JOY FOR A NEW <AnimateText> YEAR</AnimateText><br />Black Edition</MainHeading>
                                 <SmallHeading fontWeight={300}>
                                     The all in one bundle for 2022
                                 </SmallHeading>
@@ -57,7 +57,7 @@ const BlackBundle = () => {
                         </Col>
                         <Col lg={6} lgOffset={3}>
                             <ResponsiveImage
-                                image={require("../bundle/images/cover-pic.png?resize")}
+                                image={require("./images/Blackbundle.png?resize")}
                                 alt="Bundle 2021"
                             />
                         </Col>

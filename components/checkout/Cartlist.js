@@ -207,7 +207,6 @@ const LocalCartListPanel = () => {
 const LocalCartList = () => {
     const list = useLocalCart();
     const cartSummary = useCartSummary(list);
-
     if (list.length > 0) {
         return (
             
@@ -392,7 +391,7 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
     if (cart.length > 0 && activeCountry.id) {
         return cart.reduce((acc, cur) => {
 
-            const activeCon = cur.slug === 'bundle-2021'? cur?.product?.product_country[0]: cur?.product?.product_country?.[activeCountry.id];
+            const activeCon =  cur?.product?.product_country?.[activeCountry.id];
             const selling_price = activeCon ? activeCon.selling_price : 0;
             return {
                 ...acc,
@@ -440,7 +439,6 @@ const CartListWithForm = ({
     }, []);
 
     const cartSummary = useCartSummary(list);
-
     return (
         <Row>
 
@@ -487,6 +485,7 @@ const CartListWithForm = ({
                     />
                     <CartSummary
                         {...cartSummary}
+                        list={list}
                         redeem={redeem}
                         coupon={is_coupon ? coupon : undefined}
                         walletPoints={is_wallet ? walletPoints : undefined}

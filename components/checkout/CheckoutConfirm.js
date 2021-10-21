@@ -16,6 +16,8 @@ import ModalLoader from "../modal/ModalLoader";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/user/cart";
 import OrderSummary from "./OrderSummary";
+import { InitiateCheckout, Purchase} from "../../utils/analytics";
+import { useRouter } from "next/router";
 
 const DtTble = styled.table`
     border-collapse: collapse;
@@ -44,6 +46,13 @@ const DtTble = styled.table`
 `;
 
 const CheckoutConfirm = ({ closeModal, data = {} }) => {
+    if(Object.keys(data).length>0){
+        let{id,address,pay_amount,payment_type}=data;
+        const { country } = address || {};
+        const { code } = country || {};
+        InitiateCheckout(id,code,pay_amount,payment_type);
+    }
+
     return (
         <>
             <ModalHeader
@@ -106,11 +115,22 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
 const CodCheckout = ({ id }) => {
     const country = useCountryParam();
     const dispatch = useDispatch();
-
-    const [fetching, submit] = useSubmit(() => {
+    const router = useRouter();
+    const [fetching, submit] = useSubmit((succFunc) => {
+        
+        if(succFunc){
+            let{id,address,payment_type,pay_amount,status}=succFunc;
+            const { country } = address || {};
+            const { code } = country || {};
+            Purchase(id,code,pay_amount,payment_type,status);
+        }
+        router.push(
+            `/[country]/thank-you`,
+            `/${country}/thank-you`
+        );
+        // window.location.replace(`/${country}/thank-you`);
         dispatch(clearCart());
-        window.location.replace(`/${country}/thank-you`);
-    });
+    }); 
 
     const onClick = () => {
         submit({
@@ -133,13 +153,25 @@ const OnlineCheckout = ({ data }) => {
     const [loaded] = useScript("https://checkout.razorpay.com/v1/checkout.js");
     const country = useCountryParam();
     const dispatch = useDispatch();
+    const router = useRouter();
+    const [fetching, submit] = useSubmit((succFunc) => {
+        if(succFunc){
 
-    const [fetching, submit] = useSubmit(() => {
+            let{id,address,payment_type,pay_amount,status}=succFunc;
+            const { country } = address || {};
+            const { code } = country || {};
+            Purchase(id,code,pay_amount,payment_type,status);
+        }
+        router.push(
+            `/[country]/thank-you`,
+            `/${country}/thank-you`
+        );
         dispatch(clearCart());
-        window.location.replace(`/${country}/thank-you`);
+        // window.location.replace(`/${country}/thank-you`);
     });
 
     const handleSuccess = (data) => {
+
         submit({
             url: urls.paymentSuccess,
             method: "POST",

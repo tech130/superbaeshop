@@ -40,7 +40,7 @@ export const useLocalCart = () => {
         return cart.map((x) => {
             return {
                 ...x,
-                product: x.slug === 'bundle-2021'?product['lets-goal-2021-planner'].sub_product: product[x.slug] ,
+                product:  product[x.slug] ,
             };
         });
     }, [cart, product]);

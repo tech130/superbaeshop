@@ -19,10 +19,10 @@ const Refund = () => {
                                 <h5>
                                     <span>Shipping & Cancellation</span>
                                 </h5>
-                                <p>
+                                {/* <p>
                                     <span>Space and beauty open for free shipping in India for all orders above<b> Rs. 799.</b> The
                                         shipping charges of <b>Rs.100</b> for the below orders of <b>Rs.799.</b></span>
-                                </p>
+                                </p> */}
                                 <p>
                                     <span>Once your order is shipped, there will be a tracking link to your order to your given inbox
                                         or the given contact number. Space and beauty usually deliver mode with only post

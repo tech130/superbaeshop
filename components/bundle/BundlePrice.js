@@ -4,7 +4,7 @@ import ProductBuy from "../product/ProductBuy";
 import ProductPrice from "../product/ProductPrice";
 import Block from "../styled/Block";
 
-const slug = "bundle-2021";
+// const slug = "bundle-2021";
 
 const BundlePrice = ({slug}) => {
     return (

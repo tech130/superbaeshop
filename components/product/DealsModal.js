@@ -16,6 +16,10 @@ export const ItemStyl = styled(Flex)`
     position: relative;
     align-items: center;
 `;
+export const ItemOutline = styled.div`
+    max-height: 50vh;
+    overflow-y: auto;
+`;
 export const CartButton = styled(AddToCart)`
     padding: 5px 20px;
     border-radius: 30px;
@@ -122,7 +126,7 @@ const DealsModal = ({ closeModal }) => {
                 title="Lightning Deals"
                 desc="Offers exclusive for you. This offer is only valid for next 24 hours."
             />
-            <div>
+            <ItemOutline >
                 {list.length === 0 ? (
                     <Block padding="15px 0px">
                         <EmptyList title="No deals found" />
@@ -132,7 +136,7 @@ const DealsModal = ({ closeModal }) => {
                         <DealItem product={item} key={item.id} />
                     ))
                 )}
-            </div>
+            </ItemOutline>
         </>
     );
 };

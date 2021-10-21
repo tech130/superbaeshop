@@ -10,7 +10,7 @@ import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
 import { useRouter } from "next/router";
 import styled ,{keyframes}from "styled-components";
-import { event } from "../../utils/analytics";
+import { eventForPixelAddToCart } from "../../utils/analytics";
 
 export const getBtnText = (
     inCart = false,
@@ -28,7 +28,7 @@ export const getBtnText = (
 
 export const useAddToCart = (productDetails = {},planner='', options = {}) => {
     const { quantity = 1, isOffer = false } = options;
-    const { id, in_cart, is_pre_order, stock_status, slug,color_code='',category,product_country } = productDetails;
+    const { id, in_cart, is_pre_order, stock_status, slug,color_code='',product_country } = productDetails;
     const dispatch = useDispatch();
     const { token } = useUser();
     const country = useCountryParam();
@@ -61,19 +61,19 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
                         product_id: id,
                         quantity: quantity,
                         is_offer: isOffer,
-                        color_code:planner === 'black-planner' ? 'black':''
+                        // color_code:planner === 'black-planner' ? 'black':''
                     },
                 ],
             });
             dispatch(cartIsOpen(true));
             // analyiticAddToCart(productDetails)
-            event('AddToCart',category.title,currency,productCountry['selling_price']);
+            eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
         } else {
             dispatch(addToLocalCart(id, slug, quantity));
             
              dispatch(cartIsOpen(true));
             // analyiticAddToCart(productDetails)
-            event('AddToCart',category.title,currency,productCountry['selling_price']);
+            eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
 
         }
     }, [id, inCart, slug, quantity, isOffer]);
@@ -87,12 +87,7 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
         inStock: !!stock_status,
     };
 };
-const analyiticAddToCart=(product)=>{
-    let {category,product_country}=product;
-    const productCountry = useProdCountry(product_country);
-    let currency = productCountry.country? productCountry.country.code:'INR';
-    event('AddToCart',category.title,currency,productCountry['selling_price']);
-}
+
 export const AddToCart = ({ className = "", product = {},planner='' }) => {
     const { onClick, fetching, btnText, inStock } = useAddToCart(product,planner);
     
@@ -154,15 +149,17 @@ export const NewButton = styled.button`
 const ProductBuy = ({ slug,addition="",planner="" }) => {
     let product={};
     let product_country={};
-    if(addition === "bundle-2021"){
-       let tempProduct = useProduct(slug);
-       product=tempProduct.sub_product;
-       product_country=tempProduct.product_country;
-    }else{
+    // if(addition === "bundle-2021"){
+    //    let tempProduct = useProduct(slug);
+    //    product=tempProduct.sub_product;
+    //    product_country=tempProduct.product_country;
+    // }else{
 
-        product = useProduct(slug);
-        product_country=product.product_country
-    }
+    //     product = useProduct(slug);
+    //     product_country=product.product_country
+    // }
+    product = useProduct(slug);
+    product_country=product.product_country
     const productCountry = useProdCountry(product_country);
     if(planner === 'black-planner'){
         product["color"]='black';

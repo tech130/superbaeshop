@@ -19,7 +19,7 @@ const FlexBox = styled(Flex)`
 const FlexOutline = styled(Flex)`
     align-items: center;
     flex-direction: column; 
-    margin: 0px 10px;
+    margin: 0px 30px;
     span{
         font-size: 14px;
         font-weight: 600;
@@ -36,10 +36,18 @@ const FlexOutline = styled(Flex)`
         font-size: 14px;
         color: #4c4c4c;
     }
+   
+    @media only screen and (max-width: 992px) {
+        margin: 0px 20px;
+    }
+    @media only screen and (max-width: 768px) {
+        margin: 0px 15px;
+    }
     @media only screen and (max-width: 575px) {
         a{
             text-align:center;
         }
+        margin: 0px 8px;
     }
 `;
 const ImageBox = styled(Flex)`
@@ -48,7 +56,7 @@ const ImageBox = styled(Flex)`
     background: white;
     align-items: center;
     justify-content: center;
-    border: 1px solid ${(props) => props.borderColor};
+    border: 2px solid ${(props) => props.borderColor};
     padding:4px;
 
 `;
@@ -61,6 +69,7 @@ const ImageInside = styled(Flex)`
     background: #d5d5d5;
     align-items: center;
     justify-content: center;
+    padding: 8px;
     @media only screen and (max-width: 575px) {
         width: 55px;
         height: 55px;
@@ -72,7 +81,7 @@ const ProductTab = () => {
 
     return (
         <>
-            <Block padding="20px 0px 30px 0px">
+            <Block padding="20px 0px 20px 0px">
                 <Container>
                     <Row>
                         <Col lg={12}>
@@ -84,11 +93,11 @@ const ProductTab = () => {
                         <Col lg={12}>
                             <FlexBox>
                                 <FlexOutline events={pathname === '/[country]/product/lets-goal-2021-planner' ? 'none' : 'auto'}>
-                                    <ImageBox borderColor={pathname === '/[country]/product/lets-goal-2021-planner' ? '#0190ff' : 'transparent'}>
+                                    <ImageBox borderColor={pathname === '/[country]/product/lets-goal-2021-planner' ? '#d14e9a' : 'transparent'}>
                                         <CountryLink href="/product/lets-goal-2021-planner">
                                             <ImageInside>
                                                 <ResponsiveImage
-                                                    image={require("../lets-goal-2021/images/pinkNew.png?resize")}
+                                                    image={require("../lets-goal-2021/images/cover1.png?resize")}
                                                 />
                                             </ImageInside>
 
@@ -96,31 +105,31 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/lets-goal-2021-planner">
                                         <span>Pink Planner</span>
-                                        <div className="sub-text">12 Freebies</div>
+                                        <div className="sub-text">12 Freebies!</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/my-space-2022-planner-black' ? 'none' : 'auto'}>
-                                    <ImageBox borderColor={pathname === '/[country]/product/my-space-2022-planner-black' ? '#0190ff' : 'transparent'}>
+                                    <ImageBox borderColor={pathname === '/[country]/product/my-space-2022-planner-black' ? '#d14e9a' : 'transparent'}>
                                         <CountryLink href="/product/my-space-2022-planner-black">
                                             <ImageInside>
                                                 <ResponsiveImage
-                                                    image={require("../lets-goal-2021/images/plannerblack.png?resize")}
+                                                    image={require("../black-planner/images/Plannerblack.png?resize")}
                                                 />
                                             </ImageInside>
 
                                         </CountryLink>
                                     </ImageBox>
-                                    <CountryLink href="/product/bundle-2021">
+                                    <CountryLink href="/product/my-space-2022-planner-black">
                                         <span>Black Planner</span>
                                         <div className="sub-text">12 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/bundle-2021' ? 'none' : 'auto'}>
-                                    <ImageBox borderColor={pathname === '/[country]/product/bundle-2021' ? '#0190ff' : 'transparent'}>
+                                    <ImageBox borderColor={pathname === '/[country]/product/bundle-2021' ? '#d14e9a' : 'transparent'}>
                                         <CountryLink href="/product/bundle-2021">
                                             <ImageInside>
                                                 <ResponsiveImage
-                                                    image={require("../lets-goal-2021/images/pinkNew.png?resize")}
+                                                    image={require("../bundle/images/pinkbundle.png?resize")}
                                                 />
                                             </ImageInside>
 
@@ -132,11 +141,11 @@ const ProductTab = () => {
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/ultimate-bundle-2022-black' ? 'none' : 'auto'}>
-                                    <ImageBox borderColor={pathname === '/[country]/product/ultimate-bundle-2022-black' ? '#0190ff' : 'transparent'}>
+                                    <ImageBox borderColor={pathname === '/[country]/product/ultimate-bundle-2022-black' ? '#d14e9a' : 'transparent'}>
                                         <CountryLink href="/product/ultimate-bundle-2022-black">
                                             <ImageInside>
                                                 <ResponsiveImage
-                                                    image={require("../lets-goal-2021/images/plannerblack.png?resize")}
+                                                    image={require("../black-bundle/images/Blackbundle.png?resize")}
                                                 />
                                             </ImageInside>
 

@@ -75,7 +75,7 @@ const Banner = () => {
                                 </Col>
                                 <Col xl={5} lg={6} sm={6} xs={12}>
                                     <MeetTxt>
-                                        Cutest Planner <AnimateText>Ever.</AnimateText><br />
+                                        Cutest Planner <AnimateText>Ever.</AnimateText> <br />Black Edition
                                         {/* <br /> */}
                                     </MeetTxt>
 
@@ -119,9 +119,9 @@ const ListAnimation = (() => {
                     justifyContent: "space-around",
                 }}
             >
-                {scrollTexts.map((text) => {
+                {scrollTexts.map((text,index) => {
                     return (
-                        <ScrollText key={text}>
+                        <ScrollText key={index}>
                             <div style={{ marginRight: "8px", padding: "4px 0px" }}>
                                 <CheckIcon />
                             </div>
