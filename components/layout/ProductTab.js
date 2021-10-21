@@ -71,8 +71,8 @@ const ImageInside = styled(Flex)`
     justify-content: center;
     padding: 8px;
     @media only screen and (max-width: 575px) {
-        width: 55px;
-        height: 55px;
+        width: 58px;
+        height: 58px;
     }
     
 `;

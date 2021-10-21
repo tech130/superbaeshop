@@ -87,9 +87,11 @@ const Bundle = () => {
                                     The all in one bundle for 2022
                                 </SmallHeading>
                             </Block>
+                            <Block padding="10px 0px">
                             <Flex justifyContent="flex-end" className="justify-content-center justify-content-sm-end">
                                 <BundlePrice slug={slug}/>
                             </Flex>
+                            </Block>
                         </Col>
                         <Col lg={6} lgOffset={3}>
                             <ResponsiveImage
