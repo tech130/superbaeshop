@@ -186,7 +186,7 @@ export default function ColorPicker({ slug }) {
         </FirstSection>
         <ImageHeight >
           <ResponsiveImage
-            image={require("../lets-goal-2021/images/plannerblack.png?resize")}
+            image={require("../lets-goal-2021/images/plannerblack1.png?resize")}
           />
           {/* <Img src={colorInd === "#ffdce2" ? `${plannerBlack}` : colorInd === '#2a2a2a' ? `${plannerBlack}` : `${plannerBlack}`} width="50%" /> */}
         </ImageHeight>

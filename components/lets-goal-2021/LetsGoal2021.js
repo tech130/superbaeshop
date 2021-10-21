@@ -5,7 +5,6 @@ import FreeInclusions from "./FreeInclusions";
 // import Freebies from "./Freebies";
 // import OptionsSection from "./OptionsSection";
 // import WalkThrough from "./WalkThrough";
-import ColorPicker from "./ColorPicker";
 import GoodVibes from "./GoodVibes";
 import TestimonialSection from "./TestimonialSection";
 import StayTuned from "./StayTuned";
