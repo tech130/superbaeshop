@@ -9,7 +9,7 @@ import Block from "../styled/Block";
 const BundlePrice = ({slug}) => {
     return (
         <Flex alignItems="center" className="flex-column flex-sm-row">
-            <Block margin="10px 0px 10px 0px">
+            <Block margin="10px 10px 10px 10px">
                 <Block margin="0px 5px 0px 0px">
                     <ProductPrice
                     className="mr-3"

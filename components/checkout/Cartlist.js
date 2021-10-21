@@ -219,7 +219,7 @@ const LocalCartList = () => {
                         {list.map((item) => (
                             <LocalCartItem {...item} key={item.id} />
                         ))}
-                        <CartSummary {...cartSummary}  />
+                        <CartSummary list={list} {...cartSummary}  />
                         <Col lg={4} sm={6} mdOffset={4} smOffset={3}>
                         <LoginModalBtn
                             block

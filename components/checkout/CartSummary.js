@@ -100,11 +100,14 @@ const CartSummary = ({
 
     // const toggle = () => setTooltipOpen(!tooltipOpen);
     let FinalCharge = shipping_fee+taxAmount;
-    const {product_country}=list[0];
-    const productCountry = useProdCountry(product_country);
-    let currencyCode = productCountry.country? productCountry.country.code:'INR';
-    let ids =list.map(item=>{return item.id})
-    eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
+    
+    if(list.length>0){
+        const {product_country}=list[0];
+        const productCountry = useProdCountry(product_country);
+        let currencyCode = productCountry.country? productCountry.country.code:'INR';
+        let ids =list.map(item=>{return item.id})
+        eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
+    }
 
     return (
         <>
