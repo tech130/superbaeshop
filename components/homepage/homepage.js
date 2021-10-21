@@ -18,7 +18,7 @@ import TestimonialSection from "../lets-goal-2021/TestimonialSection";
 
 const HomePage = () => {
     return (
-        <Container fluid>
+        <Container fluid className="overflow-hidden">
             {/* <Row> */}
             <div
                 data-aos="zoom-in"
