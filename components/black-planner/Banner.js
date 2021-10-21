@@ -69,7 +69,7 @@ const Banner = () => {
                                 <Col xl={7} lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                     <ResponsiveHeight>
                                         <ResponsiveImage
-                                            image={require("./images/plannerblack.png?resize")}
+                                            image={require("./images/Plannerblack.png?resize")}
                                         />
                                     </ResponsiveHeight>
                                 </Col>
@@ -86,7 +86,7 @@ const Banner = () => {
                                 <Col lg={6} sm={6} xs={12} className="d-block d-sm-none d-md-none d-lg-none d-xl-none">
                                     {/* <ResponsiveHeight> */}
                                     <ResponsiveImage
-                                        image={require("./images/plannerblack.png?resize")}
+                                        image={require("./images/Plannerblack.png?resize")}
                                     />
                                     {/* </ResponsiveHeight> */}
                                 </Col>
