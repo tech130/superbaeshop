@@ -26,7 +26,7 @@ const BundleStl = styled.div`
 const BundleP = styled.p`
     font-size: 18px;
 `;
-const images=[
+const images = [
     './images/free-inclusions/planner.jpg',
     './images/free-inclusions/StickerBook.jpg',
     './images/free-inclusions/A5NoteBook.jpg',
@@ -40,13 +40,13 @@ const images=[
     './images/free-inclusions/PostCard.jpg',
     './images/free-inclusions/PlayCard.jpg',
     './images/ultimate-bundle/Desk.jpg',
-            './images/ultimate-bundle/Wall.jpg',
-            './images/ultimate-bundle/weekly.jpg',
-            './images/ultimate-bundle/Newlaptop.jpg',
-            './images/ultimate-bundle/Slam.jpg'
+    './images/ultimate-bundle/Wall.jpg',
+    './images/ultimate-bundle/weekly.jpg',
+    './images/ultimate-bundle/Newlaptop.jpg',
+    './images/ultimate-bundle/Slam.jpg'
 ]
 
-const slug="bundle-2021";
+const slug = "bundle-2021";
 const BundleItem = ({
     title = "",
     children = null,
@@ -76,24 +76,24 @@ const BundleItem = ({
 const Bundle = () => {
     return (
         <>
-            <Block padding="10px 0px 40px 0px">
+            <Block padding="10px 0px 20px 0px">
                 <Container>
                     <Row>
-                        
-                        <Col lg={9} lgOffset={1}>
+
+                        <Col lg={10} lgOffset={1} className="pb-4">
                             <Block padding="10px 0px">
-                                <MainHeading className="text-center text-sm-start">A BUNDLE OF JOY FOR A NEW <AnimateText> YEAR</AnimateText><br />Pink Edition</MainHeading>
-                                <SmallHeading className="text-center text-sm-start" fontWeight={300}>
+                                <MainHeading textAlign="center">A BUNDLE OF JOY FOR A NEW <AnimateText> YEAR</AnimateText><br />Pink Edition</MainHeading>
+                                <SmallHeading textAlign="center" fontWeight={300}>
                                     The all in one bundle for 2022
                                 </SmallHeading>
                             </Block>
-                            <Block padding="10px 0px">
-                            <Flex justifyContent="flex-end" className="justify-content-center justify-content-sm-end">
-                                <BundlePrice slug={slug}/>
-                            </Flex>
+                            <Block padding="10px 0px 0px 0px">
+                                <Flex justifyContent="center" >
+                                    <BundlePrice slug={slug} />
+                                </Flex>
                             </Block>
                         </Col>
-                        <Col lg={6} lgOffset={3}>
+                        <Col lg={8} lgOffset={2}>
                             <ResponsiveImage
                                 image={require("./images/pinkbundle.png?resize")}
                                 alt="Bundle 2021"
@@ -104,8 +104,8 @@ const Bundle = () => {
             </Block>
             <FreeInclusions images={images} slug={slug} />
             <Flex justifyContent="center" padding="0px 0px 45px 0px">
-                        <BundlePrice slug={slug}/>
-                    </Flex>
+                <BundlePrice slug={slug} />
+            </Flex>
             <InterSec />
             {/* <Block padding="35px 0px">
                 <Container>
