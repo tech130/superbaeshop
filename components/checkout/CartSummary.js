@@ -99,7 +99,7 @@ const CartSummary = ({
         
         if(token&&activeCountry.id)
         submit({
-            url: urls.deliveryCharge(activeCountry.id,activeAddress),
+            url: urls.deliveryCharge(activeCountry.id,activeAddress.delivery_postcode ),
             method: "GET",
         });
     }, [token,activeAddress]);

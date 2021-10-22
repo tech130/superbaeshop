@@ -26,6 +26,10 @@ const BundleStl = styled.div`
 const BundleP = styled.p`
     font-size: 18px;
 `;
+const ResponsiveHeight = styled.div`
+    max-width: 500px;
+    margin: auto;
+`;
 const images = [
     './images/free-inclusions/planner.jpg',
     './images/free-inclusions/StickerBook.jpg',
@@ -78,9 +82,34 @@ const Bundle = () => {
         <>
             <Block padding="10px 0px 20px 0px">
                 <Container>
-                    <Row>
+                    <Row alignItems="center">
+                    <Col xl={6} lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            <ResponsiveHeight>
+                                <ResponsiveImage
+                                    image={require("../lets-goal-2021/images/cover.png?resize")}
+                                />
+                            </ResponsiveHeight>
+                        </Col>
+                        <Col xl={6} lg={6} sm={6} xs={12}>
+                            <MainHeading className="text-center text-sm-start">
+                            + Including 18 exciting <AnimateText>Freebies.</AnimateText> <br />Pink Edition
+                                {/* <br /> */}
+                            </MainHeading>
 
-                        <Col lg={10} lgOffset={1} className="pb-4">
+                            <SmallHeading className="text-center text-sm-start">The all in one bundle for 2022
+                            </SmallHeading>
+                            <Block padding="10px 0px 0px 0px">
+                                <Flex justifyContent="start" className="justify-content-center justify-content-sm-start"  >
+                                    <BundlePrice slug={slug} />
+                                </Flex>
+                            </Block>
+                        </Col>
+                        <Col lg={6} sm={6} xs={12} className="d-block d-sm-none d-md-none d-lg-none d-xl-none">
+                            <ResponsiveImage
+                                image={require("../lets-goal-2021/images/cover.png?resize")}
+                            />
+                        </Col>
+                        {/* <Col lg={10} lgOffset={1} className="pb-4">
                             <Block padding="10px 0px">
                                 <MainHeading textAlign="center">A BUNDLE OF JOY FOR A NEW <AnimateText> YEAR</AnimateText><br />Pink Edition</MainHeading>
                                 <SmallHeading textAlign="center" fontWeight={300}>
@@ -98,7 +127,7 @@ const Bundle = () => {
                                 image={require("./images/pinkbundle.png?resize")}
                                 alt="Bundle 2021"
                             />
-                        </Col>
+                        </Col> */}
                     </Row>
                 </Container>
             </Block>

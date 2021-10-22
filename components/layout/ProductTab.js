@@ -66,10 +66,10 @@ const ImageInside = styled(Flex)`
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    background: #d5d5d5;
+    background: #f3f3f3;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 10px;
     @media only screen and (max-width: 575px) {
         width: 58px;
         height: 58px;
@@ -97,7 +97,7 @@ const ProductTab = () => {
                                         <CountryLink href="/product/lets-goal-2021-planner">
                                             <ImageInside>
                                                 <ResponsiveImage
-                                                    image={require("../lets-goal-2021/images/cover1.png?resize")}
+                                                    image={require("../lets-goal-2021/images/cover.png?resize")}
                                                 />
                                             </ImageInside>
 

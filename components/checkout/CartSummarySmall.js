@@ -67,11 +67,13 @@ const CartSummary = ({
     const [deliveryCharge, setDeliveryCharge] = useState(0);
     useEffect(() => {
         
-        if(token&&activeCountry.id)
-        submit({
-            url: urls.deliveryCharge(activeCountry.id,''),
-            method: "GET",
-        });
+        if(token&&activeCountry.id){
+            let  activeAddress='';
+            submit({
+                url: urls.deliveryCharge(activeCountry.id,activeAddress),
+                method: "GET",
+            });
+        }
     }, [token]);
     const [fetching, submit] = useSubmit((succFunc) => {
         setDeliveryCharge(succFunc.amount);

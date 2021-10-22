@@ -358,12 +358,11 @@ const CheckoutForm = ({ setAtiveAddress, coupon, redeem }) => {
 const AddressList = ({ chooseAddr, address_id, activeCountryId = null }) => {
     const dispatch = useDispatch();
     const list = useSelector((state) => state.addressList);
-    const addressList = useSelector((state) => state.addressList);
     useEffect(() => {
         dispatch(fetchAddress());
     }, []);
     if (address_id === undefined) {
-        addressList.length > 0 && chooseAddr(addressList[0].id);
+        list.length > 0 && chooseAddr(list[0].id);
     }
     return (
         <ApiContent name={addrTyps.apiName} loader={<AddressLoder />}>
@@ -432,7 +431,7 @@ const AddressItem = ({
                         chooseAddr(id);
                     }
                 }} />
-                <label htmalFor={id}>
+                <label htmalfor={id}>
                     <Txt fontSize="14px" weight="500">
                         {address_type}
                     </Txt>

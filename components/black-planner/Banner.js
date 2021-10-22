@@ -28,7 +28,7 @@ const ScrollText = styled.div`
   align-items: center;
 `;
 const ResponsiveHeight = styled.div`
-    max-width: 600px;
+    max-width: 500px;
     margin: auto;
 `;
 const scrollTexts = [
@@ -66,14 +66,14 @@ const Banner = () => {
                         <div className="gradient-content">
                             <Row alignItems="center">
 
-                                <Col xl={7} lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                <Col xl={6} lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                                     <ResponsiveHeight>
                                         <ResponsiveImage
                                             image={require("./images/Plannerblack.png?resize")}
                                         />
                                     </ResponsiveHeight>
                                 </Col>
-                                <Col xl={5} lg={6} sm={6} xs={12}>
+                                <Col xl={6} lg={6} sm={6} xs={12}>
                                     <MeetTxt>
                                         Cutest Planner <AnimateText>Ever.</AnimateText> <br />Black Edition
                                         {/* <br /> */}
