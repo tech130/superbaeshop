@@ -55,7 +55,15 @@ const CartSumAmt = styled.span`
     font-size: ${(props) => (props.font)};
 `;
 
-const SumItem = ({ title = "", bold = false, amt = "",font = "16px", href = "", id = "" }) => {
+const SumItem = ({ title = "", bold = false, amt = "",font = "16px", href = "", id = "",list=[],total='' }) => {
+    // if(list.length>0&&total!==''){
+    //     const {product_country}=list[0];
+    //     const productCountry = useProdCountry(product_country);
+    //     let currencyCode = productCountry.country? productCountry.country.code:'INR';
+    //     let ids =list.map(item=>{return item.id})
+    //     console.log(ids)
+    //     eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
+    // }
     return (
         <CartSumItem>
             <CartSumTitle bold={bold} font={font}>{title}</CartSumTitle>
@@ -98,14 +106,24 @@ const CartSummary = ({
     useEffect(() => {
         
         if(token&&activeCountry.id)
+        
         submit({
-            url: urls.deliveryCharge(activeCountry.id,activeAddress.delivery_postcode ),
+            url: urls.deliveryCharge(activeCountry.id,activeAddress.postal_code ),
             method: "GET",
         });
+        
+        return () => {setAddToCartList();}
     }, [token,activeAddress]);
     const [fetching, submit] = useSubmit((succFunc) => {
         setDeliveryCharge(succFunc.amount);
     });
+    let productCountry={};
+    if(list.length>0){
+
+        const {product_country}=list[0];
+        productCountry   = useProdCountry(product_country);
+    }
+
     const redeemable = getRedeem(total_quantity, walletPoints);
     const wallet_amount = redeemable * redeem_amount;
     const couponAmt =
@@ -124,14 +142,21 @@ const CartSummary = ({
     // const toggle = () => setTooltipOpen(!tooltipOpen);
     let FinalCharge = taxAmount;
     
-    if(list.length>0){
-        const {product_country}=list[0];
-        const productCountry = useProdCountry(product_country);
+    // if(list.length>0){
+    //     const {product_country}=list[0];
+    //     const productCountry = useProdCountry(product_country);
+    //     let currencyCode = productCountry.country? productCountry.country.code:'INR';
+    //     let ids =list.map(item=>{return item.id})
+    //     eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
+    // }
+   const setAddToCartList=()=>{
+    if(list.length>0&&total!==''){
         let currencyCode = productCountry.country? productCountry.country.code:'INR';
         let ids =list.map(item=>{return item.id})
+        console.log(ids)
         eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
     }
-    
+   }
     return (
         <>
             <CartSum>
@@ -182,7 +207,8 @@ const CartSummary = ({
                     bold
                     font="18px"
                     amt={`${currency_type}${total.toFixed(2)}`}
-                    
+                    list={list}
+                    total={total}
                 />
                 {/* <ToolCustom href="#" id="DisabledAutoHideExample">!
                 </ToolCustom>

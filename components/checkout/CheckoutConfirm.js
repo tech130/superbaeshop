@@ -113,7 +113,7 @@ const CheckoutConfirm = ({ closeModal, data = {} }) => {
 };
 
 const CodCheckout = ({ id }) => {
-    const country = useCountryParam();
+    let countryParam = useCountryParam();
     const dispatch = useDispatch();
     const router = useRouter();
     const [fetching, submit] = useSubmit((succFunc) => {
@@ -126,7 +126,7 @@ const CodCheckout = ({ id }) => {
             
               router.push({
                 pathname:
-                    `/${country}/thank-you`,
+                    `/${countryParam}/thank-you`,
                
                 query:{
                     id: id,
@@ -136,7 +136,7 @@ const CodCheckout = ({ id }) => {
                     status:status
                     }
             });
-            dispatch(clearCart());
+            // dispatch(clearCart());
         }
         // window.location.replace(`/${country}/thank-you`);
     }); 
@@ -150,7 +150,7 @@ const CodCheckout = ({ id }) => {
 
     return (
         <>
-            <SubmitButton fetching={fetching} onClick={onClick}>
+            <SubmitButton  fetching={fetching} onClick={onClick}>
                 CONFIRM
             </SubmitButton>
             <ModalLoader isOpen={fetching} />
@@ -160,7 +160,7 @@ const CodCheckout = ({ id }) => {
 
 const OnlineCheckout = ({ data }) => {
     const [loaded] = useScript("https://checkout.razorpay.com/v1/checkout.js");
-    const country = useCountryParam();
+    const countryParam = useCountryParam();
     const dispatch = useDispatch();
     const router = useRouter();
     const [fetching, submit] = useSubmit((succFunc) => {
@@ -172,7 +172,7 @@ const OnlineCheckout = ({ data }) => {
             // Purchase(id,code,pay_amount,payment_type,status);
             router.push({
                 pathname:
-                    `/${country}/thank-you`,
+                    `/${countryParam}/thank-you`,
                 query:{
                     id: id,
                     code: code,

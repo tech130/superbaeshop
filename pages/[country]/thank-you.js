@@ -10,12 +10,16 @@ import CountryLink from "../../components/common/CountryLink";
 import Txt from "../../components/styled/Txt";
 import { useRouter } from "next/router";
 import { Purchase} from "../../utils/analytics";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/user/cart";
 
 const Thankyou = () => {
     const {query} = useRouter();
+    const dispatch = useDispatch();
     console.log(query)
     let{id,code,pay_amount,payment_type,status}=query;
     Purchase(id,code,pay_amount,payment_type,status);
+    dispatch(clearCart());
     return (
         <Layout>
             <Block padding="35px 0px">

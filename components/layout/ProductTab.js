@@ -66,10 +66,10 @@ const ImageInside = styled(Flex)`
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    background: #f3f3f3;
+    background: #fff;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 8px;
     @media only screen and (max-width: 575px) {
         width: 58px;
         height: 58px;

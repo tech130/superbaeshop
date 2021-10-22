@@ -31,7 +31,7 @@ const urls = {
     newsletter: "others-api/newsletter/",
     terms: "others-api/html-content/1/",
     //Calculate Delivery
-    deliveryCharge:(countryId,activeAddress)=>activeAddress === ''?
+    deliveryCharge:(countryId,activeAddress)=>activeAddress === '' || activeAddress=== undefined ?
         `orders/calculate-delivery/?country=${countryId}`:
         `orders/calculate-delivery/?country=${countryId}&delivery_postcode=${activeAddress}`
 };

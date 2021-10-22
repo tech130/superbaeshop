@@ -55,7 +55,7 @@ const BlackBundle = () => {
                         </Col>
                         <Col xl={6} lg={6} sm={6} xs={12}>
                             <MainHeading className="text-center text-sm-start">
-                            + Including 18 exciting <AnimateText>Freebies.</AnimateText> <br />Black Edition
+                            + 18 exciting <AnimateText>Freebies.</AnimateText> <br />Black Edition
                                 {/* <br /> */}
                             </MainHeading>
 

@@ -37,6 +37,7 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
 
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
+        dispatch(cartIsOpen(true));
     });
     const productCountry = useProdCountry(product_country);
     let currency = productCountry.country? productCountry.country.code:'INR';
@@ -65,16 +66,20 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
                     },
                 ],
             });
-            dispatch(cartIsOpen(true));
-            // analyiticAddToCart(productDetails)
-            eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
+            // if(!fetching){
+            //     dispatch(cartIsOpen(true));
+            // }
+            if(router.pathname !== '/[country]/checkout'){
+
+                eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
+            }
         } else {
             dispatch(addToLocalCart(id, slug, quantity));
             
              dispatch(cartIsOpen(true));
-            // analyiticAddToCart(productDetails)
-            eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
-
+             if(router.pathname !== '/[country]/checkout'){
+                eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
+             }
         }
     }, [id, inCart, slug, quantity, isOffer]);
 
