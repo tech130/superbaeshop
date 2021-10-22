@@ -104,14 +104,14 @@ export function formReducer(state, action) {
     }
 }
 
-const CheckoutForm = ({ coupon, redeem }) => {
+const CheckoutForm = ({ setAtiveAddress, coupon, redeem }) => {
     const { toggle, onTrue, onFalse } = useToggle();
     const [paymentType, setPaymentType] = useState("");
     const { countries, activeCountry } = useActiveCountry();
     const [successData, setSuccess] = useState(null);
     const user = useUser();
     const [formState, formDispatch] = useReducer(formReducer, init(user));
-
+    const addressList = useSelector((state) => state.addressList);
     const dialCodes = useMemo(() => {
         return countries.map((x) => getDialOption(x));
     }, []);
@@ -127,8 +127,8 @@ const CheckoutForm = ({ coupon, redeem }) => {
             value,
         });
     });
-
     const { values, errors } = formState;
+
 
     const [fetching, submit] = useSubmit((data) => {
         setSuccess(data);
@@ -201,8 +201,8 @@ const CheckoutForm = ({ coupon, redeem }) => {
             const wallet = redeem
                 ? { is_wallet: true }
                 : coupon.code
-                ? { coupon_code: coupon.code }
-                : {};
+                    ? { coupon_code: coupon.code }
+                    : {};
             let formData = {
                 ...wallet,
                 ...values,
@@ -229,7 +229,6 @@ const CheckoutForm = ({ coupon, redeem }) => {
     const onPayLater = () => {
         onSubmit("COD");
     };
-
     return (
         <>
             <FormRow>
@@ -287,7 +286,11 @@ const CheckoutForm = ({ coupon, redeem }) => {
             <FormRow>
                 <FieldCon err={errors.address_id}>
                     <AddressList
-                        chooseAddr={(id) => onChange("address_id", id)}
+                        chooseAddr={(id) => {
+                            onChange("address_id", id);
+                            let address = addressList[addressList.findIndex((item) => item.id === id)];
+                            setAtiveAddress(address)
+                        }}
                         address_id={values.address_id}
                         activeCountryId={activeCountry.id}
                     />
@@ -305,13 +308,13 @@ const CheckoutForm = ({ coupon, redeem }) => {
             </P>
             <ImportantPoints>
                 <li>
-                Now a step closer to creating your own space full of beauty.
+                    Now a step closer to creating your own space full of beauty.
                 </li>
                 <li>
-                The 2022 catalogue is now available for pre-order.
+                    The 2022 catalogue is now available for pre-order.
                 </li>
                 <li>
-                Deliveries starting November 15.
+                    Deliveries starting November 15.
                 </li>
 
             </ImportantPoints>
@@ -324,7 +327,7 @@ const CheckoutForm = ({ coupon, redeem }) => {
                 PAY NOW
             </SubmitBtn>
             {activeCountry.is_cod_available && (
-                <SubmitBtn  className="no_box_shadow" onClick={onPayLater} disabled={fetching}>
+                <SubmitBtn className="no_box_shadow" onClick={onPayLater} disabled={fetching}>
                     CASH ON DELIVERY (+{activeCountry.currency_type}
                     {activeCountry.cod_charge})
                 </SubmitBtn>
@@ -355,11 +358,13 @@ const CheckoutForm = ({ coupon, redeem }) => {
 const AddressList = ({ chooseAddr, address_id, activeCountryId = null }) => {
     const dispatch = useDispatch();
     const list = useSelector((state) => state.addressList);
-
+    const addressList = useSelector((state) => state.addressList);
     useEffect(() => {
         dispatch(fetchAddress());
     }, []);
-
+    if (address_id === undefined) {
+        addressList.length > 0 && chooseAddr(addressList[0].id);
+    }
     return (
         <ApiContent name={addrTyps.apiName} loader={<AddressLoder />}>
             {list.length > 0 && (
@@ -370,6 +375,7 @@ const AddressList = ({ chooseAddr, address_id, activeCountryId = null }) => {
                                 activeCountryId={activeCountryId}
                                 isActive={item.id === address_id}
                                 chooseAddr={chooseAddr}
+                                address_id={address_id}
                                 {...item}
                             />
                         </FormCol>
@@ -406,20 +412,35 @@ const AddressItem = ({
 }) => {
     const countryId = rest.country && rest.country.id ? rest.country.id : null;
     const disabled = countryId !== activeCountryId;
+
+
+
     return (
         <AddrStl
+
             disabled={disabled}
-            onClick={() => {
-                if (!disabled) {
-                    chooseAddr(id);
-                }
-            }}
-            isActive={isActive}
+        // onClick={() => {
+        //     if (!disabled) {
+        //         chooseAddr(id);
+        //     }
+        // }}
+        // isActive={isActive}
         >
-            <Txt fontSize="14px" weight="500">
-                {address_type}
-            </Txt>
-            <Txt fontSize="12px">{`${getAddress(rest)}`}</Txt>
+            <div className="custom02">
+                <input type="radio" id={id} checked={isActive} disabled={disabled} name="demo03" onChange={() => {
+                    if (!disabled) {
+                        chooseAddr(id);
+                    }
+                }} />
+                <label htmalFor={id}>
+                    <Txt fontSize="14px" weight="500">
+                        {address_type}
+                    </Txt>
+                </label>
+            </div>
+            <div className="custom02RadioDiv">
+                <Txt fontSize="12px">{`${getAddress(rest)}`}</Txt>
+            </div>
         </AddrStl>
     );
 };

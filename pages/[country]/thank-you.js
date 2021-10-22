@@ -8,8 +8,14 @@ import P from "../../components/styled/P";
 import Flex from "../../components/styled/Flex";
 import CountryLink from "../../components/common/CountryLink";
 import Txt from "../../components/styled/Txt";
+import { useRouter } from "next/router";
+import { Purchase} from "../../utils/analytics";
 
 const Thankyou = () => {
+    const {query} = useRouter();
+    console.log(query)
+    let{id,code,pay_amount,payment_type,status}=query;
+    Purchase(id,code,pay_amount,payment_type,status);
     return (
         <Layout>
             <Block padding="35px 0px">

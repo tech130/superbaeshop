@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import styled from "styled-components";
 import HR from "../styled/Hr";
 import { Tooltip } from 'reactstrap';
 import { eventForPixelAddToCart } from "../../utils/analytics";
 import { useProdCountry } from "../common/CountryLink";
+import { useDispatch } from "react-redux";
+import { fetchProfile } from "../../redux/user/user";
+import useUser from "../../hooks/redux/user/useUser";
+import urls from "../../apiService/urls";
+import useSubmit from "../../hooks/http/useSubmit";
+import  { useActiveCountry } from "../common/CountryLink";
 
 const CartSum = styled.div`
     padding: 10px;
@@ -81,8 +87,25 @@ const CartSummary = ({
     redeem = false,
     coupon = {},
     offerAmount = 0,
-    list=[]
+    list=[],
+    activeAddress=''
 }) => {
+
+    const user = useUser();
+    const { token } = user;
+    const {activeCountry} = useActiveCountry();
+    const [deliveryCharge, setDeliveryCharge] = useState(0);
+    useEffect(() => {
+        
+        if(token&&activeCountry.id)
+        submit({
+            url: urls.deliveryCharge(activeCountry.id,activeAddress),
+            method: "GET",
+        });
+    }, [token,activeAddress]);
+    const [fetching, submit] = useSubmit((succFunc) => {
+        setDeliveryCharge(succFunc.amount);
+    });
     const redeemable = getRedeem(total_quantity, walletPoints);
     const wallet_amount = redeemable * redeem_amount;
     const couponAmt =
@@ -91,7 +114,7 @@ const CartSummary = ({
             : 0;
     let taxAmount = ((cartTotal - couponAmt) / 100) * 18
     const total =
-        (shipping_fee +
+        (deliveryCharge +
         cartTotal -
         (redeem ? wallet_amount : couponAmt) -
         offerAmount)+taxAmount;
@@ -99,7 +122,7 @@ const CartSummary = ({
     // const [tooltipOpen, setTooltipOpen] = useState(false);
 
     // const toggle = () => setTooltipOpen(!tooltipOpen);
-    let FinalCharge = shipping_fee+taxAmount;
+    let FinalCharge = taxAmount;
     
     if(list.length>0){
         const {product_country}=list[0];
@@ -108,7 +131,7 @@ const CartSummary = ({
         let ids =list.map(item=>{return item.id})
         eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
     }
-
+    
     return (
         <>
             <CartSum>
@@ -120,6 +143,13 @@ const CartSummary = ({
                     title="Taxes and Charges"
                     amt={`+ ${currency_type}${FinalCharge.toFixed(2)}`}
                 />
+                {
+                    token&&
+                    <SumItem
+                        title="Shipping"
+                        amt={fetching?'...loading': `+ ${currency_type}${deliveryCharge.toFixed(2)}`}
+                    />
+                }
                 {redeem ? (
                     <>
                         <SumItem

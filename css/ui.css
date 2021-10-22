@@ -579,6 +579,71 @@ input#custom-checkbox {
     border-radius: 6px !important;
     margin-left: -1px;
   }
+  
+.custom02RadioDiv{
+  padding-left: 25px;
+}
+  .custom02{
+    position: relative;
+  } 
+.custom02 input[type="radio"] {
+	display: block;
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-top: -9px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.custom02 label {
+	position: relative;
+	display: inline-block;
+	padding: 0px 0px 0px 25px;
+  margin-bottom: 0px;
+}
+.custom02 label::before,
+.custom02 label::after {
+	position: absolute;
+	content: '';
+	top: 50%;
+	border-radius: 100%;
+	-webkit-transition: all .2s;
+	transition: all .2s;
+}
+.custom02 label::before {
+	left: 0;
+	width: 18px;
+    height: 18px;
+    margin-top: -9px;
+	background: #f3f3f3;
+	border: 1px solid #ccc;
+}
+.custom02 label:hover::before {
+	background: #fff;
+}
+.custom02 label::after {
+	opacity: 0;
+	left: 4px;
+	width: 10px;
+    height: 10px;
+    margin-top: -5px;
+	background: #d14e9a;
+	-webkit-transform: scale(2);
+	transform: scale(2);
+}
+.custom02 input[type="radio"]:checked + label::before {
+	background: #fff;
+	border: 1px solid #d14e9a;
+}
+.custom02 input[type="radio"]:checked + label::after {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
   @media only screen and (max-width: 992px) {
     .slide-pane_from_right{
         width: 60%  !important;

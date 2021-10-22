@@ -1,8 +1,11 @@
-import React ,{useState}from "react";
+import React ,{useState,useEffect}from "react";
 import styled from "styled-components";
 import HR from "../styled/Hr";
 import { Tooltip } from 'reactstrap';
-
+import useUser from "../../hooks/redux/user/useUser";
+import urls from "../../apiService/urls";
+import useSubmit from "../../hooks/http/useSubmit";
+import  { useActiveCountry } from "../common/CountryLink";
 const CartSum = styled.div`
     
     margin-bottom: 15px;
@@ -58,6 +61,21 @@ const CartSummary = ({
     coupon = {},
     offerAmount = 0,
 }) => {
+    const user = useUser();
+    const { token } = user;
+    const {activeCountry} = useActiveCountry();
+    const [deliveryCharge, setDeliveryCharge] = useState(0);
+    useEffect(() => {
+        
+        if(token&&activeCountry.id)
+        submit({
+            url: urls.deliveryCharge(activeCountry.id,''),
+            method: "GET",
+        });
+    }, [token]);
+    const [fetching, submit] = useSubmit((succFunc) => {
+        setDeliveryCharge(succFunc.amount);
+    });
     const redeemable = getRedeem(total_quantity, walletPoints);
     const wallet_amount = redeemable * redeem_amount;
     const couponAmt =
@@ -66,13 +84,13 @@ const CartSummary = ({
             : 0;
     let taxAmount = ((cartTotal - couponAmt) / 100) * 18
     const total =
-        (shipping_fee +
+        (deliveryCharge +
         cartTotal -
         (redeem ? wallet_amount : couponAmt) -
         offerAmount)+taxAmount;
-    const [tooltipOpen, setTooltipOpen] = useState(false);
-    const toggle = () => setTooltipOpen(!tooltipOpen);
-    let FinalCharge = shipping_fee+taxAmount;
+    // const [tooltipOpen, setTooltipOpen] = useState(false);
+    // const toggle = () => setTooltipOpen(!tooltipOpen);
+    let FinalCharge = taxAmount;
     return (
         <>
             <CartSum>
@@ -86,6 +104,13 @@ const CartSummary = ({
                     title="Taxes and Charges"
                     amt={`+ ${currency_type}${FinalCharge.toFixed(2)}`}
                 />
+                {
+                    token&&
+                    <SumItem
+                        title="Shipping"
+                        amt={fetching?'...loading': `+ ${currency_type}${deliveryCharge.toFixed(2)}`}
+                    />
+                }
                 {/* <SumItem
                     title="Cart Total"
                     amt={`${currency_type}${cartTotal.toFixed(2)}`}
@@ -128,20 +153,17 @@ const CartSummary = ({
                     amt={`${currency_type}${total.toFixed(2)}`}
                     href="#" id="DisabledAutoHide"
                 />
-                <Tooltip placement="left" isOpen={tooltipOpen} autohide={false} target="DisabledAutoHide" toggle={toggle}>
-                    {/* <SumItem
-                    title="Cart Total"
-                    amt={`${currency_type}${cartTotal.toFixed(2)}`}
-                />  */}
+                {/* <Tooltip placement="left" isOpen={tooltipOpen} autohide={false} target="DisabledAutoHide" toggle={toggle}>
+                   
                     <SumItem
                         title="Delivery Charge"
-                        amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
+                        amt={`+ ${currency_type}${deliveryCharge.toFixed(2)}`}
                     />
                     <SumItem
                         title="Offer Amount"
                         amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
                     />
-                </Tooltip>
+                </Tooltip> */}
             </CartSum>
         </>
     );

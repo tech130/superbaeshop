@@ -426,6 +426,7 @@ const CartListWithForm = ({
 }) => {
     const [coupon, setCoupon] = useState({});
     const [redeem, setRedeem] = useState(false);
+    const [activeAddress, setAtiveAddress] = useState('');
 
     const { user_points } = useUser();
     const walletPoints = parseFloat(user_points) || 0;
@@ -439,6 +440,7 @@ const CartListWithForm = ({
     }, []);
 
     const cartSummary = useCartSummary(list);
+
     return (
         <Row>
 
@@ -460,7 +462,7 @@ const CartListWithForm = ({
                 ) : (
                     <>
                         <H4 mb="20px">Checkout Details</H4>
-                        <CheckoutForm coupon={coupon} redeem={redeem} />
+                        <CheckoutForm setAtiveAddress={setAtiveAddress} coupon={coupon} redeem={redeem} />
                         <Pad />
                     </>
                 )}
@@ -485,6 +487,7 @@ const CartListWithForm = ({
                     />
                     <CartSummary
                         {...cartSummary}
+                        activeAddress={activeAddress}
                         list={list}
                         redeem={redeem}
                         coupon={is_coupon ? coupon : undefined}

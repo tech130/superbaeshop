@@ -122,14 +122,23 @@ const CodCheckout = ({ id }) => {
             let{id,address,payment_type,pay_amount,status}=succFunc;
             const { country } = address || {};
             const { code } = country || {};
-            Purchase(id,code,pay_amount,payment_type,status);
+            // Purchase(id,code,pay_amount,payment_type,status);
+            
+              router.push({
+                pathname:
+                    `/${country}/thank-you`,
+               
+                query:{
+                    id: id,
+                    code: code,
+                    pay_amount:pay_amount,
+                    payment_type:payment_type,
+                    status:status
+                    }
+            });
+            dispatch(clearCart());
         }
-        router.push(
-            `/[country]/thank-you`,
-            `/${country}/thank-you`
-        );
         // window.location.replace(`/${country}/thank-you`);
-        dispatch(clearCart());
     }); 
 
     const onClick = () => {
@@ -160,13 +169,20 @@ const OnlineCheckout = ({ data }) => {
             let{id,address,payment_type,pay_amount,status}=succFunc;
             const { country } = address || {};
             const { code } = country || {};
-            Purchase(id,code,pay_amount,payment_type,status);
+            // Purchase(id,code,pay_amount,payment_type,status);
+            router.push({
+                pathname:
+                    `/${country}/thank-you`,
+                query:{
+                    id: id,
+                    code: code,
+                    pay_amount:pay_amount,
+                    payment_type:payment_type,
+                    status:status
+                    }
+            });
+            dispatch(clearCart());
         }
-        router.push(
-            `/[country]/thank-you`,
-            `/${country}/thank-you`
-        );
-        dispatch(clearCart());
         // window.location.replace(`/${country}/thank-you`);
     });
 

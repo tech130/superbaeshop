@@ -30,6 +30,10 @@ const urls = {
     // others
     newsletter: "others-api/newsletter/",
     terms: "others-api/html-content/1/",
+    //Calculate Delivery
+    deliveryCharge:(countryId,activeAddress)=>activeAddress === ''?
+        `orders/calculate-delivery/?country=${countryId}`:
+        `orders/calculate-delivery/?country=${countryId}&delivery_postcode=${activeAddress}`
 };
 
 export default urls;
