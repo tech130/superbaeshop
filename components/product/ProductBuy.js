@@ -34,13 +34,14 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
     const country = useCountryParam();
     const router = useRouter();
     const list = useSelector((state) => state.local_cart);
+    const productCountry = useProdCountry(product_country);
+    let currency = productCountry.country? productCountry.country.code:'INR';
 
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
         dispatch(cartIsOpen(true));
     });
-    const productCountry = useProdCountry(product_country);
-    let currency = productCountry.country? productCountry.country.code:'INR';
+    
 
     const inCart = useMemo(() => {
         if (token) {
@@ -74,12 +75,14 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
                 eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
             }
         } else {
-            dispatch(addToLocalCart(id, slug, quantity));
-            
-             dispatch(cartIsOpen(true));
-             if(router.pathname !== '/[country]/checkout'){
+            if(router.pathname !== '/[country]/checkout'){
                 eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
              }
+
+            dispatch(addToLocalCart(id, slug, quantity));
+            
+            dispatch(cartIsOpen(true));
+             
         }
     }, [id, inCart, slug, quantity, isOffer]);
 

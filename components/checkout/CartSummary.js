@@ -105,17 +105,20 @@ const CartSummary = ({
     const [deliveryCharge, setDeliveryCharge] = useState(0);
     useEffect(() => {
         
-        if(token&&activeCountry.id)
+        if(token&&activeCountry.id&&activeAddress.postal_code){
+
+            submit({
+                url: urls.deliveryCharge(activeCountry.id,activeAddress.postal_code ),
+                method: "GET",
+            });
+        }
         
-        submit({
-            url: urls.deliveryCharge(activeCountry.id,activeAddress.postal_code ),
-            method: "GET",
-        });
         
-        return () => {setAddToCartList();}
+        // return () => {setAddToCartList();}
     }, [token,activeAddress]);
     const [fetching, submit] = useSubmit((succFunc) => {
         setDeliveryCharge(succFunc.amount);
+        setAddToCartList();
     });
     let productCountry={};
     if(list.length>0){
@@ -151,6 +154,7 @@ const CartSummary = ({
     // }
    const setAddToCartList=()=>{
     if(list.length>0&&total!==''){
+        console.log("AddToCart")
         let currencyCode = productCountry.country? productCountry.country.code:'INR';
         let ids =list.map(item=>{return item.id})
         console.log(ids)

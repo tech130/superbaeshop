@@ -361,7 +361,7 @@ const AddressList = ({ chooseAddr, address_id, activeCountryId = null }) => {
     useEffect(() => {
         dispatch(fetchAddress());
     }, []);
-    if (address_id === undefined) {
+    if (address_id === undefined||address_id==='') {
         list.length > 0 && chooseAddr(list[0].id);
     }
     return (
