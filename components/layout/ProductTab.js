@@ -105,7 +105,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/lets-goal-2021-planner">
                                         <span>Pink Planner</span>
-                                        <div className="sub-text">12 Freebies!</div>
+                                        <div className="sub-text">12 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/my-space-2022-planner-black' ? 'none' : 'auto'}>
