@@ -4,12 +4,12 @@ import { useProdCountry, useCountryParam } from "../common/CountryLink";
 import Button from "../styled/Button";
 import useUser from "../../hooks/redux/user/useUser";
 import { useDispatch, useSelector } from "react-redux";
-import { addToLocalCart,cartIsOpen } from "../../redux/user/local_cart";
+import { addToLocalCart, cartIsOpen } from "../../redux/user/local_cart";
 import useSubmit from "../../hooks/http/useSubmit";
 import urls from "../../apiService/urls";
 import { updateCartList } from "../../redux/user/cart";
 import { useRouter } from "next/router";
-import styled ,{keyframes}from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { eventForPixelAddToCart } from "../../utils/analytics";
 
 export const getBtnText = (
@@ -21,27 +21,27 @@ export const getBtnText = (
     !inStock
         ? "Out of Stock"
         : inCart
-        ? "Go to Cart"
-        : isPreOrder
-        ? "Pre Order"
-        : `Add${fetching ? "ing" : ""} to Cart`;
+            ? "Go to Cart"
+            : isPreOrder
+                ? "Pre Order"
+                : `Add${fetching ? "ing" : ""} to Cart`;
 
-export const useAddToCart = (productDetails = {},planner='', options = {}) => {
-    const { quantity = 1, isOffer = true } = options;
-    const { id, in_cart, is_pre_order, stock_status, slug,color_code='',product_country } = productDetails;
+export const useAddToCart = (productDetails = {}, planner = '', options = {}) => {
+    const { quantity = 1, isOffer = false } = options;
+    const { id, in_cart, is_pre_order, stock_status, slug, color_code = '', product_country } = productDetails;
     const dispatch = useDispatch();
     const { token } = useUser();
     const country = useCountryParam();
     const router = useRouter();
     const list = useSelector((state) => state.local_cart);
     const productCountry = useProdCountry(product_country);
-    let currency = productCountry.country? productCountry.country.code:'INR';
+    let currency = productCountry.country ? productCountry.country.code : 'INR';
 
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
         dispatch(cartIsOpen(true));
     });
-    
+
 
     const inCart = useMemo(() => {
         if (token) {
@@ -62,7 +62,7 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
                     {
                         product_id: id,
                         quantity: quantity,
-                        is_offer: isOffer,
+                        is_offer: Number(id) === 3 || Number(id) === 4 ? true : isOffer,
                         // color_code:planner === 'black-planner' ? 'black':''
                     },
                 ],
@@ -70,19 +70,19 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
             // if(!fetching){
             //     dispatch(cartIsOpen(true));
             // }
-            if(router.pathname !== '/[country]/checkout'){
+            if (router.pathname !== '/[country]/checkout') {
 
-                eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
+                eventForPixelAddToCart('AddToCart', id, currency, productCountry['selling_price']);
             }
         } else {
-            if(router.pathname !== '/[country]/checkout'){
-                eventForPixelAddToCart('AddToCart',id,currency,productCountry['selling_price']);
-             }
+            if (router.pathname !== '/[country]/checkout') {
+                eventForPixelAddToCart('AddToCart', id, currency, productCountry['selling_price']);
+            }
 
             dispatch(addToLocalCart(id, slug, quantity));
-            
+
             dispatch(cartIsOpen(true));
-             
+
         }
     }, [id, inCart, slug, quantity, isOffer]);
 
@@ -96,9 +96,9 @@ export const useAddToCart = (productDetails = {},planner='', options = {}) => {
     };
 };
 
-export const AddToCart = ({ className = "", product = {},planner='' }) => {
-    const { onClick, fetching, btnText, inStock } = useAddToCart(product,planner);
-    
+export const AddToCart = ({ className = "", product = {}, planner = '' }) => {
+    const { onClick, fetching, btnText, inStock } = useAddToCart(product, planner);
+
     return (
         <Button
             disabled={fetching || !inStock}
@@ -154,9 +154,9 @@ export const NewButton = styled.button`
     }
 `;
 
-const ProductBuy = ({ slug,addition="",planner="" }) => {
-    let product={};
-    let product_country={};
+const ProductBuy = ({ slug, addition = "", planner = "" }) => {
+    let product = {};
+    let product_country = {};
     // if(addition === "bundle-2021"){
     //    let tempProduct = useProduct(slug);
     //    product=tempProduct.sub_product;
@@ -167,15 +167,15 @@ const ProductBuy = ({ slug,addition="",planner="" }) => {
     //     product_country=product.product_country
     // }
     product = useProduct(slug);
-    product_country=product.product_country
+    product_country = product.product_country
     const productCountry = useProdCountry(product_country);
-    if(planner === 'black-planner'){
-        product["color"]='black';
+    if (planner === 'black-planner') {
+        product["color"] = 'black';
     }
     if (productCountry && productCountry.country) {
         return <>
-        <CartButton product={product} planner={planner}/> 
-        {/* <NewButton>Add to cart</NewButton>  */}
+            <CartButton product={product} planner={planner} />
+            {/* <NewButton>Add to cart</NewButton>  */}
         </>;
     }
     return null;
