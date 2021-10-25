@@ -46,7 +46,7 @@ export default class MyDocument extends Document {
                     {/* Facebook Pixel Code */}
                     <script
                         dangerouslySetInnerHTML={{
-                            __html: `!function(e,t,n,c,o,a,f){e.fbq||(o=e.fbq=function(){o.callMethod?o.callMethod.apply(o,arguments):o.queue.push(arguments)},e._fbq||(e._fbq=o),o.push=o,o.loaded=!0,o.version="2.0",o.queue=[],(a=t.createElement(n)).async=!0,a.src="https://connect.facebook.net/en_US/fbevents.js",(f=t.getElementsByTagName(n)[0]).parentNode.insertBefore(a,f))}(window,document,"script"),fbq("init","322536885784029"),fbq("track","PageView");`,
+                            __html: `!function(e,t,n,c,o,a,f){e.fbq||(o=e.fbq=function(){o.callMethod?o.callMethod.apply(o,arguments):o.queue.push(arguments)},e._fbq||(e._fbq=o),o.push=o,o.loaded=!0,o.version="2.0",o.queue=[],(a=t.createElement(n)).async=!0,a.src="https://connect.facebook.net/en_US/fbevents.js",(f=t.getElementsByTagName(n)[0]).parentNode.insertBefore(a,f))}(window,document,"script"),fbq("init","600114417827711"),fbq("track","PageView");`,
                         }}
                     />
                     <noscript>
@@ -54,14 +54,8 @@ export default class MyDocument extends Document {
                             height="1"
                             width="1"
                             style={{ display: "none" }}
-                            src="https://www.facebook.com/tr?id=322536885784029&ev=PageView&noscript=1"
+                            src="https://www.facebook.com/tr?id=600114417827711&ev=PageView&noscript=1"
                         />
-                        {/* <img
-                            height="1"
-                            width="1"
-                            style={{ display: "none" }}
-                            src="https://www.facebook.com/tr?id=322536885784029&ev=event&noscript=1"
-                        /> */}
                     </noscript>
                 </Head>
                 <body>

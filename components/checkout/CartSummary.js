@@ -154,10 +154,8 @@ const CartSummary = ({
     // }
    const setAddToCartList=()=>{
     if(list.length>0&&total!==''){
-        console.log("AddToCart")
         let currencyCode = productCountry.country? productCountry.country.code:'INR';
         let ids =list.map(item=>{return item.id})
-        console.log(ids)
         eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
     }
    }
