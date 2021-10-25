@@ -46,7 +46,7 @@ const HomePage = () => {
                                 <Block margin="0px 0px 0px 0px">
                                     <BannerSection2 dark={false} width={"1262px"} resHeight="420px" height={"440px"} margin="10px 0px 0px 0px"
                                         slug="/ultimate-sticker-book"
-                                        title={"The Sticker  "} animateText="Book" sub_title={"Now with 1500+ stickers"} desc={""}
+                                        title={"The Sticker  "} animateText="Book" sub_title={"Now with 1000 stickers"} desc={""}
                                         img={'./images/Stickerbook.png'}
                                         img2={"https://www.apple.com/v/home/ab/images/promos/ipad-pro/promo_ipad_pro_non_avail__c6f02v7gnwgi_small_2x.jpg"} />
                                 </Block>

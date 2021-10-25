@@ -146,12 +146,8 @@ const Filters = () => {
             }
         } else {
             query[`${filter_key}`] === id ? delete query[`${filter_key}`] : query[`${filter_key}`] = id;
-            // query[`${filter_key}`]=id;
         }
-        // query[`${filter_key}`]=query[`${filter_key}`] === ''? Array.isArray(query[`${filter_key}`])? 
-        //                     query[`${filter_key}`].includes(id) ? 
-        //                     query[`${filter_key}`].splice(query[`${filter_key}`].indexOf(id),1) :
-        //                     query[`${filter_key}`].push(id) : tempArray.push(id) :[id];
+       
         router.push({
             pathname: `/[country]${href}`,
             query: { ...query, country },
@@ -161,42 +157,7 @@ const Filters = () => {
     }
     return (
         <Block width="100%">
-            {/* {titleHead && (
-                <H4 mb="20px" textAlign="left">
-                    {titleHead}
-                </H4>
-            )} */}
-            {/* {list.length > 0 && (
-                <FilterListStyl>
-                    <FilterLinkStyl
-                        href="/product"
-                        query={{ ...query, design_type: "" }}
-                    >
-                        <FilterImg isActive={!query?.design_type}>
-                            <img src="/images/all-selected.png" alt="" />
-                        </FilterImg>
-                        <span>All</span>
-                    </FilterLinkStyl>
-                    {list.map((x) => {
-                        return (
-                            <FilterLinkStyl
-                                href="/product"
-                                query={{ ...query, design_type: x.id }}
-                                key={`tag--${x.id}`}
-                            >
-                                <FilterImg
-                                    isActive={
-                                        query?.design_type === x.id.toString()
-                                    }
-                                >
-                                    {x.image && <img src={x.image} alt="" />}
-                                </FilterImg>
-                                <span>{x.title}</span>
-                            </FilterLinkStyl>
-                        );
-                    })}
-                </FilterListStyl>
-            )} */}
+           
             <div className="outline">
                 {list.map((item, index) => {
                     let { title, data, filter_key } = item;
@@ -232,8 +193,7 @@ const Filters = () => {
                                                         return (
                                                             <li key={index}>
                                                                 <div className="check f-13">
-                                                                    {/* <input type="checkbox" id="custom-checkbox" checked={Array.isArray(query[`${filter_key}`])? query[`${filter_key}`].includes(list.id.toString()) ?
-                                                            true:query[`${filter_key}`] === list.id.toString()? true:false :false} onChange={()=>{checkMarkChange(list.id,"/product",filter_key)}} /> */}
+                                                             
                                                                     <input type="checkbox" id="custom-checkbox" checked={query[`${filter_key}`] !== '' ? Array.isArray(query[`${filter_key}`]) ?
                                                                         query[`${filter_key}`].includes(list.id.toString()) : query[`${filter_key}`] === list.id.toString() : false} onChange={() => { checkMarkChange(list.id, "/product", filter_key) }} />
                                                                     <span className="checkmark"></span>
@@ -247,11 +207,7 @@ const Filters = () => {
                                                 </>
                                                 :
                                                 ''
-                                                // <li>
-                                                //     <div className="check">
-                                                //         No Data
-                                                //     </div>
-                                                // </li>
+                                                
                                             }
                                         </ul>
                                     </Collapse>
@@ -260,47 +216,7 @@ const Filters = () => {
                         </>
                     );
                 })}
-                {/* <div className="filter-branch cursor-pointer" onClick={()=>{setToggle(!toggle)}}>
-                    <p className="f-14 mb-0">{title}</p>
-                    <span  className={toggle ? "rotate-down" : "rotate-up"}>
-                        <img src="/images/up_arrow.svg" alt="icon" />
-                    </span>
-                </div>
-                <Collapse isOpen={toggle}>    
-                    <ul className="filter-list">
-                        <li key={'all'}>
-                            <div className="check f-13">
-                                    <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === ""} onChange={()=>{checkMarkChange("","/product")}} />
-                                    <span className="checkmark"></span>
-                                All
-                            </div>
-                        </li>
-                    {list.length > 0?
-                    <>
-                    {list.map((item,index) => {
-                        return (
-                            <li key={index}>
-                                <div className="check f-13">
-                                        <input type="checkbox" id="custom-checkbox" checked={activeCheck.toString() === item.id.toString()} onChange={()=>{checkMarkChange(item.id,"/product")}} />
-                                        <span className="checkmark"></span>
-                                    {item.title}
-                                    
-                                </div>
-                            </li>
-                            
-                        );
-                    })}
-                    </>
-                    :
-                    ''
-                    // <li>
-                    //     <div className="check">
-                    //         No Data
-                    //     </div>
-                    // </li>
-                    }
-                    </ul>
-                </Collapse> */}
+               
             </div>
         </Block>
     );
@@ -334,16 +250,7 @@ const EaringList = () => {
     return (
         <Block padding="35px 0px">
             <Container>
-                {/* <Filters />
-                <Row>
-                    <InfiniteList
-                        loader={loader}
-                        RenderItem={RenderItem}
-                        loadMore={loadMore}
-                        emptyTitle="No products found"
-                        {...data}
-                    />
-                </Row> */}
+               
                 <div className="row">
                     <div className="col-12 p-0 pb-2 d-sm-none d-none d-md-block d-lg-block d-xl-block">
                         {loadTotalInformation(data)}

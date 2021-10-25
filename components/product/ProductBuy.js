@@ -27,7 +27,7 @@ export const getBtnText = (
         : `Add${fetching ? "ing" : ""} to Cart`;
 
 export const useAddToCart = (productDetails = {},planner='', options = {}) => {
-    const { quantity = 1, isOffer = false } = options;
+    const { quantity = 1, isOffer = true } = options;
     const { id, in_cart, is_pre_order, stock_status, slug,color_code='',product_country } = productDetails;
     const dispatch = useDispatch();
     const { token } = useUser();
