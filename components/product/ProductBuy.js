@@ -39,7 +39,9 @@ export const useAddToCart = (productDetails = {}, planner = '', options = {}) =>
 
     const [fetching, submit] = useSubmit((data) => {
         dispatch(updateCartList(data));
-        dispatch(cartIsOpen(true));
+        if (!isOffer) {
+            dispatch(cartIsOpen(true));
+        }
     });
 
 
@@ -81,7 +83,10 @@ export const useAddToCart = (productDetails = {}, planner = '', options = {}) =>
 
             dispatch(addToLocalCart(id, slug, quantity));
 
-            dispatch(cartIsOpen(true));
+            if (!isOffer) {
+
+                dispatch(cartIsOpen(true));
+            }
 
         }
     }, [id, inCart, slug, quantity, isOffer]);
