@@ -62,7 +62,7 @@ export const useAddToCart = (productDetails = {}, planner = '', options = {}) =>
                     {
                         product_id: id,
                         quantity: quantity,
-                        is_offer: Number(id) === 3 || Number(id) === 4 ? true : isOffer,
+                        is_offer: isOffer,
                         // color_code:planner === 'black-planner' ? 'black':''
                     },
                 ],
@@ -96,8 +96,8 @@ export const useAddToCart = (productDetails = {}, planner = '', options = {}) =>
     };
 };
 
-export const AddToCart = ({ className = "", product = {}, planner = '', }) => {
-    const { onClick, fetching, btnText, inStock } = useAddToCart(product, planner);
+export const AddToCart = ({ className = "", product = {}, planner = '', isOffer = false }) => {
+    const { onClick, fetching, btnText, inStock } = useAddToCart(product, planner, { isOffer: isOffer });
 
     return (
         <Button
