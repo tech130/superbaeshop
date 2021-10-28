@@ -83,7 +83,7 @@ const DealItem = ({ product = {} }) => {
                             </Txt>
                         </Flex>
                     </FlexItem>
-                    <CartButton product={product} /> 
+                    <CartButton isOffer={true} product={product} /> 
                     {/* <Button
                         onClick={onClick}
                         padding="5px 20px"

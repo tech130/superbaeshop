@@ -46,7 +46,6 @@ export const updateCartList = (payload) => {
             }
             return acc;
         }, {});
-        // console.log(removeProducts)
         dispatch(addEntity({ product: removeProducts }));
         dispatch({
             type: cartTyps.load,

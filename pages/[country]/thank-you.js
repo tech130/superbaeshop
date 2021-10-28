@@ -16,7 +16,6 @@ import { clearCart } from "../../redux/user/cart";
 const Thankyou = () => {
     const {query} = useRouter();
     const dispatch = useDispatch();
-    console.log(query)
     let{id,code,pay_amount,payment_type,status}=query;
     Purchase(id,code,pay_amount,payment_type,status);
     dispatch(clearCart());

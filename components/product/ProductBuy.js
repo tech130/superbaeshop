@@ -96,7 +96,7 @@ export const useAddToCart = (productDetails = {}, planner = '', options = {}) =>
     };
 };
 
-export const AddToCart = ({ className = "", product = {}, planner = '' }) => {
+export const AddToCart = ({ className = "", product = {}, planner = '', }) => {
     const { onClick, fetching, btnText, inStock } = useAddToCart(product, planner);
 
     return (
