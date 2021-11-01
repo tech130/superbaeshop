@@ -47,11 +47,11 @@ const MainDiv2 = styled.div`
 
 const scrollTexts = [
     {
-        key: ['./images/ultimate-bundle/Desk.jpg',
-            './images/ultimate-bundle/Wall.jpg',
-            './images/ultimate-bundle/weekly.jpg',
-            './images/ultimate-bundle/Newlaptop.jpg',
-            './images/ultimate-bundle/Slam.jpg']
+        key: ['./images/ultimate-bundle/pink/DeskCalendar.jpg',
+        './images/ultimate-bundle/pink/WallCalendar.jpg',
+        './images/ultimate-bundle/pink/weeklyPlanner.jpg',
+        './images/ultimate-bundle/pink/laptopSkin.jpg',
+        './images/ultimate-bundle/pink/SlamBookcover.jpg',]
     },
 
 ];

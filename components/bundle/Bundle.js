@@ -43,11 +43,11 @@ const images = [
     './images/free-inclusions/Bookmark.jpg',
     './images/free-inclusions/PostCard.jpg',
     './images/free-inclusions/PlayCard.jpg',
-    './images/ultimate-bundle/black/DeskCalendar.jpg',
-    './images/ultimate-bundle/black/WallCalendar.jpg',
-    './images/ultimate-bundle/black/weeklyPlanner.jpg',
-    './images/ultimate-bundle/black/laptopSkin.jpg',
-    './images/ultimate-bundle/black/SlamBookcover.jpg',
+    './images/ultimate-bundle/pink/DeskCalendar.jpg',
+    './images/ultimate-bundle/pink/WallCalendar.jpg',
+    './images/ultimate-bundle/pink/weeklyPlanner.jpg',
+    './images/ultimate-bundle/pink/laptopSkin.jpg',
+    './images/ultimate-bundle/pink/SlamBookcover.jpg',
 ]
 
 const slug = "bundle-2021";
