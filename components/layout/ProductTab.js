@@ -92,8 +92,8 @@ const ProductTab = () => {
                         </Col>
                         <Col lg={12}>
                             <FlexBox>
-                                <FlexOutline events={pathname === '/[country]/product/lets-goal-2021-planner' ? 'none' : 'auto'}>
-                                    <ImageBox borderColor={pathname === '/[country]/product/lets-goal-2021-planner' ? '#d14e9a' : 'transparent'}>
+                                <FlexOutline events={pathname === '/[country]/product/lets-goal-2021-planner' || "/" || '/[country]/' ? 'none' : 'auto'}>
+                                    <ImageBox borderColor={pathname === '/[country]/product/lets-goal-2021-planner'  || "/" || '/[country]/' ? '#d14e9a' : 'transparent'}>
                                         <CountryLink href="/product/lets-goal-2021-planner">
                                             <ImageInside>
                                                 <ResponsiveImage

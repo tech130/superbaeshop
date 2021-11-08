@@ -30,6 +30,8 @@ const Layout = ({ children, slug, isAuthRoute = false }) => {
         }
     }, [token, country, isAuthRoute]);
 
+    console.log(pathname)
+
     return (
         <>
             {/* <TopRollText slug={slug} /> */}

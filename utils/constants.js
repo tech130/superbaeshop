@@ -8,6 +8,19 @@ export const PLANNER_PRODUCTS_PATH = [
     "/[country]/product/my-space-2022-planner-black",
     "/[country]/product/bundle-2021",
     "/[country]/product/ultimate-bundle-2022-black",
+
+    "/[country]/lets-goal-2021-planner",
+    "/[country]/my-space-2022-planner-black",
+    "/[country]/bundle-2021",
+    "/[country]/ultimate-bundle-2022-black",
+
+    "/lets-goal-2021-planner",
+    "/my-space-2022-planner-black",
+    "/bundle-2021",
+    "/ultimate-bundle-2022-black",
+    "/",
+    '/[country]',
+
                                     ];
 export const PLANNER_PRODUCTS = [
     // "lets-goal-2021-planner",
