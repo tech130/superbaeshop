@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../components/layout/Layout";
 import Block from "../../components/styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
@@ -17,7 +17,11 @@ const Thankyou = () => {
     const {query} = useRouter();
     const dispatch = useDispatch();
     let{id,code,pay_amount,payment_type,status}=query;
-    Purchase(id,code,pay_amount,payment_type,status);
+    useEffect(() => {
+        Purchase(id,code,pay_amount,payment_type,status);
+    }, [id,code,pay_amount,payment_type,status]);
+    
+    
     dispatch(clearCart());
     return (
         <Layout>
