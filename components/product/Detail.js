@@ -19,6 +19,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { loader, RenderItem } from "./ProductList";
 import ResponsiveImage from "../common/ResponsiveImage";
+import { useProdCountry } from "../common/CountryLink";
+import { eventOnProductDetailPage } from "../../utils/analytics";
 
 const MainImgCon = styled.div`
     margin-bottom: 1rem;
@@ -49,6 +51,7 @@ const RightBtn = ({ nextSlide, slideCount }) => {
 const Detail = ({ slug }) => {
     const dispatch = useDispatch();
     const product = useProduct(slug);
+    
     const {
         title,
         thumbnail_image,
@@ -57,7 +60,10 @@ const Detail = ({ slug }) => {
         product_images = [],
         similarProducts =[],
         category = {},
+        product_country=[]
     } = product;
+
+    const productCountry = useProdCountry(product_country)
 
     const api = useSelector(
         (state) => state.apiData[similarProductsName(slug)] || {}
@@ -66,6 +72,9 @@ const Detail = ({ slug }) => {
     useEffect(() => {
         if (slug) {
             dispatch(fetchSimilarProducts(slug));
+            if(productCountry.country){
+                eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+            }
         }
     }, [slug]);
     let similarProductsEdited = similarProducts.slice(0,4);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2, H1, H4 } from "../styled/Headings";
@@ -14,6 +14,9 @@ import SmallHeading from "../styled/SmallHeading";
 import AnimateText from "../styled/AnimateText";
 import BundlePrice from "../bundle/BundlePrice";
 import FreeInclusions from "../lets-goal-2021/FreeInclusions";
+import { useProdCountry } from "../common/CountryLink";
+import { eventOnProductDetailPage } from "../../utils/analytics";
+import useProduct from "../../hooks/redux/product/useProduct";
 
 const ResponsiveHeight = styled.div`
     max-width: 500px;
@@ -41,6 +44,13 @@ const images = [
 const slug = "ultimate-bundle-2022-black";
 
 const BlackBundle = () => {
+    const product = useProduct(slug);
+
+    const productCountry = useProdCountry(product.product_country)
+
+    useEffect(() => {
+        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+    }, []);
     return (
         <>
             <Block padding="10px 0px 20px 0px">

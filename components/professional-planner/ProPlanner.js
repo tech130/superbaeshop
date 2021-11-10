@@ -1,4 +1,4 @@
-import React, { useRef, memo } from "react";
+import React, { useRef, memo, useEffect } from "react";
 import Carousel from "nuka-carousel";
 import useMedia from "use-media";
 import { Container, Row, Col } from "styled-bootstrap-grid";
@@ -11,6 +11,9 @@ import useOnScreen from "../../hooks/layout/useOnScreen";
 import AnimateText from "../styled/AnimateText";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
+import useProduct from "../../hooks/redux/product/useProduct";
+import { useProdCountry } from "../common/CountryLink";
+import { eventOnProductDetailPage } from "../../utils/analytics";
 
 const ResponsiveSet = styled.div`
     width:100%;
@@ -27,7 +30,16 @@ const ResponsiveHeight = styled.div`
     margin: auto;
 `;
 
+const slug = "the-professional-planner";
+
 const ProPlanner = () => {
+    const product = useProduct(slug);
+
+    const productCountry = useProdCountry(product.product_country)
+    
+    useEffect(() => {
+        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+    }, []);
     return (
         <>
             <Block padding="0px 0px 35px 0px">

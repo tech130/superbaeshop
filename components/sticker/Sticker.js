@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2, H1 } from "../styled/Headings";
@@ -13,7 +13,18 @@ import slug from "./slug";
 import AnimateText from "../styled/AnimateText";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
+import useProduct from "../../hooks/redux/product/useProduct";
+import { useProdCountry } from "../common/CountryLink";
+import { eventOnProductDetailPage } from "../../utils/analytics";
+
+
 const Sticker = () => {
+    const product = useProduct(slug);
+
+    const productCountry = useProdCountry(product.product_country)
+    useEffect(() => {
+        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+    }, []);
     return (
         <>
             <Block padding="35px 0px">

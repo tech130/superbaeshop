@@ -28,7 +28,7 @@ export const getBtnText = (
 
 export const useAddToCart = (productDetails = {}, planner = '', options = {}) => {
     const { quantity = 1, isOffer = false } = options;
-    const { id, in_cart, is_pre_order, stock_status, slug, color_code = '', product_country } = productDetails;
+    const { id, in_cart, is_pre_order, stock_status, sku, slug, color_code = '', product_country } = productDetails;
     const dispatch = useDispatch();
     const { token } = useUser();
     const country = useCountryParam();
@@ -74,11 +74,11 @@ export const useAddToCart = (productDetails = {}, planner = '', options = {}) =>
             // }
             if (router.pathname !== '/[country]/checkout') {
 
-                eventForPixelAddToCart('AddToCart', id, currency, productCountry['selling_price']);
+                eventForPixelAddToCart('AddToCart', [sku], currency, productCountry['selling_price']);
             }
         } else {
             if (router.pathname !== '/[country]/checkout') {
-                eventForPixelAddToCart('AddToCart', id, currency, productCountry['selling_price']);
+                eventForPixelAddToCart('AddToCart', [sku], currency, productCountry['selling_price']);
             }
 
             dispatch(addToLocalCart(id, slug, quantity));

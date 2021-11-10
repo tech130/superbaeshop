@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Block from "../styled/Block";
 import Banner from './Banner';
 import ColorPicker from './ColorPicker';
 import PagesSlider from "../lets-goal-2021/PageSlider";
 import FreeInclusions from "../lets-goal-2021/FreeInclusions";
+import { useProdCountry } from "../common/CountryLink";
+import useProduct from "../../hooks/redux/product/useProduct";
+import { eventOnProductDetailPage } from "../../utils/analytics";
 
 const images=[
     './images/free-inclusions/black/MySpacePlanner.jpg',
@@ -21,6 +24,12 @@ const images=[
 ]
 const slug="my-space-2022-planner-black";
 const BlackPlanner = () => {
+    const product = useProduct(slug);
+
+    const productCountry = useProdCountry(product.product_country)
+    useEffect(() => {
+        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+    }, []);
     return (
         <>
         <Banner />

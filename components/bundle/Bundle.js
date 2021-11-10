@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Block from "../styled/Block";
 import { Container, Row, Col } from "styled-bootstrap-grid";
 import { H2, H1, H4 } from "../styled/Headings";
@@ -14,6 +14,9 @@ import FreeInclusions from "../lets-goal-2021/FreeInclusions";
 import MainHeading from "../styled/MainHeading";
 import SmallHeading from "../styled/SmallHeading";
 import AnimateText from "../styled/AnimateText";
+import useProduct from "../../hooks/redux/product/useProduct";
+import { useProdCountry } from "../common/CountryLink";
+import { eventOnProductDetailPage } from "../../utils/analytics";
 const BundleStl = styled.div`
     padding: 40px 0px;
     position: relative;
@@ -78,12 +81,21 @@ const BundleItem = ({
 };
 
 const Bundle = () => {
+
+    const product = useProduct(slug);
+
+    const productCountry = useProdCountry(product.product_country)
+
+    useEffect(() => {
+        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+    }, []);
+   
     return (
         <>
             <Block padding="10px 0px 20px 0px">
                 <Container>
                     <Row alignItems="center">
-                    <Col xl={6} lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                        <Col xl={6} lg={6} sm={6} xs={12} className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                             <ResponsiveHeight>
                                 <ResponsiveImage
                                     image={require("../lets-goal-2021/images/cover.png?resize")}
@@ -92,7 +104,7 @@ const Bundle = () => {
                         </Col>
                         <Col xl={6} lg={6} sm={6} xs={12}>
                             <MainHeading className="text-center text-sm-start">
-                            + 18 exciting <AnimateText>Freebies.</AnimateText> <br />Pink Edition
+                                + 18 exciting <AnimateText>Freebies.</AnimateText> <br />Pink Edition
                                 {/* <br /> */}
                             </MainHeading>
 

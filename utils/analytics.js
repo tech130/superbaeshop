@@ -21,6 +21,20 @@ export const eventForPixelAddToCart = (action,id, curreny, value) => {
       );
     
 };
+
+export const eventOnProductDetailPage = (id, curreny, value) => {
+    window.fbq(
+        'track', "ViewContent", { 
+        content_type:'product',
+        content_ids:id,
+        value:value,
+        currency: curreny
+        }
+      );
+    
+};
+
+
 export const InitiateCheckout = (id, curreny, value,payment_type) => {
     window.fbq(
         'track', 'InitiateCheckout', { 

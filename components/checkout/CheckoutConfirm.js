@@ -119,17 +119,17 @@ const CodCheckout = ({ id }) => {
     const [fetching, submit] = useSubmit((succFunc) => {
         
         if(succFunc){
-            let{id,address,payment_type,pay_amount,status}=succFunc;
+            let{id,address, order_items, payment_type,pay_amount,status}=succFunc;
             const { country } = address || {};
             const { code } = country || {};
             // Purchase(id,code,pay_amount,payment_type,status);
-            
+            let ids =order_items.map(item=>{return item.product.sku})
               router.push({
                 pathname:
                     `/${countryParam}/thank-you`,
                
                 query:{
-                    id: id,
+                    id: ids,
                     code: code,
                     pay_amount:pay_amount,
                     payment_type:payment_type,

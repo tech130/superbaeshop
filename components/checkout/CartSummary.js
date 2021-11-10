@@ -155,8 +155,8 @@ const CartSummary = ({
    const setAddToCartList=()=>{
     if(list.length>0&&total!==''){
         let currencyCode = productCountry.country? productCountry.country.code:'INR';
-        let ids =list.map(item=>{return item.id})
-        eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
+        let ids =list.map(item=>{return item.product.sku})
+        eventForPixelAddToCart('AddToCart',ids,currencyCode,total.toFixed(2));
     }
    }
     return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeroSection from "./HeroSection";
 import WhatsInside from "./WhatsInside";
 import FreeInclusions from "./FreeInclusions";
@@ -8,10 +8,13 @@ import StayTuned from "./StayTuned";
 import UltimateBundle from "./UltimateBundle";
 import PagesSlider from "./PageSlider";
 import Block from "../styled/Block";
+import { eventOnProductDetailPage } from "../../utils/analytics";
+import useProduct from "../../hooks/redux/product/useProduct";
+import { useProdCountry } from "../common/CountryLink";
 
 
 
-const images=[
+const images = [
     './images/free-inclusions/planner.jpg',
     './images/free-inclusions/StickerBook.jpg',
     './images/free-inclusions/A5NoteBook.jpg',
@@ -25,11 +28,17 @@ const images=[
     './images/free-inclusions/PostCard.jpg',
     './images/free-inclusions/PlayCard.jpg',
 ]
-const slug="lets-goal-2021-planner";
+const slug = "lets-goal-2021-planner";
 const LetsGoal2021 = () => {
+    const product = useProduct(slug);
+
+    const productCountry = useProdCountry(product.product_country)
+    useEffect(() => {
+        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+    }, []);
     return (
         <>
-        <HeroSection />
+            <HeroSection />
             <WhatsInside />
             <PagesSlider />
             <FreeInclusions images={images} slug={slug} />
@@ -39,8 +48,8 @@ const LetsGoal2021 = () => {
             </Block>
             <StayTuned />
             <GoodVibes />
-       
-            
+
+
         </>
     );
 };
