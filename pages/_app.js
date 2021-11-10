@@ -75,6 +75,7 @@ function MyApp({ Component, pageProps, store }) {
                     name="viewport"
                     content="width=device-width, initial-scale=1, shrink-to-fit=no"
                 />
+                <meta name="facebook-domain-verification" content="85qn96ptwpvhy6pqopfrct57ifwfs4" />
             </Head>
             <GlobalStyle />
             <BaseCSS />
