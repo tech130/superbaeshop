@@ -50,7 +50,7 @@ export const InitiateCheckout = (id, curreny, value,payment_type) => {
 export const Purchase = (id, curreny, value,payment_type,status) => {
     window.fbq(
         'track', 'Purchase', { 
-        content_type:'Purchase',
+        content_type:'Product',
         payment_type:payment_type,
         payment_status:status,
         content_ids:id,
