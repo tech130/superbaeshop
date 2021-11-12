@@ -133,7 +133,7 @@ const CartSummary = ({
         coupon.id && coupon.payout
             ? (parseFloat(coupon.payout || 0) / 100) * cartTotal
             : 0;
-    let taxAmount = ((cartTotal - couponAmt) / 100) * 18
+    let taxAmount = ((cartTotal - couponAmt) / 100) * 12
     const total =
         (deliveryCharge +
         cartTotal -
