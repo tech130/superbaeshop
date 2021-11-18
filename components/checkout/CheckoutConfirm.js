@@ -47,10 +47,11 @@ const DtTble = styled.table`
 
 const CheckoutConfirm = ({ closeModal, data = {} }) => {
     if(Object.keys(data).length>0){
-        let{id,address,pay_amount,payment_type}=data;
+        let{order_items,address,pay_amount,payment_type}=data;
         const { country } = address || {};
         const { code } = country || {};
-        InitiateCheckout(id,code,pay_amount,payment_type);
+        let ids = order_items.map(item => { return item.product.sku })
+        InitiateCheckout(ids,code,pay_amount,payment_type);
     }
 
     return (
@@ -164,17 +165,19 @@ const OnlineCheckout = ({ data }) => {
     const dispatch = useDispatch();
     const router = useRouter();
     const [fetching, submit] = useSubmit((succFunc) => {
+        console.log(succFunc)
         if(succFunc){
 
-            let{id,address,payment_type,pay_amount,status}=succFunc;
+            let{order_items,address,payment_type,pay_amount,status}=succFunc;
             const { country } = address || {};
             const { code } = country || {};
             // Purchase(id,code,pay_amount,payment_type,status);
+            let ids =order_items.map(item=>{return item.product.sku})
             router.push({
                 pathname:
                     `/${countryParam}/thank-you`,
                 query:{
-                    id: id,
+                    id: ids,
                     code: code,
                     pay_amount:pay_amount,
                     payment_type:payment_type,

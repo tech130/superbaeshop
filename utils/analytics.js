@@ -38,7 +38,7 @@ export const eventOnProductDetailPage = (id, curreny, value) => {
 export const InitiateCheckout = (id, curreny, value,payment_type) => {
     window.fbq(
         'track', 'InitiateCheckout', { 
-        content_type:'Checkout',
+        content_type:'product',
         payment_type:payment_type,
         content_ids:id,
         value:value,
@@ -50,7 +50,7 @@ export const InitiateCheckout = (id, curreny, value,payment_type) => {
 export const Purchase = (id, curreny, value,payment_type,status) => {
     window.fbq(
         'track', 'Purchase', { 
-        content_type:'Product',
+        content_type:'product',
         payment_type:payment_type,
         payment_status:status,
         content_ids:id,

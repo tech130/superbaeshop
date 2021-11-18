@@ -25,6 +25,9 @@ import { toNum } from "../../utils";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useCountryParam } from "../common/CountryLink";
+import useSubmit from "../../hooks/http/useSubmit";
+import urls from "../../apiService/urls";
+import { eventForPixelAddToCart } from "../../utils/analytics";
 const FlexBg = styled.div`
   height: 49vh;
   width: 100%;
@@ -376,12 +379,12 @@ const MyCartListPanel = () => {
 
 };
 
-const calculateTotal = (activeCountry = {}, cart = []) => {
+const calculateTotal = (activeCountry = {}, cart = [], deliveryCharge) => {
     const init = {
         total_quantity: 0,
         coupon_amount: 0,
         redeem_amount: toNum(activeCountry?.redeem_point_cash),
-        shipping_fee: toNum(activeCountry?.shipping_fee),
+        shipping_fee: toNum(200),
         cartTotal: 0,
         impure: false,
         currency_type: activeCountry.currency_type,
@@ -408,9 +411,11 @@ const calculateTotal = (activeCountry = {}, cart = []) => {
     return init;
 };
 
-export const useCartSummary = (cart) => {
+export const useCartSummary = (cart, deliveryCharge) => {
     const { activeCountry } = useActiveCountry();
-    return useMemo(() => calculateTotal(activeCountry, cart), [
+   
+
+    return useMemo(() => calculateTotal(activeCountry, cart, deliveryCharge), [
         activeCountry,
         cart,
     ]);
@@ -425,7 +430,26 @@ const CartListWithForm = ({
     const [coupon, setCoupon] = useState({});
     const [redeem, setRedeem] = useState(false);
     const [activeAddress, setAtiveAddress] = useState('');
+    const { activeCountry } = useActiveCountry();
 
+    const [deliveryCharge, setDeliveryCharge] = useState(0);
+
+    useEffect(() => {
+        
+        if(activeCountry.id&&activeAddress.postal_code){
+
+            submit({
+                url: urls.deliveryCharge(activeCountry.id,activeAddress.postal_code ),
+                method: "GET",
+            });
+        }
+    }, [activeAddress]);
+    
+    const [fetching, submit] = useSubmit((succFunc) => {
+        setDeliveryCharge(succFunc.amount);
+    });
+
+  
     const { user_points } = useUser();
     const walletPoints = parseFloat(user_points) || 0;
 
@@ -438,6 +462,7 @@ const CartListWithForm = ({
     }, []);
 
     const cartSummary = useCartSummary(list);
+
 
     return (
         <Row>
@@ -460,7 +485,7 @@ const CartListWithForm = ({
                 ) : (
                     <>
                         <H4 mb="20px">Checkout Details</H4>
-                        <CheckoutForm setAtiveAddress={setAtiveAddress} coupon={coupon} redeem={redeem} />
+                        <CheckoutForm setAtiveAddress={setAtiveAddress} deliveryCharge={deliveryCharge} isLoading={fetching} coupon={coupon} redeem={redeem} />
                         <Pad />
                     </>
                 )}
@@ -485,7 +510,9 @@ const CartListWithForm = ({
                     />
                     <CartSummary
                         {...cartSummary}
+                        fetching={fetching}
                         activeAddress={activeAddress}
+                        deliveryCharge={deliveryCharge}
                         list={list}
                         redeem={redeem}
                         coupon={is_coupon ? coupon : undefined}

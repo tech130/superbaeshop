@@ -59,7 +59,7 @@ const UltimateBundle = () => {
 
     let tempProduct = useProduct("lets-goal-2021-planner");
     let product = tempProduct.sub_product;
-    let product_country = product.product_country;
+    let product_country = product?.product_country;
     // const productCountry = useProdCountry(product_country[0]);
     const productCountry = product_country[0];
     return (

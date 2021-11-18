@@ -52,7 +52,6 @@ const getRedeem = (quantity = 0, walletPoints = 0) => {
 
 const CartSummary = ({
     cartTotal = 0,
-    shipping_fee = 0,
     currency_type,
     redeem_amount = 0,
     walletPoints = 0,
@@ -61,23 +60,7 @@ const CartSummary = ({
     coupon = {},
     offerAmount = 0,
 }) => {
-    const user = useUser();
-    const { token } = user;
-    const {activeCountry} = useActiveCountry();
     const [deliveryCharge, setDeliveryCharge] = useState(0);
-    useEffect(() => {
-        
-        if(token&&activeCountry.id){
-            let  activeAddress='';
-            submit({
-                url: urls.deliveryCharge(activeCountry.id,activeAddress),
-                method: "GET",
-            });
-        }
-    }, [token]);
-    const [fetching, submit] = useSubmit((succFunc) => {
-        setDeliveryCharge(succFunc.amount);
-    });
     const redeemable = getRedeem(total_quantity, walletPoints);
     const wallet_amount = redeemable * redeem_amount;
     const couponAmt =
@@ -85,13 +68,12 @@ const CartSummary = ({
             ? (parseFloat(coupon.payout || 0) / 100) * cartTotal
             : 0;
     let taxAmount = ((cartTotal - couponAmt) / 100) * 12
+
     const total =
         (deliveryCharge +
         cartTotal -
         (redeem ? wallet_amount : couponAmt) -
         offerAmount)+taxAmount;
-    // const [tooltipOpen, setTooltipOpen] = useState(false);
-    // const toggle = () => setTooltipOpen(!tooltipOpen);
     let FinalCharge = taxAmount;
     return (
         <>
@@ -107,46 +89,12 @@ const CartSummary = ({
                     amt={`+ ${currency_type}${FinalCharge.toFixed(2)}`}
                 />
                 {
-                    token&&
+                    deliveryCharge > 0&&
                     <SumItem
                         title="Shipping"
                         amt={fetching?'...loading': `+ ${currency_type}${deliveryCharge.toFixed(2)}`}
                     />
                 }
-                {/* <SumItem
-                    title="Cart Total"
-                    amt={`${currency_type}${cartTotal.toFixed(2)}`}
-                />
-                <SumItem
-                    title="Delivery Charge"
-                    amt={`+ ${currency_type}${shipping_fee.toFixed(2)}`}
-                />
-                {redeem ? (
-                    <>
-                        <SumItem
-                            title="Redeemable Points"
-                            bold
-                            amt={redeemable}
-                        />
-                        <SumItem
-                            title="Redeem Amount"
-                            bold
-                            amt={`- ${currency_type}${wallet_amount.toFixed(
-                                2
-                            )}`}
-                        />
-                    </>
-                ) : couponAmt ? (
-                    <SumItem
-                        title="Coupon Amount"
-                        bold
-                        amt={`- ${currency_type}${couponAmt.toFixed(2)}`}
-                    />
-                ) : null}
-                <SumItem
-                    title="Offer Amount"
-                    amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
-                /> */}
                 <SumItem
                 mb={"10px"}
                     title="Grand Total"
@@ -155,17 +103,6 @@ const CartSummary = ({
                     amt={`${currency_type}${total.toFixed(2)}`}
                     href="#" id="DisabledAutoHide"
                 />
-                {/* <Tooltip placement="left" isOpen={tooltipOpen} autohide={false} target="DisabledAutoHide" toggle={toggle}>
-                   
-                    <SumItem
-                        title="Delivery Charge"
-                        amt={`+ ${currency_type}${deliveryCharge.toFixed(2)}`}
-                    />
-                    <SumItem
-                        title="Offer Amount"
-                        amt={`- ${currency_type}${offerAmount.toFixed(2)}`}
-                    />
-                </Tooltip> */}
             </CartSum>
         </>
     );

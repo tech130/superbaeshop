@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import HR from "../styled/Hr";
 import { Tooltip } from 'reactstrap';
@@ -9,7 +9,7 @@ import { fetchProfile } from "../../redux/user/user";
 import useUser from "../../hooks/redux/user/useUser";
 import urls from "../../apiService/urls";
 import useSubmit from "../../hooks/http/useSubmit";
-import  { useActiveCountry } from "../common/CountryLink";
+import { useActiveCountry } from "../common/CountryLink";
 
 const CartSum = styled.div`
     padding: 10px;
@@ -55,7 +55,7 @@ const CartSumAmt = styled.span`
     font-size: ${(props) => (props.font)};
 `;
 
-const SumItem = ({ title = "", bold = false, amt = "",font = "16px", href = "", id = "",list=[],total='' }) => {
+const SumItem = ({ title = "", bold = false, amt = "", font = "16px", href = "", id = "", list = [], total = '' }) => {
     // if(list.length>0&&total!==''){
     //     const {product_country}=list[0];
     //     const productCountry = useProdCountry(product_country);
@@ -86,6 +86,8 @@ const getRedeem = (quantity = 0, walletPoints = 0) => {
 };
 
 const CartSummary = ({
+    fetching,
+    deliveryCharge = 0,
     cartTotal = 0,
     shipping_fee = 0,
     currency_type,
@@ -95,36 +97,18 @@ const CartSummary = ({
     redeem = false,
     coupon = {},
     offerAmount = 0,
-    list=[],
-    activeAddress=''
+    list = [],
+    activeAddress = ''
+
 }) => {
 
     const user = useUser();
     const { token } = user;
-    const {activeCountry} = useActiveCountry();
-    const [deliveryCharge, setDeliveryCharge] = useState(0);
-    useEffect(() => {
-        
-        if(token&&activeCountry.id&&activeAddress.postal_code){
+    let productCountry = {};
+    if (list.length > 0) {
 
-            submit({
-                url: urls.deliveryCharge(activeCountry.id,activeAddress.postal_code ),
-                method: "GET",
-            });
-        }
-        
-        
-        // return () => {setAddToCartList();}
-    }, [token,activeAddress]);
-    const [fetching, submit] = useSubmit((succFunc) => {
-        setDeliveryCharge(succFunc.amount);
-        setAddToCartList();
-    });
-    let productCountry={};
-    if(list.length>0){
-
-        const {product_country}=list[0];
-        productCountry   = useProdCountry(product_country);
+        const { product_country } = list[0];
+        productCountry = useProdCountry(product_country);
     }
 
     const redeemable = getRedeem(total_quantity, walletPoints);
@@ -136,29 +120,20 @@ const CartSummary = ({
     let taxAmount = ((cartTotal - couponAmt) / 100) * 12
     const total =
         (deliveryCharge +
-        cartTotal -
-        (redeem ? wallet_amount : couponAmt) -
-        offerAmount)+taxAmount;
+            cartTotal -
+            (redeem ? wallet_amount : couponAmt) -
+            offerAmount) + taxAmount;
 
-    // const [tooltipOpen, setTooltipOpen] = useState(false);
-
-    // const toggle = () => setTooltipOpen(!tooltipOpen);
     let FinalCharge = taxAmount;
-    
-    // if(list.length>0){
-    //     const {product_country}=list[0];
-    //     const productCountry = useProdCountry(product_country);
-    //     let currencyCode = productCountry.country? productCountry.country.code:'INR';
-    //     let ids =list.map(item=>{return item.id})
-    //     eventForPixelAddToCart('AddToCart',ids,currencyCode,total);
-    // }
-   const setAddToCartList=()=>{
-    if(list.length>0&&total!==''){
-        let currencyCode = productCountry.country? productCountry.country.code:'INR';
-        let ids =list.map(item=>{return item.product.sku})
-        eventForPixelAddToCart('AddToCart',ids,currencyCode,total.toFixed(2));
-    }
-   }
+
+    useEffect(() => {
+        if (list.length > 0 && total !== '') {
+            let currencyCode = productCountry.country ? productCountry.country.code : 'INR';
+            let ids = list.map(item => { return item.product.sku })
+            eventForPixelAddToCart('AddToCart', ids, currencyCode, total.toFixed(2));
+        }
+    }, [list]);
+   
     return (
         <>
             <CartSum>
@@ -171,10 +146,10 @@ const CartSummary = ({
                     amt={`+ ${currency_type}${FinalCharge.toFixed(2)}`}
                 />
                 {
-                    token&&
+                    token &&
                     <SumItem
                         title="Shipping"
-                        amt={fetching?'...loading': `+ ${currency_type}${deliveryCharge.toFixed(2)}`}
+                        amt={fetching ? '...loading' : `+ ${currency_type}${deliveryCharge.toFixed(2)}`}
                     />
                 }
                 {redeem ? (

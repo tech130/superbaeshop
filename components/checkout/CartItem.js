@@ -67,7 +67,7 @@ const CartItem = ({
 }) => {
     
     let productCountry = useProdCountry(
-        product ? product.product_country : {}
+        product ? product?.product_country : {}
     );
     // const { token } = useUser();
     // if(!token){

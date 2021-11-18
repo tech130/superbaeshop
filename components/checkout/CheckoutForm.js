@@ -104,7 +104,7 @@ export function formReducer(state, action) {
     }
 }
 
-const CheckoutForm = ({ setAtiveAddress, coupon, redeem }) => {
+const CheckoutForm = ({ setAtiveAddress, coupon, redeem, isLoading, deliveryCharge }) => {
     const { toggle, onTrue, onFalse } = useToggle();
     const [paymentType, setPaymentType] = useState("");
     const { countries, activeCountry } = useActiveCountry();
@@ -212,6 +212,7 @@ const CheckoutForm = ({ setAtiveAddress, coupon, redeem }) => {
                         ? values.alt_dial_code.value
                         : "",
                 payment_type: paymentType,
+                delivery_charge: deliveryCharge
             };
             submit({
                 url: urls.checkout,
@@ -322,12 +323,12 @@ const CheckoutForm = ({ setAtiveAddress, coupon, redeem }) => {
                 className="no_box_shadow"
                 margin="0px 0px 10px 0px"
                 onClick={onPayNow}
-                disabled={fetching}
+                disabled={fetching || isLoading}
             >
                 PAY NOW
             </SubmitBtn>
             {activeCountry.is_cod_available && (
-                <SubmitBtn className="no_box_shadow" onClick={onPayLater} disabled={fetching}>
+                <SubmitBtn className="no_box_shadow" onClick={onPayLater} disabled={fetching || isLoading}>
                     CASH ON DELIVERY (+{activeCountry.currency_type}
                     {activeCountry.cod_charge})
                 </SubmitBtn>
@@ -361,7 +362,7 @@ const AddressList = ({ chooseAddr, address_id, activeCountryId = null }) => {
     useEffect(() => {
         dispatch(fetchAddress());
     }, []);
-    if (address_id === undefined||address_id==='') {
+    if (address_id === undefined || address_id === '') {
         list.length > 0 && chooseAddr(list[0].id);
     }
     return (

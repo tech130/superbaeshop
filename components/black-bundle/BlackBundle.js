@@ -46,7 +46,7 @@ const slug = "ultimate-bundle-2022-black";
 const BlackBundle = () => {
     const product = useProduct(slug);
 
-    const productCountry = useProdCountry(product.product_country)
+    const productCountry = useProdCountry(product?.product_country)
 
     useEffect(() => {
         eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
