@@ -8,19 +8,19 @@ import { useProdCountry } from "../common/CountryLink";
 import useProduct from "../../hooks/redux/product/useProduct";
 import { eventOnProductDetailPage } from "../../utils/analytics";
 
-const images=[
-    './images/free-inclusions/black/MySpacePlanner.jpg',
-    './images/free-inclusions/black/StickerBook.jpg',
-    './images/free-inclusions/black/A5NoteBook.jpg',
-    './images/free-inclusions/black/pocketNotebook.jpg',
-    './images/free-inclusions/black/Scrunchy.jpg',
-    './images/free-inclusions/black/PopSocket.jpg',
-    './images/free-inclusions/black/Badge.jpg',
-    './images/free-inclusions/black/Todolist.jpg',
-    './images/free-inclusions/black/Notes.jpg',
-    './images/free-inclusions/black/Bookmark.jpg',
-    './images/free-inclusions/black/PostCard.jpg',
-    './images/free-inclusions/black/PlayCard.jpg',
+const images = [
+    './images/free-inclusions/planner.jpg',
+    './images/free-inclusions/StickerBook.jpg',
+    './images/free-inclusions/A5NoteBook.jpg',
+    './images/free-inclusions/pocketNotebookcopy.jpg',
+    './images/free-inclusions/Scrunchy.jpg',
+    './images/free-inclusions/PopSocketcopy.jpg',
+    './images/free-inclusions/Badge.jpg',
+    './images/free-inclusions/Todolist.jpg',
+    './images/free-inclusions/Notes.jpg',
+    './images/free-inclusions/Bookmark.jpg',
+    './images/free-inclusions/PostCard.jpg',
+    './images/free-inclusions/PlayCard.jpg',
 ]
 const slug="my-space-2022-planner-black";
 const BlackPlanner = () => {

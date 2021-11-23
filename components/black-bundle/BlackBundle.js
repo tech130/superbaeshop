@@ -23,23 +23,23 @@ const ResponsiveHeight = styled.div`
     margin: auto;
 `;
 const images = [
-    './images/free-inclusions/black/MySpacePlanner.jpg',
-    './images/free-inclusions/black/StickerBook.jpg',
-    './images/free-inclusions/black/A5NoteBook.jpg',
-    './images/free-inclusions/black/pocketNotebook.jpg',
-    './images/free-inclusions/black/Scrunchy.jpg',
-    './images/free-inclusions/black/PopSocket.jpg',
-    './images/free-inclusions/black/Badge.jpg',
-    './images/free-inclusions/black/Todolist.jpg',
-    './images/free-inclusions/black/Notes.jpg',
-    './images/free-inclusions/black/Bookmark.jpg',
-    './images/free-inclusions/black/PostCard.jpg',
-    './images/free-inclusions/black/PlayCard.jpg',
-    './images/ultimate-bundle/black/DeskCalendar.jpg',
-    './images/ultimate-bundle/black/WallCalendar.jpg',
-    './images/ultimate-bundle/black/weeklyPlanner.jpg',
-    './images/ultimate-bundle/black/laptopSkin.jpg',
-    './images/ultimate-bundle/black/SlamBookcover.jpg'
+    './images/free-inclusions/planner.jpg',
+    './images/free-inclusions/StickerBook.jpg',
+    './images/free-inclusions/A5NoteBook.jpg',
+    './images/free-inclusions/pocketNotebookcopy.jpg',
+    './images/free-inclusions/Scrunchy.jpg',
+    './images/free-inclusions/PopSocketcopy.jpg',
+    './images/free-inclusions/Badge.jpg',
+    './images/free-inclusions/Todolist.jpg',
+    './images/free-inclusions/Notes.jpg',
+    './images/free-inclusions/Bookmark.jpg',
+    './images/free-inclusions/PostCard.jpg',
+    './images/free-inclusions/PlayCard.jpg',
+    './images/ultimate-bundle/pink/DeskCalendar.jpg',
+    './images/ultimate-bundle/pink/WallCalendar.jpg',
+    './images/ultimate-bundle/pink/weeklyPlanner.jpg',
+    './images/ultimate-bundle/pink/laptopSkin.jpg',
+    './images/ultimate-bundle/pink/SlamBookcover.jpg',
 ]
 const slug = "ultimate-bundle-2022-black";
 
