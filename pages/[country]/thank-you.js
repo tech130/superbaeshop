@@ -9,19 +9,24 @@ import Flex from "../../components/styled/Flex";
 import CountryLink from "../../components/common/CountryLink";
 import Txt from "../../components/styled/Txt";
 import { useRouter } from "next/router";
-import { Purchase} from "../../utils/analytics";
+import { Purchase } from "../../utils/analytics";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/user/cart";
 
 const Thankyou = () => {
-    const {query} = useRouter();
+
+    const router = useRouter();
     const dispatch = useDispatch();
-    let{id,code,pay_amount,payment_type,status}=query;
+    let { id, code, pay_amount, payment_type, status } = router?.query;
+
     useEffect(() => {
-        Purchase(id,code,pay_amount,payment_type,status);
-    }, [id,code,pay_amount,payment_type,status]);
-    
-    
+        router.replace({ query: { pay_amount: 0 } })
+        if (id & code & pay_amount & payment_type & status) {
+            Purchase(id, code, pay_amount, payment_type, status);
+        }
+    }, [id, code, pay_amount, payment_type, status]);
+
+
     dispatch(clearCart());
     return (
         <Layout>
@@ -32,12 +37,10 @@ const Thankyou = () => {
                             <Flex
                                 vertical
                                 justifyContent="center"
-                                alignItems="center"
-                            >
+                                alignItems="center">
                                 <Block
                                     textAlign="center"
-                                    margin="30px 0px 30px 0px"
-                                >
+                                    margin="30px 0px 30px 0px">
                                     <svg
                                         width={80}
                                         viewBox="0 0 426.667 426.667"
