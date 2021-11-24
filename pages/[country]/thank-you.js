@@ -21,7 +21,8 @@ const Thankyou = () => {
 
     useEffect(() => {
         router.replace({ query: { pay_amount: 0 } })
-        if (id & code & pay_amount & payment_type & status) {
+        console.log(code)
+        if (code) {
             Purchase(id, code, pay_amount, payment_type, status);
         }
     }, [id, code, pay_amount, payment_type, status]);
@@ -48,9 +49,9 @@ const Thankyou = () => {
                                         <path d="M421.876 56.307c-6.548-6.78-17.352-6.968-24.132-.42-.142.137-.282.277-.42.42L119.257 334.375l-90.334-90.334c-6.78-6.548-17.584-6.36-24.132.42-6.388 6.614-6.388 17.099 0 23.713l102.4 102.4c6.665 6.663 17.468 6.663 24.132 0L421.456 80.44c6.78-6.549 6.968-17.353.42-24.133z" />
                                     </svg>
                                 </Block>
-                                <H3 textAlign="center">Order Placed</H3>
+                                <H3 textAlign="center">Order Placed !!</H3>
                                 <P textAlign="center">
-                                    Thank you for shopping with us
+                                    Thank you for shopping with us.
                                 </P>
                                 <CountryLink href="/orders">
                                     <Txt textDecor="underline" fontSize="18px">
