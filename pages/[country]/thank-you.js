@@ -6,7 +6,7 @@ import { common } from "../../redux/handlePages";
 import { H3 } from "../../components/styled/Headings";
 import P from "../../components/styled/P";
 import Flex from "../../components/styled/Flex";
-import CountryLink from "../../components/common/CountryLink";
+import CountryLink, { useCountryParam } from "../../components/common/CountryLink";
 import Txt from "../../components/styled/Txt";
 import { useRouter } from "next/router";
 import { Purchase } from "../../utils/analytics";
@@ -14,16 +14,20 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/user/cart";
 
 const Thankyou = () => {
+    let countryParam = useCountryParam();
 
     const router = useRouter();
     const dispatch = useDispatch();
     let { id, code, pay_amount, payment_type, status } = router?.query;
 
     useEffect(() => {
-        router.replace({ query: { pay_amount: 0 } })
         console.log(code)
         if (code) {
             Purchase(id, code, pay_amount, payment_type, status);
+            router.replace({
+                pathname:
+                    `/${countryParam}/thank-you`,
+            });
         }
     }, [id, code, pay_amount, payment_type, status]);
 
