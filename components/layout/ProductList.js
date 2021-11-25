@@ -79,9 +79,10 @@ const ProdLinkStl = styled.li`
 const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
 
     let { categories, is_active, id } = cat;
+    console.log(cat)
     return (
         <React.Fragment key={id}>
-            {is_active && cat.title === "PHONE CASES" &&
+            {is_active &&
                 <React.Fragment >
                     <ProdLinkStl>
                         <div id="main-cat" onClick={() => {
@@ -90,10 +91,11 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                             else
                                 setToggle(id)
                         }} >
-                            {cat.title === "PHONE CASES" ? "Phone Cases" : cat.title}
+                             {cat.title}
 
                         </div>
                     </ProdLinkStl>
+                    
                     <div key={index} id="main-cat-menu" className={`${id === toggle ? '' : 'd-none'}`}>
                         <Row className="h-100">
                             <Container>
