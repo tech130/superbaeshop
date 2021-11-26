@@ -42,9 +42,6 @@ const DealItem = ({ product = {} }) => {
     const currencyType = productCountry.country.currency_type;
     const price = productCountry.selling_price || 0;
 
-    // const { fetching, onClick, btnText } = useAddToCart(product, {
-    //     isOffer: true,
-    // });
 
     return (
         <ItemStyl>
@@ -76,26 +73,11 @@ const DealItem = ({ product = {} }) => {
                             </Txt>
                             <Txt margin="0px 10px 0px 0px" weight={600}>
                                 {currencyType}
-                                {(price * 0.8).toFixed(2)}
-                            </Txt>
-                            <Txt fontSize="14px" weight={600} color="green">
-                                Extra 20% off
+                                {(price).toFixed(2)}
                             </Txt>
                         </Flex>
                     </FlexItem>
-                    <CartButton isOffer={true} product={product} /> 
-                    {/* <Button
-                        onClick={onClick}
-                        padding="5px 20px"
-                        border="1px solid #cecece"
-                        margin="5px 0px"
-                        bg="#000"
-                        disabled={fetching}
-                    >
-                        <Txt fontSize="13px" color="#fff" weight={500}>
-                            {btnText}
-                        </Txt>
-                    </Button> */}
+                    <CartButton isOffer={false} product={product} /> 
                 </Flex>
             </FlexItem>
         </ItemStyl>
@@ -123,8 +105,8 @@ const DealsModal = ({ closeModal }) => {
         <>
             <ModalHeader
                 closeModal={closeModal}
-                title="Lightning Deals"
-                desc="Offers exclusive for you. This offer is only valid for next 24 hours."
+                title="Today's Deals Products"
+                desc="People who buy planners tend to buy bundle too. Grab your's soon.."
             />
             <ItemOutline >
                 {list.length === 0 ? (

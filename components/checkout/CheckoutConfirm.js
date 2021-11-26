@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "../modal/Modal";
 import ModalHeader from "../modal/ModalHeader";
 import Block from "../styled/Block";
@@ -13,11 +13,12 @@ import Txt from "../styled/Txt";
 import useScript from "../../hooks/useScript";
 import rZPay from "../../utils/rzPay";
 import ModalLoader from "../modal/ModalLoader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../redux/user/cart";
 import OrderSummary from "./OrderSummary";
 import { InitiateCheckout, Purchase} from "../../utils/analytics";
 import { useRouter } from "next/router";
+import { updateCheckout } from "../../redux/user/checkout";
 
 const DtTble = styled.table`
     border-collapse: collapse;
@@ -117,13 +118,14 @@ const CodCheckout = ({ id }) => {
     let countryParam = useCountryParam();
     const dispatch = useDispatch();
     const router = useRouter();
+
     const [fetching, submit] = useSubmit((succFunc) => {
         
         if(succFunc){
             let{id,address, order_items, payment_type,pay_amount,status}=succFunc;
+            dispatch(updateCheckout(succFunc))
             const { country } = address || {};
             const { code } = country || {};
-            // Purchase(id,code,pay_amount,payment_type,status);
             let ids =order_items.map(item=>{return item.product.sku})
               router.push({
                 pathname:
@@ -137,9 +139,7 @@ const CodCheckout = ({ id }) => {
                     status:status
                     }
             });
-            // dispatch(clearCart());
         }
-        // window.location.replace(`/${country}/thank-you`);
     }); 
 
     const onClick = () => {
@@ -165,7 +165,6 @@ const OnlineCheckout = ({ data }) => {
     const dispatch = useDispatch();
     const router = useRouter();
     const [fetching, submit] = useSubmit((succFunc) => {
-        console.log(succFunc)
         if(succFunc){
 
             let{order_items,address,payment_type,pay_amount,status}=succFunc;

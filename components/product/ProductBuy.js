@@ -101,8 +101,8 @@ export const useAddToCart = (productDetails = {}, planner = '', options = {}) =>
     };
 };
 
-export const AddToCart = ({ className = "", product = {}, planner = '', isOffer = false }) => {
-    const { onClick, fetching, btnText, inStock } = useAddToCart(product, planner, { isOffer: isOffer });
+export const AddToCart = ({ className = "", product = {}, planner = '', isOffer = false, isOpen= true }) => {
+    const { onClick, fetching, btnText, inStock } = useAddToCart(product, planner, { isOffer: isOffer, isOpen });
 
     return (
         <Button

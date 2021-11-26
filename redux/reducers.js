@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import user from "./user/user";
 import local_cart,{cartOpen} from "./user/local_cart";
 import cart, { cartList } from "./user/cart";
+import checkout from "./user/checkout";
 import product, { headerProducts } from "./product/product";
 import apiData from "./apiData";
 import master, { terms } from "./master";
@@ -29,7 +30,8 @@ const appReducer = combineReducers({
     addressList,
     orders,
     wallet,
-    cartOpen
+    cartOpen,
+    checkout,
 });
 
 const reducer = (state, action) => {

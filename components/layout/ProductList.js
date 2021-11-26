@@ -79,7 +79,6 @@ const ProdLinkStl = styled.li`
 const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
 
     let { categories, is_active, id } = cat;
-    console.log(cat)
     return (
         <React.Fragment key={id}>
             {is_active &&
