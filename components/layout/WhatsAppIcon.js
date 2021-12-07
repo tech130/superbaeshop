@@ -21,7 +21,7 @@ const WhatsAppLink = styled.a`
 const WhatsAppIcon = ({ slug = "" }) => {
     const product = useProduct(slug);
     const number =
-        product && product.support_number ? product.support_number : "919600999559";
+        product && product.support_number ? product.support_number : "9791311511";
 
     return (
         <Portal id="whatsapp-icon">
