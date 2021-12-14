@@ -38,7 +38,7 @@ const images = [
     './images/free-inclusions/StickerBook.jpg',
     './images/free-inclusions/A5NoteBook.jpg',
     './images/free-inclusions/pocketNotebookcopy.jpg',
-    './images/free-inclusions/Scrunchy.jpg',
+    
     './images/free-inclusions/PopSocketcopy.jpg',
     './images/free-inclusions/Badge.jpg',
     './images/free-inclusions/Todolist.jpg',
