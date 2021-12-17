@@ -80,10 +80,6 @@ const WhatsInside = () => {
                     </Col>
                     <Col lg={7}>
                         <Block margin="15px 0px 0px 0px">
-                            {/* <P>
-                                Goal tracker, Bookstagram, TV Show lists, Movie lists, My obsessions, Habit Tracker, Meal planner, My loved ones, Places to visit, things to do, Clean schedules, Improvement Plan, Subscriptions, Dream Board, Vision Board, Idea Board, Achievement Board, Gift list, Fitness Tracker, Nail art pages, Outfit Planner, Appointments, Journals, Goal Grid, Mood tracker, Expense Tracker, Playlist, Water tracker, Period Tracker, Level 10 Life
-
-                            </P> */}
                             <P>
                                 <b>YEARLY SPREADS:</b> <b>Year at a glance - 2022 &amp; 2023, Year in pixels,</b>
                                 All About Me, The
@@ -100,14 +96,8 @@ const WhatsInside = () => {
                             </P>
                             <P>
                                 <b>MONTHLY SPREADS:</b>
-                                My obsessions, Playlist of the Month, Month at a glimpse+ Goal Grid, Mood Tracker, Journal pages, Goal Tracker, Events, To Do, Habit Tracker, Sick Day/Period Tracker, Weekly/Daily spread, Mandala Coloring, Outfit designing, Nail art designing, Meal Planner, Expense Tracker Weight Tracker, Diet Tracker, Exercise Tracker, Water Tracker.
+                                My obsessions, Playlist of the Month, Month at a glimpse+ Goal Grid, Mood Tracker, Journal pages, Goal Tracker, Events, To Do, Habit Tracker, Sick Day/Period Tracker, Weekly/Daily spread, Mandala Coloring, Nail art designing, Meal Planner, Expense Tracker Weight Tracker, Diet Tracker, Exercise Tracker.
                             </P>
-                            {/* <P>
-                                <b>FREE GOODIES</b>: Pop Socket, Bookmarks(2), Ikigai WorkSheets, Postcards and a Protective Keepsake box
-                            </P> */}
-                            {/* <P textAlign="center">
-                            <ProductBuy slug={"lets-goal-2021-planner"} />
-                            </P> */}
                             <div className="text-center text-sm-start">
                                 <ProductBuy slug={"lets-goal-2021-planner"} />
                             </div>
