@@ -105,7 +105,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/lets-goal-2021-planner">
                                         <span>Pink Planner</span>
-                                        <div className="sub-text">12 Freebies</div>
+                                        <div className="sub-text">11 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/my-space-2022-planner-black' ? 'none' : 'auto'}>
@@ -121,7 +121,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/my-space-2022-planner-black">
                                         <span>Black Planner</span>
-                                        <div className="sub-text">12 Freebies</div>
+                                        <div className="sub-text">11 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/bundle-2021' ? 'none' : 'auto'}>
@@ -137,7 +137,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/bundle-2021">
                                         <span>Pink Bundle</span>
-                                        <div className="sub-text">18 Freebies</div>
+                                        <div className="sub-text">17 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                                 <FlexOutline events={pathname === '/[country]/product/ultimate-bundle-2022-black' ? 'none' : 'auto'}>
@@ -153,7 +153,7 @@ const ProductTab = () => {
                                     </ImageBox>
                                     <CountryLink href="/product/ultimate-bundle-2022-black">
                                         <span>Black Bundle</span>
-                                        <div className="sub-text">18 Freebies</div>
+                                        <div className="sub-text">17 Freebies</div>
                                     </CountryLink>
                                 </FlexOutline>
                             </FlexBox>
