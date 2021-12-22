@@ -77,7 +77,7 @@ const DealItem = ({ product = {} }) => {
                             </Txt>
                         </Flex>
                     </FlexItem>
-                    <CartButton isOffer={false} product={product} /> 
+                    <CartButton isOffer={false} product={product} />
                 </Flex>
             </FlexItem>
         </ItemStyl>
@@ -107,6 +107,7 @@ const DealsModal = ({ closeModal }) => {
                 closeModal={closeModal}
                 title="Today's Deals Products"
                 desc="People who buy planners tend to buy bundle too. Grab your's soon.."
+                desc2="Order placed on or 25th may not be delivered on 1st January"
             />
             <ItemOutline >
                 {list.length === 0 ? (
