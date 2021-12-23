@@ -193,7 +193,7 @@ const loadCategories = (cat, setToggle) => {
                                         query.category = id;
                                         router.push({
                                             pathname: `/[country]/product`,
-                                            query: { ...query },
+                                            query: { ...query, country },
                                         })
                                         setToggle('')
                                     }}>
