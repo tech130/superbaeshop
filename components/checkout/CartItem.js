@@ -19,6 +19,24 @@ import minus from '../../public/images/minus.png';
 import plus from '../../public/images/add.png';
 import useUser from "../../hooks/redux/user/useUser";
 
+const cartTitleOverrides = {
+    "My Space 2022 planner": "My Space 2027 planner",
+    "My Space 2022 planner-Black Edition": "My Space 2027 planner-Black Edition",
+    "Ultimate Bundle 2022 - Pink Edition": "Ultimate Bundle 2027 - Pink Edition",
+    "Ultimate Bundle 2022-Black Edition": "Ultimate Bundle 2027-Black Edition",
+};
+
+const cartSlugTitleOverrides = {
+    "lets-goal-2021-planner": "My Space 2027 planner",
+    "my-space-2022-planner-black": "My Space 2027 planner-Black Edition",
+    "bundle-2021": "Ultimate Bundle 2027 - Pink Edition",
+    "ultimate-bundle-2022-black": "Ultimate Bundle 2027-Black Edition",
+};
+
+const getCartTitle = (product = {}) => {
+    return cartSlugTitleOverrides[product.slug] || cartTitleOverrides[product.title] || product.title;
+};
+
 export const CartStyl = styled(Flex)`
     padding: 20px 10px;
     border-radius: 0px;
@@ -81,6 +99,7 @@ const CartItem = ({
         productCountry &&
         productCountry.country &&
         productCountry.selling_price;
+    const productTitle = getCartTitle(product);
     return (
         <CartStyl alignItems="center">
             {fetching && (
@@ -99,7 +118,7 @@ const CartItem = ({
             </ImgOutline>
             <FlexItem flexGrow={1} flexShrink={0} padding="0px 0px 0px 20px">
                 <P margin="0px" weight={700} fontSize="18px">
-                    {product.title}
+                    {productTitle}
                 </P>
                 {product.stock_status ? (
                     <>

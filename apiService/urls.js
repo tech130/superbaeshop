@@ -1,7 +1,7 @@
 const urls = {
     baseURL:
-        process.env.NEXT_PUBLIC_BASE_URL || "https://api.spaceandbeauty.com/",
-    //user
+        process.env.NEXT_PUBLIC_BASE_URL || "http://api.spaceandbeauty.com/",
+    //users
     logout: "auth/logout/",
     myProfile: "users/",
     verifyOtp: "auth/verify-otp/",
@@ -31,8 +31,8 @@ const urls = {
     newsletter: "others-api/newsletter/",
     terms: "others-api/html-content/1/",
     //Calculate Delivery
-    deliveryCharge:(countryId,activeAddress)=>activeAddress === '' || activeAddress=== undefined ?
-        `orders/calculate-delivery/?country=${countryId}`:
+    deliveryCharge: (countryId, activeAddress) => activeAddress === '' || activeAddress === undefined ?
+        `orders/calculate-delivery/?country=${countryId}` :
         `orders/calculate-delivery/?country=${countryId}&delivery_postcode=${activeAddress}`
 };
 

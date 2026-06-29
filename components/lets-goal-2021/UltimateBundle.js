@@ -59,8 +59,8 @@ const UltimateBundle = () => {
 
     let tempProduct = useProduct("lets-goal-2021-planner");
     let product = tempProduct.sub_product;
-    let product_country = product?.product_country;
-    // const productCountry = useProdCountry(product_country[0]);
+    let product_country = product?.product_country || [];
+    if (!product_country.length) return null;
     const productCountry = product_country[0];
     return (
         <Block padding="0px 0px 65px 0px" className="overflow-hidden">

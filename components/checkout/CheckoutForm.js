@@ -312,7 +312,7 @@ const CheckoutForm = ({ setAtiveAddress, coupon, redeem, isLoading, deliveryChar
                     Now a step closer to creating your own space full of beauty.
                 </li>
                 <li>
-                    The 2022 catalogue is now available for pre-order.
+                    The 2027 catalogue is now available for pre-order.
                 </li>
                 <li>
                     Deliveries starting November 15.

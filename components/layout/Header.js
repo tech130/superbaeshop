@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import CartIcon from "../icons/CartIcon";
 import Flex from "../styled/Flex";
-import styled,{keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Container } from "styled-bootstrap-grid";
 import Ul from "../styled/Ul";
 import CountryList from "./CountryList";
@@ -13,19 +13,19 @@ import { fetchCart } from "../../redux/user/cart";
 import { cartIsOpen } from "../../redux/user/local_cart";
 import { useRouter } from "next/router";
 // import Cartlist from "../../components/checkout/Cartlist";
-import {CartlistPanel} from "../../components/checkout/Cartlist";
+import { CartlistPanel } from "../../components/checkout/Cartlist";
 import useUser from "../../hooks/redux/user/useUser";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import ProductList from "./ProductList";
-import  { useCartIsOpen } from "../../hooks/redux/checkout/useCart";
+import { useCartIsOpen } from "../../hooks/redux/checkout/useCart";
 
 const Hdr = styled.div`
     background: hsla(0,0%,100%,.8);
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
     
-    border-bottom: ${(props)=>props.border};
+    border-bottom: ${(props) => props.border};
 
 `;
 
@@ -107,14 +107,14 @@ const Header = () => {
     // const [state, setState] = useState({
     //     isPaneOpen: false,
     //   });
-      
-      const dispatch = useDispatch();
 
-      const isPanel = useCartIsOpen();
-      const {pathname} = useRouter();
+    const dispatch = useDispatch();
+
+    const isPanel = useCartIsOpen();
+    const { pathname } = useRouter();
     return (
         <>
-            <Hdr border={pathname ==="/[country]" ? '1px solid #ddd':'1px solid #ddd'} >
+            <Hdr border={pathname === "/[country]" ? '1px solid #ddd' : '1px solid #ddd'} >
                 <Container>
                     <Flex
                         as="nav"
@@ -124,19 +124,23 @@ const Header = () => {
                         position="relative"
                     >
                         <CountryLink>
-                            <LogoContent>
+                            {/* <LogoContent>
                                 <Space>
                                     SPACE
                                 </Space>
                                 <Beauty>
                                     and beauty
                                 </Beauty>
-                            </LogoContent>
+                            </LogoContent> */}
                             <picture>
-                                <source
-                                    media="(min-width:575px)"
-                                    srcSet="/images/logo.png"
+                                <img
+                                    src="/images/logo.svg"
+                                    alt="Logo"
+                                    width={80}
+                                    height={80}
+                                    className="responsive-logo"
                                 />
+
                                 {/* <HeaderLogo
                                     src={`/images/logo-small.png`}
                                     alt="space and beauty logo"
@@ -162,29 +166,29 @@ const Header = () => {
                                     <CartCount />
                                     <CartIcon size={20} />
                                 </CountryLink> */}
-                                    <div className="cursor-pointer" >
-                                        <div onClick={() => dispatch(cartIsOpen(true))}>
-                                        
-                                            <CartCount />
-                                            <CartIcon size={20} />
-                                        </div>
-                                       
-                                        <SlidingPane
-                                            className="custom-pane"
-                                            overlayClassName="some-custom-overlay-class"
-                                            isOpen={isPanel}
-                                            title={ <BagTitle>MY SHOPPING BAG</BagTitle>}
-                                            width="40%"
-                                            shouldCloseOnEsc={false}
-                                            onRequestClose={() => {
+                                <div className="cursor-pointer" >
+                                    <div onClick={() => dispatch(cartIsOpen(true))}>
+
+                                        <CartCount />
+                                        <CartIcon size={20} />
+                                    </div>
+
+                                    <SlidingPane
+                                        className="custom-pane"
+                                        overlayClassName="some-custom-overlay-class"
+                                        isOpen={isPanel}
+                                        title={<BagTitle>MY SHOPPING BAG</BagTitle>}
+                                        width="40%"
+                                        shouldCloseOnEsc={false}
+                                        onRequestClose={() => {
                                             // setState({ isPaneOpen: false });
                                             dispatch(cartIsOpen(false));
-                                            }}
-                                        >
-                                            <CartlistPanel />
-                                        </SlidingPane>
-                                        
-                                        </div>
+                                        }}
+                                    >
+                                        <CartlistPanel />
+                                    </SlidingPane>
+
+                                </div>
                             </Hdrli>
                             <Hdrli>
                                 <SignInDrop />

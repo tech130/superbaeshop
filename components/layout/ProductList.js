@@ -8,10 +8,10 @@ import CountryLink, { useCountryParam } from "../common/CountryLink";
 import Txt from "../styled/Txt";
 import ProductLink from "../product/ProductLink";
 import Link from "next/link";
-import {PLANNER_PRODUCTS} from "../../utils/constants"
+import { PLANNER_PRODUCTS } from "../../utils/constants"
 
 const ProdList = styled(Flex)`
-max-width: 65vw;
+max-width: 100vw;
 // flex-wrap: nowrap;
     ul {
         list-style: none;
@@ -90,11 +90,11 @@ const CategoryTitle = ({ cat, index, toggle, setToggle }) => {
                             else
                                 setToggle(id)
                         }} >
-                             {cat.title}
+                            {cat.title}
 
                         </div>
                     </ProdLinkStl>
-                    
+
                     <div key={index} id="main-cat-menu" className={`${id === toggle ? '' : 'd-none'}`}>
                         <Row className="h-100">
                             <Container>
@@ -246,7 +246,7 @@ const ProductList = ({ Show = '' }) => {
                     </ul> */}
 
                 <ul>
-                    {data.products.filter(item => !PLANNER_PRODUCTS.includes(item)  )
+                    {data.products.filter(item => !PLANNER_PRODUCTS.includes(item))
                         .map((slug, index) => (
                             <ProdTitle slug={slug} key={index} index={index} />
                         ))}

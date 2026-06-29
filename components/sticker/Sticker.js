@@ -23,14 +23,14 @@ const Sticker = () => {
 
     const productCountry = useProdCountry(product.product_country)
     useEffect(() => {
-        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+        if (productCountry && productCountry.country) eventOnProductDetailPage([product?.sku], productCountry.country.code, productCountry.selling_price);
     }, []);
     return (
         <>
             <Block padding="35px 0px">
                 <Container>
                     <MainHeading mb="0px" textAlign="center">
-                        THE ULTIMATE STICKER <AnimateText> BOOK</AnimateText>
+                        THE ULTIMATE STICKER <AnimateText> BOOKS</AnimateText>
                     </MainHeading>
                     <SmallHeading textAlign="center">is here.</SmallHeading>
                     <Row>
@@ -40,7 +40,7 @@ const Sticker = () => {
                             />
                         </Col>
                     </Row>
-                    <Flex
+                   <Flex
                         vertical
                         alignItems="center"
                         padding="40px 0px 0px 0px"

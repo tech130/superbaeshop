@@ -49,7 +49,7 @@ const BlackBundle = () => {
     const productCountry = useProdCountry(product?.product_country)
 
     useEffect(() => {
-        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+        if (productCountry && productCountry.country) eventOnProductDetailPage([product?.sku], productCountry.country.code, productCountry.selling_price);
     }, []);
     return (
         <>
@@ -69,7 +69,7 @@ const BlackBundle = () => {
                                 {/* <br /> */}
                             </MainHeading>
 
-                            <SmallHeading className="text-center text-sm-start">The all in one bundle for 2022
+                            <SmallHeading className="text-center text-sm-start">The all in one bundle for 2027
                             </SmallHeading>
                             <Block padding="10px 0px 0px 0px">
                                 <Flex justifyContent="start" className="justify-content-center justify-content-sm-start" >

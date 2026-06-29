@@ -3,6 +3,7 @@ import Layout from "../../components/layout/Layout";
 import { common } from "../../redux/handlePages";
 import MyProfile from "../../components/profile/MyProfile";
 import { fetchProfile } from "../../redux/user/user";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
 const Profile = () => {
     return (

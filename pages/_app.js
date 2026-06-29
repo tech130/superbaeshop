@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import Head from "next/head";
 import Router from "next/router";
@@ -22,64 +22,64 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 // import {Scrollbar} from 'smooth-scrollbar-react';
 Router.events.on("routeChangeStart", () => {
-    NProgress.start();
+  NProgress.start();
 });
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
-    useAnalytics();
-    const gridTheme = {
-        // gridColumns: 24, 
-        breakpoints: { // defaults below
-          xxl: 1440,
-          xl: 1200,
-          lg: 992,
-          md: 768,
-          sm: 576,
-          xs: 575,
-        },
-        // row: {
-        //   padding: 10,
-        // },
-        // col: {
-        //   padding: 5,
-        // },
-        container: {
-        //   padding: 0,
-          maxWidth: {
-            xxl: 1440,
-            xl: 1240,
-            lg: 960,
-            md: 780,
-            sm: 540,
-            xs: 540,
-          },
-        },
-      };
-      useEffect(() => {
-        if (AOS) {
-          AOS.init({
-            duration : 2000
-          })
-        } 
-    }, []);
-    return (
-        <Provider store={store}>
-            <GridThemeProvider gridTheme={gridTheme}>
-            <Head>
-                <title>Space and Beauty</title>
-                <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                />
-                <meta name="facebook-domain-verification" content="85qn96ptwpvhy6pqopfrct57ifwfs4" />
-            </Head>
-            <GlobalStyle />
-            <BaseCSS />
-            {/* <Scrollbar
+  useAnalytics();
+  const gridTheme = {
+    // gridColumns: 24, 
+    breakpoints: { // defaults below
+      xxl: 1440,
+      xl: 1200,
+      lg: 992,
+      md: 768,
+      sm: 576,
+      xs: 575,
+    },
+    // row: {
+    //   padding: 10,
+    // },
+    // col: {
+    //   padding: 5,
+    // },
+    container: {
+      //   padding: 0,
+      maxWidth: {
+        xxl: 1440,
+        xl: 1240,
+        lg: 960,
+        md: 780,
+        sm: 540,
+        xs: 540,
+      },
+    },
+  };
+  useEffect(() => {
+    if (AOS) {
+      AOS.init({
+        duration: 2000
+      })
+    }
+  }, []);
+  return (
+    <Provider store={store}>
+      <GridThemeProvider gridTheme={gridTheme}>
+        <Head>
+          <title>SuperBae | A women's club built for growth, creativity & community.</title>
+          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <meta name="facebook-domain-verification" content="85qn96ptwpvhy6pqopfrct57ifwfs4" />
+        </Head>
+        <GlobalStyle />
+        <BaseCSS />
+        {/* <Scrollbar
               className="custom-class"
               onScroll={(e)=>{console.log(e)}}
               alwaysShowTracks
@@ -89,32 +89,32 @@ function MyApp({ Component, pageProps, store }) {
                 } 
               }}
             > */}
-            <Component {...pageProps} />
-            {/* </Scrollbar> */}
-            
-            <UploadCartModal />
-            <ToastContainer
-                position="bottom-center"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-            </GridThemeProvider>
-        </Provider>
-    );
+        <Component {...pageProps} />
+        {/* </Scrollbar> */}
+
+        <UploadCartModal />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </GridThemeProvider>
+    </Provider>
+  );
 }
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
-    const pageProps = Component.getInitialProps
-        ? await Component.getInitialProps(ctx)
-        : {};
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
 
-    return { pageProps };
+  return { pageProps };
 };
 
 export default withRedux(makeStore)(MyApp);

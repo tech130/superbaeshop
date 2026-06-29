@@ -1,0 +1,32 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyTypeCheckerInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="django.db.models.fields.files.ImageField.url" />
+          <option value="django.db.models.fields.related.ForeignKey.product_country" />
+          <option value="django.db.models.fields.related.ForeignKey.country" />
+          <option value="django.db.models.fields.FloatField.*" />
+          <option value="invoices.models.Invoices.*" />
+          <option value="django.db.models.fields.PositiveIntegerField.*" />
+          <option value="django.db.models.fields.DateTimeField.strftime" />
+          <option value="dict.__setitem__" />
+          <option value="insertion_order.models.Campaigns.*" />
+          <option value="django.db.models.fields.related.ForeignKey.*" />
+          <option value="insertion_order.models.SubCampaign.*" />
+          <option value="insertion_order.models.InsertionOrders.*" />
+          <option value="insertion_order.models.IODetails.*" />
+          <option value="django.db.models.fields.DateField.*" />
+          <option value="authentication.utils.ActionViewMixin.*" />
+          <option value="mediapind.urls.*" />
+          <option value="bookings_management.models.Bookings.*" />
+          <option value="django.db.models.fields.related.OneToOneField.*" />
+          <option value="django.db.models.fields.DateTimeField.*" />
+          <option value="bookings_management.models.ApartmentPaymentSlabRaise.booking_stage" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

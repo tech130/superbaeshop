@@ -8,7 +8,7 @@ import StayTuned from "../lets-goal-2021/StayTuned";
 import TestimonialSection from "../lets-goal-2021/TestimonialSection";
 
 const HomePage = () => {
-   
+
     return (
         <Container fluid className="overflow-hidden">
 
@@ -20,7 +20,7 @@ const HomePage = () => {
                 <BannerSection2 dark={false}
                     height={"400px"} margin="20px 0px 0px 0px" resHeight="auto"
                     slug="/lets-goal-2021-planner"
-                    title={"My space 2022 "} animateText="Planner" sub_title={"PRE-BOOKING open now!"} desc={""}
+                    title={"My space 2027 "} animateText="Planner" sub_title={"PRE-BOOKING open now!"} desc={""}
                     img={'./images/Plannerpink.png'}
                     img2={"https://www.apple.com/v/home/ab/images/heroes/iphone-12/iphone_12_updated__jepm2xpxncuy_small_2x.jpg"} />
             </div>

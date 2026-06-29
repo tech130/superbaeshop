@@ -38,7 +38,7 @@ const images = [
     './images/free-inclusions/StickerBook.jpg',
     './images/free-inclusions/A5NoteBook.jpg',
     './images/free-inclusions/pocketNotebookcopy.jpg',
-    
+
     './images/free-inclusions/PopSocketcopy.jpg',
     './images/free-inclusions/Badge.jpg',
     './images/free-inclusions/Todolist.jpg',
@@ -87,9 +87,9 @@ const Bundle = () => {
     const productCountry = useProdCountry(product.product_country)
 
     useEffect(() => {
-        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+        if (productCountry && productCountry.country) eventOnProductDetailPage([product?.sku], productCountry.country.code, productCountry.selling_price);
     }, []);
-   
+
     return (
         <>
             <Block padding="10px 0px 20px 0px">
@@ -108,7 +108,7 @@ const Bundle = () => {
                                 {/* <br /> */}
                             </MainHeading>
 
-                            <SmallHeading className="text-center text-sm-start">The all in one bundle for 2022
+                            <SmallHeading className="text-center text-sm-start">The all in one bundle for 2027
                             </SmallHeading>
                             <Block padding="10px 0px 0px 0px">
                                 <Flex justifyContent="start" className="justify-content-center justify-content-sm-start"  >

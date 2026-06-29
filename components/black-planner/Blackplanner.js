@@ -28,7 +28,7 @@ const BlackPlanner = () => {
 
     const productCountry = useProdCountry(product.product_country)
     useEffect(() => {
-        eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+        if (productCountry && productCountry.country) eventOnProductDetailPage([product?.sku], productCountry.country.code, productCountry.selling_price);
     }, []);
     return (
         <>

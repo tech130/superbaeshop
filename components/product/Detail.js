@@ -73,7 +73,7 @@ const Detail = ({ slug }) => {
         if (slug) {
             dispatch(fetchSimilarProducts(slug));
             if(productCountry.country){
-                eventOnProductDetailPage([product.sku], productCountry.country.code, productCountry.selling_price);
+                if (productCountry && productCountry.country) eventOnProductDetailPage([product?.sku], productCountry.country.code, productCountry.selling_price);
             }
         }
     }, [slug]);

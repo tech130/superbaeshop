@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import InfiniteList from "../common/InfiniteList";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import {
     walletListName,
     fetchWallet,
@@ -14,7 +14,7 @@ const WalletList = () => {
     const dispatch = useDispatch();
     const data = useSelector((state) => {
         return state.pagination[walletListName] || {};
-    }, []);
+    }, shallowEqual);
 
     useEffect(() => {
         dispatch(fetchWallet());

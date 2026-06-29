@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import {
     fetchOrders,
     clearOrders,
@@ -19,7 +19,7 @@ const OrderListing = () => {
 
     const data = useSelector((state) => {
         return state.pagination[orderListName] || {};
-    }, []);
+    }, shallowEqual);
 
     useEffect(() => {
         dispatch(fetchOrders());

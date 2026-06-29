@@ -121,14 +121,21 @@ const Footer = () => {
                         <Block margin="0px 0px 15px">
                             <Block margin="0px 0px 8px">
                                 {/* <Logo width="100px" /> */}
-                                <LogoContent>
+                                {/* <LogoContent>
                                     <Space>
                                         SPACE
                                     </Space>
                                     <Beauty>
                                         and beauty
                                     </Beauty>
-                                </LogoContent>
+                                </LogoContent> */}
+                                <img
+                                    src="/images/logo.svg"
+                                    alt="Logo"
+                                    width={80}
+                                    height={80}
+                                    className="responsive-logo"
+                                />
                             </Block>
                             <Block margin="0px 0px 15px">
                                 <ul className="footer-list">
@@ -197,7 +204,7 @@ const Footer = () => {
                     <Col md={2} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">
-                                Also shop on{" "} 
+                                Also shop on{" "}
                                 {/* <br />
                                 <Txt fontSize="14px" weight={300}>
                                     (coming soon)
@@ -206,18 +213,18 @@ const Footer = () => {
                             <ul className="footer-list">
                                 <li>
                                     <a>Amazon <Txt fontSize="14px" weight={300}>
-                                    (coming soon)
-                                </Txt>{" "}</a>
+                                        (coming soon)
+                                    </Txt>{" "}</a>
                                 </li>
                                 <li>
                                     <a>Etsy <Txt fontSize="14px" weight={300}>
-                                    (coming soon)
-                                </Txt>{" "}</a>
+                                        (coming soon)
+                                    </Txt>{" "}</a>
                                 </li>
                                 <li>
                                     <a>Wish <Txt fontSize="14px" weight={300}>
-                                    (coming soon)
-                                </Txt>{" "}</a>
+                                        (coming soon)
+                                    </Txt>{" "}</a>
                                 </li>
                             </ul>
                         </Block>
@@ -225,7 +232,7 @@ const Footer = () => {
                     <Col md={2} sm={6} xs={12}>
                         <Block margin="0px 0px 15px">
                             <div className="footer-title">
-                            Why us!
+                                Why us!
                             </div>
                             <ul className="footer-list">
                                 <li>
@@ -290,7 +297,7 @@ const Footer = () => {
                             </Flex>
                         </Block>
                     </Col>
-                    
+
                 </Row>
                 {/* <div className="footer-bottom-txt ">
                     *The statements on Vibrant's products have not been evaluated by the U.S. Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease or illness
@@ -318,8 +325,8 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="d-block d-md-none d-lg-none d-xl-none pt-3">
-                <div className="footer-bottom-small" >
-                       
+                    <div className="footer-bottom-small" >
+
                         <span>
                             <CountryLink href="/policy">
                                 Privacy Policy
@@ -336,7 +343,7 @@ const Footer = () => {
                     </div>
                     <div className="footer-bottom-small" >
                         <span>© {new Date().getFullYear()} Space and Beauty All Rights Reserved.</span>
-                       
+
 
                     </div>
                     {/* <span>© {new Date().getFullYear()} Space and Beauty All Rights Reserved.</span> */}

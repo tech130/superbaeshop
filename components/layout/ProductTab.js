@@ -23,7 +23,7 @@ const FlexOutline = styled(Flex)`
     span{
         font-size: 14px;
         font-weight: 600;
-        color: ${(props) => props.events ==='none' ? ' #004b85':'#000'};
+        color: ${(props) => props.events === 'none' ? ' #004b85' : '#000'};
         display: block;
         line-height: 1;
         margin: 5px 0px 0px 0px;    
@@ -86,14 +86,14 @@ const ProductTab = () => {
                     <Row>
                         <Col lg={12}>
                             <SmallHeading textAlign="center">
-                                My Space 2022 planner
+                                My Space 2027 planner
                                 {/* <AnimateText>planner</AnimateText> */}
                             </SmallHeading>
                         </Col>
                         <Col lg={12}>
                             <FlexBox>
                                 <FlexOutline events={pathname === '/[country]/product/lets-goal-2021-planner' ? 'none' : 'auto'}>
-                                    <ImageBox borderColor={pathname === '/[country]/product/lets-goal-2021-planner'  ? '#d14e9a' : 'transparent'}>
+                                    <ImageBox borderColor={pathname === '/[country]/product/lets-goal-2021-planner' ? '#d14e9a' : 'transparent'}>
                                         <CountryLink href="/product/lets-goal-2021-planner">
                                             <ImageInside>
                                                 <ResponsiveImage
