@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.1.1",
     "dayjs": "^1.8.29",
+    "file-loader": "^6.2.0",
     "image-trace-loader": "^1.0.2",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
@@ -42,6 +43,7 @@
     "styled-components": "^5.1.0",
     "svg-sprite-loader": "^5.0.0",
     "universal-cookie": "^4.0.3",
+    "url-loader": "^4.1.1",
     "use-media": "^1.4.0",
     "uuidv4": "^6.2.0",
     "webp-loader": "^0.6.0"
