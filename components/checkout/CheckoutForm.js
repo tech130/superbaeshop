@@ -309,7 +309,7 @@ const CheckoutForm = ({ setAtiveAddress, coupon, redeem, isLoading, deliveryChar
             </P>
             <ImportantPoints>
                 <li>
-                    Now a step closer to creating your own space full of beauty.
+                    Now a step closer to creating your own SuperBae.
                 </li>
                 <li>
                     The 2027 catalogue is now available for pre-order.

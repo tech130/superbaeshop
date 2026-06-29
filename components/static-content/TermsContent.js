@@ -555,8 +555,7 @@ const TermsContent = () => {
             </h5>
             <p>
                 <span>
-                    You agree to indemnify, defend, and hold harmless Space and
-                    Beauty, its officers, directors, employees, agents,
+                    You agree to indemnify, defend, and hold harmless SuperBae, its officers, directors, employees, agents,
                     licensors and suppliers (collectively the "Service
                     Providers") from and against all losses, expenses, damages
                     and costs, including reasonable attorneys' fees, resulting
