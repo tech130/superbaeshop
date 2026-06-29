@@ -158,7 +158,28 @@ const Header = () => {
                             </picture> */}
                         </CountryLink>
                         <div className="d-sm-none d-none d-md-block d-lg-block d-xl-block">
-                            <ProductList Show="products" />
+                            <div
+                                className="d-sm-none d-none d-md-flex d-lg-flex d-xl-flex"
+                                style={{ alignItems: "center", gap: "24px" }}
+                            >
+                                <ProductList Show="products" />
+
+                                <a
+                                    href="https://www.superbae.co/"
+                                    className="ProductList__ProdLinkStl-sc-1rzzd5r-1 jAJBql"
+                                    rel="noopener noreferrer"
+                                >
+                                    App
+                                </a>
+
+                                <a
+                                    href="https://www.baehiveclub.com/"
+                                    className="ProductList__ProdLinkStl-sc-1rzzd5r-1 jAJBql"
+                                    rel="noopener noreferrer"
+                                >
+                                    Club
+                                </a>
+                            </div>
                         </div>
                         <Ul alignItems="stretch">
                             <Hdrli>

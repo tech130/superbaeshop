@@ -17,12 +17,14 @@ const ProductLink = ({ slug, children, className = "" }) => {
 
     if (id) {
         return (
-            <Link
-                href={`/[country]/product/${slug}`}
-                as={`/${country}/product/${slug}`}
-            >
-                <a className={className}>{children || displayTitle}</a>
-            </Link>
+            <>
+                <Link
+                    href={`/[country]/product/${slug}`}
+                    as={`/${country}/product/${slug}`}
+                >
+                    <a className={className}>{children || displayTitle}</a>
+                </Link>
+            </>
         );
     }
     return null;
