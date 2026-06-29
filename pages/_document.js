@@ -1,3 +1,4 @@
+import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import { GA_TRACKING_ID } from "../utils/analytics";
@@ -17,12 +18,10 @@ export default class MyDocument extends Document {
             const initialProps = await Document.getInitialProps(ctx);
             return {
                 ...initialProps,
-                styles: (
-                    <>
-                        {initialProps.styles}
-                        {sheet.getStyleElement()}
-                    </>
-                ),
+                styles: [
+                    ...React.Children.toArray(initialProps.styles),
+                    sheet.getStyleElement(),
+                ],
             };
         } finally {
             sheet.seal();

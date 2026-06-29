@@ -81,7 +81,7 @@ const WhatsInside = () => {
                     <Col lg={7}>
                         <Block margin="15px 0px 0px 0px">
                             <P>
-                                <b>YEARLY SPREADS:</b> <b>Year at a glance - 2027 &amp; 2023, Year in pixels,</b>
+                                <b>YEARLY SPREADS:</b> <b>Year at a glance - 2027, Year in pixels,</b>
                                 All About Me, The
                                 real me, Year resolutions, Year affirmations, Birthdays, Memory board, Dream Journal, My deep
                                 secrets, Dream board, Vision board, Level 10 Goals, Level 10 Life, Idea board,

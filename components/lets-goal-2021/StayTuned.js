@@ -83,7 +83,7 @@ const StayTuned = () => {
     <Block padding="0px 0px 0px 0px" className="overflow-hidden">
       <Flex vertical width="100%" alignItems="center" margin="0">
         <Flex alignItems="center" margin="30px 0" >
-          <MainHeading textAlign="center" mb="0px">Stay tuned  <GradientText>@spaceandbeautyofficial </GradientText></MainHeading>
+          <MainHeading textAlign="center" mb="0px">Stay tuned  <GradientText>@superbae.shop </GradientText></MainHeading>
 
         </Flex>
 

@@ -21,14 +21,14 @@ const Policy = () => {
                                 </h5>
                                 <p>
                                     <span>
-                                        This privacy policy put out how Spaceandbeauty protects and utilizes your information that is
+                                        This privacy policy put out how SuperBae protects and utilizes your information that is
                                         being provided in &nbsp;
                                     </span>
-                                    <a href="https://www.spaceandbeauty.com/">
-                                        <span>spaceandbeauty.com</span>
+                                    <a href="https://www.superbae.shop/">
+                                        <span>superbaeshop.com</span>
                                     </a>
                                     <span>
-                                        &nbsp;We “SpaceandBeauty” ensure in protecting your
+                                        &nbsp;We “Superbae” ensure in protecting your
                                         information, subject to the “Security terms” provided below. We request you to check our privacy
                                         policies from time to time, as we may update the policies.
                                     </span>
@@ -69,9 +69,9 @@ const Policy = () => {
                                     <span>
                                         If you want to withdraw the consent for us to contact you via email, you can reach us at &nbsp;
                                     </span>
-                                    <a href="hey@spaceandbeauty.com">
+                                    <a href="hey@superbaeshop.com">
                                         <span>
-                                            hey@spaceandbeauty.com</span>
+                                            hey@superbaeshop.com</span>
                                     </a>
                                 </p>
                                 <h5>

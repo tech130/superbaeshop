@@ -246,11 +246,18 @@ const ProductList = ({ Show = '' }) => {
                     </ul> */}
 
                 <ul>
-                    {data.products.filter(item => !PLANNER_PRODUCTS.includes(item))
-                        .map((slug, index) => (
-                            <ProdTitle slug={slug} key={index} index={index} />
-                        ))}
-                    {data.categories.map((cat, index) => (
+                    {data.products.filter(item => 
+                        !PLANNER_PRODUCTS.includes(item) && 
+                        item !== 'phone-cases' && 
+                        item !== 'fashions'
+                    ).map((slug, index) => (
+                        <ProdTitle slug={slug} key={index} index={index} />
+                    ))}
+                    {data.categories.filter(cat => 
+                        cat.title && 
+                        cat.title.toLowerCase() !== 'phone cases' && 
+                        cat.title.toLowerCase() !== 'fashions'
+                    ).map((cat, index) => (
                         <CategoryTitle toggle={toggle} setToggle={setToggle} cat={cat} key={index} index={index} />
                     ))}
                     <ProdLinkStl>
@@ -261,17 +268,6 @@ const ProductList = ({ Show = '' }) => {
                             );
                         }} >
                             Laptop Skins
-                        </span>
-                    </ProdLinkStl>
-                    <ProdLinkStl>
-
-                        <span onClick={() => {
-                            router.push(
-                                `/[country]/product/PopSocket`,
-                                `/${country}/product/PopSocket`
-                            );
-                        }} >
-                            Pop Socket
                         </span>
                     </ProdLinkStl>
                 </ul>

@@ -140,8 +140,8 @@ const Footer = () => {
                             <Block margin="0px 0px 15px">
                                 <ul className="footer-list">
                                     <li>
-                                        <a href="mailto:hey@spaceandbeauty.com">
-                                            hey@spaceandbeauty.com
+                                        <a href="mailto:hey@superbaeshop.com">
+                                            hey@superbaeshop.com
                                         </a>
                                     </li>
                                     <li>
@@ -156,7 +156,7 @@ const Footer = () => {
                                 alignItems="center"
                                 flexWrap
                             >
-                                <a
+                                {/* <a
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     href="https://www.facebook.com/spaceandbeauty.official/"
@@ -165,11 +165,11 @@ const Footer = () => {
                                         src="/images/icons/social-icons/facebook.svg"
                                         alt="Facebook logo"
                                     />
-                                </a>
+                                </a> */}
                                 <a
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    href="https://www.instagram.com/spaceandbeautyofficial/"
+                                    href="https://www.instagram.com/thesuperbae/"
                                 >
                                     <img
                                         src="/images/icons/social-icons/instagram.svg"
@@ -305,7 +305,7 @@ const Footer = () => {
                 <Hr />
                 <div className="d-none d-md-block d-lg-block d-xl-block" >
                     <div className="footer-bottom" >
-                        <span>© {new Date().getFullYear()} Space and Beauty All Rights Reserved.</span>
+                        <span>© {new Date().getFullYear()} SuperBae All Rights Reserved.</span>
                         {/* <span>
                         Terms of Use
                     </span> */}
@@ -342,7 +342,7 @@ const Footer = () => {
 
                     </div>
                     <div className="footer-bottom-small" >
-                        <span>© {new Date().getFullYear()} Space and Beauty All Rights Reserved.</span>
+                        <span>© {new Date().getFullYear()} SuperBae All Rights Reserved.</span>
 
 
                     </div>

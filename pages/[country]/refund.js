@@ -25,7 +25,7 @@ const Refund = () => {
                                 </p> */}
                                 <p>
                                     <span>Once your order is shipped, there will be a tracking link to your order to your given inbox
-                                        or the given contact number. Space and beauty usually deliver mode with only post
+                                        or the given contact number. SuperBae usually deliver mode with only post
                                         services.</span>
                                 </p>
                                 <h5>
@@ -103,8 +103,8 @@ const Refund = () => {
                                         If there are issues over damaged product, don't worry,
                                         Drop your mail @ &nbsp;
                                     </span>
-                                    <a href="http://heyspaceandbeauty.com/">
-                                        <span>heyspaceandbeauty.com</span>
+                                    <a href="http://heysuperbaeshop.com/">
+                                        <span>hey@superbaeshop.com</span>
                                     </a>
                                     <span>
                                         &nbsp;or be in touch with our support team to

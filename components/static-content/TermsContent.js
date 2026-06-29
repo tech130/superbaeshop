@@ -8,23 +8,23 @@ const TermsContent = () => {
             </h5>
             <p>
                 <span>
-                    Space and Beauty, makes available information and materials
+                    SuperBae, makes available information and materials
                     on its website&nbsp;
                 </span>
-                <a href="https://spaceandbeauty.in/">
-                    <span>spaceandbeauty.in</span>
+                <a href="https://superbae.shop/">
+                    <span>superbae.shop</span>
                 </a>
                 <span>
                     &nbsp;subject to the following terms and conditions (Terms
                     of Use). Your use of&nbsp;
                 </span>
-                <a href="https://spaceandbeauty.in/">
-                    <span>spaceandbeauty.in</span>
+                <a href="https://superbae.shop/">
+                    <span>superbae.shop</span>
                 </a>
                 <span>
                     constitutes your agreement to follow and be bound by these
                     Terms of Use; if you do not agree to the Terms of Use you
-                    may not use the site. Space and Beauty reserves the right to
+                    may not use the site. SuperBae reserves the right to
                     change these Terms of Use periodically without prior notice.
                 </span>
             </p>
@@ -32,7 +32,7 @@ const TermsContent = () => {
                 <span>
                     In these Terms and Conditions, the user of the Website is
                     referred to as "you" or "your" and the provider of website
-                    is referred to as Space and Beauty, "spaceandbeauty.in",
+                    is referred to as superBae, "SuperBae",
                     "we", "us" or "our".
                 </span>
             </p>
@@ -58,7 +58,7 @@ const TermsContent = () => {
             </ul>
             <p>
                 <span>
-                    We at Space and Beauty offer free shipping in India for all
+                    We at SoperBae offer free shipping in India for all
                     orders. For international orders, we offer free shipping for
                     orders above $100, the shipping charges depends upon the
                     country you live in.
@@ -89,9 +89,9 @@ const TermsContent = () => {
             <p>
                 <span>
                     We only make use of reliable courier companies and/or Speed
-                    Post. Space and Beauty is not liable for any delays in
+                    Post. SuperBae is not liable for any delays in
                     delivery by the Courier Company/ Speed Post or on account of
-                    any factors beyond the control of Space and Beauty. We shall
+                    any factors beyond the control of SuperBae. We shall
                     endeavour to ensure timely delivery of your order within the
                     estimated time as mentioned in the order confirmation.
                 </span>
@@ -99,7 +99,7 @@ const TermsContent = () => {
             <p>
                 <span>
                     In the unlikely event that delivery is not possible for any
-                    reasons outside the control of Space and Beauty, including
+                    reasons outside the control of SuperBae, including
                     but not limited to poor courier services in delivery area,
                     inaccessibility of delivery area, force major events as laid
                     out hereinafter, we shall inform you of such inability to
@@ -174,8 +174,8 @@ const TermsContent = () => {
                         We make sure that all the products are sent to you in
                         one package. Please mail at&nbsp;
                     </span>
-                    <a href="mailto:info@spaceandbeauty.in">
-                        <span>info@spaceandbeauty.in</span>
+                    <a href="mailto:info@superbae.shop">
+                        <span>info@superbae.shop</span>
                     </a>
                     <span>
                         &nbsp;with the details of the missing product but within
@@ -193,8 +193,8 @@ const TermsContent = () => {
             <ul>
                 <li>
                     <span>Please drop us a mail at&nbsp;</span>
-                    <a href="mailto:info@spaceandbeauty.in">
-                        <span>info@spaceandbeauty.in</span>
+                    <a href="mailto:info@superbae.shop">
+                        <span>info@superbae.shop</span>
                     </a>
                     <span>
                         &nbsp;within 24 hrs of the delivery mentioned in the
@@ -213,8 +213,8 @@ const TermsContent = () => {
             <ul>
                 <li>
                     <span>Please do not worry. Drop us a mail at&nbsp;</span>
-                    <a href="mailto:info@spaceandbeauty.in">
-                        <span>info@spaceandbeauty.in</span>
+                    <a href="mailto:info@superbae.shop">
+                        <span>info@superbae.shop</span>
                     </a>
                     <span>
                         with images of the damaged product within 15 days of
@@ -276,8 +276,8 @@ const TermsContent = () => {
             <ul>
                 <li>
                     <span>Please mail us at&nbsp;</span>
-                    <a href="mailto:info@spaceandbeauty.in">
-                        <span>info@spaceandbeauty.in</span>
+                    <a href="mailto:info@superbae.shop">
+                        <span>info@superbae.shop</span>
                     </a>
                     <span>
                         &nbsp;for cancellation request if your order has not
@@ -380,8 +380,8 @@ const TermsContent = () => {
                     business hours, please email our customer service department
                     at&nbsp;
                 </span>
-                <a href="mailto:info@spaceandbeauty.in">
-                    <span>info@spaceandbeauty.in</span>
+                <a href="mailto:info@superbae.shop">
+                    <span>info@superbae.shop</span>
                 </a>
                 <span>&nbsp;and we will respond as soon as possible.</span>
             </p>
@@ -390,7 +390,7 @@ const TermsContent = () => {
             </h5>
             <p>
                 <span>
-                    Space and Beauty is committed to providing exceptional
+                    SuperBae is committed to providing exceptional
                     customer service and quality products. We endeavour to make
                     sure that all products listed on our website are currently
                     in stock and pricing is true and correct. Standard delivery
@@ -426,12 +426,12 @@ const TermsContent = () => {
             </p>
             <p>
                 <span>The website (</span>
-                <a href="https://spaceandbeauty.in/">
-                    <span>spaceandbeauty.in</span>
+                <a href="https://superbae.shop/">
+                    <span>superbae.shop</span>
                 </a>
                 <span>
                     ) and all content including text, illustrations and images
-                    are created and owned by Space and Beauty.
+                    are created and owned by SuperBae.
                 </span>
             </p>
             <h5>
@@ -448,9 +448,9 @@ const TermsContent = () => {
             </h5>
             <p>
                 <span>
-                    This website is expressly operated by Space and Beauty.
+                    This website is expressly operated by SuperBae.
                     Unless otherwise noted, all design and content featured on
-                    www.spaceandbeauty.in - including navigational buttons and
+                    www.superbae.shop - including navigational buttons and
                     images, artwork, graphics, photography, text, and the like
                     are copyrights, trademarks, and/or intellectual property
                     that are owned, controlled, or licensed by Let&rsquo;s Goal
@@ -463,8 +463,8 @@ const TermsContent = () => {
                     Any copying, dissemination, reproduction, publication,
                     display or use of the above-said Intellectual Property (IP)
                     Rights, whether partly or in full, without the permission of
-                    Space and Beauty, is prohibited and will be considered as a
-                    violation of the IP rights of Space and Beauty
+                    SuperBae, is prohibited and will be considered as a
+                    violation of the IP rights of SuperBae
                 </span>
             </p>
             <h5>
@@ -473,7 +473,7 @@ const TermsContent = () => {
             <p>
                 <span>
                     Given the unpredictability of technology and the online
-                    environment, Space and Beauty does not warrant that the
+                    environment, SuperBae does not warrant that the
                     function or operation of this website will be uninterrupted
                     or error-free, that defects will be corrected, or that this
                     site or the server that makes it available will be free of
@@ -484,7 +484,7 @@ const TermsContent = () => {
                     user of this website, you, in effect, agree that your access
                     will be subject to the terms and conditions set forth in
                     this legal notice and that access is undertaken at your own
-                    risk. Space and Beauty shall not be liable for damages of
+                    risk. SuperBae shall not be liable for damages of
                     any kind related to your use of or inability to access this
                     website.
                 </span>
@@ -497,7 +497,7 @@ const TermsContent = () => {
                     We endeavour to present the most recent, most accurate, and
                     most reliable information on our website at all times.
                     However, there may be occasions when some of the information
-                    featured on www.spaceandbeauty.in may contain incomplete
+                    featured on www.superbae.shop may contain incomplete
                     data, typographical errors, or inaccuracies. Any errors are
                     wholly unintentional and we apologize if erroneous
                     information is reflected in merchandise price, item
@@ -506,12 +506,12 @@ const TermsContent = () => {
                     no claims to its accuracy, either express or implied. We
                     reserve the right to amend errors or to update product
                     information at any time without prior notice. In the event a
-                    product at www.spaceandbeauty.in is listed at an incorrect
+                    product at www.superbae.shop is listed at an incorrect
                     price due to photographic error, typographical error or
                     error in pricing information from our suppliers, Let&rsquo;s
                     Goal 2020 shall have the right to refuse or cancel any
                     orders placed for product listed at the incorrect price.
-                    Space and Beauty shall have the right to refuse or cancel
+                    SuperBae shall have the right to refuse or cancel
                     any such orders whether or not the order has been confirmed
                     and your credit card/debit card/bank account charged. If
                     your credit card has already been charged for the purchase
@@ -527,23 +527,23 @@ const TermsContent = () => {
             </h5>
             <p>
                 <span>
-                    At Space and Beauty, we go out of our way to give you the
+                    At SuperBae, we go out of our way to give you the
                     kind of distinctive merchandise for which our brand
-                    &ldquo;Space and Beauty&rdquo; is recognized. Please
+                    &ldquo;SuperBae&rdquo; is recognized. Please
                     understand that many of our featured items are offered in
                     limited quantities and, because of their limited
                     availability, the stock will not and cannot be refreshed.
                     That means once an item is gone, it may be gone for good and
                     not appear on the website again. When an item featured on
-                    www.spaceandbeauty.in is no longer in stock, we make every
+                    www.superbae.shop is no longer in stock, we make every
                     attempt to remove that item from the website in a timely
-                    manner. Most www.spaceandbeauty.in products displayed on the
+                    manner. Most www.superbae.shop products displayed on the
                     website are available while supplies last.
                 </span>
             </p>
             <p>
                 <span>
-                    Many of www.spaceandbeauty.in products are manufactured
+                    Many of www.superbae.shop products are manufactured
                     locally. We have made every effort to display as accurately
                     as possible the colours of our products that appear on the
                     website. However, due to monitor discrepancies, we cannot
@@ -572,7 +572,7 @@ const TermsContent = () => {
             <p>
                 <span>
                     Although we will make every effort to respond quickly to
-                    applicable email messages, Space and Beauty is under no
+                    applicable email messages, SuperBae is under no
                     obligation to respond to all pieces of correspondence
                     received through this site, or to maintain your submitted
                     comments in confidence, or to pay compensation of any kind
@@ -591,8 +591,8 @@ const TermsContent = () => {
             </p>
             <p>
                 <span>Email:&nbsp;</span>
-                <a href="mailto:info@spaceandbeauty.in">
-                    <span>info@spaceandbeauty.in</span>
+                <a href="mailto:info@superbae.shop">
+                    <span>info@superbae.shop</span>
                 </a>
             </p>
             <h5>
@@ -600,16 +600,16 @@ const TermsContent = () => {
             </h5>
             <p>
                 <span>
-                    This privacy policy sets out how to Space and Beauty uses
+                    This privacy policy sets out how to SuperBae uses
                     and protects any information that you give on
-                    www.spaceandbeauty.in when you use this website. Let&rsquo;s
+                    www.superbae.shop when you use this website. Let&rsquo;s
                     Goal 2020 is committed to ensuring that your privacy is
                     protected, subject to the terms of the
                     &lsquo;Security&rsquo; Clause below. Should we ask you to
                     provide certain information by which you can be identified
                     when using this website, then you can be assured that it
                     will only be used in accordance with this privacy statement.
-                    Space and Beauty may change this policy from time to time by
+                    SuperBae may change this policy from time to time by
                     updating this page. You should check this page from time to
                     time to ensure that you are happy with any changes.
                 </span>
@@ -776,8 +776,8 @@ const TermsContent = () => {
                     information for direct marketing purposes, you may change
                     your mind at any time by writing to or emailing us at&nbsp;
                 </span>
-                <a href="mailto:info@spaceandbeauty.in">
-                    <span>info@spaceandbeauty.in</span>
+                <a href="mailto:info@superbae.shop">
+                    <span>info@superbae.shop</span>
                 </a>
             </p>
             <p>
@@ -797,8 +797,8 @@ const TermsContent = () => {
                     fee will be payable. If you would like a copy of the
                     information held on you, please write to us&nbsp;
                 </span>
-                <a href="mailto:info@spaceandbeauty.in">
-                    <span>info@spaceandbeauty.in</span>
+                <a href="mailto:info@superbae.shop">
+                    <span>info@superbae.shop</span>
                 </a>
             </p>
             <style jsx>{`
