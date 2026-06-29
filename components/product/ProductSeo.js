@@ -3,7 +3,7 @@ import Head from "next/head";
 import useProduct from "../../hooks/redux/product/useProduct";
 import { useRouter } from "next/router";
 
-const metaTitle = "A women's club built for growth, creativity & community.";
+const metaTitle = "SuperBae | A women's club built for growth, creativity & community.";
 
 const ProductSeo = ({ slug }) => {
     const { asPath } = useRouter();
