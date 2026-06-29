@@ -160,7 +160,7 @@ const Header = () => {
                         <div className="d-sm-none d-none d-md-block d-lg-block d-xl-block">
                             <div
                                 className="d-sm-none d-none d-md-flex d-lg-flex d-xl-flex"
-                                style={{ alignItems: "center", gap: "24px" }}
+                                style={{ alignItems: "center", gap: "20px" }}
                             >
                                 <ProductList Show="products" />
 
@@ -168,6 +168,16 @@ const Header = () => {
                                     href="https://www.superbae.co/"
                                     className="ProductList__ProdLinkStl-sc-1rzzd5r-1 jAJBql"
                                     rel="noopener noreferrer"
+                                    style={{
+                                        background: "linear-gradient(98deg, #d14e9a 14%, #ff566d 73.56%)",
+                                        color: "#fff",
+                                        padding: "3px 13px",
+                                        borderRadius: "25px",
+                                        textDecoration: "none",
+                                        display: "inline-block",
+                                        marginRight: "8px",
+                                        cursor: "pointer"
+                                    }}
                                 >
                                     App
                                 </a>
@@ -176,6 +186,15 @@ const Header = () => {
                                     href="https://www.baehiveclub.com/"
                                     className="ProductList__ProdLinkStl-sc-1rzzd5r-1 jAJBql"
                                     rel="noopener noreferrer"
+                                    style={{
+                                        background: "linear-gradient(98deg, #d14e9a 14%, #ff566d 73.56%)",
+                                        color: "#fff",
+                                        padding: "3px 13px",
+                                        borderRadius: "25px",
+                                        textDecoration: "none",
+                                        display: "inline-block",
+                                        cursor: "pointer"
+                                    }}
                                 >
                                     Club
                                 </a>
